@@ -1,4 +1,8 @@
 ---
+import "lenis/dist/lenis.css";
+import "@/assets/styles/global.css";
+import ToolsGuide from "@/components/Tools/Guide.astro";
+
 interface Props {
   title: string;
 }
@@ -6,8 +10,19 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
+<script>
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+
+  lenis.on("scroll", (e: any) => {
+    console.log(e);
+  });
+</script>
+
+<html lang="en" class="bg-navy text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="" />
@@ -24,9 +39,11 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="bg-navy text-white font-body">
+  <body class="font-body text-16 antialiased">
     <slot />
   </body>
+
+  <ToolsGuide />
 </html>
 
 <style is:global></style>

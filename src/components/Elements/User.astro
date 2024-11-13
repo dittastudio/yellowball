@@ -1,6 +1,6 @@
 ---
 import { twMerge } from "tailwind-merge";
-import Icon from "../Elements/Icon.astro";
+import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
   title: string;
@@ -11,7 +11,7 @@ const { title, class: className } = Astro.props as Props;
 
 // TODO: Fix the merge issue with conif in TW? "text-12" gets removed.
 const classes = twMerge(
-  "font-bold text-12 text-navy rounded-lg px-2.5 py-1.5 flex justify-center items-center gap-2 select-none bg-green",
+  "text-12 font-bold text-navy rounded-md px-10 py-[0.1em] flex justify-center items-center gap-5 select-none bg-green",
   className
 );
 ---
