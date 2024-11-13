@@ -116,6 +116,8 @@ export default {
     },
     spacing: {
       0: '0',
+      2: '2px',
+      3: '3px',
       5: '5px',
       10: '10px',
       12: '12px',
