@@ -6,6 +6,17 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    build: {
+      cssCodeSplit: false,
+      rollupOptions: {
+        output: {
+          // inlineDynamicImports: true,
+          manualChunks: () => "app.js",
+        },
+      },
+    },
+  },
   integrations: [
     favicons({
       masterPicture: "./src/icon/favicon.svg",
