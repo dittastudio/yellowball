@@ -1,0 +1,36 @@
+---
+
+---
+
+<script>
+  import { gsap } from "gsap";
+  import SplitType from "split-type";
+
+  const masks = new SplitType(".text-reveal > *", {
+    types: "lines",
+    lineClass: "mask",
+    tagName: "span",
+  });
+
+  gsap.set(masks.lines, {
+    clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
+  });
+
+  const text = new SplitType(".text-reveal .mask", {
+    types: "lines",
+    tagName: "span",
+  });
+
+  gsap.from(text.lines, {
+    duration: 1,
+    yPercent: 100,
+    ease: "power2.inOut",
+    stagger: 0.2,
+  });
+
+  console.log(text);
+</script>
+
+<div class="text-reveal">
+  <slot />
+</div>
