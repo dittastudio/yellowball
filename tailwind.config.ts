@@ -61,22 +61,22 @@ export default {
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
-      12: [`${pxToRem(12)}rem`, { lineHeight: '1.2' }],
-      15: [`${pxToRem(15)}rem`, { lineHeight: '1.2' }],
-      16: [`${pxToRem(16)}rem`, { lineHeight: '1.5' }],
-      18: [`${pxToRem(18)}rem`, { lineHeight: '1.5' }],
-      21: [`${pxToRem(21)}rem`, { lineHeight: '1.5' }],
-      26: [`${pxToRem(26)}rem`, { lineHeight: '1.5' }],
-      28: [`${pxToRem(28)}rem`, { lineHeight: '1.5' }],
-      34: [`${pxToRem(34)}rem`, { lineHeight: '1.2' }],
-      36: [`${pxToRem(36)}rem`, { lineHeight: '1.2' }],
-      40: [`${pxToRem(40)}rem`, { lineHeight: '1.2' }],
-      44: [`${pxToRem(44)}rem`, { lineHeight: '1.2' }],
-      48: [`${pxToRem(48)}rem`, { lineHeight: '1.2' }],
-      56: [`${pxToRem(56)}rem`, { lineHeight: '1.2' }],
-      64: [`${pxToRem(64)}rem`, { lineHeight: '1.2' }],
-      80: [`${pxToRem(80)}rem`, { lineHeight: '1.2' }],
-      100: [`${pxToRem(100)}rem`, { lineHeight: '1.2' }],
+      12: [`${pxToRem(12)}rem`, { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+      15: [`${pxToRem(15)}rem`, { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '0em' }],
+      18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+      21: [`${pxToRem(21)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+      26: [`${pxToRem(26)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
+      28: [`${pxToRem(28)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
+      34: [`${pxToRem(34)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      36: [`${pxToRem(36)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      40: [`${pxToRem(40)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      44: [`${pxToRem(44)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      48: [`${pxToRem(48)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      56: [`${pxToRem(56)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      64: [`${pxToRem(64)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      80: [`${pxToRem(80)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+      100: [`${pxToRem(100)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       'fluid-heading': [
         `${
           clamp({
@@ -86,7 +86,10 @@ export default {
             maxViewportWidthPixels: screenSizes.base,
           })
         }`,
-        { lineHeight: '1.2' }
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
       ],
     },
     letterSpacing: {
@@ -132,7 +135,13 @@ export default {
       200: '200px',
       240: '240px',
     },
-    extend: {},
+    extend: {
+      borderRadius: {
+        md: '8px',
+        lg: '20px',
+        xl: '30px',
+      },
+    },
   },
   plugins: [],
 } satisfies Config;
