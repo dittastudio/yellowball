@@ -118,9 +118,11 @@ export default {
       0: '0',
       2: '2px',
       3: '3px',
+      4: '4px',
       5: '5px',
       10: '10px',
       12: '12px',
+      15: '15px',
       20: '20px',
       24: '24px',
       30: '30px',
@@ -140,6 +142,8 @@ export default {
     extend: {
       borderRadius: {
         md: '8px',
+        xm: '12px',
+        big: '16px',
         lg: '20px',
         xl: '30px',
       },

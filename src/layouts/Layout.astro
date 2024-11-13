@@ -1,6 +1,7 @@
 ---
 import "lenis/dist/lenis.css";
 import "@/assets/styles/global.css";
+import AppHeader from "@/components/App/Header.astro";
 import ToolsGuide from "@/components/Tools/Guide.astro";
 
 interface Props {
@@ -39,6 +40,8 @@ const { title } = Astro.props;
   </head>
 
   <body class="font-body text-16 antialiased">
+    <AppHeader />
+
     <slot />
   </body>
 
