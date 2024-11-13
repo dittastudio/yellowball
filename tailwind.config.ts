@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+import { type Config } from 'tailwindcss'
 
 const pxToRem = (px: number, base = 16): number | string => px / base
 
@@ -43,4 +43,4 @@ export default {
     extend: {},
   },
   plugins: [],
-};
+} satisfies Config;
