@@ -1,0 +1,56 @@
+@layer base {
+  body {
+    /* Remove default touch box */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /**
+   * Avoid text overflows
+   */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    hyphens: none;
+    overflow-wrap: break-word;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+    user-select: none;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  button {
+    text-transform: inherit;
+    letter-spacing: inherit;
+  }
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+  }
+
+  video {
+    background-color: theme('colors.black');
+  }
+
+  input {
+    background-color: transparent;
+  }
+
+  svg {
+    display: block;
+    width: inherit;
+    height: inherit;
+    fill: currentcolor;
+  }
+}

@@ -1,0 +1,23 @@
+/* Base */
+@import url('tailwindcss/base');
+@import url('@/assets/styles/base/settings.css');
+@import url('@/assets/styles/base/type.css');
+
+/* Components */
+@import url('tailwindcss/components');
+
+/* Utilities */
+@import url('tailwindcss/utilities');
+@import url('@/assets/styles/utilities/layout.css');
+
+@layer {
+  :root {
+    /* Global units */
+    --inner-gutter: theme('spacing.12');
+    --outer-gutter: clamp(theme('spacing.24'), 1.8169px + 5.9155vw, 87px);
+
+    @screen md {
+      --inner-gutter: theme('spacing.30');
+    }
+  }
+}
