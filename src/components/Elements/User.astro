@@ -1,5 +1,5 @@
 ---
-import { twMerge } from "tailwind-merge";
+// import { twMerge } from "tailwind-merge";
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
@@ -10,13 +10,18 @@ interface Props {
 const { title, class: className } = Astro.props as Props;
 
 // TODO: Fix the merge issue with conif in TW? "text-12" gets removed.
-const classes = twMerge(
-  "text-12 font-bold text-navy rounded-md px-10 py-[0.1em] flex justify-center items-center gap-5 select-none bg-green",
-  className
-);
+// const classes = twMerge(
+//   "text-12 font-bold text-navy rounded-md px-10 py-[0.1em] flex justify-center items-center gap-5 select-none bg-green",
+//   className
+// );
 ---
 
-<p class:list={[classes]}>
+<p
+  class:list={[
+    "text-12 font-bold text-navy rounded-md px-10 py-4 flex justify-center items-center gap-5 select-none",
+    className,
+  ]}
+>
   <Icon name="cursor" />
   {title}
 </p>
