@@ -1,0 +1,18 @@
+---
+import HeadingNudge from "@/components/Elements/HeadingNudge.astro";
+import ShapePyramid from "@/components/Elements/ShapePyramid.astro";
+
+const rawHTMLString = `We specialise in three | core areas to drive your | business forward`;
+---
+
+<section class="py-100">
+  <div class="wrapper flex justify-center">
+    <div class="relative flex flex-col gap-40">
+      <div class="flex justify-center md:absolute bottom-full left-[88%]">
+        <ShapePyramid />
+      </div>
+
+      <HeadingNudge text={rawHTMLString} />
+    </div>
+  </div>
+</section>

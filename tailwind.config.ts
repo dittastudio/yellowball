@@ -88,12 +88,26 @@ export default {
       64: [`${pxToRem(64)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       80: [`${pxToRem(80)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       100: [`${pxToRem(100)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
-      'fluid-heading': [
+      'fluid-h1': [
         `${
           clamp({
             minPixels: 56,
             minViewportWidthPixels: screenSizes.xs,
             maxPixels: 100,
+            maxViewportWidthPixels: screenSizes.base,
+          })
+        }`,
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
+      ],
+      'fluid-h2': [
+        `${
+          clamp({
+            minPixels: 44,
+            minViewportWidthPixels: screenSizes.md,
+            maxPixels: 80,
             maxViewportWidthPixels: screenSizes.base,
           })
         }`,
@@ -157,13 +171,6 @@ export default {
     },
     extend: {
       borderRadius: {
-        // md: '8px',
-        // xm: '12px',
-        // big: '16px',
-        // lg: '20px',
-        // xl: '30px',
-        // '2xl': '40px'
-
         8: '8px',
         12: '12px',
         16: '16px',
