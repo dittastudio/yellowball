@@ -130,7 +130,7 @@ const colorShape = colors[color as keyof typeof colors] ?? "";
 
         .card-service__inner {
           &::before {
-            opacity: 0.1;
+            opacity: 0.2;
           }
         }
       }
@@ -152,7 +152,7 @@ const colorShape = colors[color as keyof typeof colors] ?? "";
   style={`--color: var(--yellowball-${color})`}
 >
   <div
-    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 overflow-hidden rounded-30 lg:rounded-40"
+    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
   >
     <a
       href={href}
