@@ -1,19 +1,27 @@
 ---
+import { colourText } from "@/utilities/maps";
 interface Props {
-  class?: string;
+  color?: string;
+  iconSize?: "sm" | "lg";
 }
 
-const { class: className } = Astro.props as Props;
+const { color = "red", iconSize = "sm" } = Astro.props as Props;
+
+// Icon Small Desktop: 22, Mobile = 22
+// Icon Large Desktop: 28, Mobile = 22
 ---
 
 <span
   class:list={[
-    "relative inline-flex justify-center items-center size-50 [&>svg]:size-inherit",
+    "relative inline-flex justify-center items-center size-40 md:size-50",
     "after:absolute after:inset-0",
     "after:border after:border-solid after:border-navy-lighter after:rounded-lg",
     "rounded-lg",
-    "text-white bg-navy-light",
-    className,
+    "bg-navy-light",
+    iconSize === "sm"
+      ? "[&>svg]:size-22"
+      : "[&>svg]:size-22 [&>svg]:md:size-28",
+    colourText[color],
   ]}
 >
   <slot />
