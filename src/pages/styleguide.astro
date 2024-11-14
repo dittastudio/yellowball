@@ -1,31 +1,102 @@
 ---
+import Icon from "@/components/Elements/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 
+import Cube from "@/components/Elements/Cube.astro";
+import User from "@/components/Elements/User.astro";
 import Button from "@/components/Elements/Button.astro";
 ---
 
 <Layout title="Styleguide">
   <main class="mt-200 wrapper">
-    <h1>Buttons</h1>
+    <section class="my-40">
+      <h1 class="font-heading font-bold text-21 mb-20">Buttons</h1>
 
-    <button>
-      <Button text="Let’s Chat" hasArrow />
-    </button>
+      <button>
+        <Button text="Let’s Chat" hasArrow />
+      </button>
 
-    <button>
-      <Button text="View all projects" hasArrow />
-    </button>
+      <button>
+        <Button text="View all projects" hasArrow />
+      </button>
 
-    <button>
-      <Button text="All posts" hasArrow />
-    </button>
+      <button>
+        <Button text="All posts" hasArrow />
+      </button>
 
-    <button>
-      <Button text="Speak to a Web Expert" hasArrow />
-    </button>
+      <button>
+        <Button text="Speak to a Web Expert" hasArrow />
+      </button>
 
-    <button>
-      <Button text="View all projects" theme="white-border" />
-    </button>
+      <button>
+        <Button text="View all projects" theme="white-border" />
+      </button>
+    </section>
+
+    <section class="my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Tags</h1>
+
+      <User title="PPC Team" class="bg-blue" />
+      <User title="Design Team" class="bg-yellow" />
+      <User title="SEO Team" class="bg-green" />
+      <User title="Developers" class="bg-grey" />
+    </section>
+
+    <section class="my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Cubes</h1>
+
+      <ul class="flex gap-8">
+        <li>
+          <Cube iconSize="lg">
+            <Icon name="logo-figma" />
+          </Cube>
+        </li>
+        <li>
+          <Cube iconSize="lg">
+            <Icon name="logo-wp" />
+          </Cube>
+        </li>
+        <li>
+          <Cube iconSize="lg">
+            <Icon name="logo-woo" />
+          </Cube>
+        </li>
+        <li>
+          <Cube iconSize="lg">
+            <Icon name="logo-laravel" />
+          </Cube>
+        </li>
+        <li>
+          <Cube>
+            <Icon name="logo-white-label" />
+          </Cube>
+        </li>
+        <li>
+          <Cube>
+            <Icon name="logo-ecommerce" />
+          </Cube>
+        </li>
+        <li>
+          <Cube color="green">
+            <Icon name="service-paper-magnifier" />
+          </Cube>
+        </li>
+        <li>
+          <Cube color="blue">
+            <Icon name="service-paper-magnifier" />
+          </Cube>
+        </li>
+        <li>
+          <Cube color="yellow">
+            <Icon name="service-paper-magnifier" />
+          </Cube>
+        </li>
+        <li>
+          <Cube color="purple">
+            <Icon name="service-paper-magnifier" />
+          </Cube>
+        </li>
+      </ul>
+    </section>
   </main>
 </Layout>
