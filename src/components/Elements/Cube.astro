@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  theme?: "white" | "white-border";
+  text: string;
+  hasArrow?: boolean;
+}
+
+const { class: className } = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    "flex justify-center items-center size-50",
+    "rounded-12",
+    "bg-navy border border-solid border-white/20",
+    className,
+  ]}
+>
+  <slot />
+</span>

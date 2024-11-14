@@ -1,6 +1,8 @@
 ---
+import Icon from "@/components/Elements/Icon.astro";
 import Layout from "../layouts/Layout.astro";
 
+import Cube from "@/components/Elements/Cube.astro";
 import User from "@/components/Elements/User.astro";
 import Button from "@/components/Elements/Button.astro";
 ---
@@ -38,6 +40,14 @@ import Button from "@/components/Elements/Button.astro";
       <User title="Design Team" class="bg-yellow" />
       <User title="SEO Team" class="bg-green" />
       <User title="Developers" class="bg-grey" />
+    </section>
+
+    <section class="my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Cubes</h1>
+
+      <Cube title="PPC Team" class="bg-blue">
+        <Icon name="logo-figma" />
+      </Cube>
     </section>
   </main>
 </Layout>

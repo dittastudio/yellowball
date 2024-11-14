@@ -148,12 +148,19 @@ export default {
     },
     extend: {
       borderRadius: {
-        md: '8px',
-        xm: '12px',
-        big: '16px',
-        lg: '20px',
-        xl: '30px',
-        '2xl': '40px'
+        // md: '8px',
+        // xm: '12px',
+        // big: '16px',
+        // lg: '20px',
+        // xl: '30px',
+        // '2xl': '40px'
+
+        8: '8px',
+        12: '12px',
+        16: '16px',
+        20: '20px',
+        30: '30px',
+        40: '40px'
       },
     },
   },
