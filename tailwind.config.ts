@@ -46,6 +46,7 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     colors: {
+      transparent: "transparent",
       black: "#000000",
       white: "#FFFFFF",
       yellow: "#EAFF01",
@@ -125,6 +126,7 @@ export default {
       3: '3px',
       4: '4px',
       5: '5px',
+      8: '8px',
       10: '10px',
       12: '12px',
       15: '15px',

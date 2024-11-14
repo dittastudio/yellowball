@@ -1,0 +1,44 @@
+---
+// import Icon from "@/components/Elements/Icon.astro";
+import Icon from "@/components/Elements/Icon.astro";
+
+interface Props {
+  class?: string;
+  theme?: "white" | "white-border";
+  text: string;
+  hasArrow?: boolean;
+}
+
+const {
+  class: className,
+  text,
+  theme = "white",
+  hasArrow = false,
+} = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    "inline-flex justify-center items-center gap-8 md:gap-12",
+    "px-[25px] py-[15px]",
+    "md:px-[32px] md:py-[14px]",
+    "border border-solid rounded-lg",
+    "font-heading text-15 md:text-18 font-bold",
+    theme === "white"
+      ? `bg-white text-navy border-transparent`
+      : "bg-navy border-white text-white",
+    className,
+  ]}
+>
+  <span class="relative -top-[0.1em]">
+    {text}
+  </span>
+
+  {
+    hasArrow && (
+      <span class="size-10 md:size-12 [&>svg]:size-[inherit]">
+        <Icon name="arrow-link" />
+      </span>
+    )
+  }
+</span>
