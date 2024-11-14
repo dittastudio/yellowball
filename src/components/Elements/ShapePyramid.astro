@@ -2,16 +2,16 @@
 import Icon from "@/components/Elements/Icon.astro";
 ---
 
-<ul class="grid grid-cols-2 place-items-center gap-12 w-80">
-  <li class="col-span-2 text-yellow">
-    <Icon name="shape-triangle" />
+<ul class="grid grid-cols-4 w-[58px] md:w-[76px] gap-12">
+  <li class="col-span-2 col-start-2 text-yellow size-full scale-[1.15]">
+    <Icon class="block size-full [&>svg]:size-inherit" name="shape-triangle" />
   </li>
 
-  <li class="col-span-1 text-green">
-    <Icon name="shape-square" />
+  <li class="col-span-2 text-green size-full">
+    <Icon class="block size-full [&>svg]:size-inherit" name="shape-square" />
   </li>
 
-  <li class="col-span-1 text-blue">
-    <Icon name="shape-circle" />
+  <li class="col-span-2 text-blue size-full">
+    <Icon class="block size-full [&>svg]:size-inherit" name="shape-circle" />
   </li>
 </ul>
