@@ -5,11 +5,13 @@ import Layout from "../layouts/Layout.astro";
 import Cube from "@/components/Elements/Cube.astro";
 import User from "@/components/Elements/User.astro";
 import Button from "@/components/Elements/Button.astro";
+
+import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 ---
 
 <Layout title="Styleguide">
-  <main class="mt-200 wrapper">
-    <section class="my-40">
+  <main class="mt-200">
+    <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 mb-20">Buttons</h1>
 
       <button>
@@ -33,7 +35,7 @@ import Button from "@/components/Elements/Button.astro";
       </button>
     </section>
 
-    <section class="my-40">
+    <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 my-20">Tags</h1>
 
       <User title="PPC Team" class="bg-blue" />
@@ -42,10 +44,10 @@ import Button from "@/components/Elements/Button.astro";
       <User title="Developers" class="bg-grey" />
     </section>
 
-    <section class="my-40">
+    <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 my-20">Cubes</h1>
 
-      <ul class="flex gap-8">
+      <ul class="flex flex-wrap gap-8">
         <li>
           <Cube iconSize="lg">
             <Icon name="logo-figma" />
@@ -98,5 +100,25 @@ import Button from "@/components/Elements/Button.astro";
         </li>
       </ul>
     </section>
+
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Shapes</h1>
+
+      <ul class="flex flex-wrap gap-8">
+        <li class="text-yellow">
+          <Icon name="shape-triangle" />
+        </li>
+
+        <li class="text-green">
+          <Icon name="shape-square" />
+        </li>
+
+        <li class="text-blue">
+          <Icon name="shape-circle" />
+        </li>
+      </ul>
+    </section>
+
+    <HeadingBanner />
   </main>
 </Layout>
