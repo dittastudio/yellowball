@@ -6,31 +6,54 @@
   import { gsap } from "gsap";
   import SplitType from "split-type";
 
-  const masks = new SplitType(".text-reveal > *", {
-    types: "lines",
-    lineClass: "mask",
-    tagName: "span",
-  });
+  const textReveal = document.querySelectorAll("[data-js='text-reveal']");
 
-  gsap.set(masks.lines, {
-    clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
-  });
+  if (textReveal?.length) {
+    const masks = new SplitType("[data-js='text-reveal'] > *", {
+      types: "lines",
+      lineClass: "mask",
+      tagName: "span",
+    });
 
-  const text = new SplitType(".text-reveal .mask", {
-    types: "lines",
-    tagName: "span",
-  });
+    gsap.set(masks.lines, {
+      clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
+    });
 
-  gsap.from(text.lines, {
-    duration: 1,
-    yPercent: 100,
-    ease: "power2.inOut",
-    stagger: 0.2,
-  });
+    const text = new SplitType("[data-js='text-reveal'] .mask", {
+      types: "lines",
+      tagName: "span",
+    });
 
-  console.log(text);
+    if (text.lines?.length) {
+      gsap.set(".line", { yPercent: 100 });
+
+      textReveal.forEach((el) => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const lines = entry.target.querySelectorAll(".line");
+
+                gsap.to(lines, {
+                  duration: 1,
+                  yPercent: 0,
+                  ease: "power2.inOut",
+                  stagger: 0.05,
+                });
+              }
+            });
+          },
+          {
+            threshold: 0.5,
+          }
+        );
+
+        observer.observe(el);
+      });
+    }
+  }
 </script>
 
-<div class="text-reveal">
+<div data-js="text-reveal">
   <slot />
 </div>

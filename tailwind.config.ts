@@ -55,6 +55,10 @@ export default {
       navy: "#1C1D2C",
       cream: "#F7F7F0",
       grey: "#BBBBBB",
+
+      // TEMP NAMES
+      card: "#28293A",
+      'card-border': "#3E3E4E"
     },
     fontFamily: {
       heading: ["area-normal", "sans-serif"],
@@ -63,11 +67,12 @@ export default {
     fontSize: {
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.2', letterSpacing: '-0.01em' }],
       15: [`${pxToRem(15)}rem`, { lineHeight: '1.2', letterSpacing: '-0.02em' }],
-      16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '0em' }],
+      16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       21: [`${pxToRem(21)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       26: [`${pxToRem(26)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       28: [`${pxToRem(28)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
+      32: [`${pxToRem(32)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       34: [`${pxToRem(34)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       36: [`${pxToRem(36)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       40: [`${pxToRem(40)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
@@ -146,6 +151,7 @@ export default {
         big: '16px',
         lg: '20px',
         xl: '30px',
+        '2xl': '40px'
       },
     },
   },
