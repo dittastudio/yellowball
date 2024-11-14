@@ -5,36 +5,212 @@ interface Props {
   href: string;
   title: string;
   description: string;
+  shape?: "circle" | "square" | "triangle";
+  color?: "yellow" | "green" | "blue";
 }
 
-const { href, title, description } = Astro.props as Props;
+const hasSlotDefault = !!Astro.slots.default;
+const { href, title, description, shape, color } = Astro.props as Props;
+
+const colors = {
+  yellow: "text-yellow",
+  green: "text-green",
+  blue: "text-blue",
+};
+
+const colorShape = colors[color as keyof typeof colors] ?? "";
 ---
 
+<script>
+  import { getRandomBetween } from "@/utils/helpers";
+
+  const perspective = "1000px";
+  const delta = 50;
+  const cards = [
+    ...document.querySelectorAll('[data-js="card-service"]'),
+  ] as HTMLElement[];
+
+  cards.forEach((card) => {
+    const inner = card.firstElementChild as HTMLElement;
+    const { width, height } = card.getBoundingClientRect();
+    const midWidth = width / 2;
+    const midHeight = height / 2;
+
+    card.addEventListener("mousemove", (e) => {
+      const cursPosX = e.pageX - card.offsetLeft;
+      const cursPosY = e.pageY - card.offsetTop;
+      const cursCenterX = midWidth - cursPosX;
+      const cursCenterY = midHeight - cursPosY;
+
+      // Used for glow.
+      card.style.setProperty("--x", `${cursPosX}px`);
+      card.style.setProperty("--y", `${cursPosY}px`);
+
+      // Used for tilt and skew.
+      inner.style.transform = `perspective(${perspective}) rotateX(${cursCenterY / delta}deg) rotateY(${-cursCenterX / delta}deg)`;
+      inner.classList.remove("transition-transform");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      inner.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg)`;
+      inner.classList.add("transition-transform");
+    });
+
+    const shape = card.querySelector(
+      '[data-js="card-service-shape"]'
+    ) as HTMLElement;
+
+    if (card && shape) {
+      const shapeRect = shape.getBoundingClientRect();
+      const shapeWidth = shapeRect.width;
+      const shapeHeight = shapeRect.height;
+      const give = shapeWidth / 2;
+
+      let posX = getRandomBetween(width / 2, width - shapeWidth);
+      let posY = getRandomBetween(0, height / 2);
+      let speedX = Math.random() >= 0.5 ? 0.1 : -0.1;
+      let speedY = Math.random() >= 0.5 ? 0.1 : -0.1;
+
+      function animate() {
+        posX += speedX;
+        posY += speedY;
+
+        if (posX <= -give || posX + shapeWidth / 2 >= width) {
+          speedX *= -1;
+        }
+        if (posY <= -give || posY + shapeHeight / 2 >= height) {
+          speedY *= -1;
+        }
+
+        shape.style.transform = `translate(${posX}px, ${posY}px)`;
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+  });
+</script>
+
+<style>
+  .card-service {
+    &__content {
+      box-shadow:
+        0px 0px 100px var(--yellowball-navy) inset,
+        20px 20px 50px var(--yellowball-card) inset;
+    }
+
+    &__link,
+    &__inner {
+      &::before {
+        opacity: 0;
+        content: "";
+        position: absolute;
+        top: var(--y);
+        left: var(--x);
+        z-index: 1;
+        width: 150%;
+        aspect-ratio: 1;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        transform: translate3d(-50%, -50%, 0);
+        background-image: radial-gradient(
+          var(--color),
+          transparent,
+          transparent
+        );
+      }
+    }
+
+    &__link {
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+
+        .card-service__inner {
+          &::before {
+            opacity: 0.1;
+          }
+        }
+      }
+    }
+
+    &__media {
+      :global(img) {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+</style>
+
 <div
-  class="bg-card border border-card-border rounded-xl md:rounded-2xl text-left"
+  data-js="card-service"
+  class="card-service"
+  style={`--color: var(--yellowball-${color})`}
 >
-  <a
-    href={href}
-    class="group p-30 md:p-60 flex flex-col justify-start items-start gap-30 md:gap-40"
+  <div
+    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 overflow-hidden rounded-xl lg:rounded-2xl"
   >
-    <div class="relative w-full">
-      <h2 class="font-heading text-32 md:text-48 font-semibold text-balance">
-        {title}
-      </h2>
-
-      <span
-        class="absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"
+    <a
+      href={href}
+      class="card-service__link group w-full h-full block rounded-xl lg:rounded-2xl bg-card-border p-1"
+    >
+      <div
+        class="card-service__inner relative z-10 w-full h-full rounded-xl lg:rounded-2xl bg-card overflow-hidden"
       >
-        <Icon name="arrow-link" />
-      </span>
-    </div>
+        {
+          shape && (
+            <Icon
+              data-js="card-service-shape"
+              name={`shape-${shape}`}
+              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
+            />
+          )
+        }
 
-    <p class="font-normal text-15 md:text-18 text-grey text-balance">
-      {description}
-    </p>
+        <div
+          class="card-service__content rounded-xl lg:rounded-2xl relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
+        >
+          <div class="relative w-full">
+            <div class="flex items-end justify-start gap-20">
+              <h2
+                class="font-heading text-32 lg:text-48 font-semibold text-balance"
+              >
+                {title}
+              </h2>
 
-    <div>
-      <slot />
-    </div>
-  </a>
+              {
+                shape && colorShape && (
+                  <Icon
+                    name={`shape-${shape}`}
+                    class:list={[colorShape, "w-20 mb-5"]}
+                  />
+                )
+              }
+            </div>
+
+            <Icon
+              name="arrow-link"
+              class="absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+            />
+          </div>
+
+          <p class="font-normal text-15 lg:text-18 text-grey text-balance">
+            {description}
+          </p>
+
+          {
+            hasSlotDefault && (
+              <div class="card-service__media w-full -mb-30 lg:-mb-60 aspect-video mt-auto">
+                <slot />
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </a>
+  </div>
 </div>

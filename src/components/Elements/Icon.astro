@@ -1,12 +1,18 @@
 ---
-export interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+export interface O {
   name: string;
 }
 
-const { name, ...attributes } = Astro.props as Props;
+export type Props = HTMLAttributes<"div"> & O;
+
+const { name, ...props } = Astro.props as Props;
 const { default: innerHTML } = await import(`../../icon/${name}.svg?raw`);
 
 // More: https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/
 ---
 
-<Fragment {...attributes} set:html={innerHTML} />
+<span {...props}>
+  <Fragment set:html={innerHTML} />
+</span>

@@ -1,4 +1,6 @@
 import { type Config } from 'tailwindcss'
+import tailwindcss3d from 'tailwindcss-3d'
+import exposeColors from '@tailwind-plugin/expose-colors'
 
 const pxToRem = (px: number, base = 16): number => px / base
 
@@ -65,8 +67,8 @@ export default {
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
-      12: [`${pxToRem(12)}rem`, { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-      15: [`${pxToRem(15)}rem`, { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+      15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.02em' }],
       16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       21: [`${pxToRem(21)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
@@ -121,6 +123,7 @@ export default {
     },
     spacing: {
       0: '0',
+      1: '1px',
       2: '2px',
       3: '3px',
       4: '4px',
@@ -155,5 +158,21 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    tailwindcss3d,
+    exposeColors({
+      extract: [
+        'yellow',
+        'green',
+        'blue',
+        'purple',
+        'navy',
+        'cream',
+        'grey',
+        'card'
+      ],
+      prefix: `--yellowball`,
+      mode: 'hex'
+    })
+  ],
 } satisfies Config;
