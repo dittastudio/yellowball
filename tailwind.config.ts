@@ -54,6 +54,8 @@ export default {
       blue: "#51DBEA",
       purple: "#A58EF7",
       navy: "#1C1D2C",
+      'navy-light': "#2A2B3A",
+      'navy-lighter': "#3E3E4E",
       cream: "#F7F7F0",
       grey: "#BBBBBB",
 
@@ -121,6 +123,7 @@ export default {
       '3xlMax': { max: `${screenSizes['3xl'] - 1}px` },
     },
     spacing: {
+      inherit: 'inherit',
       0: '0',
       2: '2px',
       3: '3px',

@@ -8,9 +8,11 @@ const { class: className } = Astro.props as Props;
 
 <span
   class:list={[
-    "flex justify-center items-center size-50",
+    "relative inline-flex justify-center items-center size-50 [&>svg]:size-inherit",
+    "after:absolute after:inset-0",
+    "after:border after:border-solid after:border-navy-lighter after:rounded-lg",
     "rounded-lg",
-    "text-white bg-navy border border-solid border-white/20",
+    "text-white bg-navy-light",
     className,
   ]}
 >
