@@ -2,28 +2,39 @@
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
+  href: string;
   title: string;
   description: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { href, title, description } = Astro.props as Props;
 ---
 
 <div
-  class="bg-card border border-card-border rounded-xl md:rounded-2xl p-30 md:p-60"
+  class="bg-card border border-card-border rounded-xl md:rounded-2xl text-left"
 >
-  <h2 class="font-heading text-32 md:text-48 font-semibold text-balance">
-    {title}
-  </h2>
-
-  <p class="font-normal text-15 md:text-18 text-grey text-balance">
-    {description}
-  </p>
-
-  <span
-    class="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"
+  <a
+    href={href}
+    class="group p-30 md:p-60 flex flex-col justify-start items-start gap-30 md:gap-40"
   >
-    <Icon name="arrow-link" />
-  </span>
-  <slot />
+    <div class="relative w-full">
+      <h2 class="font-heading text-32 md:text-48 font-semibold text-balance">
+        {title}
+      </h2>
+
+      <span
+        class="absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"
+      >
+        <Icon name="arrow-link" />
+      </span>
+    </div>
+
+    <p class="font-normal text-15 md:text-18 text-grey text-balance">
+      {description}
+    </p>
+
+    <div>
+      <slot />
+    </div>
+  </a>
 </div>
