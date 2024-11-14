@@ -49,5 +49,6 @@
 
   svg {
     display: block;
+    fill: currentColor;
   }
 }
