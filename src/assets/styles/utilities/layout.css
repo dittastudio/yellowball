@@ -5,4 +5,12 @@
     margin-inline: auto;
     padding-inline: var(--outer-gutter);
   }
+
+  .backface-visible {
+    backface-visibility: visible;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
 }

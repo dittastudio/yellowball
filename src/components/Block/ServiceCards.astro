@@ -3,17 +3,25 @@ import CardService from "@/components/Card/Service.astro";
 ---
 
 <section class="text-center text-white py-100">
-  <div class="wrapper grid grid-cols-2 gap-24 md:gap-30">
+  <div class="wrapper grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-30">
     <CardService
       href="/"
       title="SEO"
       description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
-    />
+      shape="square"
+      color="green"
+    >
+      <img src="/images/test.png" alt="" />
+    </CardService>
 
     <CardService
       href="/"
       title="Paid Search"
       description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
-    />
+      shape="circle"
+      color="blue"
+    >
+      <img src="/images/test.png" alt="" />
+    </CardService>
   </div>
 </section>
