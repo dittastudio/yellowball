@@ -152,14 +152,14 @@ const colorShape = colors[color as keyof typeof colors] ?? "";
   style={`--color: var(--yellowball-${color})`}
 >
   <div
-    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 overflow-hidden rounded-xl lg:rounded-2xl"
+    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 overflow-hidden rounded-30 lg:rounded-40"
   >
     <a
       href={href}
-      class="card-service__link group w-full h-full block rounded-xl lg:rounded-2xl bg-card-border p-1"
+      class="card-service__link group w-full h-full block rounded-30 lg:rounded-40 bg-card-border p-1"
     >
       <div
-        class="card-service__inner relative z-10 w-full h-full rounded-xl lg:rounded-2xl bg-card overflow-hidden"
+        class="card-service__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
       >
         {
           shape && (
@@ -172,7 +172,7 @@ const colorShape = colors[color as keyof typeof colors] ?? "";
         }
 
         <div
-          class="card-service__content rounded-xl lg:rounded-2xl relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
+          class="card-service__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
         >
           <div class="relative w-full">
             <div class="flex items-end justify-start gap-20">
@@ -204,7 +204,7 @@ const colorShape = colors[color as keyof typeof colors] ?? "";
 
           {
             hasSlotDefault && (
-              <div class="card-service__media w-full -mb-30 lg:-mb-60 aspect-video mt-auto">
+              <div class="card-service__media w-full -mb-30 lg:-mb-60 aspect-[26/11] mt-auto">
                 <slot />
               </div>
             )

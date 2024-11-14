@@ -48,6 +48,8 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     colors: {
+      current: "currentColor",
+      transparent: "transparent",
       black: "#000000",
       white: "#FFFFFF",
       yellow: "#EAFF01",
@@ -55,6 +57,8 @@ export default {
       blue: "#51DBEA",
       purple: "#A58EF7",
       navy: "#1C1D2C",
+      'navy-light': "#2A2B3A",
+      'navy-lighter': "#3E3E4E",
       cream: "#F7F7F0",
       grey: "#BBBBBB",
 
@@ -122,17 +126,21 @@ export default {
       '3xlMax': { max: `${screenSizes['3xl'] - 1}px` },
     },
     spacing: {
+      inherit: 'inherit',
       0: '0',
       1: '1px',
       2: '2px',
       3: '3px',
       4: '4px',
       5: '5px',
+      8: '8px',
       10: '10px',
       12: '12px',
       15: '15px',
       20: '20px',
+      22: '22px',
       24: '24px',
+      28: '28px',
       30: '30px',
       40: '40px',
       50: '50px',
@@ -149,12 +157,19 @@ export default {
     },
     extend: {
       borderRadius: {
-        md: '8px',
-        xm: '12px',
-        big: '16px',
-        lg: '20px',
-        xl: '30px',
-        '2xl': '40px'
+        // md: '8px',
+        // xm: '12px',
+        // big: '16px',
+        // lg: '20px',
+        // xl: '30px',
+        // '2xl': '40px'
+
+        8: '8px',
+        12: '12px',
+        16: '16px',
+        20: '20px',
+        30: '30px',
+        40: '40px'
       },
     },
   },
