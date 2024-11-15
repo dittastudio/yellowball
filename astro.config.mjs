@@ -6,6 +6,12 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  compressHTML: false,
+  scopedStyleStrategy: "where",
+  build: {
+    assets: "_assets",
+    inlineStylesheets: "never",
+  },
   vite: {
     build: {
       cssCodeSplit: false,
