@@ -14,12 +14,8 @@ const { title } = Astro.props;
 <script>
   import Lenis from "lenis";
 
-  const lenis = new Lenis({
+  new Lenis({
     autoRaf: true,
-  });
-
-  lenis.on("scroll", (e: any) => {
-    // console.log(e);
   });
 </script>
 
