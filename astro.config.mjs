@@ -1,10 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import favicons from "astro-favicons";
-
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
 export default defineConfig({
   compressHTML: false,
   scopedStyleStrategy: "where",
