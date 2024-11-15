@@ -5,9 +5,32 @@ import Link from "@/components/Elements/Link.astro";
 import TextReveal from "@/components/Elements/TextReveal.astro";
 ---
 
+<script>
+  import { MouseSimulator } from "@/utils/mouseSimulator";
+  import { getRandomBetween } from "@/utils/helpers";
+
+  const cursors = [...document.querySelectorAll(".cursor")] as HTMLElement[];
+
+  cursors.forEach((cursor) => {
+    const parent = cursor.parentElement;
+
+    if (!parent) return;
+
+    const mouseSimulator = new MouseSimulator(parent, cursor);
+    mouseSimulator.start();
+
+    window.setTimeout(
+      () => {
+        parent.classList.remove("opacity-0");
+      },
+      getRandomBetween(1000, 2000)
+    );
+  });
+</script>
+
 <section class="text-center text-white py-100">
   <div
-    class="wrapper flex flex-col justify-start items-center gap-40 md:gap-60"
+    class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
     <Icon name="yellowball" />
 
@@ -23,9 +46,34 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
       rolling? <Link href="/" class="text-yellow">Let's chat</Link>
     </p>
 
-    <Chip title="PPC Team" class="bg-blue" />
-    <Chip title="Design Team" class="bg-yellow" />
-    <Chip title="SEO Team" class="bg-green" />
-    <Chip title="Developers" class="bg-grey" />
+    <ul class="absolute inset-0 z-10 grid grid-cols-2 grid-rows-2">
+      <li class="relative opacity-0 transition-opacity duration-300">
+        <Chip
+          title="PPC Team"
+          class="cursor bg-blue absolute top-0 left-0 z-0"
+        />
+      </li>
+
+      <li class="relative opacity-0 transition-opacity duration-300">
+        <Chip
+          title="Design Team"
+          class="cursor bg-yellow absolute top-0 left-0 z-0"
+        />
+      </li>
+
+      <li class="relative opacity-0 transition-opacity duration-300">
+        <Chip
+          title="SEO Team"
+          class="cursor bg-green absolute top-0 left-0 z-0"
+        />
+      </li>
+
+      <li class="relative opacity-0 transition-opacity duration-300">
+        <Chip
+          title="Developers"
+          class="cursor bg-grey absolute top-0 left-0 z-0"
+        />
+      </li>
+    </ul>
   </div>
 </section>
