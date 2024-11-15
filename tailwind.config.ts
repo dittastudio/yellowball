@@ -64,7 +64,6 @@ export default {
 
       // TEMP NAMES
       card: "#28293A",
-      'card-border': "#3E3E4E"
     },
     fontFamily: {
       heading: ["area-normal", "sans-serif"],
