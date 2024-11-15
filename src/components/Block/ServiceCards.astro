@@ -1,9 +1,22 @@
 ---
+import CardServiceHero from "@/components/Card/ServiceHero.astro";
 import CardService from "@/components/Card/Service.astro";
 ---
 
 <section class="text-center text-white py-100">
   <div class="wrapper grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-30">
+    <CardServiceHero
+      href="/"
+      title="Web Design"
+      description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+      cta="See our services"
+      shape="triangle"
+      color="yellow"
+      class="col-span-full"
+    >
+      <img src="/images/test.png" alt="" />
+    </CardServiceHero>
+
     <CardService
       href="/"
       title="SEO"

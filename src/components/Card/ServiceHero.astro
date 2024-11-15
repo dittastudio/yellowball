@@ -5,6 +5,7 @@ interface Props {
   href: string;
   title: string;
   description: string;
+  cta: string;
   shape?: "circle" | "square" | "triangle";
   color?: "yellow" | "green" | "blue";
   class?: string;
@@ -15,6 +16,7 @@ const {
   href,
   title,
   description,
+  cta,
   shape,
   color,
   class: className,
@@ -28,7 +30,7 @@ const colors = {
 };
 
 const colorShape = colors[color as keyof typeof colors] ?? "";
-const classes = ["card-service", className];
+const classes = ["card-service-hero", className];
 ---
 
 <script>
@@ -37,7 +39,7 @@ const classes = ["card-service", className];
   const perspective = "1000px";
   const delta = 50;
   const cards = [
-    ...document.querySelectorAll('[data-js="card-service"]'),
+    ...document.querySelectorAll('[data-js="card-service-hero"]'),
   ] as HTMLElement[];
 
   cards.forEach((card) => {
@@ -67,7 +69,7 @@ const classes = ["card-service", className];
     });
 
     const shape = card.querySelector(
-      '[data-js="card-service-shape"]'
+      '[data-js="card-service-hero-shape"]'
     ) as HTMLElement;
 
     if (card && shape) {
@@ -103,7 +105,7 @@ const classes = ["card-service", className];
 </script>
 
 <style>
-  .card-service {
+  .card-service-hero {
     &__content {
       box-shadow:
         0px 0px 100px var(--yellowball-navy) inset,
@@ -138,7 +140,7 @@ const classes = ["card-service", className];
           opacity: 1;
         }
 
-        .card-service__inner {
+        .card-service-hero__inner {
           &::before {
             opacity: 0.2;
           }
@@ -157,7 +159,7 @@ const classes = ["card-service", className];
 </style>
 
 <div
-  data-js="card-service"
+  data-js="card-service-hero"
   class:list={classes}
   style={`--color: var(--yellowball-${color})`}
   {...props}
@@ -167,15 +169,15 @@ const classes = ["card-service", className];
   >
     <a
       href={href}
-      class="card-service__link group w-full h-full block rounded-30 lg:rounded-40 bg-card-border p-1"
+      class="card-service-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-card-border p-1"
     >
       <div
-        class="card-service__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+        class="card-service-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
       >
         {
           shape && (
             <Icon
-              data-js="card-service-shape"
+              data-js="card-service-hero-shape"
               name={`shape-${shape}`}
               class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
             />
@@ -183,39 +185,40 @@ const classes = ["card-service", className];
         }
 
         <div
-          class="card-service__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
+          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
         >
-          <div class="relative w-full">
-            <div class="flex items-end justify-start gap-20">
-              <h4
-                class="font-heading text-32 lg:text-48 font-semibold text-balance"
-              >
-                {title}
-              </h4>
+          <div class="flex items-end justify-start gap-20">
+            <h3
+              class="font-heading text-40 lg:text-64 font-semibold text-balance"
+            >
+              {title}
+            </h3>
 
-              {
-                shape && colorShape && (
-                  <Icon
-                    name={`shape-${shape}`}
-                    class:list={[colorShape, "w-20 mb-5"]}
-                  />
-                )
-              }
-            </div>
-
-            <Icon
-              name="arrow-link"
-              class="absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
-            />
+            {
+              shape && colorShape && (
+                <Icon
+                  name={`shape-${shape}`}
+                  class:list={[colorShape, "w-20 mb-5"]}
+                />
+              )
+            }
           </div>
 
-          <p class="font-normal text-15 lg:text-18 text-grey text-balance">
+          <p class="font-normal text-18 lg:text-21 text-grey text-balance">
             {description}
           </p>
 
+          <button
+            type="button"
+            class="font-heading font-bold text-15 lg:text-18 text-white
+            text-balance"
+          >
+            {cta}
+          </button>
+
           {
             hasSlotDefault && (
-              <div class="card-service__media w-full -mb-30 lg:-mb-60 aspect-[26/11] mt-auto">
+              <div class="card-service-hero__media w-full aspect-[26/11]">
                 <slot />
               </div>
             )

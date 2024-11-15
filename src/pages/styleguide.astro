@@ -1,11 +1,9 @@
 ---
 import Icon from "@/components/Elements/Icon.astro";
 import Layout from "../layouts/Layout.astro";
-
 import Cube from "@/components/Elements/Cube.astro";
-import User from "@/components/Elements/User.astro";
+import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
-
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 ---
 
@@ -14,109 +12,94 @@ import HeadingBanner from "@/components/Block/HeadingBanner.astro";
     <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 mb-20">Buttons</h1>
 
-      <button>
-        <Button text="Let’s Chat" hasArrow />
-      </button>
+      <div class="flex flex-wrap gap-8">
+        <button type="button">
+          <Button text="Let's Chat" hasArrow />
+        </button>
 
-      <button>
-        <Button text="View all projects" hasArrow />
-      </button>
+        <button type="button">
+          <Button text="View all projects" hasArrow />
+        </button>
 
-      <button>
-        <Button text="All posts" hasArrow />
-      </button>
+        <button type="button">
+          <Button text="All posts" hasArrow />
+        </button>
 
-      <button>
-        <Button text="Speak to a Web Expert" hasArrow />
-      </button>
+        <button type="button">
+          <Button text="Speak to a Web Expert" hasArrow />
+        </button>
 
-      <button>
-        <Button text="View all projects" theme="white-border" />
-      </button>
+        <button type="button">
+          <Button text="View all projects" theme="white-border" />
+        </button>
+      </div>
     </section>
 
     <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Tags</h1>
+      <h1 class="font-heading font-bold text-21 my-20">Chips</h1>
 
-      <User title="PPC Team" class="bg-blue" />
-      <User title="Design Team" class="bg-yellow" />
-      <User title="SEO Team" class="bg-green" />
-      <User title="Developers" class="bg-grey" />
+      <div class="flex flex-wrap gap-8">
+        <Chip title="PPC Team" class="bg-blue" />
+        <Chip title="Design Team" class="bg-yellow" />
+        <Chip title="SEO Team" class="bg-green" />
+        <Chip title="Developers" class="bg-grey" />
+      </div>
     </section>
 
     <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 my-20">Cubes</h1>
 
-      <ul class="flex flex-wrap gap-8">
-        <li>
-          <Cube iconSize="lg">
-            <Icon name="logo-figma" />
-          </Cube>
-        </li>
-        <li>
-          <Cube iconSize="lg">
-            <Icon name="logo-wp" />
-          </Cube>
-        </li>
-        <li>
-          <Cube iconSize="lg">
-            <Icon name="logo-woo" />
-          </Cube>
-        </li>
-        <li>
-          <Cube iconSize="lg">
-            <Icon name="logo-laravel" />
-          </Cube>
-        </li>
-        <li>
-          <Cube>
-            <Icon name="logo-white-label" />
-          </Cube>
-        </li>
-        <li>
-          <Cube>
-            <Icon name="logo-ecommerce" />
-          </Cube>
-        </li>
-        <li>
-          <Cube color="green">
-            <Icon name="service-paper-magnifier" />
-          </Cube>
-        </li>
-        <li>
-          <Cube color="blue">
-            <Icon name="service-paper-magnifier" />
-          </Cube>
-        </li>
-        <li>
-          <Cube color="yellow">
-            <Icon name="service-paper-magnifier" />
-          </Cube>
-        </li>
-        <li>
-          <Cube color="purple">
-            <Icon name="service-paper-magnifier" />
-          </Cube>
-        </li>
-      </ul>
+      <div class="flex flex-wrap gap-8">
+        <Cube iconSize="lg">
+          <Icon name="logo-figma" />
+        </Cube>
+
+        <Cube iconSize="lg">
+          <Icon name="logo-wp" />
+        </Cube>
+
+        <Cube iconSize="lg">
+          <Icon name="logo-woo" />
+        </Cube>
+
+        <Cube iconSize="lg">
+          <Icon name="logo-laravel" />
+        </Cube>
+
+        <Cube>
+          <Icon name="logo-white-label" />
+        </Cube>
+
+        <Cube>
+          <Icon name="logo-ecommerce" />
+        </Cube>
+
+        <Cube color="green">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="blue">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="yellow">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="purple">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+      </div>
     </section>
 
     <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 my-20">Shapes</h1>
 
-      <ul class="flex flex-wrap gap-8">
-        <li class="text-yellow">
-          <Icon name="shape-triangle" />
-        </li>
-
-        <li class="text-green">
-          <Icon name="shape-square" />
-        </li>
-
-        <li class="text-blue">
-          <Icon name="shape-circle" />
-        </li>
-      </ul>
+      <div class="flex flex-wrap gap-8">
+        <Icon name="shape-triangle" class="block w-20 text-yellow" />
+        <Icon name="shape-square" class="block w-20 text-green" />
+        <Icon name="shape-circle" class="block w-20 text-blue" />
+      </div>
     </section>
 
     <HeadingBanner />
