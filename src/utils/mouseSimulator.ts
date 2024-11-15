@@ -38,8 +38,8 @@ export class MouseSimulator {
   private getRandomPosition(): Position {
     const width = this.container.clientWidth;
     const height = this.container.clientHeight;
-    const x = Math.random() * (width - this.cursor.clientWidth);
-    const y = Math.random() * (height - this.cursor.clientHeight);
+    const x = Math.random() * (width - this.cursor.offsetWidth);
+    const y = Math.random() * (height - this.cursor.offsetHeight);
 
     return { x, y };
   }
