@@ -37,7 +37,7 @@ const classes = ["card-service-hero", className];
   import { getRandomBetween } from "@/utils/helpers";
 
   const perspective = "1000px";
-  const delta = 50;
+  const delta = 90;
   const cards = [
     ...document.querySelectorAll('[data-js="card-service-hero"]'),
   ] as HTMLElement[];
@@ -185,44 +185,48 @@ const classes = ["card-service-hero", className];
         }
 
         <div
-          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
+          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-2"
         >
-          <div class="flex items-end justify-start gap-20">
-            <h3
-              class="font-heading text-40 lg:text-64 font-semibold text-balance"
-            >
-              {title}
-            </h3>
+          <div class="flex flex-col justify-start items-start gap-30 lg:gap-40">
+            <div class="flex items-end justify-start gap-20">
+              <h3
+                class="font-heading text-40 lg:text-64 font-semibold text-balance"
+              >
+                {title}
+              </h3>
 
+              {
+                shape && colorShape && (
+                  <Icon
+                    name={`shape-${shape}`}
+                    class:list={[colorShape, "w-20 mb-5"]}
+                  />
+                )
+              }
+            </div>
+
+            <p class="font-normal text-18 lg:text-21 text-grey text-balance">
+              {description}
+            </p>
+
+            <button
+              type="button"
+              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-center justify-start gap-20"
+            >
+              {cta}
+              <Icon name="arrow-s" class="size-12 md:size-15 -mb-4" />
+            </button>
+          </div>
+
+          <div>
             {
-              shape && colorShape && (
-                <Icon
-                  name={`shape-${shape}`}
-                  class:list={[colorShape, "w-20 mb-5"]}
-                />
+              hasSlotDefault && (
+                <div class="card-service-hero__media w-full aspect-[123/76]">
+                  <slot />
+                </div>
               )
             }
           </div>
-
-          <p class="font-normal text-18 lg:text-21 text-grey text-balance">
-            {description}
-          </p>
-
-          <button
-            type="button"
-            class="font-heading font-bold text-15 lg:text-18 text-white
-            text-balance"
-          >
-            {cta}
-          </button>
-
-          {
-            hasSlotDefault && (
-              <div class="card-service-hero__media w-full aspect-[26/11]">
-                <slot />
-              </div>
-            )
-          }
         </div>
       </div>
     </a>
