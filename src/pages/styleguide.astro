@@ -6,6 +6,7 @@ import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
+import CardProject from "@/components/Card/Project.astro";
 ---
 
 <Layout title="Styleguide">
@@ -111,8 +112,10 @@ import LayoutLines from "@/components/Layout/Lines.astro";
       </LayoutLines>
     </section>
 
-    <HeadingBanner />
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Carousel Slide</h1>
 
-    <HeadingBanner />
+      <CardProject />
+    </section>
   </main>
 </Layout>

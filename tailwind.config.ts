@@ -146,6 +146,7 @@ export default {
       3: '3px',
       4: '4px',
       5: '5px',
+      6: '6px',
       8: '8px',
       10: '10px',
       12: '12px',
@@ -171,11 +172,15 @@ export default {
     extend: {
       borderRadius: {
         8: '8px',
+        10: '10px',
         12: '12px',
         16: '16px',
         20: '20px',
         30: '30px',
         40: '40px'
+      },
+      backdropBlur: {
+        20: '20px',
       },
     },
   },

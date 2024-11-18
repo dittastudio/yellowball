@@ -1,0 +1,57 @@
+---
+import Icon from "@/components/Elements/Icon.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props as Props;
+
+const classes = ["card-project", className];
+---
+
+<style>
+  .card-project {
+  }
+</style>
+
+<div
+  class:list={[
+    classes,
+    "relative overflow-hidden p-10 md:p-20 flex flex-col gap-15 md:gap-20 rounded-30",
+    "bg-navy-light",
+    "after:absolute after:inset-0",
+    "after:border after:border-solid after:border-navy-lighter after:rounded-30",
+  ]}
+>
+  <div
+    class="flex gap-6 md:gap-8 justify-center md:justify-start text-white/15 pt-5 md:pt-0 px-10"
+  >
+    <Icon
+      class="block w-[11px] h-[10px] md:w-[16px] md:h-[14px]"
+      name="shape-triangle"
+    />
+
+    <Icon class="block size-[10px] md:size-[14px]" name="shape-square" />
+
+    <Icon class="block size-[10px] md:size-[14px]" name="shape-circle" />
+  </div>
+
+  <picture
+    class="bg-black/80 rounded-t-10 rounded-b-20 sm:rounded-b-10 overflow-hidden"
+  >
+    <source
+      srcset="/images/landscape-1.jpg"
+      media="(min-width: 768px)"
+      width="1600"
+      height="900"
+    />
+
+    <img
+      src="/images/portrait-1.jpg"
+      alt="Project 1"
+      width="900"
+      height='1600"'
+    />
+  </picture>
+</div>
