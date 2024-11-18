@@ -1,5 +1,9 @@
 ---
+interface Props {
+  nudge?: boolean;
+}
 
+const { nudge } = Astro.props as Props;
 ---
 
 <script>
@@ -24,10 +28,24 @@
       tagName: "span",
     });
 
+    const paddingClasses = ["md:pl-[0ch]", "md:pl-[2ch]", "md:pl-[1ch]"];
+
     if (text.lines?.length) {
       gsap.set(".line", { yPercent: 100 });
 
       textReveal.forEach((el) => {
+        const textNudge = el.hasAttribute("data-nudge");
+
+        if (textNudge) {
+          const localLines = el.querySelectorAll(".line");
+
+          localLines.forEach((line, index) => {
+            line.classList.add(
+              `${paddingClasses[index % paddingClasses.length]}`
+            );
+          });
+        }
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -54,6 +72,6 @@
   }
 </script>
 
-<div data-js="text-reveal">
+<div data-js="text-reveal" data-nudge={nudge}>
   <slot />
 </div>

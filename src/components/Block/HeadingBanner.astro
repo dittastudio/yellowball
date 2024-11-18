@@ -1,8 +1,6 @@
 ---
-import HeadingNudge from "@/components/Elements/HeadingNudge.astro";
 import ShapePyramid from "@/components/Elements/ShapePyramid.astro";
-
-const rawHTMLString = `We specialise in three | core areas to drive your | business forward`;
+import TextReveal from "@/components/Elements/TextReveal.astro";
 ---
 
 <section class="py-100">
@@ -12,7 +10,11 @@ const rawHTMLString = `We specialise in three | core areas to drive your | busin
         <ShapePyramid />
       </div>
 
-      <HeadingNudge text={rawHTMLString} />
+      <TextReveal nudge>
+        <h2 class="font-heading text-fluid-h2 font-semibold mdMax:text-center">
+          We specialise in three core areas to drive your business forward
+        </h2>
+      </TextReveal>
     </div>
   </div>
 </section>
