@@ -1,0 +1,117 @@
+---
+interface Props {
+  theme?: string;
+  class?: string;
+}
+
+const { theme = "dark", class: className } = Astro.props as Props;
+---
+
+<div class:list={["layout-lines", `is-${theme}`, className]}>
+  <div class="layout-lines__shape"></div>
+
+  <slot />
+</div>
+
+<style>
+  .layout-lines {
+    position: relative;
+    contain: layout;
+
+    &.is-dark {
+      --line-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &.is-light {
+      --line-color: rgb(28, 29, 44, 0.1);
+    }
+  }
+
+  .layout-lines__shape {
+    --grid-cols: 4;
+    --grid-col: calc(100% / var(--grid-cols));
+    --line-transparent: rgba(255, 255, 255, 0);
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -6.25vw;
+    right: -6.25vw;
+    z-index: -1;
+    background: linear-gradient(
+      to right,
+      var(--line-transparent) 0,
+
+      var(--line-transparent) calc((var(--grid-col) * 1) - 1px),
+      var(--line-color) calc((var(--grid-col) * 1) - 1px),
+      var(--line-color) calc(var(--grid-col) * 1),
+      var(--line-transparent) calc(var(--grid-col) * 1),
+      var(--line-transparent) calc((var(--grid-col) * 2) - 1px),
+      var(--line-color) calc((var(--grid-col) * 2) - 1px),
+      var(--line-color) calc(var(--grid-col) * 2),
+      var(--line-transparent) calc(var(--grid-col) * 2),
+      var(--line-transparent) calc((var(--grid-col) * 3) - 1px),
+      var(--line-color) calc((var(--grid-col) * 3) - 1px),
+      var(--line-color) calc(var(--grid-col) * 3),
+      var(--line-transparent) calc(var(--grid-col) * 3),
+      var(--line-transparent) 100%
+    );
+
+    @screen md {
+      --grid-cols: 5;
+
+      background: linear-gradient(
+        to right,
+        var(--line-transparent) 0,
+
+        var(--line-transparent) calc((var(--grid-col) * 1) - 1px),
+        var(--line-color) calc((var(--grid-col) * 1) - 1px),
+        var(--line-color) calc(var(--grid-col) * 1),
+        var(--line-transparent) calc(var(--grid-col) * 1),
+        var(--line-transparent) calc((var(--grid-col) * 2) - 1px),
+        var(--line-color) calc((var(--grid-col) * 2) - 1px),
+        var(--line-color) calc(var(--grid-col) * 2),
+        var(--line-transparent) calc(var(--grid-col) * 2),
+        var(--line-transparent) calc((var(--grid-col) * 3) - 1px),
+        var(--line-color) calc((var(--grid-col) * 3) - 1px),
+        var(--line-color) calc(var(--grid-col) * 3),
+        var(--line-transparent) calc(var(--grid-col) * 3),
+        var(--line-transparent) calc((var(--grid-col) * 4) - 1px),
+        var(--line-color) calc((var(--grid-col) * 4) - 1px),
+        var(--line-color) calc(var(--grid-col) * 4),
+        var(--line-transparent) calc(var(--grid-col) * 4),
+        var(--line-transparent) 100%
+      );
+    }
+
+    .layout-lines.is-dark > & {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50vh;
+        background-image: linear-gradient(
+          to bottom,
+          theme("colors.navy") 0,
+          var(--line-transparent) 100%
+        );
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50vh;
+        background-image: linear-gradient(
+          to top,
+          theme("colors.navy") 0,
+          var(--line-transparent) 100%
+        );
+      }
+    }
+  }
+</style>

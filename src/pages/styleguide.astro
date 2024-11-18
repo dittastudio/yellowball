@@ -5,6 +5,7 @@ import Cube from "@/components/Elements/Cube.astro";
 import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
+import LayoutLines from "@/components/Layout/Lines.astro";
 ---
 
 <Layout title="Styleguide">
@@ -101,6 +102,16 @@ import HeadingBanner from "@/components/Block/HeadingBanner.astro";
         <Icon name="shape-circle" class="block w-20 text-blue" />
       </div>
     </section>
+
+    <HeadingBanner />
+
+    <section class="bg-cream text-navy">
+      <LayoutLines theme="light">
+        <HeadingBanner />
+      </LayoutLines>
+    </section>
+
+    <HeadingBanner />
 
     <HeadingBanner />
   </main>
