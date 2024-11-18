@@ -6,29 +6,99 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
 ---
 
 <script>
-  import { MouseSimulator } from "@/utils/mouseSimulator";
-  import { getRandomBetween } from "@/utils/helpers";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import { gsapEasings } from "@/utils/helpers";
 
-  const cursors = [...document.querySelectorAll(".cursor")] as HTMLElement[];
+  gsap.registerPlugin(ScrollTrigger);
 
-  cursors.forEach((cursor) => {
-    const parent = cursor.parentElement;
+  const section = document.querySelector(
+    '[data-js="hero-home"]'
+  ) as HTMLElement;
+  const cursorContainer = section?.querySelector(
+    ".cursor-container"
+  ) as HTMLElement;
+  const cursors = [...section?.querySelectorAll(".cursor")] as HTMLElement[];
 
-    if (!parent) return;
-
-    const mouseSimulator = new MouseSimulator(parent, cursor);
-    mouseSimulator.start();
-
-    window.setTimeout(
-      () => {
-        parent.classList.remove("opacity-0");
-      },
-      getRandomBetween(1000, 2000)
-    );
+  gsap.set(cursors, {
+    opacity: 0,
+    x: Math.random() * cursorContainer.offsetWidth,
+    y: Math.random() * cursorContainer.offsetHeight,
   });
+
+  gsap.delayedCall(1, () => {
+    gsap.to(cursors, {
+      opacity: 1,
+      stagger: 0.3,
+      duration: 0.5,
+    });
+  });
+
+  let delayedCall: gsap.core.Tween | null = null;
+
+  const animation = () => {
+    const tl = gsap.timeline({ paused: true });
+
+    cursors.forEach((cursor, _index) => {
+      const easing = gsap.utils.random(gsapEasings);
+      const duration = gsap.utils.random(1, 5);
+
+      tl.to(
+        cursor,
+        {
+          x: Math.random() * (cursorContainer.offsetWidth - cursor.offsetWidth),
+          y:
+            Math.random() *
+            (cursorContainer.offsetHeight - cursor.offsetHeight),
+          duration: duration,
+          ease: easing,
+        },
+        0
+      );
+    });
+
+    tl.eventCallback("onComplete", () => {
+      delayedCall = gsap.delayedCall(3, () => animation().play());
+    });
+
+    return tl;
+  };
+
+  animation().play();
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        markers: false,
+        trigger: section,
+        start: "10% top",
+        end: "100% center",
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          animation().pause();
+          animation().kill();
+          delayedCall?.kill();
+          delayedCall = null;
+        },
+        onLeaveBack: () => {
+          delayedCall?.kill();
+          delayedCall = null;
+          delayedCall = gsap.delayedCall(1.5, () => {
+            ScrollTrigger.refresh();
+            animation().play();
+          });
+        },
+      },
+    })
+    .to(cursors, {
+      x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth,
+      y: (_index, target) => section.offsetHeight - target.offsetHeight,
+      opacity: 0,
+    });
 </script>
 
-<section class="text-center text-white py-100">
+<section data-js="hero-home" class="text-center text-white py-160">
   <div
     class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
@@ -46,36 +116,23 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
       rolling? <Link href="/" class="text-yellow">Let's chat</Link>
     </p>
 
-    <ul
-      class="absolute inset-0 z-10 grid grid-cols-2 grid-rows-2 pointer-events-none"
-    >
-      <li class="relative opacity-0 transition-opacity duration-300">
-        <Chip
-          title="PPC Team"
-          class="cursor bg-blue absolute top-0 left-0 z-0"
-        />
-      </li>
-
-      <li class="relative opacity-0 transition-opacity duration-300">
-        <Chip
-          title="Design Team"
-          class="cursor bg-yellow absolute top-0 left-0 z-0"
-        />
-      </li>
-
-      <li class="relative opacity-0 transition-opacity duration-300">
-        <Chip
-          title="SEO Team"
-          class="cursor bg-green absolute top-0 left-0 z-0"
-        />
-      </li>
-
-      <li class="relative opacity-0 transition-opacity duration-300">
-        <Chip
-          title="Developers"
-          class="cursor bg-grey absolute top-0 left-0 z-0"
-        />
-      </li>
-    </ul>
+    <div class="cursor-container absolute inset-0 z-10 pointer-events-none">
+      <Chip
+        title="PPC Team"
+        class="cursor bg-blue absolute top-0 left-0 z-0 opacity-0"
+      />
+      <Chip
+        title="Design Team"
+        class="cursor bg-yellow absolute top-0 left-0 z-0 opacity-0"
+      />
+      <Chip
+        title="SEO Team"
+        class="cursor bg-green absolute top-0 left-0 z-0 opacity-0"
+      />
+      <Chip
+        title="Developers"
+        class="cursor bg-grey absolute top-0 left-0 z-0 opacity-0"
+      />
+    </div>
   </div>
 </section>
