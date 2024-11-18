@@ -30,7 +30,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
     gsap.to(cursors, {
       opacity: 1,
       stagger: 0.3,
-      duration: 0.5,
+      duration: 0.3,
     });
   });
 
@@ -58,13 +58,18 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
     });
 
     tl.eventCallback("onComplete", () => {
-      delayedCall = gsap.delayedCall(3, () => animation().play());
+      delayedCall = gsap.delayedCall(5, () => animation().play());
     });
 
     return tl;
   };
 
   animation().play();
+
+  const clearDelay = () => {
+    delayedCall?.kill();
+    delayedCall = null;
+  };
 
   gsap
     .timeline({
@@ -78,16 +83,22 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
         onEnter: () => {
           animation().pause();
           animation().kill();
-          delayedCall?.kill();
-          delayedCall = null;
+
+          clearDelay();
+        },
+        onEnterBack: () => {
+          clearDelay();
         },
         onLeaveBack: () => {
-          delayedCall?.kill();
-          delayedCall = null;
+          clearDelay();
+
           delayedCall = gsap.delayedCall(1.5, () => {
             ScrollTrigger.refresh();
             animation().play();
           });
+        },
+        onLeave: () => {
+          clearDelay();
         },
       },
     })
@@ -119,19 +130,19 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
     <div class="cursor-container absolute inset-0 z-10 pointer-events-none">
       <Chip
         title="PPC Team"
-        class="cursor bg-blue absolute top-0 left-0 z-0 opacity-0"
+        class="cursor bg-blue absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
         title="Design Team"
-        class="cursor bg-yellow absolute top-0 left-0 z-0 opacity-0"
+        class="cursor bg-yellow absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
         title="SEO Team"
-        class="cursor bg-green absolute top-0 left-0 z-0 opacity-0"
+        class="cursor bg-green absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
         title="Developers"
-        class="cursor bg-grey absolute top-0 left-0 z-0 opacity-0"
+        class="cursor bg-grey absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
     </div>
   </div>
