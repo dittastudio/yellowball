@@ -7,6 +7,36 @@ import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
 import CardProject from "@/components/Card/Project.astro";
+import CarouselProject from "@/components/Carousel/Project.astro";
+
+const imageMobileTest: ImageObject = {
+  src: "/images/portrait-1.jpg",
+  alt: "portrait 1",
+  width: 900,
+  height: 1600,
+};
+
+const imageDesktopTest: ImageObject = {
+  src: "/images/landscape-1.jpg",
+  alt: "landscape 1",
+  width: 1600,
+  height: 900,
+};
+
+const slidesTest = [
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+];
 ---
 
 <Layout title="Styleguide">
@@ -113,9 +143,20 @@ import CardProject from "@/components/Card/Project.astro";
     </section>
 
     <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Carousel Slide</h1>
+      <h1 class="font-heading font-bold text-21 my-20">Card Project</h1>
 
-      <CardProject />
+      <CardProject
+        imageMobile={imageMobileTest}
+        imageDesktop={imageDesktopTest}
+      />
+    </section>
+
+    <section class="my-40">
+      <div class="wrapper">
+        <h1 class="font-heading font-bold text-21 my-20">Carousel Project</h1>
+      </div>
+
+      <CarouselProject slides={slidesTest} />
     </section>
   </main>
 </Layout>

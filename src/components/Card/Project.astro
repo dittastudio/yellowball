@@ -2,10 +2,14 @@
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
+  imageMobile: ImageObject;
+  imageDesktop: ImageObject;
   class?: string;
 }
 
-const { class: className } = Astro.props as Props;
+const { imageMobile, imageDesktop, class: className } = Astro.props as Props;
+
+const screenMd = `(min-width: 768px)`;
 
 const classes = ["card-project", className];
 ---
@@ -41,17 +45,17 @@ const classes = ["card-project", className];
     class="bg-black/80 rounded-t-10 rounded-b-20 sm:rounded-b-10 overflow-hidden"
   >
     <source
-      srcset="/images/landscape-1.jpg"
-      media="(min-width: 768px)"
-      width="1600"
-      height="900"
+      media={screenMd}
+      srcset={imageDesktop.src}
+      width={imageDesktop.width}
+      height={imageDesktop.height}
     />
 
     <img
-      src="/images/portrait-1.jpg"
-      alt="Project 1"
-      width="900"
-      height='1600"'
+      src={imageMobile.src}
+      alt={imageMobile.alt}
+      width={imageMobile.width}
+      height={imageMobile.height}
     />
   </picture>
 </div>

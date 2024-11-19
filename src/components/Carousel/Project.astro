@@ -1,0 +1,146 @@
+---
+import CardProject from "@/components/Card/Project.astro";
+
+interface Slide {
+  imageMobile: ImageObject;
+  imageDesktop: ImageObject;
+}
+
+interface Props {
+  slides: Slide[];
+  class?: string;
+}
+
+const { slides, class: className } = Astro.props as Props;
+
+const classes = ["carousel-project", className];
+---
+
+<script>
+  import Swiper from "swiper";
+  import type { SwiperOptions } from "swiper/types";
+  import { Navigation, Pagination, Keyboard } from "swiper/modules";
+
+  const swiperParams: SwiperOptions = {
+    speed: 1000,
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    keyboard: {
+      enabled: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  };
+  // Now you can use Swiper
+  const swiper = new Swiper(".swiper", {
+    modules: [Navigation, Pagination, Keyboard],
+    ...swiperParams,
+  });
+</script>
+
+<!-- Slider main container -->
+<div class:list={classes} style={`--_slidesNumber: ${slides?.length}`}>
+  <div class="wrapper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        {
+          slides.map(({ imageMobile, imageDesktop }) => (
+            <div class="swiper-slide">
+              <CardProject {imageMobile} {imageDesktop} />
+            </div>
+          ))
+        }
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-project {
+    --_nudge: theme("spacing.50");
+
+    overflow: hidden;
+  }
+
+  .swiper {
+    position: relative;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+    padding-bottom: var(--_nudge);
+  }
+
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: theme("transitionTimingFunction.outBack");
+    transform: translate3d(0px, 0, 0);
+    touch-action: pan-y;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100%;
+    translate: 0 var(--_nudge) 0;
+    transition: translate theme("transitionDuration.500")
+      theme("transitionTimingFunction.smooth");
+
+    &.swiper-slide-active {
+      translate: 0 0 0;
+    }
+  }
+
+  .swiper-pagination {
+    --_paginationFigure: calc(var(--_slidesNumber, 3) + 1);
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: mix-content;
+    transform: translateX(-50%);
+    display: flex;
+    gap: theme("spacing.8");
+    z-index: 1;
+    width: calc(var(--_paginationFigure) * 16px);
+
+    :global(.swiper-pagination-bullet) {
+      display: block;
+      height: theme("spacing.4");
+      opacity: 0.2;
+      background-color: theme("colors.white");
+      border-radius: theme("borderRadius.full");
+      cursor: pointer;
+      transition:
+        opacity theme("transitionDuration.500")
+          theme("transitionTimingFunction.smooth"),
+        flex-grow theme("transitionDuration.500")
+          theme("transitionTimingFunction.smooth");
+      flex-shrink: 0;
+      flex-grow: calc(1 / var(--_paginationFigure));
+
+      &.swiper-pagination-bullet-active {
+        flex-grow: 1;
+        opacity: 1;
+      }
+    }
+  }
+</style>
