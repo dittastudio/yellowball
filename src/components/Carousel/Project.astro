@@ -24,6 +24,7 @@ const classes = ["carousel-project", className];
   const swiperParams: SwiperOptions = {
     speed: 1000,
     slidesPerView: "auto",
+    centeredSlides: true,
     spaceBetween: 30,
     keyboard: {
       enabled: true,
@@ -76,6 +77,14 @@ const classes = ["carousel-project", className];
 <style>
   .carousel-project {
     --_nudge: theme("spacing.50");
+
+    width: 100%;
+    max-width: calc(254 / 375 * 100%);
+    margin-inline: auto;
+
+    @screen md {
+      max-width: calc(834 / 1440 * 100%);
+    }
   }
 
   .swiper {
