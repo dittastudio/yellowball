@@ -1,4 +1,6 @@
 ---
+import Icon from "@/components/Elements/Icon.astro";
+
 const copy = ["Let’s work together"];
 const multipleCopy: string[] = [...copy, ...copy, ...copy];
 ---
@@ -31,10 +33,10 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
   if (container) observer.observe(container);
 </script>
 
-<section class:list={["block-marquee contain-paint block w-full py-200"]}>
+<section class="block-marquee block w-full py-100">
   <div class="block-marquee__outer wrapper-full">
     <div
-      class="block-marquee__inner bg-yellow text-navy py-[1.3em] rounded-[1em] font-heading text-fluid-h1 font-semibold"
+      class="block-marquee__inner bg-yellow text-navy py-[1.9em] md:py-[1.15em] rounded-[0.8em] font-heading text-fluid-h1 font-semibold contain-paint"
     >
       <div
         class="block-marquee__words block-marquee__words--left select-none flex gap-[var(--gap)] min-w-full relative -top-[0.1em]"
@@ -42,14 +44,34 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
         <div
           class="block-marquee__group will-change-transform flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
         >
-          {multipleCopy.map((text) => <p>{text}</p>)}
+          {
+            multipleCopy.map((text) => (
+              <p class="inline-flex gap-[var(--gap)] items-center">
+                {text}
+
+                <span class="relative top-[0.1em] bg-navy text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]">
+                  <Icon name="arrow-ne" class="block size-[0.2em]" />
+                </span>
+              </p>
+            ))
+          }
         </div>
 
         <div
           aria-hidden="true"
           class="block-marquee__group will-change-transform flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
         >
-          {multipleCopy.map((text) => <p>{text}</p>)}
+          {
+            multipleCopy.map((text) => (
+              <p class="inline-flex gap-[var(--gap)] items-center">
+                {text}
+
+                <span class="relative top-[0.1em] bg-navy text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]">
+                  <Icon name="arrow-ne" class="block size-[0.2em]" />
+                </span>
+              </p>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -59,7 +81,7 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
 <style>
   .block-marquee__words {
     --duration: 60s;
-    --gap: 1em;
+    --gap: 0.5em;
 
     &--left {
       animation: auto linear scroll-left both;
@@ -89,7 +111,7 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
   .block-marquee__group {
     .block-marquee__words--left & {
       animation: ticker-left var(--duration) linear infinite;
-      /* animation-play-state: paused; */
+      animation-play-state: paused;
     }
 
     .block-marquee__words--right & {
@@ -99,7 +121,7 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
 
     @media not (prefers-reduced-motion: reduce) {
       .block-marquee.is-visible & {
-        /* animation-play-state: running; */
+        animation-play-state: running;
       }
     }
   }
