@@ -19,13 +19,18 @@ const classes = ["carousel-project", className];
 <script>
   import Swiper from "swiper";
   import type { SwiperOptions } from "swiper/types";
-  import { Navigation, Pagination, Keyboard } from "swiper/modules";
+  import { Autoplay, Navigation, Pagination, Keyboard } from "swiper/modules";
 
   const swiperParams: SwiperOptions = {
     speed: 1000,
     slidesPerView: "auto",
     centeredSlides: true,
     spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
     keyboard: {
       enabled: true,
     },
@@ -45,9 +50,9 @@ const classes = ["carousel-project", className];
       },
     },
   };
-  // Now you can use Swiper
+
   const swiper = new Swiper(".swiper", {
-    modules: [Navigation, Pagination, Keyboard],
+    modules: [Autoplay, Navigation, Pagination, Keyboard],
     ...swiperParams,
   });
 </script>
@@ -89,7 +94,6 @@ const classes = ["carousel-project", className];
 
   .swiper {
     position: relative;
-    /* Fix of Webkit flickering */
     z-index: 1;
     padding-bottom: var(--_nudge);
   }
