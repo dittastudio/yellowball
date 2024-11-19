@@ -5,6 +5,7 @@ import Cube from "@/components/Elements/Cube.astro";
 import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
+import ServiceCards from "@/components/Block/ServiceCards.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
 import CardProject from "@/components/Card/Project.astro";
 import CarouselProject from "@/components/Carousel/Project.astro";
@@ -134,7 +135,12 @@ const slidesTest = [
       </div>
     </section>
 
-    <HeadingBanner />
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Blocks</h1>
+
+      <HeadingBanner />
+      <ServiceCards />
+    </section>
 
     <section class="bg-cream text-navy">
       <LayoutLines theme="light">

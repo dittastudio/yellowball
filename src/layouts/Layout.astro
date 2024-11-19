@@ -2,8 +2,9 @@
 import "lenis/dist/lenis.css";
 import "@/assets/styles/global.css";
 import AppHeader from "@/components/App/Header.astro";
-import ToolsGuide from "@/components/Tools/Guide.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
+import DevOnly from "@/components/Tools/DevOnly.astro";
+import Guide from "@/components/Tools/Guide.astro";
 
 interface Props {
   title: string;
@@ -44,7 +45,9 @@ const { title } = Astro.props;
     </LayoutLines>
   </body>
 
-  <ToolsGuide />
+  <DevOnly>
+    <Guide />
+  </DevOnly>
 </html>
 
 <style is:global></style>
