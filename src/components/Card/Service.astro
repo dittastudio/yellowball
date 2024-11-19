@@ -2,7 +2,6 @@
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
-  href: string;
   title: string;
   description: string;
   shape?: "circle" | "square" | "triangle";
@@ -12,7 +11,6 @@ interface Props {
 
 const hasSlotDefault = !!Astro.slots.default;
 const {
-  href,
   title,
   description,
   shape,
@@ -168,7 +166,7 @@ const classes = ["card-service", className];
     class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
   >
     <a
-      href={href}
+      href="/"
       class="card-service__link group w-full h-full block rounded-30 lg:rounded-40 bg-navy-lighter p-1"
     >
       <div

@@ -74,7 +74,9 @@ export default {
       15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.02em' }],
       16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+      20: [`${pxToRem(20)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       21: [`${pxToRem(21)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+      24: [`${pxToRem(24)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       26: [`${pxToRem(26)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       28: [`${pxToRem(28)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       32: [`${pxToRem(32)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
@@ -107,6 +109,20 @@ export default {
             minPixels: 44,
             minViewportWidthPixels: screenSizes.md,
             maxPixels: 80,
+            maxViewportWidthPixels: screenSizes.base,
+          })
+        }`,
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
+      ],
+      'fluid-h3': [
+        `${
+          clamp({
+            minPixels: 40,
+            minViewportWidthPixels: screenSizes.md,
+            maxPixels: 64,
             maxViewportWidthPixels: screenSizes.base,
           })
         }`,

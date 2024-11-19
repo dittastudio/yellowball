@@ -1,0 +1,36 @@
+---
+import Icon from "@/components/Elements/Icon.astro";
+
+interface Props {
+  headline: string;
+  description: string;
+}
+
+const { headline, description } = Astro.props as Props;
+---
+
+<div>
+  <a href="/" class="group flex flex-col gap-15 md:gap-30">
+    <div class="flex flex-col gap-15 md:flex-row md:items-center md:gap-20">
+      <slot name="icon" />
+      <h4
+        class="font-heading font-semibold text-20 md:text-24 text-white text-balance flex items-end gap-15"
+      >
+        {headline}
+
+        <Icon
+          name="arrow-ne"
+          class="mb-5 size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300 shrink-0"
+        />
+      </h4>
+    </div>
+
+    {
+      description && (
+        <div>
+          <p class="text-15 md:text-18 text-grey text-balance">{description}</p>
+        </div>
+      )
+    }
+  </a>
+</div>
