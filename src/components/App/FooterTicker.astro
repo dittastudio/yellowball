@@ -1,22 +1,8 @@
 ---
-const copy = ["Let’s work together", "Please please?", "Shall we?"];
-const multipleCopy: string[] = [...copy];
+const copy = ["Let’s work together"];
+const multipleCopy: string[] = [...copy, ...copy, ...copy];
 ---
 
-<!-- <section class="wrapper py-100">
-  <div
-    class:list={[
-      "font-heading text-fluid-h1 font-semibold",
-      "bg-yellow text-navy",
-      "py-[1.25em] rounded-[1em]",
-    ]}
-  >
-    {multipleCopy.map((text) => (
-      <p>{text}</p>
-    ))}
-    Let’s work together
-  </div>
-</section> -->
 <script>
   let isVisible = false;
   const container = document.querySelector(".block-marquee");
@@ -46,14 +32,25 @@ const multipleCopy: string[] = [...copy];
 </script>
 
 <section class:list={["block-marquee contain-paint block w-full py-200"]}>
-  <div class="block-marquee__wrapper">
+  <div class="block-marquee__outer wrapper-full">
     <div
-      class="block-marquee__words block-marquee__words--right select-none flex gap-[var(--gap)] min-w-full font-heading text-fluid-h1 font-semibold"
+      class="block-marquee__inner bg-yellow text-navy py-[1.3em] rounded-[1em] font-heading text-fluid-h1 font-semibold"
     >
       <div
-        class="block-marquee__group will-change-transform flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+        class="block-marquee__words block-marquee__words--left select-none flex gap-[var(--gap)] min-w-full relative -top-[0.1em]"
       >
-        {multipleCopy.map((text) => <p>{text}</p>)}
+        <div
+          class="block-marquee__group will-change-transform flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+        >
+          {multipleCopy.map((text) => <p>{text}</p>)}
+        </div>
+
+        <div
+          aria-hidden="true"
+          class="block-marquee__group will-change-transform flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+        >
+          {multipleCopy.map((text) => <p>{text}</p>)}
+        </div>
       </div>
     </div>
   </div>
@@ -62,9 +59,7 @@ const multipleCopy: string[] = [...copy];
 <style>
   .block-marquee__words {
     --duration: 60s;
-    --gap: 0.5em;
-
-    padding: 0.15em;
+    --gap: 1em;
 
     &--left {
       animation: auto linear scroll-left both;
@@ -92,11 +87,9 @@ const multipleCopy: string[] = [...copy];
   }
 
   .block-marquee__group {
-    margin-block: -0.088em -0.181em;
-
     .block-marquee__words--left & {
       animation: ticker-left var(--duration) linear infinite;
-      animation-play-state: paused;
+      /* animation-play-state: paused; */
     }
 
     .block-marquee__words--right & {
@@ -106,7 +99,7 @@ const multipleCopy: string[] = [...copy];
 
     @media not (prefers-reduced-motion: reduce) {
       .block-marquee.is-visible & {
-        animation-play-state: running;
+        /* animation-play-state: running; */
       }
     }
   }
