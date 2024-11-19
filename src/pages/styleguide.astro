@@ -6,6 +6,7 @@ import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
+import ServiceItem from "@/components/Elements/ServiceItem.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
 import CardProject from "@/components/Card/Project.astro";
 import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
@@ -118,6 +119,20 @@ const imageDesktopTest: ImageObject = {
         <Icon name="shape-square" class="block w-20 text-green" />
         <Icon name="shape-circle" class="block w-20 text-blue" />
       </div>
+    </section>
+
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Service</h1>
+      <p class="font-semibold text-15 my-20">&lt;ServiceItem /&gt;</p>
+
+      <ServiceItem
+        headline="WordPress Development"
+        description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
+      >
+        <Cube slot="icon" iconSize="lg">
+          <Icon name="logo-wp" />
+        </Cube>
+      </ServiceItem>
     </section>
 
     <section class="wrapper my-40">

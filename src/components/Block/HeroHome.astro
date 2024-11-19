@@ -20,10 +20,12 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
   ) as HTMLElement;
   const cursors = [...section?.querySelectorAll(".cursor")] as HTMLElement[];
 
-  gsap.set(cursors, {
-    opacity: 0,
-    x: Math.random() * cursorContainer.offsetWidth,
-    y: Math.random() * cursorContainer.offsetHeight,
+  cursors.forEach((cursor) => {
+    gsap.set(cursor, {
+      opacity: 0,
+      x: Math.random() * cursorContainer.offsetWidth,
+      y: Math.random() * cursorContainer.offsetHeight,
+    });
   });
 
   gsap.delayedCall(1, () => {
@@ -64,49 +66,51 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
     return tl;
   };
 
-  animation().play();
-
   const clearDelay = () => {
     delayedCall?.kill();
     delayedCall = null;
   };
 
-  gsap
-    .timeline({
-      scrollTrigger: {
-        markers: false,
-        trigger: section,
-        start: "10% top",
-        end: "100% center",
-        scrub: 1.5,
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          animation().pause();
-          animation().kill();
+  gsap.delayedCall(2, () => {
+    animation().play();
 
-          clearDelay();
-        },
-        onEnterBack: () => {
-          clearDelay();
-        },
-        onLeaveBack: () => {
-          clearDelay();
+    gsap
+      .timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: section,
+          start: "10% top",
+          end: "100% center",
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            animation().pause();
+            animation().kill();
 
-          delayedCall = gsap.delayedCall(1.5, () => {
-            ScrollTrigger.refresh();
-            animation().play();
-          });
+            clearDelay();
+          },
+          onEnterBack: () => {
+            // clearDelay();
+          },
+          onLeaveBack: () => {
+            clearDelay();
+
+            delayedCall = gsap.delayedCall(1.5, () => {
+              ScrollTrigger.refresh();
+              animation().play();
+            });
+          },
+          onLeave: () => {
+            clearDelay();
+          },
         },
-        onLeave: () => {
-          clearDelay();
-        },
-      },
-    })
-    .to(cursors, {
-      x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth,
-      y: (_index, target) => section.offsetHeight - target.offsetHeight,
-      opacity: 0,
-    });
+      })
+      .to(cursors, {
+        x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
+        y: (_index, target) => section.offsetHeight - target.offsetHeight,
+        opacity: 0,
+      });
+  });
 </script>
 
 <section data-js="hero-home" class="text-center text-white py-160">
@@ -121,7 +125,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
       </h1>
     </TextReveal>
 
-    <p class="font-normal text-17 md:text-21 text-grey text-balance">
+    <p class="text-17 md:text-21 text-grey text-balance">
       We're a boutique, London-based web design agency, crafting stunning,
       bespoke websites that captivate and convert. Ready to get the ball
       rolling? <Link href="/" class="text-yellow">Let's chat</Link>
