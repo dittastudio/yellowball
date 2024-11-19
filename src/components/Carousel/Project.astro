@@ -35,6 +35,13 @@ const classes = ["carousel-project", className];
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
+      renderBullet(_, className) {
+        return `
+          <button type="button" class="${className}">
+            <span class="carousel-project__pill"></span>
+          </button>
+        `;
+      },
     },
   };
   // Now you can use Swiper
@@ -110,37 +117,46 @@ const classes = ["carousel-project", className];
   }
 
   .swiper-pagination {
-    --_paginationFigure: calc(var(--_slidesNumber, 3) + 1);
+    --_pillWidth: 16px;
+    --_pillActiveWidth: 24px;
+    --_pillContainer: calc(
+      (var(--_pillWidth) * var(--_slidesNumber)) + var(--_pillActiveWidth)
+    );
 
     position: absolute;
     left: 50%;
     bottom: 0;
-    width: mix-content;
+    width: min-content;
     transform: translateX(-50%);
     display: flex;
-    gap: theme("spacing.8");
-    z-index: 1;
-    width: calc(var(--_paginationFigure) * 16px);
+    z-index: 2;
+    width: var(--_pillContainer);
 
     :global(.swiper-pagination-bullet) {
       display: block;
-      height: theme("spacing.4");
       opacity: 0.2;
-      background-color: theme("colors.white");
       border-radius: theme("borderRadius.full");
-      cursor: pointer;
       transition:
         opacity theme("transitionDuration.500")
           theme("transitionTimingFunction.smooth"),
         flex-grow theme("transitionDuration.500")
           theme("transitionTimingFunction.smooth");
       flex-shrink: 0;
-      flex-grow: calc(1 / var(--_paginationFigure));
+      flex-grow: calc(1 / 4);
+      padding: 4px;
 
       &.swiper-pagination-bullet-active {
         flex-grow: 1;
         opacity: 1;
       }
+    }
+
+    :global(.carousel-project__pill) {
+      display: block;
+      width: 100%;
+      height: theme("spacing.4");
+      background-color: theme("colors.white");
+      border-radius: theme("borderRadius.full");
     }
   }
 </style>
