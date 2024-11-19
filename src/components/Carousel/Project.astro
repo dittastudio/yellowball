@@ -53,33 +53,29 @@ const classes = ["carousel-project", className];
 
 <!-- Slider main container -->
 <div class:list={classes} style={`--_slidesNumber: ${slides?.length}`}>
-  <div class="wrapper">
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        {
-          slides.map(({ imageMobile, imageDesktop }) => (
-            <div class="swiper-slide">
-              <CardProject {imageMobile} {imageDesktop} />
-            </div>
-          ))
-        }
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
-
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {
+        slides.map(({ imageMobile, imageDesktop }) => (
+          <div class="swiper-slide">
+            <CardProject {imageMobile} {imageDesktop} />
+          </div>
+        ))
+      }
     </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 </div>
 
 <style>
   .carousel-project {
     --_nudge: theme("spacing.50");
-
-    overflow: hidden;
   }
 
   .swiper {
@@ -117,10 +113,12 @@ const classes = ["carousel-project", className];
   }
 
   .swiper-pagination {
-    --_pillWidth: 16px;
-    --_pillActiveWidth: 24px;
-    --_pillContainer: calc(
-      (var(--_pillWidth) * var(--_slidesNumber)) + var(--_pillActiveWidth)
+    --_pill-padding-x: 4px;
+    --_pill-padding-y: 8px;
+    --_pill-width: 16px;
+    --_pill-width-active: 24px;
+    --_pill-container: calc(
+      (var(--_pill-width) * var(--_slidesNumber)) + var(--_pill-width-active)
     );
 
     position: absolute;
@@ -130,7 +128,8 @@ const classes = ["carousel-project", className];
     transform: translateX(-50%);
     display: flex;
     z-index: 2;
-    width: var(--_pillContainer);
+    width: var(--_pill-container);
+    margin-bottom: calc(-1 * var(--_pill-padding-y));
 
     :global(.swiper-pagination-bullet) {
       display: block;
@@ -143,7 +142,7 @@ const classes = ["carousel-project", className];
           theme("transitionTimingFunction.smooth");
       flex-shrink: 0;
       flex-grow: calc(1 / 4);
-      padding: 4px;
+      padding: var(--_pill-padding-y) var(--_pill-padding-x);
 
       &.swiper-pagination-bullet-active {
         flex-grow: 1;

@@ -1,0 +1,42 @@
+---
+import CarouselProject from "@/components/Carousel/Project.astro";
+
+const imageMobileTest: ImageObject = {
+  src: "/images/portrait-1.jpg",
+  alt: "portrait 1",
+  width: 900,
+  height: 1600,
+};
+
+const imageDesktopTest: ImageObject = {
+  src: "/images/landscape-1.jpg",
+  alt: "landscape 1",
+  width: 1600,
+  height: 900,
+};
+
+const slidesTest = [
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+  {
+    imageMobile: imageMobileTest,
+    imageDesktop: imageDesktopTest,
+  },
+];
+---
+
+<section class="overflow-hidden py-100">
+  <div class="wrapper">
+    <CarouselProject slides={slidesTest} />
+  </div>
+</section>

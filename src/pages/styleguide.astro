@@ -8,7 +8,7 @@ import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
 import CardProject from "@/components/Card/Project.astro";
-import CarouselProject from "@/components/Carousel/Project.astro";
+import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
 
 const imageMobileTest: ImageObject = {
   src: "/images/portrait-1.jpg",
@@ -23,25 +23,6 @@ const imageDesktopTest: ImageObject = {
   width: 1600,
   height: 900,
 };
-
-const slidesTest = [
-  {
-    imageMobile: imageMobileTest,
-    imageDesktop: imageDesktopTest,
-  },
-  {
-    imageMobile: imageMobileTest,
-    imageDesktop: imageDesktopTest,
-  },
-  {
-    imageMobile: imageMobileTest,
-    imageDesktop: imageDesktopTest,
-  },
-  {
-    imageMobile: imageMobileTest,
-    imageDesktop: imageDesktopTest,
-  },
-];
 ---
 
 <Layout title="Styleguide">
@@ -161,12 +142,6 @@ const slidesTest = [
       />
     </section>
 
-    <section class="my-40">
-      <div class="wrapper">
-        <h1 class="font-heading font-bold text-21 my-20">Carousel Project</h1>
-      </div>
-
-      <CarouselProject slides={slidesTest} />
-    </section>
+    <BlockCarouselProjects />
   </main>
 </Layout>
