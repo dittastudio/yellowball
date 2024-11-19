@@ -8,6 +8,22 @@ import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
 import ServiceItem from "@/components/Elements/ServiceItem.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
+import CardProject from "@/components/Card/Project.astro";
+import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
+
+const imageMobileTest: ImageObject = {
+  src: "/images/portrait-1.jpg",
+  alt: "portrait 1",
+  width: 900,
+  height: 1600,
+};
+
+const imageDesktopTest: ImageObject = {
+  src: "/images/landscape-1.jpg",
+  alt: "landscape 1",
+  width: 1600,
+  height: 900,
+};
 ---
 
 <Layout title="Styleguide">
@@ -132,8 +148,15 @@ import LayoutLines from "@/components/Layout/Lines.astro";
       </LayoutLines>
     </section>
 
-    <HeadingBanner />
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Card Project</h1>
 
-    <HeadingBanner />
+      <CardProject
+        imageMobile={imageMobileTest}
+        imageDesktop={imageDesktopTest}
+      />
+    </section>
+
+    <BlockCarouselProjects />
   </main>
 </Layout>
