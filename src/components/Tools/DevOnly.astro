@@ -1,0 +1,7 @@
+---
+const isDev = import.meta.env.DEV;
+---
+
+<Fragment>
+  {isDev && <slot />}
+</Fragment>
