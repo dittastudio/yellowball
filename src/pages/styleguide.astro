@@ -5,6 +5,7 @@ import Cube from "@/components/Elements/Cube.astro";
 import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
+import HeroText from "@/components/Block/HeroText.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
 import ServiceItem from "@/components/Elements/ServiceItem.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
@@ -138,8 +139,17 @@ const imageDesktopTest: ImageObject = {
     <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 my-20">Blocks</h1>
 
+      <p class="font-semibold text-15 my-20">&lt;HeadingBanner /&gt;</p>
       <HeadingBanner />
+
+      <p class="font-semibold text-15 my-20">&lt;ServiceCards /&gt;</p>
       <ServiceCards />
+
+      <p class="font-semibold text-15 my-20">&lt;HeroText /&gt;</p>
+      <HeroText
+        headline="Meet a few of the experts behind your SEO success"
+        description="We have a globally distributed team of SEO experts across offices in London and South Africa. Here's a glimpse of some of the talented specialists you could be working with. Each brings a wealth of experience and a passion for driving results."
+      />
     </section>
 
     <section class="bg-cream text-navy">
