@@ -2,6 +2,7 @@
 import "lenis/dist/lenis.css";
 import "@/assets/styles/global.css";
 import AppHeader from "@/components/App/Header.astro";
+import AppFooterTicker from "@/components/App/FooterTicker.astro";
 import LayoutLines from "@/components/Layout/Lines.astro";
 import DevOnly from "@/components/Tools/DevOnly.astro";
 import Guide from "@/components/Tools/Guide.astro";
@@ -42,6 +43,8 @@ const { title } = Astro.props;
 
     <LayoutLines>
       <slot />
+
+      <AppFooterTicker />
     </LayoutLines>
   </body>
 
