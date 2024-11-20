@@ -3,55 +3,53 @@
 ---
 
 <script>
-  import { gsap } from "gsap";
-  import SplitType from "split-type";
+  import { gsap } from 'gsap'
+  import SplitType from 'split-type'
 
-  const textReveal = document.querySelectorAll("[data-js='text-reveal']");
+  const textReveal = document.querySelectorAll("[data-js='text-reveal']")
 
-  if (textReveal?.length) {
-    const masks = new SplitType("[data-js='text-reveal'] > *", {
-      types: "lines",
-      lineClass: "mask",
-      tagName: "span",
-    });
+  textReveal.forEach(reveal => {
+    const directsSelector = [
+      ...reveal.querySelectorAll(':scope > *'),
+    ] as HTMLElement[]
 
-    gsap.set(masks.lines, {
+    const directs = new SplitType(directsSelector, {
+      types: 'lines',
+      lineClass: 'mask',
+      tagName: 'span',
+    })
+
+    gsap.set(directs.lines, {
       clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
-    });
+    })
 
-    const text = new SplitType("[data-js='text-reveal'] .mask", {
-      types: "lines",
-      tagName: "span",
-    });
+    const masksSelector = [
+      ...reveal.querySelectorAll(':scope .mask'),
+    ] as HTMLElement[]
 
-    if (text.lines?.length) {
-      gsap.set(".line", { yPercent: 100 });
+    const masks = new SplitType(masksSelector, {
+      types: 'lines',
+      tagName: 'span',
+    })
 
-      textReveal.forEach((el) => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const lines = entry.target.querySelectorAll(".line");
-
-                gsap.to(lines, {
-                  duration: 1,
-                  yPercent: 0,
-                  ease: "power2.inOut",
-                  stagger: 0.05,
-                });
-              }
-            });
-          },
-          {
-            threshold: 0.5,
-          }
-        );
-
-        observer.observe(el);
-      });
-    }
-  }
+    gsap.fromTo(
+      masks.lines,
+      { yPercent: 100 },
+      {
+        duration: 1,
+        yPercent: 0,
+        ease: 'power2.inOut',
+        stagger: 0.05,
+        scrollTrigger: {
+          markers: true,
+          scrub: false,
+          trigger: reveal,
+          start: 'top bottom',
+          end: 'top center',
+        },
+      },
+    )
+  })
 </script>
 
 <div data-js="text-reveal">
