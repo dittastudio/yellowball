@@ -196,8 +196,8 @@ export default {
       outQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
       inOutQuart: 'cubic-bezier(0.77, 0, 0.175, 1)',
       inBack: 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',
-      outBack: 'cubic-bezier(0.24, 1.20, 0.24, 1)',
-      // inOutBack: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+      outBack: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      inOutBack: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
     },
     extend: {
       borderRadius: {

@@ -4,21 +4,29 @@ const columns = 12;
 
 <div class="grid-guide">
   <input
-    class="peer fixed z-50 w-50 h-50 rounded-full bottom-30 right-30 font-[monospace] bg-white/50 shadow-lg backdrop-blur-lg transition-all duration-200 ease-smooth appearance-none cursor-pointer hover:bg-white/80 checked:bg-white/20"
+    class="peer fixed z-50 w-50 h-50 rounded-full bottom-30 right-30 font-[monospace] bg-white/50 shadow-lg backdrop-blur-md transition-all duration-200 ease-smooth appearance-none cursor-pointer hover:bg-white/80 checked:bg-white/20"
     type="checkbox"
   />
 
   <div
     class="wrapper ease-smooth fixed inset-0 z-40 w-full h-full transition-opacity duration-200 pointer-events-none opacity-0 peer-checked:opacity-100"
   >
-    <div
-      class="grid gap-x-30 grid-cols-2 sm:grid-cols-4 md:grid-cols-12 h-screen"
-    >
+    <div class="grid gap-x-12 md:gap-x-30 grid-cols-8 md:grid-cols-12 h-screen">
       {
         [...Array(columns)].map(() => (
-          <div class="flex items-end justify-center bg-[red]/10" />
+          <div class="guide-col bg-[turquoise]/20" />
         ))
       }
     </div>
   </div>
 </div>
+
+<style>
+  .guide-col {
+    @screen mdMax {
+      &:nth-child(n + 9) {
+        display: none;
+      }
+    }
+  }
+</style>
