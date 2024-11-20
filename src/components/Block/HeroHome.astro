@@ -15,17 +15,15 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
   const section = document.querySelector(
     '[data-js="hero-home"]'
   ) as HTMLElement;
-  const cursorContainer = section?.querySelector(
-    ".cursor-container"
-  ) as HTMLElement;
+  const container = section?.querySelector(".cursor-container") as HTMLElement;
   const cursors = [...section?.querySelectorAll(".cursor")] as HTMLElement[];
 
   cursors.forEach((cursor) => {
     gsap.set(cursor, {
       opacity: 0,
       scale: 0.5,
-      x: Math.random() * cursorContainer.offsetWidth,
-      y: Math.random() * cursorContainer.offsetHeight,
+      x: Math.random() * container.offsetWidth,
+      y: Math.random() * container.offsetHeight,
     });
   });
 
@@ -50,10 +48,8 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
       tl.to(
         cursor,
         {
-          x: Math.random() * (cursorContainer.offsetWidth - cursor.offsetWidth),
-          y:
-            Math.random() *
-            (cursorContainer.offsetHeight - cursor.offsetHeight),
+          x: Math.random() * (container.offsetWidth - cursor.offsetWidth),
+          y: Math.random() * (container.offsetHeight - cursor.offsetHeight),
           duration: duration,
           ease: easing,
         },

@@ -2,36 +2,83 @@
 import CardProjectHero from "@/components/Card/ProjectHero.astro";
 ---
 
-<section class="text-center text-white py-100">
-  <div class="wrapper grid grid-cols-1 gap-24 md:gap-60">
-    <CardProjectHero
-      title="Faith Ibiza"
-      headline="VIP Ibiza Concierge Services"
-      description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
-      cta="Explore Project"
-      color="yellow"
-    >
-      <img src="/images/test.png" alt="" />
-    </CardProjectHero>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-    <CardProjectHero
-      title="Ballet with Isabella"
-      headline="Elite Online Ballet Training"
-      description="A bespoke WordPress build featuring a customer login area, a member live area and an on-demand online studio which houses over 100 classes, courses, plans and workshops for ballet students."
-      cta="Explore Project"
-      color="green"
-    >
-      <img src="/images/test.png" alt="" />
-    </CardProjectHero>
+  gsap.registerPlugin(ScrollTrigger);
 
-    <CardProjectHero
-      title="Shirakawa 1958"
-      headline="The World’s Rarest Japanese Whisky"
-      description="This bespoke WordPress and WooCommerce website build features elegant typography, a sumptuous colour palette and a super-slick checkout flow."
-      cta="Explore Project"
-      color="blue"
-    >
-      <img src="/images/test.png" alt="" />
-    </CardProjectHero>
-  </div>
+  const section = document.querySelector(
+    '[data-js="featured-projects"]'
+  ) as HTMLElement;
+  const list = section?.querySelector("ul");
+  const items = list
+    ? [...list?.querySelectorAll("li")]
+    : ([] as HTMLElement[]);
+
+  items.forEach((item) => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: item,
+          scrub: 1.5,
+          start: "top top",
+        },
+      })
+      .fromTo(
+        item,
+        {
+          rotateX: 0,
+          scale: 1,
+          filter: "brightness(100%)",
+        },
+        {
+          rotateX: -10,
+          scale: 0.85,
+          filter: "brightness(50%)",
+        },
+        "<"
+      );
+  });
+</script>
+
+<section data-js="featured-projects" class="text-center text-white py-100">
+  <ul class="wrapper grid grid-cols-1 gap-24 md:gap-60 perspective-1000">
+    <li class="sticky top-100">
+      <CardProjectHero
+        title="Faith Ibiza"
+        headline="VIP Ibiza Concierge Services"
+        description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
+        cta="Explore Project"
+        color="yellow"
+      >
+        <img src="/images/test.png" alt="" />
+      </CardProjectHero>
+    </li>
+
+    <li class="sticky top-100">
+      <CardProjectHero
+        title="Ballet with Isabella"
+        headline="Elite Online Ballet Training"
+        description="A bespoke WordPress build featuring a customer login area, a member live area and an on-demand online studio which houses over 100 classes, courses, plans and workshops for ballet students."
+        cta="Explore Project"
+        color="green"
+      >
+        <img src="/images/test.png" alt="" />
+      </CardProjectHero>
+    </li>
+
+    <li class="sticky top-100">
+      <CardProjectHero
+        title="Shirakawa 1958"
+        headline="The World's Rarest Japanese Whisky"
+        description="This bespoke WordPress and WooCommerce website build features elegant typography, a sumptuous colour palette and a super-slick checkout flow."
+        cta="Explore Project"
+        color="blue"
+      >
+        <img src="/images/test.png" alt="" />
+      </CardProjectHero>
+    </li>
+  </ul>
 </section>
