@@ -118,7 +118,7 @@ const year = new Date().getFullYear();
 
   <div class="wrapper mt-90">
     <Icon
-      class="app-footer__logo block mb-[-5%] size-full text-[#282939]"
+      class="app-footer__logo block mb-[-5%] size-full text-card"
       name="yellowball"
     />
   </div>
@@ -157,7 +157,7 @@ const year = new Date().getFullYear();
 
   .app-footer__icons:hover .app-footer__icon {
     animation: wave theme("transitionDuration.500")
-      cubic-bezier(0.34, 1.56, 0.64, 1);
+      theme("transitionTimingFunction.outBack");
   }
 
   .app-footer__icons .app-footer__icon:nth-child(1) {
@@ -175,18 +175,10 @@ const year = new Date().getFullYear();
   @keyframes wave {
     0%,
     100% {
-      transform: scale(1) translateY(0); /* Starts and ends in the normal position */
+      transform: scale(1) translateY(0);
     }
     50% {
-      transform: scale(1.05) translateY(-4px); /* Moves up and increases size */
-    }
-  }
-
-  .app-footer__logo {
-    :global(svg) {
-      --white-50: rgba(255, 255, 255, 0.1);
-
-      filter: drop-shadow(-1px 0px 0px var(--white-50));
+      transform: scale(1.05) translateY(-4px);
     }
   }
 </style>

@@ -93,13 +93,15 @@ const classes = ["carousel-project", className];
   }
 
   .swiper-wrapper {
+    --slide-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
+
     position: relative;
     width: 100%;
     height: 100%;
     z-index: 1;
     display: flex;
     transition-property: transform;
-    transition-timing-function: theme("transitionTimingFunction.outBack");
+    transition-timing-function: var(--slide-ease);
     transform: translate3d(0px, 0, 0);
     touch-action: pan-y;
   }
