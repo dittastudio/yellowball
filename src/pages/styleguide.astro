@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Cube from "@/components/Elements/Cube.astro";
 import Chip from "@/components/Elements/Chip.astro";
 import Button from "@/components/Elements/Button.astro";
+import AppHeaderLogo from "@/components/App/HeaderLogo.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import HeroText from "@/components/Block/HeroText.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
@@ -29,6 +30,14 @@ const imageDesktopTest: ImageObject = {
 
 <Layout title="Styleguide">
   <main class="mt-200">
+    <section class="wrapper my-40">
+      <h1 class="font-heading font-bold text-21 my-20">Chips</h1>
+
+      <div class="flex flex-wrap gap-8">
+        <AppHeaderLogo />
+      </div>
+    </section>
+
     <section class="wrapper my-40">
       <h1 class="font-heading font-bold text-21 mb-20">Buttons</h1>
 
