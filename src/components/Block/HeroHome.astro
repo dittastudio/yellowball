@@ -23,6 +23,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
   cursors.forEach((cursor) => {
     gsap.set(cursor, {
       opacity: 0,
+      scale: 0.5,
       x: Math.random() * cursorContainer.offsetWidth,
       y: Math.random() * cursorContainer.offsetHeight,
     });
@@ -31,6 +32,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
   gsap.delayedCall(1, () => {
     gsap.to(cursors, {
       opacity: 1,
+      scale: 1,
       stagger: 0.3,
       duration: 0.3,
     });

@@ -2,7 +2,7 @@
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
-  title: string;
+  headline: string;
   description: string;
   cta: string;
   shape?: "circle" | "square" | "triangle";
@@ -12,7 +12,7 @@ interface Props {
 
 const hasSlotDefault = !!Astro.slots.default;
 const {
-  title,
+  headline,
   description,
   cta,
   shape,
@@ -188,9 +188,9 @@ const classes = ["card-service-hero", className];
           <div class="flex flex-col justify-start items-start gap-30 lg:gap-40">
             <div class="flex items-end justify-start gap-20">
               <h3
-                class="font-heading text-40 lg:text-64 font-semibold text-balance"
+                class="font-heading font-semibold text-40 lg:text-64 text-balance"
               >
-                {title}
+                {headline}
               </h3>
 
               {

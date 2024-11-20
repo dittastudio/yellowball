@@ -2,7 +2,7 @@
 import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
-  title: string;
+  headline: string;
   description: string;
   shape?: "circle" | "square" | "triangle";
   color?: "yellow" | "green" | "blue";
@@ -11,7 +11,7 @@ interface Props {
 
 const hasSlotDefault = !!Astro.slots.default;
 const {
-  title,
+  headline,
   description,
   shape,
   color,
@@ -190,7 +190,7 @@ const classes = ["card-service", className];
               <h4
                 class="font-heading text-32 lg:text-48 font-semibold text-balance"
               >
-                {title}
+                {headline}
               </h4>
 
               {
