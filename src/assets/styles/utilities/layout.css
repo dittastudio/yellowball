@@ -19,4 +19,8 @@
   .backface-hidden {
     backface-visibility: hidden;
   }
+
+  .shadow-media {
+    filter: drop-shadow(0px 5px 50px rgba(0, 0, 0, 0.30));
+  }
 }

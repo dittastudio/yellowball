@@ -94,14 +94,6 @@ const classes = ["card-project-hero", className];
         }
       }
     }
-
-    &__media {
-      :global(img) {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
 </style>
 
@@ -159,7 +151,7 @@ const classes = ["card-project-hero", className];
           <div>
             {
               hasSlotDefault && (
-                <div class="card-project-hero__media w-full">
+                <div class="w-full shadow-media">
                   <slot />
                 </div>
               )

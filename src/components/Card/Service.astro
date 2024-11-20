@@ -145,14 +145,6 @@ const classes = ["card-service", className];
         }
       }
     }
-
-    &__media {
-      :global(img) {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
 </style>
 
@@ -215,7 +207,7 @@ const classes = ["card-service", className];
 
           {
             hasSlotDefault && (
-              <div class="card-service__media w-full -mb-30 lg:-mb-60 aspect-[26/11] mt-auto">
+              <div class="w-full -mb-30 lg:-mb-60 mt-auto shadow-media">
                 <slot />
               </div>
             )
