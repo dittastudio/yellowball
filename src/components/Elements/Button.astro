@@ -18,14 +18,13 @@ const {
 
 <span
   class:list={[
+    "element-button",
     "inline-flex justify-center items-center gap-8 md:gap-12",
-    "px-[25px] py-[15px]",
-    "md:px-[32px] md:py-[14px]",
-    "border border-solid rounded-20",
+    "px-[26px] py-[16px]",
+    "md:px-[33px] md:py-[15px]",
+    "rounded-20",
     "font-heading text-15 md:text-18 font-bold",
-    theme === "white"
-      ? `bg-white text-navy border-transparent`
-      : "bg-navy border-white text-white",
+    `is-${theme}`,
     className,
   ]}
 >
@@ -33,5 +32,94 @@ const {
     {text}
   </span>
 
-  {hasArrow && <Icon name="arrow-ne" class="size-10 md:size-12" />}
+  {
+    hasArrow && (
+      <Icon name="arrow-ne" class="element-button__icon size-10 md:size-12" />
+    )
+  }
 </span>
+
+<style>
+  .element-button {
+    position: relative;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition:
+      color theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth"),
+      background-color theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--button-border-color);
+      border-radius: inherit;
+      transition: border theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: theme("colors.navy");
+      opacity: 0;
+      border-radius: inherit;
+      transition: opacity theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+    }
+
+    &.is-white {
+      --button-bg-color: theme("colors.white");
+      --button-text-color: theme("colors.navy");
+      --button-border-color: transparent;
+
+      /* Hover */
+      --button-hover-bg-color: theme("colors.yellow");
+      --button-hover-text-color: theme("colors.navy");
+      --button-hover-border-color: transparent;
+    }
+
+    &.is-white-border {
+      --button-bg-color: transparent;
+      --button-text-color: theme("colors.white");
+      --button-border-color: theme("colors.white");
+
+      /* Hover */
+      --button-hover-bg-color: theme("colors.white");
+      --button-hover-text-color: theme("colors.navy");
+      --button-hover-border-color: theme("colors.white");
+    }
+
+    @media (hover: hover) {
+      :global(a):hover &,
+      :global(button):not(:disabled):hover & {
+        color: var(--button-hover-text-color);
+        background-color: var(--button-hover-bg-color);
+        border-color: var(--button-hover-border-color);
+      }
+    }
+
+    :global(a):active &,
+    :global(button):not(:disabled):active & {
+      &::after {
+        opacity: 0.1;
+      }
+    }
+
+    .element-button__icon {
+      translate: 0 0 0;
+      transition: translate theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+
+      @media (hover: hover) {
+        :global(a):hover &,
+        :global(button):not(:disabled):hover & {
+          translate: 2px -2px 0;
+        }
+      }
+    }
+  }
+</style>
