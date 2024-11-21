@@ -1,23 +1,23 @@
 ---
 interface Props {
-  headline: string;
-  description: string;
-  class?: string;
+  headline: string
+  description: string
+  class?: string
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = !!Astro.slots.default
 
 const {
   headline,
   description,
   class: className,
   ...props
-} = Astro.props as Props;
+} = Astro.props as Props
 ---
 
 <div
   data-js="card-media"
-  class:list={["w-full bg-white text-left rounded-30 lg:rounded-50", className]}
+  class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
   {...props}
 >
   <a
@@ -38,7 +38,7 @@ const {
 
     {
       hasSlotDefault && (
-        <div class="w-full shadow-media">
+        <div class="w-full">
           <slot />
         </div>
       )
