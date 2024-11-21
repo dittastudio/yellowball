@@ -1,0 +1,25 @@
+---
+interface Props {
+  id: string
+  class?: string
+}
+
+const { id, class: className } = Astro.props as Props
+
+const headerId = `accordion-item-header-${id}`
+const bodyId = `accordion-item-body-${id}`
+---
+
+<section class:list={['accordion-item', className]}>
+  <button id={headerId} class="accordion-item__header type-label">
+    <slot name="header" />
+
+    <span class="accordion-item__icon">
+      <!-- <Icon name="chevron" width={9} height={6} /> -->
+    </span>
+  </button>
+
+  <article id={bodyId} role="region" aria-labelledby={headerId}>
+    <slot name="body" />
+  </article>
+</section>
