@@ -1,6 +1,7 @@
 import { type Config } from 'tailwindcss'
-import tailwindcss3d from 'tailwindcss-3d'
 import exposeColors from '@tailwind-plugin/expose-colors'
+import tailwindcss3d from 'tailwindcss-3d'
+import typography from '@tailwindcss/typography'
 
 const pxToRem = (px: number, base = 16): number => px / base
 
@@ -245,7 +246,6 @@ export default {
     },
   },
   plugins: [
-    tailwindcss3d,
     exposeColors({
       extract: [
         'yellow',
@@ -259,6 +259,8 @@ export default {
       ],
       prefix: `--yellowball`,
       mode: 'hex'
-    })
+    }),
+    tailwindcss3d,
+    typography,
   ],
 } satisfies Config;

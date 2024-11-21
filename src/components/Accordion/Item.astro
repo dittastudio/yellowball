@@ -23,39 +23,63 @@ const bodyId = `accordion-item-body-${id}`
   accordions.forEach(accordion => {
     const header = accordion.querySelector('[data-js-header]') as HTMLElement
     const body = accordion.querySelector('[data-js-body]') as HTMLElement
+    const bodyInner = accordion.querySelector(
+      '[data-js-body-inner]',
+    ) as HTMLElement
 
-    gsap.set(body, { height: 0, overflow: 'hidden' })
+    const tl = gsap.timeline({ paused: true })
 
     const toggleAccordion = () => {
       const isOpen = accordion.classList.contains('is-open')
 
+      tl.clear()
+
       if (isOpen) {
-        gsap.to(body, {
-          height: 0,
-          duration: 0.5,
+        // const tl = gsap.timeline()
+
+        tl.to(bodyInner, {
+          opacity: 0,
+          duration: 0.2,
           ease: 'power2.inOut',
-          onComplete: () => {
-            accordion.classList.remove('accordion-item--open')
+        }).to(
+          body,
+          {
+            height: 0,
+            duration: 0.5,
+            ease: 'power4.inOut',
           },
-        })
+          '<',
+        )
 
         accordion.classList.remove('is-open')
-
+        body?.setAttribute('aria-label', 'Close Accordion')
         body?.setAttribute('aria-hidden', 'true')
       } else {
-        gsap.to(body, {
+        // const tl = gsap.timeline()
+
+        tl.to(body, {
           height: 'auto',
           duration: 0.5,
-          ease: 'power2.inOut',
+          ease: 'power4.inOut',
           onComplete: () => {
             gsap.set(body, { height: 'auto' }) // Set to auto for flexible height
           },
-        })
+        }).to(
+          bodyInner,
+          {
+            opacity: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+          },
+          '<50%',
+        )
 
         accordion.classList.add('is-open')
-
+        body?.setAttribute('aria-label', 'Open Accordion')
         body?.setAttribute('aria-hidden', 'false')
       }
+
+      tl.play()
     }
 
     header.addEventListener('click', toggleAccordion)
@@ -68,7 +92,7 @@ const bodyId = `accordion-item-body-${id}`
     type="button"
     id={headerId}
     class:list={[
-      'flex items-center gap-40 py-40',
+      'flex items-center gap-40 py-40 w-full',
       'font-heading text-21 font-semibold md:text-28',
     ]}
   >
@@ -79,11 +103,13 @@ const bodyId = `accordion-item-body-${id}`
 
   <article
     data-js-body
-    class="prose"
+    class="prose prose-p:m-0 [&_p+p]:mt-[1em] e h-0 overflow-hidden text-grey"
     id={bodyId}
     role="region"
     aria-labelledby={headerId}
   >
-    <slot name="body" />
+    <div data-js-body-inner class="pb-40 opacity-0">
+      <slot name="body" />
+    </div>
   </article>
 </section>
