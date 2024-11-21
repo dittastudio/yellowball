@@ -31,6 +31,19 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
   const observer = new IntersectionObserver(callback, options);
 
   if (container) observer.observe(container);
+
+  window.addEventListener("scroll", () => {
+    document.querySelector(".footer-ticker")?.classList.add("is-scrolling");
+
+    // Optional: Reset the flag after a delay (debounce)
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(() => {
+      document
+        .querySelector(".footer-ticker")
+        ?.classList.remove("is-scrolling");
+      console.log("User stopped scrolling");
+    }, 10); // Adjust delay time as needed
+  });
 </script>
 
 <section class="footer-ticker block w-full pt-100 pb-50">
@@ -116,6 +129,10 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy];
 
     .footer-ticker__words--right & {
       animation: ticker-right var(--duration) linear infinite;
+      animation-play-state: paused;
+    }
+
+    .footer-ticker.is-scrolling .footer-ticker__words--left & {
       animation-play-state: paused;
     }
 

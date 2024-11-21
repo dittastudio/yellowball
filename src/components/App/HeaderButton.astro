@@ -11,7 +11,7 @@ const { class: className, text, type = "transparent" } = Astro.props as Props;
 <span
   class:list={[
     "app-header-link",
-    "flex items-center h-inherit px-24 py-15 rounded-12",
+    "flex items-center h-inherit px-24 pt-[14px] pb-15 rounded-12",
     "font-heading text-13 lg:text-15 font-bold text-white",
     `is-${type}`,
     className,
@@ -55,6 +55,11 @@ const { class: className, text, type = "transparent" } = Astro.props as Props;
     &.is-navy {
       --button-bg-color: theme("colors.navy");
       --button-text-color: theme("colors.white");
+    }
+
+    &.is-yellow {
+      --button-bg-color: theme("colors.yellow");
+      --button-text-color: theme("colors.navy");
     }
 
     @media (hover: hover) {
