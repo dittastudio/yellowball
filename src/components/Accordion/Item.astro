@@ -1,25 +1,89 @@
 ---
+import { colourText } from '@/utils/maps'
+
 interface Props {
   id: string
+  color?: 'green' | 'blue' | 'yellow' | 'purple'
   class?: string
 }
 
-const { id, class: className } = Astro.props as Props
+const { id, color = 'green', class: className } = Astro.props as Props
 
 const headerId = `accordion-item-header-${id}`
 const bodyId = `accordion-item-body-${id}`
 ---
 
-<section class:list={['accordion-item', className]}>
-  <button id={headerId} class="accordion-item__header type-label">
-    <slot name="header" />
+<script>
+  import gsap from 'gsap'
 
-    <span class="accordion-item__icon">
-      <!-- <Icon name="chevron" width={9} height={6} /> -->
-    </span>
+  const accordions = [
+    ...document.querySelectorAll('[data-js=accordion-item]'),
+  ] as HTMLElement[]
+
+  accordions.forEach(accordion => {
+    const header = accordion.querySelector('[data-js-header]') as HTMLElement
+    const body = accordion.querySelector('[data-js-body]') as HTMLElement
+
+    gsap.set(body, { height: 0, overflow: 'hidden' })
+
+    const toggleAccordion = () => {
+      const isOpen = accordion.classList.contains('is-open')
+
+      if (isOpen) {
+        gsap.to(body, {
+          height: 0,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            accordion.classList.remove('accordion-item--open')
+          },
+        })
+
+        accordion.classList.remove('is-open')
+
+        body?.setAttribute('aria-hidden', 'true')
+      } else {
+        gsap.to(body, {
+          height: 'auto',
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            gsap.set(body, { height: 'auto' }) // Set to auto for flexible height
+          },
+        })
+
+        accordion.classList.add('is-open')
+
+        body?.setAttribute('aria-hidden', 'false')
+      }
+    }
+
+    header.addEventListener('click', toggleAccordion)
+  })
+</script>
+
+<section data-js="accordion-item" class:list={['accordion-item', className]}>
+  <button
+    data-js-header
+    type="button"
+    id={headerId}
+    class:list={[
+      'flex items-center gap-40 py-40',
+      'font-heading text-21 font-semibold md:text-28',
+    ]}
+  >
+    <span class={colourText[color]}>+</span>
+
+    <slot name="header" />
   </button>
 
-  <article id={bodyId} role="region" aria-labelledby={headerId}>
+  <article
+    data-js-body
+    class="prose"
+    id={bodyId}
+    role="region"
+    aria-labelledby={headerId}
+  >
     <slot name="body" />
   </article>
 </section>
