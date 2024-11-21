@@ -1,3 +1,7 @@
+interface Window {
+  scrollTimeout?: number;
+}
+
 interface ImageObject {
   src: string
   alt?: string
