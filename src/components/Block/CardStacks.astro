@@ -1,4 +1,6 @@
 ---
+import CardAvatars from '@/components/Card/Avatars.astro'
+import CardCta from '@/components/Card/Cta.astro'
 import CardFigure from '@/components/Card/Figure.astro'
 import CardMedia from '@/components/Card/Media.astro'
 import LayoutLines from '@/components/Layout/Lines.astro'
@@ -48,6 +50,8 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
           unit="+"
           headline="Active Clients"
           description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
+          color="green"
+          shape="square"
         />
       </li>
 
@@ -66,6 +70,19 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
       </li>
 
       <li class="break-inside-avoid md:mb-30">
+        <CardAvatars
+          headline="Our Agency"
+          description="Lorem ipsum dolor sit amet consectetur. Vitae tempor sollicitudin magna risus nunc. Id est aliquam cursus."
+        >
+          <img src="/images/test-avatar-1.jpg" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-2.jpg" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-3.jpg" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-4.jpg" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-5.jpg" width="80" height="80" alt="" />
+        </CardAvatars>
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
         <CardMedia
           headline="Flexible Investment Levels"
           description="From startups to established brands, we've got options to suit your budget. Most of our web projects range from £30k to £150k, but we also offer tailored solutions starting from just £2,600."
@@ -78,6 +95,8 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
           unit="+"
           headline="Website Delivered"
           description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
+          color="yellow"
+          shape="triangle"
         />
       </li>
 
@@ -101,6 +120,8 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
           unit="%"
           headline="Client Retention"
           description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+          color="blue"
+          shape="circle"
         />
       </li>
 
@@ -116,6 +137,13 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
             alt=""
           />
         </CardMedia>
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardCta
+          headline="Ready to start your next project? Call, live chat or send us a message today"
+          cta="Get in touch"
+        />
       </li>
     </ul>
   </div>
