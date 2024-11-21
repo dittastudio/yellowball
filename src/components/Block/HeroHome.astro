@@ -1,31 +1,29 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
-import Chip from "@/components/Elements/Chip.astro";
-import Link from "@/components/Elements/Link.astro";
-import TextReveal from "@/components/Elements/TextReveal.astro";
+import Icon from '@/components/Elements/Icon.astro'
+import Chip from '@/components/Elements/Chip.astro'
+import Link from '@/components/Elements/Link.astro'
+import TextReveal from '@/components/Elements/TextReveal.astro'
 ---
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-  import { gsapEasings } from "@/utils/helpers";
+  import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import { gsapEasings } from '@/utils/helpers'
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
-  const section = document.querySelector(
-    '[data-js="hero-home"]'
-  ) as HTMLElement;
-  const container = section?.querySelector(".cursor-container") as HTMLElement;
-  const cursors = [...section?.querySelectorAll(".cursor")] as HTMLElement[];
+  const section = document.querySelector('[data-js="hero-home"]') as HTMLElement
+  const container = section?.querySelector('.cursor-container') as HTMLElement
+  const cursors = [...section?.querySelectorAll('.cursor')] as HTMLElement[]
 
-  cursors.forEach((cursor) => {
+  cursors.forEach(cursor => {
     gsap.set(cursor, {
       opacity: 0,
       scale: 0.5,
       x: Math.random() * container.offsetWidth,
       y: Math.random() * container.offsetHeight,
-    });
-  });
+    })
+  })
 
   gsap.delayedCall(1, () => {
     gsap.to(cursors, {
@@ -33,17 +31,17 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
       scale: 1,
       stagger: 0.3,
       duration: 0.3,
-    });
-  });
+    })
+  })
 
-  let delayedCall: gsap.core.Tween | null = null;
+  let delayedCall: gsap.core.Tween | null = null
 
   const animation = () => {
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused: true })
 
     cursors.forEach((cursor, _index) => {
-      const easing = gsap.utils.random(gsapEasings);
-      const duration = gsap.utils.random(1, 5);
+      const easing = gsap.utils.random(gsapEasings)
+      const duration = gsap.utils.random(1, 5)
 
       tl.to(
         cursor,
@@ -53,53 +51,53 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           duration: duration,
           ease: easing,
         },
-        0
-      );
-    });
+        0,
+      )
+    })
 
-    tl.eventCallback("onComplete", () => {
-      delayedCall = gsap.delayedCall(5, () => animation().play());
-    });
+    tl.eventCallback('onComplete', () => {
+      delayedCall = gsap.delayedCall(5, () => animation().play())
+    })
 
-    return tl;
-  };
+    return tl
+  }
 
   const clearDelay = () => {
-    delayedCall?.kill();
-    delayedCall = null;
-  };
+    delayedCall?.kill()
+    delayedCall = null
+  }
 
   gsap.delayedCall(2, () => {
-    animation().play();
+    animation().play()
 
     gsap
       .timeline({
         scrollTrigger: {
           markers: false,
           trigger: section,
-          start: "10% top",
-          end: "100% center",
+          start: '10% top',
+          end: '100% center',
           scrub: 1.5,
           invalidateOnRefresh: true,
           onEnter: () => {
-            animation().pause();
-            animation().kill();
+            animation().pause()
+            animation().kill()
 
-            clearDelay();
+            clearDelay()
           },
           onEnterBack: () => {
             // clearDelay();
           },
           onLeaveBack: () => {
-            clearDelay();
+            clearDelay()
 
             delayedCall = gsap.delayedCall(1.5, () => {
-              ScrollTrigger.refresh();
-              animation().play();
-            });
+              ScrollTrigger.refresh()
+              animation().play()
+            })
           },
           onLeave: () => {
-            clearDelay();
+            clearDelay()
           },
         },
       })
@@ -107,11 +105,14 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
         x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
         y: (_index, target) => section.offsetHeight - target.offsetHeight,
         opacity: 0,
-      });
-  });
+      })
+  })
 </script>
 
-<section data-js="hero-home" class="text-center text-white py-160">
+<section
+  data-js="hero-home"
+  class="text-center text-white pt-50 md:pt-90 pb-160"
+>
   <div
     class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
