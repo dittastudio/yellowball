@@ -1,51 +1,54 @@
 ---
 import AppHeaderLogo from "@/components/App/HeaderLogo.astro";
-import AppHeaderLink from "@/components/App/HeaderLink.astro";
+import AppHeaderButton from "@/components/App/HeaderButton.astro";
 
 const classNav =
   "flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4";
+
+const classNavList = "flex items-center justify-start gap-4 mdMax:hidden";
+
+const classNavListLink = "block h-full";
 ---
 
-<header class="sticky top-0 z-50 flex justify-between p-20">
+<header class="sticky top-0 z-50 flex justify-between p-12 md:p-18">
   <nav class={classNav}>
     <AppHeaderLogo />
 
-    <ul class="flex items-center justify-start gap-4">
+    <ul class={classNavList}>
       <li>
-        <a href="/">
-          <AppHeaderLink text="Services" />
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Services" />
         </a>
       </li>
       <li>
-        <a href="/">
-          <AppHeaderLink text="Our Work" />
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Our Work" />
         </a>
       </li>
       <li>
-        <a href="/">
-          <AppHeaderLink text="Agency" />
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Agency" />
         </a>
       </li>
     </ul>
   </nav>
 
   <nav class={classNav}>
-    <ul class="flex items-center justify-start gap-4">
+    <ul class={classNavList}>
       <li>
-        <a href="/">
-          <AppHeaderLink text="Guides" />
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Guides" />
         </a>
       </li>
       <li>
-        <a href="/">
-          <AppHeaderLink text="Contact" />
-        </a>
-      </li>
-      <li>
-        <a href="/">
-          <AppHeaderLink text="Work with us" type="navy" />
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Contact" />
         </a>
       </li>
     </ul>
+
+    <a class={classNavListLink} href="/">
+      <AppHeaderButton text="Work with us" type="navy" />
+    </a>
   </nav>
 </header>

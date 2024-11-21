@@ -73,6 +73,7 @@ export default {
     },
     fontSize: {
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+      13: [`${pxToRem(13)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
@@ -169,6 +170,7 @@ export default {
       10: '10px',
       12: '12px',
       15: '15px',
+      18: '18px',
       20: '20px',
       22: '22px',
       24: '24px',

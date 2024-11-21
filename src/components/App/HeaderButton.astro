@@ -11,8 +11,8 @@ const { class: className, text, type = "transparent" } = Astro.props as Props;
 <span
   class:list={[
     "app-header-link",
-    "block px-24 py-15 rounded-12",
-    "font-heading text-15 font-bold text-white",
+    "flex items-center h-inherit px-24 py-15 rounded-12",
+    "font-heading text-13 lg:text-15 font-bold text-white",
     `is-${type}`,
     className,
   ]}
