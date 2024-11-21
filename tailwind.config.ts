@@ -50,6 +50,7 @@ export default {
     colors: {
       current: "currentColor",
       transparent: "transparent",
+      offblack: "#838383",
       black: "#000000",
       white: "#FFFFFF",
       yellow: "#EAFF01",
