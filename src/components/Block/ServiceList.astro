@@ -1,25 +1,25 @@
 ---
-import Button from "@/components/Elements/Button.astro";
-import Cube from "@/components/Elements/Cube.astro";
-import Icon from "@/components/Elements/Icon.astro";
-import ServiceItem from "@/components/Elements/ServiceItem.astro";
-import TextReveal from "@/components/Elements/TextReveal.astro";
+import Button from '@/components/Elements/Button.astro'
+import Cube from '@/components/Elements/Cube.astro'
+import Icon from '@/components/Elements/Icon.astro'
+import ServiceItem from '@/components/Elements/ServiceItem.astro'
+import TextReveal from '@/components/Elements/TextReveal.astro'
 ---
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
   const section = document.querySelector(
-    '[data-js="service-list"]'
-  ) as HTMLElement;
+    '[data-js="service-list"]',
+  ) as HTMLElement
   const items = [
-    ...section?.querySelectorAll(".service-item"),
-  ] as HTMLElement[];
+    ...section?.querySelectorAll('[data-js-item]'),
+  ] as HTMLElement[]
 
-  items.forEach((item) => {
+  items.forEach(item => {
     gsap.fromTo(
       item,
       {
@@ -33,13 +33,13 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
         skewX: 0,
         scrollTrigger: {
           trigger: item,
-          start: "top 80%",
-          end: "center center",
+          start: 'top 80%',
+          end: 'center center',
           scrub: 1.5,
         },
-      }
-    );
-  });
+      },
+    )
+  })
 </script>
 
 <section data-js="service-list" class="text-white py-100">
@@ -71,7 +71,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
 
     <div class="md:py-[50vh]">
       <ul class="flex flex-col gap-50 md:gap-110">
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="WordPress Development"
             description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
@@ -82,7 +82,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           </ServiceItem>
         </li>
 
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="UX/UI Design"
             description="User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action."
@@ -93,7 +93,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           </ServiceItem>
         </li>
 
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="WooCommerce Development"
             description="Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert."
@@ -104,7 +104,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           </ServiceItem>
         </li>
 
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="Laravel Development"
             description="Complex problems solved simply. Build custom web applications that deliver seamless user experiences."
@@ -115,7 +115,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           </ServiceItem>
         </li>
 
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="White Label Web Development"
             description="Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike."
@@ -126,7 +126,7 @@ import TextReveal from "@/components/Elements/TextReveal.astro";
           </ServiceItem>
         </li>
 
-        <li class="service-item">
+        <li data-js-item>
           <ServiceItem
             headline="eCommerce"
             description="From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers."

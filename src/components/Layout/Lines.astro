@@ -1,22 +1,28 @@
 ---
 interface Props {
-  theme?: string;
-  class?: string;
+  tag?: string
+  theme?: string
+  class?: string
 }
 
-const { theme = "dark", class: className } = Astro.props as Props;
+const {
+  tag: Tag = 'div',
+  theme = 'dark',
+  class: className,
+} = Astro.props as Props
 ---
 
-<div class:list={["layout-lines", `is-${theme}`, className]}>
+<Tag class:list={['layout-lines', `is-${theme}`, className]}>
   <div class="layout-lines__shape"></div>
 
   <slot />
-</div>
+</Tag>
 
 <style>
   .layout-lines {
     position: relative;
     overflow-x: clip;
+    isolation: isolate;
 
     &.is-dark {
       --line-color: rgba(255, 255, 255, 0.1);
@@ -86,7 +92,7 @@ const { theme = "dark", class: className } = Astro.props as Props;
 
     .layout-lines.is-dark > & {
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -94,13 +100,13 @@ const { theme = "dark", class: className } = Astro.props as Props;
         height: 50vh;
         background-image: linear-gradient(
           to bottom,
-          theme("colors.navy") 0,
+          theme('colors.navy') 0,
           var(--line-transparent) 100%
         );
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: 0;
@@ -108,7 +114,7 @@ const { theme = "dark", class: className } = Astro.props as Props;
         height: 50vh;
         background-image: linear-gradient(
           to top,
-          theme("colors.navy") 0,
+          theme('colors.navy') 0,
           var(--line-transparent) 100%
         );
       }

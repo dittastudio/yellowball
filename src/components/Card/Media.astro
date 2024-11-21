@@ -1,0 +1,47 @@
+---
+interface Props {
+  headline: string;
+  description: string;
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+
+const {
+  headline,
+  description,
+  class: className,
+  ...props
+} = Astro.props as Props;
+---
+
+<div
+  data-js="card-media"
+  class:list={["w-full bg-white text-left rounded-30 lg:rounded-50", className]}
+  {...props}
+>
+  <a
+    href="/"
+    class="group w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-30 border border-navy/15"
+  >
+    <div class="flex flex-col justify-start items-start gap-15">
+      <h6
+        class="font-heading font-semibold text-21 lg:text-28 text-balance text-navy"
+      >
+        {headline}
+      </h6>
+
+      <p class="font-normal text-15 lg:text-18 text-navy-lightest text-balance">
+        {description}
+      </p>
+    </div>
+
+    {
+      hasSlotDefault && (
+        <div class="w-full shadow-media">
+          <slot />
+        </div>
+      )
+    }
+  </a>
+</div>

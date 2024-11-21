@@ -61,6 +61,7 @@ export default {
       navy: "#1C1D2C",
       'navy-light': "#2A2B3A",
       'navy-lighter': "#3E3E4E",
+      "navy-lightest": "#474747",
       cream: "#F7F7F0",
       grey: "#BBBBBB",
 
@@ -169,7 +170,9 @@ export default {
       8: '8px',
       10: '10px',
       12: '12px',
+      14: '14px',
       15: '15px',
+      16: '16px',
       18: '18px',
       20: '20px',
       22: '22px',
@@ -186,7 +189,9 @@ export default {
       110: '110px',
       120: '120px',
       160: '160px',
+      180: '180px',
       200: '200px',
+      220: '220px',
       240: '240px',
     },
     transitionTimingFunction: {
@@ -211,7 +216,8 @@ export default {
         16: '16px',
         20: '20px',
         30: '30px',
-        40: '40px'
+        40: '40px',
+        80: '80px',
       },
       backdropBlur: {
         20: '20px',
