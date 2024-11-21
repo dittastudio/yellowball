@@ -1,7 +1,3 @@
----
-
----
-
 <div class="header-logo">
   <svg
     class="header-logo__svg"
@@ -95,17 +91,19 @@
     --start-width: 50px;
     --end-width: 165px;
 
-    position: relative;
     border-radius: theme('borderRadius.12');
     background-color: theme('colors.navy');
     width: var(--start-width);
+    overflow: hidden;
 
-    animation: header-grow-leave 0.5s theme('transitionTimingFunction.outExpo')
-      both;
+    @screen lg {
+      animation: header-grow-leave 0.5s
+        theme('transitionTimingFunction.outExpo') both;
 
-    &:hover {
-      animation: header-grow-enter 0.5s theme('transitionTimingFunction.smooth')
-        both;
+      &:hover {
+        animation: header-grow-enter 0.5s
+          theme('transitionTimingFunction.smooth') both;
+      }
     }
 
     @media not (hover: hover) {
@@ -133,20 +131,18 @@
     }
   }
 
-  .header-logo__svg {
-    position: relative;
-    left: 0;
-  }
-
   .header-logo__letter--y {
     scale: var(--initial-scale);
     translate: 0 -20% 0;
     transform-origin: 19% 14%;
-    transition: all 0.5s theme('transitionTimingFunction.outBack');
 
-    .header-logo:hover & {
-      scale: 1;
-      translate: 0 0 0;
+    @screen lg {
+      transition: all 0.5s theme('transitionTimingFunction.outBack');
+
+      .header-logo:hover & {
+        scale: 1;
+        translate: 0 0 0;
+      }
     }
   }
 
@@ -154,43 +150,46 @@
     --delay: 0.025s;
 
     opacity: 0;
-    animation: header-wave-leave 0.2s theme('transitionTimingFunction.smooth')
-      both;
 
-    .header-logo:hover & {
-      animation: header-wave-enter 0.5s theme('transitionTimingFunction.smooth')
+    @screen lg {
+      animation: header-wave-leave 0.2s theme('transitionTimingFunction.smooth')
         both;
 
-      .header-logo__letter--e {
-        animation-delay: calc(1 * var(--delay));
-      }
+      .header-logo:hover & {
+        animation: header-wave-enter 0.5s
+          theme('transitionTimingFunction.smooth') both;
 
-      &.header-logo__letter--l1 {
-        animation-delay: calc(2 * var(--delay));
-      }
+        .header-logo__letter--e {
+          animation-delay: calc(1 * var(--delay));
+        }
 
-      &.header-logo__letter--l2 {
-        animation-delay: calc(3 * var(--delay));
-      }
+        &.header-logo__letter--l1 {
+          animation-delay: calc(2 * var(--delay));
+        }
 
-      &.header-logo__letter--w {
-        animation-delay: calc(4 * var(--delay));
-      }
+        &.header-logo__letter--l2 {
+          animation-delay: calc(3 * var(--delay));
+        }
 
-      &.header-logo__letter--b {
-        animation-delay: calc(5 * var(--delay));
-      }
+        &.header-logo__letter--w {
+          animation-delay: calc(4 * var(--delay));
+        }
 
-      &.header-logo__letter--a {
-        animation-delay: calc(6 * var(--delay));
-      }
+        &.header-logo__letter--b {
+          animation-delay: calc(5 * var(--delay));
+        }
 
-      &.header-logo__letter--l3 {
-        animation-delay: calc(7 * var(--delay));
-      }
+        &.header-logo__letter--a {
+          animation-delay: calc(6 * var(--delay));
+        }
 
-      &.header-logo__letter--l4 {
-        animation-delay: calc(8 * var(--delay));
+        &.header-logo__letter--l3 {
+          animation-delay: calc(7 * var(--delay));
+        }
+
+        &.header-logo__letter--l4 {
+          animation-delay: calc(8 * var(--delay));
+        }
       }
     }
   }
@@ -224,13 +223,16 @@
 
   .header-logo__letter--o {
     opacity: 0;
-    translate: 0 20% 0;
-    animation: header-bump-leave 0.2s theme('transitionTimingFunction.outBack')
-      both;
 
-    .header-logo:hover & {
-      animation: header-bump-enter 0.2s
-        theme('transitionTimingFunction.outBack') 0.7s both;
+    @screen lg {
+      translate: 0 20% 0;
+      animation: header-bump-leave 0.2s
+        theme('transitionTimingFunction.outBack') both;
+
+      .header-logo:hover & {
+        animation: header-bump-enter 0.2s
+          theme('transitionTimingFunction.outBack') 0.7s both;
+      }
     }
   }
 
@@ -259,13 +261,15 @@
   }
 
   .header-logo__word-start {
-    translate: 3% 0 0;
-    animation: header-nudge-right-leave 0.2s
-      theme('transitionTimingFunction.smooth') both;
+    @screen lg {
+      translate: 3% 0 0;
+      animation: header-nudge-right-leave 0.2s
+        theme('transitionTimingFunction.smooth') both;
 
-    .header-logo:hover & {
-      animation: header-nudge-right-enter 0.15s
-        theme('transitionTimingFunction.smooth') 0.7s both;
+      .header-logo:hover & {
+        animation: header-nudge-right-enter 0.15s
+          theme('transitionTimingFunction.smooth') 0.7s both;
+      }
     }
   }
 
@@ -290,13 +294,16 @@
   }
 
   .header-logo__word-end {
-    translate: -3% 0 0;
-    animation: header-nudge-left-leave 0.2s
-      theme('transitionTimingFunction.smooth') both;
+    @screen lg {
+      translate: -3% 0 0;
 
-    .header-logo:hover & {
-      animation: header-nudge-left-enter 0.15s
-        theme('transitionTimingFunction.smooth') 0.7s both;
+      animation: header-nudge-left-leave 0.2s
+        theme('transitionTimingFunction.smooth') both;
+
+      .header-logo:hover & {
+        animation: header-nudge-left-enter 0.15s
+          theme('transitionTimingFunction.smooth') 0.7s both;
+      }
     }
   }
 
@@ -324,22 +331,24 @@
     --ball-ease: cubic-bezier(0.54, 1.16, 0.44, 1);
     --ball-start-position: -62% 0 0;
 
-    position: absolute;
     scale: var(--initial-scale);
     translate: var(--ball-start-position);
     transform-origin: 100% 65%;
-    animation: header-roll-leave 0.5s theme('transitionTimingFunction.outExpo')
-      forwards;
 
-    .header-logo:hover & {
-      animation: header-roll-enter 0.7s var(--ball-ease) forwards;
+    @screen lg {
+      animation: header-roll-leave 0.5s
+        theme('transitionTimingFunction.outExpo') both;
+
+      .header-logo:hover & {
+        animation: header-roll-enter 0.7s var(--ball-ease) both;
+      }
     }
   }
 
   @keyframes header-roll-enter {
     0% {
-      translate: var(--ball-start-position);
       scale: var(--initial-scale);
+      translate: var(--ball-start-position);
     }
 
     100% {
@@ -355,8 +364,8 @@
     }
 
     100% {
-      translate: var(--ball-start-position);
       scale: var(--initial-scale);
+      translate: var(--ball-start-position);
     }
   }
 </style>
