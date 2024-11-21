@@ -1,0 +1,76 @@
+---
+interface Props {
+  figure: number
+  unit: string
+  headline: string
+  description: string
+  class?: string
+}
+
+const {
+  figure,
+  unit,
+  headline,
+  description,
+  class: className,
+  ...props
+} = Astro.props as Props
+---
+
+<script>
+  import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const cards = [
+    ...document.querySelectorAll('[data-js="card-figure"]'),
+  ] as HTMLElement[]
+
+  cards.forEach(card => {
+    const figure = card?.querySelector('[data-js-figure]') as HTMLElement
+
+    gsap.from(figure, {
+      textContent: 0,
+      duration: 2,
+      snap: { textContent: 1 },
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: figure,
+        start: 'top bottom',
+      },
+    })
+  })
+</script>
+
+<div
+  data-js="card-figure"
+  class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
+  {...props}
+>
+  <a
+    href="/"
+    class="group w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-5 lg:gap-10 border border-navy/15"
+  >
+    {
+      figure && unit && (
+        <p class="flex font-heading font-semibold text-56 lg:text-80 text-balance text-navy">
+          <span data-js-figure>{figure}</span>
+          {unit}
+        </p>
+      )
+    }
+
+    <div class="flex flex-col justify-start items-start gap-15">
+      <h6
+        class="font-heading font-semibold text-21 lg:text-28 text-balance text-navy"
+      >
+        {headline}
+      </h6>
+
+      <p class="font-normal text-15 lg:text-18 text-navy-lightest text-balance">
+        {description}
+      </p>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,122 @@
+---
+import CardFigure from '@/components/Card/Figure.astro'
+import CardMedia from '@/components/Card/Media.astro'
+import LayoutLines from '@/components/Layout/Lines.astro'
+import TextReveal from '@/components/Elements/TextReveal.astro'
+---
+
+<LayoutLines
+  data-js="card-stacks"
+  theme="light"
+  tag="section"
+  class="wrapper-full bg-cream text-navy rounded-40 lg:rounded-80 pt-60 pb-80 lg:pt-160 lg:pb-180"
+>
+  <div class="w-full max-w-[1050px] mx-auto flex flex-col gap-60 lg:gap-110">
+    <div class="flex flex-col gap-60 lg:gap-80">
+      <TextReveal>
+        <h2 class="font-heading text-fluid-h2 font-semibold">
+          <span class="!block pl-[1ch]">Rooted in London,</span>
+          connected Worldwide
+        </h2>
+      </TextReveal>
+
+      <p class="text-17 lg:text-21 pl-80 xl:pl-220">
+        Yellowball combines the best of both worlds: London-based expertise with
+        the strength of a globally distributed team. We're big enough to tackle
+        major challenges, yet small enough to care about every detail.
+      </p>
+    </div>
+
+    <ul class="mdMax:flex mdMax:flex-col md:columns-2 gap-30 text-center">
+      <li class="break-inside-avoid md:mb-30">
+        <CardMedia
+          headline="Agile Team, Powerful Results"
+          description="Our hand-picked team of over 25 designers, engineers, SEO experts, and paid media specialists is agile, responsive, and invested in every project."
+        >
+          <img
+            src="/images/test-project-1.png"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardMedia>
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardFigure
+          figure={100}
+          unit="+"
+          headline="Active Clients"
+          description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
+        />
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardMedia
+          headline="Best-in-class Tech Stack"
+          description="We leverage industry-leading tools like Asana, SEMrush, GA4, Looker Studio, Figma and Adobe to design, build, and optimise digital experiences that perform at the highest level."
+        >
+          <img
+            src="/images/test-project-1.png"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardMedia>
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardMedia
+          headline="Flexible Investment Levels"
+          description="From startups to established brands, we've got options to suit your budget. Most of our web projects range from £30k to £150k, but we also offer tailored solutions starting from just £2,600."
+        />
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardFigure
+          figure={150}
+          unit="+"
+          headline="Website Delivered"
+          description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
+        />
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardMedia
+          headline="Global Reach, Local Expertise"
+          description="With teams in London and South Africa, we combine local insights with a global perspective to deliver world-class digital solutions."
+        >
+          <img
+            src="/images/test-project-1.png"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardMedia>
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardFigure
+          figure={84}
+          unit="%"
+          headline="Client Retention"
+          description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+        />
+      </li>
+
+      <li class="break-inside-avoid md:mb-30">
+        <CardMedia
+          headline="Certified Google Partner"
+          description="Being a certified Google Partner means we're always on top of the latest digital marketing trends, ensuring your brand gets the best performance and results every step of the way."
+        >
+          <img
+            src="/images/test-project-1.png"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardMedia>
+      </li>
+    </ul>
+  </div>
+</LayoutLines>
