@@ -3,7 +3,7 @@ import Icon from "@/components/Elements/Icon.astro";
 
 interface Props {
   class?: string;
-  theme?: "white" | "white-border";
+  type?: "white" | "white-border";
   text: string;
   hasArrow?: boolean;
 }
@@ -11,7 +11,7 @@ interface Props {
 const {
   class: className,
   text,
-  theme = "white",
+  type = "white",
   hasArrow = false,
 } = Astro.props as Props;
 ---
@@ -24,7 +24,7 @@ const {
     "md:px-[33px] md:py-[15px]",
     "rounded-20",
     "font-heading text-15 md:text-18 font-bold",
-    `is-${theme}`,
+    `is-${type}`,
     className,
   ]}
 >

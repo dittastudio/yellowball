@@ -76,6 +76,12 @@
     position: relative;
     border-radius: theme("borderRadius.12");
     background-color: theme("colors.black");
+    width: var(--start-width);
+    transition: width 0.5s theme("transitionTimingFunction.smooth");
+
+    &:hover {
+      width: var(--end-width);
+    }
   }
 
   .header-logo__letter:not(.header-logo__letter--y, .header-logo__letter--o) {
@@ -118,10 +124,6 @@
       &.header-logo__letter--l4 {
         animation-delay: calc(8 * var(--delay));
       }
-
-      /* &:nth-child(10) {
-        animation-delay: calc(9 * var(--delay));
-      } */
     }
   }
 

@@ -1,40 +1,50 @@
 ---
 import AppHeaderLogo from "@/components/App/HeaderLogo.astro";
+import AppHeaderLink from "@/components/App/HeaderLink.astro";
 
-const glossBg =
-  "flex bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4";
-
-const classLink =
-  "block text-15 text-white text-center font-heading font-bold px-24 py-15 rounded-12";
+const classNav =
+  "flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4";
 ---
 
-<header class="sticky top-0 z-50 flex justify-between">
-  <nav class={glossBg}>
+<header class="sticky top-0 z-50 flex justify-between p-20">
+  <nav class={classNav}>
     <AppHeaderLogo />
 
-    <ul class="w-auto flex items-center justify-start">
+    <ul class="flex items-center justify-start gap-4">
       <li>
-        <a href="/" class:list={[classLink]}>Services</a>
+        <a href="/">
+          <AppHeaderLink text="Services" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Our Work</a>
+        <a href="/">
+          <AppHeaderLink text="Our Work" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Agency</a>
+        <a href="/">
+          <AppHeaderLink text="Agency" />
+        </a>
       </li>
     </ul>
   </nav>
 
-  <nav class={glossBg}>
-    <ul class="w-auto flex items-center justify-start">
+  <nav class={classNav}>
+    <ul class="flex items-center justify-start gap-4">
       <li>
-        <a href="/" class:list={[classLink]}>Guides</a>
+        <a href="/">
+          <AppHeaderLink text="Guides" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Contact</a>
+        <a href="/">
+          <AppHeaderLink text="Contact" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink, "bg-navy"]}>Work with us</a>
+        <a href="/">
+          <AppHeaderLink text="Work with us" type="navy" />
+        </a>
       </li>
     </ul>
   </nav>
