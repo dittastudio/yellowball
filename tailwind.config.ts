@@ -50,8 +50,10 @@ export default {
     colors: {
       current: "currentColor",
       transparent: "transparent",
+      offblack: "#838383",
       black: "#000000",
       white: "#FFFFFF",
+      whiteRgba: 'rgb(255 255 255 / <alpha-value>)',
       yellow: "#EAFF01",
       green: "#ADF454",
       blue: "#51DBEA",
@@ -72,7 +74,8 @@ export default {
     },
     fontSize: {
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
-      15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.02em' }],
+      13: [`${pxToRem(13)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+      15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       20: [`${pxToRem(20)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
@@ -170,6 +173,7 @@ export default {
       14: '14px',
       15: '15px',
       16: '16px',
+      18: '18px',
       20: '20px',
       22: '22px',
       24: '24px',

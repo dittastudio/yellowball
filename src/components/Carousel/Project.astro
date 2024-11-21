@@ -1,67 +1,80 @@
 ---
-import CardProject from "@/components/Card/Project.astro";
+import CardProject from '@/components/Card/Project.astro'
 
 interface Slide {
-  imageMobile: ImageObject;
-  imageDesktop: ImageObject;
+  imageMobile: ImageObject
+  imageDesktop: ImageObject
 }
 
 interface Props {
-  slides: Slide[];
-  class?: string;
+  slides: Slide[]
+  class?: string
 }
 
-const { slides, class: className } = Astro.props as Props;
+const { slides, class: className } = Astro.props as Props
 
-const classes = ["carousel-project", className];
+const classes = ['carousel-project', className]
 ---
 
 <script>
-  import Swiper from "swiper";
-  import type { SwiperOptions } from "swiper/types";
-  import { Autoplay, Navigation, Pagination, Keyboard } from "swiper/modules";
+  import Swiper from 'swiper'
+  import type { SwiperOptions } from 'swiper/types'
+  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules'
 
-  const swiperParams: SwiperOptions = {
-    speed: 1000,
-    slidesPerView: "auto",
-    centeredSlides: true,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    keyboard: {
-      enabled: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      renderBullet(_, className) {
-        return `
+  const carousels = [
+    ...document.querySelectorAll('[data-js=carousel-project]'),
+  ] as HTMLElement[]
+
+  carousels.forEach(carousel => {
+    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement
+
+    if (swiperEl) {
+      const swiperParams: SwiperOptions = {
+        speed: 1000,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 30,
+        slideToClickedSlide: true,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        keyboard: {
+          enabled: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          renderBullet(_, className) {
+            return `
           <button type="button" class="${className}">
             <span class="carousel-project__pill"></span>
           </button>
-        `;
-      },
-    },
-  };
+        `
+          },
+        },
+      }
 
-  new Swiper(".swiper", {
-    modules: [Autoplay, Navigation, Pagination, Keyboard],
-    ...swiperParams,
-  });
+      new Swiper(swiperEl, {
+        modules: [Autoplay, Navigation, Pagination, Keyboard],
+        ...swiperParams,
+      })
+    }
+  })
 </script>
 
-<!-- Slider main container -->
-<div class:list={classes} style={`--_slidesNumber: ${slides?.length}`}>
-  <div class="swiper">
+<div
+  data-js="carousel-project"
+  class:list={classes}
+  style={`--_slidesNumber: ${slides?.length}`}
+>
+  <div data-js-swiper class="swiper">
     <div class="swiper-wrapper">
-      <!-- Slides -->
       {
         slides.map(({ imageMobile, imageDesktop }) => (
           <div class="swiper-slide">
@@ -70,18 +83,18 @@ const classes = ["carousel-project", className];
         ))
       }
     </div>
-    <!-- If we need pagination -->
+
     <div class="swiper-pagination"></div>
 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <!-- TODO: Add navigation buttons? -->
+    <!-- <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div> -->
   </div>
 </div>
 
 <style>
   .carousel-project {
-    --_nudge: theme("spacing.50");
+    --_nudge: theme('spacing.50');
 
     width: 100%;
   }
@@ -113,8 +126,8 @@ const classes = ["carousel-project", className];
     flex-shrink: 0;
     width: 100%;
     translate: 0 var(--_nudge) 0;
-    transition: translate theme("transitionDuration.500")
-      theme("transitionTimingFunction.smooth");
+    transition: translate theme('transitionDuration.500')
+      theme('transitionTimingFunction.smooth');
 
     &.swiper-slide-active {
       translate: 0 0 0;
@@ -143,12 +156,12 @@ const classes = ["carousel-project", className];
     :global(.swiper-pagination-bullet) {
       display: block;
       opacity: 0.2;
-      border-radius: theme("borderRadius.full");
+      border-radius: theme('borderRadius.full');
       transition:
-        opacity theme("transitionDuration.500")
-          theme("transitionTimingFunction.smooth"),
-        flex-grow theme("transitionDuration.500")
-          theme("transitionTimingFunction.smooth");
+        opacity theme('transitionDuration.500')
+          theme('transitionTimingFunction.smooth'),
+        flex-grow theme('transitionDuration.500')
+          theme('transitionTimingFunction.smooth');
       flex-shrink: 0;
       flex-grow: calc(1 / 4);
       padding: var(--_pill-padding-y) var(--_pill-padding-x);
@@ -162,9 +175,9 @@ const classes = ["carousel-project", className];
     :global(.carousel-project__pill) {
       display: block;
       width: 100%;
-      height: theme("spacing.4");
-      background-color: theme("colors.white");
-      border-radius: theme("borderRadius.full");
+      height: theme('spacing.4');
+      background-color: theme('colors.white');
+      border-radius: theme('borderRadius.full');
     }
   }
 </style>

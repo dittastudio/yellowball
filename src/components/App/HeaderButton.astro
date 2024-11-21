@@ -1,0 +1,80 @@
+---
+interface Props {
+  class?: string;
+  type?: "transparent" | "navy";
+  text: string;
+}
+
+const { class: className, text, type = "transparent" } = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    "app-header-link",
+    "flex items-center h-inherit px-24 pt-[14px] pb-15 rounded-12",
+    "font-heading text-13 lg:text-15 font-bold text-white",
+    `is-${type}`,
+    className,
+  ]}
+>
+  <span class="relative -top-[0.1em]">
+    {text}
+  </span>
+</span>
+
+<style>
+  .app-header-link {
+    --button-bg-color: theme("colors.transparent");
+    --button-text-color: theme("colors.white");
+
+    position: relative;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition:
+      color theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth"),
+      background-color theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: theme("colors.navy");
+      opacity: 0;
+      border-radius: inherit;
+      transition: opacity theme("transitionDuration.150")
+        theme("transitionTimingFunction.smooth");
+    }
+
+    &.is-transparent {
+      --button-bg-color: theme("colors.transparent");
+      --button-text-color: theme("colors.white");
+    }
+
+    &.is-navy {
+      --button-bg-color: theme("colors.navy");
+      --button-text-color: theme("colors.white");
+    }
+
+    &.is-yellow {
+      --button-bg-color: theme("colors.yellow");
+      --button-text-color: theme("colors.navy");
+    }
+
+    @media (hover: hover) {
+      :global(a):hover &,
+      :global(button):not(:disabled):hover & {
+        --button-bg-color: theme("colors.yellow");
+        --button-text-color: theme("colors.navy");
+      }
+    }
+
+    :global(a):active &,
+    :global(button):not(:disabled):active & {
+      &::after {
+        opacity: 0.1;
+      }
+    }
+  }
+</style>

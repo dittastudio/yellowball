@@ -1,16 +1,17 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
 import Layout from "../layouts/Layout.astro";
-import Cube from "@/components/Elements/Cube.astro";
-import Chip from "@/components/Elements/Chip.astro";
+import AppHeaderLogo from "@/components/App/HeaderLogo.astro";
+import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
 import Button from "@/components/Elements/Button.astro";
+import CardProject from "@/components/Card/Project.astro";
+import Chip from "@/components/Elements/Chip.astro";
+import Cube from "@/components/Elements/Cube.astro";
 import HeadingBanner from "@/components/Block/HeadingBanner.astro";
 import HeroText from "@/components/Block/HeroText.astro";
+import Icon from "@/components/Elements/Icon.astro";
+import LayoutLines from "@/components/Layout/Lines.astro";
 import ServiceCards from "@/components/Block/ServiceCards.astro";
 import ServiceItem from "@/components/Elements/ServiceItem.astro";
-import LayoutLines from "@/components/Layout/Lines.astro";
-import CardProject from "@/components/Card/Project.astro";
-import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
 
 const imageMobileTest: ImageObject = {
   src: "/images/portrait-1.jpg",
@@ -25,12 +26,23 @@ const imageDesktopTest: ImageObject = {
   width: 1600,
   height: 900,
 };
+
+const sgSection = "wrapper my-100";
+const sgHeading = "font-heading font-bold text-21 my-20 opacity-50";
 ---
 
 <Layout title="Styleguide">
   <main class="mt-200">
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 mb-20">Buttons</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Logo</h1>
+
+      <div class="flex flex-wrap gap-8">
+        <AppHeaderLogo />
+      </div>
+    </section>
+
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Buttons</h1>
 
       <div class="flex flex-wrap gap-8">
         <button type="button">
@@ -50,13 +62,13 @@ const imageDesktopTest: ImageObject = {
         </button>
 
         <button type="button">
-          <Button text="View all projects" theme="white-border" />
+          <Button text="View all projects" type="white-border" />
         </button>
       </div>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Chips</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Chips</h1>
 
       <div class="flex flex-wrap gap-8">
         <Chip title="PPC Team" class="bg-blue" />
@@ -66,8 +78,8 @@ const imageDesktopTest: ImageObject = {
       </div>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Cubes</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Cubes</h1>
 
       <div class="flex flex-wrap gap-8">
         <Cube iconSize="lg">
@@ -112,8 +124,8 @@ const imageDesktopTest: ImageObject = {
       </div>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Shapes</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Shapes</h1>
 
       <div class="flex flex-wrap gap-8">
         <Icon name="shape-triangle" class="block w-20 text-yellow" />
@@ -122,8 +134,8 @@ const imageDesktopTest: ImageObject = {
       </div>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Service</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Service</h1>
       <p class="font-semibold text-15 my-20">&lt;ServiceItem /&gt;</p>
 
       <ServiceItem
@@ -136,8 +148,8 @@ const imageDesktopTest: ImageObject = {
       </ServiceItem>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Blocks</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Blocks</h1>
 
       <p class="font-semibold text-15 my-20">&lt;HeadingBanner /&gt;</p>
       <HeadingBanner />
@@ -158,8 +170,8 @@ const imageDesktopTest: ImageObject = {
       </LayoutLines>
     </section>
 
-    <section class="wrapper my-40">
-      <h1 class="font-heading font-bold text-21 my-20">Card Project</h1>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Card Project</h1>
 
       <CardProject
         imageMobile={imageMobileTest}

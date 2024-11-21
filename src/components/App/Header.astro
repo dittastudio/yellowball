@@ -1,38 +1,60 @@
 ---
-const classLink =
-  "block text-15 text-white text-center font-heading font-bold px-24 py-15 rounded-12";
+import AppHeaderLogo from '@/components/App/HeaderLogo.astro'
+import AppHeaderButton from '@/components/App/HeaderButton.astro'
+
+const classNav =
+  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4'
+
+const classNavList = 'flex items-center justify-start gap-4 mdMax:hidden'
+
+const classNavListLink = 'block h-full'
 ---
 
-<header class="fixed top-15 left-15 right-15 z-50 flex justify-between">
-  <nav
-    class="w-auto bg-[rgba(131,131,131,0.1)] backdrop-blur-20 rounded-16 border border-[rgba(255,255,255,0.1)] p-4"
-  >
-    <ul class="w-auto flex items-center justify-start">
+<header class="sticky top-0 z-50 flex justify-between p-12 md:p-18">
+  <nav class={classNav}>
+    <a class="block" href="/">
+      <AppHeaderLogo />
+    </a>
+
+    <ul class={classNavList}>
       <li>
-        <a href="/" class:list={[classLink]}>Services</a>
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Services" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Our Work</a>
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Our Work" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Agency</a>
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Agency" />
+        </a>
       </li>
     </ul>
   </nav>
 
-  <nav
-    class="w-auto bg-[rgba(131,131,131,0.1)] backdrop-blur-20 rounded-16 border border-[rgba(255,255,255,0.1)] p-4"
-  >
-    <ul class="w-auto flex items-center justify-start">
+  <nav class={classNav}>
+    <ul class={classNavList}>
       <li>
-        <a href="/" class:list={[classLink]}>Guides</a>
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Guides" />
+        </a>
       </li>
       <li>
-        <a href="/" class:list={[classLink]}>Contact</a>
-      </li>
-      <li>
-        <a href="/" class:list={[classLink, "bg-navy"]}>Work with us</a>
+        <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Contact" />
+        </a>
       </li>
     </ul>
+
+    <button type="button" class="md:hidden">
+      <AppHeaderButton text="Menu" type="yellow" />
+    </button>
+
+    <a class={classNavListLink} href="/">
+      <AppHeaderButton text="Work with us" type="navy" />
+    </a>
   </nav>
 </header>
