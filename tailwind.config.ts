@@ -74,6 +74,7 @@ export default {
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
+      11: [`${pxToRem(11)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       13: [`${pxToRem(13)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],

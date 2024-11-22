@@ -1,16 +1,16 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
+import Icon from '@/components/Elements/Icon.astro'
 
 interface Props {
-  title: string;
-  headline: string;
-  description: string;
-  cta: string;
-  color?: "yellow" | "green" | "blue";
-  class?: string;
+  title: string
+  headline: string
+  description: string
+  cta: string
+  color?: 'yellow' | 'green' | 'blue'
+  class?: string
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = !!Astro.slots.default
 const {
   title,
   headline,
@@ -19,32 +19,32 @@ const {
   color,
   class: className,
   ...props
-} = Astro.props as Props;
+} = Astro.props as Props
 
 const colors = {
-  yellow: "text-yellow",
-  green: "text-green",
-  blue: "text-blue",
-};
+  yellow: 'text-yellow',
+  green: 'text-green',
+  blue: 'text-blue',
+}
 
-const colorTitle = colors[color as keyof typeof colors] ?? "";
-const classes = ["card-project-hero", className];
+const colorTitle = colors[color as keyof typeof colors] ?? ''
+const classes = ['card-project-hero', className]
 ---
 
 <script>
   const cards = [
     ...document.querySelectorAll('[data-js="card-project-hero"]'),
-  ] as HTMLElement[];
+  ] as HTMLElement[]
 
-  cards.forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const cursPosX = e.pageX - card.offsetLeft;
-      const cursPosY = e.pageY - card.offsetTop;
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const cursPosX = e.pageX - card.offsetLeft
+      const cursPosY = e.pageY - card.offsetTop
 
-      card.style.setProperty("--x", `${cursPosX}px`);
-      card.style.setProperty("--y", `${cursPosY}px`);
-    });
-  });
+      card.style.setProperty('--x', `${cursPosX}px`)
+      card.style.setProperty('--y', `${cursPosY}px`)
+    })
+  })
 </script>
 
 <style>
@@ -59,7 +59,7 @@ const classes = ["card-project-hero", className];
     &__inner {
       &::before {
         opacity: 0;
-        content: "";
+        content: '';
         position: absolute;
         top: var(--y);
         left: var(--x);
@@ -108,7 +108,7 @@ const classes = ["card-project-hero", className];
   >
     <a
       href="/"
-      class="card-project-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-navy-lighter p-1"
+      class="card-project-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
     >
       <div
         class="card-project-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
@@ -123,7 +123,7 @@ const classes = ["card-project-hero", className];
               <p
                 class:list={[
                   colorTitle,
-                  "font-heading font-semibold text-15 lg:text-18 text-balance",
+                  'font-heading font-semibold text-15 lg:text-18 text-balance',
                 ]}
               >
                 {title}

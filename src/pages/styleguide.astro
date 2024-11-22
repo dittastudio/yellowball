@@ -4,6 +4,7 @@ import AppHeaderLogo from '@/components/App/HeaderLogo.astro'
 import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro'
 import Button from '@/components/Elements/Button.astro'
 import CardProject from '@/components/Card/Project.astro'
+import CardInsight from '@/components/Card/Insight.astro'
 import Chip from '@/components/Elements/Chip.astro'
 import Cube from '@/components/Elements/Cube.astro'
 import HeadingBanner from '@/components/Block/HeadingBanner.astro'
@@ -217,6 +218,39 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50'
         imageMobile={imageMobileTest}
         imageDesktop={imageDesktopTest}
       />
+    </section>
+
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Card Insight</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-30">
+        <CardInsight
+          title="Web Design"
+          headline="10 Steps to a Reliable Website Marketing Strategy"
+          color="yellow"
+          time="3 Min Read"
+        >
+          <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
+        </CardInsight>
+
+        <CardInsight
+          title="SEO"
+          headline="A WordPress SEO Expert Approach to SEO Friendly Websites That Google Loves"
+          color="green"
+          time="14 Min Read"
+        >
+          <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
+        </CardInsight>
+
+        <CardInsight
+          title="PPC"
+          headline="A Beginner's Guide to Website Maintenance"
+          color="blue"
+          time="3 Min Read"
+        >
+          <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
+        </CardInsight>
+      </div>
     </section>
 
     <BlockCarouselProjects />
