@@ -77,11 +77,6 @@ const bodyId = `accordion-item-body-${id}`
         accordion.classList.add('is-open')
         body?.setAttribute('aria-label', 'Open Accordion')
         body?.setAttribute('aria-hidden', 'false')
-
-        header.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        })
       }
 
       tl.play()
@@ -161,7 +156,6 @@ const bodyId = `accordion-item-body-${id}`
       width: inherit;
       height: 2px;
       background-color: currentColor;
-      transition: transform 0.2s;
     }
 
     &::after {
