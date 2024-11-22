@@ -1,0 +1,57 @@
+---
+import Icon from '@/components/Elements/Icon.astro'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props as Props
+---
+
+<div class:list={['flex gap-8', className]}>
+  <Icon
+    class="shape-row__item block w-[16px] h-[14px] text-yellow"
+    name="shape-triangle"
+  />
+  <Icon
+    class="shape-row__item block size-[14px] text-green"
+    name="shape-square"
+  />
+  <Icon
+    class="shape-row__item block size-[14px] text-blue"
+    name="shape-circle"
+  />
+</div>
+
+<style>
+  .shape-row__item {
+    :global(a):hover & {
+      animation-name: wave;
+      animation-duration: theme('transitionDuration.500');
+      animation-timing-function: theme('transitionTimingFunction.outBack');
+      animation-fill-mode: both;
+    }
+
+    &:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: scale(1.05) translateY(-4px);
+    }
+  }
+</style>
