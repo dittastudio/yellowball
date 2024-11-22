@@ -1,13 +1,14 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import BlockHeadingBanner from "@/components/Block/HeadingBanner.astro";
-import BlockCarouselProjects from "@/components/Block/CarouselProjects.astro";
-import CardStacks from "@/components/Block/CardStacks.astro";
-import FeaturedProjects from "@/components/Block/FeaturedProjects.astro";
-import HeroHome from "@/components/Block/HeroHome.astro";
-import HeroText from "@/components/Block/HeroText.astro";
-import ServiceCards from "@/components/Block/ServiceCards.astro";
-import ServiceList from "@/components/Block/ServiceList.astro";
+import Layout from '@/layouts/Layout.astro'
+import BlockCardStacks from '@/components/Block/CardStacks.astro'
+import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro'
+import BlockFAQs from '@/components/Block/FAQs.astro'
+import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro'
+import BlockServiceCards from '@/components/Block/ServiceCards.astro'
+import BlockServiceList from '@/components/Block/ServiceList.astro'
+import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro'
+import HeroHome from '@/components/Block/HeroHome.astro'
+import HeroText from '@/components/Block/HeroText.astro'
 ---
 
 <Layout title="Home">
@@ -15,12 +16,13 @@ import ServiceList from "@/components/Block/ServiceList.astro";
     <HeroHome />
     <BlockCarouselProjects />
     <BlockHeadingBanner />
-    <ServiceCards />
-    <ServiceList />
-    <CardStacks />
+    <BlockServiceCards />
+    <BlockServiceList />
+    <BlockCardStacks />
+    <BlockFAQs />
     <HeroText
       headline="Stunning bespoke web design that captivates & converts"
     />
-    <FeaturedProjects />
+    <BlockFeaturedProjects />
   </main>
 </Layout>
