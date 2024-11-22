@@ -13,6 +13,7 @@ import LayoutLines from '@/components/Layout/Lines.astro'
 import ServiceCards from '@/components/Block/ServiceCards.astro'
 import ServiceItem from '@/components/Elements/ServiceItem.astro'
 import AccordionItem from '@/components/Accordion/Item.astro'
+import Ticker from '@/components/Elements/Ticker.astro'
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.jpg',
@@ -42,8 +43,14 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50'
       </div>
     </section>
 
+    <section>
+      <h1 class={sgHeading}>Accordions</h1>
+
+      <Ticker />
+    </section>
+
     <section class={sgSection}>
-      <h1 class={sgHeading}>Logo</h1>
+      <h1 class={sgHeading}>Accordions</h1>
 
       <div class="flex flex-wrap gap-8">
         <AccordionItem id="one">
@@ -67,16 +74,6 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50'
               nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
-        </AccordionItem>
-
-        <AccordionItem id="two">
-          <h2 slot="header">Accordion Item 1</h2>
-          <p slot="body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
         </AccordionItem>
       </div>
     </section>
