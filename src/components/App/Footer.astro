@@ -1,41 +1,42 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
+import Icon from '@/components/Elements/Icon.astro'
+import ShapeRow from '@/components/Elements/ShapeRow.astro'
 
 const serviceLinks = [
-  "WordPress",
-  "White Label",
-  "WooCommerce",
-  "Laravel",
-  "Ecommerce",
-  "UI / UX",
-  "Other Services",
-];
+  'WordPress',
+  'White Label',
+  'WooCommerce',
+  'Laravel',
+  'Ecommerce',
+  'UI / UX',
+  'Other Services',
+]
 
-const quickLinks = ["Agency", "Guides", "Our Work", "Careers", "Contact Us"];
+const quickLinks = ['Agency', 'Guides', 'Our Work', 'Careers', 'Contact Us']
 
 const legalLinks = [
-  "Privacy Policy",
-  "Cookies Policy",
-  "Manage Cookie Settings",
-  "Terms & Conditions",
-];
+  'Privacy Policy',
+  'Cookies Policy',
+  'Manage Cookie Settings',
+  'Terms & Conditions',
+]
 
 const linkLists = [
   {
-    title: "Services",
+    title: 'Services',
     links: serviceLinks,
   },
   {
-    title: "Quick links",
+    title: 'Quick links',
     links: quickLinks,
   },
   {
-    title: "Legal",
+    title: 'Legal',
     links: legalLinks,
   },
-];
+]
 
-const year = new Date().getFullYear();
+const year = new Date().getFullYear()
 ---
 
 <footer class="app-footer pt-40 md:pt-100 overflow-hidden">
@@ -46,22 +47,8 @@ const year = new Date().getFullYear();
       <div
         class="col-span-full sm:col-span-4 md:col-span-6 xl:col-span-4 xl:col-start-2 flex flex-col gap-y-40 font-heading"
       >
-        <a
-          href="/"
-          class="app-footer__icons w-fit flex gap-8 p-12 -mt-8 -mx-12 -mb-12"
-        >
-          <Icon
-            class="app-footer__icon block w-[16px] h-[14px] text-yellow"
-            name="shape-triangle"
-          />
-          <Icon
-            class="app-footer__icon block size-[14px] text-green"
-            name="shape-square"
-          />
-          <Icon
-            class="app-footer__icon block size-[14px] text-blue"
-            name="shape-circle"
-          />
+        <a href="/" class="app-footer__icons w-fit p-12 -mt-8 -mx-12 -mb-12">
+          <ShapeRow />
         </a>
 
         <div
@@ -97,12 +84,12 @@ const year = new Date().getFullYear();
 
       {
         linkLists &&
-          linkLists.map((list) => (
+          linkLists.map(list => (
             <nav class="col-span-full sm:col-span-4 md:col-span-6 xl:col-span-2 flex flex-col gap-y-24 md:gap-y-40 font-heading text-15 font-semibold">
               <h4>{list.title}</h4>
 
               <ul class="app-footer__list flex flex-wrap xl:flex-col -m-6">
-                {list.links.map((link) => (
+                {list.links.map(link => (
                   <li class="w-1/2 md:w-full">
                     <a href="#" class="app-footer__list-link block p-6">
                       {link}
@@ -128,14 +115,14 @@ const year = new Date().getFullYear();
   .app-footer {
     background-image: linear-gradient(
       to top,
-      theme("colors.navy") 80%,
+      theme('colors.navy') 80%,
       transparent 100%
     );
 
     @screen md {
       background-image: linear-gradient(
         to top,
-        theme("colors.navy") 50%,
+        theme('colors.navy') 50%,
         transparent 100%
       );
     }
@@ -143,8 +130,8 @@ const year = new Date().getFullYear();
 
   .app-footer__list-link {
     opacity: 0.5;
-    transition: opacity theme("transitionDuration.150")
-      theme("transitionTimingFunction.smooth");
+    transition: opacity theme('transitionDuration.150')
+      theme('transitionTimingFunction.smooth');
 
     .app-footer__list:hover & {
       opacity: 1;
@@ -155,7 +142,7 @@ const year = new Date().getFullYear();
     }
   }
 
-  .app-footer__icons:hover .app-footer__icon {
+  /* .app-footer__icons:hover .app-footer__icon {
     animation: wave theme("transitionDuration.500")
       theme("transitionTimingFunction.outBack");
   }
@@ -180,5 +167,5 @@ const year = new Date().getFullYear();
     50% {
       transform: scale(1.05) translateY(-4px);
     }
-  }
+  } */
 </style>
