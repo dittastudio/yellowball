@@ -127,6 +127,22 @@ const bodyId = `accordion-item-body-${id}`
 </section>
 
 <style>
+  .accordion-item {
+    animation-name: caption-scroll-effect;
+    animation-timing-function: theme('transitionTimingFunction.smooth');
+    animation-fill-mode: both;
+    animation-timeline: --caption-timeline;
+    view-timeline-name: --caption-timeline;
+    animation-range: entry 25% cover 25%;
+  }
+
+  @keyframes caption-scroll-effect {
+    0% {
+      translate: calc(-1 * theme('spacing.12')) 0 0;
+      opacity: 0;
+    }
+  }
+
   .accordion-item__icon {
     --accordion-icon-size: calc(16 / 20 * 1em);
 
