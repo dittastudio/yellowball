@@ -5,6 +5,7 @@ import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro'
 import Button from '@/components/Elements/Button.astro'
 import CardProject from '@/components/Card/Project.astro'
 import CardInsight from '@/components/Card/Insight.astro'
+import CardRating from '@/components/Card/Rating.astro'
 import Chip from '@/components/Elements/Chip.astro'
 import Cube from '@/components/Elements/Cube.astro'
 import HeadingBanner from '@/components/Block/HeadingBanner.astro'
@@ -250,6 +251,36 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50'
         >
           <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
         </CardInsight>
+      </div>
+    </section>
+
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Card Rating</h1>
+
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-30 items-center"
+      >
+        <CardRating
+          quote="I'm delighted with the finished website & delivery of the project."
+          name="Isabella"
+          company="Ballet with Isabella"
+        >
+          <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
+        </CardRating>
+
+        <CardRating
+          quote="I've been really delighted by Yellowball's efficiency and expertise since signing up with them 3 months ago to build a new website, SEO and PPC. They are clearly leaders in their field and I can highly recommend them."
+          name="Christopher Eden"
+          company="Santis Health"
+        />
+
+        <CardRating
+          quote="The team understood exactly what I wanted from the beginning."
+          name="Pollyanna"
+          company="Rosa & Blue"
+        >
+          <img src="/images/test-laptop.jpeg" width="500" height="300" alt="" />
+        </CardRating>
       </div>
     </section>
 

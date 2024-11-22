@@ -1,0 +1,81 @@
+---
+import Icon from '@/components/Elements/Icon.astro'
+
+interface Props {
+  quote: string
+  name: string
+  company?: string
+  class?: string
+}
+
+const hasSlotDefault = !!Astro.slots.default
+const quoteClasses = hasSlotDefault
+  ? 'text-18 lg:text-28'
+  : 'text-18 lg:text-21'
+
+const {
+  quote,
+  name,
+  company,
+  class: className,
+  ...props
+} = Astro.props as Props
+---
+
+<div
+  data-js="card-rating"
+  class:list={[
+    'w-full text-navy text-left bg-white rounded-20 lg:rounded-30',
+    className,
+  ]}
+  {...props}
+>
+  <a
+    href="/"
+    class="group w-full h-full rounded-20 lg:rounded-30 p-15 lg:p-20 flex flex-col justify-start items-start gap-15 lg:gap-20 border border-navy/15"
+  >
+    {
+      hasSlotDefault && (
+        <div class="hidden lg:block relative w-full rounded-8 lg:rounded-10 overflow-hidden">
+          <slot />
+
+          <div class="absolute bottom-20 left-20 z-0 size-64 bg-yellow flex flex-col items-center justify-center rounded-20">
+            <Icon name="play" class="block size-10 text-navy ml-2" />
+          </div>
+        </div>
+      )
+    }
+
+    <div
+      class="w-full flex flex-col justify-start items-start gap-15 p-15 lg:p-20 flex-grow"
+    >
+      <div class="flex gap-5">
+        <Icon name="star" class="block size-16 lg:size-20 text-yellow" />
+        <Icon name="star" class="block size-16 lg:size-20 text-yellow" />
+        <Icon name="star" class="block size-16 lg:size-20 text-yellow" />
+        <Icon name="star" class="block size-16 lg:size-20 text-yellow" />
+        <Icon name="star" class="block size-16 lg:size-20 text-yellow" />
+      </div>
+
+      <blockquote
+        class:list={[
+          'flex flex-col gap-15 lg:gap-20 font-heading font-semibold text-balance',
+          quoteClasses,
+        ]}
+      >
+        <p>
+          &ldquo;{quote}&rdquo;
+        </p>
+      </blockquote>
+
+      {
+        name && company && (
+          <p class="flex items-center pt-5 mt-auto gap-5 text-11 lg:text-13 font-heading font-bold">
+            {name} <span>&bullet;</span>{' '}
+            <cite class="not-italic">{company}</cite>
+          </p>
+        )
+      }
+    </div>
+  </a>
+</div>
