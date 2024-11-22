@@ -1,0 +1,186 @@
+---
+import { colourText } from '@/utils/maps'
+
+interface Props {
+  id: string
+  color?: 'green' | 'blue' | 'yellow' | 'purple'
+  class?: string
+}
+
+const { id, color = 'green', class: className } = Astro.props as Props
+
+const headerId = `accordion-item-header-${id}`
+const bodyId = `accordion-item-body-${id}`
+---
+
+<script>
+  import gsap from 'gsap'
+
+  const accordions = [
+    ...document.querySelectorAll('[data-js=accordion-item]'),
+  ] as HTMLElement[]
+
+  accordions.forEach(accordion => {
+    const header = accordion.querySelector(
+      '[data-js-accordion-header]',
+    ) as HTMLElement
+    const body = accordion.querySelector(
+      '[data-js-accordion-body]',
+    ) as HTMLElement
+    const bodyInner = accordion.querySelector(
+      '[data-js-accordion-body-inner]',
+    ) as HTMLElement
+
+    const tl = gsap.timeline({ paused: true })
+
+    const toggleAccordion = () => {
+      const isOpen = accordion.classList.contains('is-open')
+
+      tl.clear()
+
+      if (isOpen) {
+        tl.to(bodyInner, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.inOut',
+        }).to(
+          body,
+          {
+            height: 0,
+            duration: 0.5,
+            ease: 'power4.inOut',
+          },
+          '<',
+        )
+
+        accordion.classList.remove('is-open')
+        body?.setAttribute('aria-label', 'Close Accordion')
+        body?.setAttribute('aria-hidden', 'true')
+      } else {
+        tl.to(body, {
+          height: 'auto',
+          duration: 0.5,
+          ease: 'power4.inOut',
+          onComplete: () => {
+            gsap.set(body, { height: 'auto' }) // Set to auto for flexible height
+          },
+        }).to(
+          bodyInner,
+          {
+            opacity: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+          },
+          '<50%',
+        )
+
+        accordion.classList.add('is-open')
+        body?.setAttribute('aria-label', 'Open Accordion')
+        body?.setAttribute('aria-hidden', 'false')
+
+        header.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+      }
+
+      tl.play()
+    }
+
+    header.addEventListener('click', toggleAccordion)
+  })
+</script>
+
+<section
+  data-js="accordion-item"
+  class:list={['accordion-item w-full', className]}
+>
+  <button
+    data-js-accordion-header
+    type="button"
+    id={headerId}
+    class:list={[
+      'group/accordion flex items-start gap-28 md:gap-40 py-30 md:py-40 w-full',
+      'font-heading text-21 font-semibold md:text-28 text-left',
+    ]}
+  >
+    <span class:list={['accordion-item__icon', colourText[color]]}></span>
+
+    <span
+      class="block relative -top-[0.45em] transition-opacity duration-250 ease-smooth group-hover/accordion:opacity-80 group-active/accordion:opacity-60"
+    >
+      <slot name="header" />
+    </span>
+  </button>
+
+  <article
+    data-js-accordion-body
+    class="prose prose-p:text-15 prose-p:sm:text-18 prose-p:m-0 [&_p+p]:mt-[1em] e h-0 overflow-hidden text-grey"
+    id={bodyId}
+    role="region"
+    aria-labelledby={headerId}
+  >
+    <div data-js-accordion-body-inner class="pb-40 opacity-0">
+      <slot name="body" />
+    </div>
+  </article>
+</section>
+
+<style>
+  .accordion-item__icon {
+    --accordion-icon-size: calc(16 / 20 * 1em);
+
+    position: relative;
+    width: var(--accordion-icon-size);
+    height: var(--accordion-icon-size);
+    flex-shrink: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: inherit;
+      height: 2px;
+      background-color: currentColor;
+      transition: transform 0.2s;
+    }
+
+    &::after {
+      transform: rotate(90deg);
+      animation: accordion-rotate-close 0.5s
+        theme('transitionTimingFunction.inOutQuart') both;
+
+      .accordion-item.is-open & {
+        animation: accordion-rotate-open 0.5s
+          theme('transitionTimingFunction.inOutQuart') both;
+      }
+    }
+  }
+
+  @keyframes accordion-rotate-open {
+    0% {
+      transform: rotate(90deg);
+    }
+
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes accordion-rotate-close {
+    0% {
+      transform: rotate(180deg);
+    }
+
+    99.9% {
+      transform: rotate(270deg);
+    }
+
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+</style>

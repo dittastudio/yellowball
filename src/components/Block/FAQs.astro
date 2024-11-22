@@ -1,0 +1,71 @@
+---
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro'
+import AccordionItem from '@/components/Accordion/Item.astro'
+
+const exampleQuestions = [
+  {
+    id: 'one',
+    question:
+      'How much does web design and development from Yellowball typically cost?',
+    answer: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
+    `,
+  },
+  {
+    id: 'two',
+    question: 'How long does a web project typically take?',
+    answer: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
+    `,
+  },
+  {
+    id: 'three',
+    question: 'What ongoing support and maintenance do you offer post-launch?',
+    answer: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
+    `,
+  },
+  {
+    id: 'four',
+    question:
+      'How do you handle revisions and feedback during the design process?',
+    answer: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
+    `,
+  },
+  {
+    id: 'five',
+    question: 'Who will I be working with?',
+    answer: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
+    `,
+  },
+]
+---
+
+<section class="py-180 overflow-x-clip">
+  <div class="relative wrapper">
+    <h2 class="text-fluid-h2 mb-30 md:mb-120">FAQs</h2>
+
+    {
+      exampleQuestions?.map(question => (
+        <AccordionItem id={question.id}>
+          <h3 slot="header">{question.question}</h3>
+
+          <div slot="body" set:html={question.answer} />
+        </AccordionItem>
+      ))
+    }
+
+    <ShapeGradient
+      shape="triangle"
+      color="yellow"
+      class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-1"
+    />
+  </div>
+</section>

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwind-plugin/expose-colors": "^1.1.8",
+    "@tailwindcss/typography": "^0.5.15",
     "@typescript-eslint/parser": "^8.15.0",
     "astro-html-beautifier": "^1.0.4",
     "eslint": "^9.15.0",

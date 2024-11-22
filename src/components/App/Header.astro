@@ -3,14 +3,16 @@ import AppHeaderLogo from '@/components/App/HeaderLogo.astro'
 import AppHeaderButton from '@/components/App/HeaderButton.astro'
 
 const classNav =
-  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4'
+  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4 pointer-events-auto'
 
 const classNavList = 'flex items-center justify-start gap-4 mdMax:hidden'
 
 const classNavListLink = 'block h-full'
 ---
 
-<header class="sticky top-0 z-50 flex justify-between p-12 md:p-18">
+<header
+  class="sticky top-0 z-50 flex justify-between p-12 md:p-18 pointer-events-none"
+>
   <nav class={classNav}>
     <a class="block" href="/">
       <AppHeaderLogo />
