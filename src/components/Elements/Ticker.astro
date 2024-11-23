@@ -37,7 +37,7 @@ const { class: className } = Astro.props as Props
         this.lerp = {
           current: this.currentTranslation,
           target: this.currentTranslation,
-          factor: 0.2,
+          factor: 0.05,
         }
 
         this.events()
@@ -49,10 +49,10 @@ const { class: className } = Astro.props as Props
           let direction = window.scrollY || document.documentElement.scrollTop
           if (direction > this.scrollTop) {
             this.direction = true
-            this.lerp.target += this.speed * 3
+            this.lerp.target += this.speed * 8
           } else {
             this.direction = false
-            this.lerp.target -= this.speed * 3
+            this.lerp.target -= this.speed * 8
           }
           this.scrollTop = direction <= 0 ? 0 : direction
         })
@@ -93,43 +93,43 @@ const { class: className } = Astro.props as Props
 
     let elements = document.querySelectorAll('.element-ticker__list')
 
-    new LoopingElement(elements[0], 0, 0.08)
+    new LoopingElement(elements[0], 0, 0.05)
     // new LoopingElement(elements[1], 0, 0.08)
   })
 </script>
 
 <div data-js="ticker" class:list={['element-ticker contain-layout', className]}>
   <ul
-    class="element-ticker__list select-none flex justify-center gap-[0] min-w-full font-heading text-fluid-h1 font-semibold"
+    class="element-ticker__list select-none flex justify-center min-w-full font-heading text-fluid-h1 font-semibold"
   >
     <li
-      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[0.25em]"
     >
-      <p>Title 1</p>
+      <p>this is a longer title 1</p>
 
-      <p>Title 2</p>
+      <p>this is a longer title 2</p>
 
-      <p>Title 3</p>
+      <p>this is a longer title 3</p>
     </li>
 
     <li
-      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[0.25em]"
     >
-      <p>Title 1</p>
+      <p>this is a longer title 1</p>
 
-      <p>Title 2</p>
+      <p>this is a longer title 2</p>
 
-      <p>Title 3</p>
+      <p>this is a longer title 3</p>
     </li>
 
     <li
-      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full"
+      class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[0.25em]"
     >
-      <p>Title 1</p>
+      <p>this is a longer title 1</p>
 
-      <p>Title 2</p>
+      <p>this is a longer title 2</p>
 
-      <p>Title 3</p>
+      <p>this is a longer title 3</p>
     </li>
   </ul>
 </div>
