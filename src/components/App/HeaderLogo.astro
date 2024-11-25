@@ -1,4 +1,26 @@
-<div class="header-logo">
+<script>
+  const headerLogo = document.querySelector(
+    '[data-js=header-logo]',
+  ) as HTMLElement
+
+  let timeout: number
+
+  function handleMouseEnter() {
+    clearTimeout(timeout)
+    headerLogo.classList.add('has-hover')
+  }
+
+  function handleMouseLeave() {
+    timeout = setTimeout(() => {
+      headerLogo.classList.remove('has-hover')
+    }, 500)
+  }
+
+  headerLogo.addEventListener('mouseenter', handleMouseEnter)
+  headerLogo.addEventListener('mouseleave', handleMouseLeave)
+</script>
+
+<div data-js="header-logo" class="header-logo">
   <svg
     class="header-logo__svg"
     width="165"
@@ -97,8 +119,10 @@
     overflow: hidden;
 
     @screen lg {
-      animation: header-grow-leave 0.5s
-        theme('transitionTimingFunction.outExpo') both;
+      &.has-hover {
+        animation: header-grow-leave 0.5s
+          theme('transitionTimingFunction.outExpo') both;
+      }
 
       &:hover {
         animation: header-grow-enter 0.5s
@@ -152,8 +176,10 @@
     opacity: 0;
 
     @screen lg {
-      animation: header-wave-leave 0.2s theme('transitionTimingFunction.smooth')
-        both;
+      .has-hover & {
+        animation: header-wave-leave 0.2s
+          theme('transitionTimingFunction.smooth') both;
+      }
 
       .header-logo:hover & {
         animation: header-wave-enter 0.5s
@@ -336,8 +362,10 @@
     transform-origin: 100% 65%;
 
     @screen lg {
-      animation: header-roll-leave 0.5s
-        theme('transitionTimingFunction.outExpo') both;
+      .has-hover & {
+        animation: header-roll-leave 0.5s
+          theme('transitionTimingFunction.outExpo') both;
+      }
 
       .header-logo:hover & {
         animation: header-roll-enter 0.7s var(--ball-ease) both;
