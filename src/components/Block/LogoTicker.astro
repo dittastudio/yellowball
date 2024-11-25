@@ -1,0 +1,85 @@
+---
+import Ticker from '@/components/Elements/Ticker.astro'
+
+const testLogoImages: ImageObject[] = [
+  {
+    src: '/images/test-logo-1.png',
+    alt: 'logo 1',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-2.png',
+    alt: 'logo 2',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-3.png',
+    alt: 'logo 3',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-4.png',
+    alt: 'logo 3',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-5.png',
+    alt: 'logo 3',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-6.png',
+    alt: 'logo 3',
+    width: 118,
+    height: 64,
+  },
+  {
+    src: '/images/test-logo-7.png',
+    alt: 'logo 3',
+    width: 118,
+    height: 64,
+  },
+]
+---
+
+<section data-js="logo-ticker" class="wrapper pt-80 md:pt-120">
+  <div
+    class:list={[
+      'relative overflow-hidden',
+      'before:w-[calc(var(--outer-gutter)*4)] after:w-[calc(var(--outer-gutter)*4)]',
+      'before:absolute before:top-0 before:bottom-0 before:left-0 before:z-1 before:pointer-events-none',
+      'before:bg-gradient-to-r before:from-navy before:to-transparent',
+      'after:absolute after:top-0 after:bottom-0 after:right-0 after:z-1 after:pointer-events-none',
+      'after:bg-gradient-to-l after:from-navy after:to-transparent',
+    ]}
+  >
+    <Ticker class="logo-ticker__el">
+      {
+        testLogoImages?.map(image => (
+          <img
+            class="w-[118px] aspect-[118/64]"
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        ))
+      }
+    </Ticker>
+  </div>
+</section>
+
+<style>
+  .logo-ticker__el {
+    --gap: 60px;
+
+    @screen md {
+      --gap: 100px;
+    }
+  }
+</style>

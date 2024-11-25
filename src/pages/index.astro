@@ -1,12 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+
 import BlockCardStacks from '@/components/Block/CardStacks.astro'
 import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro'
 import BlockFAQs from '@/components/Block/FAQs.astro'
+import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro'
 import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro'
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro'
 import BlockServiceCards from '@/components/Block/ServiceCards.astro'
 import BlockServiceList from '@/components/Block/ServiceList.astro'
-import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro'
 import HeroHome from '@/components/Block/HeroHome.astro'
 import HeroText from '@/components/Block/HeroText.astro'
 ---
@@ -19,10 +21,11 @@ import HeroText from '@/components/Block/HeroText.astro'
     <BlockServiceCards />
     <BlockServiceList />
     <BlockCardStacks />
-    <BlockFAQs />
+    <BlockLogoTicker />
     <HeroText
       headline="Stunning bespoke web design that captivates & converts"
     />
     <BlockFeaturedProjects />
+    <BlockFAQs />
   </main>
 </Layout>
