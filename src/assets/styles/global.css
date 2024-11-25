@@ -5,6 +5,7 @@
 
 /* Components */
 @import url('tailwindcss/components');
+@import url('@/assets/styles/components/swiper.css');
 
 /* Utilities */
 @import url('tailwindcss/utilities');
