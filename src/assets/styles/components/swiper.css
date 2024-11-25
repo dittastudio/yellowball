@@ -1,3 +1,28 @@
+.swiper {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  transform: translate3d(0px, 0, 0);
+  touch-action: pan-y;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+}
+
 .swiper-pagination {
   --_pill-padding-x: 4px;
   --_pill-padding-y: 8px;

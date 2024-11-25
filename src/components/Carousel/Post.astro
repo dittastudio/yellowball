@@ -31,13 +31,17 @@ const classes = ['carousel-project', className]
 
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement
+    const screenSm = 640
+    const screenMd = 768
+    const screenLg = 1024
 
     if (swiperEl) {
       const swiperParams: SwiperOptions = {
         speed: 500,
-        slidesPerView: 3,
-        spaceBetween: 30,
+        slidesPerView: 'auto',
+        spaceBetween: 12,
         slideToClickedSlide: true,
+        preventClicks: true,
         keyboard: {
           enabled: true,
         },
@@ -54,6 +58,23 @@ const classes = ['carousel-project', className]
             <span class="swiper-pagination-bullet__pill"></span>
           </button>
         `
+          },
+        },
+
+        breakpoints: {
+          [`${screenSm}`]: {
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+
+          [`${screenMd}`]: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+
+          [`${screenLg}`]: {
+            slidesPerView: 3,
+            spaceBetween: 30,
           },
         },
       }
@@ -74,6 +95,7 @@ const classes = ['carousel-project', className]
   <h3 class="font-heading text-fluid-h3 font-semibold">
     {title}
   </h3>
+
   <div data-js-swiper class="swiper">
     <div class="swiper-wrapper">
       {
@@ -102,38 +124,21 @@ const classes = ['carousel-project', className]
   }
 
   .swiper {
-    position: relative;
-    z-index: 1;
-    padding-bottom: var(--_nudge);
+    @screen smMax {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 12px;
+    }
   }
 
   .swiper-wrapper {
     --slide-ease: theme('transitionTimingFunction.out');
 
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    transition-property: transform;
     transition-timing-function: var(--slide-ease);
-    transform: translate3d(0px, 0, 0);
-    touch-action: pan-y;
-  }
 
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 100%;
-    /* translate: 0 var(--_nudge) 0;
-    transition: translate theme('transitionDuration.500')
-      theme('transitionTimingFunction.smooth'); */
-
-    /* &.swiper-slide-active {
-      translate: 0 0 0;
-    } */
+    @screen smMax {
+      grid-column: span 7;
+    }
   }
 
   .swiper-pagination {
