@@ -1,17 +1,21 @@
 ---
-import CardProject from '@/components/Card/Project.astro'
+import CardInsight from '@/components/Card/Insight.astro'
 
 interface Slide {
-  imageMobile: ImageObject
-  imageDesktop: ImageObject
+  title: string
+  headline: string
+  color: ColorTypes
+  time: string
+  image: ImageObject
 }
 
 interface Props {
+  title: string
   slides: Slide[]
   class?: string
 }
 
-const { slides, class: className } = Astro.props as Props
+const { title, slides, class: className } = Astro.props as Props
 
 const classes = ['carousel-project', className]
 ---
@@ -19,10 +23,10 @@ const classes = ['carousel-project', className]
 <script>
   import Swiper from 'swiper'
   import type { SwiperOptions } from 'swiper/types'
-  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules'
+  import { Navigation, Pagination, Keyboard } from 'swiper/modules'
 
   const carousels = [
-    ...document.querySelectorAll('[data-js=carousel-project]'),
+    ...document.querySelectorAll('[data-js=carousel-post]'),
   ] as HTMLElement[]
 
   carousels.forEach(carousel => {
@@ -30,16 +34,10 @@ const classes = ['carousel-project', className]
 
     if (swiperEl) {
       const swiperParams: SwiperOptions = {
-        speed: 1000,
-        slidesPerView: 'auto',
-        centeredSlides: true,
+        speed: 500,
+        slidesPerView: 3,
         spaceBetween: 30,
         slideToClickedSlide: true,
-        loop: true,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: false,
-        },
         keyboard: {
           enabled: true,
         },
@@ -53,7 +51,7 @@ const classes = ['carousel-project', className]
           renderBullet(_, className) {
             return `
           <button type="button" class="${className}">
-            <span class="carousel-project__pill"></span>
+            <span class="swiper-pagination-bullet__pill"></span>
           </button>
         `
           },
@@ -61,7 +59,7 @@ const classes = ['carousel-project', className]
       }
 
       new Swiper(swiperEl, {
-        modules: [Autoplay, Navigation, Pagination, Keyboard],
+        modules: [Navigation, Pagination, Keyboard],
         ...swiperParams,
       })
     }
@@ -69,33 +67,37 @@ const classes = ['carousel-project', className]
 </script>
 
 <div
-  data-js="carousel-project"
+  data-js="carousel-post"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
+  <h3 class="font-heading text-fluid-h3 font-semibold">
+    {title}
+  </h3>
   <div data-js-swiper class="swiper">
     <div class="swiper-wrapper">
       {
-        slides.map(({ imageMobile, imageDesktop }) => (
+        slides?.map(({ title, headline, color, time, image }) => (
           <div class="swiper-slide">
-            <CardProject {imageMobile} {imageDesktop} />
+            <CardInsight {title} {headline} {color} {time}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+              />
+            </CardInsight>
           </div>
         ))
       }
     </div>
 
     <div class="swiper-pagination"></div>
-
-    <!-- TODO: Add navigation buttons? -->
-    <!-- <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div> -->
   </div>
 </div>
 
 <style>
   .carousel-project {
-    --_nudge: theme('spacing.50');
-
     width: 100%;
   }
 
@@ -106,7 +108,7 @@ const classes = ['carousel-project', className]
   }
 
   .swiper-wrapper {
-    --slide-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
+    --slide-ease: theme('transitionTimingFunction.out');
 
     position: relative;
     width: 100%;
@@ -125,20 +127,19 @@ const classes = ['carousel-project', className]
     justify-content: center;
     flex-shrink: 0;
     width: 100%;
-    translate: 0 var(--_nudge) 0;
+    /* translate: 0 var(--_nudge) 0;
     transition: translate theme('transitionDuration.500')
-      theme('transitionTimingFunction.smooth');
+      theme('transitionTimingFunction.smooth'); */
 
-    &.swiper-slide-active {
+    /* &.swiper-slide-active {
       translate: 0 0 0;
-    }
+    } */
   }
 
   .swiper-pagination {
     position: absolute;
     left: 50%;
-    bottom: 0;
-    width: min-content;
+    top: 100%;
     transform: translateX(-50%);
     z-index: 2;
   }

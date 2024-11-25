@@ -1,0 +1,24 @@
+---
+import CarouselPost from '@/components/Carousel/Post.astro'
+
+const examplePost = {
+  title: 'Web Design',
+  headline: '10 Steps to a Reliable Website Marketing Strategy',
+  color: 'blue',
+  time: '3 Min Read',
+  image: {
+    src: '/images/test-laptop.jpeg',
+    alt: '',
+    width: 500,
+    height: 300,
+  },
+}
+
+const examplePosts = [examplePost, examplePost, examplePost, examplePost]
+---
+
+<section class="pb-100">
+  <div class="wrapper">
+    <CarouselPost title="Resources & insights" slides={examplePosts} />
+  </div>
+</section>

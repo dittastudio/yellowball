@@ -8,3 +8,5 @@ interface ImageObject {
   width: number
   height: number
 }
+
+type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple'
