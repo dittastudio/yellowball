@@ -1,6 +1,7 @@
 ---
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro'
 import AppHeaderButton from '@/components/App/HeaderButton.astro'
+import AppHeaderNav from '@/components/App/HeaderNav.astro'
 
 const classNav =
   'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4 pointer-events-auto'
@@ -18,7 +19,8 @@ const classNavListLink = 'block h-full'
       <AppHeaderLogo />
     </a>
 
-    <ul class={classNavList}>
+    <AppHeaderNav />
+    <!-- <ul class={classNavList}>
       <li>
         <a class={classNavListLink} href="/">
           <AppHeaderButton text="Services" />
@@ -34,7 +36,7 @@ const classNavListLink = 'block h-full'
           <AppHeaderButton text="Agency" />
         </a>
       </li>
-    </ul>
+    </ul> -->
   </nav>
 
   <nav class={classNav}>

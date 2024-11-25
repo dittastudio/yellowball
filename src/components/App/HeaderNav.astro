@@ -1,0 +1,100 @@
+---
+import AppHeaderButton from '@/components/App/HeaderButton.astro'
+
+const classNavList = 'flex items-center justify-start gap-4 mdMax:hidden'
+const classNavListLink = 'block h-full'
+---
+
+<script>
+  import gsap from 'gsap'
+
+  const navs = [
+    ...document.querySelectorAll('[data-js=header-nav]'),
+  ] as HTMLElement[]
+
+  navs.forEach(nav => {
+    // const navItems = nav.querySelectorAll('[data-js-header-nav-item]')
+    // const pill = nav.querySelector('[data-js-header-nav-pill]')
+    // console.log(pill)
+    // let pillVisible = false
+    // function updatePill(target) {
+    //   const { offsetWidth, offsetLeft } = target
+    //   if (!pillVisible) {
+    //     // Fade in and move to the hovered item
+    //     gsap.to(pill, {
+    //       opacity: 1,
+    //       width: offsetWidth,
+    //       left: offsetLeft,
+    //       duration: 0.3,
+    //       ease: 'power3.out',
+    //       onStart: () => {
+    //         pillVisible = true // Mark as visible at the start of fade-in
+    //       },
+    //     })
+    //   } else {
+    //     // Just update the size and position if already visible
+    //     gsap.to(pill, {
+    //       width: offsetWidth,
+    //       left: offsetLeft,
+    //       duration: 0.3,
+    //       ease: 'power3.out',
+    //     })
+    //   }
+    // }
+    // function hidePill() {
+    //   if (pillVisible) {
+    //     gsap.to(pill, {
+    //       opacity: 0,
+    //       duration: 0.3,
+    //       ease: 'power3.out',
+    //       onComplete: () => {
+    //         pillVisible = false // Mark as hidden after fade-out completes
+    //         // Reset size to 0 to avoid stale positioning
+    //         gsap.set(pill, { width: 0 })
+    //       },
+    //     })
+    //   }
+    // }
+    // navItems.forEach(item => {
+    //   item.addEventListener('mouseenter', e => {
+    //     updatePill(e.target)
+    //   })
+    // })
+    // nav.addEventListener('mouseleave', hidePill)
+  })
+</script>
+
+<div data-js="header-nav">
+  <ul class={classNavList}>
+    <li>
+      <a data-js-header-nav-item class={classNavListLink} href="/">
+        <AppHeaderButton text="Services" />
+      </a>
+    </li>
+
+    <li>
+      <a data-js-header-nav-item class={classNavListLink} href="/">
+        <AppHeaderButton text="Our Work" />
+      </a>
+    </li>
+
+    <li>
+      <a data-js-header-nav-item class={classNavListLink} href="/">
+        <AppHeaderButton text="Agency" />
+      </a>
+    </li>
+  </ul>
+
+  <span data-js-header-nav-pill class="header-nav__pill block bg-yellow h-full">
+  </span>
+</div>
+
+<style>
+  .header-nav__pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 12px;
+  }
+</style>

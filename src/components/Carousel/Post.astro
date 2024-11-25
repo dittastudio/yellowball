@@ -1,0 +1,218 @@
+---
+import CardInsight from '@/components/Card/Insight.astro'
+import Button from '@/components/Elements/Button.astro'
+import Icon from '@/components/Elements/Icon.astro'
+
+interface Slide {
+  title: string
+  headline: string
+  color: ColorTypes
+  time: string
+  image: ImageObject
+}
+
+interface Props {
+  title: string
+  slides: Slide[]
+  class?: string
+}
+
+const { title, slides, class: className } = Astro.props as Props
+
+const classes = ['carousel-post', className]
+
+const classNavButton =
+  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth'
+---
+
+<script>
+  import Swiper from 'swiper'
+  import type { SwiperOptions } from 'swiper/types'
+  import { Navigation, Pagination, Keyboard } from 'swiper/modules'
+
+  const carousels = [
+    ...document.querySelectorAll('[data-js=carousel-post]'),
+  ] as HTMLElement[]
+
+  carousels.forEach(carousel => {
+    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement
+    const screenSm = 640
+    const screenMd = 768
+    const screenLg = 1024
+
+    if (swiperEl) {
+      const swiperParams: SwiperOptions = {
+        speed: 500,
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        slideToClickedSlide: true,
+        preventClicks: true,
+        keyboard: {
+          enabled: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          renderBullet(_, className) {
+            return `
+          <button type="button" class="${className}">
+            <span class="swiper-pagination-bullet__pill"></span>
+          </button>
+        `
+          },
+        },
+
+        breakpoints: {
+          [`${screenSm}`]: {
+            // slidesPerView: 'auto',
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+
+          [`${screenMd}`]: {
+            // slidesPerView: 'auto',
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+
+          [`${screenLg}`]: {
+            // slidesPerView: 'auto',
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      }
+
+      new Swiper(swiperEl, {
+        modules: [Navigation, Pagination, Keyboard],
+        ...swiperParams,
+      })
+    }
+  })
+</script>
+
+<div
+  data-js="carousel-post"
+  class:list={classes}
+  style={`--_slidesNumber: ${slides?.length}`}
+>
+  <div class="carousel-post__grid">
+    <div class="carousel-post__title text-center text-balance md:text-left">
+      <h3 class="font-heading text-fluid-h3 font-semibold">
+        {title}
+      </h3>
+    </div>
+
+    <div class="carousel-post__slider mt-40 md:mt-70">
+      <div data-js-swiper class="swiper">
+        <div class="swiper-wrapper">
+          {
+            slides?.map(({ title, headline, color, time, image }) => (
+              <div class="swiper-slide">
+                <CardInsight {title} {headline} {color} {time}>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                  />
+                </CardInsight>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="text-center col-span-full mt-20 md:hidden">
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="carousel-post__info flex gap-15 items-center justify-center mt-40 md:items-end md:justify-end md:mt-0"
+    >
+      <div class="mdMax:hidden">
+        <div class="flex gap-15 h-full">
+          <button
+            type="button"
+            class:list={['swiper-button-prev', classNavButton]}
+          >
+            <Icon name="arrow-s" class="block size-14 rotate-90" />
+            <span class="sr-only">Previous Slide</span>
+          </button>
+
+          <button
+            type="button"
+            class:list={['swiper-button-next', classNavButton]}
+          >
+            <Icon name="arrow-s" class="block size-14 -rotate-90" />
+            <span class="sr-only">Next Slide</span>
+          </button>
+
+          <button type="button">
+            <Button text="All posts" type="white" hasArrow />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .carousel-post {
+      width: 100%;
+    }
+
+    .carousel-post__grid {
+      @screen md {
+        display: grid;
+        grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
+        gap: 12px;
+      }
+    }
+
+    .carousel-post__title {
+      grid-area: title;
+    }
+
+    .carousel-post__info {
+      grid-area: info;
+    }
+
+    .carousel-post__slider {
+      grid-area: carousel;
+    }
+
+    .swiper {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .swiper-wrapper {
+      --slide-ease: theme('transitionTimingFunction.out');
+
+      transition-timing-function: var(--slide-ease);
+
+      grid-column: span 7;
+
+      @screen sm {
+        grid-column: span 8;
+      }
+    }
+
+    .swiper-pagination {
+      display: inline-flex;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+  </style>
+</div>
