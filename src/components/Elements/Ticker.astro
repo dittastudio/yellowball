@@ -106,7 +106,7 @@ const { class: className } = Astro.props as Props
   }
 
   tickers.forEach(ticker => {
-    let elements = ticker.querySelectorAll('[data-js-ticker-item]')
+    const elements = ticker.querySelectorAll('[data-js-ticker-item]')
 
     const loopingElements: LoopingElement[] = []
 
