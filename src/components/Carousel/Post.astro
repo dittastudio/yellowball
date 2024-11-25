@@ -1,5 +1,6 @@
 ---
 import CardInsight from '@/components/Card/Insight.astro'
+import Button from '@/components/Elements/Button.astro'
 
 interface Slide {
   title: string
@@ -17,7 +18,7 @@ interface Props {
 
 const { title, slides, class: className } = Astro.props as Props
 
-const classes = ['carousel-project', className]
+const classes = ['carousel-post', className]
 ---
 
 <script>
@@ -63,16 +64,19 @@ const classes = ['carousel-project', className]
 
         breakpoints: {
           [`${screenSm}`]: {
+            // slidesPerView: 'auto',
             slidesPerView: 2,
             spaceBetween: 12,
           },
 
           [`${screenMd}`]: {
+            // slidesPerView: 'auto',
             slidesPerView: 2,
             spaceBetween: 30,
           },
 
           [`${screenLg}`]: {
+            // slidesPerView: 'auto',
             slidesPerView: 3,
             spaceBetween: 30,
           },
@@ -92,43 +96,91 @@ const classes = ['carousel-project', className]
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
-  <h3 class="font-heading text-fluid-h3 font-semibold">
-    {title}
-  </h3>
-
-  <div data-js-swiper class="swiper">
-    <div class="swiper-wrapper">
-      {
-        slides?.map(({ title, headline, color, time, image }) => (
-          <div class="swiper-slide">
-            <CardInsight {title} {headline} {color} {time}>
-              <img
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-              />
-            </CardInsight>
-          </div>
-        ))
-      }
+  <div class="carousel-post__grid">
+    <div class="carousel-post__title">
+      <h3 class="font-heading text-fluid-h3 font-semibold">
+        {title}
+      </h3>
     </div>
 
-    <div class="swiper-pagination"></div>
+    <div class="carousel-post__slider">
+      <div data-js-swiper class="swiper">
+        <div class="swiper-wrapper">
+          {
+            slides?.map(({ title, headline, color, time, image }) => (
+              <div class="swiper-slide">
+                <CardInsight {title} {headline} {color} {time}>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                  />
+                </CardInsight>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="text-center col-span-full mt-20 sm:hidden">
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="carousel-post__info flex items-center justify-center mt-40 md:justify-end md:mt-0"
+    >
+      <div class="mdMax:hidden">
+        <div class="swiper-button-prev">PREV</div>
+        <div class="swiper-button-next">NEXT</div>
+      </div>
+
+      <button type="button">
+        <Button text="All posts" type="white" hasArrow />
+      </button>
+    </div>
   </div>
 </div>
 
 <style>
-  .carousel-project {
+  .carousel-post {
     width: 100%;
   }
 
-  .swiper {
-    @screen smMax {
+  .carousel-post__grid {
+    /* display: grid;
+    grid-template-areas: 'title info' 'carousel carousel';
+    gap: 12px; */
+
+    @screen md {
       display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
+      grid-template-areas: 'title info' 'carousel carousel';
       gap: 12px;
     }
+  }
+
+  .carousel-post__title {
+    grid-area: title;
+  }
+
+  .carousel-post__info {
+    grid-area: info;
+  }
+
+  .carousel-post__slider {
+    grid-area: carousel;
+    margin-top: 50px;
+
+    @screen md {
+      margin-top: 80px;
+    }
+  }
+
+  .swiper {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .swiper-wrapper {
@@ -136,16 +188,19 @@ const classes = ['carousel-project', className]
 
     transition-timing-function: var(--slide-ease);
 
-    @screen smMax {
-      grid-column: span 7;
+    grid-column: span 7;
+
+    @screen sm {
+      grid-column: span 8;
     }
   }
 
+  .swiper-slide {
+    /* width: 50%; */
+    /* flex-shrink: 0; */
+  }
+
   .swiper-pagination {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    z-index: 2;
+    display: inline-flex;
   }
 </style>
