@@ -152,7 +152,7 @@ const { class: className } = Astro.props as Props
       [...Array(3)].map(() => (
         <li
           data-js-ticker-item
-          class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[0.25em]"
+          class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]"
         >
           <slot />
         </li>
