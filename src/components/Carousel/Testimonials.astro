@@ -1,0 +1,87 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props as Props
+const classes = ['carousel-testimonials', className]
+---
+
+<script>
+  import Swiper from 'swiper'
+  import type { SwiperOptions } from 'swiper/types'
+  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules'
+
+  const carousels = [
+    ...document.querySelectorAll('[data-js="carousel-testimonials"]'),
+  ] as HTMLElement[]
+
+  carousels.forEach(carousel => {
+    const swiperParams: SwiperOptions = {
+      speed: 1000,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 15,
+      slideToClickedSlide: true,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      keyboard: {
+        enabled: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: false,
+      breakpoints: {
+        640: {
+          spaceBetween: 30,
+        },
+      },
+    }
+
+    new Swiper(carousel, {
+      modules: [Autoplay, Navigation, Pagination, Keyboard],
+      ...swiperParams,
+    })
+  })
+</script>
+
+<div data-js="carousel-testimonials" class:list={classes} class="swiper">
+  <div class="swiper-wrapper">
+    <slot name="slides" />
+  </div>
+</div>
+
+<style>
+  .carousel-testimonials {
+    width: 100%;
+  }
+
+  .swiper {
+    position: relative;
+    z-index: 1;
+  }
+
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.24, 1.2, 0.24, 1);
+    transform: translate3d(0, 0, 0);
+    touch-action: pan-y;
+  }
+
+  :global(.carousel-testimonials .swiper-slide) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+</style>

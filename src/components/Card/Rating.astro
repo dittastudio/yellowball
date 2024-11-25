@@ -1,46 +1,48 @@
 ---
+import { twMerge } from 'tailwind-merge'
 import Icon from '@/components/Elements/Icon.astro'
 
 interface Props {
   quote: string
   name: string
   company?: string
+  hasMedia?: boolean
   class?: string
 }
-
-const hasSlotDefault = !!Astro.slots.default
-const quoteClasses = hasSlotDefault
-  ? 'text-18 lg:text-28'
-  : 'text-18 lg:text-21'
 
 const {
   quote,
   name,
   company,
+  hasMedia,
   class: className,
   ...props
 } = Astro.props as Props
+
+const hasSlotDefault = !!Astro.slots.default
+const quoteClasses =
+  hasMedia && hasSlotDefault ? 'text-18 lg:text-28' : 'text-18 lg:text-21'
+const classes = twMerge(
+  'w-full text-navy text-left bg-white rounded-20 lg:rounded-30',
+  className,
+)
 ---
 
-<div
-  data-js="card-rating"
-  class:list={[
-    'w-full text-navy text-left bg-white rounded-20 lg:rounded-30',
-    className,
-  ]}
-  {...props}
->
+<div data-js="card-rating" class:list={[classes]} {...props}>
   <a
     href="/"
     class="group w-full h-full rounded-20 lg:rounded-30 p-15 lg:p-20 flex flex-col justify-start items-start gap-15 lg:gap-20 border border-navy/15"
   >
     {
-      hasSlotDefault && (
+      hasMedia && hasSlotDefault && (
         <div class="hidden lg:block relative w-full rounded-8 lg:rounded-10 overflow-hidden">
           <slot />
 
           <div class="absolute bottom-20 left-20 z-0 size-64 bg-yellow flex flex-col items-center justify-center rounded-20">
-            <Icon name="play" class="block size-10 text-navy ml-2" />
+            <Icon
+              name="play"
+              class="block size-14 text-navy ml-2 [&>svg]:size-full"
+            />
           </div>
         </div>
       )
