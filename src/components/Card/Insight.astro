@@ -1,0 +1,83 @@
+---
+import Icon from '@/components/Elements/Icon.astro'
+
+interface Props {
+  title: string
+  headline: string
+  color: 'yellow' | 'green' | 'blue'
+  time?: string
+  class?: string
+}
+
+const hasSlotDefault = !!Astro.slots.default
+
+const {
+  title,
+  headline,
+  color,
+  time,
+  class: className,
+  ...props
+} = Astro.props as Props
+
+const colors = {
+  yellow: 'text-yellow',
+  green: 'text-green',
+  blue: 'text-blue',
+}
+
+const colorTitle = colors[color as keyof typeof colors] ?? ''
+---
+
+<div
+  data-js="card-insight"
+  class:list={[
+    'w-full text-white text-left bg-navy-light rounded-20 lg:rounded-30',
+    className,
+  ]}
+  {...props}
+>
+  <a
+    href="/"
+    class="group w-full h-full rounded-20 lg:rounded-30 p-15 lg:p-20 flex flex-col justify-start items-start gap-15 lg:gap-20 border border-white/10"
+  >
+    {
+      hasSlotDefault && (
+        <div class="w-full rounded-8 lg:rounded-10 overflow-hidden">
+          <slot />
+        </div>
+      )
+    }
+
+    <div
+      class="w-full flex flex-col justify-start items-start gap-15 p-15 lg:p-20 flex-grow relative"
+    >
+      <Icon
+        name="arrow-ne"
+        class="absolute top-15 right-15 lg:top-20 lg:right-20 z-10 block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+      />
+
+      <p
+        class:list={[
+          'font-heading font-bold text-11 lg:text-13 text-balance',
+          colorTitle,
+        ]}
+      >
+        {title}
+      </p>
+
+      <h6 class="font-heading font-semibold text-18 lg:text-24 text-balance">
+        {headline}
+      </h6>
+
+      {
+        time && (
+          <p class="flex items-center pt-5 mt-auto gap-5 lg:gap-10 text-11 lg:text-13 font-heading font-bold text-grey">
+            <Icon name="clock" class="mt-2 lg:mt-1 size-10 lg:size-14" />
+            {time}
+          </p>
+        )
+      }
+    </div>
+  </a>
+</div>
