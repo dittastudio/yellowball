@@ -1,42 +1,43 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
-import TextReveal from "@/components/Elements/TextReveal.astro";
+import Icon from '@/components/Elements/Icon.astro'
+import TextReveal from '@/components/Elements/TextReveal.astro'
 ---
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
   const section = document.querySelector(
-    '[data-js="heading-banner"]'
-  ) as HTMLElement;
-  const shapes = [...section?.querySelectorAll(".shape")] as HTMLElement[];
+    '[data-js="heading-banner"]',
+  ) as HTMLElement
+  const shapes = [...section?.querySelectorAll('.shape')] as HTMLElement[]
 
   const tl = gsap.timeline({
     scrollTrigger: {
       markers: false,
       trigger: section,
-      start: "top bottom",
-      end: "center center",
-      scrub: 1.5,
+      start: 'top bottom',
+      end: 'center center',
+      scrub: true,
     },
-  });
+  })
 
   shapes.forEach((shape, index) => {
-    const x = [0, -100, 100];
+    const x = [0, -100, 100]
 
     tl.from(
       shape,
       {
+        opacity: 0,
         x: x[index] ?? 0,
         y: index === 0 ? -40 : 40,
         rotate: index % 2 ? -90 : 90,
       },
-      0
-    );
-  });
+      0,
+    )
+  })
 </script>
 
 <section data-js="heading-banner" class="py-100">
