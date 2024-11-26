@@ -6,62 +6,62 @@ const classNavListLink = 'block h-full'
 ---
 
 <script>
-  import gsap from 'gsap'
+  // import gsap from 'gsap'
 
-  const navs = [
-    ...document.querySelectorAll('[data-js=header-nav]'),
-  ] as HTMLElement[]
+  // const navs = [
+  //   ...document.querySelectorAll('[data-js=header-nav]'),
+  // ] as HTMLElement[]
 
-  navs.forEach(nav => {
-    // const navItems = nav.querySelectorAll('[data-js-header-nav-item]')
-    // const pill = nav.querySelector('[data-js-header-nav-pill]')
-    // console.log(pill)
-    // let pillVisible = false
-    // function updatePill(target) {
-    //   const { offsetWidth, offsetLeft } = target
-    //   if (!pillVisible) {
-    //     // Fade in and move to the hovered item
-    //     gsap.to(pill, {
-    //       opacity: 1,
-    //       width: offsetWidth,
-    //       left: offsetLeft,
-    //       duration: 0.3,
-    //       ease: 'power3.out',
-    //       onStart: () => {
-    //         pillVisible = true // Mark as visible at the start of fade-in
-    //       },
-    //     })
-    //   } else {
-    //     // Just update the size and position if already visible
-    //     gsap.to(pill, {
-    //       width: offsetWidth,
-    //       left: offsetLeft,
-    //       duration: 0.3,
-    //       ease: 'power3.out',
-    //     })
-    //   }
-    // }
-    // function hidePill() {
-    //   if (pillVisible) {
-    //     gsap.to(pill, {
-    //       opacity: 0,
-    //       duration: 0.3,
-    //       ease: 'power3.out',
-    //       onComplete: () => {
-    //         pillVisible = false // Mark as hidden after fade-out completes
-    //         // Reset size to 0 to avoid stale positioning
-    //         gsap.set(pill, { width: 0 })
-    //       },
-    //     })
-    //   }
-    // }
-    // navItems.forEach(item => {
-    //   item.addEventListener('mouseenter', e => {
-    //     updatePill(e.target)
-    //   })
-    // })
-    // nav.addEventListener('mouseleave', hidePill)
-  })
+  // navs.forEach(nav => {
+  // const navItems = nav.querySelectorAll('[data-js-header-nav-item]')
+  // const pill = nav.querySelector('[data-js-header-nav-pill]')
+  // console.log(pill)
+  // let pillVisible = false
+  // function updatePill(target) {
+  //   const { offsetWidth, offsetLeft } = target
+  //   if (!pillVisible) {
+  //     // Fade in and move to the hovered item
+  //     gsap.to(pill, {
+  //       opacity: 1,
+  //       width: offsetWidth,
+  //       left: offsetLeft,
+  //       duration: 0.3,
+  //       ease: 'power3.out',
+  //       onStart: () => {
+  //         pillVisible = true // Mark as visible at the start of fade-in
+  //       },
+  //     })
+  //   } else {
+  //     // Just update the size and position if already visible
+  //     gsap.to(pill, {
+  //       width: offsetWidth,
+  //       left: offsetLeft,
+  //       duration: 0.3,
+  //       ease: 'power3.out',
+  //     })
+  //   }
+  // }
+  // function hidePill() {
+  //   if (pillVisible) {
+  //     gsap.to(pill, {
+  //       opacity: 0,
+  //       duration: 0.3,
+  //       ease: 'power3.out',
+  //       onComplete: () => {
+  //         pillVisible = false // Mark as hidden after fade-out completes
+  //         // Reset size to 0 to avoid stale positioning
+  //         gsap.set(pill, { width: 0 })
+  //       },
+  //     })
+  //   }
+  // }
+  // navItems.forEach(item => {
+  //   item.addEventListener('mouseenter', e => {
+  //     updatePill(e.target)
+  //   })
+  // })
+  // nav.addEventListener('mouseleave', hidePill)
+  // })
 </script>
 
 <div data-js="header-nav">
