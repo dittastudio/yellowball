@@ -43,9 +43,10 @@ const year = new Date().getFullYear()
   import gsap from 'gsap'
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
+  gsap.registerPlugin(ScrollTrigger)
+
   const footer = document.querySelector('[data-js=footer]') as HTMLElement
 
-  gsap.registerPlugin(ScrollTrigger)
   const footerLogo = footer.querySelector(
     '[data-js-footer-logo]',
   ) as HTMLElement

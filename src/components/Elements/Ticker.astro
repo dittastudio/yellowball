@@ -10,11 +10,67 @@ const { class: className } = Astro.props as Props
   import gsap from 'gsap'
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
+  gsap.registerPlugin(ScrollTrigger)
+
+  const animations: gsap.core.Timeline[] = []
+  let direction = 'down'
+  let lastScrollY = window.scrollY
+
+  const handleDirection = (newDirection: 'up' | 'down') => {
+    animations.forEach(animation => {
+      const progress = animation.progress()
+      const tween = animation.getChildren()[0]
+
+      if (tween) {
+        const currentX = parseFloat(tween.vars.x) * progress
+        direction = newDirection
+        const newEnd = direction === 'down' ? '-100%' : '100%'
+
+        tween.vars.x = newEnd
+        tween.invalidate()
+
+        const newProgress = currentX / parseFloat(newEnd)
+
+        animation.progress(newProgress)
+      }
+    })
+  }
+
+  const handleScroll = () => {
+    const newDirection = window.scrollY > lastScrollY ? 'down' : 'up'
+
+    if (newDirection !== direction) {
+      handleDirection(newDirection)
+    }
+
+    lastScrollY = window.scrollY
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
   const tickers = [
     ...document.querySelectorAll('[data-js="ticker"]'),
   ] as HTMLElement[]
 
   tickers.forEach(ticker => {
+    const items = [
+      ...ticker.querySelectorAll('[data-js-item]'),
+    ] as HTMLElement[]
+
+    const animation = gsap
+      .timeline({
+        repeat: -1,
+        defaults: {
+          duration: 20,
+          ease: 'none',
+        },
+      })
+      .to(items, {
+        x: '-100%',
+      })
+
+    animations.push(animation)
+
     ScrollTrigger.create({
       markers: false,
       trigger: ticker,
@@ -42,7 +98,10 @@ const { class: className } = Astro.props as Props
   <ul class="select-none flex justify-center min-w-full">
     {
       [...Array(3)].map(() => (
-        <li class="flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]">
+        <li
+          data-js-item
+          class="flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]"
+        >
           <slot />
         </li>
       ))
