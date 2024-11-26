@@ -1,44 +1,44 @@
 ---
-import CardInsight from '@/components/Card/Insight.astro'
-import Button from '@/components/Elements/Button.astro'
-import Icon from '@/components/Elements/Icon.astro'
+import CardInsight from '@/components/Card/Insight.astro';
+import Button from '@/components/Elements/Button.astro';
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Slide {
-  title: string
-  headline: string
-  color: ColorTypes
-  time: string
-  image: ImageObject
+  title: string;
+  headline: string;
+  color: ColorTypes;
+  time: string;
+  image: ImageObject;
 }
 
 interface Props {
-  title: string
-  slides: Slide[]
-  class?: string
+  title: string;
+  slides: Slide[];
+  class?: string;
 }
 
-const { title, slides, class: className } = Astro.props as Props
+const { title, slides, class: className } = Astro.props as Props;
 
-const classes = ['carousel-post', className]
+const classes = ['carousel-post', className];
 
 const classNavButton =
-  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth'
+  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth';
 ---
 
 <script>
-  import Swiper from 'swiper'
-  import type { SwiperOptions } from 'swiper/types'
-  import { Navigation, Pagination, Keyboard } from 'swiper/modules'
+  import Swiper from 'swiper';
+  import type { SwiperOptions } from 'swiper/types';
+  import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
   const carousels = [
     ...document.querySelectorAll('[data-js=carousel-post]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   carousels.forEach(carousel => {
-    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement
-    const screenSm = 640
-    const screenMd = 768
-    const screenLg = 1024
+    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
+    const screenSm = 640;
+    const screenMd = 768;
+    const screenLg = 1024;
 
     if (swiperEl) {
       const swiperParams: SwiperOptions = {
@@ -62,37 +62,34 @@ const classNavButton =
           <button type="button" class="${className}">
             <span class="swiper-pagination-bullet__pill"></span>
           </button>
-        `
+        `;
           },
         },
 
         breakpoints: {
           [`${screenSm}`]: {
-            // slidesPerView: 'auto',
             slidesPerView: 2,
             spaceBetween: 12,
           },
 
           [`${screenMd}`]: {
-            // slidesPerView: 'auto',
             slidesPerView: 2,
             spaceBetween: 30,
           },
 
           [`${screenLg}`]: {
-            // slidesPerView: 'auto',
             slidesPerView: 3,
             spaceBetween: 30,
           },
         },
-      }
+      };
 
       new Swiper(swiperEl, {
         modules: [Navigation, Pagination, Keyboard],
         ...swiperParams,
-      })
+      });
     }
-  })
+  });
 </script>
 
 <div
@@ -135,23 +132,25 @@ const classNavButton =
     <div
       class="carousel-post__info flex gap-15 items-center justify-center mt-40 md:items-end md:justify-end md:mt-0"
     >
-      <div class="mdMax:hidden">
+      <div>
         <div class="flex gap-15 h-full">
-          <button
-            type="button"
-            class:list={['swiper-button-prev', classNavButton]}
-          >
-            <Icon name="arrow-s" class="block size-14 rotate-90" />
-            <span class="sr-only">Previous Slide</span>
-          </button>
+          <div class="flex gap-15 mdMax:hidden">
+            <button
+              type="button"
+              class:list={['swiper-button-prev', classNavButton]}
+            >
+              <Icon name="arrow-s" class="block size-14 rotate-90" />
+              <span class="sr-only">Previous Slide</span>
+            </button>
 
-          <button
-            type="button"
-            class:list={['swiper-button-next', classNavButton]}
-          >
-            <Icon name="arrow-s" class="block size-14 -rotate-90" />
-            <span class="sr-only">Next Slide</span>
-          </button>
+            <button
+              type="button"
+              class:list={['swiper-button-next', classNavButton]}
+            >
+              <Icon name="arrow-s" class="block size-14 -rotate-90" />
+              <span class="sr-only">Next Slide</span>
+            </button>
+          </div>
 
           <button type="button">
             <Button text="All posts" type="white" hasArrow />
