@@ -35,8 +35,6 @@ const linkLists = [
     links: legalLinks,
   },
 ];
-
-const year = new Date().getFullYear();
 ---
 
 <script>
@@ -46,6 +44,25 @@ const year = new Date().getFullYear();
   gsap.registerPlugin(ScrollTrigger);
 
   const footer = document.querySelector('[data-js=footer]') as HTMLElement;
+  const years = footer.querySelectorAll(
+    '[data-js-year]',
+  ) as NodeListOf<HTMLElement>;
+
+  const getDateTime = (date = new Date()) => ({
+    year: String(date.getFullYear()),
+    month: String(date.getMonth() + 1).padStart(2, '0'),
+    day: String(date.getDate()).padStart(2, '0'),
+    hours: String(date.getHours()).padStart(2, '0'),
+    minutes: String(date.getMinutes()).padStart(2, '0'),
+  });
+
+  const { year, month, day, hours, minutes } = getDateTime();
+  const datetime = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+  years.forEach(y => {
+    y.textContent = year;
+    y.setAttribute('datetime', datetime);
+  });
 
   const footerLogo = footer.querySelector(
     '[data-js-footer-logo]',
@@ -114,7 +131,7 @@ const year = new Date().getFullYear();
         <p
           class="text-12 font-heading font-semibold text-grey opacity-50 smMax:hidden"
         >
-          &copy;Yellowball {year}
+          &copy;Yellowball <time data-js-year></time>
         </p>
       </div>
 
@@ -141,7 +158,7 @@ const year = new Date().getFullYear();
     <p
       class="text-12 font-heading font-semibold opacity-50 text-grey mt-50 sm:hidden"
     >
-      &copy;Yellowball {year}
+      &copy;Yellowball <time data-js-year></time>
     </p>
   </div>
 
