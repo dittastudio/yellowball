@@ -4,8 +4,8 @@
     font-weight: 600;
     font-style: normal;
     font-display: auto;
-    src: url('/fonts/AreaNormalTrial-Bold.otf') format('opentype');
-    /* src: url('/fonts/area-semibold-webfont.woff2') format('woff2'); */
+    /* src: url('/fonts/AreaNormalTrial-Bold.otf') format('opentype'); */
+    src: url('/fonts/area-semibold-webfont.woff2') format('woff2');
   }
 
   @font-face {
@@ -13,7 +13,7 @@
     font-weight: bold;
     font-style: normal;
     font-display: auto;
-    src: url('/fonts/AreaNormalTrial-Extrabold.otf') format('opentype');
-    /* src: url('/fonts/area-bold-webfont.woff2') format('woff2'); */
+    /* src: url('/fonts/AreaNormalTrial-Extrabold.otf') format('opentype'); */
+    src: url('/fonts/area-bold-webfont.woff2') format('woff2');
   }
 }
