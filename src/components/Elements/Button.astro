@@ -1,9 +1,9 @@
 ---
-import Icon from "@/components/Elements/Icon.astro";
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   class?: string;
-  type?: "white" | "white-border";
+  type?: 'white' | 'white-border';
   text: string;
   hasArrow?: boolean;
 }
@@ -11,26 +11,24 @@ interface Props {
 const {
   class: className,
   text,
-  type = "white",
+  type = 'white',
   hasArrow = false,
 } = Astro.props as Props;
 ---
 
 <span
   class:list={[
-    "element-button",
-    "inline-flex justify-center items-center gap-8 md:gap-12",
-    "px-[26px] py-[16px]",
-    "md:px-[33px] md:py-[15px]",
-    "rounded-20",
-    "font-heading text-15 md:text-18 font-bold",
+    'element-button',
+    'inline-flex justify-center items-baseline gap-8 md:gap-12',
+    'px-[26px] pt-[16px] pb-[15px]',
+    'md:px-[33px]',
+    'rounded-20',
+    'font-heading text-15 md:text-18 font-bold',
     `is-${type}`,
     className,
   ]}
 >
-  <span class="relative -top-[0.1em]">
-    {text}
-  </span>
+  {text}
 
   {
     hasArrow && (
@@ -45,52 +43,52 @@ const {
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     transition:
-      color theme("transitionDuration.150")
-        theme("transitionTimingFunction.smooth"),
-      background-color theme("transitionDuration.150")
-        theme("transitionTimingFunction.smooth");
+      color theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth'),
+      background-color theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       border: 1px solid var(--button-border-color);
       border-radius: inherit;
-      transition: border theme("transitionDuration.150")
-        theme("transitionTimingFunction.smooth");
+      transition: border theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
-      background-color: theme("colors.navy");
+      background-color: theme('colors.navy');
       opacity: 0;
       border-radius: inherit;
-      transition: opacity theme("transitionDuration.150")
-        theme("transitionTimingFunction.smooth");
+      transition: opacity theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
     }
 
     &.is-white {
-      --button-bg-color: theme("colors.white");
-      --button-text-color: theme("colors.navy");
+      --button-bg-color: theme('colors.white');
+      --button-text-color: theme('colors.navy');
       --button-border-color: transparent;
 
       /* Hover */
-      --button-hover-bg-color: theme("colors.yellow");
-      --button-hover-text-color: theme("colors.navy");
+      --button-hover-bg-color: theme('colors.yellow');
+      --button-hover-text-color: theme('colors.navy');
       --button-hover-border-color: transparent;
     }
 
     &.is-white-border {
       --button-bg-color: transparent;
-      --button-text-color: theme("colors.white");
-      --button-border-color: theme("colors.white");
+      --button-text-color: theme('colors.white');
+      --button-border-color: theme('colors.white');
 
       /* Hover */
-      --button-hover-bg-color: theme("colors.white");
-      --button-hover-text-color: theme("colors.navy");
-      --button-hover-border-color: theme("colors.white");
+      --button-hover-bg-color: theme('colors.white');
+      --button-hover-text-color: theme('colors.navy');
+      --button-hover-border-color: theme('colors.white');
     }
 
     @media (hover: hover) {
@@ -111,8 +109,8 @@ const {
 
     .element-button__icon {
       translate: 0 0 0;
-      transition: translate theme("transitionDuration.150")
-        theme("transitionTimingFunction.smooth");
+      transition: translate theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
 
       @media (hover: hover) {
         :global(a):hover &,

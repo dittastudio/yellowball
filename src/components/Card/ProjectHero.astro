@@ -1,16 +1,16 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  title: string
-  headline: string
-  description: string
-  cta: string
-  color?: ColorTypes
-  class?: string
+  title: string;
+  headline: string;
+  description: string;
+  cta: string;
+  color?: ColorTypes;
+  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default
+const hasSlotDefault = !!Astro.slots.default;
 const {
   title,
   headline,
@@ -19,32 +19,32 @@ const {
   color,
   class: className,
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 
 const colors = {
   yellow: 'text-yellow',
   green: 'text-green',
   blue: 'text-blue',
-}
+};
 
-const colorTitle = colors[color as keyof typeof colors] ?? ''
-const classes = ['card-project-hero', className]
+const colorTitle = colors[color as keyof typeof colors] ?? '';
+const classes = ['card-project-hero', className];
 ---
 
 <script>
   const cards = [
     ...document.querySelectorAll('[data-js="card-project-hero"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   cards.forEach(card => {
     card.addEventListener('mousemove', e => {
-      const cursPosX = e.pageX - card.offsetLeft
-      const cursPosY = e.pageY - card.offsetTop
+      const cursPosX = e.pageX - card.offsetLeft;
+      const cursPosY = e.pageY - card.offsetTop;
 
-      card.style.setProperty('--x', `${cursPosX}px`)
-      card.style.setProperty('--y', `${cursPosY}px`)
-    })
-  })
+      card.style.setProperty('--x', `${cursPosX}px`);
+      card.style.setProperty('--y', `${cursPosY}px`);
+    });
+  });
 </script>
 
 <style>
@@ -141,10 +141,10 @@ const classes = ['card-project-hero', className]
             </p>
 
             <p
-              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-center justify-start gap-20"
+              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-baseline justify-start gap-12"
             >
               {cta}
-              <Icon name="arrow-ne" class="size-12 md:size-15 -mb-4" />
+              <Icon name="arrow-ne" class="size-12 md:size-15" />
             </p>
           </div>
 

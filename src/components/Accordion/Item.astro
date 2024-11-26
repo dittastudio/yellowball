@@ -1,42 +1,42 @@
 ---
-import { colourText } from '@/utils/maps'
+import { colourText } from '@/utils/maps';
 
 interface Props {
-  id: string
-  color?: ColorTypes
-  class?: string
+  id: string;
+  color?: ColorTypes;
+  class?: string;
 }
 
-const { id, color = 'green', class: className } = Astro.props as Props
+const { id, color = 'green', class: className } = Astro.props as Props;
 
-const headerId = `accordion-item-header-${id}`
-const bodyId = `accordion-item-body-${id}`
+const headerId = `accordion-item-header-${id}`;
+const bodyId = `accordion-item-body-${id}`;
 ---
 
 <script>
-  import gsap from 'gsap'
+  import gsap from 'gsap';
 
   const accordions = [
     ...document.querySelectorAll('[data-js=accordion-item]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   accordions.forEach(accordion => {
     const header = accordion.querySelector(
       '[data-js-accordion-header]',
-    ) as HTMLElement
+    ) as HTMLElement;
     const body = accordion.querySelector(
       '[data-js-accordion-body]',
-    ) as HTMLElement
+    ) as HTMLElement;
     const bodyInner = accordion.querySelector(
       '[data-js-accordion-body-inner]',
-    ) as HTMLElement
+    ) as HTMLElement;
 
-    const tl = gsap.timeline({ paused: true })
+    const tl = gsap.timeline({ paused: true });
 
     const toggleAccordion = () => {
-      const isOpen = accordion.classList.contains('is-open')
+      const isOpen = accordion.classList.contains('is-open');
 
-      tl.clear()
+      tl.clear();
 
       if (isOpen) {
         tl.to(bodyInner, {
@@ -51,18 +51,18 @@ const bodyId = `accordion-item-body-${id}`
             ease: 'power4.inOut',
           },
           '<',
-        )
+        );
 
-        accordion.classList.remove('is-open')
-        body?.setAttribute('aria-label', 'Close Accordion')
-        body?.setAttribute('aria-hidden', 'true')
+        accordion.classList.remove('is-open');
+        body?.setAttribute('aria-label', 'Close Accordion');
+        body?.setAttribute('aria-hidden', 'true');
       } else {
         tl.to(body, {
           height: 'auto',
           duration: 0.5,
           ease: 'power4.inOut',
           onComplete: () => {
-            gsap.set(body, { height: 'auto' }) // Set to auto for flexible height
+            gsap.set(body, { height: 'auto' }); // Set to auto for flexible height
           },
         }).to(
           bodyInner,
@@ -72,18 +72,18 @@ const bodyId = `accordion-item-body-${id}`
             ease: 'power2.out',
           },
           '<50%',
-        )
+        );
 
-        accordion.classList.add('is-open')
-        body?.setAttribute('aria-label', 'Open Accordion')
-        body?.setAttribute('aria-hidden', 'false')
+        accordion.classList.add('is-open');
+        body?.setAttribute('aria-label', 'Open Accordion');
+        body?.setAttribute('aria-hidden', 'false');
       }
 
-      tl.play()
-    }
+      tl.play();
+    };
 
-    header.addEventListener('click', toggleAccordion)
-  })
+    header.addEventListener('click', toggleAccordion);
+  });
 </script>
 
 <section
@@ -95,14 +95,14 @@ const bodyId = `accordion-item-body-${id}`
     type="button"
     id={headerId}
     class:list={[
-      'group/accordion flex items-start gap-28 md:gap-40 py-30 md:pt-40 md:pb-20 w-full',
+      'group/accordion flex items-baseline gap-28 md:gap-40 py-30 md:pt-40 md:pb-20 w-full',
       'font-heading text-21 font-semibold md:text-28 text-left',
     ]}
   >
     <span class:list={['accordion-item__icon', colourText[color]]}></span>
 
     <span
-      class="block relative -top-[0.45em] transition-opacity duration-250 ease-smooth group-hover/accordion:opacity-80 group-active/accordion:opacity-60"
+      class="block transition-opacity duration-250 ease-smooth group-hover/accordion:opacity-80 group-active/accordion:opacity-60"
     >
       <slot name="header" />
     </span>

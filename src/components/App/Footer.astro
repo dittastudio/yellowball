@@ -1,6 +1,6 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
-import ShapeRow from '@/components/Elements/ShapeRow.astro'
+import Icon from '@/components/Elements/Icon.astro';
+import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 const serviceLinks = [
   'WordPress',
@@ -10,16 +10,16 @@ const serviceLinks = [
   'Ecommerce',
   'UI / UX',
   'Other Services',
-]
+];
 
-const quickLinks = ['Agency', 'Guides', 'Our Work', 'Careers', 'Contact Us']
+const quickLinks = ['Agency', 'Guides', 'Our Work', 'Careers', 'Contact Us'];
 
 const legalLinks = [
   'Privacy Policy',
   'Cookies Policy',
   'Manage Cookie Settings',
   'Terms & Conditions',
-]
+];
 
 const linkLists = [
   {
@@ -34,21 +34,21 @@ const linkLists = [
     title: 'Legal',
     links: legalLinks,
   },
-]
+];
 
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 ---
 
 <script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  const footer = document.querySelector('[data-js=footer]') as HTMLElement
+  const footer = document.querySelector('[data-js=footer]') as HTMLElement;
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
   const footerLogo = footer.querySelector(
     '[data-js-footer-logo]',
-  ) as HTMLElement
+  ) as HTMLElement;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -58,7 +58,7 @@ const year = new Date().getFullYear()
       end: 'bottom bottom',
       scrub: 0,
     },
-  })
+  });
 
   tl.from(
     footerLogo,
@@ -69,7 +69,7 @@ const year = new Date().getFullYear()
       ease: 'linear',
     },
     0,
-  )
+  );
 </script>
 
 <footer data-js="footer" class="app-footer pt-40 md:pt-100 overflow-hidden">
@@ -78,14 +78,14 @@ const year = new Date().getFullYear()
       class="grid gap-x-12 md:gap-x-30 gap-y-50 md:gap-y-80 grid-cols-8 md:grid-cols-12 md:col-span-10 md:col-start-2"
     >
       <div
-        class="col-span-full sm:col-span-4 md:col-span-6 xl:col-span-4 xl:col-start-2 flex flex-col gap-y-40 font-heading"
+        class="col-span-full sm:col-span-4 md:col-span-6 xl:col-span-4 xl:col-start-2 flex flex-col gap-y-40"
       >
         <a href="/" class="app-footer__icons w-fit p-12 -mt-8 -mx-12 -mb-12">
           <ShapeRow />
         </a>
 
         <div
-          class="app-footer__list w-fit flex flex-col -m-12 text-15 md:text-18 font-bold"
+          class="app-footer__list w-fit flex flex-col -m-12 text-15 md:text-18 font-heading font-bold"
         >
           <a href="tel:+442080493080" class="app-footer__list-link block p-12">
             020 8049 3080

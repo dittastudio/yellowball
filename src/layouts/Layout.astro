@@ -1,12 +1,12 @@
 ---
-import "lenis/dist/lenis.css";
-import "@/assets/styles/global.css";
-import AppHeader from "@/components/App/Header.astro";
-import AppFooter from "@/components/App/Footer.astro";
-import AppFooterTicker from "@/components/App/FooterTicker.astro";
-import LayoutLines from "@/components/Layout/Lines.astro";
-import DevOnly from "@/components/Tools/DevOnly.astro";
-import Guide from "@/components/Tools/Guide.astro";
+import 'lenis/dist/lenis.css';
+import '@/assets/styles/global.css';
+import AppHeader from '@/components/App/Header.astro';
+import AppFooter from '@/components/App/Footer.astro';
+import AppFooterTicker from '@/components/App/FooterTicker.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+import DevOnly from '@/components/Tools/DevOnly.astro';
+import Guide from '@/components/Tools/Guide.astro';
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ const { title } = Astro.props;
 ---
 
 <script>
-  import Lenis from "lenis";
+  import Lenis from 'lenis';
 
   new Lenis({
     autoRaf: true,
@@ -28,7 +28,20 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://use.typekit.net/cky5cvm.css" />
+    <!-- <link
+      rel="preload"
+      href="/fonts/area-semibold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/area-bold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
