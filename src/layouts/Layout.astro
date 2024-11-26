@@ -31,7 +31,7 @@ const { title } = Astro.props;
       content="Yellowball is London's leading web design and development agency specialising in beautiful bespoke websites that drive commercial growth."
     />
     <meta name="viewport" content="width=device-width" />
-    <!-- <link
+    <link
       rel="preload"
       href="/fonts/area-semibold-webfont.woff2"
       as="font"
@@ -44,7 +44,7 @@ const { title } = Astro.props;
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
-    /> -->
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,9 +55,9 @@ const { title } = Astro.props;
   </head>
 
   <body class="font-body text-16 antialiased">
-    <AppHeader />
-
     <LayoutLines>
+      <AppHeader />
+
       <slot />
 
       <AppFooterTicker />

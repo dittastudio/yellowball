@@ -1,6 +1,6 @@
 ---
-import ShapeGradient from '@/components/Elements/ShapeGradient.astro'
-import AccordionItem from '@/components/Accordion/Item.astro'
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
+import AccordionItem from '@/components/Accordion/Item.astro';
 
 const exampleQuestions = [
   {
@@ -45,10 +45,10 @@ const exampleQuestions = [
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>
     `,
   },
-]
+];
 ---
 
-<section class="py-180 contain-layout">
+<section class="py-180 overflow-hidden">
   <div class="relative wrapper">
     <h2 class="text-fluid-h2 mb-30 md:mb-120">FAQs</h2>
 
@@ -65,7 +65,7 @@ const exampleQuestions = [
     <ShapeGradient
       shape="triangle"
       color="yellow"
-      class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-1"
+      class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-10"
     />
   </div>
 </section>

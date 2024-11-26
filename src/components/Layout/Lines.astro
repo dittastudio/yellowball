@@ -1,15 +1,15 @@
 ---
 interface Props {
-  tag?: string
-  theme?: string
-  class?: string
+  tag?: string;
+  theme?: string;
+  class?: string;
 }
 
 const {
   tag: Tag = 'div',
   theme = 'dark',
   class: className,
-} = Astro.props as Props
+} = Astro.props as Props;
 ---
 
 <Tag class:list={['layout-lines', `is-${theme}`, className]}>
@@ -21,8 +21,7 @@ const {
 <style>
   .layout-lines {
     position: relative;
-    overflow-x: clip;
-    isolation: isolate;
+    contain: layout;
 
     &.is-dark {
       --line-color: rgba(255, 255, 255, 0.1);
@@ -114,7 +113,7 @@ const {
         height: 50vh;
         background-image: linear-gradient(
           to top,
-          theme('colors.navy') 0,
+          theme('colors.navy') 50%,
           var(--line-transparent) 100%
         );
       }
