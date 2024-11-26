@@ -1,32 +1,32 @@
 ---
-import CardProject from '@/components/Card/Project.astro'
+import CardProject from '@/components/Card/Project.astro';
 
 interface Slide {
-  imageMobile: ImageObject
-  imageDesktop: ImageObject
+  imageMobile: ImageObject;
+  imageDesktop: ImageObject;
 }
 
 interface Props {
-  slides: Slide[]
-  class?: string
+  slides: Slide[];
+  class?: string;
 }
 
-const { slides, class: className } = Astro.props as Props
+const { slides, class: className } = Astro.props as Props;
 
-const classes = ['carousel-project', className]
+const classes = ['carousel-project', className];
 ---
 
 <script>
-  import Swiper from 'swiper'
-  import type { SwiperOptions } from 'swiper/types'
-  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules'
+  import Swiper from 'swiper';
+  import type { SwiperOptions } from 'swiper/types';
+  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules';
 
   const carousels = [
     ...document.querySelectorAll('[data-js="carousel-project"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   carousels.forEach(carousel => {
-    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement
+    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
 
     if (swiperEl) {
       const swiperParams: SwiperOptions = {
@@ -51,22 +51,24 @@ const classes = ['carousel-project', className]
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(_, className) {
+          renderBullet(index, className) {
             return `
           <button type="button" class="${className}">
-            <span class="swiper-pagination-bullet__pill"></span>
+            <span class="swiper-pagination-bullet__pill">
+              <span class="sr-only">Go to slide ${index + 1}</span>
+            </span>
           </button>
-        `
+        `;
           },
         },
-      }
+      };
 
       new Swiper(swiperEl, {
         modules: [Autoplay, Navigation, Pagination, Keyboard],
         ...swiperParams,
-      })
+      });
     }
-  })
+  });
 </script>
 
 <div
