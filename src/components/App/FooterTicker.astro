@@ -6,45 +6,10 @@ const copy = ['Let’s work together']
 const multipleCopy: string[] = [...copy, ...copy, ...copy]
 ---
 
-<script>
-  // let isVisible = false
-
-  // const tickers = [
-  //   ...document.querySelectorAll('[data-js=app-footer-ticker]'),
-  // ] as HTMLElement[]
-
-  // tickers.forEach(ticker => {
-  //   const callback = (entries: any) => {
-  //     const [{ isIntersecting }] = entries
-
-  //     isVisible = isIntersecting
-
-  //     if (isVisible) {
-  //       ticker?.classList.add('is-visible')
-  //     } else {
-  //       ticker?.classList.remove('is-visible')
-  //     }
-  //   }
-
-  //   const options = {
-  //     root: null,
-  //     rootMargin: '0px 0px 0px 0px',
-  //     threshold: 0,
-  //   }
-
-  //   const observer = new IntersectionObserver(callback, options)
-
-  //   if (ticker) observer.observe(ticker)
-  // })
-</script>
-
-<section
-  data-js="app-footer-ticker"
-  class="footer-ticker block w-full pt-100 pb-50"
->
-  <div class="footer-ticker__outer wrapper-full">
+<section class="block w-full pt-100 pb-50">
+  <div class="wrapper-full">
     <div
-      class="footer-ticker__inner bg-yellow text-navy py-[1.9em] md:py-[1.15em] rounded-[0.8em] font-heading text-fluid-h1 font-semibold contain-paint"
+      class="bg-yellow text-navy py-[1.9em] md:py-[1.15em] rounded-[0.8em] font-heading text-fluid-h1 font-semibold contain-paint"
     >
       <Ticker class="relative -top-[0.1em]">
         {

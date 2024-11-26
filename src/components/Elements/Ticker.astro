@@ -8,135 +8,27 @@ const { class: className } = Astro.props as Props
 
 <script>
   import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
   const tickers = [
-    ...document.querySelectorAll('[data-js=ticker]'),
+    ...document.querySelectorAll('[data-js="ticker"]'),
   ] as HTMLElement[]
 
-  class LoopingElement {
-    element: HTMLElement
-    currentTranslation: number
-    speed: number
-    direction: boolean
-    scrollTop: number
-    metric: number
-    lerp: { current: number; target: number; factor: number }
-    active: boolean // To control the animation loop
-
-    constructor(element: any, currentTranslation: any, speed: any) {
-      this.element = element
-      this.currentTranslation = currentTranslation
-      this.speed = speed
-      this.direction = true
-      this.scrollTop = 0
-      this.metric = 100
-      this.active = true // Initially active
-
-      this.lerp = {
-        current: this.currentTranslation,
-        target: this.currentTranslation,
-        factor: 0.1,
-      }
-
-      this.events()
-      this.render()
-    }
-
-    events() {
-      window.addEventListener('scroll', () => {
-        let direction = window.scrollY || document.documentElement.scrollTop
-        if (direction > this.scrollTop) {
-          this.direction = true
-          this.lerp.target += this.speed * 5
-        } else {
-          this.direction = false
-          this.lerp.target -= this.speed * 5
-        }
-        this.scrollTop = direction <= 0 ? 0 : direction
-      })
-    }
-
-    lerpFunc(current: number, target: number, factor: number) {
-      this.lerp.current = current * (1 - factor) + target * factor
-    }
-
-    goForward() {
-      this.lerp.target += this.speed
-      if (this.lerp.target > this.metric) {
-        this.lerp.current -= this.metric * 1
-        this.lerp.target -= this.metric * 1
-      }
-    }
-
-    goBackward() {
-      this.lerp.target -= this.speed
-      if (this.lerp.target < -this.metric) {
-        this.lerp.current -= -this.metric * 1
-        this.lerp.target -= -this.metric * 1
-      }
-    }
-
-    animate() {
-      if (!this.active) return // Stop animation if not active
-      this.direction ? this.goForward() : this.goBackward()
-      this.lerpFunc(this.lerp.current, this.lerp.target, this.lerp.factor)
-
-      gsap.set(this.element, { x: `${this.lerp.current}%` })
-
-      this.element.style.transform = `translateX(${this.lerp.current}%)`
-    }
-
-    render() {
-      if (this.active) {
-        this.animate()
-        window.requestAnimationFrame(() => this.render())
-      }
-    }
-
-    stop() {
-      this.active = false // Stop the animation loop
-    }
-
-    start() {
-      if (!this.active) {
-        this.active = true
-        this.render() // Resume the animation loop
-      }
-    }
-  }
-
   tickers.forEach(ticker => {
-    const elements = ticker.querySelectorAll('[data-js-ticker-item]')
+    ScrollTrigger.create({
+      markers: false,
+      trigger: ticker,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.5,
+      onUpdate: self => {
+        const progress = self.progress
 
-    const loopingElements: LoopingElement[] = []
-
-    const callback = (entries: any) => {
-      const [{ isIntersecting }] = entries
-
-      if (isIntersecting) {
-        elements.forEach((element, index) => {
-          if (!loopingElements[index]) {
-            loopingElements[index] = new LoopingElement(element, 0, 0.05)
-          } else {
-            loopingElements[index].start() // Resume animation if already exists
-          }
+        gsap.to(ticker, {
+          x: -ticker.clientWidth * progress + 1,
         })
-      } else {
-        loopingElements.forEach(loopingElement => {
-          if (loopingElement) loopingElement.stop() // Stop animation when out of view
-        })
-      }
-    }
-
-    const options = {
-      root: null,
-      rootMargin: '0px 0px 0px 0px',
-      threshold: 0,
-    }
-
-    const observer = new IntersectionObserver(callback, options)
-
-    if (ticker) observer.observe(ticker)
+      },
+    })
   })
 </script>
 
@@ -147,13 +39,10 @@ const { class: className } = Astro.props as Props
     className,
   ]}
 >
-  <ul class="element-ticker__list select-none flex justify-center min-w-full">
+  <ul class="select-none flex justify-center min-w-full">
     {
       [...Array(3)].map(() => (
-        <li
-          data-js-ticker-item
-          class="element-ticker__item flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]"
-        >
+        <li class="flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]">
           <slot />
         </li>
       ))

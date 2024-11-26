@@ -1,53 +1,18 @@
 ---
 import Ticker from '@/components/Elements/Ticker.astro'
 
-const testLogoImages: ImageObject[] = [
-  {
-    src: '/images/test-logo-1.png',
-    alt: 'logo 1',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-2.png',
-    alt: 'logo 2',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-3.png',
-    alt: 'logo 3',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-4.png',
-    alt: 'logo 3',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-5.png',
-    alt: 'logo 3',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-6.png',
-    alt: 'logo 3',
-    width: 118,
-    height: 64,
-  },
-  {
-    src: '/images/test-logo-7.png',
-    alt: 'logo 3',
-    width: 118,
-    height: 64,
-  },
+const images = [
+  '/images/test-logo-1.png',
+  '/images/test-logo-2.png',
+  '/images/test-logo-3.png',
+  '/images/test-logo-4.png',
+  '/images/test-logo-5.png',
+  '/images/test-logo-6.png',
+  '/images/test-logo-7.png',
 ]
 ---
 
-<section data-js="logo-ticker" class="wrapper pt-80 md:pt-120">
+<section class="wrapper pt-80 md:pt-120">
   <div
     class:list={[
       'relative overflow-hidden',
@@ -60,13 +25,13 @@ const testLogoImages: ImageObject[] = [
   >
     <Ticker class="logo-ticker__el">
       {
-        testLogoImages?.map(image => (
+        images?.map(image => (
           <img
             class="w-[118px] aspect-[118/64]"
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
+            src={image}
+            alt=""
+            width={118}
+            height={64}
           />
         ))
       }
