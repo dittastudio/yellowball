@@ -52,9 +52,9 @@ const year = new Date().getFullYear()
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      // markers: true,
-      trigger: footerLogo,
-      start: 'center bottom',
+      markers: true,
+      trigger: footer,
+      start: '80% bottom',
       end: 'bottom bottom',
       scrub: 0,
     },
@@ -146,7 +146,7 @@ const year = new Date().getFullYear()
 
   <div data-js-footer-logo class="wrapper mt-40">
     <Icon
-      class="app-footer__logo block translate-y-[18%] size-full text-card"
+      class="app-footer__logo block translate-y-[27%] size-full text-card"
       name="yellowball"
     />
   </div>
