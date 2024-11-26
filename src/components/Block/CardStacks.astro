@@ -1,10 +1,11 @@
 ---
-import CardAvatars from '@/components/Card/Avatars.astro'
-import CardCta from '@/components/Card/Cta.astro'
-import CardFigure from '@/components/Card/Figure.astro'
-import CardMedia from '@/components/Card/Media.astro'
-import LayoutLines from '@/components/Layout/Lines.astro'
-import TextReveal from '@/components/Elements/TextReveal.astro'
+import CardAvatars from '@/components/Card/Avatars.astro';
+import CardCta from '@/components/Card/Cta.astro';
+import CardFigure from '@/components/Card/Figure.astro';
+import CardMedia from '@/components/Card/Media.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import Icon from '@/components/Elements/Icon.astro';
 ---
 
 <LayoutLines
@@ -18,7 +19,15 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
       <TextReveal>
         <h2 class="font-heading text-fluid-h2 font-semibold">
           <span class="!block pl-[1ch]">Rooted in London,</span>
-          connected Worldwide
+          connected
+
+          <span class="relative !inline-block">
+            worldwide
+            <Icon
+              name="underline"
+              class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
+            />
+          </span>
         </h2>
       </TextReveal>
 

@@ -1,25 +1,23 @@
 ---
 interface Props {
-  class?: string
-  type?: 'transparent' | 'navy' | 'yellow'
-  text: string
+  class?: string;
+  type?: 'transparent' | 'navy' | 'yellow';
+  text: string;
 }
 
-const { class: className, text, type = 'transparent' } = Astro.props as Props
+const { class: className, text, type = 'transparent' } = Astro.props as Props;
 ---
 
 <span
   class:list={[
     'app-header-link',
-    'flex items-center h-inherit px-24 pt-[14px] pb-15 rounded-12',
+    'flex items-center h-inherit px-24 pt-[14px] pb-[15px] rounded-12',
     'font-heading text-13 lg:text-15 font-bold text-white',
     `is-${type}`,
     className,
   ]}
 >
-  <span class="relative -top-[0.1em]">
-    {text}
-  </span>
+  {text}
 </span>
 
 <style>

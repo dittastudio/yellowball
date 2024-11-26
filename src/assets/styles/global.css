@@ -1,7 +1,7 @@
 /* Base */
 @import url('tailwindcss/base');
 @import url('@/assets/styles/base/settings.css');
-@import url('@/assets/styles/base/type.css');
+@import url('@/assets/styles/base/fonts.css');
 
 /* Components */
 @import url('tailwindcss/components');
