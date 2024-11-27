@@ -54,6 +54,14 @@ const {
     &.is-transparent {
       --button-bg-color: theme('colors.transparent');
       --button-text-color: theme('colors.white');
+
+      @media (hover: hover) {
+        :global(a):hover &,
+        :global(button):not(:disabled):hover & {
+          --button-bg-color: transparent;
+          --button-text-color: theme('colors.navy');
+        }
+      }
     }
 
     &.is-navy {
@@ -69,7 +77,7 @@ const {
     @media (hover: hover) {
       :global(a):hover &,
       :global(button):not(:disabled):hover & {
-        /* --button-bg-color: theme('colors.yellow'); */
+        --button-bg-color: theme('colors.yellow');
         --button-text-color: theme('colors.navy');
       }
     }
