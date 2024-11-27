@@ -1,8 +1,15 @@
 ---
 import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
-const classNavList = 'flex items-center justify-start';
-const classNavListLink = 'block h-full px-2';
+interface Props {
+  class?: string;
+  items: {
+    text: string;
+    href: string;
+  }[];
+}
+
+const { class: className, items } = Astro.props as Props;
 ---
 
 <script>
@@ -21,7 +28,8 @@ const classNavListLink = 'block h-full px-2';
     console.log('pill', pill);
 
     let pillActive = false;
-    const ease = 'power2.inOut';
+    const duration = 0.3;
+    const ease = 'back.out(0.8)';
 
     const updatePill = (target: any) => {
       const { offsetWidth, offsetLeft } = target.firstElementChild;
@@ -31,7 +39,7 @@ const classNavListLink = 'block h-full px-2';
           opacity: 1,
           width: offsetWidth,
           left: offsetLeft,
-          duration: 0.3,
+          duration,
           ease,
         });
       } else {
@@ -42,7 +50,7 @@ const classNavListLink = 'block h-full px-2';
 
         gsap.to(pill, {
           opacity: 1,
-          duration: 0.3,
+          duration,
           ease,
           onStart: () => {
             pillActive = true;
@@ -54,53 +62,39 @@ const classNavListLink = 'block h-full px-2';
     const hidePill = () => {
       gsap.to(pill, {
         opacity: 0,
-        duration: 0.3,
+        duration,
         ease,
       });
     };
 
     navList?.addEventListener('mouseleave', () => (pillActive = false));
 
-    navItems.forEach(item => {
+    navItems?.forEach(item => {
       item.addEventListener('mouseenter', e => updatePill(e.target));
       item.addEventListener('mouseleave', hidePill);
     });
   });
 </script>
 
-<div data-js="header-nav" class="relative flex items-center h-full">
-  <ul data-js-header-nav-list class={classNavList}>
-    <li>
-      <a data-js-header-nav-item class={classNavListLink} href="/">
-        <AppHeaderButton text="Services" />
-      </a>
-    </li>
-
-    <li>
-      <a data-js-header-nav-item class={classNavListLink} href="/">
-        <AppHeaderButton text="Our Work" />
-      </a>
-    </li>
-
-    <li>
-      <a data-js-header-nav-item class={classNavListLink} href="/">
-        <AppHeaderButton text="Agency" />
-      </a>
-    </li>
+<div
+  data-js="header-nav"
+  class:list={['relative flex items-center h-full', className]}
+>
+  <ul data-js-header-nav-list class="flex items-center justify-start">
+    {
+      items?.map((item: any) => (
+        <li>
+          <a data-js-header-nav-item class="block h-full px-2" href={item.href}>
+            <AppHeaderButton text={item.text} />
+          </a>
+        </li>
+      ))
+    }
   </ul>
 
   <span
     data-js-header-nav-pill
-    class="header-nav__pill block bg-yellow rounded-12 h-full opacity-0"
+    class="header-nav__pill block bg-yellow rounded-12 h-full absolute top-0 left-0 -z-1 opacity-0"
   >
   </span>
 </div>
-
-<style>
-  .header-nav__pill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-</style>
