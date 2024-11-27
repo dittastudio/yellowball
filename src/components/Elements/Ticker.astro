@@ -88,13 +88,7 @@ const { class: className } = Astro.props as Props;
   });
 </script>
 
-<div
-  data-js="ticker"
-  class:list={[
-    'element-ticker contain-layout font-heading text-fluid-h1 font-semibold',
-    className,
-  ]}
->
+<div data-js="ticker" class:list={['element-ticker contain-layout', className]}>
   <ul class="select-none flex justify-center min-w-full">
     {
       [...Array(3)].map(() => (
