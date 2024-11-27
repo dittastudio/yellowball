@@ -5,7 +5,12 @@ interface Props {
   text: string;
 }
 
-const { class: className, text, type = 'transparent' } = Astro.props as Props;
+const {
+  class: className,
+  text,
+  type = 'transparent',
+  ...props
+} = Astro.props as Props;
 ---
 
 <span
@@ -16,6 +21,7 @@ const { class: className, text, type = 'transparent' } = Astro.props as Props;
     `is-${type}`,
     className,
   ]}
+  {...props}
 >
   {text}
 </span>
@@ -29,9 +35,9 @@ const { class: className, text, type = 'transparent' } = Astro.props as Props;
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     transition:
-      color theme('transitionDuration.150')
+      color theme('transitionDuration.300')
         theme('transitionTimingFunction.smooth'),
-      background-color theme('transitionDuration.150')
+      background-color theme('transitionDuration.300')
         theme('transitionTimingFunction.smooth');
 
     &::after {
@@ -41,7 +47,7 @@ const { class: className, text, type = 'transparent' } = Astro.props as Props;
       background-color: theme('colors.navy');
       opacity: 0;
       border-radius: inherit;
-      transition: opacity theme('transitionDuration.150')
+      transition: opacity theme('transitionDuration.300')
         theme('transitionTimingFunction.smooth');
     }
 
@@ -63,7 +69,7 @@ const { class: className, text, type = 'transparent' } = Astro.props as Props;
     @media (hover: hover) {
       :global(a):hover &,
       :global(button):not(:disabled):hover & {
-        --button-bg-color: theme('colors.yellow');
+        /* --button-bg-color: theme('colors.yellow'); */
         --button-text-color: theme('colors.navy');
       }
     }

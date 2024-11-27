@@ -1,71 +1,75 @@
 ---
-import AppHeaderButton from '@/components/App/HeaderButton.astro'
+import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
-const classNavList = 'flex items-center justify-start gap-4'
-const classNavListLink = 'block h-full'
+const classNavList = 'flex items-center justify-start';
+const classNavListLink = 'block h-full px-2';
 ---
 
 <script>
-  // import gsap from 'gsap'
+  import gsap from 'gsap';
 
-  // const navs = [
-  //   ...document.querySelectorAll('[data-js=header-nav]'),
-  // ] as HTMLElement[]
+  const navs = [
+    ...document.querySelectorAll('[data-js=header-nav]'),
+  ] as HTMLElement[];
 
-  // navs.forEach(nav => {
-  // const navItems = nav.querySelectorAll('[data-js-header-nav-item]')
-  // const pill = nav.querySelector('[data-js-header-nav-pill]')
-  // console.log(pill)
-  // let pillVisible = false
-  // function updatePill(target) {
-  //   const { offsetWidth, offsetLeft } = target
-  //   if (!pillVisible) {
-  //     // Fade in and move to the hovered item
-  //     gsap.to(pill, {
-  //       opacity: 1,
-  //       width: offsetWidth,
-  //       left: offsetLeft,
-  //       duration: 0.3,
-  //       ease: 'power3.out',
-  //       onStart: () => {
-  //         pillVisible = true // Mark as visible at the start of fade-in
-  //       },
-  //     })
-  //   } else {
-  //     // Just update the size and position if already visible
-  //     gsap.to(pill, {
-  //       width: offsetWidth,
-  //       left: offsetLeft,
-  //       duration: 0.3,
-  //       ease: 'power3.out',
-  //     })
-  //   }
-  // }
-  // function hidePill() {
-  //   if (pillVisible) {
-  //     gsap.to(pill, {
-  //       opacity: 0,
-  //       duration: 0.3,
-  //       ease: 'power3.out',
-  //       onComplete: () => {
-  //         pillVisible = false // Mark as hidden after fade-out completes
-  //         // Reset size to 0 to avoid stale positioning
-  //         gsap.set(pill, { width: 0 })
-  //       },
-  //     })
-  //   }
-  // }
-  // navItems.forEach(item => {
-  //   item.addEventListener('mouseenter', e => {
-  //     updatePill(e.target)
-  //   })
-  // })
-  // nav.addEventListener('mouseleave', hidePill)
-  // })
+  navs.forEach(nav => {
+    const navList = nav.querySelector('[data-js-header-nav-list]');
+    const navItems = nav.querySelectorAll('[data-js-header-nav-item]');
+    const pill = nav.querySelector('[data-js-header-nav-pill]');
+
+    console.log('navItems', navItems);
+    console.log('pill', pill);
+
+    let pillActive = false;
+    const ease = 'power2.inOut';
+
+    const updatePill = (target: any) => {
+      const { offsetWidth, offsetLeft } = target.firstElementChild;
+
+      if (pillActive) {
+        gsap.to(pill, {
+          opacity: 1,
+          width: offsetWidth,
+          left: offsetLeft,
+          duration: 0.3,
+          ease,
+        });
+      } else {
+        gsap.set(pill, {
+          width: offsetWidth,
+          left: offsetLeft,
+        });
+
+        gsap.to(pill, {
+          opacity: 1,
+          duration: 0.3,
+          ease,
+          onStart: () => {
+            pillActive = true;
+          },
+        });
+      }
+    };
+
+    const hidePill = () => {
+      gsap.to(pill, {
+        opacity: 0,
+        duration: 0.3,
+        ease,
+      });
+    };
+
+    navList?.addEventListener('mouseleave', () => (pillActive = false));
+
+    navItems.forEach(item => {
+      item.addEventListener('mouseenter', e => updatePill(e.target));
+      item.addEventListener('mouseleave', hidePill);
+    });
+  });
 </script>
 
-<div data-js="header-nav">
-  <ul class={classNavList}>
+<div data-js="header-nav" class="relative flex items-center h-full">
+  <ul data-js-header-nav-list class={classNavList}>
     <li>
       <a data-js-header-nav-item class={classNavListLink} href="/">
         <AppHeaderButton text="Services" />
@@ -85,7 +89,10 @@ const classNavListLink = 'block h-full'
     </li>
   </ul>
 
-  <span data-js-header-nav-pill class="header-nav__pill block bg-yellow h-full">
+  <span
+    data-js-header-nav-pill
+    class="header-nav__pill block bg-yellow rounded-12 h-full opacity-0"
+  >
   </span>
 </div>
 
@@ -95,6 +102,5 @@ const classNavListLink = 'block h-full'
     top: 0;
     left: 0;
     z-index: -1;
-    border-radius: 12px;
   }
 </style>
