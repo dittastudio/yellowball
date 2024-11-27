@@ -3,34 +3,34 @@
 ---
 
 <script>
-  import { gsap } from 'gsap'
-  import SplitType from 'split-type'
+  import { gsap } from 'gsap';
+  import SplitType from 'split-type';
 
-  const textReveal = document.querySelectorAll("[data-js='text-reveal']")
+  const textReveal = document.querySelectorAll("[data-js='text-reveal']");
 
   textReveal.forEach(reveal => {
     const directsSelector = [
       ...reveal.querySelectorAll(':scope > *'),
-    ] as HTMLElement[]
+    ] as HTMLElement[];
 
     const directs = new SplitType(directsSelector, {
       types: 'lines',
       lineClass: 'mask',
       tagName: 'span',
-    })
+    });
 
     gsap.set(directs.lines, {
       clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
-    })
+    });
 
     const masksSelector = [
       ...reveal.querySelectorAll(':scope .mask'),
-    ] as HTMLElement[]
+    ] as HTMLElement[];
 
     const masks = new SplitType(masksSelector, {
       types: 'lines',
       tagName: 'span',
-    })
+    });
 
     gsap.fromTo(
       masks.lines,
@@ -42,14 +42,14 @@
         stagger: 0.05,
         scrollTrigger: {
           markers: false,
-          scrub: false,
+          scrub: true,
           trigger: reveal,
-          start: 'top bottom',
-          end: 'top center',
+          start: 'top 90%',
+          end: 'bottom center',
         },
       },
-    )
-  })
+    );
+  });
 </script>
 
 <div data-js="text-reveal">
