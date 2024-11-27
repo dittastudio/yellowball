@@ -16,8 +16,12 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
   const section = document.querySelector(
     '[data-js="hero-home"]',
   ) as HTMLElement;
-  const container = section?.querySelector('.cursor-container') as HTMLElement;
-  const cursors = [...section?.querySelectorAll('.cursor')] as HTMLElement[];
+  const container = section?.querySelector(
+    '[data-js-cursor-container]',
+  ) as HTMLElement;
+  const cursors = [
+    ...section?.querySelectorAll('[data-js-cursor]'),
+  ] as HTMLElement[];
 
   cursors.forEach(cursor => {
     gsap.set(cursor, {
@@ -79,7 +83,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
           markers: false,
           trigger: section,
           start: '10% top',
-          end: '100% center',
+          end: 'bottom center',
           scrub: 1.5,
           invalidateOnRefresh: true,
           onEnter: () => {
@@ -87,9 +91,6 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
             animation().kill();
 
             clearDelay();
-          },
-          onEnterBack: () => {
-            // clearDelay();
           },
           onLeaveBack: () => {
             clearDelay();
@@ -133,22 +134,29 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
       rolling? <Link href="/" class="text-yellow">Let's chat</Link>
     </p>
 
-    <div class="cursor-container absolute inset-0 z-10 pointer-events-none">
+    <div
+      data-js-cursor-container
+      class="absolute inset-0 z-10 pointer-events-none"
+    >
       <Chip
+        data-js-cursor
         title="PPC Team"
-        class="cursor bg-blue absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-blue absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
+        data-js-cursor
         title="Design Team"
-        class="cursor bg-yellow absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-yellow absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
+        data-js-cursor
         title="SEO Team"
-        class="cursor bg-green absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-green absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
       <Chip
+        data-js-cursor
         title="Developers"
-        class="cursor bg-grey absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-grey absolute top-0 left-0 z-0 opacity-0 shadow-lg"
       />
     </div>
   </div>
