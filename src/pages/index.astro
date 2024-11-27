@@ -1,17 +1,20 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import BlockCardStacks from '@/components/Block/CardStacks.astro'
-import BlockCarouselPosts from '@/components/Block/CarouselPosts.astro'
-import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro'
-import BlockFAQs from '@/components/Block/FAQs.astro'
-import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro'
-import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro'
-import BlockHeroHome from '@/components/Block/HeroHome.astro'
-import BlockHeroText from '@/components/Block/HeroText.astro'
-import BlockLogoTicker from '@/components/Block/LogoTicker.astro'
-import BlockTestimonials from '@/components/Block/Testimonials.astro'
-import BlockServiceCards from '@/components/Block/ServiceCards.astro'
-import BlockServiceList from '@/components/Block/ServiceList.astro'
+import Layout from '@/layouts/Layout.astro';
+import Button from '@/components/Elements/Button.astro';
+
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardStacks from '@/components/Block/CardStacks.astro';
+import BlockCarouselPosts from '@/components/Block/CarouselPosts.astro';
+import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro';
+import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro';
+import BlockHeroHome from '@/components/Block/HeroHome.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockServiceList from '@/components/Block/ServiceList.astro';
 ---
 
 <Layout title="Home">
@@ -27,6 +30,11 @@ import BlockServiceList from '@/components/Block/ServiceList.astro'
       headline="Stunning bespoke web design that captivates & converts"
     />
     <BlockFeaturedProjects />
+    <BlockButtons>
+      <a href="/">
+        <Button text="View all projects" hasArrow />
+      </a>
+    </BlockButtons>
     <BlockTestimonials />
     <BlockFAQs />
     <BlockCarouselPosts />
