@@ -1,23 +1,23 @@
 ---
-import Button from '@/components/Elements/Button.astro'
-import Cube from '@/components/Elements/Cube.astro'
-import Icon from '@/components/Elements/Icon.astro'
-import ServiceItem from '@/components/Elements/ServiceItem.astro'
-import TextReveal from '@/components/Elements/TextReveal.astro'
+import Button from '@/components/Elements/Button.astro';
+import Cube from '@/components/Elements/Cube.astro';
+import Icon from '@/components/Elements/Icon.astro';
+import ServiceItem from '@/components/Elements/ServiceItem.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 ---
 
 <script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
   const section = document.querySelector(
     '[data-js="service-list"]',
-  ) as HTMLElement
+  ) as HTMLElement;
   const items = [
     ...section?.querySelectorAll('[data-js-item]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   items.forEach(item => {
     gsap.fromTo(
@@ -35,11 +35,11 @@ import TextReveal from '@/components/Elements/TextReveal.astro'
           trigger: item,
           start: 'top 80%',
           end: 'center center',
-          scrub: true,
+          scrub: 1.5,
         },
       },
-    )
-  })
+    );
+  });
 </script>
 
 <section
