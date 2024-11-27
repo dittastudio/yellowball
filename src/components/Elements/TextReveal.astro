@@ -20,7 +20,7 @@
     });
 
     gsap.set(directs.lines, {
-      clipPath: `polygon(0 0, 100% 0, 100% 115%, 0% 115%)`,
+      clipPath: `polygon(0 0, 100% 0, 100% 100%, 0% 100%)`,
     });
 
     const masksSelector = [
@@ -38,13 +38,13 @@
       {
         duration: 1,
         yPercent: 0,
-        ease: 'power2.inOut',
+        ease: 'power4.out',
         stagger: 0.05,
         scrollTrigger: {
-          markers: false,
+          markers: true,
           scrub: true,
           trigger: reveal,
-          start: 'top 90%',
+          start: '20% 80%',
           end: 'bottom center',
         },
       },
