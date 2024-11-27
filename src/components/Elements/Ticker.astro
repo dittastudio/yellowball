@@ -1,75 +1,75 @@
 ---
 interface Props {
-  class?: string
+  class?: string;
 }
 
-const { class: className } = Astro.props as Props
+const { class: className } = Astro.props as Props;
 ---
 
 <script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
-  const animations: gsap.core.Timeline[] = []
-  let direction = 'down'
-  let lastScrollY = window.scrollY
+  // const animations: gsap.core.Timeline[] = []
+  // let direction = 'down'
+  // let lastScrollY = window.scrollY
 
-  const handleDirection = (newDirection: 'up' | 'down') => {
-    animations.forEach(animation => {
-      const progress = animation.progress()
-      const tween = animation.getChildren()[0]
+  // const handleDirection = (newDirection: 'up' | 'down') => {
+  //   animations.forEach(animation => {
+  //     const progress = animation.progress()
+  //     const tween = animation.getChildren()[0]
 
-      if (tween) {
-        const currentX = parseFloat(tween.vars.x) * progress
-        direction = newDirection
-        const newEnd = direction === 'down' ? '-100%' : '100%'
+  //     if (tween) {
+  //       const currentX = parseFloat(tween.vars.x) * progress
+  //       direction = newDirection
+  //       const newEnd = direction === 'down' ? '-100%' : '100%'
 
-        tween.vars.x = newEnd
-        tween.invalidate()
+  //       tween.vars.x = newEnd
+  //       tween.invalidate()
 
-        const newProgress = currentX / parseFloat(newEnd)
+  //       const newProgress = currentX / parseFloat(newEnd)
 
-        animation.progress(newProgress)
-      }
-    })
-  }
+  //       animation.progress(newProgress)
+  //     }
+  //   })
+  // }
 
-  const handleScroll = () => {
-    const newDirection = window.scrollY > lastScrollY ? 'down' : 'up'
+  // const handleScroll = () => {
+  //   const newDirection = window.scrollY > lastScrollY ? 'down' : 'up'
 
-    if (newDirection !== direction) {
-      handleDirection(newDirection)
-    }
+  //   if (newDirection !== direction) {
+  //     handleDirection(newDirection)
+  //   }
 
-    lastScrollY = window.scrollY
-  }
+  //   lastScrollY = window.scrollY
+  // }
 
-  window.addEventListener('scroll', handleScroll)
+  // window.addEventListener('scroll', handleScroll)
 
   const tickers = [
     ...document.querySelectorAll('[data-js="ticker"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   tickers.forEach(ticker => {
-    const items = [
-      ...ticker.querySelectorAll('[data-js-item]'),
-    ] as HTMLElement[]
+    // const items = [
+    //   ...ticker.querySelectorAll('[data-js-item]'),
+    // ] as HTMLElement[];
 
-    const animation = gsap
-      .timeline({
-        repeat: -1,
-        defaults: {
-          duration: 20,
-          ease: 'none',
-        },
-      })
-      .to(items, {
-        x: '-100%',
-      })
+    // const animation = gsap
+    //   .timeline({
+    //     repeat: -1,
+    //     defaults: {
+    //       duration: 20,
+    //       ease: 'none',
+    //     },
+    //   })
+    //   .to(items, {
+    //     x: '-100%',
+    //   })
 
-    animations.push(animation)
+    // animations.push(animation)
 
     ScrollTrigger.create({
       markers: false,
@@ -78,14 +78,14 @@ const { class: className } = Astro.props as Props
       end: 'bottom top',
       scrub: 1.5,
       onUpdate: self => {
-        const progress = self.progress
+        const progress = self.progress;
 
         gsap.to(ticker, {
           x: -ticker.clientWidth * progress + 1,
-        })
+        });
       },
-    })
-  })
+    });
+  });
 </script>
 
 <div
