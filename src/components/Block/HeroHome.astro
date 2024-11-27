@@ -9,7 +9,6 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-  import { gsapEasings } from '@/utils/helpers';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -23,94 +22,112 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
     ...section?.querySelectorAll('[data-js-cursor]'),
   ] as HTMLElement[];
 
+  const timelines: gsap.core.Timeline[] = [];
+  const easings = [
+    'power1.inOut',
+    'power2.inOut',
+    'power3.inOut',
+    'power4.inOut',
+  ];
+
+  const getRandomDuration = () => gsap.utils.random(1.5, 5);
+  const getRandomEasing = () => gsap.utils.random(easings);
+  const getRandomPosition = (cursor: HTMLElement) => ({
+    x: gsap.utils.random(0, container.offsetWidth - cursor.offsetWidth),
+    y: gsap.utils.random(0, container.offsetHeight - cursor.offsetHeight),
+  });
+
+  const createTimeline = (cursor: HTMLElement) => {
+    const timeline = gsap.timeline({ repeat: -1 });
+
+    const animate = () => {
+      const position = getRandomPosition(cursor);
+      const duration = getRandomDuration();
+      const easing = getRandomEasing();
+
+      timeline.to(cursor, {
+        x: position.x,
+        y: position.y,
+        duration: duration,
+        ease: easing,
+        onComplete: animate,
+      });
+    };
+
+    animate();
+
+    return timeline;
+  };
+
   cursors.forEach(cursor => {
     gsap.set(cursor, {
       opacity: 0,
-      scale: 0.5,
+      scale: 0,
       x: Math.random() * container.offsetWidth,
       y: Math.random() * container.offsetHeight,
     });
   });
 
-  gsap.delayedCall(1, () => {
+  gsap.delayedCall(0.25, () => {
     gsap.to(cursors, {
       opacity: 1,
       scale: 1,
-      stagger: 0.3,
-      duration: 0.3,
+      stagger: 0.25,
+      duration: 1,
+      ease: 'back.inOut(4)',
+      onComplete: () => {
+        cursors.forEach(cursor => {
+          const timeline = createTimeline(cursor);
+          timelines.push(timeline);
+        });
+      },
     });
   });
 
+  let isPlaying = true;
   let delayedCall: gsap.core.Tween | null = null;
-
-  const animation = () => {
-    const tl = gsap.timeline({ paused: true });
-
-    cursors.forEach((cursor, _index) => {
-      const easing = gsap.utils.random(gsapEasings);
-      const duration = gsap.utils.random(1, 5);
-
-      tl.to(
-        cursor,
-        {
-          x: Math.random() * (container.offsetWidth - cursor.offsetWidth),
-          y: Math.random() * (container.offsetHeight - cursor.offsetHeight),
-          duration: duration,
-          ease: easing,
-        },
-        0,
-      );
-    });
-
-    tl.eventCallback('onComplete', () => {
-      delayedCall = gsap.delayedCall(5, () => animation().play());
-    });
-
-    return tl;
-  };
 
   const clearDelay = () => {
     delayedCall?.kill();
     delayedCall = null;
   };
 
-  gsap.delayedCall(2, () => {
-    animation().play();
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          markers: false,
-          trigger: section,
-          start: '10% top',
-          end: 'bottom center',
-          scrub: 1.5,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            animation().pause();
-            animation().kill();
-
-            clearDelay();
-          },
-          onLeaveBack: () => {
-            clearDelay();
-
-            delayedCall = gsap.delayedCall(1.5, () => {
-              ScrollTrigger.refresh();
-              animation().play();
-            });
-          },
-          onLeave: () => {
-            clearDelay();
-          },
+  gsap
+    .timeline({
+      scrollTrigger: {
+        markers: false,
+        trigger: section,
+        start: '10% top',
+        end: 'bottom center',
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          if (isPlaying) {
+            timelines.forEach(timeline => timeline.pause());
+            isPlaying = false;
+          }
         },
-      })
-      .to(cursors, {
-        x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
-        y: (_index, target) => section.offsetHeight - target.offsetHeight,
-        opacity: 0,
-      });
-  });
+        onLeaveBack: () => {
+          clearDelay();
+
+          if (!isPlaying) {
+            delayedCall = gsap.delayedCall(5, () => {
+              ScrollTrigger.refresh();
+              timelines.forEach(timeline => timeline.play());
+              isPlaying = true;
+            });
+          }
+        },
+      },
+    })
+    .to(cursors, {
+      x: (_index, target) => container.offsetWidth / 2 - target.offsetWidth / 2,
+      y: (_index, target) => section.offsetHeight - target.offsetHeight,
+    })
+    .to(cursors, {
+      scale: 0,
+      opacity: 0,
+    });
 </script>
 
 <section
@@ -141,22 +158,22 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
       <Chip
         data-js-cursor
         title="PPC Team"
-        class="bg-blue absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-blue absolute top-0 left-0 z-0 shadow-lg opacity-0"
       />
       <Chip
         data-js-cursor
         title="Design Team"
-        class="bg-yellow absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-yellow absolute top-0 left-0 z-0 shadow-lg opacity-0"
       />
       <Chip
         data-js-cursor
         title="SEO Team"
-        class="bg-green absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-green absolute top-0 left-0 z-0 shadow-lg opacity-0"
       />
       <Chip
         data-js-cursor
         title="Developers"
-        class="bg-grey absolute top-0 left-0 z-0 opacity-0 shadow-lg"
+        class="bg-grey absolute top-0 left-0 z-0 shadow-lg opacity-0"
       />
     </div>
   </div>
