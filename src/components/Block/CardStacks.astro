@@ -3,17 +3,11 @@ import CardAvatars from '@/components/Card/Avatars.astro';
 import CardCta from '@/components/Card/Cta.astro';
 import CardFigure from '@/components/Card/Figure.astro';
 import CardMedia from '@/components/Card/Media.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import Icon from '@/components/Elements/Icon.astro';
 ---
 
-<LayoutLines
-  data-js="card-stacks"
-  theme="light"
-  tag="section"
-  class="wrapper-full bg-cream text-navy rounded-40 lg:rounded-80 pt-60 pb-80 lg:pt-160 lg:pb-180"
->
+<div data-js="card-stacks" class="wrapper-full">
   <div class="w-full max-w-[1050px] mx-auto flex flex-col gap-60 lg:gap-110">
     <div class="flex flex-col gap-60 lg:gap-80">
       <TextReveal>
@@ -156,4 +150,4 @@ import Icon from '@/components/Elements/Icon.astro';
       </li>
     </ul>
   </div>
-</LayoutLines>
+</div>

@@ -1,5 +1,5 @@
 ---
-import Ticker from '@/components/Elements/Ticker.astro'
+import Ticker from '@/components/Elements/Ticker.astro';
 
 const images = [
   '/images/test-logo-1.png',
@@ -9,10 +9,10 @@ const images = [
   '/images/test-logo-5.png',
   '/images/test-logo-6.png',
   '/images/test-logo-7.png',
-]
+];
 ---
 
-<section class="wrapper pt-80 md:pt-120">
+<div class="wrapper">
   <div
     class:list={[
       'relative overflow-hidden',
@@ -37,7 +37,7 @@ const images = [
       }
     </Ticker>
   </div>
-</section>
+</div>
 
 <style>
   .logo-ticker__el {

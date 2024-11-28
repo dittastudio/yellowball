@@ -1,16 +1,16 @@
 ---
-import CarouselProject from "@/components/Carousel/Project.astro";
+import CarouselProject from '@/components/Carousel/Project.astro';
 
 const imageMobileTest: ImageObject = {
-  src: "/images/portrait-1.jpg",
-  alt: "portrait 1",
+  src: '/images/portrait-1.jpg',
+  alt: 'portrait 1',
   width: 900,
   height: 1600,
 };
 
 const imageDesktopTest: ImageObject = {
-  src: "/images/landscape-1.jpg",
-  alt: "landscape 1",
+  src: '/images/landscape-1.jpg',
+  alt: 'landscape 1',
   width: 1600,
   height: 900,
 };
@@ -35,7 +35,7 @@ const slidesTest = [
 ];
 ---
 
-<section class="overflow-hidden pb-100">
+<div class="overflow-hidden">
   <div
     class="wrapper-full grid gap-x-12 md:gap-x-30 grid-cols-8 md:grid-cols-12"
   >
@@ -43,4 +43,4 @@ const slidesTest = [
       <CarouselProject slides={slidesTest} />
     </div>
   </div>
-</section>
+</div>
