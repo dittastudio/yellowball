@@ -116,9 +116,9 @@ const classes = ['card-project-hero', className];
         <div
           class="card-project-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_58%]"
         >
-          <div class="flex flex-col justify-start items-start gap-20 lg:gap-30">
+          <div class="flex flex-col justify-start items-start gap-20 md:gap-30">
             <div
-              class="flex flex-col justify-start items-start gap-10 lg:gap-20"
+              class="flex flex-col justify-start items-start gap-30 md:gap-40"
             >
               <p
                 class:list={[
@@ -136,7 +136,9 @@ const classes = ['card-project-hero', className];
               </h3>
             </div>
 
-            <p class="font-normal text-15 lg:text-18 text-grey text-balance">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[36ch]"
+            >
               {description}
             </p>
 
