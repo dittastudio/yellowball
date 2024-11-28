@@ -1,0 +1,179 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Button from '@/components/Elements/Button.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
+import Icon from '@/components/Elements/Icon.astro';
+import Link from '@/components/Elements/Link.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardStacks from '@/components/Block/CardStacks.astro';
+import BlockCarouselPosts from '@/components/Block/CarouselPosts.astro';
+import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro';
+import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockServiceList from '@/components/Block/ServiceList.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Home">
+  <main>
+    <section class={classSection}>
+      <BlockHero>
+        <Fragment slot="top">
+          <Icon name="yellowball" class="w-[117px] h-[22px]" />
+        </Fragment>
+
+        <Fragment slot="headline">
+          <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
+            <TextGradient>Websites</TextGradient> that get your business rolling
+          </h1>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            We're a boutique, London-based web design agency, crafting stunning,
+            bespoke websites that captivate and convert. Ready to get the ball
+            rolling? <Link href="/" class="text-yellow">Let's chat</Link>
+          </p>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselProjects />
+    </section>
+
+    <section class={classSection}>
+      <BlockHeadingBanner />
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceCards>
+        <Fragment slot="cards">
+          <CardServiceHero
+            headline="Web Design"
+            description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+            cta="See our services"
+            shape="triangle"
+            color="yellow"
+            class="col-span-full"
+          >
+            <img
+              src="/images/test-service-1.png"
+              width="1230"
+              height="756"
+              alt=""
+            />
+          </CardServiceHero>
+
+          <CardService
+            headline="SEO"
+            description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+            shape="square"
+            color="green"
+          >
+            <img
+              src="/images/test-service-2.png"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+
+          <CardService
+            headline="Paid Search"
+            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+            shape="circle"
+            color="blue"
+          >
+            <img
+              src="/images/test-service-3.png"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+        </Fragment>
+      </BlockServiceCards>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceList />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockCardStacks
+            description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
+          >
+            <Fragment slot="headline">
+              <h2 class="font-heading text-fluid-h2 font-semibold">
+                <span class="!block pl-[1ch]">Rooted in London,</span>
+                connected
+
+                <span class="relative !inline-block">
+                  worldwide
+                  <Icon
+                    name="underline"
+                    class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
+                  />
+                </span>
+              </h2>
+            </Fragment>
+          </BlockCardStacks>
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockLogoTicker />
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText
+        headline="Stunning bespoke web design that captivates & converts"
+      />
+    </section>
+
+    <section class={classSection}>
+      <BlockFeaturedProjects />
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <a href="/">
+          <Button text="View all projects" hasArrow />
+        </a>
+      </BlockButtons>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockTestimonials />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockFAQs />
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselPosts />
+    </section>
+  </main>
+</Layout>
