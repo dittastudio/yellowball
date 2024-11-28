@@ -1,0 +1,18 @@
+---
+import TextReveal from '@/components/Elements/TextReveal.astro';
+---
+
+<div data-js="hero" class="text-center">
+  <div
+    class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
+  >
+    <slot name="top" />
+
+    <TextReveal>
+      <slot name="headline" />
+    </TextReveal>
+
+    <slot name="bottom" />
+    <slot name="extra" />
+  </div>
+</div>

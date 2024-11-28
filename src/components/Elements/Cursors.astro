@@ -1,9 +1,5 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
 import Chip from '@/components/Elements/Chip.astro';
-import Link from '@/components/Elements/Link.astro';
-import TextReveal from '@/components/Elements/TextReveal.astro';
-import TextGradient from '@/components/Elements/TextGradient.astro';
 ---
 
 <script>
@@ -12,12 +8,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const section = document.querySelector(
-    '[data-js="hero-home"]',
-  ) as HTMLElement;
-  const container = section?.querySelector(
-    '[data-js-cursor-container]',
-  ) as HTMLElement;
+  const section = document.querySelector('[data-js="cursors"]') as HTMLElement;
   const cursors = [
     ...section?.querySelectorAll('[data-js-cursor]'),
   ] as HTMLElement[];
@@ -33,8 +24,8 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
   const getRandomDuration = () => gsap.utils.random(1.5, 5);
   const getRandomEasing = () => gsap.utils.random(easings);
   const getRandomPosition = (cursor: HTMLElement) => ({
-    x: gsap.utils.random(0, container.offsetWidth - cursor.offsetWidth),
-    y: gsap.utils.random(0, container.offsetHeight - cursor.offsetHeight),
+    x: gsap.utils.random(0, section.offsetWidth - cursor.offsetWidth),
+    y: gsap.utils.random(0, section.offsetHeight - cursor.offsetHeight),
   });
 
   const createTimeline = (cursor: HTMLElement) => {
@@ -63,8 +54,8 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
     gsap.set(cursor, {
       opacity: 0,
       scale: 0,
-      x: Math.random() * container.offsetWidth,
-      y: Math.random() * container.offsetHeight,
+      x: Math.random() * section.offsetWidth,
+      y: Math.random() * section.offsetHeight,
     });
   });
 
@@ -121,7 +112,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
       },
     })
     .to(cursors, {
-      x: (_index, target) => container.offsetWidth / 2 - target.offsetWidth / 2,
+      x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
       y: (_index, target) => section.offsetHeight - target.offsetHeight,
     })
     .to(cursors, {
@@ -130,48 +121,25 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
     });
 </script>
 
-<div data-js="hero-home" class="text-center">
-  <div
-    class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
-  >
-    <Icon name="yellowball" class="w-[117px] h-[22px]" />
-
-    <TextReveal>
-      <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
-        <TextGradient>Websites</TextGradient> that get your business rolling
-      </h1>
-    </TextReveal>
-
-    <p class="text-17 md:text-21 text-grey text-balance">
-      We're a boutique, London-based web design agency, crafting stunning,
-      bespoke websites that captivate and convert. Ready to get the ball
-      rolling? <Link href="/" class="text-yellow">Let's chat</Link>
-    </p>
-
-    <div
-      data-js-cursor-container
-      class="absolute inset-0 z-10 pointer-events-none"
-    >
-      <Chip
-        data-js-cursor
-        title="PPC Team"
-        class="bg-blue absolute top-0 left-0 z-0 shadow-lg opacity-0"
-      />
-      <Chip
-        data-js-cursor
-        title="Design Team"
-        class="bg-yellow absolute top-0 left-0 z-0 shadow-lg opacity-0"
-      />
-      <Chip
-        data-js-cursor
-        title="SEO Team"
-        class="bg-green absolute top-0 left-0 z-0 shadow-lg opacity-0"
-      />
-      <Chip
-        data-js-cursor
-        title="Developers"
-        class="bg-grey absolute top-0 left-0 z-0 shadow-lg opacity-0"
-      />
-    </div>
-  </div>
+<div data-js="cursors" class="absolute inset-0 z-10 pointer-events-none">
+  <Chip
+    data-js-cursor
+    title="PPC Team"
+    class="bg-blue absolute top-0 left-0 z-0 shadow-lg opacity-0"
+  />
+  <Chip
+    data-js-cursor
+    title="Design Team"
+    class="bg-yellow absolute top-0 left-0 z-0 shadow-lg opacity-0"
+  />
+  <Chip
+    data-js-cursor
+    title="SEO Team"
+    class="bg-green absolute top-0 left-0 z-0 shadow-lg opacity-0"
+  />
+  <Chip
+    data-js-cursor
+    title="Developers"
+    class="bg-grey absolute top-0 left-0 z-0 shadow-lg opacity-0"
+  />
 </div>

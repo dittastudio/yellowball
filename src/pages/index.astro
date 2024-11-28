@@ -1,93 +1,66 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Button from '@/components/Elements/Button.astro';
-
-import BlockButtons from '@/components/Block/Buttons.astro';
-import BlockCardStacks from '@/components/Block/CardStacks.astro';
-import BlockCarouselPosts from '@/components/Block/CarouselPosts.astro';
-import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro';
-import BlockFAQs from '@/components/Block/FAQs.astro';
-import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro';
-import BlockHeadingBanner from '@/components/Block/HeadingBanner.astro';
-import BlockHeroHome from '@/components/Block/HeroHome.astro';
-import BlockHeroText from '@/components/Block/HeroText.astro';
-import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
-import BlockTestimonials from '@/components/Block/Testimonials.astro';
-import BlockServiceCards from '@/components/Block/ServiceCards.astro';
-import BlockServiceList from '@/components/Block/ServiceList.astro';
-import LayoutTheme from '@/components/Layout/Theme.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
+import Layout from '@/layouts/Minimal.astro';
+import Icon from '@/components/Elements/Icon.astro';
 
 const classSection = 'py-50 md:py-[75px]';
-const classSectionThick = 'py-100 md:py-[150px]';
 ---
 
-<Layout title="Home">
+<Layout title="Index">
   <main>
     <section class={classSection}>
-      <BlockHeroHome />
+      <div class="wrapper">
+        <Icon name="yellowball" class="block w-[117px] h-[22px]" />
+      </div>
     </section>
 
     <section class={classSection}>
-      <BlockCarouselProjects />
-    </section>
-
-    <section class={classSection}>
-      <BlockHeadingBanner />
-    </section>
-
-    <section class={classSection}>
-      <BlockServiceCards />
-    </section>
-
-    <section class={classSection}>
-      <BlockServiceList />
-    </section>
-
-    <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockCardStacks />
-        </LayoutLines>
-      </LayoutTheme>
-    </section>
-
-    <section class={classSection}>
-      <BlockLogoTicker />
-    </section>
-
-    <section class={classSection}>
-      <BlockHeroText
-        headline="Stunning bespoke web design that captivates & converts"
-      />
-    </section>
-
-    <section class={classSection}>
-      <BlockFeaturedProjects />
-    </section>
-
-    <section class={classSection}>
-      <BlockButtons>
-        <a href="/">
-          <Button text="View all projects" hasArrow />
-        </a>
-      </BlockButtons>
-    </section>
-
-    <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockTestimonials />
-        </LayoutLines>
-      </LayoutTheme>
-    </section>
-
-    <section class={classSection}>
-      <BlockFAQs />
-    </section>
-
-    <section class={classSection}>
-      <BlockCarouselPosts />
+      <ul class="wrapper grid gap-10">
+        <li class="text-40 font-heading">
+          <a
+            href="/home"
+            class="hover:text-yellow transition-colors duration-300"
+          >
+            Home
+          </a>
+        </li>
+        <li class="text-40 font-heading">
+          <a
+            href="/seo"
+            class="hover:text-green transition-colors duration-300"
+          >
+            SEO
+          </a>
+        </li>
+        <li class="text-40 font-heading">
+          <a href="/ppc" class="hover:text-blue transition-colors duration-300">
+            PPC
+          </a>
+        </li>
+        <li class="text-40 font-heading">
+          <a
+            href="/wordpress"
+            class="hover:text-yellow transition-colors duration-300"
+          >
+            WordPress
+          </a>
+        </li>
+        <li class="text-40 font-heading">
+          <a
+            href="/404"
+            class="hover:text-purple transition-colors duration-300"
+          >
+            404
+          </a>
+        </li>
+        <li class="text-40 font-heading">
+          <a
+            href="/styleguide"
+            class="hover:text-yellow transition-colors duration-300"
+          >
+            Styleguide
+          </a>
+        </li>
+      </ul>
     </section>
   </main>
 </Layout>
