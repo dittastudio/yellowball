@@ -7,25 +7,31 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
 import Icon from '@/components/Elements/Icon.astro';
 ---
 
-<div data-js="card-stacks" class="wrapper-full">
-  <div class="w-full max-w-[1050px] mx-auto flex flex-col gap-60 lg:gap-110">
-    <div class="flex flex-col gap-60 lg:gap-80">
-      <TextReveal>
-        <h2 class="font-heading text-fluid-h2 font-semibold">
-          <span class="!block pl-[1ch]">Rooted in London,</span>
-          connected
+<div data-js="card-stacks" class="wrapper xl:grid xl:grid-cols-12 xl:gap-30">
+  <div class="xl:col-span-10 xl:col-start-2 flex flex-col gap-60 lg:gap-110">
+    <div
+      class="grid grid-cols-8 md:grid-cols-10 gap-12 md:gap-30 gap-y-60 md:gap-y-80"
+    >
+      <div class="col-span-full">
+        <TextReveal>
+          <h2 class="font-heading text-fluid-h2 font-semibold">
+            <span class="!block pl-[1ch]">Rooted in London,</span>
+            connected
 
-          <span class="relative !inline-block">
-            worldwide
-            <Icon
-              name="underline"
-              class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
-            />
-          </span>
-        </h2>
-      </TextReveal>
+            <span class="relative !inline-block">
+              worldwide
+              <Icon
+                name="underline"
+                class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
+              />
+            </span>
+          </h2>
+        </TextReveal>
+      </div>
 
-      <p class="text-17 lg:text-21 pl-80 xl:pl-220">
+      <p
+        class="col-start-2 col-end-9 xs:col-start-3 md:col-end-11 text-17 lg:text-21"
+      >
         Yellowball combines the best of both worlds: London-based expertise with
         the strength of a globally distributed team. We're big enough to tackle
         major challenges, yet small enough to care about every detail.

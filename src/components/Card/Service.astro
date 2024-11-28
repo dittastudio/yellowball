@@ -1,15 +1,15 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  headline: string
-  description: string
-  shape?: 'circle' | 'square' | 'triangle'
-  color?: ColorTypes
-  class?: string
+  headline: string;
+  description: string;
+  shape?: 'circle' | 'square' | 'triangle';
+  color?: ColorTypes;
+  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default
+const hasSlotDefault = !!Astro.slots.default;
 const {
   headline,
   description,
@@ -17,90 +17,163 @@ const {
   color,
   class: className,
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 
 const colors = {
   yellow: 'text-yellow',
   green: 'text-green',
   blue: 'text-blue',
-}
+};
 
-const colorShape = colors[color as keyof typeof colors] ?? ''
-const classes = ['card-service', className]
+const colorShape = colors[color as keyof typeof colors] ?? '';
+const classes = ['card-service', className];
 ---
 
 <script>
-  import { getRandomBetween } from '@/utils/helpers'
+  import { getRandomBetween } from '@/utils/helpers';
 
   // TODO: Move to a separate class. Used in 2 files already.
 
-  const perspective = '1000px'
-  const delta = 50
+  const perspective = '1000px';
+  const delta = 50;
   const cards = [
     ...document.querySelectorAll('[data-js="card-service"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   cards.forEach(card => {
-    const inner = card.firstElementChild as HTMLElement
-    const { width, height } = card.getBoundingClientRect()
-    const midWidth = width / 2
-    const midHeight = height / 2
+    const inner = card.firstElementChild as HTMLElement;
+    const { width, height } = card.getBoundingClientRect();
+    const midWidth = width / 2;
+    const midHeight = height / 2;
 
     card.addEventListener('mousemove', e => {
-      const cursPosX = e.pageX - card.offsetLeft
-      const cursPosY = e.pageY - card.offsetTop
-      const cursCenterX = midWidth - cursPosX
-      const cursCenterY = midHeight - cursPosY
+      const cursPosX = e.pageX - card.offsetLeft;
+      const cursPosY = e.pageY - card.offsetTop;
+      const cursCenterX = midWidth - cursPosX;
+      const cursCenterY = midHeight - cursPosY;
 
       // Used for glow.
-      card.style.setProperty('--x', `${cursPosX}px`)
-      card.style.setProperty('--y', `${cursPosY}px`)
+      card.style.setProperty('--x', `${cursPosX}px`);
+      card.style.setProperty('--y', `${cursPosY}px`);
 
       // Used for tilt and skew.
-      inner.style.transform = `perspective(${perspective}) rotateX(${cursCenterY / delta}deg) rotateY(${-cursCenterX / delta}deg)`
-      inner.classList.remove('transition-transform')
-    })
+      inner.style.transform = `perspective(${perspective}) rotateX(${cursCenterY / delta}deg) rotateY(${-cursCenterX / delta}deg)`;
+      inner.classList.remove('transition-transform');
+    });
 
     card.addEventListener('mouseleave', () => {
-      inner.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg)`
-      inner.classList.add('transition-transform')
-    })
+      inner.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg)`;
+      inner.classList.add('transition-transform');
+    });
 
     const shape = card.querySelector(
       '[data-js="card-service-shape"]',
-    ) as HTMLElement
+    ) as HTMLElement;
 
     if (card && shape) {
-      const shapeRect = shape.getBoundingClientRect()
-      const shapeWidth = shapeRect.width
-      const shapeHeight = shapeRect.height
-      const give = shapeWidth / 2
+      const shapeRect = shape.getBoundingClientRect();
+      const shapeWidth = shapeRect.width;
+      const shapeHeight = shapeRect.height;
+      const give = shapeWidth / 2;
 
-      let posX = getRandomBetween(width / 2, width - shapeWidth)
-      let posY = getRandomBetween(0, height / 2)
-      let speedX = Math.random() >= 0.5 ? 0.1 : -0.1
-      let speedY = Math.random() >= 0.5 ? 0.1 : -0.1
+      let posX = getRandomBetween(width / 2, width - shapeWidth);
+      let posY = getRandomBetween(0, height / 2);
+      let speedX = Math.random() >= 0.5 ? 0.1 : -0.1;
+      let speedY = Math.random() >= 0.5 ? 0.1 : -0.1;
 
       function animate() {
-        posX += speedX
-        posY += speedY
+        posX += speedX;
+        posY += speedY;
 
         if (posX <= -give || posX + shapeWidth / 2 >= width) {
-          speedX *= -1
+          speedX *= -1;
         }
         if (posY <= -give || posY + shapeHeight / 2 >= height) {
-          speedY *= -1
+          speedY *= -1;
         }
 
-        shape.style.transform = `translate(${posX}px, ${posY}px)`
+        shape.style.transform = `translate(${posX}px, ${posY}px)`;
 
-        requestAnimationFrame(animate)
+        requestAnimationFrame(animate);
       }
 
-      animate()
+      animate();
     }
-  })
+  });
 </script>
+
+<div
+  data-js="card-service"
+  class:list={classes}
+  style={`--color: var(--yellowball-${color})`}
+  {...props}
+>
+  <div
+    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
+  >
+    <a
+      href="/"
+      class="card-service__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
+    >
+      <div
+        class="card-service__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+      >
+        {
+          shape && (
+            <Icon
+              data-js="card-service-shape"
+              name={`shape-${shape}`}
+              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
+            />
+          )
+        }
+
+        <div
+          class="card-service__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-20 md:gap-30"
+        >
+          <div class="relative w-full">
+            <div class="flex items-baseline justify-start gap-20">
+              <h4
+                class="font-heading text-32 lg:text-48 font-semibold text-balance"
+              >
+                {headline}
+              </h4>
+
+              {
+                shape && colorShape && (
+                  <Icon
+                    name={`shape-${shape}`}
+                    class:list={[
+                      colorShape,
+                      shape === 'triangle' ? 'w-24 h-[21px]' : 'size-[21px]',
+                    ]}
+                  />
+                )
+              }
+            </div>
+
+            <Icon
+              name="arrow-ne"
+              class="size-10 md:size-12 absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+            />
+          </div>
+
+          <p class="font-normal text-15 lg:text-18 text-grey text-balance">
+            {description}
+          </p>
+
+          {
+            hasSlotDefault && (
+              <div class="w-full -mb-30 lg:-mb-60 mt-20 shadow-media">
+                <slot />
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
 
 <style>
   .card-service {
@@ -147,73 +220,3 @@ const classes = ['card-service', className]
     }
   }
 </style>
-
-<div
-  data-js="card-service"
-  class:list={classes}
-  style={`--color: var(--yellowball-${color})`}
-  {...props}
->
-  <div
-    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
-  >
-    <a
-      href="/"
-      class="card-service__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
-    >
-      <div
-        class="card-service__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
-      >
-        {
-          shape && (
-            <Icon
-              data-js="card-service-shape"
-              name={`shape-${shape}`}
-              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
-            />
-          )
-        }
-
-        <div
-          class="card-service__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-30 lg:gap-40"
-        >
-          <div class="relative w-full">
-            <div class="flex items-end justify-start gap-20">
-              <h4
-                class="font-heading text-32 lg:text-48 font-semibold text-balance"
-              >
-                {headline}
-              </h4>
-
-              {
-                shape && colorShape && (
-                  <Icon
-                    name={`shape-${shape}`}
-                    class:list={[colorShape, 'w-20 mb-5']}
-                  />
-                )
-              }
-            </div>
-
-            <Icon
-              name="arrow-ne"
-              class="size-10 md:size-12 absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
-            />
-          </div>
-
-          <p class="font-normal text-15 lg:text-18 text-grey text-balance">
-            {description}
-          </p>
-
-          {
-            hasSlotDefault && (
-              <div class="w-full -mb-30 lg:-mb-60 mt-auto shadow-media">
-                <slot />
-              </div>
-            )
-          }
-        </div>
-      </div>
-    </a>
-  </div>
-</div>
