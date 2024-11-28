@@ -21,34 +21,33 @@ const navListTwo = [
 ---
 
 <script>
-  /**
-   * TODO: Change header text color based on section theme once spacing done
-   */
-  // const header = document.querySelector('[data-js=header]') as HTMLElement;
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  // const observer = new IntersectionObserver(
-  //   entries => {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersecting) {
-  //         const theme =
-  //           entry.target.getAttribute('data-js-theme') === 'light'
-  //             ? 'text-navy'
-  //             : 'text-white';
+  gsap.registerPlugin(ScrollTrigger);
 
-  //         header.classList.remove('text-navy', 'text-white');
-  //         header.classList.add(theme);
-  //       } else {
-  //         header.classList.remove('text-navy');
-  //         header.classList.add('text-white');
-  //       }
-  //     });
-  //   },
-  //   { threshold: 0, rootMargin: '0px 0px -100% 0px' },
-  // );
+  const header = document.querySelector('[data-js=header]') as HTMLElement;
+  const sections = [
+    ...document.querySelectorAll('[data-js-theme]'),
+  ] as HTMLElement[];
 
-  // document.querySelectorAll('[data-js-theme]').forEach(section => {
-  //   observer.observe(section);
-  // });
+  const halfHeaderHeight = header.clientHeight / 2;
+
+  sections.forEach(section => {
+    ScrollTrigger.create({
+      markers: false,
+      trigger: section,
+      start: `top ${halfHeaderHeight}px`,
+      end: `bottom ${halfHeaderHeight}px`,
+      onToggle: ({ isActive }) => {
+        const checkIfLightTheme =
+          isActive && section.getAttribute('data-js-theme') === 'light';
+
+        header.classList[checkIfLightTheme ? 'remove' : 'add']('text-white');
+        header.classList[!checkIfLightTheme ? 'remove' : 'add']('text-navy');
+      },
+    });
+  });
 </script>
 
 <header
@@ -56,11 +55,9 @@ const navListTwo = [
   class="sticky top-0 z-50 flex justify-between p-12 md:p-18 pointer-events-none"
 >
   <nav data-js-header-nav class={classNav}>
-    <button data-js-header-logo>
-      <!-- <a class="block" href="/"> -->
+    <a class="block" href="/">
       <AppHeaderLogo />
-      <!-- </a> -->
-    </button>
+    </a>
 
     <div class="mdMax:hidden">
       <AppHeaderNav items={navListOne} />
