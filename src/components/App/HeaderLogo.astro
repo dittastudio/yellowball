@@ -1,30 +1,28 @@
 <script>
   const headerLogo = document.querySelector(
     '[data-js=header-logo]',
-  ) as HTMLElement
+  ) as HTMLElement;
 
-  let timeout: number
+  let timeout: number;
 
   function handleMouseEnter() {
-    clearTimeout(timeout)
-    headerLogo.classList.add('has-hover')
+    clearTimeout(timeout);
+    headerLogo.classList.add('has-hover');
   }
 
   function handleMouseLeave() {
     timeout = setTimeout(() => {
-      headerLogo.classList.remove('has-hover')
-    }, 500)
+      headerLogo.classList.remove('has-hover');
+    }, 500);
   }
 
-  headerLogo.addEventListener('mouseenter', handleMouseEnter)
-  headerLogo.addEventListener('mouseleave', handleMouseLeave)
+  headerLogo.addEventListener('mouseenter', handleMouseEnter);
+  headerLogo.addEventListener('mouseleave', handleMouseLeave);
 </script>
 
 <div data-js="header-logo" class="header-logo">
   <svg
     class="header-logo__svg"
-    width="165"
-    height="50"
     viewBox="0 0 165 50"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -110,8 +108,13 @@
 <style>
   .header-logo {
     --initial-scale: 1.368;
-    --start-width: 50px;
+    --icon-size: 42px;
+    --start-width: var(--icon-size);
     --end-width: 165px;
+
+    @screen md {
+      --icon-size: 50px;
+    }
 
     border-radius: theme('borderRadius.12');
     background-color: theme('colors.navy');
@@ -152,6 +155,16 @@
 
     to {
       width: var(--start-width);
+    }
+  }
+
+  .header-logo__svg {
+    width: 139px;
+    height: var(--icon-size);
+
+    @screen md {
+      width: 165px;
+      height: var(--icon-size);
     }
   }
 

@@ -29,7 +29,7 @@ const { class: className, items } = Astro.props as Props;
 
     let pillActive = false;
     const duration = 0.3;
-    const ease = 'back.out(0.8)';
+    const ease = 'back.out(0.6)';
 
     const updatePill = (target: any) => {
       const { offsetWidth, offsetLeft } = target.firstElementChild;
@@ -76,15 +76,16 @@ const { class: className, items } = Astro.props as Props;
   });
 </script>
 
-<div
-  data-js="header-nav"
-  class:list={['relative flex items-center h-full', className]}
->
-  <ul data-js-header-nav-list class="flex items-center justify-start">
+<div data-js="header-nav" class:list={['relative flex h-full', className]}>
+  <ul data-js-header-nav-list class="flex -mx-2 -my-3">
     {
       items?.map((item: any) => (
-        <li>
-          <a data-js-header-nav-item class="block h-full px-2" href={item.href}>
+        <li class="h-full">
+          <a
+            data-js-header-nav-item
+            class="block h-inherit p-2"
+            href={item.href}
+          >
             <AppHeaderButton text={item.text} />
           </a>
         </li>

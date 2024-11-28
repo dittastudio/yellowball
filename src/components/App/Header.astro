@@ -4,7 +4,7 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 
 const classNav =
-  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4 pointer-events-auto';
+  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto';
 
 const classNavListLink = 'block h-full';
 
@@ -38,7 +38,7 @@ const navListTwo = [
       <AppHeaderNav items={navListTwo} />
     </div>
 
-    <button type="button" class="md:hidden">
+    <button type="button" class="md:hidden h-full">
       <AppHeaderButton text="Menu" type="yellow" />
     </button>
 
