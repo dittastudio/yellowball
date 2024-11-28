@@ -16,8 +16,8 @@ const {
 <span
   class:list={[
     'app-header-link',
-    'flex items-center h-inherit px-24 pt-[14px] pb-[15px] rounded-12',
-    'font-heading text-13 lg:text-15 font-bold text-white',
+    'flex items-center h-inherit px-24 rounded-12',
+    'font-heading text-13 lg:text-15 font-bold',
     `is-${type}`,
     className,
   ]}
@@ -29,7 +29,7 @@ const {
 <style>
   .app-header-link {
     --button-bg-color: theme('colors.transparent');
-    --button-text-color: theme('colors.white');
+    --button-text-color: currentColor;
 
     position: relative;
     background-color: var(--button-bg-color);
@@ -53,7 +53,7 @@ const {
 
     &.is-transparent {
       --button-bg-color: theme('colors.transparent');
-      --button-text-color: theme('colors.white');
+      --button-text-color: currentColor;
 
       @media (hover: hover) {
         :global(a):hover &,

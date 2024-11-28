@@ -4,7 +4,7 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 
 const classNav =
-  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4 pointer-events-auto';
+  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto';
 
 const classNavListLink = 'block h-full';
 
@@ -20,25 +20,59 @@ const navListTwo = [
 ];
 ---
 
+<script>
+  /**
+   * TODO: Change header text color based on section theme once spacing done
+   */
+  // const header = document.querySelector('[data-js=header]') as HTMLElement;
+
+  // const observer = new IntersectionObserver(
+  //   entries => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting) {
+  //         const theme =
+  //           entry.target.getAttribute('data-js-theme') === 'light'
+  //             ? 'text-navy'
+  //             : 'text-white';
+
+  //         header.classList.remove('text-navy', 'text-white');
+  //         header.classList.add(theme);
+  //       } else {
+  //         header.classList.remove('text-navy');
+  //         header.classList.add('text-white');
+  //       }
+  //     });
+  //   },
+  //   { threshold: 0, rootMargin: '0px 0px -100% 0px' },
+  // );
+
+  // document.querySelectorAll('[data-js-theme]').forEach(section => {
+  //   observer.observe(section);
+  // });
+</script>
+
 <header
+  data-js="header"
   class="sticky top-0 z-50 flex justify-between p-12 md:p-18 pointer-events-none"
 >
-  <nav class={classNav}>
-    <a class="block" href="/">
+  <nav data-js-header-nav class={classNav}>
+    <button data-js-header-logo>
+      <!-- <a class="block" href="/"> -->
       <AppHeaderLogo />
-    </a>
+      <!-- </a> -->
+    </button>
 
     <div class="mdMax:hidden">
       <AppHeaderNav items={navListOne} />
     </div>
   </nav>
 
-  <nav class={classNav}>
+  <nav data-js-header-nav class={classNav}>
     <div class="mdMax:hidden">
       <AppHeaderNav items={navListTwo} />
     </div>
 
-    <button type="button" class="md:hidden">
+    <button type="button" class="md:hidden h-full">
       <AppHeaderButton text="Menu" type="yellow" />
     </button>
 
