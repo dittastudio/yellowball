@@ -102,6 +102,84 @@ const classes = ['card-service-hero', className];
   });
 </script>
 
+<div
+  data-js="card-service-hero"
+  class:list={classes}
+  style={`--color: var(--yellowball-${color})`}
+  {...props}
+>
+  <div
+    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
+  >
+    <a
+      href="/"
+      class="card-service-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
+    >
+      <div
+        class="card-service-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+      >
+        {
+          shape && (
+            <Icon
+              data-js="card-service-hero-shape"
+              name={`shape-${shape}`}
+              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
+            />
+          )
+        }
+
+        <div
+          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_53%]"
+        >
+          <div class="flex flex-col justify-start items-start gap-30 md:gap-40">
+            <div class="flex items-baseline justify-start gap-20">
+              <h3
+                class="font-heading font-semibold text-40 lg:text-64 text-balance"
+              >
+                {headline}
+              </h3>
+
+              {
+                shape && colorShape && (
+                  <Icon
+                    name={`shape-${shape}`}
+                    class:list={[
+                      colorShape,
+                      shape === 'triangle' ? 'w-24 h-[21px]' : 'size-[21px]',
+                    ]}
+                  />
+                )
+              }
+            </div>
+
+            <p class="font-normal text-18 lg:text-21 text-grey text-balance">
+              {description}
+            </p>
+
+            <button
+              type="button"
+              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-baseline justify-start gap-20"
+            >
+              {cta}
+              <Icon name="arrow-s" class="size-12 md:size-14" />
+            </button>
+          </div>
+
+          <div>
+            {
+              hasSlotDefault && (
+                <div class="w-full shadow-media lgMax:mt-20">
+                  <slot />
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
 <style>
   .card-service-hero {
     &__content {
@@ -147,78 +225,3 @@ const classes = ['card-service-hero', className];
     }
   }
 </style>
-
-<div
-  data-js="card-service-hero"
-  class:list={classes}
-  style={`--color: var(--yellowball-${color})`}
-  {...props}
->
-  <div
-    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
-  >
-    <a
-      href="/"
-      class="card-service-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
-    >
-      <div
-        class="card-service-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
-      >
-        {
-          shape && (
-            <Icon
-              data-js="card-service-hero-shape"
-              name={`shape-${shape}`}
-              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
-            />
-          )
-        }
-
-        <div
-          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_53%]"
-        >
-          <div class="flex flex-col justify-start items-start gap-30 lg:gap-40">
-            <div class="flex items-end justify-start gap-20">
-              <h3
-                class="font-heading font-semibold text-40 lg:text-64 text-balance"
-              >
-                {headline}
-              </h3>
-
-              {
-                shape && colorShape && (
-                  <Icon
-                    name={`shape-${shape}`}
-                    class:list={[colorShape, 'w-20 mb-5']}
-                  />
-                )
-              }
-            </div>
-
-            <p class="font-normal text-18 lg:text-21 text-grey text-balance">
-              {description}
-            </p>
-
-            <button
-              type="button"
-              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-baseline justify-start gap-20"
-            >
-              {cta}
-              <Icon name="arrow-s" class="size-12 md:size-14" />
-            </button>
-          </div>
-
-          <div>
-            {
-              hasSlotDefault && (
-                <div class="w-full shadow-media">
-                  <slot />
-                </div>
-              )
-            }
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-</div>
