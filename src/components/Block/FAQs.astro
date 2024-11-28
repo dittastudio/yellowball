@@ -48,7 +48,7 @@ const exampleQuestions = [
 ];
 ---
 
-<section class="py-180 overflow-x-clip">
+<div class="block-faqs">
   <div class="relative wrapper">
     <h2 class="text-fluid-h2 mb-30 md:mb-120">FAQs</h2>
 
@@ -68,4 +68,14 @@ const exampleQuestions = [
       class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-10"
     />
   </div>
-</section>
+</div>
+
+<style>
+  .block-faqs {
+    overflow-x: clip;
+
+    @supports not (overflow-x: clip) {
+      overflow: hidden;
+    }
+  }
+</style>

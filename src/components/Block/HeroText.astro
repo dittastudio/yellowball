@@ -1,5 +1,5 @@
 ---
-import TextReveal from "@/components/Elements/TextReveal.astro";
+import TextReveal from '@/components/Elements/TextReveal.astro';
 
 interface Props {
   headline: string;
@@ -9,7 +9,7 @@ interface Props {
 const { headline, description } = Astro.props as Props;
 ---
 
-<section class="text-center text-white py-160">
+<div class="text-center">
   <div
     class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
@@ -31,4 +31,4 @@ const { headline, description } = Astro.props as Props;
       )
     }
   </div>
-</section>
+</div>

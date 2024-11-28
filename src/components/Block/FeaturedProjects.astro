@@ -1,29 +1,29 @@
 ---
-import CardProjectHero from "@/components/Card/ProjectHero.astro";
+import CardProjectHero from '@/components/Card/ProjectHero.astro';
 ---
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
   gsap.registerPlugin(ScrollTrigger);
 
   const section = document.querySelector(
-    '[data-js="featured-projects"]'
+    '[data-js="featured-projects"]',
   ) as HTMLElement;
-  const list = section?.querySelector("ul");
+  const list = section?.querySelector('ul');
   const items = list
-    ? [...list?.querySelectorAll("li")]
+    ? [...list?.querySelectorAll('li')]
     : ([] as HTMLElement[]);
 
-  items.forEach((item) => {
+  items.forEach(item => {
     gsap
       .timeline({
         scrollTrigger: {
           markers: false,
           trigger: item,
           scrub: 1.5,
-          start: "top top",
+          start: 'top top',
         },
       })
       .fromTo(
@@ -31,19 +31,19 @@ import CardProjectHero from "@/components/Card/ProjectHero.astro";
         {
           rotateX: 0,
           scale: 1,
-          filter: "brightness(100%)",
+          filter: 'brightness(100%)',
         },
         {
           rotateX: -10,
           scale: 0.85,
-          filter: "brightness(50%)",
+          filter: 'brightness(50%)',
         },
-        "<"
+        '<',
       );
   });
 </script>
 
-<section data-js="featured-projects" class="text-center text-white py-100">
+<div data-js="featured-projects" class="text-center text-white">
   <ul class="wrapper grid grid-cols-1 gap-24 md:gap-60 perspective-1000">
     <li class="sticky top-100">
       <CardProjectHero
@@ -81,4 +81,4 @@ import CardProjectHero from "@/components/Card/ProjectHero.astro";
       </CardProjectHero>
     </li>
   </ul>
-</section>
+</div>

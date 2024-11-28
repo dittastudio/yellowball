@@ -1,5 +1,5 @@
 ---
-import CarouselPost from '@/components/Carousel/Post.astro'
+import CarouselPost from '@/components/Carousel/Post.astro';
 
 const examplePost = {
   title: 'Web Design',
@@ -12,7 +12,7 @@ const examplePost = {
     width: 500,
     height: 300,
   },
-}
+};
 
 const examplePosts: any = [
   examplePost,
@@ -23,11 +23,11 @@ const examplePosts: any = [
   examplePost,
   examplePost,
   examplePost,
-]
+];
 ---
 
-<section class="pb-100 overflow-hidden">
+<div class="overflow-hidden">
   <div class="wrapper">
     <CarouselPost title="Resources & insights" slides={examplePosts} />
   </div>
-</section>
+</div>

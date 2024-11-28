@@ -1,0 +1,18 @@
+---
+interface Props {
+  theme?: string;
+  class?: string;
+}
+
+const { theme = 'dark', class: className } = Astro.props as Props;
+---
+
+<div
+  data-js-theme={theme}
+  class:list={[
+    theme === 'light' ? 'bg-cream text-navy rounded-40 lg:rounded-80' : null,
+    className,
+  ]}
+>
+  <slot />
+</div>

@@ -15,28 +15,79 @@ import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockServiceList from '@/components/Block/ServiceList.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
 ---
 
 <Layout title="Home">
   <main>
-    <BlockHeroHome />
-    <BlockCarouselProjects />
-    <BlockHeadingBanner />
-    <BlockServiceCards />
-    <BlockServiceList />
-    <BlockCardStacks />
-    <BlockLogoTicker />
-    <BlockHeroText
-      headline="Stunning bespoke web design that captivates & converts"
-    />
-    <BlockFeaturedProjects />
-    <BlockButtons>
-      <a href="/">
-        <Button text="View all projects" hasArrow />
-      </a>
-    </BlockButtons>
-    <BlockTestimonials />
-    <BlockFAQs />
-    <BlockCarouselPosts />
+    <section class={classSection}>
+      <BlockHeroHome />
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselProjects />
+    </section>
+
+    <section class={classSection}>
+      <BlockHeadingBanner />
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceCards />
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceList />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockCardStacks />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockLogoTicker />
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText
+        headline="Stunning bespoke web design that captivates & converts"
+      />
+    </section>
+
+    <section class={classSection}>
+      <BlockFeaturedProjects />
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <a href="/">
+          <Button text="View all projects" hasArrow />
+        </a>
+      </BlockButtons>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockTestimonials />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockFAQs />
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselPosts />
+    </section>
   </main>
 </Layout>
