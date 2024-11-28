@@ -1,37 +1,9 @@
 ---
-import CardServiceHero from '@/components/Card/ServiceHero.astro';
-import CardService from '@/components/Card/Service.astro';
+
 ---
 
 <div class="text-center">
   <div class="wrapper grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-30">
-    <CardServiceHero
-      headline="Web Design"
-      description="We craft visually stunning, user-friendly websites that engage and convert your audience."
-      cta="See our services"
-      shape="triangle"
-      color="yellow"
-      class="col-span-full"
-    >
-      <img src="/images/test-service-1.png" width="1230" height="756" alt="" />
-    </CardServiceHero>
-
-    <CardService
-      headline="SEO"
-      description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
-      shape="square"
-      color="green"
-    >
-      <img src="/images/test-service-2.png" width="1032" height="430" alt="" />
-    </CardService>
-
-    <CardService
-      headline="Paid Search"
-      description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
-      shape="circle"
-      color="blue"
-    >
-      <img src="/images/test-service-3.png" width="1032" height="430" alt="" />
-    </CardService>
+    <slot name="cards" />
   </div>
 </div>

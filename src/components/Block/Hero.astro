@@ -1,9 +1,6 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
 import Chip from '@/components/Elements/Chip.astro';
-import Link from '@/components/Elements/Link.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
-import TextGradient from '@/components/Elements/TextGradient.astro';
 ---
 
 <script>
@@ -12,9 +9,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const section = document.querySelector(
-    '[data-js="hero-home"]',
-  ) as HTMLElement;
+  const section = document.querySelector('[data-js="hero"]') as HTMLElement;
   const container = section?.querySelector(
     '[data-js-cursor-container]',
   ) as HTMLElement;
@@ -130,23 +125,17 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
     });
 </script>
 
-<div data-js="hero-home" class="text-center">
+<div data-js="hero" class="text-center">
   <div
     class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
-    <Icon name="yellowball" class="w-[117px] h-[22px]" />
+    <slot name="top" />
 
     <TextReveal>
-      <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
-        <TextGradient>Websites</TextGradient> that get your business rolling
-      </h1>
+      <slot name="headline" />
     </TextReveal>
 
-    <p class="text-17 md:text-21 text-grey text-balance">
-      We're a boutique, London-based web design agency, crafting stunning,
-      bespoke websites that captivate and convert. Ready to get the ball
-      rolling? <Link href="/" class="text-yellow">Let's chat</Link>
-    </p>
+    <slot name="bottom" />
 
     <div
       data-js-cursor-container
