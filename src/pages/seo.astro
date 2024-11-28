@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardService from '@/components/Card/Service.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import Link from '@/components/Elements/Link.astro';
 
@@ -41,6 +42,10 @@ const classSectionThick = 'py-100 md:py-[150px]';
             search engines for targeted keywords.
             <Link href="/" class="text-green">Let's chat</Link>
           </p>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors />
         </Fragment>
       </BlockHero>
     </section>
