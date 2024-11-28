@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardService from '@/components/Card/Service.astro';
+import Chip from '@/components/Elements/Chip.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import Link from '@/components/Elements/Link.astro';
@@ -45,7 +46,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors />
+          <Cursors>
+            <Chip title="SEO Team" class="bg-green" />
+          </Cursors>
         </Fragment>
       </BlockHero>
     </section>
