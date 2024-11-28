@@ -15,13 +15,13 @@ const { headline, description } = Astro.props as Props;
       <slot name="icon" />
 
       <h4
-        class="font-heading font-semibold text-20 md:text-24 text-white text-balance flex items-baseline gap-15"
+        class="inline-block font-heading font-semibold text-20 md:text-24 text-white text-balance"
       >
         {headline}
 
         <Icon
           name="arrow-ne"
-          class="size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300 shrink-0"
+          class="inline-block align-baseline ml-10 size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
         />
       </h4>
     </div>
