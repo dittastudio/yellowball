@@ -24,9 +24,6 @@ const { class: className, items } = Astro.props as Props;
     const navItems = nav.querySelectorAll('[data-js-header-nav-item]');
     const pill = nav.querySelector('[data-js-header-nav-pill]');
 
-    console.log('navItems', navItems);
-    console.log('pill', pill);
-
     let pillActive = false;
     const duration = 0.3;
     const ease = 'back.out(0.6)';

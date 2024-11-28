@@ -21,26 +21,34 @@ const navListTwo = [
 ---
 
 <script>
-  const header = document.querySelector('[data-js=header]') as HTMLElement;
-  const headerLogo = header.querySelector(
-    '[data-js-header-logo]',
-  ) as HTMLElement;
+  /**
+   * TODO: Change header text color based on section theme once spacing done
+   */
+  // const header = document.querySelector('[data-js=header]') as HTMLElement;
 
-  const toggleTheme = () => {
-    const navs = header.querySelectorAll(
-      '[data-js-header-nav]',
-    ) as NodeListOf<HTMLElement>;
+  // const observer = new IntersectionObserver(
+  //   entries => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting) {
+  //         const theme =
+  //           entry.target.getAttribute('data-js-theme') === 'light'
+  //             ? 'text-navy'
+  //             : 'text-white';
 
-    navs.forEach(nav => {
-      if (nav.classList.contains('text-navy')) {
-        nav.classList.remove('text-navy');
-      } else {
-        nav.classList.add('text-navy');
-      }
-    });
-  };
+  //         header.classList.remove('text-navy', 'text-white');
+  //         header.classList.add(theme);
+  //       } else {
+  //         header.classList.remove('text-navy');
+  //         header.classList.add('text-white');
+  //       }
+  //     });
+  //   },
+  //   { threshold: 0, rootMargin: '0px 0px -100% 0px' },
+  // );
 
-  headerLogo.addEventListener('click', toggleTheme);
+  // document.querySelectorAll('[data-js-theme]').forEach(section => {
+  //   observer.observe(section);
+  // });
 </script>
 
 <header
