@@ -6,9 +6,18 @@ import AppHeaderNav from '@/components/App/HeaderNav.astro';
 const classNav =
   'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-4 pointer-events-auto';
 
-const classNavList = 'flex items-center justify-start gap-4 mdMax:hidden';
-
 const classNavListLink = 'block h-full';
+
+const navListOne = [
+  { text: 'Services', href: '/' },
+  { text: 'Our Work', href: '/' },
+  { text: 'Agency', href: '/' },
+];
+
+const navListTwo = [
+  { text: 'Guides', href: '/' },
+  { text: 'Contact', href: '/' },
+];
 ---
 
 <header
@@ -20,40 +29,14 @@ const classNavListLink = 'block h-full';
     </a>
 
     <div class="mdMax:hidden">
-      <AppHeaderNav />
+      <AppHeaderNav items={navListOne} />
     </div>
-    <!-- <ul class={classNavList}>
-      <li>
-        <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Services" />
-        </a>
-      </li>
-      <li>
-        <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Our Work" />
-        </a>
-      </li>
-      <li>
-        <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Agency" />
-        </a>
-      </li>
-    </ul> -->
   </nav>
 
   <nav class={classNav}>
-    <ul class={classNavList}>
-      <li>
-        <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Guides" />
-        </a>
-      </li>
-      <li>
-        <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Contact" />
-        </a>
-      </li>
-    </ul>
+    <div class="mdMax:hidden">
+      <AppHeaderNav items={navListTwo} />
+    </div>
 
     <button type="button" class="md:hidden">
       <AppHeaderButton text="Menu" type="yellow" />
