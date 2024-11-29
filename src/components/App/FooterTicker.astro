@@ -1,9 +1,9 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
-import Ticker from '@/components/Elements/Ticker.astro'
+import Icon from '@/components/Elements/Icon.astro';
+import Ticker from '@/components/Elements/Ticker.astro';
 
-const copy = ['Let’s work together']
-const multipleCopy: string[] = [...copy, ...copy, ...copy]
+const copy = ['Let’s work together'];
+const multipleCopy: string[] = [...copy, ...copy, ...copy];
 ---
 
 <section class="block w-full pt-100 pb-50">
@@ -17,7 +17,7 @@ const multipleCopy: string[] = [...copy, ...copy, ...copy]
             <p class="inline-flex gap-[var(--gap)] items-center">
               {text}
 
-              <span class="relative top-[0.1em] bg-navy text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]">
+              <span class="bg-navy text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]">
                 <Icon name="arrow-ne" class="block size-[0.2em]" />
               </span>
             </p>
