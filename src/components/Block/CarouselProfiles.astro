@@ -1,0 +1,56 @@
+---
+import CarouselProfile from '@/components/Carousel/Profile.astro';
+
+const examplePost = {
+  role: 'Senior PPC Account Manager',
+  name: 'George Dickin',
+  color: 'green',
+  image: {
+    src: '/images/test-laptop.jpeg',
+    alt: '',
+    width: 500,
+    height: 500,
+  },
+};
+
+const examplePost2 = {
+  role: 'PPC Account Manager',
+  name: 'Joe Bloggs',
+  color: 'blue',
+  image: {
+    src: '/images/test-laptop.jpeg',
+    alt: '',
+    width: 500,
+    height: 500,
+  },
+};
+
+const examplePost3 = {
+  role: 'PPC Account Manager',
+  name: 'Alex Super Long Name Chenery-Howes',
+  color: 'yellow',
+  image: {
+    src: '/images/test-laptop.jpeg',
+    alt: '',
+    width: 500,
+    height: 500,
+  },
+};
+
+const examplePosts: any = [
+  examplePost,
+  examplePost2,
+  examplePost3,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+];
+---
+
+<div class="overflow-hidden">
+  <div class="wrapper">
+    <CarouselProfile slides={examplePosts} />
+  </div>
+</div>

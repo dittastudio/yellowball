@@ -1,0 +1,55 @@
+---
+import { colourText } from '@/utils/maps';
+
+interface Props {
+  role: string;
+  name: string;
+  color?: ColorTypes;
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+
+const {
+  role,
+  name,
+  color = 'green',
+  class: className,
+  ...props
+} = Astro.props as Props;
+---
+
+<a
+  data-js="card-profile"
+  href="/"
+  class:list={[
+    'block w-full h-full text-center p-12 pb-24 md:p-20 md:pb-40',
+    'flex flex-col gap-24 md:gap-40',
+    'text-white bg-navy-light border border-white/10 rounded-20 md:rounded-30',
+    className,
+  ]}
+  {...props}
+>
+  {
+    hasSlotDefault && (
+      <div class="w-full aspect-square rounded-8 md:rounded-10 overflow-hidden">
+        <slot />
+      </div>
+    )
+  }
+
+  <div class="flex flex-col gap-12 md:gap-20 px-20">
+    <p
+      class:list={[
+        'font-heading font-bold text-11 md:text-13 text-balance',
+        colourText[color],
+      ]}
+    >
+      {role}
+    </p>
+
+    <h6 class="font-heading font-semibold text-18 md:text-24 text-balance">
+      {name}
+    </h6>
+  </div>
+</a>
