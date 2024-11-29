@@ -70,7 +70,7 @@ export default {
       card: "#28293A",
     },
     fontFamily: {
-      heading: ["area-normal", "sans-serif"],
+      heading: ["Area Normal", "sans-serif"],
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
