@@ -1,0 +1,132 @@
+---
+import CardProfile from '@/components/Card/Profile.astro';
+
+interface Slide {
+  role: string;
+  name: string;
+  color: ColorTypes;
+  image: ImageObject;
+}
+
+interface Props {
+  slides: Slide[];
+  class?: string;
+}
+
+const { slides, class: className } = Astro.props as Props;
+
+const classes = ['carousel-profile', className];
+---
+
+<script>
+  import Swiper from 'swiper';
+  import type { SwiperOptions } from 'swiper/types';
+  import { Pagination, Keyboard } from 'swiper/modules';
+
+  const carousels = [
+    ...document.querySelectorAll('[data-js=carousel-profile]'),
+  ] as HTMLElement[];
+
+  carousels.forEach(carousel => {
+    const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
+    const screenSm = 640;
+    const screenMd = 768;
+    const screenLg = 1024;
+
+    if (swiperEl) {
+      const swiperParams: SwiperOptions = {
+        speed: 500,
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        slideToClickedSlide: true,
+        preventClicks: true,
+        keyboard: {
+          enabled: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          renderBullet(_, className) {
+            return `
+          <button type="button" class="${className}">
+            <span class="swiper-pagination-bullet__pill"></span>
+          </button>
+        `;
+          },
+        },
+
+        breakpoints: {
+          [`${screenSm}`]: {
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+
+          [`${screenMd}`]: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+
+          [`${screenLg}`]: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      };
+
+      new Swiper(swiperEl, {
+        modules: [Pagination, Keyboard],
+        ...swiperParams,
+      });
+    }
+  });
+</script>
+
+<div
+  data-js="carousel-profile"
+  class:list={classes}
+  style={`--_slidesNumber: ${slides?.length}`}
+>
+  <div data-js-swiper class="swiper">
+    <div class="swiper-wrapper">
+      {
+        slides?.map(({ role, name, color, image }) => (
+          <div class="swiper-slide">
+            <CardProfile {role} {name} {color}>
+              <img
+                class="object-cover size-full"
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+              />
+            </CardProfile>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="text-center col-span-full mt-20 md:hidden">
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <style>
+    .swiper {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .swiper-wrapper {
+      grid-column: span 7;
+
+      @screen sm {
+        grid-column: span 8;
+      }
+    }
+
+    .swiper-pagination {
+      display: inline-flex;
+    }
+  </style>
+</div>
