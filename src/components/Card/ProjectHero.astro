@@ -38,64 +38,17 @@ const classes = ['card-project-hero', className];
 
   cards.forEach(card => {
     card.addEventListener('mousemove', e => {
-      const cursPosX = e.pageX - card.offsetLeft;
-      const cursPosY = e.pageY - card.offsetTop;
+      const { top, left, width } = card.getBoundingClientRect();
+      const backgroundSize = width * 1.5;
+
+      const cursPosX = e.clientX - left - backgroundSize / 2;
+      const cursPosY = e.clientY - top - backgroundSize / 2;
 
       card.style.setProperty('--x', `${cursPosX}px`);
       card.style.setProperty('--y', `${cursPosY}px`);
     });
   });
 </script>
-
-<style>
-  .card-project-hero {
-    &__content {
-      box-shadow:
-        0px 0px 100px var(--yellowball-navy) inset,
-        20px 20px 50px var(--yellowball-card) inset;
-    }
-
-    &__link,
-    &__inner {
-      &::before {
-        opacity: 0;
-        content: '';
-        position: absolute;
-        top: var(--y);
-        left: var(--x);
-        z-index: 1;
-        width: 150%;
-        aspect-ratio: 1;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        /* transition:
-          opacity 0.3s ease,
-          top 0.3s ease-out,
-          left 0.3s ease-out; */
-        transform: translate3d(-50%, -50%, 0);
-        background-image: radial-gradient(
-          var(--color),
-          transparent,
-          transparent
-        );
-      }
-    }
-
-    &__link {
-      &:hover {
-        &::before {
-          opacity: 1;
-        }
-
-        .card-project-hero__inner {
-          &::before {
-            opacity: 0.2;
-          }
-        }
-      }
-    }
-  }
-</style>
 
 <div
   data-js="card-project-hero"
@@ -164,3 +117,49 @@ const classes = ['card-project-hero', className];
     </a>
   </div>
 </div>
+
+<style>
+  .card-project-hero {
+    &__content {
+      box-shadow:
+        0px 0px 100px var(--yellowball-navy) inset,
+        20px 20px 50px var(--yellowball-card) inset;
+    }
+
+    &__link,
+    &__inner {
+      &::before {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        translate: var(--x) var(--y) 0;
+        width: 150%;
+        aspect-ratio: 1;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        background-image: radial-gradient(
+          var(--color),
+          transparent,
+          transparent
+        );
+      }
+    }
+
+    &__link {
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+
+        .card-project-hero__inner {
+          &::before {
+            opacity: 0.2;
+          }
+        }
+      }
+    }
+  }
+</style>
