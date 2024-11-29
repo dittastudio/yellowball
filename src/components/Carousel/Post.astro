@@ -148,7 +148,6 @@ const classNavButton =
       @screen md {
         display: grid;
         grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
-        gap: 12px;
       }
     }
 
@@ -167,15 +166,10 @@ const classNavButton =
     .swiper {
       display: grid;
       grid-template-columns: repeat(8, minmax(0, 1fr));
-      gap: theme('spacing.12');
       margin-left: calc(-1 * var(--inner-gutter));
     }
 
     .swiper-wrapper {
-      --slide-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
-
-      transition-timing-function: var(--slide-ease);
-
       grid-column: span 7;
 
       @screen sm {
