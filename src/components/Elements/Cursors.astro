@@ -1,7 +1,3 @@
----
-import Chip from '@/components/Elements/Chip.astro';
----
-
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -9,10 +5,9 @@ import Chip from '@/components/Elements/Chip.astro';
   gsap.registerPlugin(ScrollTrigger);
 
   const section = document.querySelector('[data-js="cursors"]') as HTMLElement;
-  const cursors = [
-    ...section?.querySelectorAll('[data-js-cursor]'),
-  ] as HTMLElement[];
-
+  const cursors = section.querySelectorAll(
+    ':scope > *',
+  ) as NodeListOf<HTMLElement>;
   const timelines: gsap.core.Timeline[] = [];
   const easings = [
     'power1.inOut',
@@ -50,96 +45,96 @@ import Chip from '@/components/Elements/Chip.astro';
     return timeline;
   };
 
-  cursors.forEach(cursor => {
-    gsap.set(cursor, {
-      opacity: 0,
-      scale: 0,
-      x: Math.random() * section.offsetWidth,
-      y: Math.random() * section.offsetHeight,
-    });
-  });
-
-  gsap.delayedCall(0.25, () => {
-    gsap.to(cursors, {
+  const run = () => {
+    gsap.to(section, {
       opacity: 1,
-      scale: 1,
-      stagger: 0.25,
-      duration: 1,
-      ease: 'back.inOut(4)',
-      onComplete: () => {
-        cursors.forEach(cursor => {
-          const timeline = createTimeline(cursor);
-          timelines.push(timeline);
-        });
-      },
+      duration: 0.25,
     });
-  });
 
-  let isPlaying = true;
-  let delayedCall: gsap.core.Tween | null = null;
+    cursors.forEach(cursor => {
+      gsap.set(cursor, {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        opacity: 0,
+        scale: 0,
+        x: Math.random() * section.offsetWidth,
+        y: Math.random() * section.offsetHeight,
+      });
+    });
 
-  const clearDelay = () => {
-    delayedCall?.kill();
-    delayedCall = null;
+    gsap.delayedCall(0.25, () => {
+      gsap.to(cursors, {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        duration: 1,
+        ease: 'back.inOut(4)',
+        onComplete: () => {
+          cursors.forEach(cursor => {
+            const timeline = createTimeline(cursor);
+            timelines.push(timeline);
+          });
+        },
+      });
+    });
+
+    let isPlaying = true;
+    let delayedCall: gsap.core.Tween | null = null;
+
+    const clearDelay = () => {
+      delayedCall?.kill();
+      delayedCall = null;
+    };
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: section,
+          start: '-20% top',
+          end: '120% center',
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            if (isPlaying) {
+              timelines.forEach(timeline => timeline.pause());
+              isPlaying = false;
+            }
+          },
+          onLeaveBack: () => {
+            clearDelay();
+
+            if (!isPlaying) {
+              delayedCall = gsap.delayedCall(5, () => {
+                ScrollTrigger.refresh();
+                timelines.forEach(timeline => timeline.play());
+                isPlaying = true;
+              });
+            }
+          },
+        },
+      })
+      .to(cursors, {
+        x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
+        y: (_index, _target) =>
+          section.offsetHeight + 0.5 * section.offsetHeight,
+      })
+      .to(cursors, {
+        scale: 0,
+        opacity: 0,
+      });
   };
 
-  gsap
-    .timeline({
-      scrollTrigger: {
-        markers: false,
-        trigger: section,
-        start: '10% top',
-        end: 'bottom center',
-        scrub: 1.5,
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          if (isPlaying) {
-            timelines.forEach(timeline => timeline.pause());
-            isPlaying = false;
-          }
-        },
-        onLeaveBack: () => {
-          clearDelay();
-
-          if (!isPlaying) {
-            delayedCall = gsap.delayedCall(5, () => {
-              ScrollTrigger.refresh();
-              timelines.forEach(timeline => timeline.play());
-              isPlaying = true;
-            });
-          }
-        },
-      },
-    })
-    .to(cursors, {
-      x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
-      y: (_index, target) => section.offsetHeight - target.offsetHeight,
-    })
-    .to(cursors, {
-      scale: 0,
-      opacity: 0,
-    });
+  if (section && cursors.length) {
+    run();
+  }
 </script>
 
-<div data-js="cursors" class="absolute inset-0 z-10 pointer-events-none">
-  <Chip
-    data-js-cursor
-    title="PPC Team"
-    class="bg-blue absolute top-0 left-0 z-0 shadow-lg opacity-0"
-  />
-  <Chip
-    data-js-cursor
-    title="Design Team"
-    class="bg-yellow absolute top-0 left-0 z-0 shadow-lg opacity-0"
-  />
-  <Chip
-    data-js-cursor
-    title="SEO Team"
-    class="bg-green absolute top-0 left-0 z-0 shadow-lg opacity-0"
-  />
-  <Chip
-    data-js-cursor
-    title="Developers"
-    class="bg-grey absolute top-0 left-0 z-0 shadow-lg opacity-0"
-  />
+<div
+  data-js="cursors"
+  class="absolute inset-0 z-10 opacity-0 pointer-events-none"
+>
+  <slot />
 </div>

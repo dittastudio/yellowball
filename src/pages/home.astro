@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import Link from '@/components/Elements/Link.astro';
@@ -21,6 +22,7 @@ import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockServiceList from '@/components/Block/ServiceList.astro';
+
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LayoutLines from '@/components/Layout/Lines.astro';
 
@@ -51,7 +53,12 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors />
+          <Cursors>
+            <Cursor title="PPC Team" class="bg-blue" />
+            <Cursor title="Design Team" class="bg-yellow" />
+            <Cursor title="SEO Team" class="bg-green" />
+            <Cursor title="Developers" class="bg-grey" />
+          </Cursors>
         </Fragment>
       </BlockHero>
     </section>
@@ -126,9 +133,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
           >
             <Fragment slot="headline">
               <h2 class="font-heading text-fluid-h2 font-semibold">
-                <span class="!block pl-[1ch]">Rooted in London,</span>
-                connected
-
+                <span class="!block pl-[1ch]">Rooted in London,</span> connected
                 <span class="relative !inline-block">
                   worldwide
                   <Icon

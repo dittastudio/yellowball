@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro';
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardProject from '@/components/Card/Project.astro';
 import CardInsight from '@/components/Card/Insight.astro';
 import CardRating from '@/components/Card/Rating.astro';
-import Chip from '@/components/Elements/Chip.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
 import Cube from '@/components/Elements/Cube.astro';
 import HeadingBanner from '@/components/Block/HeadingBanner.astro';
 import HeroText from '@/components/Block/HeroText.astro';
@@ -15,7 +16,6 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 import ServiceCards from '@/components/Block/ServiceCards.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import AccordionItem from '@/components/Accordion/Item.astro';
-import Ticker from '@/components/Elements/Ticker.astro';
 import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
 
 const imageMobileTest: ImageObject = {
@@ -46,18 +46,12 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
       </div>
     </section>
 
-    <BlockLogoTicker />
-
     <section>
       <div class="wrapper">
         <h1 class={sgHeading}>Ticker</h1>
       </div>
 
-      <Ticker>
-        <p>this is a longer title 1</p>
-        <p>this is a longer title 2</p>
-        <p>this is a longer title 3</p>
-      </Ticker>
+      <BlockLogoTicker />
     </section>
 
     <section class={sgSection}>
@@ -116,13 +110,46 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
     </section>
 
     <section class={sgSection}>
-      <h1 class={sgHeading}>Chips</h1>
+      <h1 class={sgHeading}>Cursors</h1>
 
       <div class="flex flex-wrap gap-8">
-        <Chip title="PPC Team" class="bg-blue" />
-        <Chip title="Design Team" class="bg-yellow" />
-        <Chip title="SEO Team" class="bg-green" />
-        <Chip title="Developers" class="bg-grey" />
+        <Cursor title="PPC Team" class="bg-blue" />
+        <Cursor title="Design Team" class="bg-yellow" />
+        <Cursor title="SEO Team" class="bg-green" />
+        <Cursor title="Developers" class="bg-grey" />
+      </div>
+    </section>
+
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Breadcrumbs</h1>
+
+      <div class="flex flex-col items-start gap-8">
+        <Breadcrumb
+          shape="square"
+          color="green"
+          items={[
+            { title: 'SEO', href: '/' },
+            { title: 'SEO Audit Services', href: '/' },
+          ]}
+        />
+
+        <Breadcrumb
+          shape="triangle"
+          color="yellow"
+          items={[
+            { title: 'Web Design', href: '/' },
+            { title: 'WordPress Development', href: '/' },
+          ]}
+        />
+
+        <Breadcrumb
+          shape="circle"
+          color="blue"
+          items={[
+            { title: 'PPC', href: '/' },
+            { title: 'PPC Ad Campaigns', href: '/' },
+          ]}
+        />
       </div>
     </section>
 

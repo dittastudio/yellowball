@@ -1,7 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardService from '@/components/Card/Service.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import Link from '@/components/Elements/Link.astro';
@@ -16,6 +18,7 @@ import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockServiceList from '@/components/Block/ServiceList.astro';
+
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LayoutLines from '@/components/Layout/Lines.astro';
 
@@ -27,7 +30,13 @@ const classSectionThick = 'py-100 md:py-[150px]';
   <main>
     <section class={classSection}>
       <BlockHero>
-        <Fragment slot="top">BREADCRUMB HERE</Fragment>
+        <Fragment slot="top">
+          <Breadcrumb
+            shape="square"
+            color="green"
+            items={[{ title: 'SEO', href: '/' }]}
+          />
+        </Fragment>
 
         <Fragment slot="headline">
           <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
@@ -45,7 +54,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors />
+          <Cursors>
+            <Cursor title="SEO Team" class="bg-green" />
+          </Cursors>
         </Fragment>
       </BlockHero>
     </section>
