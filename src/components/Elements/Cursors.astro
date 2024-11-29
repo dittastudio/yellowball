@@ -1,142 +1,159 @@
+---
+interface Props {
+  hasExit?: boolean;
+}
+
+const { hasExit = false } = Astro.props as Props;
+---
+
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const section = document.querySelector('[data-js="cursors"]') as HTMLElement;
-  const cursors = section.querySelectorAll(
-    ':scope > *',
+  const sections = document.querySelectorAll(
+    '[data-js="cursors"]',
   ) as NodeListOf<HTMLElement>;
-  const timelines: gsap.core.Timeline[] = [];
-  const easings = [
-    'power1.inOut',
-    'power2.inOut',
-    'power3.inOut',
-    'power4.inOut',
-  ];
 
-  const getRandomDuration = () => gsap.utils.random(1.5, 5);
-  const getRandomEasing = () => gsap.utils.random(easings);
-  const getRandomPosition = (cursor: HTMLElement) => ({
-    x: gsap.utils.random(0, section.offsetWidth - cursor.offsetWidth),
-    y: gsap.utils.random(0, section.offsetHeight - cursor.offsetHeight),
-  });
+  sections.forEach(section => {
+    const cursors = section.querySelectorAll(
+      ':scope > *',
+    ) as NodeListOf<HTMLElement>;
+    const timelines: gsap.core.Timeline[] = [];
+    const easings = [
+      'power1.inOut',
+      'power2.inOut',
+      'power3.inOut',
+      'power4.inOut',
+    ];
 
-  const createTimeline = (cursor: HTMLElement) => {
-    const timeline = gsap.timeline({ repeat: -1 });
+    const getRandomDuration = () => gsap.utils.random(1.5, 5);
+    const getRandomEasing = () => gsap.utils.random(easings);
+    const getRandomPosition = (cursor: HTMLElement) => ({
+      x: gsap.utils.random(0, section.offsetWidth - cursor.offsetWidth),
+      y: gsap.utils.random(0, section.offsetHeight - cursor.offsetHeight),
+    });
 
-    const animate = () => {
-      const position = getRandomPosition(cursor);
-      const duration = getRandomDuration();
-      const easing = getRandomEasing();
+    const createTimeline = (cursor: HTMLElement) => {
+      const timeline = gsap.timeline({ repeat: -1 });
 
-      // Clear any existing animations on this timeline.
-      // Avoids the "double" firing glitch. Do not remove.
-      timeline.clear();
+      const animate = () => {
+        const position = getRandomPosition(cursor);
+        const duration = getRandomDuration();
+        const easing = getRandomEasing();
 
-      timeline.to(cursor, {
-        x: position.x,
-        y: position.y,
-        duration: duration,
-        ease: easing,
-        onComplete: animate,
-      });
+        // Clear any existing animations on this timeline.
+        // Avoids the "double" firing glitch. Do not remove.
+        timeline.clear();
+
+        timeline.to(cursor, {
+          x: position.x,
+          y: position.y,
+          duration: duration,
+          ease: easing,
+          onComplete: animate,
+        });
+      };
+
+      animate();
+
+      return timeline;
     };
 
-    animate();
-
-    return timeline;
-  };
-
-  const run = () => {
-    cursors.forEach(cursor => {
-      gsap.set(cursor, {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: 0,
-        opacity: 0,
-        scale: 0,
-        x: Math.random() * section.offsetWidth,
-        y: Math.random() * section.offsetHeight,
+    const run = () => {
+      cursors.forEach(cursor => {
+        gsap.set(cursor, {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: 0,
+          opacity: 0,
+          scale: 0,
+          x: Math.random() * section.offsetWidth,
+          y: Math.random() * section.offsetHeight,
+        });
       });
-    });
 
-    gsap.set(section, {
-      opacity: 1,
-    });
-
-    gsap.delayedCall(0.25, () => {
-      gsap.to(cursors, {
+      gsap.set(section, {
         opacity: 1,
-        scale: 1,
-        stagger: 0.1,
-        duration: 1,
-        ease: 'back.inOut(4)',
-        onComplete: () => {
-          cursors.forEach(cursor => {
-            const timeline = createTimeline(cursor);
-            timelines.push(timeline);
-          });
-        },
       });
-    });
 
-    let isPlaying = true;
-    let delayedCall: gsap.core.Tween | null = null;
+      gsap.delayedCall(0.25, () => {
+        gsap.to(cursors, {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.1,
+          duration: 1,
+          ease: 'back.inOut(4)',
+          onComplete: () => {
+            cursors.forEach(cursor => {
+              const timeline = createTimeline(cursor);
+              timelines.push(timeline);
+            });
+          },
+        });
+      });
 
-    const clearDelay = () => {
-      delayedCall?.kill();
-      delayedCall = null;
+      if (section.hasAttribute('data-js-exit')) {
+        let isPlaying = true;
+        let delayedCall: gsap.core.Tween | null = null;
+
+        const clearDelay = () => {
+          delayedCall?.kill();
+          delayedCall = null;
+        };
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              markers: false,
+              trigger: section,
+              start: '-20% top',
+              end: '120% center',
+              scrub: 1.5,
+              invalidateOnRefresh: true,
+              onEnter: () => {
+                if (isPlaying) {
+                  timelines.forEach(timeline => timeline.pause());
+                  isPlaying = false;
+                }
+              },
+              onLeaveBack: () => {
+                clearDelay();
+
+                if (!isPlaying) {
+                  delayedCall = gsap.delayedCall(5, () => {
+                    ScrollTrigger.refresh();
+                    timelines.forEach(timeline => timeline.play());
+                    isPlaying = true;
+                  });
+                }
+              },
+            },
+          })
+          .to(cursors, {
+            x: (_index, target) =>
+              section.offsetWidth / 2 - target.offsetWidth / 2,
+            y: (_index, _target) =>
+              section.offsetHeight + 0.5 * section.offsetHeight,
+          })
+          .to(cursors, {
+            scale: 0,
+            opacity: 0,
+          });
+      }
     };
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          markers: false,
-          trigger: section,
-          start: '-20% top',
-          end: '120% center',
-          scrub: 1.5,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            if (isPlaying) {
-              timelines.forEach(timeline => timeline.pause());
-              isPlaying = false;
-            }
-          },
-          onLeaveBack: () => {
-            clearDelay();
-
-            if (!isPlaying) {
-              delayedCall = gsap.delayedCall(5, () => {
-                ScrollTrigger.refresh();
-                timelines.forEach(timeline => timeline.play());
-                isPlaying = true;
-              });
-            }
-          },
-        },
-      })
-      .to(cursors, {
-        x: (_index, target) => section.offsetWidth / 2 - target.offsetWidth / 2,
-        y: (_index, _target) =>
-          section.offsetHeight + 0.5 * section.offsetHeight,
-      })
-      .to(cursors, {
-        scale: 0,
-        opacity: 0,
-      });
-  };
-
-  if (section && cursors.length) {
-    run();
-  }
+    if (section && cursors.length) {
+      run();
+    }
+  });
 </script>
 
 <div
   data-js="cursors"
+  data-js-exit={hasExit}
   class="absolute inset-0 z-10 opacity-0 pointer-events-none"
 >
   <slot />
