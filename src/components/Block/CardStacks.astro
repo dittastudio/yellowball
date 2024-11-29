@@ -161,8 +161,9 @@ const { description } = Astro.props as Props;
 
 <style>
   .card-stacks__list {
-    margin-top: theme('spacing.120');
     @screen md {
+      margin-top: theme('spacing.120');
+
       & li:first-child {
         margin-block-start: calc(-1 * theme('spacing.120'));
       }
