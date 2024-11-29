@@ -131,30 +131,27 @@ const classes = ['card-service', className];
         <div
           class="card-service__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 flex flex-col justify-start items-start gap-20 md:gap-30"
         >
-          <div class="relative w-full">
-            <div class="flex items-baseline justify-start gap-20">
-              <h4
-                class="font-heading text-32 lg:text-48 font-semibold text-balance"
-              >
-                {headline}
-              </h4>
-
-              {
+          <div class="relative w-full flex justify-between items-start">
+            <h4
+              class="inline-block font-heading text-32 lg:text-48 font-semibold text-balance"
+            >
+              {headline}&nbsp;{
                 shape && colorShape && (
                   <Icon
                     name={`shape-${shape}`}
                     class:list={[
                       colorShape,
+                      'inline-block ml-5',
                       shape === 'triangle' ? 'w-24 h-[21px]' : 'size-[21px]',
                     ]}
                   />
                 )
               }
-            </div>
+            </h4>
 
             <Icon
               name="arrow-ne"
-              class="size-10 md:size-12 absolute top-0 right-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+              class="size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
             />
           </div>
 
