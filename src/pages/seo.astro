@@ -55,7 +55,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors>
+          <Cursors hasExit>
             <Cursor title="SEO Team" class="bg-green" />
           </Cursors>
         </Fragment>
@@ -102,7 +102,21 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockServiceList />
+      <BlockServiceList
+        description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
+      >
+        <Fragment slot="headline">
+          <h3 class="font-heading text-fluid-h3 font-semibold">
+            Your all-in-one<br />SEO partner
+          </h3>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors>
+            <Cursor title="SEO Team" class="bg-green" />
+          </Cursors>
+        </Fragment>
+      </BlockServiceList>
     </section>
 
     <section class={classSection}>

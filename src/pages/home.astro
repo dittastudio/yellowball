@@ -53,7 +53,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors>
+          <Cursors hasExit>
             <Cursor title="PPC Team" class="bg-blue" />
             <Cursor title="Design Team" class="bg-yellow" />
             <Cursor title="SEO Team" class="bg-green" />
@@ -122,7 +122,24 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockServiceList />
+      <BlockServiceList
+        description="We offer a full suite of web design services that transform your brand story into digital experiences."
+      >
+        <Fragment slot="headline">
+          <h3 class="font-heading text-fluid-h3 font-semibold">
+            End-to-end
+            <span class="!block pl-[2ch]">web design</span>
+            <span class="!block pl-[1ch]">services</span>
+          </h3>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors>
+            <Cursor title="Design Team" class="bg-yellow" />
+            <Cursor title="Developers" class="bg-grey" />
+          </Cursors>
+        </Fragment>
+      </BlockServiceList>
     </section>
 
     <section class={classSection}>

@@ -162,15 +162,15 @@ const classes = ['card-service-hero', className];
             </button>
           </div>
 
-          <div>
-            {
-              hasSlotDefault && (
+          {
+            hasSlotDefault && (
+              <div>
                 <div class="w-full shadow-media lgMax:mt-20">
                   <slot />
                 </div>
-              )
-            }
-          </div>
+              </div>
+            )
+          }
         </div>
       </div>
     </a>
