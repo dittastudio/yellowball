@@ -4,6 +4,12 @@ import Cube from '@/components/Elements/Cube.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
+
+interface Props {
+  description?: string;
+}
+
+const { description = '' } = Astro.props as Props;
 ---
 
 <script>
@@ -46,24 +52,29 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
   <div class="wrapper flex flex-col gap-80 lg:gap-0">
     <div class="lg:grid lg:grid-cols-2 lg:gap-30 lg:sticky lg:top-100">
       <div
-        class="w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
+        class="relative w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
       >
-        <TextReveal>
-          <h3 class="font-heading text-fluid-h3 font-semibold">
-            End-to-end
-            <span class="!block pl-[2ch]">web design</span>
-            <span class="!block pl-[1ch]">services</span>
-          </h3>
-        </TextReveal>
+        {
+          Astro.slots.headline && (
+            <TextReveal>
+              <slot name="headline" />
+            </TextReveal>
+          )
+        }
 
-        <p class="text-17 md:text-21 text-grey text-balance">
-          We offer a full suite of web design services that transform your brand
-          story into digital experiences.
-        </p>
+        {
+          description && (
+            <p class="text-17 md:text-21 text-grey text-balance">
+              {description}
+            </p>
+          )
+        }
 
         <a href="/" class="block">
-          <Button text="Let’s Chat" hasArrow />
+          <Button text="Let's Chat" hasArrow />
         </a>
+
+        {Astro.slots.extra && <slot name="extra" />}
       </div>
     </div>
 

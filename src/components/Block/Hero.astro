@@ -6,13 +6,17 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
   <div
     class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
   >
-    <slot name="top" />
+    {Astro.slots.top && <slot name="top" />}
 
-    <TextReveal>
-      <slot name="headline" />
-    </TextReveal>
+    {
+      Astro.slots.headline && (
+        <TextReveal>
+          <slot name="headline" />
+        </TextReveal>
+      )
+    }
 
-    <slot name="bottom" />
-    <slot name="extra" />
+    {Astro.slots.bottom && <slot name="bottom" />}
+    {Astro.slots.extra && <slot name="extra" />}
   </div>
 </div>

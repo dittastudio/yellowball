@@ -103,15 +103,15 @@ const classes = ['card-project-hero', className];
             </p>
           </div>
 
-          <div>
-            {
-              hasSlotDefault && (
+          {
+            hasSlotDefault && (
+              <div>
                 <div class="w-full shadow-media">
                   <slot />
                 </div>
-              )
-            }
-          </div>
+              </div>
+            )
+          }
         </div>
       </div>
     </a>
