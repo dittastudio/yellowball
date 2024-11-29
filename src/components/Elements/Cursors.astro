@@ -31,6 +31,10 @@
       const duration = getRandomDuration();
       const easing = getRandomEasing();
 
+      // Clear any existing animations on this timeline.
+      // Avoids the "double" firing glitch. Do not remove.
+      timeline.clear();
+
       timeline.to(cursor, {
         x: position.x,
         y: position.y,
@@ -46,11 +50,6 @@
   };
 
   const run = () => {
-    gsap.to(section, {
-      opacity: 1,
-      duration: 0.25,
-    });
-
     cursors.forEach(cursor => {
       gsap.set(cursor, {
         position: 'absolute',
@@ -62,6 +61,10 @@
         x: Math.random() * section.offsetWidth,
         y: Math.random() * section.offsetHeight,
       });
+    });
+
+    gsap.set(section, {
+      opacity: 1,
     });
 
     gsap.delayedCall(0.25, () => {
