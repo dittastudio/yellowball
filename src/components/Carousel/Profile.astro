@@ -97,7 +97,11 @@ const classes = ['carousel-profile', className];
     }
 
     .swiper-wrapper {
-      grid-column: span 7;
+      grid-column: span 8;
+
+      @screen xs {
+        grid-column: span 7;
+      }
 
       @screen sm {
         grid-column: span 8;

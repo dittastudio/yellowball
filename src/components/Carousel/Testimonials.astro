@@ -53,7 +53,11 @@ const classes = ['carousel-testimonials', 'w-full', className];
 
   :global(.carousel-testimonials .swiper-slide) {
     padding-inline: calc(var(--inner-gutter) / 2);
-    width: calc(6 / 8 * 100%);
+    width: 100%;
+
+    @screen xs {
+      width: calc(6 / 8 * 100%);
+    }
 
     @screen sm {
       width: calc(1 / 2 * 100%);
