@@ -30,8 +30,10 @@ const { description } = Astro.props as Props;
       </p>
     </div>
 
-    <ul class="mdMax:flex mdMax:flex-col md:columns-2 gap-30 text-center">
-      <li class="break-inside-avoid md:mb-30">
+    <ul
+      class="card-stacks__list mdMax:flex mdMax:flex-col md:columns-2 gap-30 text-center"
+    >
+      <li class="break-inside-avoid md:mb-30 first-chi">
         <CardMedia
           headline="Agile Team, Powerful Results"
           description="Our hand-picked team of over 25 designers, engineers, SEO experts, and paid media specialists is agile, responsive, and invested in every project."
@@ -87,7 +89,14 @@ const { description } = Astro.props as Props;
         <CardMedia
           headline="Flexible Investment Levels"
           description="From startups to established brands, we've got options to suit your budget. Most of our web projects range from £30k to £150k, but we also offer tailored solutions starting from just £2,600."
-        />
+        >
+          <img
+            src="/images/test-project-1.png"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardMedia>
       </li>
 
       <li class="break-inside-avoid md:mb-30">
@@ -149,3 +158,15 @@ const { description } = Astro.props as Props;
     </ul>
   </div>
 </div>
+
+<style>
+  .card-stacks__list {
+    @screen md {
+      margin-top: theme('spacing.120');
+
+      & li:first-child {
+        margin-block-start: calc(-1 * theme('spacing.120'));
+      }
+    }
+  }
+</style>

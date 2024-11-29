@@ -26,7 +26,7 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
 
 <ul
   class:list={[
-    'flex justify-center items-center gap-15 sm:gap-20 select-none text-11 sm:text-12 font-heading',
+    'flex justify-center items-center gap-15 sm:gap-20 select-none text-10 md:text-12 font-heading ',
     className,
   ]}
 >
@@ -36,7 +36,7 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
         <a
           href={item.href}
           class:list={[
-            'flex justify-center items-center gap-10 rounded-8 px-15 sm:px-20 py-8 font-bold',
+            'flex justify-center items-center gap-6 rounded-10 px-14 md:px-20 pt-[0.875em] pb-[0.7917em] font-bold leading-[1]',
             index === items.length - 1 && items.length > 1
               ? lastItemClasses
               : 'text-white border border-white/10 bg-navy',
@@ -45,7 +45,10 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
           {index === 0 && (
             <Icon
               name={`shape-${shape}`}
-              class:list={['block w-10 h-9 -mt-1', colourText[color]]}
+              class:list={[
+                'block size-[0.825em] -mt-[0.1em]',
+                colourText[color],
+              ]}
             />
           )}
 

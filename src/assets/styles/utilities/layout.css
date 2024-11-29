@@ -1,15 +1,13 @@
 @layer utilities {
-  .wrapper {
-    width: 100%;
-    max-width: theme('screens.base');
-    margin-inline: auto;
-    padding-inline: var(--outer-gutter);
-  }
-
+  .wrapper,
   .wrapper-full {
     width: 100%;
     margin-inline: auto;
     padding-inline: var(--outer-gutter);
+  }
+
+  .wrapper {
+    max-width: theme('screens.base');
   }
 
   .backface-visible {
