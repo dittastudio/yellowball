@@ -10,6 +10,7 @@ import Link from '@/components/Elements/Link.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
 import BlockCardStacks from '@/components/Block/CardStacks.astro';
+import BlockCarouselProfiles from '@/components/Block/CarouselProfiles.astro';
 import BlockFAQs from '@/components/Block/FAQs.astro';
 import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro';
 import BlockHero from '@/components/Block/Hero.astro';
@@ -117,6 +118,10 @@ const classSectionThick = 'py-100 md:py-[150px]';
         headline="Meet a few of the experts behind your SEO success"
         description="We have a globally distributed team of SEO experts across offices in London and South Africa. Here's a glimpse of some of the talented specialists you could be working with. Each brings a wealth of experience and a passion for driving results."
       />
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselProfiles />
     </section>
 
     <section class={classSection}>

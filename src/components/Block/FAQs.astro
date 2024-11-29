@@ -2,6 +2,12 @@
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 import AccordionItem from '@/components/Accordion/Item.astro';
 
+interface Props {
+  color?: ColorTypes;
+}
+
+const { color = 'green' } = Astro.props as Props;
+
 const exampleQuestions = [
   {
     id: 'one',
@@ -54,7 +60,7 @@ const exampleQuestions = [
 
     {
       exampleQuestions?.map(question => (
-        <AccordionItem id={question.id}>
+        <AccordionItem id={question.id} {color}>
           <h3 slot="header">{question.question}</h3>
 
           <div slot="body" set:html={question.answer} />
@@ -64,7 +70,7 @@ const exampleQuestions = [
 
     <ShapeGradient
       shape="triangle"
-      color="yellow"
+      {color}
       class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-10"
     />
   </div>
