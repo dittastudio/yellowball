@@ -1,28 +1,27 @@
 ---
 interface Props {
-  class?: string
+  class?: string;
 }
 
-const { class: className } = Astro.props as Props
-const classes = ['carousel-testimonials', 'w-full', className]
+const { class: className } = Astro.props as Props;
+const classes = ['carousel-testimonials', 'w-full', className];
 ---
 
 <script>
-  import Swiper from 'swiper'
-  import type { SwiperOptions } from 'swiper/types'
-  import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules'
+  import Swiper from 'swiper';
+  import type { SwiperOptions } from 'swiper/types';
+  import { Autoplay, Keyboard } from 'swiper/modules';
 
   const carousels = [
     ...document.querySelectorAll('[data-js="carousel-testimonials"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   carousels.forEach(carousel => {
     const swiperParams: SwiperOptions = {
       speed: 1000,
-      slidesPerView: 'auto',
       centeredSlides: true,
-      spaceBetween: 15,
-      slideToClickedSlide: true,
+      slidesPerView: 'auto',
+      initialSlide: 1,
       loop: true,
       autoplay: {
         delay: 4000,
@@ -31,23 +30,13 @@ const classes = ['carousel-testimonials', 'w-full', className]
       keyboard: {
         enabled: true,
       },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: false,
-      breakpoints: {
-        640: {
-          spaceBetween: 30,
-        },
-      },
-    }
+    };
 
     new Swiper(carousel, {
-      modules: [Autoplay, Navigation, Pagination, Keyboard],
+      modules: [Autoplay, Keyboard],
       ...swiperParams,
-    })
-  })
+    });
+  });
 </script>
 
 <div data-js="carousel-testimonials" class:list={classes} class="swiper">
@@ -57,11 +46,21 @@ const classes = ['carousel-testimonials', 'w-full', className]
 </div>
 
 <style>
-  .swiper-wrapper {
-    transition-timing-function: cubic-bezier(0.24, 1.2, 0.24, 1);
+  .swiper {
+    width: auto;
+    margin-inline: calc(-1 * (var(--inner-gutter) / 2));
   }
 
   :global(.carousel-testimonials .swiper-slide) {
-    width: auto;
+    padding-inline: calc(var(--inner-gutter) / 2);
+    width: calc(6 / 8 * 100%);
+
+    @screen sm {
+      width: calc(1 / 2 * 100%);
+    }
+
+    @screen xl {
+      width: calc(1 / 3 * 100%);
+    }
   }
 </style>
