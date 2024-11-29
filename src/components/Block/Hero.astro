@@ -1,22 +1,39 @@
 ---
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
+
+interface Props {
+  color?: ColorTypes;
+  shape?: ShapeTypes;
+}
+
+const { color = 'blue', shape } = Astro.props as Props;
+const colorShape = colourText[color as keyof typeof colourText] ?? '';
 ---
 
-<div data-js="hero" class="text-center">
-  <div
-    class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
-  >
-    {Astro.slots.top && <slot name="top" />}
+<div
+  data-js="hero"
+  class="wrapper text-center relative flex flex-col justify-start items-center gap-40 md:gap-60"
+>
+  {
+    shape && (
+      <div class="absolute top-50 md:top-70 z-0 opacity-15 w-2/3 md:w-1/2 after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-navy after:to-75% pointer-events-none">
+        <Icon name={`shape-${shape}`} class:list={['size-full', colorShape]} />
+      </div>
+    )
+  }
 
-    {
-      Astro.slots.headline && (
-        <TextReveal>
-          <slot name="headline" />
-        </TextReveal>
-      )
-    }
+  {Astro.slots.top && <slot name="top" />}
 
-    {Astro.slots.bottom && <slot name="bottom" />}
-    {Astro.slots.extra && <slot name="extra" />}
-  </div>
+  {
+    Astro.slots.headline && (
+      <TextReveal>
+        <slot name="headline" />
+      </TextReveal>
+    )
+  }
+
+  {Astro.slots.bottom && <slot name="bottom" />}
+  {Astro.slots.extra && <slot name="extra" />}
 </div>

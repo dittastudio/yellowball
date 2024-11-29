@@ -10,3 +10,4 @@ interface ImageObject {
 }
 
 type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple'
+type ShapeTypes = 'circle' | 'square' | 'triangle'

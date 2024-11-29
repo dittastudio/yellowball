@@ -1,14 +1,15 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  figure: number
-  unit: string
-  headline: string
-  description: string
-  shape: 'circle' | 'square' | 'triangle'
-  color: ColorTypes
-  class?: string
+  figure: number;
+  unit: string;
+  headline: string;
+  description: string;
+  shape: ShapeTypes;
+  color: ColorTypes;
+  class?: string;
 }
 
 const {
@@ -20,30 +21,24 @@ const {
   color,
   class: className,
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 
-const colors = {
-  yellow: 'text-yellow',
-  green: 'text-green',
-  blue: 'text-blue',
-}
-
-const colorShape = colors[color as keyof typeof colors] ?? ''
+const colorShape = colourText[color as keyof typeof colourText] ?? '';
 ---
 
 <script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
   const cards = [
     ...document.querySelectorAll('[data-js="card-figure"]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   cards.forEach(card => {
-    const figure = card.querySelector('[data-js-figure]') as HTMLElement
-    const shape = card.querySelector('[data-js-shape]') as HTMLElement
+    const figure = card.querySelector('[data-js-figure]') as HTMLElement;
+    const shape = card.querySelector('[data-js-shape]') as HTMLElement;
 
     gsap.from(figure, {
       textContent: 0,
@@ -55,7 +50,7 @@ const colorShape = colors[color as keyof typeof colors] ?? ''
         trigger: figure,
         start: 'top bottom',
       },
-    })
+    });
 
     gsap.to(shape, {
       y: `-${card.offsetHeight - shape.offsetHeight / 2}`,
@@ -66,8 +61,8 @@ const colorShape = colors[color as keyof typeof colors] ?? ''
         start: 'bottom bottom',
         end: 'bottom top',
       },
-    })
-  })
+    });
+  });
 </script>
 
 <div

@@ -1,11 +1,12 @@
 ---
+import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   headline: string;
   description: string;
   cta: string;
-  shape?: 'circle' | 'square' | 'triangle';
+  shape?: ShapeTypes;
   color?: ColorTypes;
   class?: string;
 }
@@ -21,13 +22,7 @@ const {
   ...props
 } = Astro.props as Props;
 
-const colors = {
-  yellow: 'text-yellow',
-  green: 'text-green',
-  blue: 'text-blue',
-};
-
-const colorShape = colors[color as keyof typeof colors] ?? '';
+const colorShape = colourText[color as keyof typeof colourText] ?? '';
 const classes = ['card-service-hero', className];
 ---
 

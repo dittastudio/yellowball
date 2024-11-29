@@ -1,27 +1,27 @@
 ---
-import { colourText } from "@/utils/maps";
+import { colourText } from '@/utils/maps';
 
 interface Props {
-  color?: string;
-  iconSize?: "sm" | "lg";
+  color?: ColorTypes;
+  iconSize?: 'sm' | 'lg';
 }
 
-const { color = "red", iconSize = "sm" } = Astro.props as Props;
+const { color = 'red', iconSize = 'sm' } = Astro.props as Props;
 ---
 
 <span
   class:list={[
-    "relative flex justify-center items-center size-40 md:size-50",
-    "after:absolute after:inset-0",
-    "after:border after:border-solid after:border-navy-lighter after:rounded-12",
-    "bg-navy-light rounded-12",
+    'relative flex justify-center items-center size-40 md:size-50',
+    'after:absolute after:inset-0',
+    'after:border after:border-solid after:border-navy-lighter after:rounded-12',
+    'bg-navy-light rounded-12',
     colourText[color],
   ]}
 >
   <span
     class:list={[
-      "cube__inner",
-      iconSize === "sm" ? "size-22" : "size-22 md:size-28",
+      'cube__inner',
+      iconSize === 'sm' ? 'size-22' : 'size-22 md:size-28',
     ]}
   >
     <slot />
