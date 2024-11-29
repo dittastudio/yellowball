@@ -54,7 +54,45 @@ const exampleQuestions = [
 ];
 ---
 
-<div class="block-faqs">
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const shapes = [
+    ...document.querySelectorAll('[data-js=block-faqs]'),
+  ] as HTMLElement[];
+
+  shapes.forEach(shape => {
+    const icon = shape.querySelector(
+      '[data-js-shape-gradient-icon]',
+    ) as HTMLElement;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        markers: false,
+        trigger: icon,
+        start: 'center bottom',
+        end: 'center center',
+        scrub: 0,
+      },
+    });
+
+    tl.from(
+      icon,
+      {
+        opacity: 0,
+        y: '10%',
+        duration: 0.5,
+        ease: 'power2.out',
+      },
+      0,
+    );
+  });
+</script>
+
+<div data-js="block-faqs" class="block-faqs">
   <div class="relative wrapper">
     <h2 class="text-fluid-h2 mb-30 md:mb-120">FAQs</h2>
 
@@ -71,7 +109,7 @@ const exampleQuestions = [
     <ShapeGradient
       shape="triangle"
       {color}
-      class="absolute top-0 right-0 translate-x-[40%] mdMax:-translate-y-[20%] -z-10"
+      class="absolute top-0 right-0 translate-x-[40%] -z-1 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]"
     />
   </div>
 </div>

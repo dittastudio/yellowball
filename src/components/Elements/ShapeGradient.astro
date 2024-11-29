@@ -1,71 +1,31 @@
 ---
-import { colourText } from '@/utils/maps'
-import Icon from '@/components/Elements/Icon.astro'
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  shape: 'circle' | 'square' | 'triangle'
-  color?: ColorTypes
-  class?: string
+  shape: 'circle' | 'square' | 'triangle';
+  color?: ColorTypes;
+  class?: string;
 }
 
 const {
   shape = 'triangle',
   color = 'yellow',
   class: className,
-} = Astro.props as Props
+} = Astro.props as Props;
 ---
 
-<script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  const shapes = [
-    ...document.querySelectorAll('[data-js=shape-gradient]'),
-  ] as HTMLElement[]
-
-  shapes.forEach(shape => {
-    const icon = shape.querySelector('[data-js-icon]') as HTMLElement
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        markers: false,
-        trigger: icon,
-        start: '25% bottom',
-        end: 'center center',
-        scrub: 0,
-      },
-    })
-
-    tl.from(
-      icon,
-      {
-        opacity: 0,
-        y: '10%',
-        duration: 0.5,
-        ease: 'power3.out',
-      },
-      0,
-    )
-  })
-</script>
-
 <div
-  data-js="shape-gradient"
   class:list={[
     'isolate pointer-events-none overflow-hidden',
+    'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-navy after:to-75%',
     colourText[color],
     className,
   ]}
 >
-  <div
-    class="relative after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-navy after:to-75%"
-  >
-    <Icon
-      data-js-icon
-      name={`shape-${shape}`}
-      class="block size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px] opacity-15"
-    />
-  </div>
+  <Icon
+    data-js-shape-gradient-icon
+    name={`shape-${shape}`}
+    class="block size-full max-w-full max-h-full opacity-15"
+  />
 </div>

@@ -36,15 +36,11 @@ const classNavButton =
 
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
-    const screenSm = 640;
-    const screenMd = 768;
-    const screenLg = 1024;
 
     if (swiperEl) {
       const swiperParams: SwiperOptions = {
         speed: 500,
         slidesPerView: 'auto',
-        spaceBetween: 12,
         slideToClickedSlide: true,
         preventClicks: true,
         keyboard: {
@@ -59,27 +55,10 @@ const classNavButton =
           clickable: true,
           renderBullet(_, className) {
             return `
-          <button type="button" class="${className}">
-            <span class="swiper-pagination-bullet__pill"></span>
-          </button>
-        `;
-          },
-        },
-
-        breakpoints: {
-          [`${screenSm}`]: {
-            slidesPerView: 2,
-            spaceBetween: 12,
-          },
-
-          [`${screenMd}`]: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-
-          [`${screenLg}`]: {
-            slidesPerView: 3,
-            spaceBetween: 30,
+              <button type="button" class="${className}">
+                <span class="swiper-pagination-bullet__pill"></span>
+              </button>
+            `;
           },
         },
       };
@@ -169,7 +148,6 @@ const classNavButton =
       @screen md {
         display: grid;
         grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
-        gap: 12px;
       }
     }
 
@@ -188,18 +166,31 @@ const classNavButton =
     .swiper {
       display: grid;
       grid-template-columns: repeat(8, minmax(0, 1fr));
-      gap: 12px;
+      margin-left: calc(-1 * var(--inner-gutter));
     }
 
     .swiper-wrapper {
-      --slide-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
+      grid-column: span 8;
 
-      transition-timing-function: var(--slide-ease);
-
-      grid-column: span 7;
+      @screen xs {
+        grid-column: span 7;
+      }
 
       @screen sm {
         grid-column: span 8;
+      }
+    }
+
+    .swiper-slide {
+      padding-left: var(--inner-gutter);
+      width: 100%;
+
+      @screen sm {
+        width: calc(1 / 2 * 100%);
+      }
+
+      @screen xl {
+        width: calc(1 / 3 * 100%);
       }
     }
 

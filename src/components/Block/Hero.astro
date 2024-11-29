@@ -1,6 +1,5 @@
 ---
-import { colourText } from '@/utils/maps';
-import Icon from '@/components/Elements/Icon.astro';
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 }
 
 const { color = 'blue', shape } = Astro.props as Props;
-const colorShape = colourText[color as keyof typeof colourText] ?? '';
 ---
 
 <div
@@ -18,9 +16,11 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 >
   {
     shape && (
-      <div class="absolute top-50 md:top-70 z-0 opacity-15 w-2/3 md:w-1/2 after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-navy after:to-75% pointer-events-none">
-        <Icon name={`shape-${shape}`} class:list={['size-full', colorShape]} />
-      </div>
+      <ShapeGradient
+        {shape}
+        {color}
+        class="absolute top-50 md:top-70 left-1/2 -translate-x-1/2 -z-1 size-[65vw] md:size-[56vw] max-w-[800px] max-h-[800px]"
+      />
     )
   }
 
