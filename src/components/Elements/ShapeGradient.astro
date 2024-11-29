@@ -1,42 +1,42 @@
 ---
-import { colourText } from '@/utils/maps'
-import Icon from '@/components/Elements/Icon.astro'
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  shape: 'circle' | 'square' | 'triangle'
-  color?: ColorTypes
-  class?: string
+  shape: 'circle' | 'square' | 'triangle';
+  color?: ColorTypes;
+  class?: string;
 }
 
 const {
   shape = 'triangle',
   color = 'yellow',
   class: className,
-} = Astro.props as Props
+} = Astro.props as Props;
 ---
 
 <script>
-  import gsap from 'gsap'
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
   const shapes = [
     ...document.querySelectorAll('[data-js=shape-gradient]'),
-  ] as HTMLElement[]
+  ] as HTMLElement[];
 
   shapes.forEach(shape => {
-    const icon = shape.querySelector('[data-js-icon]') as HTMLElement
+    const icon = shape.querySelector('[data-js-icon]') as HTMLElement;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        markers: false,
+        markers: true,
         trigger: icon,
-        start: '25% bottom',
+        start: 'center bottom',
         end: 'center center',
         scrub: 0,
       },
-    })
+    });
 
     tl.from(
       icon,
@@ -44,11 +44,11 @@ const {
         opacity: 0,
         y: '10%',
         duration: 0.5,
-        ease: 'power3.out',
+        ease: 'power2.out',
       },
       0,
-    )
-  })
+    );
+  });
 </script>
 
 <div
