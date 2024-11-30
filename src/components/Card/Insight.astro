@@ -1,15 +1,15 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  title: string
-  headline: string
-  color: ColorTypes
-  time?: string
-  class?: string
+  title: string;
+  headline: string;
+  color: ColorTypes;
+  time?: string;
+  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default
+const hasSlotDefault = !!Astro.slots.default;
 
 const {
   title,
@@ -18,15 +18,15 @@ const {
   time,
   class: className,
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 
 const colors = {
   yellow: 'text-yellow',
   green: 'text-green',
   blue: 'text-blue',
-}
+};
 
-const colorTitle = colors[color as keyof typeof colors] ?? ''
+const colorTitle = colors[color as keyof typeof colors] ?? '';
 ---
 
 <div
@@ -66,9 +66,9 @@ const colorTitle = colors[color as keyof typeof colors] ?? ''
         {title}
       </p>
 
-      <h6 class="font-heading font-semibold text-18 lg:text-24 text-balance">
+      <h3 class="font-heading font-semibold text-18 lg:text-24 text-balance">
         {headline}
-      </h6>
+      </h3>
 
       {
         time && (
