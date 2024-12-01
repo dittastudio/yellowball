@@ -1,23 +1,20 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+// import LayoutLines from '@/components/Layout/Lines.astro';
+import AccordionItem from '@/components/Accordion/Item.astro';
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
-import BlockCarouselProjects from '@/components/Block/CarouselProjects.astro';
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
-import CardProject from '@/components/Card/Project.astro';
 import CardInsight from '@/components/Card/Insight.astro';
+import CardProject from '@/components/Card/Project.astro';
+import CardProfile from '@/components/Card/Profile.astro';
 import CardRating from '@/components/Card/Rating.astro';
-import Cursor from '@/components/Elements/Cursor.astro';
 import Cube from '@/components/Elements/Cube.astro';
-import HeadingBanner from '@/components/Block/HeadingBanner.astro';
-import HeroText from '@/components/Block/HeroText.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
 import Icon from '@/components/Elements/Icon.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
-import ServiceCards from '@/components/Block/ServiceCards.astro';
-import ServiceItem from '@/components/Elements/ServiceItem.astro';
-import AccordionItem from '@/components/Accordion/Item.astro';
-import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import Layout from '@/layouts/Layout.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import ServiceItem from '@/components/Elements/ServiceItem.astro';
+import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -32,9 +29,6 @@ const imageDesktopTest: ImageObject = {
   width: 1600,
   height: 900,
 };
-
-const sgSection = 'wrapper mb-160';
-const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
 ---
 
 <Layout title="Styleguide">
@@ -45,27 +39,22 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
       <h1>Styleguide</h1>
     </section>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Logo</h1>
-
+    <StyleguideSection title="Logo">
       <div class="flex flex-wrap gap-8">
         <AppHeaderLogo />
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Shapes</h1>
-
-      <div class="flex flex-wrap gap-8">
-        <Icon name="shape-triangle" class="block size-[23px] text-yellow" />
+    <StyleguideSection title="Shapes">
+      <div class="flex flex-wrap items-end gap-8">
+        <Icon name="shape-triangle" class="block w-[23px] h-20 text-yellow" />
         <Icon name="shape-square" class="block size-20 text-green" />
         <Icon name="shape-circle" class="block size-20 text-blue" />
+        <Icon name="shape-pentagon" class="block w-[21px] h-20 text-purple" />
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Logo</h1>
-
+    <StyleguideSection title="Links">
       <a class="block" href="/">
         <LinkArrow class="font-heading text-18 font-bold">
           This is a regular link
@@ -79,11 +68,9 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           This is a link larger link
         </LinkArrow>
       </a>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Cubes</h1>
-
+    <StyleguideSection title="Cubes">
       <div class="flex flex-wrap gap-8">
         <Cube iconSize="lg">
           <Icon name="logo-figma" />
@@ -125,11 +112,9 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           <Icon name="service-paper-magnifier" />
         </Cube>
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Buttons</h1>
-
+    <StyleguideSection title="Buttons">
       <div class="flex flex-wrap gap-8">
         <button type="button">
           <Button text="Let's Chat" hasArrow />
@@ -151,22 +136,18 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           <Button text="View all projects" type="white-border" />
         </button>
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Cursors</h1>
-
+    <StyleguideSection title="Cursors">
       <div class="flex flex-wrap gap-8">
         <Cursor title="PPC Team" class="bg-blue" />
         <Cursor title="Design Team" class="bg-yellow" />
         <Cursor title="SEO Team" class="bg-green" />
         <Cursor title="Developers" class="bg-grey" />
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Breadcrumbs</h1>
-
+    <StyleguideSection title="Breadcrumbs">
       <div class="flex flex-col items-start gap-8">
         <Breadcrumb
           shape="square"
@@ -195,11 +176,9 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           ]}
         />
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Accordions</h1>
-
+    <StyleguideSection title="Accordions">
       <div class="flex flex-wrap gap-8">
         <AccordionItem id="one">
           <h2 slot="header">
@@ -224,17 +203,9 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           </div>
         </AccordionItem>
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Ticker</h1>
-
-      <BlockLogoTicker />
-    </section>
-
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Service Item</h1>
-
+    <StyleguideSection title="Service Item">
       <ServiceItem
         headline="WordPress Development"
         description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
@@ -243,7 +214,7 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           <Icon name="logo-wp" />
         </Cube>
       </ServiceItem>
-    </section>
+    </StyleguideSection>
 
     <!-- <section class="bg-cream text-navy">
       <LayoutLines theme="light">
@@ -251,19 +222,53 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
       </LayoutLines>
     </section> -->
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Card Project</h1>
+    <StyleguideSection title="Card Project">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-30">
+        <div class="col-span-10">
+          <CardProject
+            imageMobile={imageMobileTest}
+            imageDesktop={imageDesktopTest}
+          />
+        </div>
+      </div>
+    </StyleguideSection>
 
-      <CardProject
-        imageMobile={imageMobileTest}
-        imageDesktop={imageDesktopTest}
-      />
-    </section>
+    <StyleguideSection title="Card Profile">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30">
+        <CardProfile role="Director of SEO" name="Simon Ensor" color="green">
+          <img
+            class="object-cover size-full"
+            src="/images/test-profile-1.webp"
+            alt="Simon Ensor"
+            width="1"
+            height="1"
+          />
+        </CardProfile>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Card Insight</h1>
+        <CardProfile role="Director of SEO" name="Simon Ensor" color="yellow">
+          <img
+            class="object-cover size-full"
+            src="/images/test-profile-1.webp"
+            alt="Simon Ensor"
+            width="1"
+            height="1"
+          />
+        </CardProfile>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-30">
+        <CardProfile role="Director of SEO" name="Simon Ensor" color="purple">
+          <img
+            class="object-cover size-full"
+            src="/images/test-profile-1.webp"
+            alt="Simon Ensor"
+            width="1"
+            height="1"
+          />
+        </CardProfile>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Insight">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30">
         <CardInsight
           title="Web Design"
           headline="10 Steps to a Reliable Website Marketing Strategy"
@@ -291,13 +296,11 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
         </CardInsight>
       </div>
-    </section>
+    </StyleguideSection>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Card Rating</h1>
-
+    <StyleguideSection title="Card Rating">
       <div
-        class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-30 items-center"
+        class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30 items-center"
       >
         <CardRating
           quote="I'm delighted with the finished website & delivery of the project."
@@ -321,6 +324,6 @@ const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
         </CardRating>
       </div>
-    </section>
+    </StyleguideSection>
   </main>
 </Layout>
