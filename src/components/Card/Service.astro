@@ -17,7 +17,7 @@ const {
   shape,
   color,
   class: className,
-  ...props
+  ...rest
 } = Astro.props as Props;
 
 const colorShape = colourText[color as keyof typeof colourText] ?? '';
@@ -101,7 +101,7 @@ const classes = ['card-service', className];
   data-js="card-service"
   class:list={classes}
   style={`--color: var(--yellowball-${color})`}
-  {...props}
+  {...rest}
 >
   <div
     class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"

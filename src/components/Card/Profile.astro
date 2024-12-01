@@ -15,7 +15,7 @@ const {
   name,
   color = 'green',
   class: className,
-  ...props
+  ...rest
 } = Astro.props as Props;
 ---
 
@@ -28,7 +28,7 @@ const {
     'text-white bg-navy-light border border-white/10 rounded-20 md:rounded-30',
     className,
   ]}
-  {...props}
+  {...rest}
 >
   {
     hasSlotDefault && (

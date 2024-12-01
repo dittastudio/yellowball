@@ -8,7 +8,7 @@ interface Props {
   class?: string;
 }
 
-const { headline, cta, class: className, ...props } = Astro.props as Props;
+const { headline, cta, class: className, ...rest } = Astro.props as Props;
 ---
 
 <div
@@ -17,7 +17,7 @@ const { headline, cta, class: className, ...props } = Astro.props as Props;
     'w-full bg-navy-light text-white text-left rounded-30 lg:rounded-50',
     className,
   ]}
-  {...props}
+  {...rest}
 >
   <a
     href="/"

@@ -1,6 +1,5 @@
 ---
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
-import TextReveal from '@/components/Elements/TextReveal.astro';
 
 interface Props {
   color?: ColorTypes;
@@ -25,15 +24,7 @@ const { color = 'blue', shape } = Astro.props as Props;
   }
 
   {Astro.slots.top && <slot name="top" />}
-
-  {
-    Astro.slots.headline && (
-      <TextReveal>
-        <slot name="headline" />
-      </TextReveal>
-    )
-  }
-
+  {Astro.slots.headline && <slot name="headline" />}
   {Astro.slots.bottom && <slot name="bottom" />}
   {Astro.slots.extra && <slot name="extra" />}
 </div>

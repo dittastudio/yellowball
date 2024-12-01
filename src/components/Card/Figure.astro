@@ -20,7 +20,7 @@ const {
   shape,
   color,
   class: className,
-  ...props
+  ...rest
 } = Astro.props as Props;
 
 const colorShape = colourText[color as keyof typeof colourText] ?? '';
@@ -68,7 +68,7 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 <div
   data-js="card-figure"
   class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
-  {...props}
+  {...rest}
 >
   <a
     href="/"

@@ -9,7 +9,7 @@ const {
   class: className,
   text,
   type = 'transparent',
-  ...props
+  ...rest
 } = Astro.props as Props;
 ---
 
@@ -21,7 +21,7 @@ const {
     `is-${type}`,
     className,
   ]}
-  {...props}
+  {...rest}
 >
   {text}
 </span>

@@ -8,6 +8,7 @@ import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
 import BlockCardStacks from '@/components/Block/CardStacks.astro';
@@ -39,9 +40,12 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="headline">
-          <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
+          <TextReveal
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
             <TextGradient>Websites</TextGradient> that get your business rolling
-          </h1>
+          </TextReveal>
         </Fragment>
 
         <Fragment slot="bottom">
@@ -133,11 +137,11 @@ const classSectionThick = 'py-100 md:py-[150px]';
         description="We offer a full suite of web design services that transform your brand story into digital experiences."
       >
         <Fragment slot="headline">
-          <h3 class="font-heading text-fluid-h3 font-semibold">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
             End-to-end
             <span class="!block pl-[2ch]">web design</span>
             <span class="!block pl-[1ch]">services</span>
-          </h3>
+          </TextReveal>
         </Fragment>
 
         <Fragment slot="extra">
@@ -156,7 +160,10 @@ const classSectionThick = 'py-100 md:py-[150px]';
             description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
           >
             <Fragment slot="headline">
-              <h2 class="font-heading text-fluid-h2 font-semibold">
+              <TextReveal
+                tag="h2"
+                class="font-heading text-fluid-h2 font-semibold"
+              >
                 <span class="!block pl-[1ch]">Rooted in London,</span> connected
                 <span class="relative !inline-block">
                   worldwide
@@ -165,7 +172,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
                     class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
                   />
                 </span>
-              </h2>
+              </TextReveal>
             </Fragment>
           </BlockCardStacks>
         </LayoutLines>
@@ -177,9 +184,16 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockHeroText
-        headline="Stunning bespoke web design that captivates & converts"
-      />
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Stunning bespoke web design that captivates & converts
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
     </section>
 
     <section class={classSection}>
