@@ -43,51 +43,55 @@ const linkLists = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const footer = document.querySelector('[data-js=footer]') as HTMLElement;
-  const years = footer.querySelectorAll(
-    '[data-js-year]',
-  ) as NodeListOf<HTMLElement>;
+  const footer = document.querySelector('[data-js="footer"]') as HTMLElement;
 
-  const getDateTime = (date = new Date()) => ({
-    year: String(date.getFullYear()),
-    month: String(date.getMonth() + 1).padStart(2, '0'),
-    day: String(date.getDate()).padStart(2, '0'),
-    hours: String(date.getHours()).padStart(2, '0'),
-    minutes: String(date.getMinutes()).padStart(2, '0'),
-  });
+  if (footer) {
+    const getDateTime = (date = new Date()) => ({
+      year: String(date.getFullYear()),
+      month: String(date.getMonth() + 1).padStart(2, '0'),
+      day: String(date.getDate()).padStart(2, '0'),
+      hours: String(date.getHours()).padStart(2, '0'),
+      minutes: String(date.getMinutes()).padStart(2, '0'),
+    });
 
-  const { year, month, day, hours, minutes } = getDateTime();
-  const datetime = `${year}-${month}-${day} ${hours}:${minutes}`;
+    const { year, month, day, hours, minutes } = getDateTime();
+    const datetime = `${year}-${month}-${day} ${hours}:${minutes}`;
+    const years = footer.querySelectorAll(
+      '[data-js-year]',
+    ) as NodeListOf<HTMLElement>;
 
-  years.forEach(y => {
-    y.textContent = year;
-    y.setAttribute('datetime', datetime);
-  });
+    years.forEach(y => {
+      y.textContent = year;
+      y.setAttribute('datetime', datetime);
+    });
 
-  const footerLogo = footer.querySelector(
-    '[data-js-footer-logo]',
-  ) as HTMLElement;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        markers: false,
+        trigger: footer,
+        start: '80% bottom',
+        end: 'bottom bottom',
+        scrub: 0,
+      },
+    });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      markers: false,
-      trigger: footer,
-      start: '80% bottom',
-      end: 'bottom bottom',
-      scrub: 0,
-    },
-  });
+    const footerLogo = footer.querySelector(
+      '[data-js-footer-logo]',
+    ) as HTMLElement;
 
-  tl.from(
-    footerLogo,
-    {
-      opacity: 0,
-      y: '20%',
-      duration: 1,
-      ease: 'linear',
-    },
-    0,
-  );
+    if (footerLogo) {
+      tl.from(
+        footerLogo,
+        {
+          opacity: 0,
+          y: '20%',
+          duration: 1,
+          ease: 'linear',
+        },
+        0,
+      );
+    }
+  }
 </script>
 
 <footer data-js="footer" class="app-footer pt-40 md:pt-100 overflow-hidden">

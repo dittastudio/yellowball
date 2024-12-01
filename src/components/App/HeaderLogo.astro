@@ -3,21 +3,23 @@
     '[data-js=header-logo]',
   ) as HTMLElement;
 
-  let timeout: number;
+  if (headerLogo) {
+    let timeout: number;
 
-  function handleMouseEnter() {
-    clearTimeout(timeout);
-    headerLogo.classList.add('has-hover');
+    function handleMouseEnter() {
+      clearTimeout(timeout);
+      headerLogo.classList.add('has-hover');
+    }
+
+    function handleMouseLeave() {
+      timeout = setTimeout(() => {
+        headerLogo.classList.remove('has-hover');
+      }, 500);
+    }
+
+    headerLogo.addEventListener('mouseenter', handleMouseEnter);
+    headerLogo.addEventListener('mouseleave', handleMouseLeave);
   }
-
-  function handleMouseLeave() {
-    timeout = setTimeout(() => {
-      headerLogo.classList.remove('has-hover');
-    }, 500);
-  }
-
-  headerLogo.addEventListener('mouseenter', handleMouseEnter);
-  headerLogo.addEventListener('mouseleave', handleMouseLeave);
 </script>
 
 <div data-js="header-logo" class="header-logo text-white">

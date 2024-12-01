@@ -12,32 +12,37 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
   const section = document.querySelector(
     '[data-js="heading-banner"]',
   ) as HTMLElement;
-  const shapes = [...section?.querySelectorAll('.shape')] as HTMLElement[];
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      markers: false,
-      trigger: section,
-      start: 'top center',
-      end: 'center center',
-      scrub: 1.5,
-    },
-  });
+  if (section) {
+    const shapes = section.querySelectorAll(
+      '.shape',
+    ) as NodeListOf<HTMLElement>;
 
-  shapes.forEach((shape, index) => {
-    const x = [0, -40, 40];
-
-    tl.from(
-      shape,
-      {
-        opacity: 0,
-        x: x[index] ?? 0,
-        y: index === 0 ? -40 : 40,
-        rotate: index % 2 ? -90 : 90,
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        markers: false,
+        trigger: section,
+        start: 'top center',
+        end: 'center center',
+        scrub: 1.5,
       },
-      0,
-    );
-  });
+    });
+
+    shapes.forEach((shape, index) => {
+      const x = [0, -40, 40];
+
+      tl.from(
+        shape,
+        {
+          opacity: 0,
+          x: x[index] ?? 0,
+          y: index === 0 ? -40 : 40,
+          rotate: index % 2 ? -90 : 90,
+        },
+        0,
+      );
+    });
+  }
 </script>
 
 <div data-js="heading-banner">

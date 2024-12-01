@@ -1,18 +1,19 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import favicons from "astro-favicons";
-import tailwind from "@astrojs/tailwind";
-import htmlBeautifier from "astro-html-beautifier";
+import { defineConfig } from 'astro/config';
+import favicons from 'astro-favicons';
+import tailwind from '@astrojs/tailwind';
+import htmlBeautifier from 'astro-html-beautifier';
 
 export default defineConfig({
   compressHTML: false,
-  scopedStyleStrategy: "where",
+  scopedStyleStrategy: 'where',
   build: {
-    assets: "_assets",
-    inlineStylesheets: "never",
+    assets: '_assets',
+    inlineStylesheets: 'never',
   },
   vite: {
     build: {
+      // minify: false,
       cssCodeSplit: false,
       rollupOptions: {
         output: {
@@ -28,13 +29,13 @@ export default defineConfig({
   integrations: [
     htmlBeautifier({
       indent_size: 2,
-      indent_char: " ",
+      indent_char: ' ',
       max_preserve_newlines: 1,
       preserve_newlines: false,
       keep_array_indentation: false,
       break_chained_methods: false,
-      indent_scripts: "keep",
-      brace_style: "collapse",
+      indent_scripts: 'keep',
+      brace_style: 'collapse',
       space_before_conditional: false,
       unescape_strings: false,
       jslint_happy: false,
@@ -46,15 +47,15 @@ export default defineConfig({
       indent_empty_lines: false,
     }),
     favicons({
-      masterPicture: "./src/icon/favicon.svg",
+      masterPicture: './src/icon/favicon.svg',
       emitAssets: true,
       faviconsDarkMode: false,
-      appName: "Yellowball",
-      appShortName: "Yellowball",
-      appDescription: "",
-      lang: "en-GB",
-      background: "transparent",
-      theme_color: "#fff",
+      appName: 'Yellowball',
+      appShortName: 'Yellowball',
+      appDescription: '',
+      lang: 'en-GB',
+      background: 'transparent',
+      theme_color: '#fff',
     }),
     tailwind({
       /**
