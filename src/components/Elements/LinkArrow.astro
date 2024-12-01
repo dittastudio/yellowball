@@ -1,0 +1,32 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...props } = Astro.props as Props;
+---
+
+<span
+  class:list={['link-arrow inline-block select-none', className]}
+  {...props}
+>
+  <slot /><Icon
+    name="arrow-ne"
+    class="link-arrow__icon inline-block align-baseline ml-[0.67em] size-10 md:size-12 transition-transform duration-150 shrink-0"
+  />
+</span>
+
+<style>
+  .link-arrow__icon {
+    @media (hover: hover) {
+      translate: 0 0 0;
+
+      :global(a):hover &,
+      :global(button):not(:disabled):hover & {
+        translate: 2px -2px 0;
+      }
+    }
+  }
+</style>

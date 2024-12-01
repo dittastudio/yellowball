@@ -17,6 +17,7 @@ import ServiceCards from '@/components/Block/ServiceCards.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import AccordionItem from '@/components/Accordion/Item.astro';
 import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -32,12 +33,18 @@ const imageDesktopTest: ImageObject = {
   height: 900,
 };
 
-const sgSection = 'wrapper my-100';
-const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
+const sgSection = 'wrapper mb-160';
+const sgHeading = 'font-heading font-bold text-21 mb-[2em] opacity-50';
 ---
 
 <Layout title="Styleguide">
-  <main class="mt-200">
+  <main>
+    <section
+      class="wrapper font-heading text-fluid-h1 font-semibold text-center opacity-50 my-120"
+    >
+      <h1>Styleguide</h1>
+    </section>
+
     <section class={sgSection}>
       <h1 class={sgHeading}>Logo</h1>
 
@@ -46,40 +53,77 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
       </div>
     </section>
 
-    <section>
-      <div class="wrapper">
-        <h1 class={sgHeading}>Ticker</h1>
-      </div>
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Shapes</h1>
 
-      <BlockLogoTicker />
+      <div class="flex flex-wrap gap-8">
+        <Icon name="shape-triangle" class="block size-[23px] text-yellow" />
+        <Icon name="shape-square" class="block size-20 text-green" />
+        <Icon name="shape-circle" class="block size-20 text-blue" />
+      </div>
     </section>
 
     <section class={sgSection}>
-      <h1 class={sgHeading}>Accordions</h1>
+      <h1 class={sgHeading}>Logo</h1>
+
+      <a class="block" href="/">
+        <LinkArrow class="font-heading text-18 font-bold">
+          This is a regular link
+        </LinkArrow>
+      </a>
+
+      <br />
+
+      <a class="block" href="/">
+        <LinkArrow class="font-heading text-24 font-semibold">
+          This is a link larger link
+        </LinkArrow>
+      </a>
+    </section>
+
+    <section class={sgSection}>
+      <h1 class={sgHeading}>Cubes</h1>
 
       <div class="flex flex-wrap gap-8">
-        <AccordionItem id="one">
-          <h2 slot="header">
-            How much does web design and development from Yellowball typically
-            cost?
-          </h2>
+        <Cube iconSize="lg">
+          <Icon name="logo-figma" />
+        </Cube>
 
-          <div slot="body">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+        <Cube iconSize="lg">
+          <Icon name="logo-wp" />
+        </Cube>
 
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
-        </AccordionItem>
+        <Cube iconSize="lg">
+          <Icon name="logo-woo" />
+        </Cube>
+
+        <Cube iconSize="lg">
+          <Icon name="logo-laravel" />
+        </Cube>
+
+        <Cube>
+          <Icon name="logo-white-label" />
+        </Cube>
+
+        <Cube>
+          <Icon name="logo-ecommerce" />
+        </Cube>
+
+        <Cube color="green">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="blue">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="yellow">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
+
+        <Cube color="purple">
+          <Icon name="service-paper-magnifier" />
+        </Cube>
       </div>
     </section>
 
@@ -154,64 +198,42 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
     </section>
 
     <section class={sgSection}>
-      <h1 class={sgHeading}>Cubes</h1>
+      <h1 class={sgHeading}>Accordions</h1>
 
       <div class="flex flex-wrap gap-8">
-        <Cube iconSize="lg">
-          <Icon name="logo-figma" />
-        </Cube>
+        <AccordionItem id="one">
+          <h2 slot="header">
+            How much does web design and development from Yellowball typically
+            cost?
+          </h2>
 
-        <Cube iconSize="lg">
-          <Icon name="logo-wp" />
-        </Cube>
+          <div slot="body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
 
-        <Cube iconSize="lg">
-          <Icon name="logo-woo" />
-        </Cube>
-
-        <Cube iconSize="lg">
-          <Icon name="logo-laravel" />
-        </Cube>
-
-        <Cube>
-          <Icon name="logo-white-label" />
-        </Cube>
-
-        <Cube>
-          <Icon name="logo-ecommerce" />
-        </Cube>
-
-        <Cube color="green">
-          <Icon name="service-paper-magnifier" />
-        </Cube>
-
-        <Cube color="blue">
-          <Icon name="service-paper-magnifier" />
-        </Cube>
-
-        <Cube color="yellow">
-          <Icon name="service-paper-magnifier" />
-        </Cube>
-
-        <Cube color="purple">
-          <Icon name="service-paper-magnifier" />
-        </Cube>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </AccordionItem>
       </div>
     </section>
 
     <section class={sgSection}>
-      <h1 class={sgHeading}>Shapes</h1>
+      <h1 class={sgHeading}>Ticker</h1>
 
-      <div class="flex flex-wrap gap-8">
-        <Icon name="shape-triangle" class="block size-[23px] text-yellow" />
-        <Icon name="shape-square" class="block size-20 text-green" />
-        <Icon name="shape-circle" class="block size-20 text-blue" />
-      </div>
+      <BlockLogoTicker />
     </section>
 
     <section class={sgSection}>
-      <h1 class={sgHeading}>Service</h1>
-      <p class="font-semibold text-15 my-20">&lt;ServiceItem /&gt;</p>
+      <h1 class={sgHeading}>Service Item</h1>
 
       <ServiceItem
         headline="WordPress Development"
@@ -223,27 +245,11 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
       </ServiceItem>
     </section>
 
-    <section class={sgSection}>
-      <h1 class={sgHeading}>Blocks</h1>
-
-      <p class="font-semibold text-15 my-20">&lt;HeadingBanner /&gt;</p>
-      <HeadingBanner />
-
-      <p class="font-semibold text-15 my-20">&lt;ServiceCards /&gt;</p>
-      <ServiceCards />
-
-      <p class="font-semibold text-15 my-20">&lt;HeroText /&gt;</p>
-      <HeroText
-        headline="Meet a few of the experts behind your SEO success"
-        description="We have a globally distributed team of SEO experts across offices in London and South Africa. Here's a glimpse of some of the talented specialists you could be working with. Each brings a wealth of experience and a passion for driving results."
-      />
-    </section>
-
-    <section class="bg-cream text-navy">
+    <!-- <section class="bg-cream text-navy">
       <LayoutLines theme="light">
         <HeadingBanner />
       </LayoutLines>
-    </section>
+    </section> -->
 
     <section class={sgSection}>
       <h1 class={sgHeading}>Card Project</h1>
@@ -316,7 +322,5 @@ const sgHeading = 'font-heading font-bold text-21 my-20 opacity-50';
         </CardRating>
       </div>
     </section>
-
-    <BlockCarouselProjects />
   </main>
 </Layout>

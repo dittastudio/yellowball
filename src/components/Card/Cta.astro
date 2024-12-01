@@ -1,5 +1,5 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 interface Props {
@@ -29,14 +29,8 @@ const { headline, cta, class: className, ...rest } = Astro.props as Props;
       {headline}
     </h4>
 
-    <p
-      class="flex justify-center items-center gap-10 font-heading font-bold text-15 lg:text-18 text-balance"
-    >
+    <LinkArrow class="font-heading font-bold text-15 lg:text-18">
       {cta}
-      <Icon
-        name="arrow-ne"
-        class="block size-10 md:size-12 -mb-5 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300 shrink-0"
-      />
-    </p>
+    </LinkArrow>
   </a>
 </div>

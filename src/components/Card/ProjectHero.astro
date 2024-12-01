@@ -1,5 +1,5 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
   title: string;
@@ -95,12 +95,11 @@ const classes = ['card-project-hero', className];
               {description}
             </p>
 
-            <p
-              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-baseline justify-start gap-12"
+            <LinkArrow
+              class="mt-auto font-heading font-bold text-15 lg:text-18"
             >
               {cta}
-              <Icon name="arrow-ne" class="size-12 md:size-14" />
-            </p>
+            </LinkArrow>
           </div>
 
           {

@@ -4,7 +4,7 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 
 const classNav =
-  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto';
+  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth';
 
 const classNavListLink = 'block h-full';
 
@@ -27,6 +27,9 @@ const navListTwo = [
   gsap.registerPlugin(ScrollTrigger);
 
   const header = document.querySelector('[data-js="header"]') as HTMLElement;
+  const navs = [
+    ...document.querySelectorAll('[data-js-header-nav]'),
+  ] as HTMLElement[];
 
   if (header) {
     const sections = document.querySelectorAll(
@@ -46,6 +49,20 @@ const navListTwo = [
 
           header.classList[checkIfLightTheme ? 'remove' : 'add']('text-white');
           header.classList[!checkIfLightTheme ? 'remove' : 'add']('text-navy');
+          navs.forEach(nav => {
+            nav.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'bg-offblack/10',
+            );
+            nav.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'border-white/10',
+            );
+            nav.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'bg-grey-light/50',
+            );
+            nav.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'border-grey-light/30',
+            );
+          });
         },
       });
     });
