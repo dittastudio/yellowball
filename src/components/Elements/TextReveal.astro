@@ -5,50 +5,78 @@
 <script>
   import { gsap } from 'gsap';
   import SplitType from 'split-type';
+  import { debounce } from '@/utils/helpers';
 
   const textReveal = document.querySelectorAll("[data-js='text-reveal']");
 
   textReveal.forEach(reveal => {
-    const directsSelector = [
-      ...reveal.querySelectorAll(':scope > *'),
-    ] as HTMLElement[];
+    let masks: SplitType;
+    let lines: SplitType;
+    let tween: gsap.core.Tween;
 
-    const directs = new SplitType(directsSelector, {
-      types: 'lines',
-      lineClass: 'mask',
-      tagName: 'span',
-    });
+    const create = () => {
+      const domElements = reveal.querySelectorAll(
+        ':scope > *',
+      ) as NodeListOf<HTMLElement>;
 
-    gsap.set(directs.lines, {
-      clipPath: `polygon(0 0, 100% 0, 100% 105%, 0% 105%)`,
-    });
+      masks = new SplitType(domElements, {
+        types: 'lines',
+        lineClass: 'mask',
+        tagName: 'span',
+      });
 
-    const masksSelector = [
-      ...reveal.querySelectorAll(':scope .mask'),
-    ] as HTMLElement[];
+      gsap.set(masks.lines, {
+        clipPath: `polygon(0 0, 100% 0, 100% 105%, 0% 105%)`,
+      });
 
-    const masks = new SplitType(masksSelector, {
-      types: 'lines',
-      tagName: 'span',
-    });
+      const maskElements = reveal.querySelectorAll(
+        ':scope .mask',
+      ) as NodeListOf<HTMLElement>;
 
-    gsap.fromTo(
-      masks.lines,
-      { yPercent: 100 },
-      {
-        duration: 1,
-        yPercent: 0,
-        ease: 'power4.out',
-        stagger: 0.05,
-        scrollTrigger: {
-          markers: false,
-          scrub: 1.5,
-          trigger: reveal,
-          start: '20% 80%',
-          end: 'bottom center',
+      lines = new SplitType(maskElements, {
+        types: 'lines',
+        tagName: 'span',
+      });
+
+      tween = gsap.fromTo(
+        lines.lines,
+        { yPercent: 100 },
+        {
+          duration: 1,
+          yPercent: 0,
+          ease: 'power4.out',
+          stagger: 0.05,
+          scrollTrigger: {
+            markers: false,
+            scrub: 1.5,
+            trigger: reveal,
+            start: '20% 80%',
+            end: 'bottom center',
+          },
         },
-      },
-    );
+      );
+    };
+
+    create();
+
+    let currentWidth = Math.round(reveal.getBoundingClientRect().width);
+
+    const handleResize = debounce(() => {
+      const { width } = reveal.getBoundingClientRect();
+      const newWidth = Math.round(width);
+
+      if (currentWidth === newWidth) return;
+
+      currentWidth = newWidth;
+
+      tween.kill();
+      masks.revert();
+      lines.revert();
+
+      create();
+    }, 500);
+
+    window.addEventListener('resize', handleResize);
   });
 </script>
 
