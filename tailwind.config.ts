@@ -62,9 +62,10 @@ export default {
       navy: "#1C1D2C",
       'navy-light': "#2A2B3A",
       'navy-lighter': "#3E3E4E",
-      "navy-lightest": "#474747",
+      'navy-lightest': "#474747",
       cream: "#F7F7F0",
       grey: "#BBBBBB",
+      'grey-light': "#E6E6E6",
 
       // TEMP NAMES
       card: "#28293A",
