@@ -9,26 +9,24 @@ interface Props {
 const { headline, description } = Astro.props as Props;
 ---
 
-<div class="text-center">
-  <div
-    class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60"
-  >
-    {
-      headline && (
-        <TextReveal>
-          <h2 class="font-heading text-fluid-h2 font-semibold text-balance">
-            {headline}
-          </h2>
-        </TextReveal>
-      )
-    }
+<div
+  class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60 text-center"
+>
+  {
+    headline && (
+      <TextReveal>
+        <h2 class="font-heading text-fluid-h2 font-semibold text-balance">
+          {headline}
+        </h2>
+      </TextReveal>
+    )
+  }
 
-    {
-      description && (
-        <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
-          {description}
-        </p>
-      )
-    }
-  </div>
+  {
+    description && (
+      <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
+        {description}
+      </p>
+    )
+  }
 </div>

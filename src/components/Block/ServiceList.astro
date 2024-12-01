@@ -51,104 +51,100 @@ const { description = '' } = Astro.props as Props;
   }
 </script>
 
-<section data-js="service-list">
-  <div class="wrapper flex flex-col gap-80 lg:gap-0">
-    <div class="lg:grid lg:grid-cols-2 lg:gap-30 lg:sticky lg:top-100">
-      <div
-        class="relative w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
-      >
-        {
-          Astro.slots.headline && (
-            <TextReveal>
-              <slot name="headline" />
-            </TextReveal>
-          )
-        }
+<div data-js="service-list" class="wrapper flex flex-col gap-80 lg:gap-0">
+  <div class="lg:grid lg:grid-cols-2 lg:gap-30 lg:sticky lg:top-100">
+    <div
+      class="relative w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
+    >
+      {
+        Astro.slots.headline && (
+          <TextReveal>
+            <slot name="headline" />
+          </TextReveal>
+        )
+      }
 
-        {
-          description && (
-            <p class="text-17 md:text-21 text-grey text-balance">
-              {description}
-            </p>
-          )
-        }
+      {
+        description && (
+          <p class="text-17 md:text-21 text-grey text-balance">{description}</p>
+        )
+      }
 
-        <a href="/" class="block">
-          <Button text="Let's Chat" hasArrow />
-        </a>
+      <a href="/" class="block">
+        <Button text="Let's Chat" hasArrow />
+      </a>
 
-        {Astro.slots.extra && <slot name="extra" />}
-      </div>
-    </div>
-
-    <div class="lg:grid lg:grid-cols-2 lg:gap-30">
-      <ul class="lg:col-span-1 lg:col-start-2 flex flex-col gap-50 md:gap-110">
-        <li data-js-item>
-          <ServiceItem
-            headline="WordPress Development"
-            description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-wp" />
-            </Cube>
-          </ServiceItem>
-        </li>
-
-        <li data-js-item>
-          <ServiceItem
-            headline="UX/UI Design"
-            description="User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-figma" />
-            </Cube>
-          </ServiceItem>
-        </li>
-
-        <li data-js-item>
-          <ServiceItem
-            headline="WooCommerce Development"
-            description="Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-woo" />
-            </Cube>
-          </ServiceItem>
-        </li>
-
-        <li data-js-item>
-          <ServiceItem
-            headline="Laravel Development"
-            description="Complex problems solved simply. Build custom web applications that deliver seamless user experiences."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-laravel" />
-            </Cube>
-          </ServiceItem>
-        </li>
-
-        <li data-js-item>
-          <ServiceItem
-            headline="White Label Web Development"
-            description="Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-white-label" />
-            </Cube>
-          </ServiceItem>
-        </li>
-
-        <li data-js-item>
-          <ServiceItem
-            headline="eCommerce"
-            description="From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers."
-          >
-            <Cube slot="icon" iconSize="lg">
-              <Icon name="logo-ecommerce" />
-            </Cube>
-          </ServiceItem>
-        </li>
-      </ul>
+      {Astro.slots.extra && <slot name="extra" />}
     </div>
   </div>
-</section>
+
+  <div class="lg:grid lg:grid-cols-2 lg:gap-30">
+    <ul class="lg:col-span-1 lg:col-start-2 flex flex-col gap-50 md:gap-110">
+      <li data-js-item>
+        <ServiceItem
+          headline="WordPress Development"
+          description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-wp" />
+          </Cube>
+        </ServiceItem>
+      </li>
+
+      <li data-js-item>
+        <ServiceItem
+          headline="UX/UI Design"
+          description="User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-figma" />
+          </Cube>
+        </ServiceItem>
+      </li>
+
+      <li data-js-item>
+        <ServiceItem
+          headline="WooCommerce Development"
+          description="Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-woo" />
+          </Cube>
+        </ServiceItem>
+      </li>
+
+      <li data-js-item>
+        <ServiceItem
+          headline="Laravel Development"
+          description="Complex problems solved simply. Build custom web applications that deliver seamless user experiences."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-laravel" />
+          </Cube>
+        </ServiceItem>
+      </li>
+
+      <li data-js-item>
+        <ServiceItem
+          headline="White Label Web Development"
+          description="Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-white-label" />
+          </Cube>
+        </ServiceItem>
+      </li>
+
+      <li data-js-item>
+        <ServiceItem
+          headline="eCommerce"
+          description="From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers."
+        >
+          <Cube slot="icon" iconSize="lg">
+            <Icon name="logo-ecommerce" />
+          </Cube>
+        </ServiceItem>
+      </li>
+    </ul>
+  </div>
+</div>
