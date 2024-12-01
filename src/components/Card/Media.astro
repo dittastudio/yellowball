@@ -1,18 +1,18 @@
 ---
 interface Props {
-  headline: string
-  description: string
-  class?: string
+  headline: string;
+  description: string;
+  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default
+const hasSlotDefault = !!Astro.slots.default;
 
 const {
   headline,
   description,
   class: className,
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 ---
 
 <div
@@ -25,11 +25,11 @@ const {
     class="group w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-30 border border-navy/15"
   >
     <div class="flex flex-col justify-start items-start gap-15">
-      <h6
+      <h3
         class="font-heading font-semibold text-21 lg:text-28 text-balance text-navy"
       >
         {headline}
-      </h6>
+      </h3>
 
       <p class="font-normal text-15 lg:text-18 text-navy-lightest text-balance">
         {description}
