@@ -1,0 +1,37 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Button from '@/components/Elements/Button.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import Block404 from '@/components/Block/404.astro';
+---
+
+<Layout title="404">
+  <main>
+    <section
+      class="grid items-center pb-[74px] md:pb-[94px] min-h-[calc(100svh_-_74px)] md:min-h-[calc(100svh_-_94px)]"
+    >
+      <Block404>
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            <TextGradient>Oops!</TextGradient> Looks like you took a wrong turn
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="links">
+          <p>
+            <a href="/">
+              <Button text="Return to Homepage" hasArrow />
+            </a>
+          </p>
+        </Fragment>
+      </Block404>
+    </section>
+  </main>
+</Layout>

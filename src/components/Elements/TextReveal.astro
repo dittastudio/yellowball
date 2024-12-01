@@ -1,33 +1,44 @@
 ---
-// interface Props {
-//   tag?: string;
-// }
-
 import type { HTMLAttributes } from 'astro/types';
 
 interface Reveal {
   tag?: string;
+  onEnter?: boolean;
 }
 
 type Props = HTMLAttributes<'div'> & Reveal;
 
-const { tag = 'div', ...rest } = Astro.props as Props;
+const { tag = 'div', onEnter = false, ...rest } = Astro.props as Props;
 const Element = tag;
+const classes = [rest.class, 'opacity-0'].filter(Boolean);
 ---
 
 <script>
   import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
   import SplitType from 'split-type';
   import { debounce } from '@/utils/helpers';
+
+  gsap.registerPlugin(ScrollTrigger);
 
   const textReveal = document.querySelectorAll(
     "[data-js='text-reveal']",
   ) as NodeListOf<HTMLElement>;
 
+  const from = { yPercent: 100 };
+  const to = {
+    duration: 1.5,
+    yPercent: 0,
+    ease: 'power4.out',
+    stagger: 0.1,
+  };
+
   textReveal.forEach(reveal => {
     let masks: SplitType;
     let lines: SplitType;
     let tween: gsap.core.Tween;
+
+    const hasOnEnter = reveal.hasAttribute('data-js-on-enter');
 
     const create = () => {
       masks = new SplitType(reveal, {
@@ -49,21 +60,26 @@ const Element = tag;
         tagName: 'span',
       });
 
+      reveal.classList.remove('opacity-0');
+
+      const toExtra = hasOnEnter
+        ? {}
+        : {
+            scrollTrigger: {
+              markers: false,
+              scrub: 1.5,
+              trigger: reveal,
+              start: '20% 80%',
+              end: 'bottom center',
+            },
+          };
+
       tween = gsap.fromTo(
         lines.lines,
-        { yPercent: 100 },
+        { ...from },
         {
-          duration: 1,
-          yPercent: 0,
-          ease: 'power4.out',
-          stagger: 0.05,
-          scrollTrigger: {
-            markers: false,
-            scrub: 1.5,
-            trigger: reveal,
-            start: '20% 80%',
-            end: 'bottom center',
-          },
+          ...to,
+          ...toExtra,
         },
       );
     };
@@ -91,6 +107,11 @@ const Element = tag;
   });
 </script>
 
-<Element data-js="text-reveal" {...rest}>
+<Element
+  data-js="text-reveal"
+  data-js-on-enter={onEnter}
+  {...rest}
+  class:list={classes}
+>
   <slot />
 </Element>
