@@ -22,19 +22,20 @@ const classes = [rest.class, 'opacity-0'].filter(Boolean);
     "[data-js='text-reveal']",
   ) as NodeListOf<HTMLElement>;
 
+  const from = { yPercent: 100 };
+  const to = {
+    duration: 1.5,
+    yPercent: 0,
+    ease: 'power4.out',
+    stagger: 0.1,
+  };
+
   textReveal.forEach(reveal => {
     let masks: SplitType;
     let lines: SplitType;
     let tween: gsap.core.Tween;
 
     const hasOnEnter = reveal.hasAttribute('data-js-on-enter');
-    const from = { yPercent: 100 };
-    const to = {
-      duration: 1.5,
-      yPercent: 0,
-      ease: 'power4.out',
-      stagger: 0.1,
-    };
 
     const create = () => {
       masks = new SplitType(reveal, {
@@ -58,14 +59,9 @@ const classes = [rest.class, 'opacity-0'].filter(Boolean);
 
       reveal.classList.remove('opacity-0');
 
-      if (hasOnEnter) {
-        tween = gsap.fromTo(lines.lines, { ...from }, { ...to });
-      } else {
-        tween = gsap.fromTo(
-          lines.lines,
-          { ...from },
-          {
-            ...to,
+      const toExtra = hasOnEnter
+        ? {}
+        : {
             scrollTrigger: {
               markers: false,
               scrub: 1.5,
@@ -73,9 +69,16 @@ const classes = [rest.class, 'opacity-0'].filter(Boolean);
               start: '20% 80%',
               end: 'bottom center',
             },
-          },
-        );
-      }
+          };
+
+      tween = gsap.fromTo(
+        lines.lines,
+        { ...from },
+        {
+          ...to,
+          ...toExtra,
+        },
+      );
     };
 
     create();
