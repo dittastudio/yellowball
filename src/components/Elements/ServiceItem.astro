@@ -1,5 +1,5 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
   headline: string;
@@ -10,19 +10,16 @@ const { headline, description } = Astro.props as Props;
 ---
 
 <div>
-  <a href="/" class="group flex flex-col gap-15 md:gap-30">
+  <a href="/" class="flex flex-col gap-15 md:gap-30">
     <div class="flex flex-col gap-15 md:flex-row md:items-center md:gap-20">
       <slot name="icon" />
 
       <h4
-        class="inline-block font-heading font-semibold text-20 md:text-24 text-white text-balance"
+        class="font-heading font-semibold text-20 md:text-24 text-white text-balance"
       >
-        {headline}
-
-        <Icon
-          name="arrow-ne"
-          class="inline-block align-baseline ml-10 size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
-        />
+        <LinkArrow>
+          {headline}
+        </LinkArrow>
       </h4>
     </div>
 

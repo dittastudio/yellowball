@@ -6,7 +6,7 @@ import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
-import Link from '@/components/Elements/Link.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
@@ -48,7 +48,14 @@ const classSectionThick = 'py-100 md:py-[150px]';
           <p class="text-17 md:text-21 text-grey text-balance">
             We're a boutique, London-based web design agency, crafting stunning,
             bespoke websites that captivate and convert. Ready to get the ball
-            rolling? <Link href="/" class="text-yellow">Let's chat</Link>
+            rolling?
+
+            <a
+              href="/"
+              class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
+            >
+              <LinkArrow class="text-yellow">Let’s Chat</LinkArrow>
+            </a>
           </p>
         </Fragment>
 
