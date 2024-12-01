@@ -1,26 +1,26 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  headline: string
-  description: string
-  class?: string
+  headline: string;
+  description: string;
+  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default
+const hasSlotDefault = !!Astro.slots.default;
 
 const {
   headline,
   description,
   class: className,
-  ...props
-} = Astro.props as Props
+  ...rest
+} = Astro.props as Props;
 ---
 
 <div
   data-js="card-avatars"
   class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
-  {...props}
+  {...rest}
 >
   <a
     href="/"

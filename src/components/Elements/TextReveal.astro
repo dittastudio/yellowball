@@ -1,5 +1,18 @@
 ---
+// interface Props {
+//   tag?: string;
+// }
 
+import type { HTMLAttributes } from 'astro/types';
+
+interface Reveal {
+  tag?: string;
+}
+
+type Props = HTMLAttributes<'div'> & Reveal;
+
+const { tag = 'div', ...rest } = Astro.props as Props;
+const Element = tag;
 ---
 
 <script>
@@ -7,7 +20,9 @@
   import SplitType from 'split-type';
   import { debounce } from '@/utils/helpers';
 
-  const textReveal = document.querySelectorAll("[data-js='text-reveal']");
+  const textReveal = document.querySelectorAll(
+    "[data-js='text-reveal']",
+  ) as NodeListOf<HTMLElement>;
 
   textReveal.forEach(reveal => {
     let masks: SplitType;
@@ -15,11 +30,7 @@
     let tween: gsap.core.Tween;
 
     const create = () => {
-      const domElements = reveal.querySelectorAll(
-        ':scope > *',
-      ) as NodeListOf<HTMLElement>;
-
-      masks = new SplitType(domElements, {
+      masks = new SplitType(reveal, {
         types: 'lines',
         lineClass: 'mask',
         tagName: 'span',
@@ -80,6 +91,6 @@
   });
 </script>
 
-<div data-js="text-reveal">
+<Element data-js="text-reveal" {...rest}>
   <slot />
-</div>
+</Element>

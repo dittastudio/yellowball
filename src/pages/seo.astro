@@ -7,6 +7,7 @@ import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import Link from '@/components/Elements/Link.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
 import BlockCardStacks from '@/components/Block/CardStacks.astro';
@@ -40,9 +41,12 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="headline">
-          <h1 class="font-heading text-fluid-h1 font-semibold text-balance">
+          <TextReveal
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
             <span class="text-green">SEO</span> that bounces you to the top
-          </h1>
+          </TextReveal>
         </Fragment>
 
         <Fragment slot="bottom">
@@ -85,7 +89,10 @@ const classSectionThick = 'py-100 md:py-[150px]';
             description="As a leading boutique, London-based SEO agency, our SEO consultants can help you with everything from eCommerce SEO, SEO Audits, technical SEO and SEO migration."
           >
             <Fragment slot="headline">
-              <h2 class="font-heading text-fluid-h2 font-semibold">
+              <TextReveal
+                tag="h2"
+                class="font-heading text-fluid-h2 font-semibold"
+              >
                 <span class="relative !inline-block">
                   SEO campaigns
                   <Icon
@@ -94,7 +101,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
                   />
                 </span>
                 that work as hard as you do
-              </h2>
+              </TextReveal>
             </Fragment>
           </BlockCardStacks>
         </LayoutLines>
@@ -106,9 +113,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
         description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
       >
         <Fragment slot="headline">
-          <h3 class="font-heading text-fluid-h3 font-semibold">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
             Your all-in-one<br />SEO partner
-          </h3>
+          </TextReveal>
         </Fragment>
 
         <Fragment slot="extra">
@@ -128,10 +135,25 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockHeroText
-        headline="Meet a few of the experts behind your SEO success"
-        description="We have a globally distributed team of SEO experts across offices in London and South Africa. Here's a glimpse of some of the talented specialists you could be working with. Each brings a wealth of experience and a passion for driving results."
-      />
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Meet a few of the experts behind your SEO success
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="description">
+          <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
+            We have a globally distributed team of SEO experts across offices in
+            London and South Africa. Here's a glimpse of some of the talented
+            specialists you could be working with. Each brings a wealth of
+            experience and a passion for driving results.
+          </p>
+        </Fragment>
+      </BlockHeroText>
     </section>
 
     <section class={classSection}>
@@ -143,41 +165,50 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockHeroText headline="Other Services" />
-    </section>
-
-    <section class={classSection}>
-      <BlockServiceCards>
-        <Fragment slot="cards">
-          <CardService
-            headline="Web Design"
-            description="We craft visually stunning, user-friendly websites that engage and convert your audience."
-            shape="triangle"
-            color="yellow"
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
           >
-            <img
-              src="/images/test-service-2.webp"
-              width="1032"
-              height="430"
-              alt=""
-            />
-          </CardService>
-
-          <CardService
-            headline="Paid Search"
-            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
-            shape="circle"
-            color="blue"
-          >
-            <img
-              src="/images/test-service-3.webp"
-              width="1032"
-              height="430"
-              alt=""
-            />
-          </CardService>
+            Other Services
+          </TextReveal>
         </Fragment>
-      </BlockServiceCards>
+      </BlockHeroText>
+
+      <section class={classSection}>
+        <BlockServiceCards>
+          <Fragment slot="cards">
+            <CardService
+              headline="Web Design"
+              description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+              shape="triangle"
+              color="yellow"
+            >
+              <img
+                src="/images/test-service-2.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+
+            <CardService
+              headline="Paid Search"
+              description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+              shape="circle"
+              color="blue"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+          </Fragment>
+        </BlockServiceCards>
+      </section>
     </section>
   </main>
 </Layout>

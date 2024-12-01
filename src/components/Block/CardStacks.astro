@@ -20,9 +20,7 @@ const { description = '' } = Astro.props as Props;
       {
         Astro.slots.headline && (
           <div class="col-span-full">
-            <TextReveal>
-              <slot name="headline" />
-            </TextReveal>
+            <slot name="headline" />
           </div>
         )
       }

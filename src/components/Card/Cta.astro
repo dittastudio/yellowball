@@ -1,14 +1,14 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
-import ShapeRow from '@/components/Elements/ShapeRow.astro'
+import Icon from '@/components/Elements/Icon.astro';
+import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 interface Props {
-  headline: string
-  cta: string
-  class?: string
+  headline: string;
+  cta: string;
+  class?: string;
 }
 
-const { headline, cta, class: className, ...props } = Astro.props as Props
+const { headline, cta, class: className, ...rest } = Astro.props as Props;
 ---
 
 <div
@@ -17,7 +17,7 @@ const { headline, cta, class: className, ...props } = Astro.props as Props
     'w-full bg-navy-light text-white text-left rounded-30 lg:rounded-50',
     className,
   ]}
-  {...props}
+  {...rest}
 >
   <a
     href="/"

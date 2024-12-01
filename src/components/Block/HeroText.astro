@@ -1,32 +1,6 @@
----
-import TextReveal from '@/components/Elements/TextReveal.astro';
-
-interface Props {
-  headline: string;
-  description?: string;
-}
-
-const { headline, description } = Astro.props as Props;
----
-
 <div
   class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60 text-center"
 >
-  {
-    headline && (
-      <TextReveal>
-        <h2 class="font-heading text-fluid-h2 font-semibold text-balance">
-          {headline}
-        </h2>
-      </TextReveal>
-    )
-  }
-
-  {
-    description && (
-      <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
-        {description}
-      </p>
-    )
-  }
+  {Astro.slots.headline && <slot name="headline" />}
+  {Astro.slots.description && <slot name="description" />}
 </div>
