@@ -33,7 +33,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 <Layout title="Home">
   <main>
-    <section class={classSection}>
+    <section class:list={[classSection, 'relative z-0']}>
       <BlockHero>
         <Fragment slot="top">
           <Icon name="yellowball" class="w-[117px] h-[22px]" />
@@ -75,7 +75,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
       </BlockHero>
     </section>
 
-    <section class={classSection}>
+    <section class:list={[classSection, 'relative z-1']}>
       <BlockCarouselProjects />
     </section>
 
