@@ -1,34 +1,27 @@
 ---
-import { colourText } from '@/utils/maps';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
-  title: string;
-  headline: string;
+  client: string;
   description: string;
-  cta: string;
   color?: ColorTypes;
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
 const {
-  title,
-  headline,
+  client,
   description,
-  cta,
   color,
   class: className,
   ...rest
 } = Astro.props as Props;
 
-const colorTitle = colourText[color as keyof typeof colourText] ?? '';
-const classes = ['card-project-hero', className];
+const classes = ['card-case-study-hero', className];
 ---
 
 <script>
   const cards = document.querySelectorAll(
-    '[data-js="card-project-hero"]',
+    '[data-js="card-case-study-hero"]',
   ) as NodeListOf<HTMLElement>;
 
   cards.forEach(card => {
@@ -46,7 +39,7 @@ const classes = ['card-project-hero', className];
 </script>
 
 <div
-  data-js="card-project-hero"
+  data-js="card-case-study-hero"
   class:list={classes}
   style={`--color: var(--yellowball-${color})`}
   {...rest}
@@ -56,52 +49,33 @@ const classes = ['card-project-hero', className];
   >
     <a
       href="/"
-      class="card-project-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
+      class="card-case-study-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
     >
       <div
-        class="card-project-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+        class="card-case-study-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
       >
         <div
-          class="card-project-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_58%]"
+          class="card-case-study-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_58%]"
         >
           <div class="flex flex-col justify-start items-start gap-20 md:gap-30">
-            <div
-              class="flex flex-col justify-start items-start gap-30 md:gap-40"
-            >
-              <p
-                class:list={[
-                  colorTitle,
-                  'font-heading font-semibold text-15 lg:text-18 text-balance',
-                ]}
-              >
-                {title}
-              </p>
+            {Astro.slots.headline && <slot name="headline" />}
 
-              <h3
-                class="font-heading font-semibold text-26 lg:text-36 text-balance"
-              >
-                {headline}
-              </h3>
-            </div>
+            <LinkArrow class="font-heading text-24 font-semibold">
+              {client}
+            </LinkArrow>
 
             <p
               class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[36ch]"
             >
               {description}
             </p>
-
-            <LinkArrow
-              class="mt-auto font-heading font-bold text-15 lg:text-18"
-            >
-              {cta}
-            </LinkArrow>
           </div>
 
           {
-            hasSlotDefault && (
+            Astro.slots.media && (
               <div>
                 <div class="w-full shadow-media">
-                  <slot />
+                  <slot name="media" />
                 </div>
               </div>
             )
@@ -113,7 +87,7 @@ const classes = ['card-project-hero', className];
 </div>
 
 <style>
-  .card-project-hero {
+  .card-case-study-hero {
     &__content {
       box-shadow:
         0px 0px 100px var(--yellowball-navy) inset,
@@ -148,7 +122,7 @@ const classes = ['card-project-hero', className];
           opacity: 1;
         }
 
-        .card-project-hero__inner {
+        .card-case-study-hero__inner {
           &::before {
             opacity: 0.2;
           }
