@@ -10,10 +10,11 @@ interface Slide {
 
 interface Props {
   slides: Slide[];
+  color?: ColorTypes;
   class?: string;
 }
 
-const { slides, class: className } = Astro.props as Props;
+const { slides, color = 'green', class: className } = Astro.props as Props;
 
 const classes = ['carousel-profile', className];
 ---
@@ -68,7 +69,7 @@ const classes = ['carousel-profile', className];
   <div data-js-swiper class="swiper">
     <div class="swiper-wrapper">
       {
-        slides?.map(({ role, name, color, image }) => (
+        slides?.map(({ role, name, image }) => (
           <div class="swiper-slide">
             <CardProfile {role} {name} {color}>
               <img

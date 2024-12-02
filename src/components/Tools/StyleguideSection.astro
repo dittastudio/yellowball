@@ -2,13 +2,21 @@
 interface Props {
   class?: string;
   title: string;
+  hasWrapper?: boolean;
 }
 
-const { class: className, title } = Astro.props as Props;
+const { class: className, title, hasWrapper = true } = Astro.props as Props;
 ---
 
-<section class:list={['wrapper mb-160', className]}>
-  <h2 class="font-heading font-bold text-21 mb-[2em] opacity-50">{title}</h2>
+<section class:list={['mb-160', hasWrapper ? 'wrapper' : null, className]}>
+  <h2
+    class:list={[
+      'font-heading font-bold text-21 mb-[2em] opacity-50',
+      !hasWrapper ? 'wrapper' : null,
+    ]}
+  >
+    {title}
+  </h2>
 
   <slot />
 </section>

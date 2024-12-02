@@ -1,15 +1,22 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-// import LayoutLines from '@/components/Layout/Lines.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import AccordionItem from '@/components/Accordion/Item.astro';
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
+import CardAvatars from '@/components/Card/Avatars.astro';
+import CardCta from '@/components/Card/Cta.astro';
+import CardFigure from '@/components/Card/Figure.astro';
 import CardInsight from '@/components/Card/Insight.astro';
-import CardProject from '@/components/Card/Project.astro';
+import CardMedia from '@/components/Card/Media.astro';
 import CardProfile from '@/components/Card/Profile.astro';
+import CardProject from '@/components/Card/Project.astro';
 import CardRating from '@/components/Card/Rating.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cube from '@/components/Elements/Cube.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Icon from '@/components/Elements/Icon.astro';
@@ -30,6 +37,14 @@ const imageDesktopTest: ImageObject = {
   width: 1600,
   height: 900,
 };
+
+const classCardGrid3 =
+  'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-30';
+
+const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
+
+const classCardCSSCols =
+  'flex flex-col md:block md:columns-2 md:gap-30 max-w-[1200px] mx-auto';
 ---
 
 <Layout title="Styleguide">
@@ -217,15 +232,9 @@ const imageDesktopTest: ImageObject = {
       </ServiceItem>
     </StyleguideSection>
 
-    <!-- <section class="bg-cream text-navy">
-      <LayoutLines theme="light">
-        <HeadingBanner />
-      </LayoutLines>
-    </section> -->
-
     <StyleguideSection title="Card Project">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-30">
-        <div class="col-span-10">
+      <div class={classCardGrid3}>
+        <div class="col-span-2">
           <CardProject
             imageMobile={imageMobileTest}
             imageDesktop={imageDesktopTest}
@@ -235,7 +244,7 @@ const imageDesktopTest: ImageObject = {
     </StyleguideSection>
 
     <StyleguideSection title="Card Profile">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30">
+      <div class={classCardGrid3}>
         <CardProfile role="Director of SEO" name="Simon Ensor" color="green">
           <img
             class="object-cover size-full"
@@ -269,7 +278,7 @@ const imageDesktopTest: ImageObject = {
     </StyleguideSection>
 
     <StyleguideSection title="Card Insight">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30">
+      <div class={classCardGrid3}>
         <CardInsight
           title="Web Design"
           headline="10 Steps to a Reliable Website Marketing Strategy"
@@ -300,9 +309,7 @@ const imageDesktopTest: ImageObject = {
     </StyleguideSection>
 
     <StyleguideSection title="Card Rating">
-      <div
-        class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-30 items-center"
-      >
+      <div class:list={[classCardGrid3, 'items-center']}>
         <CardRating
           quote="I'm delighted with the finished website & delivery of the project."
           name="Isabella"
@@ -325,6 +332,141 @@ const imageDesktopTest: ImageObject = {
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
         </CardRating>
       </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Service Hero">
+      <div class={classCardGrid3}>
+        <CardServiceHero
+          headline="Web Design"
+          description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+          cta="See our services"
+          shape="triangle"
+          color="yellow"
+          class="col-span-full"
+        >
+          <img
+            src="/images/test-service-1.webp"
+            width="1230"
+            height="756"
+            alt="test"
+          />
+        </CardServiceHero>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Service">
+      <div class={classCardGrid2}>
+        <CardService
+          headline="SEO"
+          description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+          shape="square"
+          color="green"
+        >
+          <img
+            src="/images/test-service-2.webp"
+            width="1032"
+            height="430"
+            alt=""
+          />
+        </CardService>
+
+        <CardService
+          headline="SEO"
+          description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+          shape="square"
+          color="green"
+        >
+          <img
+            src="/images/test-service-2.webp"
+            width="1032"
+            height="430"
+            alt=""
+          />
+        </CardService>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Stacks (Avatars, Media, Figure, Cta)">
+      <div class="xl:grid xl:grid-cols-12 xl:gap-30">
+        <div class:list={[classCardCSSCols, 'col-span-10 [&>*]:mb-30']}>
+          <CardAvatars
+            headline="Our Agency"
+            description="Lorem ipsum dolor sit amet consectetur. Vitae tempor sollicitudin magna risus nunc. Id est aliquam cursus."
+          >
+            <img
+              src="/images/test-avatar-1.webp"
+              width="80"
+              height="80"
+              alt=""
+            />
+            <img
+              src="/images/test-avatar-2.webp"
+              width="80"
+              height="80"
+              alt=""
+            />
+            <img
+              src="/images/test-avatar-3.webp"
+              width="80"
+              height="80"
+              alt=""
+            />
+            <img
+              src="/images/test-avatar-4.webp"
+              width="80"
+              height="80"
+              alt=""
+            />
+            <img
+              src="/images/test-avatar-5.webp"
+              width="80"
+              height="80"
+              alt=""
+            />
+          </CardAvatars>
+
+          <CardMedia
+            headline="Global Reach, Local Expertise"
+            description="With teams in London and South Africa, we combine local insights with a global perspective to deliver world-class digital solutions."
+          >
+            <img
+              src="/images/test-project-1.webp"
+              width="673"
+              height="379"
+              alt=""
+            />
+          </CardMedia>
+
+          <CardFigure
+            figure={84}
+            unit="%"
+            headline="Client Retention"
+            description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+            color="blue"
+            shape="circle"
+          />
+
+          <CardCta
+            headline="Ready to start your next project? Call, live chat or send us a message today"
+            cta="Get in touch"
+          />
+        </div>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Light Theme Layout" hasWrapper={false}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class="py-100 flex min-h-[75vh]">
+          <div
+            class="wrapper flex flex-wrap gap-8 items-center justify-center text-center"
+          >
+            <p class="font-heading font-bold text-fluid-h3 opacity-30">
+              The header changes to light theme when it scrolls into this
+              section
+            </p>
+          </div>
+        </LayoutLines>
+      </LayoutTheme>
     </StyleguideSection>
   </main>
 </Layout>
