@@ -58,6 +58,7 @@ export default {
       yellow: "#EAFF01",
       green: "#ADF454",
       blue: "#51DBEA",
+      'blue-google': "#1a0dab",
       purple: "#A58EF7",
       navy: "#1C1D2C",
       'navy-light': "#2A2B3A",

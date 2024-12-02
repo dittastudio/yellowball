@@ -1,12 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardCaseStudyHero from '@/components/Card/CaseStudyHero.astro';
 import CardService from '@/components/Card/Service.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
-import { Icon } from 'astro-icon/components';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
@@ -14,6 +15,7 @@ import BlockButtons from '@/components/Block/Buttons.astro';
 import BlockCardStacks from '@/components/Block/CardStacks.astro';
 import BlockCarouselProfiles from '@/components/Block/CarouselProfiles.astro';
 import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockGoogle from '@/components/Block/Google.astro';
 import BlockHero from '@/components/Block/Hero.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
@@ -253,6 +255,14 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockFAQs />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockGoogle />
+        </LayoutLines>
+      </LayoutTheme>
     </section>
 
     <section class={classSection}>

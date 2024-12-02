@@ -1,0 +1,55 @@
+---
+import { Icon } from 'astro-icon/components';
+import { colourText } from '@/utils/maps';
+
+interface Props {
+  color?: ColorTypes;
+  shape?: ShapeTypes;
+  isSponsored?: boolean;
+  title: string;
+  url: string;
+  heading: string;
+  copy: string;
+}
+
+const {
+  color = 'blue',
+  shape = 'circle',
+  isSponsored = false,
+  title,
+  url,
+  heading,
+  copy,
+} = Astro.props as Props;
+---
+
+<div class="flex flex-col gap-20 md:gap-24">
+  {isSponsored && <p class="text-15 font-heading font-bold">Sponsored</p>}
+
+  <div class="flex gap-12">
+    <div
+      class="flex items-center justify-center aspect-square rounded-full bg-current overflow-hidden size-[34px] shrink-0"
+    >
+      <Icon
+        name={`shape-${shape}`}
+        class:list={[
+          'block',
+          shape === 'triangle' ? '-mt-2 w-16 h-14' : 'size-16',
+          colourText[color],
+        ]}
+      />
+    </div>
+
+    <div class="flex flex-col">
+      <h4 class="text-15">{title}</h4>
+      <p class="text-12 text-navy-lightest">{url}</p>
+    </div>
+  </div>
+
+  <h3 class="text-21 md:text-28 font-heading font-semibold text-blue-google">
+    {heading}
+  </h3>
+  <p class="text-15 md:text-18 text-navy-lightest">
+    {copy}
+  </p>
+</div>
