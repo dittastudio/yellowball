@@ -14,12 +14,13 @@ import BlockCardStacks from '@/components/Block/CardStacks.astro';
 import BlockCarouselProfiles from '@/components/Block/CarouselProfiles.astro';
 import BlockFAQs from '@/components/Block/FAQs.astro';
 import BlockFeaturedProjects from '@/components/Block/FeaturedProjects.astro';
+import BlockGoogle from '@/components/Block/Google.astro';
 import BlockHero from '@/components/Block/Hero.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
-import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockServiceList from '@/components/Block/ServiceList.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
 
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LayoutLines from '@/components/Layout/Lines.astro';
@@ -228,6 +229,14 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockFAQs />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockGoogle />
+        </LayoutLines>
+      </LayoutTheme>
     </section>
 
     <section class={classSection}>
