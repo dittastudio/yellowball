@@ -7,16 +7,16 @@ import AccordionItem from '@/components/Accordion/Item.astro';
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
-import CardInsight from '@/components/Card/Insight.astro';
-import CardProject from '@/components/Card/Project.astro';
-import CardProfile from '@/components/Card/Profile.astro';
-import CardService from '@/components/Card/Service.astro';
 import CardAvatars from '@/components/Card/Avatars.astro';
 import CardCta from '@/components/Card/Cta.astro';
 import CardFigure from '@/components/Card/Figure.astro';
+import CardInsight from '@/components/Card/Insight.astro';
 import CardMedia from '@/components/Card/Media.astro';
-import CardServiceHero from '@/components/Card/ServiceHero.astro';
+import CardProfile from '@/components/Card/Profile.astro';
+import CardProject from '@/components/Card/Project.astro';
 import CardRating from '@/components/Card/Rating.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cube from '@/components/Elements/Cube.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Icon from '@/components/Elements/Icon.astro';
@@ -152,21 +152,6 @@ const classCardCSSCols =
           <Button text="View all projects" type="white-border" />
         </button>
       </div>
-    </StyleguideSection>
-
-    <StyleguideSection title="Light Theme Layout" hasWrapper={false}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class="py-100 flex min-h-[75vh]">
-          <div
-            class="wrapper flex flex-wrap gap-8 items-center justify-center text-center"
-          >
-            <p class="font-heading font-bold text-fluid-h3 opacity-30">
-              The header changes to light theme when it scrolls into this
-              section
-            </p>
-          </div>
-        </LayoutLines>
-      </LayoutTheme>
     </StyleguideSection>
 
     <StyleguideSection title="Cursors">
@@ -467,6 +452,21 @@ const classCardCSSCols =
           />
         </div>
       </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Light Theme Layout" hasWrapper={false}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class="py-100 flex min-h-[75vh]">
+          <div
+            class="wrapper flex flex-wrap gap-8 items-center justify-center text-center"
+          >
+            <p class="font-heading font-bold text-fluid-h3 opacity-30">
+              The header changes to light theme when it scrolls into this
+              section
+            </p>
+          </div>
+        </LayoutLines>
+      </LayoutTheme>
     </StyleguideSection>
   </main>
 </Layout>
