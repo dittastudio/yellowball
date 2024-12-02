@@ -1,7 +1,8 @@
 ---
 import CarouselProfile from '@/components/Carousel/Profile.astro';
 
-const examplePost = {
+const exampleProfile = {
+  type: 'profile',
   role: 'Senior PPC Account Manager',
   name: 'George Dickin',
   image: {
@@ -12,7 +13,8 @@ const examplePost = {
   },
 };
 
-const examplePost2 = {
+const exampleProfile2 = {
+  type: 'profile',
   role: 'PPC Account Manager',
   name: 'Joe Bloggs',
   image: {
@@ -23,7 +25,8 @@ const examplePost2 = {
   },
 };
 
-const examplePost3 = {
+const exampleProfile3 = {
+  type: 'profile',
   role: 'PPC Account Manager',
   name: 'Alex Super Long Name Chenery-Howes',
   image: {
@@ -34,18 +37,56 @@ const examplePost3 = {
   },
 };
 
-const examplePosts: any = [
-  examplePost,
-  examplePost2,
-  examplePost3,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
+const exampleProfileSummary = {
+  type: 'profile-summary',
+  title: 'Our Wider Team',
+  copy: 'Lorem ipsum dolor sit amet consectetur. Convallis arcu congue in in interdum. Nibh metus ultricies morbi venenatis.',
+  avatars: [
+    {
+      src: '/images/test-avatar-1.webp',
+      alt: '',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/images/test-avatar-2.webp',
+      alt: '',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/images/test-avatar-3.webp',
+      alt: '',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/images/test-avatar-4.webp',
+      alt: '',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/images/test-avatar-5.webp',
+      alt: '',
+      width: 500,
+      height: 500,
+    },
+  ],
+};
+
+const exampleProfiles: any = [
+  exampleProfile,
+  exampleProfile2,
+  exampleProfile3,
+  exampleProfile,
+  exampleProfile,
+  exampleProfile,
+  exampleProfile,
+  exampleProfileSummary,
 ];
 ---
 
 <div class="wrapper">
-  <CarouselProfile slides={examplePosts} />
+  <CarouselProfile slides={exampleProfiles} />
 </div>
