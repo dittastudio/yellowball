@@ -9,5 +9,5 @@ interface ImageObject {
   height: number
 }
 
-type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple'
+type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple' | 'white'
 type ShapeTypes = 'circle' | 'square' | 'triangle'

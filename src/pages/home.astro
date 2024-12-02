@@ -27,6 +27,63 @@ import BlockServiceList from '@/components/Block/ServiceList.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LayoutLines from '@/components/Layout/Lines.astro';
 
+const exampleServiceListItems: any = [
+  {
+    headline: 'WordPress Development',
+    description:
+      'Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions.',
+    icon: {
+      name: 'logo-wp',
+      size: 'lg',
+    },
+  },
+  {
+    headline: 'UX/UI Design',
+    description:
+      'User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action.',
+    icon: {
+      name: 'logo-figma',
+      size: 'lg',
+    },
+  },
+  {
+    headline: 'WooCommerce Development',
+    description:
+      'Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert.',
+    icon: {
+      name: 'logo-woo',
+      size: 'lg',
+    },
+  },
+  {
+    headline: 'Laravel Development',
+    description:
+      'Complex problems solved simply. Build custom web applications that deliver seamless user experiences.',
+    icon: {
+      name: 'logo-laravel',
+      size: 'lg',
+    },
+  },
+  {
+    headline: 'White Label Web Development',
+    description:
+      'Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike.',
+    icon: {
+      name: 'logo-white-label',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'eCommerce',
+    description:
+      'From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers.',
+    icon: {
+      name: 'logo-ecommerce',
+      size: 'sm',
+    },
+  },
+];
+
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
 ---
@@ -135,6 +192,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <BlockServiceList
+        items={exampleServiceListItems}
         description="We offer a full suite of web design services that transform your brand story into digital experiences."
       >
         <Fragment slot="headline">

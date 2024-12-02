@@ -4,11 +4,22 @@ import Cube from '@/components/Elements/Cube.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 
-interface Props {
-  description?: string;
+interface ServiceListItem {
+  headline: string;
+  description: string;
+  icon: {
+    name: string;
+    size: 'sm' | 'lg';
+  };
 }
 
-const { description = '' } = Astro.props as Props;
+interface Props {
+  items: ServiceListItem[];
+  description?: string;
+  color?: ColorTypes;
+}
+
+const { items, description = '', color = 'white' } = Astro.props as Props;
 ---
 
 <script>
@@ -73,71 +84,20 @@ const { description = '' } = Astro.props as Props;
 
   <div class="lg:grid lg:grid-cols-2 lg:gap-30">
     <ul class="lg:col-span-1 lg:col-start-2 flex flex-col gap-50 md:gap-110">
-      <li data-js-item>
-        <ServiceItem
-          headline="WordPress Development"
-          description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-wp" />
-          </Cube>
-        </ServiceItem>
-      </li>
-
-      <li data-js-item>
-        <ServiceItem
-          headline="UX/UI Design"
-          description="User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-figma" />
-          </Cube>
-        </ServiceItem>
-      </li>
-
-      <li data-js-item>
-        <ServiceItem
-          headline="WooCommerce Development"
-          description="Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-woo" />
-          </Cube>
-        </ServiceItem>
-      </li>
-
-      <li data-js-item>
-        <ServiceItem
-          headline="Laravel Development"
-          description="Complex problems solved simply. Build custom web applications that deliver seamless user experiences."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-laravel" />
-          </Cube>
-        </ServiceItem>
-      </li>
-
-      <li data-js-item>
-        <ServiceItem
-          headline="White Label Web Development"
-          description="Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-white-label" />
-          </Cube>
-        </ServiceItem>
-      </li>
-
-      <li data-js-item>
-        <ServiceItem
-          headline="eCommerce"
-          description="From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers."
-        >
-          <Cube slot="icon" iconSize="lg">
-            <Icon name="logo-ecommerce" />
-          </Cube>
-        </ServiceItem>
-      </li>
+      {
+        items?.map(item => (
+          <li data-js-item>
+            <ServiceItem
+              headline={item.headline}
+              description={item.description}
+            >
+              <Cube slot="icon" color={color} iconSize={item.icon.size}>
+                <Icon name={item.icon.name} />
+              </Cube>
+            </ServiceItem>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </div>
