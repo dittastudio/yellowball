@@ -2,11 +2,12 @@
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
+  color?: ColorTypes;
   headline: string;
   description: string;
 }
 
-const { headline, description } = Astro.props as Props;
+const { color = 'yellow', headline, description } = Astro.props as Props;
 ---
 
 <div>
@@ -17,7 +18,7 @@ const { headline, description } = Astro.props as Props;
       <h4
         class="font-heading font-semibold text-20 md:text-24 text-white text-balance"
       >
-        <LinkArrow>
+        <LinkArrow {color}>
           {headline}
         </LinkArrow>
       </h4>

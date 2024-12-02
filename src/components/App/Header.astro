@@ -66,6 +66,17 @@ const navListTwo = [
         },
       });
     });
+
+    // Refresh ScrollTrigger on resize
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    });
+
+    const resizeTarget: HTMLBodyElement | any = document.querySelector('body');
+
+    resizeObserver.observe(resizeTarget);
   }
 </script>
 

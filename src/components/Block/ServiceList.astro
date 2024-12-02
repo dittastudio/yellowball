@@ -14,12 +14,18 @@ interface ServiceListItem {
 }
 
 interface Props {
+  color?: ColorTypes;
+  iconColor?: ColorTypes;
   items: ServiceListItem[];
   description?: string;
-  color?: ColorTypes;
 }
 
-const { items, description = '', color = 'white' } = Astro.props as Props;
+const {
+  color = 'yellow',
+  iconColor = 'white',
+  items,
+  description = '',
+} = Astro.props as Props;
 ---
 
 <script>
@@ -90,10 +96,11 @@ const { items, description = '', color = 'white' } = Astro.props as Props;
         items?.map(item => (
           <li data-js-item>
             <ServiceItem
+              color={color}
               headline={item.headline}
               description={item.description}
             >
-              <Cube slot="icon" color={color} iconSize={item.icon.size}>
+              <Cube slot="icon" color={iconColor} iconSize={item.icon.size}>
                 <Icon name={item.icon.name} />
               </Cube>
             </ServiceItem>
