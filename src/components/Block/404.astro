@@ -1,7 +1,18 @@
 <div
   data-js="404"
-  class="wrapper text-center relative flex flex-col justify-start items-center gap-40 md:gap-60"
+  class="wrapper text-center flex flex-col justify-start items-center gap-40 md:gap-60"
 >
   {Astro.slots.headline && <slot name="headline" />}
   {Astro.slots.links && <slot name="links" />}
+  <div
+    class:list={[
+      'absolute -bottom-[0.15em] left-1/2 -translate-x-1/2 -z-1',
+      'text-card font-heading font-bold text-[55vw] md:text-[51vw] leading-[1] tracking-[0.04em]',
+      'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-navy after:via-90% after:to-transparent',
+      'pointer-events-none',
+    ]}
+    style="-webkit-text-stroke: 3vw currentColor;"
+  >
+    404
+  </div>
 </div>

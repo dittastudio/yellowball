@@ -14,10 +14,12 @@
 @layer {
   :root {
     /* Global units */
+    --header-height: 74px;
     --inner-gutter: theme('spacing.12');
     --outer-gutter: clamp(theme('spacing.24'), 1.8169px + 5.9155vw, 87px);
 
     @screen md {
+      --header-height: 94px;
       --inner-gutter: theme('spacing.30');
     }
   }
