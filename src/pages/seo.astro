@@ -135,27 +135,146 @@ const exampleServiceListItems: any = [
 
     <section class:list={[classSection, 'relative z-1']}>
       <BlockOverlaps>
-        <CardCaseStudyHero
-          description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
-          client="RSVP Call Center"
-          color="green"
-        >
+        <CardCaseStudyHero client="RSVP Call Center" color="green">
           <Fragment slot="headline">
             <h3
-              class="font-heading font-semibold text-40 lg:text-64 text-balance"
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
             >
               <span class="text-green">11,650%</span> increase in top 10 ranking
               keywords
             </h3>
           </Fragment>
 
-          <Fragment slot="media">
+          <Fragment slot="logo">
             <img
-              src="/images/test-project-1.webp"
-              width="673"
-              height="379"
+              class="size-40 lg:size-50"
+              src="/images/test-logo-rsvp-call-center.svg"
+              width="50"
+              height="50"
               alt=""
             />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              RSVP is a London-based contact centre that helps nationwide
+              clients outsource call centre options overseas.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
+          </Fragment>
+        </CardCaseStudyHero>
+
+        <CardCaseStudyHero client="Ballet with Isabella" color="green">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
+            >
+              <span class="text-green">24 keywords</span> ranking on page one of
+              Google
+            </h3>
+          </Fragment>
+
+          <Fragment slot="logo">
+            <img
+              class="size-40 lg:size-50"
+              src="/images/test-logo-ballet-with-isabella.svg"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              Ballet with Isabella is an online provider of ballet training
+              courses, led by well-known ballet dancer Isabella Maguire Mays.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
+          </Fragment>
+        </CardCaseStudyHero>
+
+        <CardCaseStudyHero client="Plus Rooms" color="green">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
+            >
+              <span class="text-green">+1,405% clicks</span> via non-branded search
+            </h3>
+          </Fragment>
+
+          <Fragment slot="logo">
+            <img
+              class="size-40 lg:size-50"
+              src="/images/test-logo-plus-rooms.svg"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              Plus Rooms is one of London's leading design and build companies,
+              specialising in bespoke home extensions.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
           </Fragment>
         </CardCaseStudyHero>
       </BlockOverlaps>
