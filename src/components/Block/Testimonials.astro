@@ -1,7 +1,7 @@
 ---
 import CardRating from '@/components/Card/Rating.astro';
 import CarouselTestimonials from '@/components/Carousel/Testimonials.astro';
-import Icon from '@/components/Elements/Icon.astro';
+import { Icon } from 'astro-icon/components';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
 const slides = [
@@ -49,10 +49,7 @@ const slides = [
       class="font-heading text-fluid-h3 font-semibold max-w-[15em] mx-auto"
     >
       We're proudly rated 5 stars by 86 happy clients on
-      <Icon
-        name="google"
-        class="inline-block w-auto h-[1.6ch] [&>svg]:size-full"
-      />
+      <Icon name="google" class="inline-block w-auto h-[1.6ch]" />
       with an overall average of 4.9
     </TextReveal>
   </div>

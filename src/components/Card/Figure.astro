@@ -1,6 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
-import Icon from '@/components/Elements/Icon.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   figure: number;
@@ -38,30 +38,38 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 
   cards.forEach(card => {
     const figure = card.querySelector('[data-js-figure]') as HTMLElement;
+
+    if (figure) {
+      gsap.from(figure, {
+        textContent: 0,
+        duration: 2,
+        snap: { textContent: 1 },
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          markers: false,
+          trigger: figure,
+          start: 'top bottom',
+        },
+      });
+    }
+
     const shape = card.querySelector('[data-js-shape]') as HTMLElement;
 
-    gsap.from(figure, {
-      textContent: 0,
-      duration: 2,
-      snap: { textContent: 1 },
-      ease: 'power4.inOut',
-      scrollTrigger: {
-        markers: false,
-        trigger: figure,
-        start: 'top bottom',
-      },
-    });
+    if (shape) {
+      const { height: cardHeight } = card.getBoundingClientRect();
+      const { height: shapeHeight } = shape.getBoundingClientRect();
 
-    gsap.to(shape, {
-      y: `-${card.offsetHeight - shape.offsetHeight / 2}`,
-      scrollTrigger: {
-        markers: false,
-        trigger: card,
-        scrub: 1,
-        start: 'bottom bottom',
-        end: 'bottom top',
-      },
-    });
+      gsap.to(shape, {
+        y: `-${cardHeight - shapeHeight / 2}`,
+        scrollTrigger: {
+          markers: false,
+          trigger: card,
+          scrub: 1,
+          start: 'bottom bottom',
+          end: 'bottom top',
+        },
+      });
+    }
   });
 </script>
 
@@ -100,6 +108,8 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
         <Icon
           data-js-shape
           name={`shape-${shape}`}
+          width="100%"
+          height="100%"
           class:list={[
             colorShape,
             'absolute bottom-0 right-0 z-0 size-150 lg:size-200 translate-x-1/3 translate-y-1/2',

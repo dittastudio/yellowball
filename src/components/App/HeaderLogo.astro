@@ -4,7 +4,7 @@
   ) as HTMLElement;
 
   if (headerLogo) {
-    let timeout: number;
+    let timeout: NodeJS.Timeout;
 
     function handleMouseEnter() {
       clearTimeout(timeout);

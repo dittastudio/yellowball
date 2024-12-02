@@ -1,6 +1,6 @@
 ---
 import { twMerge } from 'tailwind-merge';
-import Icon from '@/components/Elements/Icon.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   quote: string;
@@ -39,10 +39,7 @@ const classes = twMerge(
           <slot />
 
           <div class="absolute bottom-20 left-20 z-0 size-64 bg-yellow flex flex-col items-center justify-center rounded-20">
-            <Icon
-              name="play"
-              class="block size-14 text-navy ml-2 [&>svg]:size-full"
-            />
+            <Icon name="play" class="block size-14 text-navy ml-2" />
           </div>
         </div>
       )

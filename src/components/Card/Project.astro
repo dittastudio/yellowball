@@ -1,15 +1,15 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import { Icon } from 'astro-icon/components';
 
 interface Props {
-  imageMobile: ImageObject
-  imageDesktop: ImageObject
-  class?: string
+  imageMobile: ImageObject;
+  imageDesktop: ImageObject;
+  class?: string;
 }
 
-const { imageMobile, imageDesktop, class: className } = Astro.props as Props
-const screenMd = `(min-width: 768px)`
-const classes = ['card-project', className]
+const { imageMobile, imageDesktop, class: className } = Astro.props as Props;
+const screenMd = `(min-width: 768px)`;
+const classes = ['card-project', className];
 ---
 
 <div

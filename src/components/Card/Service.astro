@@ -1,6 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
-import Icon from '@/components/Elements/Icon.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   headline: string;
@@ -118,7 +118,9 @@ const classes = ['card-service', className];
             <Icon
               data-js="card-service-shape"
               name={`shape-${shape}`}
-              class="absolute top-0 left-0 z-0 w-80 lg:w-160 text-white opacity-10 pointer-events-none"
+              width={160}
+              height={160}
+              class="absolute top-0 left-0 z-0 text-white opacity-10 pointer-events-none"
             />
           )
         }
@@ -128,17 +130,15 @@ const classes = ['card-service', className];
         >
           <div class="relative w-full flex justify-between items-start">
             <h4
-              class="inline-block font-heading text-32 lg:text-48 font-semibold text-balance"
+              class="flex items-baseline font-heading text-32 lg:text-48 font-semibold text-balance"
             >
               {headline}&nbsp;{
                 shape && colorShape && (
                   <Icon
                     name={`shape-${shape}`}
-                    class:list={[
-                      colorShape,
-                      'inline-block ml-5',
-                      shape === 'triangle' ? 'w-24 h-[21px]' : 'size-[21px]',
-                    ]}
+                    width={shape === 'triangle' ? 24 : 21}
+                    height={21}
+                    class:list={[colorShape, 'inline-block ml-5']}
                   />
                 )
               }

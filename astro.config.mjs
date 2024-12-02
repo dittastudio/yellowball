@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import favicons from 'astro-favicons';
 import tailwind from '@astrojs/tailwind';
 import htmlBeautifier from 'astro-html-beautifier';
+import icon from 'astro-icon';
 
 export default defineConfig({
   compressHTML: false,
@@ -47,7 +48,7 @@ export default defineConfig({
       indent_empty_lines: false,
     }),
     favicons({
-      masterPicture: './src/icon/favicon.svg',
+      masterPicture: './src/icons/favicon.svg',
       emitAssets: true,
       faviconsDarkMode: false,
       appName: 'Yellowball',
@@ -64,5 +65,6 @@ export default defineConfig({
        **/
       applyBaseStyles: false,
     }),
+    icon(),
   ],
 });
