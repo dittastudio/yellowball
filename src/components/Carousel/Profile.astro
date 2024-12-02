@@ -1,15 +1,9 @@
 ---
 import CardProfile from '@/components/Card/Profile.astro';
-
-interface Slide {
-  role: string;
-  name: string;
-  color: ColorTypes;
-  image: ImageObject;
-}
+import CardProfileSummary from '@/components/Card/ProfileSummary.astro';
 
 interface Props {
-  slides: Slide[];
+  slides: any[];
   color?: ColorTypes;
   class?: string;
 }
@@ -69,19 +63,36 @@ const classes = ['carousel-profile', className];
   <div data-js-swiper class="swiper">
     <div class="swiper-wrapper">
       {
-        slides?.map(({ role, name, image }) => (
-          <div class="swiper-slide">
-            <CardProfile {role} {name} {color}>
-              <img
-                class="object-cover size-full"
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-              />
-            </CardProfile>
-          </div>
-        ))
+        slides?.map(slide =>
+          slide.type === 'profile' ? (
+            <div class="swiper-slide">
+              <CardProfile role={slide.role} name={slide.name} {color}>
+                <img
+                  class="object-cover size-full"
+                  src={slide.image?.src}
+                  alt={slide.image?.alt}
+                  width={slide.image?.width}
+                  height={slide.image?.height}
+                />
+              </CardProfile>
+            </div>
+          ) : (
+            <div class="swiper-slide">
+              <CardProfileSummary title={slide.title} copy={slide.copy} {color}>
+                <>
+                  {slide.avatars?.map((avatar: any) => (
+                    <img
+                      src={avatar.src}
+                      alt={avatar.alt}
+                      width={avatar.width}
+                      height={avatar.height}
+                    />
+                  ))}
+                </>
+              </CardProfileSummary>
+            </div>
+          ),
+        )
       }
     </div>
 
