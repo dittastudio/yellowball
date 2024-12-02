@@ -11,6 +11,20 @@ const { id, color = 'green', class: className } = Astro.props as Props;
 
 const headerId = `accordion-item-header-${id}`;
 const bodyId = `accordion-item-body-${id}`;
+
+const hoverClasses = {
+  green: 'group-hover/accordion:text-green',
+  blue: 'group-hover/accordion:text-blue',
+  yellow: 'group-hover/accordion:text-yellow',
+  purple: 'group-hover/accordion:text-purple',
+};
+
+const isOpenClasses = {
+  green: '[&.is-open]:text-green',
+  blue: '[&.is-open]:text-blue',
+  yellow: '[&.is-open]:text-yellow',
+  purple: '[&.is-open]:text-purple',
+};
 ---
 
 <script>
@@ -88,7 +102,11 @@ const bodyId = `accordion-item-body-${id}`;
 
 <section
   data-js="accordion-item"
-  class:list={['accordion-item w-full', className]}
+  class:list={[
+    'accordion-item w-full text-21 md:text-28',
+    isOpenClasses[color as keyof typeof isOpenClasses],
+    className,
+  ]}
 >
   <button
     data-js-accordion-header
@@ -96,14 +114,19 @@ const bodyId = `accordion-item-body-${id}`;
     id={headerId}
     class:list={[
       'group/accordion flex items-baseline gap-28 md:gap-40 py-30 md:pt-40 md:pb-30 w-full',
-      'font-heading text-21 font-semibold md:text-28 text-left',
+      'font-heading font-semibold text-left',
     ]}
   >
     <span class:list={['accordion-item__icon', colourText[color]]}></span>
 
     {
       Astro.slots.header && (
-        <span class="block transition-opacity duration-250 ease-smooth group-hover/accordion:opacity-80 group-active/accordion:opacity-60">
+        <span
+          class:list={[
+            'block transition-colors duration-250 ease-smooth',
+            hoverClasses[color as keyof typeof hoverClasses],
+          ]}
+        >
           <slot name="header" />
         </span>
       )
@@ -114,12 +137,15 @@ const bodyId = `accordion-item-body-${id}`;
     Astro.slots.body && (
       <article
         data-js-accordion-body
-        class="prose prose-p:text-15 prose-p:sm:text-18 prose-p:m-0 [&_p+p]:mt-[1em] h-0 overflow-hidden text-grey"
+        class="pl-[calc(var(--accordion-icon-size)_+_28px)] md:pl-[calc(var(--accordion-icon-size)_+_40px)] h-0 overflow-hidden"
         id={bodyId}
         role="region"
         aria-labelledby={headerId}
       >
-        <div data-js-accordion-body-inner class="pb-40 opacity-0">
+        <div
+          data-js-accordion-body-inner
+          class="prose prose-p:text-18 prose-p:sm:text-21 prose-p:m-0 [&_p+p]:mt-[1em] text-grey pb-40 opacity-0"
+        >
           <slot name="body" />
         </div>
       </article>
@@ -129,6 +155,8 @@ const bodyId = `accordion-item-body-${id}`;
 
 <style>
   .accordion-item {
+    --accordion-icon-size: calc(16 / 20 * 1em);
+
     animation-name: caption-scroll-effect;
     animation-timing-function: theme('transitionTimingFunction.smooth');
     animation-fill-mode: both;
@@ -145,8 +173,6 @@ const bodyId = `accordion-item-body-${id}`;
   }
 
   .accordion-item__icon {
-    --accordion-icon-size: calc(16 / 20 * 1em);
-
     position: relative;
     width: var(--accordion-icon-size);
     height: var(--accordion-icon-size);
