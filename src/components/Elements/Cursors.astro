@@ -85,7 +85,7 @@ const { hasExit = false } = Astro.props as Props;
           scale: 1,
           stagger: 0.1,
           duration: 1,
-          ease: 'back.inOut(4)',
+          ease: 'elastic.out(1,0.6)',
           onComplete: () => {
             cursors.forEach(cursor => {
               const timeline = createTimeline(cursor);
@@ -110,7 +110,7 @@ const { hasExit = false } = Astro.props as Props;
               markers: false,
               trigger: section,
               start: '-20% top',
-              end: '120% center',
+              end: 'bottom top',
               scrub: 1.5,
               invalidateOnRefresh: true,
               onEnter: () => {
