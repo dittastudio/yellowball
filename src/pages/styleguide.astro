@@ -13,6 +13,7 @@ import CardFigure from '@/components/Card/Figure.astro';
 import CardInsight from '@/components/Card/Insight.astro';
 import CardMedia from '@/components/Card/Media.astro';
 import CardProfile from '@/components/Card/Profile.astro';
+import CardProfileSummary from '@/components/Card/ProfileSummary.astro';
 import CardProject from '@/components/Card/Project.astro';
 import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
@@ -277,6 +278,22 @@ const classCardCSSCols =
       </div>
     </StyleguideSection>
 
+    <StyleguideSection title="Card Profile Summary">
+      <div class={classCardGrid3}>
+        <CardProfileSummary
+          title="Our Wider Team"
+          copy="Lorem ipsum dolor sit amet consectetur. Convallis arcu congue in in interdum. Nibh metus ultricies morbi venenatis."
+          color="green"
+        >
+          <img src="/images/test-avatar-1.webp" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-2.webp" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-3.webp" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-4.webp" width="80" height="80" alt="" />
+          <img src="/images/test-avatar-5.webp" width="80" height="80" alt="" />
+        </CardProfileSummary>
+      </div>
+    </StyleguideSection>
+
     <StyleguideSection title="Card Insight">
       <div class={classCardGrid3}>
         <CardInsight
@@ -454,19 +471,21 @@ const classCardCSSCols =
       </div>
     </StyleguideSection>
 
-    <StyleguideSection title="Light Theme Layout" hasWrapper={false}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class="py-100 flex min-h-[75vh]">
+    <LayoutTheme theme="light">
+      <LayoutLines theme="light" class="py-100">
+        <StyleguideSection title="Light Theme Layout">
           <div
-            class="wrapper flex flex-wrap gap-8 items-center justify-center text-center"
+            class="flex flex-col min-h-[50vh] items-center justify-center text-center"
           >
-            <p class="font-heading font-bold text-fluid-h3 opacity-30">
+            <p
+              class="font-heading font-bold text-fluid-h3 opacity-30 text-balance"
+            >
               The header changes to light theme when it scrolls into this
               section
             </p>
           </div>
-        </LayoutLines>
-      </LayoutTheme>
-    </StyleguideSection>
+        </StyleguideSection>
+      </LayoutLines>
+    </LayoutTheme>
   </main>
 </Layout>

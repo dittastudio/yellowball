@@ -1,0 +1,70 @@
+---
+import { colourText } from '@/utils/maps';
+
+interface Props {
+  title: string;
+  copy: string;
+  color?: ColorTypes;
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+
+const {
+  title,
+  copy,
+  color = 'green',
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<a
+  data-js="card-profile"
+  href="/"
+  class:list={[
+    'block w-full h-full text-center p-12 pb-24 md:p-20 md:pb-40',
+    'flex flex-col gap-24 md:gap-40',
+    'text-white bg-navy-light border border-white/10 rounded-20 md:rounded-30',
+    className,
+  ]}
+  {...rest}
+>
+  {
+    hasSlotDefault && (
+      <div
+        class:list={[
+          'w-full flex flex-wrap-reverse justify-center px-[5%] py-30',
+          '[&>img]:w-[calc((2/7)_*_74%)] [&>img]:mx-[6%] [&>img]:my-[3%]',
+          '[&>img:nth-child(1)]:-rotate-6',
+          '[&>img:nth-child(2)]:rotate-6 [&>img:nth-child(2)]:translate-y-12',
+          '[&>img:nth-child(3)]:rotate-3 [&>img:nth-child(3)]:translate-y-6',
+          '[&>img:nth-child(4)]:rotate-12',
+          '[&>img:nth-child(5)]:-rotate-6 [&>img:nth-child(5)]:-translate-y-6',
+          '[&>img]:rounded-12 [&>img]:lg:rounded-16 [&>img]:outline [&>img]:outline-navy-lighter',
+        ]}
+      >
+        <slot />
+      </div>
+    )
+  }
+
+  <div class="flex flex-col gap-12 md:gap-20 px-20">
+    <h3
+      class:list={[
+        'font-heading font-bold text-11 md:text-13 text-balance',
+        colourText[color],
+      ]}
+    >
+      {title}
+    </h3>
+
+    {
+      copy && (
+        <p class="font-heading font-semibold text-15 md:text-18 text-balance">
+          {copy}
+        </p>
+      )
+    }
+  </div>
+</a>
