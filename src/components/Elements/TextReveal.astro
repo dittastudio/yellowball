@@ -107,11 +107,6 @@ const classes = [rest.class, 'opacity-0'].filter(Boolean);
   });
 </script>
 
-<Element
-  data-js="text-reveal"
-  data-js-on-enter={onEnter}
-  {...rest}
-  class:list={classes}
->
+<Element data-js="text-reveal" data-js-on-enter={onEnter} class:list={classes}>
   <slot />
 </Element>
