@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import GoogleItem from '@/components/Elements/GoogleItem.astro';
 
 const lgMedia = '(min-width: 1024px)';
 ---
@@ -36,36 +37,53 @@ const lgMedia = '(min-width: 1024px)';
     </div>
   </div>
 
-  <div class="md:col-start-3 md:col-span-8">
-    <div class="flex flex-col gap-24">
-      <p class="text-15 font-heading font-bold">Sponsored</p>
+  <div class="md:col-start-3 md:col-span-8 flex flex-col gap-60 md:gap-80">
+    <GoogleItem
+      isSponsored={true}
+      title="Yellowball PPC"
+      url="https://www.weareyellowball.com"
+      heading="Want to appear here too? Explore our paid search services"
+      copy="From Google Ads to Meta, LinkedIn, and Bing, our data-driven campaigns are designed to boost your visibility and deliver measurable ROI. Ready to get started?"
+    />
 
-      <div class="flex gap-12">
-        <div
-          class="flex items-center justify-center aspect-square rounded-full bg-current overflow-hidden size-[34px] shrink-0"
-        >
-          <Icon name="shape-circle" class="block size-16 text-blue" />
-        </div>
+    <GoogleItem
+      shape="square"
+      color="green"
+      isSponsored={false}
+      title="Yellowball SEO"
+      url="https://www.weareyellowball.com"
+      heading="Maximise any investment into SEO"
+      copy="At Yellowball, we deliver some of the most impactful SEO services in London and across the UK. Our highly specialised consultants work closely with your marketing team to ensure your SEO investment drives long-term growth. We’re here to elevate how search is integrated into your overall marketing strategy, with clear frameworks and proven methodologies that fuel sustainable success."
+    />
 
-        <div class="flex flex-col">
-          <h4 class="text-15">Yellowball PPC</h4>
-          <p class="text-12 text-navy-lightest">
-            https://www.weareyellowball.com
-          </p>
-        </div>
-      </div>
+    <GoogleItem
+      shape="square"
+      color="green"
+      isSponsored={false}
+      title="Yellowball SEO"
+      url="https://www.weareyellowball.com"
+      heading="White hat SEO, always"
+      copy="We believe in doing SEO the right way – no shortcuts, no spam. At Yellowball, we only use White Hat SEO techniques, fully aligned with Google’s Webmaster Guidelines. Our focus is on building quality and delivering long-term value, ensuring your website grows without risk of penalties or black hat tactics."
+    />
 
-      <h3
-        class="text-21 md:text-28 font-heading font-semibold text-blue-google"
-      >
-        Want to appear here too? Explore our paid search services
-      </h3>
-      <p class="text-15 md:text-18 text-navy-lightest">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio rem
-        temporibus tenetur qui nobis, eius consequuntur fugiat dolorem, esse
-        aliquid molestias? Vel quaerat ratione porro nostrum ad. Iusto,
-        voluptatem fuga!
-      </p>
-    </div>
+    <GoogleItem
+      shape="square"
+      color="green"
+      isSponsored={false}
+      title="Yellowball SEO"
+      url="https://www.weareyellowball.com"
+      heading="Breaking down SEO jargon"
+      copy="We know SEO terminology can be overwhelming, whether you're just starting out or looking to hire an agency. That’s why we’re committed to making it simple. Our growing SEO glossary explains everything you need to know in plain English, helping you stay informed every step of the way."
+    />
+
+    <GoogleItem
+      shape="triangle"
+      color="yellow"
+      isSponsored={false}
+      title="Yellowball Wordpress Development"
+      url="https://www.weareyellowball.com"
+      heading="Team Up with London's Go-To WordPress Design Agency "
+      copy="Our expert team creates custom, high-performing websites tailored to your business needs. Choose us for innovative and results-driven WordPress web design and development."
+    />
   </div>
 </div>
