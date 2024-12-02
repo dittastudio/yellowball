@@ -1,0 +1,77 @@
+---
+import { colourText } from '@/utils/maps';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  shape: ShapeTypes;
+  color: ColorTypes;
+  class?: string;
+}
+
+const { shape, color, class: className, ...rest } = Astro.props as Props;
+
+const colorShape = colourText[color as keyof typeof colourText] ?? '';
+---
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll(
+    '[data-js="card-prompt"]',
+  ) as NodeListOf<HTMLElement>;
+
+  cards.forEach(card => {
+    const shape = card.querySelector('[data-js-shape]') as HTMLElement;
+
+    if (shape) {
+      const { height: cardHeight } = card.getBoundingClientRect();
+      const { height: shapeHeight } = shape.getBoundingClientRect();
+
+      gsap.to(shape, {
+        y: `-${cardHeight - shapeHeight / 2}`,
+        scrollTrigger: {
+          markers: false,
+          trigger: card,
+          scrub: 1,
+          start: 'top bottom',
+          end: 'bottom top',
+        },
+      });
+    }
+  });
+</script>
+
+<div
+  data-js="card-prompt"
+  class:list={[
+    'w-full text-white bg-navy-light border border-white/10 text-left rounded-40 lg:rounded-80',
+    className,
+  ]}
+  {...rest}
+>
+  <a
+    href="/"
+    class="group relative w-full h-full p-30 lg:p-80 grid grid-cols-1 lgMax:grid-rows-2 border border-navy/15 overflow-hidden rounded-40 lg:rounded-80 lgMax:before:content-['']"
+  >
+    <div class="z-10 flex flex-col justify-start items-start gap-30 lg:gap-60">
+      {Astro.slots.headline && <slot name="headline" />}
+      {Astro.slots.button && <slot name="button" />}
+    </div>
+
+    {
+      shape && colorShape && (
+        <Icon
+          data-js-shape
+          name={`shape-${shape}`}
+          class:list={[
+            colorShape,
+            'absolute bottom-0 right-0 z-0 size-280 lg:size-400 translate-x-1/3 translate-y-1/2 pointer-events-none',
+          ]}
+        />
+      )
+    }
+  </a>
+</div>
