@@ -79,16 +79,14 @@ const classes = ['carousel-profile', className];
           ) : (
             <div class="swiper-slide">
               <CardProfileSummary title={slide.title} copy={slide.copy} {color}>
-                <>
-                  {slide.avatars?.map((avatar: any) => (
-                    <img
-                      src={avatar.src}
-                      alt={avatar.alt}
-                      width={avatar.width}
-                      height={avatar.height}
-                    />
-                  ))}
-                </>
+                {slide.avatars?.map((avatar: any) => (
+                  <img
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    width={avatar.width}
+                    height={avatar.height}
+                  />
+                ))}
               </CardProfileSummary>
             </div>
           ),
