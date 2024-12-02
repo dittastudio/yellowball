@@ -1,11 +1,11 @@
 ---
-import Icon from '@/components/Elements/Icon.astro'
+import { Icon } from 'astro-icon/components';
 
 interface Props {
-  class?: string
+  class?: string;
 }
 
-const { class: className } = Astro.props as Props
+const { class: className } = Astro.props as Props;
 ---
 
 <div class:list={['flex gap-8', className]}>

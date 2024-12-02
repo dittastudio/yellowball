@@ -5,7 +5,7 @@ import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
-import Icon from '@/components/Elements/Icon.astro';
+import { Icon } from 'astro-icon/components';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
@@ -228,7 +228,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
                   worldwide
                   <Icon
                     name="underline"
-                    class="!absolute !block -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] [&>svg]:!block [&>svg]:size-full"
+                    class="!absolute -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] size-full"
                   />
                 </span>
               </TextReveal>
