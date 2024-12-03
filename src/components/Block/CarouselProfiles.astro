@@ -1,6 +1,12 @@
 ---
 import CarouselProfile from '@/components/Carousel/Profile.astro';
 
+interface Props {
+  color?: ColorTypes;
+}
+
+const { color = 'green' } = Astro.props as Props;
+
 const exampleProfile = {
   type: 'profile',
   role: 'Senior PPC Account Manager',
@@ -78,15 +84,15 @@ const exampleProfileSummary = {
 const exampleProfiles: any = [
   exampleProfile,
   exampleProfile2,
+  exampleProfileSummary,
   exampleProfile3,
   exampleProfile,
   exampleProfile,
   exampleProfile,
   exampleProfile,
-  exampleProfileSummary,
 ];
 ---
 
 <div class="wrapper">
-  <CarouselProfile slides={exampleProfiles} />
+  <CarouselProfile {color} slides={exampleProfiles} />
 </div>

@@ -1,6 +1,7 @@
 ---
 import Button from '@/components/Elements/Button.astro';
 import Cube from '@/components/Elements/Cube.astro';
+import CubeLogo from '@/components/Elements/CubeLogo.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 
@@ -8,24 +9,19 @@ interface ServiceListItem {
   headline: string;
   description: string;
   icon: {
+    type: 'logo' | 'stroke';
     name: string;
-    size: 'sm' | 'lg';
+    hover: string;
   };
 }
 
 interface Props {
   color?: ColorTypes;
-  iconColor?: ColorTypes;
   items: ServiceListItem[];
   description?: string;
 }
 
-const {
-  color = 'yellow',
-  iconColor = 'white',
-  items,
-  description = '',
-} = Astro.props as Props;
+const { color = 'yellow', items, description = '' } = Astro.props as Props;
 ---
 
 <script>
@@ -100,9 +96,19 @@ const {
               headline={item.headline}
               description={item.description}
             >
-              <Cube slot="icon" color={iconColor} iconSize={item.icon.size}>
-                <Icon name={item.icon.name} />
-              </Cube>
+              {item.icon.type === 'logo' ? (
+                <CubeLogo slot="icon" color={color}>
+                  <Icon name={item.icon.name} />
+
+                  {item.icon.hover && (
+                    <Icon slot="hover" name={item.icon.hover} />
+                  )}
+                </CubeLogo>
+              ) : (
+                <Cube slot="icon" color={color}>
+                  <Icon name={item.icon.name} />
+                </Cube>
+              )}
             </ServiceItem>
           </li>
         ))

@@ -38,7 +38,7 @@ const exampleServiceListItems: any = [
     description:
       'Our SEO audit service combines strategic insight with technical precision. We cover everything from in-depth buyer persona and competitor research to keyword analysis, full onsite and technical audits, and actionable strategies for content and link building.',
     icon: {
-      name: 'service-paper-magnifier',
+      name: 'outline-info-paper',
       size: 'sm',
     },
   },
@@ -47,7 +47,7 @@ const exampleServiceListItems: any = [
     description:
       'Our SEO consultancy service offers expert advice tailored to your business. Whether you need support with strategy, technical SEO, or content optimisation, our consultants will guide you in implementing effective SEO that delivers long-term results.',
     icon: {
-      name: 'info-speech',
+      name: 'outline-info-speech',
       size: 'sm',
     },
   },
@@ -56,7 +56,7 @@ const exampleServiceListItems: any = [
     description:
       'Planning a website migration? Ensure your rankings stay intact. Our SEO migration service carefully manages every step of your site transition, from technical fixes to URL mapping, ensuring you maintain traffic and search visibility.',
     icon: {
-      name: 'info-migration',
+      name: 'outline-info-migration',
       size: 'sm',
     },
   },
@@ -65,7 +65,7 @@ const exampleServiceListItems: any = [
     description:
       'Maximise your online store’s visibility with our eCommerce SEO services. We specialise in optimising product pages, implementing technical fixes, and driving organic traffic to your site – helping you increase sales and revenue in competitive markets.',
     icon: {
-      name: 'logo-ecommerce',
+      name: 'outline-info-basket',
       size: 'sm',
     },
   },
@@ -74,7 +74,7 @@ const exampleServiceListItems: any = [
     description:
       'As an experienced international SEO agency, we deliver research-driven SEO services for businesses wanting to establish their brand on a global scale.',
     icon: {
-      name: 'info-globe',
+      name: 'outline-info-globe',
       size: 'sm',
     },
   },
@@ -83,7 +83,7 @@ const exampleServiceListItems: any = [
     description:
       'Lorem ipsum dolor sit amet consectetur. In neque tortor volutpat eget suspendisse. Pellentesque urna tincidunt praesent rhoncus leo varius quis morbi id. Varius etiam porta tortor eget libero auctor non.',
     icon: {
-      name: 'info-link',
+      name: 'outline-info-link',
       size: 'sm',
     },
   },
@@ -92,7 +92,7 @@ const exampleServiceListItems: any = [
 
 <Layout title="PPC">
   <main>
-    <section class:list={[classSection, 'relative z-0']}>
+    <section class={classSection}>
       <BlockHero color="blue" shape="circle">
         <Fragment slot="top">
           <Breadcrumb
@@ -135,7 +135,7 @@ const exampleServiceListItems: any = [
       </BlockHero>
     </section>
 
-    <section class:list={[classSection, 'relative z-1']}>
+    <section class:list={[classSection, 'relative z-10']}>
       <BlockOverlaps>
         <CardCaseStudyHero client="RSVP Call Center" color="blue">
           <Fragment slot="headline">
@@ -321,7 +321,6 @@ const exampleServiceListItems: any = [
     <section class={classSection}>
       <BlockServiceList
         color="blue"
-        iconColor="blue"
         items={exampleServiceListItems}
         description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
       >
@@ -370,11 +369,11 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <BlockCarouselProfiles />
+      <BlockCarouselProfiles color="blue" />
     </section>
 
     <section class={classSection}>
-      <BlockFAQs color="blue" />
+      <BlockFAQs color="blue" shape="circle" />
     </section>
 
     <section class={classSection}>

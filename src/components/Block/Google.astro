@@ -1,6 +1,7 @@
 ---
 import Icon from '@/components/Elements/Icon.astro';
 import GoogleItem from '@/components/Elements/GoogleItem.astro';
+import TypingText from '@/components/UI/TypingText.astro';
 
 const lgMedia = '(min-width: 1024px)';
 ---
@@ -16,28 +17,39 @@ const lgMedia = '(min-width: 1024px)';
     />
   </div>
 
-  <div class="md:col-span-8">
+  <div class="md:col-span-10 xl:col-span-8">
     <div
       class:list={[
-        'text-12 lg:text-21 font-heading font-bold',
-        'flex items-center justify-between gap-12 rounded-20 lg:rounded-30 border border-black/10 bg-white px-24 md:px-30 py-[0.9em]',
+        'text-12 md:text-21 font-heading font-bold',
+        'h-[50px] md:h-[84px] px-24 md:px-30',
+        'flex items-center justify-between gap-12 rounded-20 md:rounded-30 border border-black/10 bg-white',
       ]}
     >
-      Lorem ipsum dolor sit amet consectetur
+      <TypingText
+        textList={[
+          'How to improve my search rankings',
+          'Best digital agency for SEO',
+          'Where to find London Wordpress experts',
+        ]}
+      />
 
-      <picture>
+      <picture class="shrink-0">
         <source media={lgMedia} srcset="/images/google-search-icons.jpg" />
 
         <img
           class="w-full max-w-[47px] lg:max-w-[198px] h-auto"
           src="/images/google-search-icons-mobile.jpg"
           alt=""
+          width="198"
+          height="44"
         />
       </picture>
     </div>
   </div>
 
-  <div class="md:col-start-3 md:col-span-8 flex flex-col gap-60 md:gap-80">
+  <div
+    class="md:col-start-3 md:col-span-10 xl:col-start-3 xl:col-span-8 flex flex-col gap-60 md:gap-80"
+  >
     <GoogleItem
       isSponsored={true}
       title="Yellowball PPC"
@@ -79,7 +91,7 @@ const lgMedia = '(min-width: 1024px)';
     <GoogleItem
       shape="triangle"
       color="yellow"
-      isSponsored={false}
+      isSponsored={true}
       title="Yellowball Wordpress Development"
       url="https://www.weareyellowball.com"
       heading="Team Up with London's Go-To WordPress Design Agency "

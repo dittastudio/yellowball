@@ -34,8 +34,9 @@ const exampleServiceListItems: any = [
     description:
       'Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions.',
     icon: {
+      type: 'logo',
       name: 'logo-wp',
-      size: 'lg',
+      hover: 'logo-wp-hover',
     },
   },
   {
@@ -43,8 +44,9 @@ const exampleServiceListItems: any = [
     description:
       'User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action.',
     icon: {
+      type: 'logo',
       name: 'logo-figma',
-      size: 'lg',
+      hover: 'logo-figma-hover',
     },
   },
   {
@@ -52,8 +54,9 @@ const exampleServiceListItems: any = [
     description:
       'Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert.',
     icon: {
+      type: 'logo',
       name: 'logo-woo',
-      size: 'lg',
+      hover: 'logo-woo-hover',
     },
   },
   {
@@ -61,8 +64,9 @@ const exampleServiceListItems: any = [
     description:
       'Complex problems solved simply. Build custom web applications that deliver seamless user experiences.',
     icon: {
+      type: 'logo',
       name: 'logo-laravel',
-      size: 'lg',
+      hover: 'logo-laravel-hover',
     },
   },
   {
@@ -70,8 +74,8 @@ const exampleServiceListItems: any = [
     description:
       'Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike.',
     icon: {
-      name: 'logo-white-label',
-      size: 'sm',
+      type: 'outline',
+      name: 'outline-info-inspector',
     },
   },
   {
@@ -79,8 +83,8 @@ const exampleServiceListItems: any = [
     description:
       'From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers.',
     icon: {
-      name: 'logo-ecommerce',
-      size: 'sm',
+      type: 'outline',
+      name: 'outline-info-basket',
     },
   },
 ];
@@ -91,7 +95,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 <Layout title="Home">
   <main>
-    <section class:list={[classSection, 'relative z-0']}>
+    <section class={classSection}>
       <BlockHero>
         <Fragment slot="top">
           <Icon name="yellowball" class="w-[117px] h-[22px]" />
@@ -133,7 +137,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
       </BlockHero>
     </section>
 
-    <section class:list={[classSection, 'relative z-1']}>
+    <section class:list={[classSection, 'relative z-10']}>
       <BlockCarouselProjects />
     </section>
 
@@ -193,8 +197,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <BlockServiceList
-        color="yellow"
-        iconColor="white"
+        color="white"
         items={exampleServiceListItems}
         description="We offer a full suite of web design services that transform your brand story into digital experiences."
       >
@@ -324,7 +327,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockFAQs color="yellow" />
+      <BlockFAQs color="yellow" shape="triangle" />
     </section>
 
     <section class={classSection}>
