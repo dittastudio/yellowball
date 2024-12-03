@@ -14,15 +14,18 @@ export async function createSprite(iconDir: string, outputPath: string) {
     mode: { 
       symbol: { 
         sprite: 'sprite.svg' 
-      } 
-    } 
+      }
+    }
   });
 
   const svgFiles = await readdir(iconDir);
+
   for (const svg of svgFiles) {
     if (!svg.endsWith('.svg')) continue;
+
     const path = resolve(iconDir, svg);
     const fileContents = await readFile(path, 'utf8');
+
     spriter.add(path, svg, fileContents);
   }
 
@@ -32,11 +35,9 @@ export async function createSprite(iconDir: string, outputPath: string) {
 
     await mkdir(dirname(outputPath), { recursive: true });
     await writeFile(outputPath, svgSprite);
-    
-    console.log(`SVG Sprite generated: ${outputPath}`);
+
     return svgSprite;
   } catch (error) {
-    console.error('Failed to generate SVG sprite:', error);
     return null;
   }
 }
