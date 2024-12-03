@@ -36,6 +36,7 @@ const exampleServiceListItems: any = [
     icon: {
       type: 'logo',
       name: 'logo-wp',
+      hover: 'logo-wp-hover',
     },
   },
   {
@@ -45,6 +46,7 @@ const exampleServiceListItems: any = [
     icon: {
       type: 'logo',
       name: 'logo-figma',
+      hover: 'logo-figma-hover',
     },
   },
   {
@@ -54,6 +56,7 @@ const exampleServiceListItems: any = [
     icon: {
       type: 'logo',
       name: 'logo-woo',
+      hover: 'logo-woo-hover',
     },
   },
   {
@@ -63,6 +66,7 @@ const exampleServiceListItems: any = [
     icon: {
       type: 'logo',
       name: 'logo-laravel',
+      hover: 'logo-laravel-hover',
     },
   },
   {
@@ -70,8 +74,8 @@ const exampleServiceListItems: any = [
     description:
       'Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike.',
     icon: {
-      type: 'stroke',
-      name: 'logo-white-label',
+      type: 'outline',
+      name: 'outline-info-inspector',
     },
   },
   {
@@ -79,8 +83,8 @@ const exampleServiceListItems: any = [
     description:
       'From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers.',
     icon: {
-      type: 'stroke',
-      name: 'logo-ecommerce',
+      type: 'outline',
+      name: 'outline-info-basket',
     },
   },
 ];
@@ -91,7 +95,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 <Layout title="Home">
   <main>
-    <section class:list={[classSection, 'relative z-0']}>
+    <section class={classSection}>
       <BlockHero>
         <Fragment slot="top">
           <Icon name="yellowball" class="w-[117px] h-[22px]" />
@@ -133,7 +137,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
       </BlockHero>
     </section>
 
-    <section class:list={[classSection, 'relative z-1']}>
+    <section class:list={[classSection, 'relative z-10']}>
       <BlockCarouselProjects />
     </section>
 
@@ -323,7 +327,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockFAQs color="yellow" />
+      <BlockFAQs color="yellow" shape="triangle" />
     </section>
 
     <section class={classSection}>

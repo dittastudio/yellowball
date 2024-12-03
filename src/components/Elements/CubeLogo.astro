@@ -18,26 +18,53 @@ const hoverClasses = {
 
 <span
   class:list={[
-    'relative flex justify-center items-center size-40 md:size-50',
+    'cube-logo relative flex justify-center items-center size-40 md:size-50',
     'after:absolute after:inset-0',
     'after:border after:border-solid after:border-navy-lighter after:rounded-12',
     'bg-navy-light rounded-12',
-    'transition-colors duration-250 ease-smooth',
     hoverClasses[color as keyof typeof hoverClasses],
     colourText[color],
   ]}
 >
   <span class="relative size-22 md:size-28 [&_svg]:size-full">
-    <span
-      class="block [a:hover_&]:opacity-0 [a:hover_&]:scale-[0.9] transition-[opacity,scale] duration-250 ease-smooth"
-    >
+    <span class="cube-logo__icon block">
       <slot />
     </span>
 
-    <span
-      class="absolute inset-0 size-inherit opacity-0 scale-[0.9] [a:hover_&]:opacity-100 [a:hover_&]:scale-[1] transition-[opacity,scale] duration-250 ease-smooth"
-    >
+    <span class="cube-logo__hover absolute inset-0 size-inherit">
       <slot name="hover" />
     </span>
   </span>
 </span>
+
+<style>
+  .cube-logo {
+    --ease: theme('transitionTimingFunction.smooth');
+
+    transition:
+      background-color 0.3s var(--ease),
+      color 0.3s var(--ease);
+  }
+
+  .cube-logo__icon {
+    opacity: 1;
+    transition: opacity 0.3s var(--ease);
+
+    @media (hover: hover) {
+      :global(a):hover & {
+        opacity: 0;
+      }
+    }
+  }
+
+  .cube-logo__hover {
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+
+    @media (hover: hover) {
+      :global(a):hover & {
+        opacity: 1;
+      }
+    }
+  }
+</style>

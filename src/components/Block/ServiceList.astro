@@ -11,6 +11,7 @@ interface ServiceListItem {
   icon: {
     type: 'logo' | 'stroke';
     name: string;
+    hover: string;
   };
 }
 
@@ -99,8 +100,9 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
                 <CubeLogo slot="icon" color={color}>
                   <Icon name={item.icon.name} />
 
-                  {/* <Icon slot="hover" name={`${item.icon.name}-hover`} /> */}
-                  <Icon slot="hover" name="logo-figma-hover" />
+                  {item.icon.hover && (
+                    <Icon slot="hover" name={item.icon.hover} />
+                  )}
                 </CubeLogo>
               ) : (
                 <Cube slot="icon" color={color}>

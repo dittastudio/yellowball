@@ -19,12 +19,12 @@ import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cube from '@/components/Elements/Cube.astro';
+import CubeLogo from '@/components/Elements/CubeLogo.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import { Icon } from 'astro-icon/components';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
-import TypingText from '@/components/UI/TypingText.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -90,44 +90,44 @@ const classCardCSSCols =
 
     <StyleguideSection title="Cubes">
       <div class="flex flex-wrap gap-8">
-        <Cube iconSize="lg">
+        <CubeLogo>
           <Icon name="logo-figma" />
-        </Cube>
+        </CubeLogo>
 
-        <Cube iconSize="lg">
+        <CubeLogo>
           <Icon name="logo-wp" />
-        </Cube>
+        </CubeLogo>
 
-        <Cube iconSize="lg">
+        <CubeLogo>
           <Icon name="logo-woo" />
-        </Cube>
+        </CubeLogo>
 
-        <Cube iconSize="lg">
+        <CubeLogo>
           <Icon name="logo-laravel" />
+        </CubeLogo>
+
+        <Cube>
+          <Icon name="outline-info-paper" />
         </Cube>
 
         <Cube>
-          <Icon name="logo-white-label" />
-        </Cube>
-
-        <Cube>
-          <Icon name="logo-ecommerce" />
+          <Icon name="outline-info-basket" />
         </Cube>
 
         <Cube color="green">
-          <Icon name="service-paper-magnifier" />
+          <Icon name="outline-info-paper" />
         </Cube>
 
         <Cube color="blue">
-          <Icon name="service-paper-magnifier" />
+          <Icon name="outline-info-paper" />
         </Cube>
 
         <Cube color="yellow">
-          <Icon name="service-paper-magnifier" />
+          <Icon name="outline-info-paper" />
         </Cube>
 
         <Cube color="purple">
-          <Icon name="service-paper-magnifier" />
+          <Icon name="outline-info-paper" />
         </Cube>
       </div>
     </StyleguideSection>
