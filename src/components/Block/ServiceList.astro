@@ -117,7 +117,12 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
                 </CubeLogo>
               ) : (
                 <Cube slot="icon" color={color}>
-                  <Icon name={item.icon.name} />
+                  <Icon
+                    name={item.icon.name}
+                    width={28}
+                    height={28}
+                    class="size-full"
+                  />
                 </Cube>
               )}
             </ServiceItem>
