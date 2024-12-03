@@ -1,6 +1,7 @@
 ---
 import Button from '@/components/Elements/Button.astro';
 import Cube from '@/components/Elements/Cube.astro';
+import CubeLogo from '@/components/Elements/CubeLogo.astro';
 import { Icon } from 'astro-icon/components';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 
@@ -8,24 +9,18 @@ interface ServiceListItem {
   headline: string;
   description: string;
   icon: {
+    type: 'logo' | 'stroke';
     name: string;
-    size: 'sm' | 'lg';
   };
 }
 
 interface Props {
   color?: ColorTypes;
-  iconColor?: ColorTypes;
   items: ServiceListItem[];
   description?: string;
 }
 
-const {
-  color = 'yellow',
-  iconColor = 'white',
-  items,
-  description = '',
-} = Astro.props as Props;
+const { color = 'yellow', items, description = '' } = Astro.props as Props;
 ---
 
 <script>
@@ -100,9 +95,18 @@ const {
               headline={item.headline}
               description={item.description}
             >
-              <Cube slot="icon" color={iconColor} iconSize={item.icon.size}>
-                <Icon name={item.icon.name} />
-              </Cube>
+              {item.icon.type === 'logo' ? (
+                <CubeLogo slot="icon" color={color}>
+                  <Icon name={item.icon.name} />
+
+                  {/* <Icon slot="hover" name={`${item.icon.name}-hover`} /> */}
+                  <Icon slot="hover" name="logo-figma-hover" />
+                </CubeLogo>
+              ) : (
+                <Cube slot="icon" color={color}>
+                  <Icon name={item.icon.name} />
+                </Cube>
+              )}
             </ServiceItem>
           </li>
         ))

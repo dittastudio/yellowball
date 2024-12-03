@@ -1,0 +1,43 @@
+---
+import { colourText } from '@/utils/maps';
+
+interface Props {
+  color?: ColorTypes;
+}
+
+const { color = 'white' } = Astro.props as Props;
+
+const hoverClasses = {
+  white: '[a:hover_&]:bg-white',
+  green: '[a:hover_&]:bg-green',
+  blue: '[a:hover_&]:bg-blue',
+  yellow: '[a:hover_&]:bg-yellow',
+  purple: '[a:hover_&]:bg-purple',
+};
+---
+
+<span
+  class:list={[
+    'relative flex justify-center items-center size-40 md:size-50',
+    'after:absolute after:inset-0',
+    'after:border after:border-solid after:border-navy-lighter after:rounded-12',
+    'bg-navy-light rounded-12',
+    'transition-colors duration-250 ease-smooth',
+    hoverClasses[color as keyof typeof hoverClasses],
+    colourText[color],
+  ]}
+>
+  <span class="relative size-22 md:size-28 [&_svg]:size-full">
+    <span
+      class="block [a:hover_&]:opacity-0 [a:hover_&]:scale-[0.9] transition-[opacity,scale] duration-250 ease-smooth"
+    >
+      <slot />
+    </span>
+
+    <span
+      class="absolute inset-0 size-inherit opacity-0 scale-[0.9] [a:hover_&]:opacity-100 [a:hover_&]:scale-[1] transition-[opacity,scale] duration-250 ease-smooth"
+    >
+      <slot name="hover" />
+    </span>
+  </span>
+</span>

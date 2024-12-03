@@ -34,8 +34,8 @@ const exampleServiceListItems: any = [
     description:
       'Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions.',
     icon: {
+      type: 'logo',
       name: 'logo-wp',
-      size: 'lg',
     },
   },
   {
@@ -43,8 +43,8 @@ const exampleServiceListItems: any = [
     description:
       'User-centric design that puts your audience first. We create intuitive, engaging interfaces that delight users and drive action.',
     icon: {
+      type: 'logo',
       name: 'logo-figma',
-      size: 'lg',
     },
   },
   {
@@ -52,8 +52,8 @@ const exampleServiceListItems: any = [
     description:
       'Sell smarter with WooCommerce. We create e-commerce websites that not only look good but convert.',
     icon: {
+      type: 'logo',
       name: 'logo-woo',
-      size: 'lg',
     },
   },
   {
@@ -61,8 +61,8 @@ const exampleServiceListItems: any = [
     description:
       'Complex problems solved simply. Build custom web applications that deliver seamless user experiences.',
     icon: {
+      type: 'logo',
       name: 'logo-laravel',
-      size: 'lg',
     },
   },
   {
@@ -70,8 +70,8 @@ const exampleServiceListItems: any = [
     description:
       'Need world-class development without the spotlight? We offer discreet white-label web services for agencies and brands alike.',
     icon: {
+      type: 'stroke',
       name: 'logo-white-label',
-      size: 'sm',
     },
   },
   {
@@ -79,8 +79,8 @@ const exampleServiceListItems: any = [
     description:
       'From product page optimisation to frictionless checkout experiences, we design and develop online stores that turn visitors into loyal customers.',
     icon: {
+      type: 'stroke',
       name: 'logo-ecommerce',
-      size: 'sm',
     },
   },
 ];
@@ -193,8 +193,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <BlockServiceList
-        color="yellow"
-        iconColor="white"
+        color="white"
         items={exampleServiceListItems}
         description="We offer a full suite of web design services that transform your brand story into digital experiences."
       >
