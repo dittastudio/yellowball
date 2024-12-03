@@ -23,34 +23,34 @@ const { color = 'blue', shape } = Astro.props as Props;
     const html = document.documentElement as HTMLElement;
     const icon = hero.querySelector('[data-js-hero-icon]') as HTMLElement;
 
-    const tlIntro = gsap.timeline();
+    if (icon) {
+      gsap.to(icon, {
+        opacity: 1,
+        y: '0%',
+        scale: 1,
+        duration: 1,
+        delay: 0.5,
+        ease: 'power4.out',
+      });
 
-    tlIntro.to(icon, {
-      opacity: 1,
-      y: '0%',
-      scale: 1,
-      duration: 1,
-      delay: 0.5,
-      ease: 'power4.out',
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: html,
+          endTrigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        markers: false,
-        trigger: html,
-        endTrigger: hero,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5,
-      },
-    });
-
-    tl.to(icon, {
-      opacity: 0,
-      y: '-30%',
-      scale: 0.75,
-      ease: 'linear',
-    });
+      tl.to(icon, {
+        opacity: 0,
+        y: '-30%',
+        scale: 0.75,
+        ease: 'linear',
+      });
+    }
   });
 </script>
 
