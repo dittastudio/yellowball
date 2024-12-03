@@ -50,4 +50,8 @@
   svg {
     display: block;
   }
+
+  mark {
+    background-color: transparent;
+  }
 }

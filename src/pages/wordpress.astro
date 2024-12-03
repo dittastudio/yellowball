@@ -1,0 +1,343 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/Elements/Icon.astro';
+
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
+import Button from '@/components/Elements/Button.astro';
+import CardProjectHero from '@/components/Card/ProjectHero.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+import CardService from '@/components/Card/Service.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardStacks from '@/components/Block/CardStacks.astro';
+import BlockCarouselProfiles from '@/components/Block/CarouselProfiles.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockGoogle from '@/components/Block/Google.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import BlockOverlaps from '@/components/Block/Overlaps.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockServiceList from '@/components/Block/ServiceList.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+
+const exampleServiceListItems: any = [
+  {
+    headline: 'We Obsess Over Every Pixel',
+    description: `Our WordPress web design pros are relentless when it comes to results. We dive deep into every pixel, hunt down every conversion opportunity, and treat every ad pound like it's gold. From the smallest technical tweaks to big-picture strategy, we push your site to perform at its peak.`,
+    icon: {
+      name: 'outline-info-paper',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'Bespoke WordPress Training Delivered by Us',
+    description: `We don't just leave you with a finished website; we empower you to take control. Our custom WordPress training videos cover everything you need to know. Share them with your team to keep everyone on the same page.`,
+    icon: {
+      name: 'outline-info-speech',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'Aftercare & Support',
+    description: `Going live is just the start. Our team is here to keep your site future-proof, flexible, and always ready for change. From bespoke support packages to on-demand help, we've got your back - no strings attached. Stay ahead of the game and keep that oh-so-good new website smell!`,
+    icon: {
+      name: 'outline-info-migration',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'Seamless API Integrations',
+    description: `We'll ensure your WordPress website integrates smoothly with the tools and services your business relies on. From CRM systems and payment gateways to marketing automation platforms and third-party software, we specialise in custom API integrations that connect your website with your wider business ecosystem—streamlining workflows and enhancing efficiency.`,
+    icon: {
+      name: 'outline-info-basket',
+      size: 'sm',
+    },
+  },
+];
+---
+
+<Layout title="WordPress">
+  <main>
+    <section class={classSection}>
+      <BlockHero color="yellow" shape="triangle">
+        <Fragment slot="top">
+          <Breadcrumb
+            shape="triangle"
+            color="yellow"
+            items={[
+              { title: 'Web Design', href: '/' },
+              { title: 'WordPress Development', href: '/' },
+            ]}
+          />
+        </Fragment>
+
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
+            <mark class="text-yellow">WordPress</mark> websites crafted to convert
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            Yellowball crafts bespoke, high-performance WordPress websites that
+            not only look stunning but drive results. Ready to roll out a
+            website that works as hard as you do?
+
+            <a
+              href="/"
+              class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
+            >
+              <LinkArrow class="text-yellow">Let's Chat</LinkArrow>
+            </a>
+          </p>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors hasExit>
+            <Cursor title="Design Team" class="bg-yellow" />
+            <Cursor title="Developers" class="bg-grey" />
+          </Cursors>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class:list={[classSection, 'relative z-10']}>
+      <BlockOverlaps>
+        <CardProjectHero
+          title="Faith Ibiza"
+          headline="VIP Ibiza Concierge Services"
+          description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
+          cta="Explore Project"
+          color="yellow"
+        >
+          <img
+            src="/images/test-project-1.webp"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardProjectHero>
+
+        <CardProjectHero
+          title="Ballet with Isabella"
+          headline="Elite Online Ballet Training"
+          description="A bespoke WordPress build featuring a customer login area, a member live area and an on-demand online studio which houses over 100 classes, courses, plans and workshops for ballet students."
+          cta="Explore Project"
+          color="green"
+        >
+          <img
+            src="/images/test-project-2.webp"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardProjectHero>
+
+        <CardProjectHero
+          title="Shirakawa 1958"
+          headline="The World's Rarest Japanese Whisky"
+          description="This bespoke WordPress and WooCommerce website build features elegant typography, a sumptuous colour palette and a super-slick checkout flow."
+          cta="Explore Project"
+          color="blue"
+        >
+          <img
+            src="/images/test-project-3.webp"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </CardProjectHero>
+      </BlockOverlaps>
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <a href="/">
+          <Button text="Speak to a Web Expert" hasArrow />
+        </a>
+        <a href="/">
+          <Button text="View all Projects" type="white-border" />
+        </a>
+      </BlockButtons>
+    </section>
+
+    <section class={classSection}>
+      <BlockLogoTicker />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockCardStacks
+            description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
+          >
+            <Fragment slot="headline">
+              <TextReveal
+                tag="h2"
+                class="font-heading text-fluid-h2 font-semibold"
+              >
+                Rooted in London, connected
+                <span class="relative !inline-block">
+                  worldwide
+                  <Icon
+                    name="underline"
+                    class="!absolute -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] size-full"
+                  />
+                </span>
+              </TextReveal>
+            </Fragment>
+          </BlockCardStacks>
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceList
+        color="yellow"
+        items={exampleServiceListItems}
+        description="We offer an all-inclusive service for everything WordPress-related, from themes and plugins to hosting, support, and security."
+      >
+        <Fragment slot="headline">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Your all-in-one<br />WordPress partner
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors>
+            <Cursor title="Design Team" class="bg-yellow" />
+          </Cursors>
+        </Fragment>
+      </BlockServiceList>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockTestimonials />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Meet a few of the experts behind your WordPress website
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="description">
+          <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
+            Lorem ipsum dolor sit amet consectetur. Vivamus interdum nisl
+            adipiscing mattis ornare nam purus eget. Vitae ultrices fringilla
+            semper eget in vel fermentum. Quam sed volutpat id dictum arcu.
+            Viverra feugiat ultrices hendrerit in mauris nulla diam. Nec turpis
+            imperdiet in risus quisque in aliquam. Amet risus pellentesque
+            lectus ut scelerisque velit.
+          </p>
+        </Fragment>
+      </BlockHeroText>
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselProfiles color="yellow" />
+    </section>
+
+    <section class={classSection}>
+      <BlockFAQs color="yellow" shape="triangle" />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockGoogle />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="triangle" color="yellow">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 lg:text-64 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Ready to start your WordPress project?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get a quote today" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Other Services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <section class={classSection}>
+        <BlockServiceCards>
+          <Fragment slot="cards">
+            <CardService
+              headline="SEO"
+              description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+              shape="square"
+              color="green"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+
+            <CardService
+              headline="Paid Search"
+              description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+              shape="circle"
+              color="blue"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+          </Fragment>
+        </BlockServiceCards>
+      </section>
+    </section>
+  </main>
+</Layout>
