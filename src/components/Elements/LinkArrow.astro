@@ -6,9 +6,10 @@ interface Props {
   class?: string;
 }
 
-const { color = 'yellow', class: className, ...props } = Astro.props as Props;
+const { color = 'none', class: className, ...props } = Astro.props as Props;
 
 const hoverClasses = {
+  none: null,
   green: '[a:hover_&]:text-green',
   blue: '[a:hover_&]:text-blue',
   yellow: '[a:hover_&]:text-yellow',
@@ -19,7 +20,7 @@ const hoverClasses = {
 <span
   class:list={[
     'link-arrow inline-block select-none',
-    'transition-colors duration-150 ease-smooth',
+    'transition-colors duration-250 ease-smooth',
     hoverClasses[color as keyof typeof hoverClasses],
     className,
   ]}
@@ -27,7 +28,7 @@ const hoverClasses = {
 >
   <slot /><Icon
     name="arrow-ne"
-    class="link-arrow__icon inline-block align-baseline ml-[0.67em] size-10 md:size-12 transition-transform duration-150 ease-smooth shrink-0"
+    class="link-arrow__icon inline-block align-baseline ml-[0.67em] size-10 md:size-12 transition-transform duration-250 ease-smooth shrink-0"
   />
 </span>
 
