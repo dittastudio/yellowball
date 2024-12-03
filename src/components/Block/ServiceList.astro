@@ -98,10 +98,21 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
             >
               {item.icon.type === 'logo' ? (
                 <CubeLogo slot="icon" color={color}>
-                  <Icon name={item.icon.name} />
+                  <Icon
+                    name={item.icon.name}
+                    width={28}
+                    height={28}
+                    class="size-full"
+                  />
 
                   {item.icon.hover && (
-                    <Icon slot="hover" name={item.icon.hover} />
+                    <Icon
+                      slot="hover"
+                      name={item.icon.hover}
+                      width={28}
+                      height={28}
+                      class="size-full"
+                    />
                   )}
                 </CubeLogo>
               ) : (
