@@ -9,7 +9,7 @@ const textListString = textList.join(',');
 
 <span
   data-js="typing"
-  class="typing-text flex items-center overflow-hidden text-ellipsis whitespace-nowrap"
+  class="typing-text flex items-center overflow-hidden"
   id="typing-container"
   data-js-typing-list={textListString}
 >
@@ -76,7 +76,8 @@ const textListString = textList.join(',');
 
 <style>
   .typing-text.is-hidden {
-    animation: slide-out 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+    animation: slide-out theme('transitionDuration.700')
+      theme('transitionTimingFunction.inOutQuart') 1s forwards;
   }
 
   @keyframes slide-out {
@@ -85,7 +86,7 @@ const textListString = textList.join(',');
       opacity: 1;
     }
 
-    50% {
+    60% {
       opacity: 0;
     }
 
