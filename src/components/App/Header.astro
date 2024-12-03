@@ -27,9 +27,9 @@ const navListTwo = [
   gsap.registerPlugin(ScrollTrigger);
 
   const header = document.querySelector('[data-js="header"]') as HTMLElement;
-  const navs = [
-    ...document.querySelectorAll('[data-js-header-nav]'),
-  ] as HTMLElement[];
+  const navs = document.querySelectorAll(
+    '[data-js-header-nav]',
+  ) as NodeListOf<HTMLElement>;
 
   if (header) {
     const sections = document.querySelectorAll(
@@ -49,6 +49,7 @@ const navListTwo = [
 
           header.classList[checkIfLightTheme ? 'remove' : 'add']('text-white');
           header.classList[!checkIfLightTheme ? 'remove' : 'add']('text-navy');
+
           navs.forEach(nav => {
             nav.classList[checkIfLightTheme ? 'remove' : 'add'](
               'bg-offblack/10',
@@ -67,7 +68,6 @@ const navListTwo = [
       });
     });
 
-    // Refresh ScrollTrigger on resize
     const resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(() => {
         ScrollTrigger.refresh();
@@ -87,7 +87,6 @@ const navListTwo = [
   <nav data-js-header-nav class={classNav}>
     <a class="block" href="/">
       <AppHeaderLogo />
-
       <span class="sr-only">Home</span>
     </a>
 

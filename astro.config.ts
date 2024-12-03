@@ -8,16 +8,17 @@ export default defineConfig({
   compressHTML: false,
   scopedStyleStrategy: 'where',
   build: {
+    format: 'preserve',
     assets: '_assets',
     inlineStylesheets: 'never',
   },
   vite: {
     build: {
-      // minify: false,
+      minify: true,
+      sourcemap: false,
       cssCodeSplit: false,
       rollupOptions: {
         output: {
-          // inlineDynamicImports: true,
           manualChunks: () => 'app',
           entryFileNames: 'assets/app.[hash].js',
           chunkFileNames: 'assets/app.[hash].js',
