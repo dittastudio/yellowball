@@ -27,13 +27,17 @@ const hoverClasses = {
   ]}
 >
   <span class="relative size-22 md:size-28 [&_svg]:size-full">
-    <span class="cube-logo__icon block">
+    <span class="cube-logo__icon block size-full">
       <slot />
     </span>
 
-    <span class="cube-logo__hover absolute inset-0 size-inherit">
-      <slot name="hover" />
-    </span>
+    {
+      Astro.slots.hover && (
+        <span class="cube-logo__hover absolute inset-0 size-inherit">
+          <slot name="hover" />
+        </span>
+      )
+    }
   </span>
 </span>
 
