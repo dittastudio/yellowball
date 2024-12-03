@@ -1,9 +1,9 @@
 ---
 interface Props {
-  hasExit?: boolean;
+  hasExit?: boolean | null;
 }
 
-const { hasExit = false } = Astro.props as Props;
+const { hasExit = null } = Astro.props as Props;
 ---
 
 <script>

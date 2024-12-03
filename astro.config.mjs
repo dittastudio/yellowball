@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import favicons from 'astro-favicons';
 import tailwind from '@astrojs/tailwind';
 import htmlBeautifier from 'astro-html-beautifier';
-import icon from 'astro-icon';
+import { generateSprite } from './src/utils/sprite';
 
 export default defineConfig({
   compressHTML: false,
@@ -28,6 +28,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    generateSprite(),
     htmlBeautifier({
       indent_size: 2,
       indent_char: ' ',
@@ -65,6 +66,5 @@ export default defineConfig({
        **/
       applyBaseStyles: false,
     }),
-    icon(),
   ],
 });

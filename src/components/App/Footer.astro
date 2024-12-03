@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import Icon from '@/components/Elements/Icon.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 const serviceLinks = [
@@ -169,8 +169,10 @@ const linkLists = [
 
   <div data-js-footer-logo class="wrapper mt-40">
     <Icon
-      class="app-footer__logo block translate-y-[27%] size-full text-card"
       name="yellowball"
+      width={117}
+      height={22}
+      class="block translate-y-[27%] size-full text-card"
     />
   </div>
 </footer>

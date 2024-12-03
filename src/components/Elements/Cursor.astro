@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   title: string;
@@ -16,6 +16,6 @@ const { title, class: className, ...rest } = Astro.props as Props;
   ]}
   {...rest}
 >
-  <Icon name="cursor" />
+  <Icon name="cursor" class="size-10" />
   {title}
 </p>

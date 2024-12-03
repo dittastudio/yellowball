@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Icon {
+  name: string;
+}
+
+type Props = HTMLAttributes<'svg'> & Icon;
+
+const { name, ...rest } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" {...rest}>
+  <use href={`/sprite.svg#${name}`}></use>
+</svg>

@@ -3,12 +3,12 @@ import type { HTMLAttributes } from 'astro/types';
 
 interface Reveal {
   tag?: string;
-  onEnter?: boolean;
+  onEnter?: boolean | null;
 }
 
 type Props = HTMLAttributes<'div'> & Reveal;
 
-const { tag = 'div', onEnter = false, ...rest } = Astro.props as Props;
+const { tag = 'div', onEnter = null, ...rest } = Astro.props as Props;
 const Element = tag;
 const classes = [rest.class, 'opacity-0'].filter(Boolean);
 ---
