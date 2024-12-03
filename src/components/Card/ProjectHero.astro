@@ -1,4 +1,5 @@
 ---
+import { colourText } from '@/utils/maps';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
@@ -21,20 +22,14 @@ const {
   ...rest
 } = Astro.props as Props;
 
-const colors = {
-  yellow: 'text-yellow',
-  green: 'text-green',
-  blue: 'text-blue',
-};
-
-const colorTitle = colors[color as keyof typeof colors] ?? '';
+const colorTitle = colourText[color as keyof typeof colourText] ?? '';
 const classes = ['card-project-hero', className];
 ---
 
 <script>
-  const cards = [
-    ...document.querySelectorAll('[data-js="card-project-hero"]'),
-  ] as HTMLElement[];
+  const cards = document.querySelectorAll(
+    '[data-js="card-project-hero"]',
+  ) as NodeListOf<HTMLElement>;
 
   cards.forEach(card => {
     card.addEventListener('mousemove', e => {

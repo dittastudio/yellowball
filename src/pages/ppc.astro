@@ -90,15 +90,15 @@ const exampleServiceListItems: any = [
 ];
 ---
 
-<Layout title="SEO">
+<Layout title="PPC">
   <main>
     <section class:list={[classSection, 'relative z-0']}>
-      <BlockHero color="green" shape="square">
+      <BlockHero color="blue" shape="circle">
         <Fragment slot="top">
           <Breadcrumb
-            shape="square"
-            color="green"
-            items={[{ title: 'SEO', href: '/' }]}
+            shape="circle"
+            color="blue"
+            items={[{ title: 'PPC', href: '/' }]}
           />
         </Fragment>
 
@@ -108,28 +108,28 @@ const exampleServiceListItems: any = [
             tag="h1"
             class="font-heading text-fluid-h1 font-semibold text-balance"
           >
-            <span class="text-green">SEO</span> that bounces you to the top
+            <span class="text-blue">Paid Search</span> that turns clicks into customers
           </TextReveal>
         </Fragment>
 
         <Fragment slot="bottom">
           <p class="text-17 md:text-21 text-grey text-balance">
-            Trusted by clients of all shapes and sizes to increase revenue,
-            visibility, leads and conversions online by ranking on page 1 of
-            search engines for targeted keywords.
+            From Google Ads to Meta, LinkedIn, and Bing, our data-driven
+            campaigns are designed to boost your visibility and deliver
+            measurable ROI. Ready to get started?
 
             <a
               href="/"
               class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
             >
-              <LinkArrow class="text-green">Let’s Chat</LinkArrow>
+              <LinkArrow class="text-blue">Let’s Chat</LinkArrow>
             </a>
           </p>
         </Fragment>
 
         <Fragment slot="extra">
           <Cursors hasExit>
-            <Cursor title="SEO Team" class="bg-green" />
+            <Cursor title="PPC Team" class="bg-blue" />
           </Cursors>
         </Fragment>
       </BlockHero>
@@ -137,13 +137,12 @@ const exampleServiceListItems: any = [
 
     <section class:list={[classSection, 'relative z-1']}>
       <BlockOverlaps>
-        <CardCaseStudyHero client="RSVP Call Center" color="green">
+        <CardCaseStudyHero client="RSVP Call Center" color="blue">
           <Fragment slot="headline">
             <h3
               class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
             >
-              <span class="text-green">11,650%</span> increase in top 10 ranking
-              keywords
+              <span class="text-blue">11,650%</span> increase in top 10 ranking keywords
             </h3>
           </Fragment>
 
@@ -185,13 +184,12 @@ const exampleServiceListItems: any = [
           </Fragment>
         </CardCaseStudyHero>
 
-        <CardCaseStudyHero client="Ballet with Isabella" color="green">
+        <CardCaseStudyHero client="Ballet with Isabella" color="blue">
           <Fragment slot="headline">
             <h3
               class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
             >
-              <span class="text-green">24 keywords</span> ranking on page one of
-              Google
+              <span class="text-blue">24 keywords</span> ranking on page one of Google
             </h3>
           </Fragment>
 
@@ -233,12 +231,12 @@ const exampleServiceListItems: any = [
           </Fragment>
         </CardCaseStudyHero>
 
-        <CardCaseStudyHero client="Plus Rooms" color="green">
+        <CardCaseStudyHero client="Plus Rooms" color="blue">
           <Fragment slot="headline">
             <h3
               class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
             >
-              <span class="text-green">+1,405% clicks</span> via non-branded search
+              <span class="text-blue">+1,405% clicks</span> via non-branded search
             </h3>
           </Fragment>
 
@@ -285,7 +283,7 @@ const exampleServiceListItems: any = [
     <section class={classSection}>
       <BlockButtons>
         <a href="/">
-          <Button text="Speak to an SEO expert" hasArrow />
+          <Button text="Speak to a PPC expert" hasArrow />
         </a>
       </BlockButtons>
     </section>
@@ -298,21 +296,21 @@ const exampleServiceListItems: any = [
       <LayoutTheme theme="light">
         <LayoutLines theme="light" class={classSectionThick}>
           <BlockCardStacks
-            description="As a leading boutique, London-based SEO agency, our SEO consultants can help you with everything from eCommerce SEO, SEO Audits, technical SEO and SEO migration."
+            description="We're a leading London-based PPC agency, trusted by businesses of all sizes to drive high-quality traffic and maximise conversions. Let's unlock the full potential of your paid media."
           >
             <Fragment slot="headline">
               <TextReveal
                 tag="h2"
                 class="font-heading text-fluid-h2 font-semibold"
               >
+                We turn clicks into
                 <span class="relative !inline-block">
-                  SEO campaigns
+                  conversions
                   <Icon
                     name="underline"
                     class="!absolute -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] size-full"
                   />
                 </span>
-                that work as hard as you do
               </TextReveal>
             </Fragment>
           </BlockCardStacks>
@@ -322,20 +320,20 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockServiceList
-        color="green"
-        iconColor="green"
+        color="blue"
+        iconColor="blue"
         items={exampleServiceListItems}
         description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
       >
         <Fragment slot="headline">
           <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
-            Your all-in-one<br />SEO partner
+            Your all-in-one<br />Paid Search partner
           </TextReveal>
         </Fragment>
 
         <Fragment slot="extra">
           <Cursors>
-            <Cursor title="SEO Team" class="bg-green" />
+            <Cursor title="PPC Team" class="bg-blue" />
           </Cursors>
         </Fragment>
       </BlockServiceList>
@@ -376,7 +374,7 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <BlockFAQs />
+      <BlockFAQs color="blue" />
     </section>
 
     <section class={classSection}>
@@ -389,12 +387,12 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockPrompt>
-        <CardPrompt shape="square" color="green">
+        <CardPrompt shape="circle" color="blue">
           <Fragment slot="headline">
             <h3
               class="font-heading font-semibold text-40 lg:text-64 text-balance max-w-[20ch] lg:max-w-[14ch]"
             >
-              Ready to start your SEO Campaign?
+              Ready to start your Paid Search Campaign?
             </h3>
           </Fragment>
 
@@ -435,10 +433,10 @@ const exampleServiceListItems: any = [
             </CardService>
 
             <CardService
-              headline="Paid Search"
-              description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
-              shape="circle"
-              color="blue"
+              headline="SEO"
+              description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+              shape="square"
+              color="green"
             >
               <img
                 src="/images/test-service-3.webp"

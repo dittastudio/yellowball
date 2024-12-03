@@ -202,6 +202,8 @@ export default {
       200: '200px',
       220: '220px',
       240: '240px',
+      280: '280px',
+      400: '400px',
     },
     transitionTimingFunction: {
       smooth: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
