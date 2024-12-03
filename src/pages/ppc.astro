@@ -1,0 +1,453 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
+import Button from '@/components/Elements/Button.astro';
+import CardCaseStudyHero from '@/components/Card/CaseStudyHero.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+import CardService from '@/components/Card/Service.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardStacks from '@/components/Block/CardStacks.astro';
+import BlockCarouselProfiles from '@/components/Block/CarouselProfiles.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockGoogle from '@/components/Block/Google.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import BlockOverlaps from '@/components/Block/Overlaps.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockServiceList from '@/components/Block/ServiceList.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+
+const exampleServiceListItems: any = [
+  {
+    headline: 'SEO Audit Services',
+    description:
+      'Our SEO audit service combines strategic insight with technical precision. We cover everything from in-depth buyer persona and competitor research to keyword analysis, full onsite and technical audits, and actionable strategies for content and link building.',
+    icon: {
+      name: 'service-paper-magnifier',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'SEO Consultancy',
+    description:
+      'Our SEO consultancy service offers expert advice tailored to your business. Whether you need support with strategy, technical SEO, or content optimisation, our consultants will guide you in implementing effective SEO that delivers long-term results.',
+    icon: {
+      name: 'info-speech',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'SEO Migration',
+    description:
+      'Planning a website migration? Ensure your rankings stay intact. Our SEO migration service carefully manages every step of your site transition, from technical fixes to URL mapping, ensuring you maintain traffic and search visibility.',
+    icon: {
+      name: 'info-migration',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'eCommerce SEO',
+    description:
+      'Maximise your online store’s visibility with our eCommerce SEO services. We specialise in optimising product pages, implementing technical fixes, and driving organic traffic to your site – helping you increase sales and revenue in competitive markets.',
+    icon: {
+      name: 'logo-ecommerce',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'International SEO',
+    description:
+      'As an experienced international SEO agency, we deliver research-driven SEO services for businesses wanting to establish their brand on a global scale.',
+    icon: {
+      name: 'info-globe',
+      size: 'sm',
+    },
+  },
+  {
+    headline: 'Technical SEO',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. In neque tortor volutpat eget suspendisse. Pellentesque urna tincidunt praesent rhoncus leo varius quis morbi id. Varius etiam porta tortor eget libero auctor non.',
+    icon: {
+      name: 'info-link',
+      size: 'sm',
+    },
+  },
+];
+---
+
+<Layout title="PPC">
+  <main>
+    <section class:list={[classSection, 'relative z-0']}>
+      <BlockHero color="blue" shape="circle">
+        <Fragment slot="top">
+          <Breadcrumb
+            shape="circle"
+            color="blue"
+            items={[{ title: 'PPC', href: '/' }]}
+          />
+        </Fragment>
+
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
+            <span class="text-blue">Paid Search</span> that turns clicks into customers
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            From Google Ads to Meta, LinkedIn, and Bing, our data-driven
+            campaigns are designed to boost your visibility and deliver
+            measurable ROI. Ready to get started?
+
+            <a
+              href="/"
+              class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
+            >
+              <LinkArrow class="text-blue">Let’s Chat</LinkArrow>
+            </a>
+          </p>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors hasExit>
+            <Cursor title="PPC Team" class="bg-blue" />
+          </Cursors>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class:list={[classSection, 'relative z-1']}>
+      <BlockOverlaps>
+        <CardCaseStudyHero client="RSVP Call Center" color="blue">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
+            >
+              <span class="text-blue">11,650%</span> increase in top 10 ranking keywords
+            </h3>
+          </Fragment>
+
+          <Fragment slot="logo">
+            <img
+              class="size-40 lg:size-50"
+              src="/images/test-logo-rsvp-call-center.svg"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              RSVP is a London-based contact centre that helps nationwide
+              clients outsource call centre options overseas.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
+          </Fragment>
+        </CardCaseStudyHero>
+
+        <CardCaseStudyHero client="Ballet with Isabella" color="blue">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
+            >
+              <span class="text-blue">24 keywords</span> ranking on page one of Google
+            </h3>
+          </Fragment>
+
+          <Fragment slot="logo">
+            <img
+              class="size-40 lg:size-50"
+              src="/images/test-logo-ballet-with-isabella.svg"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              Ballet with Isabella is an online provider of ballet training
+              courses, led by well-known ballet dancer Isabella Maguire Mays.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
+          </Fragment>
+        </CardCaseStudyHero>
+
+        <CardCaseStudyHero client="Plus Rooms" color="blue">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 xl:text-64 text-balance max-w-[20ch] xl:max-w-[14ch]"
+            >
+              <span class="text-blue">+1,405% clicks</span> via non-branded search
+            </h3>
+          </Fragment>
+
+          <Fragment slot="logo">
+            <img
+              class="size-40 lg:size-50"
+              src="/images/test-logo-plus-rooms.svg"
+              width="50"
+              height="50"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="description">
+            <p
+              class="font-normal text-15 lg:text-18 text-grey text-pretty max-w-[50ch]"
+            >
+              Plus Rooms is one of London's leading design and build companies,
+              specialising in bespoke home extensions.
+            </p>
+          </Fragment>
+
+          <Fragment slot="media">
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcset="/images/test-case-study-desktop.webp"
+                width="744"
+                height="960"
+              />
+
+              <img
+                src="/images/test-case-study-mobile.webp"
+                width="600"
+                height="330"
+                alt=""
+              />
+            </picture>
+          </Fragment>
+        </CardCaseStudyHero>
+      </BlockOverlaps>
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <a href="/">
+          <Button text="Speak to a PPC expert" hasArrow />
+        </a>
+      </BlockButtons>
+    </section>
+
+    <section class={classSection}>
+      <BlockLogoTicker />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockCardStacks
+            description="We're a leading London-based PPC agency, trusted by businesses of all sizes to drive high-quality traffic and maximise conversions. Let's unlock the full potential of your paid media."
+          >
+            <Fragment slot="headline">
+              <TextReveal
+                tag="h2"
+                class="font-heading text-fluid-h2 font-semibold"
+              >
+                We turn clicks into
+                <span class="relative !inline-block">
+                  conversions
+                  <Icon
+                    name="underline"
+                    class="!absolute -bottom-[0.25em] -left-[0.1em] right-0 h-[0.5em] size-full"
+                  />
+                </span>
+              </TextReveal>
+            </Fragment>
+          </BlockCardStacks>
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceList
+        color="blue"
+        iconColor="blue"
+        items={exampleServiceListItems}
+        description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
+      >
+        <Fragment slot="headline">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Your all-in-one<br />Paid Search partner
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors>
+            <Cursor title="PPC Team" class="bg-blue" />
+          </Cursors>
+        </Fragment>
+      </BlockServiceList>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockTestimonials />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Meet a few of the experts behind your SEO success
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="description">
+          <p class="max-w-[65ch] text-17 md:text-21 text-grey text-balance">
+            We have a globally distributed team of SEO experts across offices in
+            London and South Africa. Here's a glimpse of some of the talented
+            specialists you could be working with. Each brings a wealth of
+            experience and a passion for driving results.
+          </p>
+        </Fragment>
+      </BlockHeroText>
+    </section>
+
+    <section class={classSection}>
+      <BlockCarouselProfiles />
+    </section>
+
+    <section class={classSection}>
+      <BlockFAQs color="blue" />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockGoogle />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="circle" color="blue">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 lg:text-64 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Ready to start your Paid Search Campaign?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get a quote today" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Other Services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <section class={classSection}>
+        <BlockServiceCards>
+          <Fragment slot="cards">
+            <CardService
+              headline="Web Design"
+              description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+              shape="triangle"
+              color="yellow"
+            >
+              <img
+                src="/images/test-service-2.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+
+            <CardService
+              headline="SEO"
+              description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+              shape="square"
+              color="green"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+          </Fragment>
+        </BlockServiceCards>
+      </section>
+    </section>
+  </main>
+</Layout>
