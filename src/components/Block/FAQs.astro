@@ -67,29 +67,25 @@ const exampleQuestions = [
 
   shapes.forEach(shape => {
     const icon = shape.querySelector(
-      '[data-js-shape-gradient-icon]',
+      '[data-js-block-faqs-icon]',
     ) as HTMLElement;
 
     const tl = gsap.timeline({
       scrollTrigger: {
         markers: false,
         trigger: icon,
-        start: 'center bottom',
-        end: 'center center',
-        scrub: 0,
+        start: 'top center',
+        end: 'top 25%',
+        scrub: 1.5,
       },
     });
 
-    tl.from(
-      icon,
-      {
-        opacity: 0,
-        y: '10%',
-        duration: 0.5,
-        ease: 'power2.out',
-      },
-      0,
-    );
+    tl.from(icon, {
+      opacity: 0,
+      y: '10%',
+      scale: 0.95,
+      ease: 'linear',
+    });
   });
 </script>
 
@@ -108,6 +104,7 @@ const exampleQuestions = [
     }
 
     <ShapeGradient
+      data-js-block-faqs-icon
       {shape}
       {color}
       class="absolute top-0 right-0 translate-x-[40%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]"

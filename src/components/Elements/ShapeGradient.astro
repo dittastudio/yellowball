@@ -12,6 +12,7 @@ const {
   shape = 'triangle',
   color = 'yellow',
   class: className,
+  ...rest
 } = Astro.props as Props;
 ---
 
@@ -22,9 +23,9 @@ const {
     colourText[color],
     className,
   ]}
+  {...rest}
 >
   <Icon
-    data-js-shape-gradient-icon
     name={`shape-${shape}`}
     class="block size-full max-w-full max-h-full opacity-15"
   />

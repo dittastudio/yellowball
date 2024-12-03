@@ -43,16 +43,17 @@ const hoverClasses = {
 
 <style>
   .cube-logo {
+    --duration: theme('transitionDuration.250');
     --ease: theme('transitionTimingFunction.smooth');
 
     transition:
-      background-color 0.3s var(--ease),
-      color 0.3s var(--ease);
+      background-color var(--duration) var(--ease),
+      color var(--duration) var(--ease);
   }
 
   .cube-logo__icon {
     opacity: 1;
-    transition: opacity 0.3s var(--ease);
+    transition: opacity var(--duration) var(--ease);
 
     @media (hover: hover) {
       :global(a):hover & {
@@ -63,7 +64,7 @@ const hoverClasses = {
 
   .cube-logo__hover {
     opacity: 0;
-    transition: opacity 0.3s var(--ease);
+    transition: opacity var(--duration) var(--ease);
 
     @media (hover: hover) {
       :global(a):hover & {

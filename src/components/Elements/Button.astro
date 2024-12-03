@@ -43,9 +43,9 @@ const {
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     transition:
-      color theme('transitionDuration.150')
+      color theme('transitionDuration.250')
         theme('transitionTimingFunction.smooth'),
-      background-color theme('transitionDuration.150')
+      background-color theme('transitionDuration.250')
         theme('transitionTimingFunction.smooth');
 
     &::before {
@@ -54,7 +54,7 @@ const {
       inset: 0;
       border: 1px solid var(--button-border-color);
       border-radius: inherit;
-      transition: border theme('transitionDuration.150')
+      transition: border theme('transitionDuration.250')
         theme('transitionTimingFunction.smooth');
     }
 
@@ -65,7 +65,7 @@ const {
       background-color: theme('colors.navy');
       opacity: 0;
       border-radius: inherit;
-      transition: opacity theme('transitionDuration.150')
+      transition: opacity theme('transitionDuration.250')
         theme('transitionTimingFunction.smooth');
     }
 
@@ -109,7 +109,7 @@ const {
 
     .element-button__icon {
       translate: 0 0 0;
-      transition: translate theme('transitionDuration.150')
+      transition: translate theme('transitionDuration.250')
         theme('transitionTimingFunction.smooth');
 
       @media (hover: hover) {
