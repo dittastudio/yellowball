@@ -9,8 +9,6 @@ interface Props {
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
-
 const {
   title,
   headline,
@@ -19,45 +17,98 @@ const {
   class: className,
   ...rest
 } = Astro.props as Props;
-
-const colors = {
-  yellow: 'text-yellow',
-  green: 'text-green',
-  blue: 'text-blue',
-};
-
-const colorTitle = colors[color as keyof typeof colors] ?? '';
 ---
+
+<script>
+  const heros = [
+    ...document.querySelectorAll('[data-js=card-post-hero]'),
+  ] as HTMLElement[];
+
+  heros.forEach(hero => {
+    const imageBlur = hero.querySelector(
+      '[data-js-card-post-hero-blur]',
+    ) as HTMLElement;
+
+    const cardMouseOver = (event: any) => {
+      const { top, left, width, height } = imageBlur.getBoundingClientRect();
+
+      imageBlur.style.setProperty(
+        '--x',
+        String(event.clientX - (left + Math.floor(width / 2))),
+      );
+      imageBlur.style.setProperty(
+        '--y',
+        String(event.clientY - (top + Math.floor(height / 2))),
+      );
+    };
+
+    const cardMouseOut = () => {
+      imageBlur.style.setProperty('--x', '0');
+      imageBlur.style.setProperty('--y', '0');
+    };
+
+    hero.addEventListener('mousemove', cardMouseOver);
+    hero.addEventListener('mouseout', cardMouseOut);
+  });
+</script>
 
 <a
   data-js="card-post-hero"
   href="/"
-  class:list={[
-    'card-post-hero isolate group block w-full bg-navy-light rounded-30 md:rounded-40 overflow-hidden',
-    className,
-  ]}
+  class:list={['card-post-hero isolate group block', className]}
   {...rest}
 >
   <div
     class:list={[
-      'card-post-hero__item',
-      'aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4] [&_img]:size-full [&_img]:object-cover',
-      'relative',
-      'after:absolute after:inset-0 after:bg-gradient-to-tr after:from-black/70 after:from-0% after:to-transparent after:to-80%',
+      'card-post-hero__item relative',
+      'aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
+      '[&_img]:size-full [&_img]:object-cover [&_img]:rounded-30 [&_img]:md:rounded-40',
     ]}
   >
-    {hasSlotDefault && <slot />}
+    {Astro.slots.tags && <slot name="media" />}
+
+    <div
+      data-js-card-post-hero-blur
+      class:list={[
+        'filter-blur absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden -z-1',
+        '',
+      ]}
+    >
+      <div class="filter-blur__inner overflow-hidden">
+        {Astro.slots.tags && <slot name="media" />}
+
+        <svg width="0" height="0">
+          <filter
+            id="blur-and-scale"
+            y="-50%"
+            x="-50%"
+            width="200%"
+            height="200%"
+          >
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="30"
+              result="blurred"
+            >
+            </feGaussianBlur>
+            <feColorMatrix type="saturate" in="blurred" values="2">
+            </feColorMatrix>
+            <feComposite in="SourceGraphic" operator="over"></feComposite>
+          </filter>
+        </svg>
+      </div>
+    </div>
   </div>
 
   <div
-    class="card-post-hero__item relative z-1 p-30 md:p-60 flex justify-between"
+    class:list={[
+      'card-post-hero__item relative z-1 p-30 md:p-60 flex justify-between',
+      'rounded-30 md:rounded-40 overflow-hidden',
+      'bg-gradient-to-tr from-black/70 to-80% to-transparent pointer-events-none',
+    ]}
   >
     <div class="mt-auto flex flex-col gap-16 md:gap-20">
-      <p
-        class:list={['font-heading font-bold text-15 text-balance', colorTitle]}
-      >
-        {title}
-      </p>
+      {Astro.slots.tags && <slot name="tags" />}
 
       <h3
         class="font-heading font-semibold text-34 lg:text-48 max-w-[18em] text-balance"
@@ -94,5 +145,44 @@ const colorTitle = colors[color as keyof typeof colors] ?? '';
 
   .card-post-hero__item {
     grid-area: stack;
+  }
+
+  .filter-blur {
+    filter: url(#blur-and-scale);
+
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      --x: 0;
+      --y: 0;
+      --t: 50;
+
+      transform-style: preserve-3d;
+      perspective: 500px;
+    }
+  }
+
+  .filter-blur__inner {
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      will-change: transform;
+
+      opacity: 0;
+      transform-style: preserve-3d;
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+
+      outline: 1px solid transparent; /* FF smooths edges */
+
+      transition: all 1s theme('transitionTimingFunction.out');
+
+      .card-post-hero:hover & {
+        opacity: 0.75;
+        transform: translate3d(
+            calc(var(--x) / var(--t) * 8px),
+            calc(var(--y) / var(--t) * 8px),
+            16px
+          )
+          rotateX(calc(var(--y) / var(--t) * 1deg))
+          rotateY(calc(var(--x) / var(--t) * -1deg));
+        transition: all 1s theme('transitionTimingFunction.out');
+      }
+    }
   }
 </style>

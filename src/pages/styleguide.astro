@@ -391,7 +391,23 @@ const classCardCSSCols =
         color="green"
         time="3 Min Read"
       >
-        <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
+        <img
+          slot="media"
+          src="/images/test-post-hero.jpg"
+          width="500"
+          height="300"
+          alt=""
+        />
+
+        <TagList
+          slot="tags"
+          size="large"
+          items={[
+            { title: 'SEO', color: 'green' },
+            { title: 'Web Design', color: 'yellow' },
+            { title: 'PPC', color: 'blue' },
+          ]}
+        />
       </CardPostHero>
     </StyleguideSection>
 
