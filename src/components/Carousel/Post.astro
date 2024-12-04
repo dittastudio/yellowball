@@ -1,5 +1,5 @@
 ---
-import CardInsight from '@/components/Card/Insight.astro';
+import CardPost from '@/components/Card/Post.astro';
 import Button from '@/components/Elements/Button.astro';
 import Icon from '@/components/Elements/Icon.astro';
 
@@ -89,14 +89,14 @@ const classNavButton =
           {
             slides?.map(({ title, headline, color, time, image }) => (
               <div class="swiper-slide">
-                <CardInsight {title} {headline} {color} {time}>
+                <CardPost {title} {headline} {color} {time}>
                   <img
                     src={image.src}
                     alt={image.alt}
                     width={image.width}
                     height={image.height}
                   />
-                </CardInsight>
+                </CardPost>
               </div>
             ))
           }

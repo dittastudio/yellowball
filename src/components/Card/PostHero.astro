@@ -1,0 +1,98 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Props {
+  title: string;
+  headline: string;
+  color: ColorTypes;
+  time?: string;
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+
+const {
+  title,
+  headline,
+  color,
+  time,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const colors = {
+  yellow: 'text-yellow',
+  green: 'text-green',
+  blue: 'text-blue',
+};
+
+const colorTitle = colors[color as keyof typeof colors] ?? '';
+---
+
+<a
+  data-js="card-post-hero"
+  href="/"
+  class:list={[
+    'card-post-hero isolate group block w-full bg-navy-light rounded-30 md:rounded-40 overflow-hidden',
+    className,
+  ]}
+  {...rest}
+>
+  <div
+    class:list={[
+      'card-post-hero__item',
+      'aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4] [&_img]:size-full [&_img]:object-cover',
+      'relative',
+      'after:absolute after:inset-0 after:bg-gradient-to-tr after:from-black/70 after:from-0% after:to-transparent after:to-80%',
+    ]}
+  >
+    {hasSlotDefault && <slot />}
+  </div>
+
+  <div
+    class="card-post-hero__item relative z-1 p-30 md:p-60 flex justify-between"
+  >
+    <div class="mt-auto flex flex-col gap-16 md:gap-20">
+      <p
+        class:list={['font-heading font-bold text-15 text-balance', colorTitle]}
+      >
+        {title}
+      </p>
+
+      <h3
+        class="font-heading font-semibold text-34 lg:text-48 max-w-[18em] text-balance"
+      >
+        {headline}
+      </h3>
+
+      {
+        time && (
+          <p class="flex items-center pt-10 md:pt-30 gap-6 lg:gap-8 text-11 lg:text-13 font-heading font-bold text-grey">
+            <Icon name="clock" class="size-10 lg:size-14" />
+            {time}
+          </p>
+        )
+      }
+    </div>
+
+    <div class="shrink-0 mdMax:p-10">
+      <Icon
+        name="arrow-ne"
+        width={12}
+        height={12}
+        class="block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+      />
+    </div>
+  </div>
+</a>
+
+<style>
+  .card-post-hero {
+    display: grid;
+    grid-template-areas: 'stack';
+  }
+
+  .card-post-hero__item {
+    grid-area: stack;
+  }
+</style>
