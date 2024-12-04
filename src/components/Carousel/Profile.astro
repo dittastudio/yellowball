@@ -25,7 +25,7 @@ const classes = ['carousel-profile', className];
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
 
-    if (swiperEl) {
+    if (carousel && swiperEl) {
       const swiperParams: SwiperOptions = {
         speed: 500,
         slidesPerView: 'auto',
@@ -45,6 +45,33 @@ const classes = ['carousel-profile', className];
             `;
           },
         },
+        breakpoints: {
+          390: {
+            centeredSlides: true,
+          },
+          640: {
+            centeredSlides: false,
+          },
+        },
+        on: {
+          init() {
+            carousel.classList.add('is-first-slide');
+          },
+
+          slideChange({ isBeginning, isEnd }) {
+            if (isBeginning) {
+              carousel.classList.add('is-first-slide');
+            } else {
+              carousel.classList.remove('is-first-slide');
+            }
+
+            if (isEnd) {
+              carousel.classList.add('is-last-slide');
+            } else {
+              carousel.classList.remove('is-last-slide');
+            }
+          },
+        },
       };
 
       new Swiper(swiperEl, {
@@ -60,12 +87,12 @@ const classes = ['carousel-profile', className];
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
-  <div data-js-swiper class="swiper">
-    <div class="swiper-wrapper">
+  <div data-js-swiper class="carousel-profile__swiper swiper">
+    <div class="carousel-profile__swiper-wrapper swiper-wrapper">
       {
         slides?.map(slide =>
           slide.type === 'profile' ? (
-            <div class="swiper-slide">
+            <div class="carousel-profile__swiper-slide swiper-slide">
               <CardProfile role={slide.role} name={slide.name} {color}>
                 <img
                   class="object-cover size-full"
@@ -77,7 +104,7 @@ const classes = ['carousel-profile', className];
               </CardProfile>
             </div>
           ) : (
-            <div class="swiper-slide">
+            <div class="carousel-profile__swiper-slide swiper-slide">
               <CardProfileSummary title={slide.title} copy={slide.copy} {color}>
                 {slide.avatars?.map((avatar: any) => (
                   <img
@@ -95,30 +122,39 @@ const classes = ['carousel-profile', className];
     </div>
 
     <div class="text-center col-span-full mt-20 md:hidden">
-      <div class="swiper-pagination"></div>
+      <div class="carousel-profile__swiper-pagination swiper-pagination"></div>
     </div>
   </div>
 
   <style>
-    .swiper {
+    .carousel-profile__swiper {
       display: grid;
       grid-template-columns: repeat(8, minmax(0, 1fr));
       margin-left: calc(-1 * var(--inner-gutter));
     }
 
-    .swiper-wrapper {
+    .carousel-profile__swiper-wrapper {
       grid-column: span 8;
 
-      @screen xs {
+      @media screen(xsToSm) {
         grid-column: span 7;
-      }
+        left: 0;
 
-      @screen sm {
-        grid-column: span 8;
+        transition:
+          transform 0.5s var(--swiper-slide-ease),
+          left 0.5s theme('transitionTimingFunction.smooth') !important;
+
+        .carousel-profile.is-first-slide & {
+          left: -7%;
+        }
+
+        .carousel-profile.is-last-slide & {
+          left: 7%;
+        }
       }
     }
 
-    .swiper-slide {
+    .carousel-profile__swiper-slide {
       padding-left: var(--inner-gutter);
       width: 100%;
 
@@ -131,7 +167,7 @@ const classes = ['carousel-profile', className];
       }
     }
 
-    .swiper-pagination {
+    .carousel-profile__swiper-pagination {
       display: inline-flex;
     }
   </style>
