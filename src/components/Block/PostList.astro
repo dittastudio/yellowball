@@ -1,5 +1,6 @@
 ---
 import CardPost from '@/components/Card/Post.astro';
+import Button from '@/components/Elements/Button.astro';
 
 const examplePost = {
   tags: [{ title: 'PPC', color: 'yellow' }],
@@ -25,21 +26,51 @@ const examplePosts: any = [
 ];
 ---
 
-<div
-  class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-30"
->
-  {
-    examplePosts?.map(({ tags, headline, color, time, image }) => (
-      <div class="swiper-slide">
-        <CardPost {tags} {headline} {color} {time}>
-          <img
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-          />
-        </CardPost>
+<div class="wrapper">
+  <div
+    class="flex flex-wrap items-center justify-between gap-x-20 gap-y-40 pb-50 md:pb-60"
+  >
+    <h2 class="font-heading font-semibold text-fluid-h3">All posts</h2>
+
+    <div class="shrink-0 mdMax:w-full">
+      <div class="mdMax:-mx-[var(--outer-gutter)]">
+        <ul
+          class="scroll-x mdMax:px-[var(--outer-gutter)] flex gap-10 md:gap-12 whitespace-nowrap"
+        >
+          <li>
+            <Button text="All posts" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="Web Design" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="SEO" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="PPC" />
+          </li>
+        </ul>
       </div>
-    ))
-  }
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 md:gap-30">
+    {
+      examplePosts?.map(({ tags, headline, color, time, image }) => (
+        <div class="swiper-slide">
+          <CardPost {tags} {headline} {color} {time}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+            />
+          </CardPost>
+        </div>
+      ))
+    }
+  </div>
 </div>
