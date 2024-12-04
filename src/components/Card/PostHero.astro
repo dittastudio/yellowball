@@ -1,0 +1,206 @@
+---
+import { colourBackground } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+import TagList from '@/components/Elements/TagList.astro';
+
+interface Props {
+  tags: TagObject[];
+  headline: string;
+  color: ColorTypes;
+  time?: string;
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+
+const {
+  tags,
+  headline,
+  color,
+  time,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<script>
+  const heros = [
+    ...document.querySelectorAll('[data-js=card-post-hero]'),
+  ] as HTMLElement[];
+
+  heros.forEach(hero => {
+    const imageBlur = hero.querySelector(
+      '[data-js-card-post-hero-bg]',
+    ) as HTMLElement;
+
+    const cardMouseOver = (event: any) => {
+      const { top, left, width, height } = imageBlur.getBoundingClientRect();
+
+      hero.style.setProperty(
+        '--x',
+        String(event.clientX - (left + Math.floor(width / 2))),
+      );
+      hero.style.setProperty(
+        '--y',
+        String(event.clientY - (top + Math.floor(height / 2))),
+      );
+    };
+
+    const cardMouseOut = () => {
+      hero.style.setProperty('--x', '0');
+      hero.style.setProperty('--y', '0');
+    };
+
+    hero.addEventListener('mousemove', cardMouseOver);
+    hero.addEventListener('mouseout', cardMouseOut);
+  });
+</script>
+
+<a
+  data-js="card-post-hero"
+  href="/"
+  class:list={[
+    'card-post-hero group relative block isolate aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
+    '[&_img]:size-full [&_img]:object-cover',
+    className,
+  ]}
+  {...rest}
+>
+  <div class="relative z-1 h-full overflow-hidden rounded-30 md:rounded-40">
+    {hasSlotDefault && <slot />}
+  </div>
+
+  <div
+    data-js-card-post-hero-bg
+    class:list={[
+      'card-post-hero__case absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden',
+      '',
+    ]}
+  >
+    <div class="card-post-hero__bg">
+      {hasSlotDefault && <slot />}
+    </div>
+  </div>
+
+  <div class:list={['card-post-hero__shadow', colourBackground[color]]}></div>
+
+  <div
+    class:list={[
+      'absolute inset-0 z-1 p-30 md:p-60 flex justify-between',
+      'rounded-30 md:rounded-40 overflow-hidden',
+      'after:absolute after:inset-0 after:-z-1 after:bg-gradient-to-tr after:from-black after:to-80% after:to-transparent after:pointer-events-none',
+      'after:transition-opacity after:duration-500 after:ease-smooth',
+      'after:opacity-70 group-hover:after:opacity-80',
+    ]}
+  >
+    <div class="mt-auto flex flex-col gap-16 md:gap-20">
+      <TagList size="large" items={tags} />
+
+      <h3
+        class="font-heading font-semibold text-34 lg:text-48 max-w-[18em] text-balance"
+      >
+        {headline}
+      </h3>
+
+      {
+        time && (
+          <p class="flex items-center pt-10 md:pt-30 gap-6 lg:gap-8 text-11 lg:text-13 font-heading font-bold text-grey">
+            <Icon name="clock" class="size-10 lg:size-14" />
+            {time}
+          </p>
+        )
+      }
+    </div>
+
+    <div class="shrink-0 mdMax:p-10">
+      <Icon
+        name="arrow-ne"
+        width={12}
+        height={12}
+        class="block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+      />
+    </div>
+  </div>
+</a>
+
+<style>
+  .card-post-hero {
+    --x: 0;
+    --y: 0;
+    --t: 50;
+  }
+
+  .card-post-hero__shadow {
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      --t: 5;
+
+      pointer-events: none;
+      will-change: transform, opacity;
+      content: '';
+
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      transform-style: preserve-3d;
+      translate: 0 0 0;
+
+      width: 80%;
+      height: 80%;
+      margin: auto;
+
+      opacity: 0;
+      /* background-color: theme('colors.green'); */
+      filter: blur(50px);
+
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.out'),
+        translate 0s 0.25s;
+    }
+
+    .card-post-hero:hover & {
+      translate: calc(var(--x) / var(--t) * 1px) calc(var(--y) / var(--t) * 1px)
+        0;
+      opacity: 0.5;
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.out'),
+        translate 0.25s theme('transitionTimingFunction.out');
+    }
+  }
+
+  .card-post-hero__case {
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      transform-style: preserve-3d;
+      perspective: 500px;
+    }
+  }
+
+  .card-post-hero__bg {
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      position: relative;
+      height: 100%;
+      will-change: transform;
+      z-index: -1;
+
+      opacity: 0;
+      filter: blur(0px) contrast(200%) brightness(150%);
+      transform-style: preserve-3d;
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+
+      outline: 1px solid transparent; /* FF smooths edges */
+
+      transition: all 1s theme('transitionTimingFunction.out');
+
+      .card-post-hero:hover & {
+        opacity: 1;
+        transform: translate3d(
+            calc(var(--x) / var(--t) * 8px),
+            calc(var(--y) / var(--t) * 8px),
+            16px
+          )
+          rotateX(calc(var(--y) / var(--t) * 1deg))
+          rotateY(calc(var(--x) / var(--t) * -1deg));
+        transition: all 1s theme('transitionTimingFunction.out');
+      }
+    }
+  }
+</style>

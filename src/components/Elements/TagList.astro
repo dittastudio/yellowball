@@ -1,0 +1,41 @@
+---
+import { colourText } from '@/utils/maps';
+
+interface Props {
+  items: TagObject[];
+  size?: 'small' | 'large';
+  colorGlobal?: ColorTypes | null;
+  class?: string;
+}
+
+const {
+  items,
+  size = 'small',
+  colorGlobal = null,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<div class:list={['tag-list overflow-hidden', className]} {...rest}>
+  <ul
+    class:list={[
+      'tag-list__list flex flex-wrap -mt-[0.6em] -ml-[1.85em] font-heading font-bold',
+      size === 'small' ? 'text-11 lg:text-13' : 'text-15',
+    ]}
+  >
+    {
+      items.map(({ title, color = 'green' }) => (
+        <li
+          class:list={[
+            'relative pt-[0.6em] pl-[1.85em]',
+            "before:content-['•'] before:absolute before:text-white before:left-[0.75em]",
+            colourText[color],
+          ]}
+        >
+          {title}
+        </li>
+      ))
+    }
+  </ul>
+</div>
