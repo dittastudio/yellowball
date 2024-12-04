@@ -1,10 +1,11 @@
 ---
 import Icon from '@/components/Elements/Icon.astro';
+import TagList from '@/components/Elements/TagList.astro';
 
 interface Props {
-  title: string;
+  tags: TagObject[];
   headline: string;
-  color: ColorTypes;
+  color?: ColorTypes;
   time?: string;
   class?: string;
 }
@@ -12,29 +13,18 @@ interface Props {
 const hasSlotDefault = !!Astro.slots.default;
 
 const {
-  title,
+  tags,
   headline,
   color,
   time,
   class: className,
   ...rest
 } = Astro.props as Props;
-
-const colors = {
-  yellow: 'text-yellow',
-  green: 'text-green',
-  blue: 'text-blue',
-};
-
-const colorTitle = colors[color as keyof typeof colors] ?? '';
 ---
 
 <div
-  data-js="card-insight"
-  class:list={[
-    'w-full text-white text-left bg-navy-light rounded-20 lg:rounded-30',
-    className,
-  ]}
+  data-js="card-post"
+  class:list={['w-full bg-navy-light rounded-20 lg:rounded-30', className]}
   {...rest}
 >
   <a
@@ -57,14 +47,7 @@ const colorTitle = colors[color as keyof typeof colors] ?? '';
         class="absolute top-15 right-15 lg:top-20 lg:right-20 z-10 block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
       />
 
-      <p
-        class:list={[
-          'font-heading font-bold text-11 lg:text-13 text-balance',
-          colorTitle,
-        ]}
-      >
-        {title}
-      </p>
+      {tags && <TagList size="small" items={tags} />}
 
       <h3 class="font-heading font-semibold text-18 lg:text-24 text-balance">
         {headline}
@@ -72,7 +55,7 @@ const colorTitle = colors[color as keyof typeof colors] ?? '';
 
       {
         time && (
-          <p class="flex items-center pt-20 mt-auto gap-5 lg:gap-10 text-11 lg:text-13 font-heading font-bold text-grey">
+          <p class="flex items-center pt-20 mt-auto gap-6 lg:gap-8 text-11 lg:text-13 font-heading font-bold text-grey">
             <Icon name="clock" class="size-10 lg:size-14" />
             {time}
           </p>

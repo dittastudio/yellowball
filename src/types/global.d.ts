@@ -9,5 +9,10 @@ interface ImageObject {
   height: number
 }
 
+interface TagObject {
+  title: string;
+  color?: ColorTypes;
+}
+
 type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple' | 'white'
 type ShapeTypes = 'circle' | 'square' | 'triangle'

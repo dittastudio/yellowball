@@ -10,7 +10,8 @@ import Button from '@/components/Elements/Button.astro';
 import CardAvatars from '@/components/Card/Avatars.astro';
 import CardCta from '@/components/Card/Cta.astro';
 import CardFigure from '@/components/Card/Figure.astro';
-import CardInsight from '@/components/Card/Insight.astro';
+import CardPost from '@/components/Card/Post.astro';
+import CardPostHero from '@/components/Card/PostHero.astro';
 import CardMedia from '@/components/Card/Media.astro';
 import CardProfile from '@/components/Card/Profile.astro';
 import CardProfileSummary from '@/components/Card/ProfileSummary.astro';
@@ -25,6 +26,7 @@ import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
+import TagList from '@/components/Elements/TagList.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -86,6 +88,62 @@ const classCardCSSCols =
           This is a link larger link
         </LinkArrow>
       </a>
+    </StyleguideSection>
+
+    <StyleguideSection title="Tag List">
+      <TagList
+        items={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="small"
+        items={[
+          { title: 'Wrapping dots test', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="large"
+        items={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="large"
+        items={[
+          { title: 'Wrapping dots test', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
     </StyleguideSection>
 
     <StyleguideSection title="Cubes">
@@ -295,35 +353,53 @@ const classCardCSSCols =
       </div>
     </StyleguideSection>
 
-    <StyleguideSection title="Card Insight">
+    <StyleguideSection title="Card Post">
       <div class={classCardGrid3}>
-        <CardInsight
-          title="Web Design"
+        <CardPost
+          tags={[
+            { title: 'Web Design', color: 'yellow' },
+            { title: 'SEO', color: 'green' },
+          ]}
           headline="10 Steps to a Reliable Website Marketing Strategy"
           color="yellow"
           time="3 Min Read"
         >
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
-        </CardInsight>
+        </CardPost>
 
-        <CardInsight
-          title="SEO"
+        <CardPost
+          tags={[{ title: 'SEO', color: 'green' }]}
           headline="A WordPress SEO Expert Approach to SEO Friendly Websites That Google Loves"
           color="green"
           time="14 Min Read"
         >
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
-        </CardInsight>
+        </CardPost>
 
-        <CardInsight
-          title="PPC"
+        <CardPost
+          tags={[{ title: 'PPC', color: 'blue' }]}
           headline="A Beginner's Guide to Website Maintenance"
           color="blue"
           time="3 Min Read"
         >
           <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
-        </CardInsight>
+        </CardPost>
       </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Post Hero">
+      <CardPostHero
+        tags={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+        headline="10 Steps to a Reliable Website Marketing Strategy"
+        color="purple"
+        time="3 Min Read"
+      >
+        <img src="/images/test-post-hero.jpg" width="500" height="300" alt="" />
+      </CardPostHero>
     </StyleguideSection>
 
     <StyleguideSection title="Card Rating">

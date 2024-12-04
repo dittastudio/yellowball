@@ -35,7 +35,7 @@ const clamp = ({
 }
 
 export const screenSizes = {
-  xs: 375,
+  xs: 390,
   sm: 640,
   md: 768,
   lg: 1024,
