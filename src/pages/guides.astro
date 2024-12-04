@@ -6,6 +6,7 @@ import BlockHero from '@/components/Block/Hero.astro';
 import BlockPostList from '@/components/Block/PostList.astro';
 import BlockButtons from '@/components/Block/Buttons.astro';
 import Button from '@/components/Elements/Button.astro';
+import ButtonScrollToTop from '@/components/UI/ButtonScrollToTop.astro';
 
 // import LayoutTheme from '@/components/Layout/Theme.astro';
 // import LayoutLines from '@/components/Layout/Lines.astro';
@@ -70,9 +71,9 @@ const classSection = 'py-50 md:py-[75px]';
           <Button text="Load more" />
         </a>
 
-        <a href="/">
+        <ButtonScrollToTop>
           <Button type="white-border" text="Back to top" />
-        </a>
+        </ButtonScrollToTop>
       </BlockButtons>
     </section>
   </main>
