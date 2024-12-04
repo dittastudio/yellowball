@@ -32,19 +32,19 @@ const {
     const cardMouseOver = (event: any) => {
       const { top, left, width, height } = imageBlur.getBoundingClientRect();
 
-      imageBlur.style.setProperty(
+      hero.style.setProperty(
         '--x',
         String(event.clientX - (left + Math.floor(width / 2))),
       );
-      imageBlur.style.setProperty(
+      hero.style.setProperty(
         '--y',
         String(event.clientY - (top + Math.floor(height / 2))),
       );
     };
 
     const cardMouseOut = () => {
-      imageBlur.style.setProperty('--x', '0');
-      imageBlur.style.setProperty('--y', '0');
+      hero.style.setProperty('--x', '0');
+      hero.style.setProperty('--y', '0');
     };
 
     hero.addEventListener('mousemove', cardMouseOver);
@@ -55,54 +55,35 @@ const {
 <a
   data-js="card-post-hero"
   href="/"
-  class:list={['card-post-hero isolate group block', className]}
+  class:list={[
+    'card-post-hero isolate group block aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
+    className,
+  ]}
   {...rest}
 >
-  <div
-    class:list={[
-      'card-post-hero__item relative',
-      'aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
-      '[&_img]:size-full [&_img]:object-cover [&_img]:rounded-30 [&_img]:md:rounded-40',
-    ]}
-  >
-    {Astro.slots.tags && <slot name="media" />}
+  <div class:list={['h-full [&_img]:size-full [&_img]:object-cover']}>
+    <div
+      class="rounded-30 md:rounded-40 overflow-hidden h-inherit relative z-1"
+    >
+      {Astro.slots.tags && <slot name="media" />}
+    </div>
 
     <div
       data-js-card-post-hero-blur
       class:list={[
-        'filter-blur absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden -z-1',
+        'filter-blur absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden',
         '',
       ]}
     >
-      <div class="filter-blur__inner overflow-hidden">
+      <div class="filter-blur__inner">
         {Astro.slots.tags && <slot name="media" />}
-
-        <svg width="0" height="0">
-          <filter
-            id="blur-and-scale"
-            y="-50%"
-            x="-50%"
-            width="200%"
-            height="200%"
-          >
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="30"
-              result="blurred"
-            >
-            </feGaussianBlur>
-            <feColorMatrix type="saturate" in="blurred" values="2">
-            </feColorMatrix>
-            <feComposite in="SourceGraphic" operator="over"></feComposite>
-          </filter>
-        </svg>
       </div>
     </div>
   </div>
 
   <div
     class:list={[
-      'card-post-hero__item relative z-1 p-30 md:p-60 flex justify-between',
+      'absolute inset-0 z-1 p-30 md:p-60 flex justify-between',
       'rounded-30 md:rounded-40 overflow-hidden',
       'bg-gradient-to-tr from-black/70 to-80% to-transparent pointer-events-none',
     ]}
@@ -139,22 +120,50 @@ const {
 
 <style>
   .card-post-hero {
-    display: grid;
-    grid-template-areas: 'stack';
-  }
+    --x: 0;
+    --y: 0;
+    --t: 50;
 
-  .card-post-hero__item {
-    grid-area: stack;
-  }
+    position: relative;
 
+    &::after {
+      --t: 5;
+
+      pointer-events: none;
+      will-change: transform, opacity;
+      content: '';
+
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      transform-style: preserve-3d;
+      translate: 0 0 0;
+
+      width: 80%;
+      height: 80%;
+
+      opacity: 0;
+      background-color: theme('colors.green');
+      filter: blur(50px);
+
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.out'),
+        translate 0s 0.25s;
+    }
+
+    &:hover {
+      &::after {
+        translate: calc(var(--x) / var(--t) * 1px)
+          calc(var(--y) / var(--t) * 1px) 0;
+        opacity: 0.5;
+        transition:
+          opacity 0.25s theme('transitionTimingFunction.out'),
+          translate 0.25s theme('transitionTimingFunction.out');
+      }
+    }
+  }
   .filter-blur {
-    filter: url(#blur-and-scale);
-
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-      --x: 0;
-      --y: 0;
-      --t: 100;
-
       transform-style: preserve-3d;
       perspective: 500px;
     }
@@ -162,9 +171,13 @@ const {
 
   .filter-blur__inner {
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      position: relative;
+      height: 100%;
       will-change: transform;
+      z-index: -1;
 
       opacity: 0;
+      filter: blur(0px) contrast(200%) brightness(150%);
       transform-style: preserve-3d;
       transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
 
