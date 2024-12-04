@@ -9,7 +9,7 @@ export default defineConfig({
   scopedStyleStrategy: 'where',
   build: {
     format: 'preserve',
-    assets: '_assets',
+    assets: 'assets',
     inlineStylesheets: 'never',
   },
   vite: {
