@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import CardPostHero from '@/components/Card/PostHero.astro';
 import BlockHero from '@/components/Block/Hero.astro';
+import BlockPostList from '@/components/Block/PostList.astro';
 import BlockButtons from '@/components/Block/Buttons.astro';
 import Button from '@/components/Elements/Button.astro';
 
@@ -57,6 +58,10 @@ const classSection = 'py-50 md:py-[75px]';
           />
         </CardPostHero>
       </div>
+    </section>
+
+    <section class={classSection}>
+      <BlockPostList />
     </section>
 
     <section class={classSection}>

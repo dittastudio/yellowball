@@ -1,0 +1,45 @@
+---
+import CardPost from '@/components/Card/Post.astro';
+
+const examplePost = {
+  tags: [{ title: 'PPC', color: 'yellow' }],
+  headline: '10 Steps to a Reliable Website Marketing Strategy',
+  time: '3 Min Read',
+  image: {
+    src: '/images/test-laptop.webp',
+    alt: '',
+    width: 500,
+    height: 300,
+  },
+};
+
+const examplePosts: any = [
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+  examplePost,
+];
+---
+
+<div
+  class="wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-30"
+>
+  {
+    examplePosts?.map(({ tags, headline, color, time, image }) => (
+      <div class="swiper-slide">
+        <CardPost {tags} {headline} {color} {time}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        </CardPost>
+      </div>
+    ))
+  }
+</div>
