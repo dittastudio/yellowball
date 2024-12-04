@@ -153,7 +153,7 @@ const {
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       --x: 0;
       --y: 0;
-      --t: 50;
+      --t: 100;
 
       transform-style: preserve-3d;
       perspective: 500px;
@@ -173,7 +173,7 @@ const {
       transition: all 1s theme('transitionTimingFunction.out');
 
       .card-post-hero:hover & {
-        opacity: 0.75;
+        opacity: 1;
         transform: translate3d(
             calc(var(--x) / var(--t) * 8px),
             calc(var(--y) / var(--t) * 8px),
