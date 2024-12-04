@@ -26,6 +26,7 @@ import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
+import TagList from '@/components/Elements/TagList.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -87,6 +88,62 @@ const classCardCSSCols =
           This is a link larger link
         </LinkArrow>
       </a>
+    </StyleguideSection>
+
+    <StyleguideSection title="Tag List">
+      <TagList
+        items={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="small"
+        items={[
+          { title: 'Wrapping dots test', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="large"
+        items={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
+
+      <br />
+
+      <TagList
+        size="large"
+        items={[
+          { title: 'Wrapping dots test', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
+      />
     </StyleguideSection>
 
     <StyleguideSection title="Cubes">
