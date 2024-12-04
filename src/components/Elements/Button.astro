@@ -19,8 +19,8 @@ const {
 <span
   class:list={[
     'element-button',
-    'inline-flex justify-center items-baseline gap-8 md:gap-12',
-    'px-[26px] pt-[15px] pb-[16px]',
+    'relative inline-flex justify-center items-baseline gap-8 md:gap-12',
+    'px-[26px] pt-[16px] pb-[15px]',
     'md:px-[33px]',
     'rounded-20',
     'font-heading text-15 md:text-18 font-bold',
@@ -39,7 +39,6 @@ const {
 
 <style>
   .element-button {
-    position: relative;
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     transition:
@@ -115,7 +114,7 @@ const {
       @media (hover: hover) {
         :global(a):hover &,
         :global(button):not(:disabled):hover & {
-          translate: 2px -2px 0;
+          translate: 50% -50% 0;
         }
       }
     }
