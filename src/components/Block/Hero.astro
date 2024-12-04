@@ -22,35 +22,40 @@ const { color = 'blue', shape } = Astro.props as Props;
   heros.forEach(hero => {
     const html = document.documentElement as HTMLElement;
     const icon = hero.querySelector('[data-js-hero-icon]') as HTMLElement;
+    const iconInner = hero.querySelector(
+      '[data-js-hero-icon-inner]',
+    ) as HTMLElement;
 
-    const tlIntro = gsap.timeline();
+    if (icon) {
+      const tl1 = gsap.timeline();
 
-    tlIntro.to(icon, {
-      opacity: 1,
-      y: '0%',
-      scale: 1,
-      duration: 1,
-      delay: 0.5,
-      ease: 'power4.out',
-    });
+      tl1.to(icon, {
+        opacity: 1,
+        y: '0%',
+        scale: 1,
+        duration: 1,
+        delay: 0.5,
+        ease: 'power4.out',
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        markers: false,
-        trigger: html,
-        endTrigger: hero,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: html,
+          endTrigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
 
-    tl.to(icon, {
-      opacity: 0,
-      y: '-30%',
-      scale: 0.75,
-      ease: 'linear',
-    });
+      tl.to(iconInner, {
+        opacity: 0,
+        y: '-30%',
+        scale: 0.75,
+        ease: 'linear',
+      });
+    }
   });
 </script>
 
@@ -60,16 +65,19 @@ const { color = 'blue', shape } = Astro.props as Props;
 >
   {
     shape && (
-      <ShapeGradient
+      <span
+        class="absolute top-50 md:top-70 left-1/2 -translate-x-1/2 opacity-0 translate-y-[10%] scale-[1.1] -z-2"
         data-js-hero-icon
-        {shape}
-        {color}
-        class:list={[
-          'absolute top-50 md:top-70 left-1/2 -translate-x-1/2 -z-2',
-          'size-[65vw] md:size-[56vw] max-w-[800px] max-h-[800px]',
-          'opacity-0 translate-y-[10%] scale-[1.1]',
-        ]}
-      />
+      >
+        <ShapeGradient
+          data-js-hero-icon-inner
+          {shape}
+          {color}
+          class:list={[
+            'block size-[65vw] md:size-[56vw] max-w-[800px] max-h-[800px]',
+          ]}
+        />
+      </span>
     )
   }
 
