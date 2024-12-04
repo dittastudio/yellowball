@@ -356,7 +356,7 @@ const classCardCSSCols =
     <StyleguideSection title="Card Post">
       <div class={classCardGrid3}>
         <CardPost
-          title="Web Design"
+          tags={[{ title: 'Web Design', color: 'purple' }]}
           headline="10 Steps to a Reliable Website Marketing Strategy"
           color="yellow"
           time="3 Min Read"
@@ -365,7 +365,7 @@ const classCardCSSCols =
         </CardPost>
 
         <CardPost
-          title="SEO"
+          tags={[{ title: 'SEO', color: 'purple' }]}
           headline="A WordPress SEO Expert Approach to SEO Friendly Websites That Google Loves"
           color="green"
           time="14 Min Read"
@@ -374,7 +374,7 @@ const classCardCSSCols =
         </CardPost>
 
         <CardPost
-          title="PPC"
+          tags={[{ title: 'PPC', color: 'purple' }]}
           headline="A Beginner's Guide to Website Maintenance"
           color="blue"
           time="3 Min Read"
@@ -386,28 +386,16 @@ const classCardCSSCols =
 
     <StyleguideSection title="Card Post Hero">
       <CardPostHero
-        title="Web Design"
+        tags={[
+          { title: 'SEO', color: 'green' },
+          { title: 'Web Design', color: 'yellow' },
+          { title: 'PPC', color: 'blue' },
+        ]}
         headline="10 Steps to a Reliable Website Marketing Strategy"
         color="purple"
         time="3 Min Read"
       >
-        <img
-          slot="media"
-          src="/images/test-post-hero.jpg"
-          width="500"
-          height="300"
-          alt=""
-        />
-
-        <TagList
-          slot="tags"
-          size="large"
-          items={[
-            { title: 'SEO', color: 'green' },
-            { title: 'Web Design', color: 'yellow' },
-            { title: 'PPC', color: 'blue' },
-          ]}
-        />
+        <img src="/images/test-post-hero.jpg" width="500" height="300" alt="" />
       </CardPostHero>
     </StyleguideSection>
 

@@ -1,17 +1,20 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
 import { colourBackground } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+import TagList from '@/components/Elements/TagList.astro';
 
 interface Props {
-  title: string;
+  tags: TagObject[];
   headline: string;
   color: ColorTypes;
   time?: string;
   class?: string;
 }
 
+const hasSlotDefault = !!Astro.slots.default;
+
 const {
-  title,
+  tags,
   headline,
   color,
   time,
@@ -64,7 +67,7 @@ const {
   {...rest}
 >
   <div class="relative z-1 h-full overflow-hidden rounded-30 md:rounded-40">
-    {Astro.slots.tags && <slot name="media" />}
+    {hasSlotDefault && <slot />}
   </div>
 
   <div
@@ -75,7 +78,7 @@ const {
     ]}
   >
     <div class="card-post-hero__bg">
-      {Astro.slots.tags && <slot name="media" />}
+      {hasSlotDefault && <slot />}
     </div>
   </div>
 
@@ -91,7 +94,7 @@ const {
     ]}
   >
     <div class="mt-auto flex flex-col gap-16 md:gap-20">
-      {Astro.slots.tags && <slot name="tags" />}
+      <TagList size="large" items={tags} />
 
       <h3
         class="font-heading font-semibold text-34 lg:text-48 max-w-[18em] text-balance"

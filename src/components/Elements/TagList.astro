@@ -1,20 +1,17 @@
 ---
 import { colourText } from '@/utils/maps';
 
-interface TagInterface {
-  title: string;
-  color?: ColorTypes;
-}
-
 interface Props {
-  items: TagInterface[];
+  items: TagObject[];
   size?: 'small' | 'large';
+  colorGlobal?: ColorTypes | null;
   class?: string;
 }
 
 const {
   items,
   size = 'small',
+  colorGlobal = null,
   class: className,
   ...rest
 } = Astro.props as Props;
@@ -33,7 +30,7 @@ const {
           class:list={[
             'relative pt-[0.6em] pl-[1.85em]',
             "before:content-['•'] before:absolute before:text-white before:left-[0.75em]",
-            colourText[color],
+            colorGlobal ? colourText[colorGlobal] : colourText[color],
           ]}
         >
           {title}
