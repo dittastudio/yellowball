@@ -22,6 +22,11 @@
     filter: drop-shadow(0px 5px 50px rgba(0, 0, 0, 0.30));
   }
 
+  .min-svh-screen {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
   .scroll-x {
     scrollbar-width: none; /* for Firefox */
     scroll-snap-type: x mandatory;
