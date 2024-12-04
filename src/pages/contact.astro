@@ -1,0 +1,56 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import CardInfo from '@/components/Card/Info.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockContact from '@/components/Block/Contact.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+---
+
+<Layout title="Contact">
+  <main>
+    <section class={classSection}>
+      <BlockContact>
+        <Fragment slot="content">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
+            Let's get the ball <TextGradient>rolling</TextGradient>
+          </TextReveal>
+
+          <p class="text-17 md:text-21 text-grey text-balance">
+            We're a boutique, London-based web design agency, crafting stunning,
+            bespoke websites that captivate and convert. Ready to get the ball
+            rolling? Let's chat!
+          </p>
+        </Fragment>
+
+        <Fragment slot="main">
+          <p>FORM?</p>
+        </Fragment>
+
+        <Fragment slot="aside">
+          <CardInfo title="Contact Details">
+            <p class="text-white font-heading text-18 md:text-20">
+              info@weareyellowball.com
+            </p>
+            <p class="text-white font-heading text-18 md:text-20">
+              020 8049 3080
+            </p>
+          </CardInfo>
+
+          <CardInfo title="Address">
+            <address class="text-white font-heading text-18 md:text-20">
+              Borough Yards, 13 Dirty Lane, London, SE1 9PA
+            </address>
+          </CardInfo>
+        </Fragment>
+      </BlockContact>
+    </section>
+  </main>
+</Layout>

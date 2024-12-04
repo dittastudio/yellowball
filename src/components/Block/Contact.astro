@@ -1,0 +1,21 @@
+<div class="wrapper grid gap-x-12 md:gap-x-30 grid-cols-8 md:grid-cols-12">
+  {
+    Astro.slots.aside && (
+      <aside class="flex flex-col justify-start items-start gap-15 md:col-start-1 md:col-span-4">
+        <slot name="aside" />
+      </aside>
+    )
+  }
+
+  <div class="md:col-start-6 md:col-span-7">
+    {
+      Astro.slots.content && (
+        <div class="flex flex-col justify-start items-start gap-40 md:gap-60">
+          <slot name="content" />
+        </div>
+      )
+    }
+
+    {Astro.slots.form && <slot name="form" />}
+  </div>
+</div>
