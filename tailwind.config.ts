@@ -1,7 +1,7 @@
 import { type Config } from 'tailwindcss'
 import exposeColors from '@tailwind-plugin/expose-colors'
-import tailwindcss3d from 'tailwindcss-3d'
 import typography from '@tailwindcss/typography'
+import tailwindcss3d from 'tailwindcss-3d'
 
 const pxToRem = (px: number, base = 16): number => px / base
 
@@ -80,6 +80,7 @@ export default {
       11: [`${pxToRem(11)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       13: [`${pxToRem(13)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+      14: [`${pxToRem(14)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       15: [`${pxToRem(15)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       16: [`${pxToRem(16)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
@@ -197,6 +198,7 @@ export default {
       100: '100px',
       110: '110px',
       120: '120px',
+      150: '150px',
       160: '160px',
       180: '180px',
       200: '200px',
