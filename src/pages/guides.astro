@@ -1,0 +1,80 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import CardPostHero from '@/components/Card/PostHero.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockPostList from '@/components/Block/PostList.astro';
+import BlockButtons from '@/components/Block/Buttons.astro';
+import Button from '@/components/Elements/Button.astro';
+import ButtonScrollToTop from '@/components/UI/ButtonScrollToTop.astro';
+
+// import LayoutTheme from '@/components/Layout/Theme.astro';
+// import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+// const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Home">
+  <main>
+    <section class={classSection}>
+      <BlockHero>
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
+            News, insights & resources
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud.
+          </p>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class={classSection}>
+      <div class="wrapper">
+        <CardPostHero
+          tags={[
+            { title: 'SEO', color: 'green' },
+            { title: 'Web Design', color: 'yellow' },
+            { title: 'PPC', color: 'blue' },
+          ]}
+          headline="10 Steps to a Reliable Website Marketing Strategy"
+          color="purple"
+          time="3 Min Read"
+        >
+          <img
+            src="/images/test-post-hero.jpg"
+            width="500"
+            height="300"
+            alt=""
+          />
+        </CardPostHero>
+      </div>
+    </section>
+
+    <section class={classSection}>
+      <BlockPostList />
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <button type="button">
+          <Button text="Load more" />
+        </button>
+
+        <ButtonScrollToTop>
+          <Button type="white-border" text="Back to top" />
+        </ButtonScrollToTop>
+      </BlockButtons>
+    </section>
+  </main>
+</Layout>

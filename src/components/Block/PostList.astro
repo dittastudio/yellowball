@@ -1,0 +1,102 @@
+---
+import CardPost from '@/components/Card/Post.astro';
+import Button from '@/components/Elements/Button.astro';
+
+const examplePost: any = {
+  tags: [
+    { title: 'Web Design', color: 'yellow' },
+    { title: 'SEO', color: 'green' },
+  ],
+  headline: '10 Steps to a Reliable Website Marketing Strategy',
+  time: '3 Min Read',
+  image: {
+    src: '/images/test-laptop.webp',
+    alt: '',
+    width: 500,
+    height: 300,
+  },
+};
+
+const examplePost2: any = {
+  tags: [{ title: 'SEO', color: 'green' }],
+  headline:
+    'A Wordpress SEO Expert Approach to SEO Friendly Websites That Google Loves',
+  time: '7 Min Read',
+  image: {
+    src: '/images/test-laptop.webp',
+    alt: '',
+    width: 500,
+    height: 300,
+  },
+};
+
+const examplePost3: any = {
+  tags: [{ title: 'PPC', color: 'blue' }],
+  headline: 'A Beginner’s Guide to Website Maintenance',
+  time: '11 Min Read',
+  image: {
+    src: '/images/test-laptop.webp',
+    alt: '',
+    width: 500,
+    height: 300,
+  },
+};
+
+const examplePosts: any = [
+  examplePost,
+  examplePost2,
+  examplePost3,
+  examplePost,
+  examplePost2,
+  examplePost3,
+  examplePost,
+  examplePost2,
+];
+---
+
+<div class="wrapper">
+  <div
+    class="flex flex-wrap items-center justify-between gap-x-20 gap-y-40 pb-50 md:pb-60"
+  >
+    <h2 class="font-heading font-semibold text-fluid-h3">All posts</h2>
+
+    <div class="shrink-0 mdMax:w-full">
+      <div class="mdMax:-mx-[var(--outer-gutter)]">
+        <ul
+          class="scroll-x mdMax:px-[var(--outer-gutter)] flex gap-10 md:gap-12 whitespace-nowrap"
+        >
+          <li>
+            <Button text="All posts" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="Web Design" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="SEO" />
+          </li>
+
+          <li>
+            <Button type="white-border" text="PPC" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 md:gap-30">
+    {
+      examplePosts?.map(({ tags, headline, color, time, image }) => (
+        <CardPost {tags} {headline} {color} {time}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        </CardPost>
+      ))
+    }
+  </div>
+</div>

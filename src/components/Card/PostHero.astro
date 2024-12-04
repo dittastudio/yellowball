@@ -86,7 +86,7 @@ const {
 
   <div
     class:list={[
-      'absolute inset-0 z-1 p-30 md:p-60 flex justify-between',
+      'absolute inset-0 z-1 p-30 md:p-60 flex justify-between pointer-events-none',
       'rounded-30 md:rounded-40 overflow-hidden',
       'after:absolute after:inset-0 after:-z-1 after:bg-gradient-to-tr after:from-black after:to-80% after:to-transparent after:pointer-events-none',
       'after:transition-opacity after:duration-500 after:ease-smooth',
@@ -117,7 +117,7 @@ const {
         name="arrow-ne"
         width={12}
         height={12}
-        class="block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
+        class="block size-10 md:size-12 group-hover:translate-x-1/2 group-hover:-translate-y-1/2 transition-transform duration-300"
       />
     </div>
   </div>
