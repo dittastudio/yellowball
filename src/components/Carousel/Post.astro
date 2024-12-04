@@ -4,7 +4,7 @@ import Button from '@/components/Elements/Button.astro';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Slide {
-  title: string;
+  tags: TagObject[];
   headline: string;
   color: ColorTypes;
   time: string;
@@ -87,9 +87,9 @@ const classNavButton =
       <div data-js-swiper class="swiper">
         <div class="swiper-wrapper">
           {
-            slides?.map(({ title, headline, color, time, image }) => (
+            slides?.map(({ tags, headline, color, time, image }) => (
               <div class="swiper-slide">
-                <CardPost {title} {headline} {color} {time}>
+                <CardPost {tags} {headline} {color} {time}>
                   <img
                     src={image.src}
                     alt={image.alt}
