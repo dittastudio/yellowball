@@ -47,15 +47,7 @@ const {
         class="absolute top-15 right-15 lg:top-20 lg:right-20 z-10 block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300"
       />
 
-      {
-        tags && (
-          <TagList
-            size="small"
-            colorGlobal={color ? color : null}
-            items={tags}
-          />
-        )
-      }
+      {tags && <TagList size="small" items={tags} />}
 
       <h3 class="font-heading font-semibold text-18 lg:text-24 text-balance">
         {headline}
