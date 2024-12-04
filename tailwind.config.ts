@@ -1,7 +1,7 @@
 import { type Config } from 'tailwindcss'
 import exposeColors from '@tailwind-plugin/expose-colors'
-import tailwindcss3d from 'tailwindcss-3d'
 import typography from '@tailwindcss/typography'
+import tailwindcss3d from 'tailwindcss-3d'
 
 const pxToRem = (px: number, base = 16): number => px / base
 
