@@ -1,5 +1,6 @@
 ---
 import Icon from '@/components/Elements/Icon.astro';
+import { colourBackground } from '@/utils/maps';
 
 interface Props {
   title: string;
@@ -26,7 +27,7 @@ const {
 
   heros.forEach(hero => {
     const imageBlur = hero.querySelector(
-      '[data-js-card-post-hero-blur]',
+      '[data-js-card-post-hero-bg]',
     ) as HTMLElement;
 
     const cardMouseOver = (event: any) => {
@@ -56,30 +57,29 @@ const {
   data-js="card-post-hero"
   href="/"
   class:list={[
-    'card-post-hero isolate group block aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
+    'card-post-hero group relative block isolate aspect-[3/4] md:aspect-[16/9] xl:aspect-[9/4]',
+    '[&_img]:size-full [&_img]:object-cover',
     className,
   ]}
   {...rest}
 >
-  <div class:list={['h-full [&_img]:size-full [&_img]:object-cover']}>
-    <div
-      class="rounded-30 md:rounded-40 overflow-hidden h-inherit relative z-1"
-    >
+  <div class="relative z-1 h-full overflow-hidden rounded-30 md:rounded-40">
+    {Astro.slots.tags && <slot name="media" />}
+  </div>
+
+  <div
+    data-js-card-post-hero-bg
+    class:list={[
+      'card-post-hero__case absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden',
+      '',
+    ]}
+  >
+    <div class="card-post-hero__bg">
       {Astro.slots.tags && <slot name="media" />}
     </div>
-
-    <div
-      data-js-card-post-hero-blur
-      class:list={[
-        'filter-blur absolute -inset-1 rounded-30 md:rounded-40 overflow-hidden',
-        '',
-      ]}
-    >
-      <div class="filter-blur__inner">
-        {Astro.slots.tags && <slot name="media" />}
-      </div>
-    </div>
   </div>
+
+  <div class:list={['card-post-hero__shadow', colourBackground[color]]}></div>
 
   <div
     class:list={[
@@ -125,10 +125,10 @@ const {
     --x: 0;
     --y: 0;
     --t: 50;
+  }
 
-    position: relative;
-
-    &::after {
+  .card-post-hero__shadow {
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       --t: 5;
 
       pointer-events: none;
@@ -146,7 +146,7 @@ const {
       margin: auto;
 
       opacity: 0;
-      background-color: theme('colors.green');
+      /* background-color: theme('colors.green'); */
       filter: blur(50px);
 
       transition:
@@ -154,25 +154,24 @@ const {
         translate 0s 0.25s;
     }
 
-    &:hover {
-      &::after {
-        translate: calc(var(--x) / var(--t) * 1px)
-          calc(var(--y) / var(--t) * 1px) 0;
-        opacity: 0.5;
-        transition:
-          opacity 0.25s theme('transitionTimingFunction.out'),
-          translate 0.25s theme('transitionTimingFunction.out');
-      }
+    .card-post-hero:hover & {
+      translate: calc(var(--x) / var(--t) * 1px) calc(var(--y) / var(--t) * 1px)
+        0;
+      opacity: 0.5;
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.out'),
+        translate 0.25s theme('transitionTimingFunction.out');
     }
   }
-  .filter-blur {
+
+  .card-post-hero__case {
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       transform-style: preserve-3d;
       perspective: 500px;
     }
   }
 
-  .filter-blur__inner {
+  .card-post-hero__bg {
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       position: relative;
       height: 100%;
