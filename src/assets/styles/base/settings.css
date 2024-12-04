@@ -54,4 +54,8 @@
   mark {
     background-color: transparent;
   }
+
+  address {
+    font-style: normal;
+  }
 }
