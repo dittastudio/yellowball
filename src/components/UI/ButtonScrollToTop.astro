@@ -4,9 +4,9 @@
 
   gsap.registerPlugin(ScrollToPlugin);
 
-  const buttons = [
-    ...document.querySelectorAll('[data-js=scroll-to-top]'),
-  ] as HTMLElement[];
+  const buttons = document.querySelectorAll(
+    '[data-js="scroll-to-top"]',
+  ) as NodeListOf<HTMLButtonElement>;
 
   buttons.forEach(button => {
     const scrollToTop = () => {
