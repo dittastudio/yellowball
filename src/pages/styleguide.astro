@@ -19,8 +19,7 @@ import CardProject from '@/components/Card/Project.astro';
 import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
-import Cube from '@/components/Elements/Cube.astro';
-import CubeLogo from '@/components/Elements/CubeLogo.astro';
+import CubeIcon from '@/components/Elements/CubeIcon.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
@@ -148,45 +147,49 @@ const classCardCSSCols =
 
     <StyleguideSection title="Cubes">
       <div class="flex flex-wrap gap-8">
-        <CubeLogo>
-          <Icon name="logo-figma" />
-        </CubeLogo>
+        <CubeIcon
+          icon={{ type: 'logo', name: 'logo-figma', hover: 'logo-figma-hover' }}
+        />
 
-        <CubeLogo>
-          <Icon name="logo-wp" />
-        </CubeLogo>
+        <CubeIcon
+          icon={{ type: 'logo', name: 'logo-wp', hover: 'logo-wp-hover' }}
+        />
 
-        <CubeLogo>
-          <Icon name="logo-woo" />
-        </CubeLogo>
+        <CubeIcon
+          icon={{ type: 'logo', name: 'logo-woo', hover: 'logo-woo-hover' }}
+        />
 
-        <CubeLogo>
-          <Icon name="logo-laravel" />
-        </CubeLogo>
+        <CubeIcon
+          icon={{
+            type: 'logo',
+            name: 'logo-laravel',
+            hover: 'logo-laravel-hover',
+          }}
+        />
 
-        <Cube>
-          <Icon name="outline-info-paper" />
-        </Cube>
+        <CubeIcon icon={{ type: 'outline', name: 'outline-info-paper' }} />
 
-        <Cube>
-          <Icon name="outline-info-basket" />
-        </Cube>
+        <CubeIcon icon={{ type: 'outline', name: 'outline-info-basket' }} />
 
-        <Cube color="green">
-          <Icon name="outline-info-paper" />
-        </Cube>
+        <CubeIcon
+          color="green"
+          icon={{ type: 'outline', name: 'outline-info-paper' }}
+        />
 
-        <Cube color="blue">
-          <Icon name="outline-info-paper" />
-        </Cube>
+        <CubeIcon
+          color="blue"
+          icon={{ type: 'outline', name: 'outline-info-paper' }}
+        />
 
-        <Cube color="yellow">
-          <Icon name="outline-info-paper" />
-        </Cube>
+        <CubeIcon
+          color="yellow"
+          icon={{ type: 'outline', name: 'outline-info-paper' }}
+        />
 
-        <Cube color="purple">
-          <Icon name="outline-info-paper" />
-        </Cube>
+        <CubeIcon
+          color="purple"
+          icon={{ type: 'outline', name: 'outline-info-paper' }}
+        />
       </div>
     </StyleguideSection>
 
@@ -286,9 +289,10 @@ const classCardCSSCols =
         headline="WordPress Development"
         description="Custom WordPress websites designed for flexibility, performance, and scalability. Power your brand with a platform trusted by millions."
       >
-        <Cube slot="icon">
-          <Icon name="logo-wp" />
-        </Cube>
+        <CubeIcon
+          slot="icon"
+          icon={{ type: 'logo', name: 'logo-wp', hover: 'logo-wp-hover' }}
+        />
       </ServiceItem>
     </StyleguideSection>
 
