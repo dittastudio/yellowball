@@ -56,12 +56,12 @@
   }
 
   .underline-gradient {
-    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405 37"><path d="M399.049 16.284s5.596.77 4.777 2.974c-.559 1.503-6.473.535-7.151.725-3.029 1.044-122.137-5.478-191.18-3.391L6.623 23.398c-13.555.073-.507-2.887-.507-2.887 25.653-4.034 51.96-8.337 121.413-9.608 47.645-1.754 136.217-2.02 154.302-1.171 26.993.896 83.578 2.843 117.218 6.552Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405 37" preserveAspectRatio="none"><path d="M399.049 16.284s5.596.77 4.777 2.974c-.559 1.503-6.473.535-7.151.725-3.029 1.044-122.137-5.478-191.18-3.391L6.623 23.398c-13.555.073-.507-2.887-.507-2.887 25.653-4.034 51.96-8.337 121.413-9.608 47.645-1.754 136.217-2.02 154.302-1.171 26.993.896 83.578 2.843 117.218 6.552Z"/></svg>');
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
-    background: linear-gradient(to right, 
-      var(--yellowball-yellow), 
-      var(--yellowball-green) 50%, 
+    background: linear-gradient(to right,
+      var(--yellowball-yellow),
+      var(--yellowball-green) 50%,
       var(--yellowball-blue)
     );
   }
