@@ -37,7 +37,7 @@
     (var(--_pill-width) * var(--_slidesNumber)) + var(--_pill-width-active)
   );
 
-  @screen md {
+  @media screen(md) {
     --_pill-height: 4px;
   }
 
