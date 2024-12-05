@@ -176,6 +176,7 @@ export default {
       '2xlMax': { max: `${screenSizes['2xl'] - 1}px` },
       '3xl': `${screenSizes['3xl']}px`,
       '3xlMax': { max: `${screenSizes['3xl'] - 1}px` },
+      'xsToSm': { min: `${screenSizes.xs}px`, max: `${screenSizes.sm - 1}px` },
     },
     spacing: {
       inherit: 'inherit',
