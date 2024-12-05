@@ -114,7 +114,7 @@
     --start-width: var(--icon-size);
     --end-width: 165px;
 
-    @screen md {
+    @media screen(md) {
       --icon-size: 50px;
     }
 
@@ -123,7 +123,7 @@
     width: var(--start-width);
     overflow: hidden;
 
-    @screen lg {
+    @media screen(lg) {
       &.has-hover {
         animation: header-grow-leave 0.5s
           theme('transitionTimingFunction.outExpo') both;
@@ -164,7 +164,7 @@
     width: 139px;
     height: var(--icon-size);
 
-    @screen md {
+    @media screen(md) {
       width: 165px;
       height: var(--icon-size);
     }
@@ -175,7 +175,7 @@
     translate: 0 -20% 0;
     transform-origin: 19% 14%;
 
-    @screen lg {
+    @media screen(lg) {
       transition: all 0.5s theme('transitionTimingFunction.outBack');
 
       .header-logo:hover & {
@@ -190,7 +190,7 @@
 
     opacity: 0;
 
-    @screen lg {
+    @media screen(lg) {
       .has-hover & {
         animation: header-wave-leave 0.2s
           theme('transitionTimingFunction.smooth') both;
@@ -265,7 +265,7 @@
   .header-logo__letter--o {
     opacity: 0;
 
-    @screen lg {
+    @media screen(lg) {
       translate: 0 20% 0;
       animation: header-bump-leave 0.2s
         theme('transitionTimingFunction.outBack') both;
@@ -302,7 +302,7 @@
   }
 
   .header-logo__word-start {
-    @screen lg {
+    @media screen(lg) {
       translate: 3% 0 0;
       animation: header-nudge-right-leave 0.2s
         theme('transitionTimingFunction.smooth') both;
@@ -335,7 +335,7 @@
   }
 
   .header-logo__word-end {
-    @screen lg {
+    @media screen(lg) {
       translate: -3% 0 0;
 
       animation: header-nudge-left-leave 0.2s
@@ -376,7 +376,7 @@
     translate: var(--ball-start-position);
     transform-origin: 100% 65%;
 
-    @screen lg {
+    @media screen(lg) {
       .has-hover & {
         animation: header-roll-leave 0.5s
           theme('transitionTimingFunction.outExpo') both;
