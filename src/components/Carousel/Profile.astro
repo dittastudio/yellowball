@@ -37,10 +37,12 @@ const classes = ['carousel-profile', className];
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(_, className) {
+          renderBullet(index, className) {
             return `
               <button type="button" class="${className}">
-                <span class="swiper-pagination-bullet__pill"></span>
+                <span class="swiper-pagination-bullet__pill">
+                  <span class="sr-only">Go to slide ${index + 1}</span>
+                </span>
               </button>
             `;
           },
