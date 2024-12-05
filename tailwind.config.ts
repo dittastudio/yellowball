@@ -47,6 +47,18 @@ export const screenSizes = {
 
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  safelist: [
+    'peer-checked:outline-yellow',
+    'peer-checked:outline-green',
+    'peer-checked:outline-blue',
+    'peer-checked:outline-purple',
+    'peer-checked:outline-white',
+    'peer-checked:bg-yellow',
+    'peer-checked:bg-green',
+    'peer-checked:bg-blue',
+    'peer-checked:bg-purple',
+    'peer-checked:bg-white',
+  ],
   theme: {
     colors: {
       current: "currentColor",
@@ -86,6 +98,7 @@ export default {
       18: [`${pxToRem(18)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       20: [`${pxToRem(20)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       21: [`${pxToRem(21)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+      22: [`${pxToRem(22)}rem`, { lineHeight: '1.5', letterSpacing: '-0.02em' }],
       24: [`${pxToRem(24)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       26: [`${pxToRem(26)}rem`, { lineHeight: '1.5', letterSpacing: '-0.04em' }],
       28: [`${pxToRem(28)}rem`, { lineHeight: '1.4', letterSpacing: '-0.04em' }],

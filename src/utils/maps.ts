@@ -31,4 +31,20 @@ const colourBackground: Record<string, string> = {
   'grey': 'bg-grey',
 } as const
 
-export { colourText, colourBackground }
+const colourOutline: Record<string, string> = {
+  'current': 'outline-current',
+  'transparent': 'outline-transparent',
+  'black': 'outline-black',
+  'white': 'outline-white',
+  'yellow': 'outline-yellow',
+  'green': 'outline-green',
+  'blue': 'outline-blue',
+  'purple': 'outline-purple',
+  'navy': 'outline-navy',
+  'navy-light': 'outline-navy-light',
+  'navy-lighter': 'outline-navy-lighter',
+  'cream': 'outline-cream',
+  'grey': 'outline-grey',
+} as const
+
+export { colourText, colourBackground, colourOutline }

@@ -2,6 +2,8 @@
 import Layout from '@/layouts/Layout.astro';
 
 import CardInfo from '@/components/Card/Info.astro';
+import FormInput from '@/components/Elements/FormInput.astro';
+import FormCheckboxChip from '@/components/Elements/FormCheckboxChip.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
@@ -30,8 +32,76 @@ const classSection = 'py-50 md:py-[75px]';
           </p>
         </Fragment>
 
-        <Fragment slot="main">
-          <p>FORM?</p>
+        <Fragment slot="form">
+          <form class="flex flex-col gap-20 lg:gap-28">
+            <FormInput
+              label="Please tell us your name *"
+              type="text"
+              id="name"
+              name="name"
+              value=""
+              placeholder="placeholder"
+              required
+            />
+
+            <FormInput
+              label="Email address we can reach you on? *"
+              type="email"
+              id="email"
+              name="email"
+              value=""
+              placeholder="placeholder"
+              required
+            />
+
+            <FormInput
+              label="Best number for a quick call? *"
+              type="text"
+              id="number"
+              name="number"
+              value=""
+              placeholder="placeholder"
+              required
+            />
+
+            <p class="font-heading text-18 lg:text-22">
+              Which services are you interested in exploring with us?
+            </p>
+
+            <div class="flex gap-15">
+              <FormCheckboxChip
+                color="yellow"
+                label="Web Design"
+                id="web-design"
+                name="web-design"
+                value="web-design"
+              />
+
+              <FormCheckboxChip
+                color="green"
+                label="SEO"
+                id="seo"
+                name="seo"
+                value="seo"
+              />
+
+              <FormCheckboxChip
+                color="blue"
+                label="PPC"
+                id="ppc"
+                name="ppc"
+                value="ppc"
+              />
+
+              <FormCheckboxChip
+                color="white"
+                label="Other"
+                id="other"
+                name="other"
+                value="other"
+              />
+            </div>
+          </form>
         </Fragment>
 
         <Fragment slot="aside">

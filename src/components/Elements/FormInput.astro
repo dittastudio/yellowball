@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Input {
+  label: string;
+}
+
+type Props = HTMLAttributes<'input'> & Input;
+
+const { label, ...rest } = Astro.props as Props;
+---
+
+<div class="relative w-full flex flex-col">
+  <input
+    class="peer font-heading text-18 lg:text-22 border-b border-offblack text-grey focus:border-white focus:outline-none focus:text-white py-18 lg:py-20 transition-colors"
+    placeholder=""
+    {...rest}
+  />
+
+  <label
+    for={rest.id}
+    class:list={[
+      'absolute top-0 left-0 z-1 font-heading text-12 text-grey transition-all duration-300',
+      'peer-focus:top-0',
+      'peer-focus:text-white',
+      'peer-focus:text-12',
+      'peer-focus:lg:text-12',
+      'peer-placeholder-shown:top-[20px]',
+      'peer-placeholder-shown:text-18',
+      'peer-placeholder-shown:lg:text-22',
+      'peer-placeholder-shown:pointer-events-none',
+    ]}
+  >
+    {label}
+  </label>
+</div>
