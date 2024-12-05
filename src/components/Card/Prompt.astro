@@ -54,7 +54,7 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 >
   <a
     href="/"
-    class="group relative w-full h-full p-30 lg:p-80 grid grid-cols-1 lgMax:grid-rows-2 border border-navy/15 overflow-hidden rounded-40 lg:rounded-80 lgMax:before:content-['']"
+    class="group relative w-full h-full p-30 lg:p-80 grid grid-cols-1 lgMax:grid-rows-[100px_1fr] border border-navy/15 overflow-hidden rounded-40 lg:rounded-80 lgMax:before:content-['']"
   >
     <div class="z-10 flex flex-col justify-start items-start gap-30 lg:gap-60">
       {Astro.slots.headline && <slot name="headline" />}
