@@ -60,12 +60,52 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
         },
       );
     });
+
+    const stickyEl = section.querySelector(
+      '[data-js-service-list-sticky]',
+    ) as HTMLElement;
+
+    const setStickyHeight = () => {
+      const { height } = stickyEl.getBoundingClientRect();
+      const offset = 30;
+      const windowHeight = window.innerHeight;
+      const headerHeight =
+        document.querySelector('[data-js="header"]')?.clientHeight;
+
+      if (!headerHeight) return;
+
+      if (windowHeight < height + headerHeight + offset) {
+        stickyEl.style.setProperty('--sticky-height', 'var(--header-height)');
+      } else {
+        stickyEl.style.setProperty(
+          '--sticky-height',
+          `calc((50vh - ${height / 2}px) + ${offset}px)`,
+        );
+      }
+    };
+
+    setStickyHeight();
+
+    let ticking = false;
+
+    const handleResize = () => {
+      setStickyHeight();
+      ticking = false;
+    };
+
+    window.addEventListener('resize', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleResize);
+        ticking = true;
+      }
+    });
   }
 </script>
 
 <div data-js="service-list" class="wrapper flex flex-col gap-80 lg:gap-0">
   <div
-    class="lg:grid lg:grid-cols-2 lg:gap-30 lg:sticky lg:top-[calc(var(--header-height)_+_50px)]"
+    data-js-service-list-sticky
+    class="lg:grid lg:grid-cols-2 lg:gap-30 lg:sticky lg:top-[var(--sticky-height)]"
   >
     <div
       class="relative w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
