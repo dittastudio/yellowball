@@ -23,9 +23,9 @@ const images = [
       'after:bg-gradient-to-l after:from-navy after:to-transparent',
     ]}
   >
-    <Ticker class="logo-ticker__el">
+    <Ticker spacingClasses="gap-60 md:gap-100 px-30 md:px-50">
       {
-        images?.map(image => (
+        images.map(image => (
           <img
             class="w-[118px] aspect-[118/64]"
             src={image}
@@ -38,13 +38,3 @@ const images = [
     </Ticker>
   </div>
 </div>
-
-<style>
-  .logo-ticker__el {
-    --gap: 60px;
-
-    @screen md {
-      --gap: 100px;
-    }
-  }
-</style>
