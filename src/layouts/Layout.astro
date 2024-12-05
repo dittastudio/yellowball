@@ -57,8 +57,10 @@ const { title } = Astro.props;
   <body class="font-body text-16 antialiased">
     <LayoutLines>
       <AppHeader />
+
       <slot />
-      <AppFooterTicker />
+
+      <AppFooterTicker text="Let’s work together" />
       <AppFooter />
     </LayoutLines>
   </body>

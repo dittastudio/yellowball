@@ -1,9 +1,10 @@
 ---
 interface Props {
   class?: string;
+  spacingClasses?: string;
 }
 
-const { class: className } = Astro.props as Props;
+const { class: className, spacingClasses = '' } = Astro.props as Props;
 ---
 
 <script>
@@ -12,99 +13,116 @@ const { class: className } = Astro.props as Props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // const animations: gsap.core.Timeline[] = []
-  // let direction = 'down'
-  // let lastScrollY = window.scrollY
-
-  // const handleDirection = (newDirection: 'up' | 'down') => {
-  //   animations.forEach(animation => {
-  //     const progress = animation.progress()
-  //     const tween = animation.getChildren()[0]
-
-  //     if (tween) {
-  //       const currentX = parseFloat(tween.vars.x) * progress
-  //       direction = newDirection
-  //       const newEnd = direction === 'down' ? '-100%' : '100%'
-
-  //       tween.vars.x = newEnd
-  //       tween.invalidate()
-
-  //       const newProgress = currentX / parseFloat(newEnd)
-
-  //       animation.progress(newProgress)
-  //     }
-  //   })
-  // }
-
-  // const handleScroll = () => {
-  //   const newDirection = window.scrollY > lastScrollY ? 'down' : 'up'
-
-  //   if (newDirection !== direction) {
-  //     handleDirection(newDirection)
-  //   }
-
-  //   lastScrollY = window.scrollY
-  // }
-
-  // window.addEventListener('scroll', handleScroll)
-
-  const tickers = [
-    ...document.querySelectorAll('[data-js="ticker"]'),
-  ] as HTMLElement[];
+  const tickers = document.querySelectorAll(
+    '[data-js="ticker"]',
+  ) as NodeListOf<HTMLElement>;
 
   tickers.forEach(ticker => {
-    // const items = [
-    //   ...ticker.querySelectorAll('[data-js-item]'),
-    // ] as HTMLElement[];
+    const container = ticker.querySelector(
+      '[data-js-container]',
+    ) as HTMLElement;
 
-    // const animation = gsap
-    //   .timeline({
-    //     repeat: -1,
-    //     defaults: {
-    //       duration: 20,
-    //       ease: 'none',
-    //     },
-    //   })
-    //   .to(items, {
-    //     x: '-100%',
-    //   })
+    const wrappers = ticker.querySelectorAll(
+      '[data-js-wrapper]',
+    ) as NodeListOf<HTMLDivElement>;
 
-    // animations.push(animation)
+    const lists = ticker.querySelectorAll(
+      '[data-js-list]',
+    ) as NodeListOf<HTMLDivElement>;
 
-    ScrollTrigger.create({
-      markers: false,
-      trigger: ticker,
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1.5,
-      onUpdate: self => {
-        const progress = self.progress;
+    if (container && wrappers && lists) {
+      let lastProgress = 0;
 
-        gsap.to(ticker, {
-          x: -ticker.clientWidth * progress + 1,
-        });
-      },
-    });
+      ScrollTrigger.create({
+        markers: false,
+        trigger: ticker,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.5,
+        onUpdate: self => {
+          const progress = self.progress;
+
+          if (progress < lastProgress) {
+            wrappers.forEach(wrapper => {
+              wrapper.style.animationPlayState = 'running';
+            });
+
+            lists.forEach(list => {
+              list.style.animationPlayState = 'paused';
+            });
+          } else {
+            wrappers.forEach(wrapper => {
+              wrapper.style.animationPlayState = 'paused';
+            });
+
+            lists.forEach(list => {
+              list.style.animationPlayState = 'running';
+            });
+          }
+
+          lastProgress = progress;
+
+          gsap.to(container, {
+            x: -container.clientWidth * progress + 1,
+          });
+        },
+      });
+    }
   });
 </script>
 
-<div data-js="ticker" class:list={['element-ticker contain-layout', className]}>
-  <ul class="select-none flex justify-center min-w-full">
+<div data-js="ticker" class:list={['contain-layout', className]}>
+  <div data-js-container class="flex justify-center">
     {
-      [...Array(3)].map(() => (
-        <li
-          data-js-item
-          class="flex shrink-0 gap-[var(--gap)] items-center justify-around min-w-full px-[calc(var(--gap)/2)]"
-        >
-          <slot />
-        </li>
+      [...Array(4)].map(() => (
+        <div data-js-wrapper class="min-w-full shrink-0">
+          <div
+            data-js-list
+            class="select-none flex justify-center shrink-0 min-w-full"
+          >
+            <div
+              class:list={[
+                'flex shrink-0 items-center justify-around min-w-full',
+                spacingClasses,
+              ]}
+            >
+              <slot />
+            </div>
+          </div>
+        </div>
       ))
     }
-  </ul>
+  </div>
 </div>
 
-<style>
-  .element-ticker {
-    --gap: 0.5em;
+<style is:global>
+  [data-js='ticker'] {
+    --speed: 20s;
+
+    @keyframes tickerLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes tickerRight {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    [data-js-wrapper] {
+      animation: tickerRight var(--speed) linear infinite paused;
+    }
+
+    [data-js-list] {
+      animation: tickerLeft var(--speed) linear infinite;
+    }
   }
 </style>
