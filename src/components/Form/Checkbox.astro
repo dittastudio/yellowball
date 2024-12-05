@@ -1,0 +1,43 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { colourOutline, colourBackground } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Input {
+  color?: ColorTypes;
+}
+
+type Props = HTMLAttributes<'input'> & Input;
+
+const { color = 'green', ...rest } = Astro.props as Props;
+---
+
+<div>
+  <label
+    for={rest.id}
+    class:list={[
+      'flex items-center justify-start gap-15 select-none font-heading text-12 lg:text-14 cursor-pointer',
+    ]}
+  >
+    <input type="checkbox" class="peer sr-only" {...rest} />
+
+    <span
+      class:list={[
+        'flex flex-col items-center justify-center shrink-0 size-20 outline outline-white outline-1 select-none rounded-[6px] cursor-pointer transition-all duration-200',
+        'text-transparent peer-checked:text-navy',
+        `peer-checked:${colourOutline[color]}`,
+        `peer-checked:${colourBackground[color]}`,
+      ]}
+    >
+      <Icon name="checkmark" class="block size-full" />
+    </span>
+
+    {
+      Astro.slots.default && (
+        <span>
+          <slot />
+        </span>
+      )
+    }
+  </label>
+</div>
