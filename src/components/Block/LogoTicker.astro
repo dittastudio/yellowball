@@ -2,20 +2,20 @@
 import Ticker from '@/components/Elements/Ticker.astro';
 
 const images = [
-  '/images/test-logo-1.webp',
-  '/images/test-logo-2.webp',
-  '/images/test-logo-3.webp',
-  '/images/test-logo-4.webp',
-  '/images/test-logo-5.webp',
-  '/images/test-logo-6.webp',
-  '/images/test-logo-7.webp',
+  '/images/test-logo-1.png',
+  '/images/test-logo-2.png',
+  '/images/test-logo-3.png',
+  '/images/test-logo-4.png',
+  '/images/test-logo-5.png',
+  '/images/test-logo-6.png',
+  '/images/test-logo-7.png',
 ];
 ---
 
 <div class="wrapper">
   <div
     class:list={[
-      'relative overflow-hidden',
+      'relative overflow-hidden -z-2 isolate',
       'before:w-[calc(var(--outer-gutter)*4)] after:w-[calc(var(--outer-gutter)*4)]',
       'before:absolute before:top-0 before:bottom-0 before:left-0 before:z-1 before:pointer-events-none',
       'before:bg-gradient-to-r before:from-navy before:to-transparent',
