@@ -71,10 +71,10 @@ const classes = ['card-service-hero', className];
       const shapeHeight = shapeRect.height;
       const give = shapeWidth / 2;
 
-      let posX = gsap.utils.random(width / 2, width - shapeWidth);
+      let posX = gsap.utils.random(0, width / 2 - shapeWidth);
       let posY = gsap.utils.random(0, height / 2);
-      let speedX = Math.random() >= 0.5 ? 0.1 : -0.1;
-      let speedY = Math.random() >= 0.5 ? 0.1 : -0.1;
+      let speedX = Math.random() >= 0.5 ? 0.2 : -0.2;
+      let speedY = Math.random() >= 0.5 ? 0.2 : -0.2;
 
       function animate() {
         posX += speedX;
