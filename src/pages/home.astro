@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+
 import Button from '@/components/Elements/Button.astro';
 import CardProjectHero from '@/components/Card/ProjectHero.astro';
 import CardService from '@/components/Card/Service.astro';
@@ -95,7 +96,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 <Layout title="Home">
   <main>
-    <section class={classSection}>
+    <section class="py-50">
       <BlockHero>
         <Fragment slot="top">
           <Icon name="yellowball" class="w-[117px] h-[22px]" />
