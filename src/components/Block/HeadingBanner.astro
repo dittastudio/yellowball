@@ -45,42 +45,63 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
   }
 </script>
 
-<div data-js="heading-banner">
+<div data-js="heading-banner" data-css="heading-banner">
   <div class="wrapper flex justify-center">
-    <div class="relative flex flex-col gap-40">
-      <ul
-        class="grid grid-cols-2 grid-rows-2 gap-10 justify-center items-center mx-auto md:absolute top-0 right-[5%] size-80 md:-translate-y-full"
-      >
-        <li class="col-span-full">
-          <Icon
-            class="shape block mx-auto size-[37px] text-yellow"
-            name="shape-triangle"
-          />
-        </li>
-        <li>
-          <Icon
-            class="shape block mx-auto size-[32px] text-green"
-            name="shape-square"
-          />
-        </li>
-        <li>
-          <Icon
-            class="shape block mx-auto size-[32px] text-blue"
-            name="shape-circle"
-          />
-        </li>
-      </ul>
+    <div class="flex flex-col gap-40">
+      <div class="flex flex-col items-center lg:items-end lg:pr-30">
+        <ul
+          class="grid grid-cols-2 grid-rows-2 gap-10 justify-center items-center size-80 lg:-mb-30"
+        >
+          <li class="col-span-full">
+            <Icon
+              class="shape block mx-auto size-[37px] text-yellow"
+              name="shape-triangle"
+            />
+          </li>
+          <li>
+            <Icon
+              class="shape block mx-auto size-[32px] text-green"
+              name="shape-square"
+            />
+          </li>
+          <li>
+            <Icon
+              class="shape block mx-auto size-[32px] text-blue"
+              name="shape-circle"
+            />
+          </li>
+        </ul>
+      </div>
 
       <TextReveal
         tag="h2"
-        class="font-heading text-fluid-h2 font-semibold mdMax:text-center"
+        data-css-headline
+        class="font-heading text-fluid-h2 font-semibold lgMax:text-center"
       >
-        We specialise in three
-        <span class="mdMax:!contents md:pl-[2ch]">
-          core areas to drive your
-        </span>
-        <span class="mdMax:!contents md:pl-[1ch]">business forward</span>
+        We specialise in three<br class="lgMax:hidden" />
+        core areas to drive your<br class="lgMax:hidden" />
+        business forward
       </TextReveal>
     </div>
   </div>
 </div>
+
+<style is:global>
+  [data-css='heading-banner'] {
+    [data-css-headline] {
+      .mask {
+        &:nth-child(2) {
+          @screen lg {
+            padding-left: 2ch;
+          }
+        }
+
+        &:nth-child(3) {
+          @screen lg {
+            padding-left: 1ch;
+          }
+        }
+      }
+    }
+  }
+</style>
