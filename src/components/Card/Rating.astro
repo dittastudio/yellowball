@@ -21,7 +21,9 @@ const {
 
 const hasSlotDefault = !!Astro.slots.default;
 const quoteClasses =
-  hasMedia && hasSlotDefault ? 'text-18 lg:text-28' : 'text-18 lg:text-21';
+  hasMedia && hasSlotDefault
+    ? 'text-18 lg:text-28 font-semibold'
+    : 'text-18 lg:text-21 font-bold';
 const classes = twMerge(
   'w-full text-navy text-left bg-white rounded-20 lg:rounded-30',
   className,
@@ -58,7 +60,7 @@ const classes = twMerge(
 
       <blockquote
         class:list={[
-          'flex flex-col gap-15 lg:gap-20 font-heading font-semibold text-balance',
+          'flex flex-col gap-15 lg:gap-20 font-heading text-balance -tracking-[0.05em] lg:-tracking-[0.05em]',
           quoteClasses,
         ]}
       >
