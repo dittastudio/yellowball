@@ -3,7 +3,7 @@ import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   class?: string;
-  type?: 'white' | 'white-border';
+  type?: 'white' | 'white-bordered' | 'navy-bordered' | 'navy';
   text: string;
   hasArrow?: boolean;
 }
@@ -14,17 +14,28 @@ const {
   type = 'white',
   hasArrow = false,
 } = Astro.props as Props;
+
+const typeClasses = {
+  white:
+    'bg-white text-navy [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
+  navy: 'bg-navy text-white [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
+  'white-bordered':
+    'bg-white text-navy before:border-grey [a:hover_&]:before:border-navy [button:hover_&]:before:border-navy [a:hover_&]:bg-navy [button:hover_&]:bg-navy [a:hover_&]:text-white [button:hover_&]:text-white',
+  'navy-bordered':
+    'bg-navy text-white before:border-white [a:hover_&]:before:border-yellow [button:hover_&]:before:border-yellow [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
+};
 ---
 
 <span
   class:list={[
-    'element-button',
-    'relative inline-flex justify-center items-baseline gap-8 md:gap-12',
-    'px-[26px] pt-[16px] pb-[15px]',
-    'md:px-[33px]',
-    'rounded-20',
-    'font-heading text-15 md:text-18 font-bold',
-    `is-${type}`,
+    'relative inline-flex justify-center items-center gap-8 md:gap-12',
+    'px-[36px] py-[1em]',
+    'rounded-20 transition-colors duration-250 ease-smooth',
+    'font-heading font-bold leading-[1.467] md:leading-[1.2223] text-15 md:text-18',
+    'before:absolute before:inset-0 before:border before:border-solid before:border-transparent before:rounded-[inherit] before:transition-colors before:duration-250 before:ease-smooth',
+    'after:absolute after:inset-0 after:opacity-0 after:rounded-[inherit] after:transition-opacity after:duration-250 after:ease-smooth after:bg-navy',
+    '[a:active_&]:after:opacity-10 [button:active_&]:after:opacity-10',
+    typeClasses[type],
     className,
   ]}
 >
@@ -32,91 +43,10 @@ const {
 
   {
     hasArrow && (
-      <Icon name="arrow-ne" class="element-button__icon size-10 md:size-12" />
+      <Icon
+        name="arrow-ne"
+        class="relative top-[0.05em] size-[0.6em] transform-gpu transition-transform duration-250 ease-smooth [a:hover_&]:translate-x-1/2 [a:hover_&]:-translate-y-1/2 [button:hover_&]:translate-x-1/2 [button:hover_&]:-translate-y-1/2"
+      />
     )
   }
 </span>
-
-<style>
-  .element-button {
-    background-color: var(--button-bg-color);
-    color: var(--button-text-color);
-    transition:
-      color theme('transitionDuration.250')
-        theme('transitionTimingFunction.smooth'),
-      background-color theme('transitionDuration.250')
-        theme('transitionTimingFunction.smooth');
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid var(--button-border-color);
-      border-radius: inherit;
-      transition: border theme('transitionDuration.250')
-        theme('transitionTimingFunction.smooth');
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-color: theme('colors.navy');
-      opacity: 0;
-      border-radius: inherit;
-      transition: opacity theme('transitionDuration.250')
-        theme('transitionTimingFunction.smooth');
-    }
-
-    &.is-white {
-      --button-bg-color: theme('colors.white');
-      --button-text-color: theme('colors.navy');
-      --button-border-color: transparent;
-
-      /* Hover */
-      --button-hover-bg-color: theme('colors.yellow');
-      --button-hover-text-color: theme('colors.navy');
-      --button-hover-border-color: transparent;
-    }
-
-    &.is-white-border {
-      --button-bg-color: theme('colors.navy');
-      --button-text-color: theme('colors.white');
-      --button-border-color: theme('colors.white');
-
-      /* Hover */
-      --button-hover-bg-color: theme('colors.white');
-      --button-hover-text-color: theme('colors.navy');
-      --button-hover-border-color: theme('colors.white');
-    }
-
-    @media (hover: hover) {
-      :global(a):hover &,
-      :global(button):not(:disabled):hover & {
-        color: var(--button-hover-text-color);
-        background-color: var(--button-hover-bg-color);
-        border-color: var(--button-hover-border-color);
-      }
-    }
-
-    :global(a):active &,
-    :global(button):not(:disabled):active & {
-      &::after {
-        opacity: 0.1;
-      }
-    }
-
-    .element-button__icon {
-      translate: 0 0 0;
-      transition: translate theme('transitionDuration.250')
-        theme('transitionTimingFunction.smooth');
-
-      @media (hover: hover) {
-        :global(a):hover &,
-        :global(button):not(:disabled):hover & {
-          translate: 50% -50% 0;
-        }
-      }
-    }
-  }
-</style>
