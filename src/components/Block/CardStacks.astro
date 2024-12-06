@@ -14,7 +14,7 @@ const { description = '' } = Astro.props as Props;
 <div data-js="card-stacks" class="wrapper xl:grid xl:grid-cols-12 xl:gap-30">
   <div class="xl:col-span-10 xl:col-start-2 flex flex-col gap-60 lg:gap-110">
     <div
-      class="grid grid-cols-8 md:grid-cols-10 gap-12 md:gap-30 gap-y-60 md:gap-y-80"
+      class="grid grid-cols-8 md:grid-cols-12 xl:grid-cols-10 gap-12 md:gap-30 gap-y-60 md:gap-y-80"
     >
       {
         Astro.slots.headline && (
@@ -26,7 +26,7 @@ const { description = '' } = Astro.props as Props;
 
       {
         description && (
-          <p class="col-start-2 col-end-9 xs:col-start-3 md:col-end-11 text-17 lg:text-21">
+          <p class="col-start-2 col-span-7 xs:col-start-3 xs:col-span-6 md:col-start-3 md:col-span-10 xl:col-start-3 xl:col-span-8 text-17 lg:text-21">
             {description}
           </p>
         )
