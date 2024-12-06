@@ -16,10 +16,9 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
     ) as NodeListOf<HTMLInputElement>;
 
     const handleServiceChange = () => {
-      const checked = Array.from(serviceCheckboxes).filter(
+      const checked = [...serviceCheckboxes].filter(
         (checkbox: HTMLInputElement) => checkbox.checked,
       );
-
       const selectedServices = [...checked].map(checkbox => checkbox.value);
       const selectedSections = selectedServices.length
         ? [...selectedServices, 'any']
