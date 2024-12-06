@@ -1,0 +1,343 @@
+---
+import Button from '@/components/Elements/Button.astro';
+import FormCheckbox from '@/components/Fields/Checkbox.astro';
+import FormControl from '@/components/Fields/Control.astro';
+import FormInput from '@/components/Fields/Input.astro';
+import FormGroup from '@/components/Fields/Group.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+---
+
+<script>
+  const forms = document.querySelectorAll('[data-js="form-contact"]');
+
+  forms.forEach(form => {
+    const serviceCheckboxes = form.querySelectorAll(
+      '[data-js-services] input[type="checkbox"]',
+    ) as NodeListOf<HTMLInputElement>;
+
+    const handleServiceChange = () => {
+      const checked = Array.from(serviceCheckboxes).filter(
+        (checkbox: HTMLInputElement) => checkbox.checked,
+      );
+
+      const selectedServices = [...checked].map(checkbox => checkbox.value);
+      const selectedSections = selectedServices.length
+        ? [...selectedServices, 'any']
+        : [];
+      const sections = form.querySelectorAll('[data-js-service]');
+
+      sections.forEach(section => {
+        section.classList.add('hidden');
+      });
+
+      selectedSections.forEach(service => {
+        const wrappers = form.querySelectorAll(
+          `[data-js-service="${service}"]`,
+        );
+
+        if (wrappers?.length) {
+          wrappers.forEach(wrapper => {
+            wrapper.classList.remove('hidden');
+          });
+        }
+      });
+    };
+
+    serviceCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', handleServiceChange);
+    });
+  });
+</script>
+
+<form data-js="form-contact" class="flex flex-col items-start gap-60 lg:gap-80">
+  <FormInput
+    label="Please tell us your name *"
+    type="text"
+    id="name"
+    name="name"
+    value=""
+    placeholder="placeholder"
+    required
+  />
+
+  <FormInput
+    label="Email address we can reach you on? *"
+    type="email"
+    id="email"
+    name="email"
+    value=""
+    placeholder="placeholder"
+    required
+  />
+
+  <FormInput
+    label="Best number for a quick call? *"
+    type="tel"
+    id="number"
+    name="number"
+    value=""
+    placeholder="placeholder"
+    required
+  />
+
+  <FormGroup
+    data-js-services
+    headline="Which services are you interested in exploring with us? *"
+  >
+    <div class="flex gap-15 flex-wrap">
+      <FormControl
+        type="checkbox"
+        color="yellow"
+        label="Web Design"
+        name="web-design"
+        id="web-design"
+        value="web-design"
+      />
+
+      <FormControl
+        type="checkbox"
+        color="green"
+        label="SEO"
+        name="seo"
+        id="seo"
+        value="seo"
+      />
+
+      <FormControl
+        type="checkbox"
+        color="blue"
+        label="PPC"
+        name="ppc"
+        id="ppc"
+        value="ppc"
+      />
+
+      <FormControl
+        type="checkbox"
+        color="white"
+        label="Other"
+        name="other"
+        id="other"
+        value="other"
+      />
+    </div>
+  </FormGroup>
+
+  <FormGroup
+    data-js-service="web-design"
+    headline="Total Web Design Budget *"
+    class="hidden"
+  >
+    <div class="flex gap-15 flex-wrap">
+      <FormControl
+        type="radio"
+        color="yellow"
+        label="£0-5k"
+        name="web-design-budget"
+        id="web-design-budget-1"
+        value="web-design-budget-1"
+        checked
+      />
+
+      <FormControl
+        type="radio"
+        color="yellow"
+        label="£5-10k"
+        name="web-design-budget"
+        id="web-design-budget-2"
+        value="web-design-budget-2"
+      />
+
+      <FormControl
+        type="radio"
+        color="yellow"
+        label="£10-25k"
+        name="web-design-budget"
+        id="web-design-budget-3"
+        value="web-design-budget-3"
+      />
+
+      <FormControl
+        type="radio"
+        color="yellow"
+        label="£25-50k"
+        name="web-design-budget"
+        id="web-design-budget-4"
+        value="web-design-budget-4"
+      />
+
+      <FormControl
+        type="radio"
+        color="yellow"
+        label="£50k+"
+        name="web-design-budget"
+        id="web-design-budget-5"
+        value="web-design-budget-5"
+      />
+    </div>
+
+    <Fragment slot="bottom">
+      <p class="text-grey text-14 lg:text-16 text-balance">
+        Our bespoke web projects start at £25,000. For smaller budgets, we
+        recommend Yellowball Lite - our affordable, flexible WordPress theme
+        ideal for small businesses, startups and charities.
+        <a href="/">
+          <LinkArrow class="text-white"> Visit Yellowball Lite </LinkArrow>
+        </a>
+      </p>
+    </Fragment>
+  </FormGroup>
+
+  <FormGroup
+    data-js-service="seo"
+    headline="Monthly SEO Budget *"
+    class="hidden"
+  >
+    <div class="flex gap-15 flex-wrap">
+      <FormControl
+        type="radio"
+        color="green"
+        label="£0-2k"
+        name="seo-budget"
+        id="seo-budget-1"
+        value="seo-budget-1"
+        checked
+      />
+
+      <FormControl
+        type="radio"
+        color="green"
+        label="£2-5k"
+        name="seo-budget"
+        id="seo-budget-2"
+        value="seo-budget-2"
+      />
+
+      <FormControl
+        type="radio"
+        color="green"
+        label="£5-10k"
+        name="seo-budget"
+        id="seo-budget-3"
+        value="seo-budget-3"
+      />
+
+      <FormControl
+        type="radio"
+        color="green"
+        label="£10-20k"
+        name="seo-budget"
+        id="seo-budget-4"
+        value="seo-budget-4"
+      />
+
+      <FormControl
+        type="radio"
+        color="green"
+        label="£20k+"
+        name="seo-budget"
+        id="seo-budget-5"
+        value="seo-budget-5"
+      />
+    </div>
+
+    <Fragment slot="bottom">
+      <p class="text-grey text-14 lg:text-16 text-balance">
+        SEO campaigns from Yellowball start from £1500 per month, structured
+        over a minimum 3 month rolling agreement.
+      </p>
+    </Fragment>
+  </FormGroup>
+
+  <FormGroup
+    data-js-service="ppc"
+    headline="Monthly PPC Budget *"
+    class="hidden"
+  >
+    <div class="flex gap-15 flex-wrap">
+      <FormControl
+        type="radio"
+        color="blue"
+        label="£0-1k"
+        name="ppc-budget"
+        id="ppc-budget-1"
+        value="ppc-budget-1"
+        checked
+      />
+
+      <FormControl
+        type="radio"
+        color="blue"
+        label="£1-2k"
+        name="ppc-budget"
+        id="ppc-budget-2"
+        value="ppc-budget-2"
+      />
+
+      <FormControl
+        type="radio"
+        color="blue"
+        label="£2-5k"
+        name="ppc-budget"
+        id="ppc-budget-3"
+        value="ppc-budget-3"
+      />
+
+      <FormControl
+        type="radio"
+        color="blue"
+        label="£5-10k"
+        name="ppc-budget"
+        id="ppc-budget-4"
+        value="ppc-budget-4"
+      />
+
+      <FormControl
+        type="radio"
+        color="blue"
+        label="£10k+"
+        name="ppc-budget"
+        id="ppc-budget-5"
+        value="ppc-budget-5"
+      />
+    </div>
+
+    <Fragment slot="bottom">
+      <p class="text-grey text-14 lg:text-16 text-balance">
+        PPC campaigns from Yellowball start from £750 per month, excluding Ad
+        spend structured over a minimum 3 month rolling agreement.
+      </p>
+    </Fragment>
+  </FormGroup>
+
+  <div data-js-service="any" class="w-full hidden">
+    <FormInput
+      label="Tell us about your project *"
+      type="text"
+      id="about"
+      name="about"
+      value=""
+      placeholder="placeholder"
+      required
+    />
+  </div>
+
+  <FormGroup
+    data-js-service="any"
+    class="hidden"
+    headline="Anything to share? Brief, technical scope or supporting documents?"
+  >
+    <input type="file" name="file" id="file" />
+  </FormGroup>
+
+  <FormGroup>
+    <FormCheckbox color="white" name="agree" id="agree" value="agree">
+      I agree to the Yellowball
+      <a href="/" class="underline">Privacy Policy</a>
+    </FormCheckbox>
+  </FormGroup>
+
+  <button type="submit">
+    <Button text="Submit" hasArrow />
+  </button>
+</form>

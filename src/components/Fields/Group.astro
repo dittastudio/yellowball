@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Group {
+  headline?: string;
+}
+
+type Props = HTMLAttributes<'div'> & Group;
+
+const { headline = '', ...rest } = Astro.props as Props;
+const classes = [rest.class, 'flex flex-col justify-start gap-20'].filter(
+  Boolean,
+);
+const { class: className, ...attrs } = rest;
+---
+
+<div class:list={classes} {...attrs}>
+  {
+    headline && (
+      <p class="font-heading text-18 lg:text-22 text-balance">{headline}</p>
+    )
+  }
+
+  {
+    Astro.slots.default && (
+      <div>
+        <slot />
+      </div>
+    )
+  }
+
+  {
+    Astro.slots.bottom && (
+      <div>
+        <slot name="bottom" />
+      </div>
+    )
+  }
+</div>
