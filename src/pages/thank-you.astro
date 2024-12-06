@@ -1,0 +1,57 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Button from '@/components/Elements/Button.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Thank You">
+  <main>
+    <section class="py-50">
+      <BlockHero>
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance max-w-[16ch]"
+          >
+            Thank you for your enquiry!
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            Someone will be in touch with you shortly, to discuss the
+            requirements of your project. Don't want to wait? Book a meeting
+            with a member of the team now!
+          </p>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <p>
+            <a href="/">
+              <Button text="Book a meeting" hasArrow />
+            </a>
+          </p>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light">
+        <LayoutLines theme="light" class={classSectionThick}>
+          <BlockTestimonials />
+        </LayoutLines>
+      </LayoutTheme>
+    </section>
+  </main>
+</Layout>

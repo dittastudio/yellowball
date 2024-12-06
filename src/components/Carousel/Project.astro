@@ -21,9 +21,9 @@ const classes = ['carousel-project', className];
   import type { SwiperOptions } from 'swiper/types';
   import { Autoplay, Navigation, Pagination, Keyboard } from 'swiper/modules';
 
-  const carousels = [
-    ...document.querySelectorAll('[data-js="carousel-project"]'),
-  ] as HTMLElement[];
+  const carousels = document.querySelectorAll(
+    '[data-js="carousel-project"]',
+  ) as NodeListOf<HTMLElement>;
 
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;

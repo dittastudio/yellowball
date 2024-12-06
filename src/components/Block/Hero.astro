@@ -15,18 +15,19 @@ const { color = 'blue', shape } = Astro.props as Props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const heros = [
-    ...document.querySelectorAll('[data-js=hero]'),
-  ] as HTMLElement[];
+  const heros = document.querySelectorAll(
+    '[data-js="hero"]',
+  ) as NodeListOf<HTMLElement>;
+
+  const html = document.documentElement as HTMLElement;
 
   heros.forEach(hero => {
-    const html = document.documentElement as HTMLElement;
     const icon = hero.querySelector('[data-js-hero-icon]') as HTMLElement;
     const iconInner = hero.querySelector(
       '[data-js-hero-icon-inner]',
     ) as HTMLElement;
 
-    if (icon) {
+    if (icon && iconInner && html) {
       const tl1 = gsap.timeline();
 
       tl1.to(icon, {

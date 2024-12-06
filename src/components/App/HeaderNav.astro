@@ -15,9 +15,9 @@ const { class: className, items } = Astro.props as Props;
 <script>
   import gsap from 'gsap';
 
-  const navs = [
-    ...document.querySelectorAll('[data-js=header-nav]'),
-  ] as HTMLElement[];
+  const navs = document.querySelectorAll(
+    '[data-js=header-nav]',
+  ) as NodeListOf<HTMLElement>;
 
   navs.forEach(nav => {
     const navList = nav.querySelector('[data-js-header-nav-list]');

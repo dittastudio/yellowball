@@ -24,9 +24,9 @@ const {
 ---
 
 <script>
-  const heros = [
-    ...document.querySelectorAll('[data-js=card-post-hero]'),
-  ] as HTMLElement[];
+  const heros = document.querySelectorAll(
+    '[data-js=card-post-hero]',
+  ) as NodeListOf<HTMLElement>;
 
   heros.forEach(hero => {
     const imageBlur = hero.querySelector(

@@ -1,9 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import Button from '@/components/Elements/Button.astro';
 import CardInfo from '@/components/Card/Info.astro';
+import FormCheckbox from '@/components/Form/Checkbox.astro';
+import FormControl from '@/components/Form/Control.astro';
 import FormInput from '@/components/Form/Input.astro';
-import FormCheckboxChip from '@/components/Form/CheckboxChip.astro';
+import FormGroup from '@/components/Form/Group.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
@@ -33,7 +37,7 @@ const classSection = 'py-50 md:py-[75px]';
         </Fragment>
 
         <Fragment slot="form">
-          <form class="flex flex-col gap-20 lg:gap-28">
+          <form class="flex flex-col items-start gap-60 lg:gap-80">
             <FormInput
               label="Please tell us your name *"
               type="text"
@@ -56,7 +60,7 @@ const classSection = 'py-50 md:py-[75px]';
 
             <FormInput
               label="Best number for a quick call? *"
-              type="text"
+              type="tel"
               id="number"
               name="number"
               value=""
@@ -64,43 +68,250 @@ const classSection = 'py-50 md:py-[75px]';
               required
             />
 
-            <p class="font-heading text-18 lg:text-22">
-              Which services are you interested in exploring with us?
-            </p>
+            <FormGroup
+              headline="Which services are you interested in exploring with us? *"
+            >
+              <div class="flex gap-15 flex-wrap">
+                <FormControl
+                  type="checkbox"
+                  color="yellow"
+                  label="Web Design"
+                  name="web-design"
+                  id="web-design"
+                  value="web-design"
+                />
 
-            <div class="flex gap-15">
-              <FormCheckboxChip
-                color="yellow"
-                label="Web Design"
-                id="web-design"
-                name="web-design"
-                value="web-design"
-              />
+                <FormControl
+                  type="checkbox"
+                  color="green"
+                  label="SEO"
+                  name="seo"
+                  id="seo"
+                  value="seo"
+                />
 
-              <FormCheckboxChip
-                color="green"
-                label="SEO"
-                id="seo"
-                name="seo"
-                value="seo"
-              />
+                <FormControl
+                  type="checkbox"
+                  color="blue"
+                  label="PPC"
+                  name="ppc"
+                  id="ppc"
+                  value="ppc"
+                />
 
-              <FormCheckboxChip
-                color="blue"
-                label="PPC"
-                id="ppc"
-                name="ppc"
-                value="ppc"
-              />
+                <FormControl
+                  type="checkbox"
+                  color="white"
+                  label="Other"
+                  name="other"
+                  id="other"
+                  value="other"
+                />
+              </div>
+            </FormGroup>
 
-              <FormCheckboxChip
-                color="white"
-                label="Other"
-                id="other"
-                name="other"
-                value="other"
-              />
-            </div>
+            <FormGroup headline="Total Web Design Budget *">
+              <div class="flex gap-15 flex-wrap">
+                <FormControl
+                  type="radio"
+                  color="yellow"
+                  label="£0-5k"
+                  name="web-design-budget"
+                  id="web-design-budget-1"
+                  value="web-design-budget-1"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="yellow"
+                  label="£5-10k"
+                  name="web-design-budget"
+                  id="web-design-budget-2"
+                  value="web-design-budget-2"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="yellow"
+                  label="£10-25k"
+                  name="web-design-budget"
+                  id="web-design-budget-3"
+                  value="web-design-budget-3"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="yellow"
+                  label="£25-50k"
+                  name="web-design-budget"
+                  id="web-design-budget-4"
+                  value="web-design-budget-4"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="yellow"
+                  label="£50k+"
+                  name="web-design-budget"
+                  id="web-design-budget-5"
+                  value="web-design-budget-5"
+                />
+              </div>
+
+              <Fragment slot="bottom">
+                <p class="text-grey text-14 lg:text-16 text-balance">
+                  Our bespoke web projects start at £25,000. For smaller
+                  budgets, we recommend Yellowball Lite - our affordable,
+                  flexible WordPress theme ideal for small businesses, startups
+                  and charities.
+                  <a href="/">
+                    <LinkArrow class="text-white">
+                      Visit Yellowball Lite
+                    </LinkArrow>
+                  </a>
+                </p>
+              </Fragment>
+            </FormGroup>
+
+            <FormGroup headline="Monthly SEO Budget *">
+              <div class="flex gap-15 flex-wrap">
+                <FormControl
+                  type="radio"
+                  color="green"
+                  label="£0-2k"
+                  name="seo-budget"
+                  id="seo-budget-1"
+                  value="seo-budget-1"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="green"
+                  label="£2-5k"
+                  name="seo-budget"
+                  id="seo-budget-2"
+                  value="seo-budget-2"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="green"
+                  label="£5-10k"
+                  name="seo-budget"
+                  id="seo-budget-3"
+                  value="seo-budget-3"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="green"
+                  label="£10-20k"
+                  name="seo-budget"
+                  id="seo-budget-4"
+                  value="seo-budget-4"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="green"
+                  label="£20k+"
+                  name="seo-budget"
+                  id="seo-budget-5"
+                  value="seo-budget-5"
+                />
+              </div>
+
+              <Fragment slot="bottom">
+                <p class="text-grey text-14 lg:text-16 text-balance">
+                  SEO campaigns from Yellowball start from £1500 per month,
+                  structured over a minimum 3 month rolling agreement.
+                </p>
+              </Fragment>
+            </FormGroup>
+
+            <FormGroup headline="Monthly PPC Budget *">
+              <div class="flex gap-15 flex-wrap">
+                <FormControl
+                  type="radio"
+                  color="blue"
+                  label="£0-1k"
+                  name="ppc-budget"
+                  id="ppc-budget-1"
+                  value="ppc-budget-1"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="blue"
+                  label="£1-2k"
+                  name="ppc-budget"
+                  id="ppc-budget-2"
+                  value="ppc-budget-2"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="blue"
+                  label="£2-5k"
+                  name="ppc-budget"
+                  id="ppc-budget-3"
+                  value="ppc-budget-3"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="blue"
+                  label="£5-10k"
+                  name="ppc-budget"
+                  id="ppc-budget-4"
+                  value="ppc-budget-4"
+                />
+
+                <FormControl
+                  type="radio"
+                  color="blue"
+                  label="£10k+"
+                  name="ppc-budget"
+                  id="ppc-budget-5"
+                  value="ppc-budget-5"
+                />
+              </div>
+
+              <Fragment slot="bottom">
+                <p class="text-grey text-14 lg:text-16 text-balance">
+                  PPC campaigns from Yellowball start from £750 per month,
+                  excluding Ad spend structured over a minimum 3 month rolling
+                  agreement.
+                </p>
+              </Fragment>
+            </FormGroup>
+
+            <FormInput
+              label="Tell us about your project *"
+              type="text"
+              id="about"
+              name="about"
+              value=""
+              placeholder="placeholder"
+              required
+            />
+
+            <FormGroup
+              headline="Anything to share? Brief, technical scope or supporting documents?"
+            >
+              <input type="file" name="file" id="file" />
+            </FormGroup>
+
+            <FormGroup>
+              <FormCheckbox color="white" name="agree" id="agree" value="agree">
+                I agree to the Yellowball
+                <a href="/" class="underline">Privacy Policy</a>
+              </FormCheckbox>
+            </FormGroup>
+
+            <button type="submit">
+              <Button text="Submit" hasArrow />
+            </button>
           </form>
         </Fragment>
 

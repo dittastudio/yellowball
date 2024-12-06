@@ -12,9 +12,9 @@ const classes = ['carousel-testimonials', 'w-full', className];
   import type { SwiperOptions } from 'swiper/types';
   import { Autoplay, Keyboard } from 'swiper/modules';
 
-  const carousels = [
-    ...document.querySelectorAll('[data-js="carousel-testimonials"]'),
-  ] as HTMLElement[];
+  const carousels = document.querySelectorAll(
+    '[data-js="carousel-testimonials"]',
+  ) as NodeListOf<HTMLElement>;
 
   carousels.forEach(carousel => {
     const swiperParams: SwiperOptions = {

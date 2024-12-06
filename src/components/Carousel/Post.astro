@@ -30,9 +30,9 @@ const classNavButton =
   import type { SwiperOptions } from 'swiper/types';
   import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
-  const carousels = [
-    ...document.querySelectorAll('[data-js=carousel-post]'),
-  ] as HTMLElement[];
+  const carousels = document.querySelectorAll(
+    '[data-js=carousel-post]',
+  ) as NodeListOf<HTMLElement>;
 
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;
