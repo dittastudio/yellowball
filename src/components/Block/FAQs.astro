@@ -61,9 +61,9 @@ const exampleQuestions = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const shapes = [
-    ...document.querySelectorAll('[data-js=block-faqs]'),
-  ] as HTMLElement[];
+  const shapes = document.querySelectorAll(
+    '[data-js="block-faqs"]',
+  ) as NodeListOf<HTMLElement>;
 
   shapes.forEach(shape => {
     const icon = shape.querySelector(
@@ -91,12 +91,13 @@ const exampleQuestions = [
   });
 </script>
 
-<div data-js="block-faqs" class="block-faqs">
+<!-- Begin Block: FAQs -->
+<div data-js="block-faqs">
   <div class="relative wrapper">
     <h2 class="text-fluid-h2 mb-30 md:mb-120">FAQs</h2>
 
     {
-      exampleQuestions?.map(question => (
+      exampleQuestions.map(question => (
         <AccordionItem id={question.id} {color}>
           <h3 slot="header">{question.question}</h3>
 
@@ -113,3 +114,4 @@ const exampleQuestions = [
     />
   </div>
 </div>
+<!-- End Block: FAQs -->

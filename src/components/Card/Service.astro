@@ -31,9 +31,9 @@ const classes = ['card-service', className];
 
   const perspective = '1000px';
   const delta = 50;
-  const cards = [
-    ...document.querySelectorAll('[data-js="card-service"]'),
-  ] as HTMLElement[];
+  const cards = document.querySelectorAll(
+    '[data-js="card-service"]',
+  ) as NodeListOf<HTMLElement>;
 
   cards.forEach(card => {
     const inner = card.firstElementChild as HTMLElement;

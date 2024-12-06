@@ -18,9 +18,9 @@ const classes = ['carousel-profile', className];
   import type { SwiperOptions } from 'swiper/types';
   import { Pagination, Keyboard } from 'swiper/modules';
 
-  const carousels = [
-    ...document.querySelectorAll('[data-js=carousel-profile]'),
-  ] as HTMLElement[];
+  const carousels = document.querySelectorAll(
+    '[data-js=carousel-profile]',
+  ) as NodeListOf<HTMLElement>;
 
   carousels.forEach(carousel => {
     const swiperEl = carousel.querySelector('[data-js-swiper]') as HTMLElement;

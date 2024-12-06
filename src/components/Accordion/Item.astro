@@ -30,9 +30,9 @@ const isOpenClasses = {
 <script>
   import gsap from 'gsap';
 
-  const accordions = [
-    ...document.querySelectorAll('[data-js=accordion-item]'),
-  ] as HTMLElement[];
+  const accordions = document.querySelectorAll(
+    '[data-js=accordion-item]',
+  ) as NodeListOf<HTMLElement>;
 
   accordions.forEach(accordion => {
     const header = accordion.querySelector(

@@ -11,7 +11,8 @@ interface Props {
 const { description = '' } = Astro.props as Props;
 ---
 
-<div data-js="card-stacks" class="wrapper xl:grid xl:grid-cols-12 xl:gap-30">
+<!-- Begin Block: CardStacks -->
+<div class="wrapper xl:grid xl:grid-cols-12 xl:gap-30">
   <div class="xl:col-span-10 xl:col-start-2 flex flex-col gap-60 lg:gap-110">
     <div
       class="grid grid-cols-8 md:grid-cols-10 gap-12 md:gap-30 gap-y-60 md:gap-y-80"
@@ -161,6 +162,7 @@ const { description = '' } = Astro.props as Props;
     </ul>
   </div>
 </div>
+<!-- End Block: CardStacks -->
 
 <style>
   .card-stacks__list {

@@ -24,9 +24,9 @@ const textListString = textList.join(',');
 </span>
 
 <script>
-  const typingTexts = [
-    ...document.querySelectorAll('[data-js=typing]'),
-  ] as HTMLElement[];
+  const typingTexts = document.querySelectorAll(
+    '[data-js="typing"]',
+  ) as NodeListOf<HTMLElement>;
 
   typingTexts.forEach(typingText => {
     const textList = (
@@ -45,24 +45,22 @@ const textListString = textList.join(',');
       const startTyping = () => {
         const current = textArray[textIndex];
 
-        if (current && textElement) {
-          if (direction === 'forward') {
-            if (charIndex <= current.length) {
-              const text = current.substring(0, charIndex);
-              textElement.textContent = text;
-              charIndex++;
+        if (current && textElement && direction === 'forward') {
+          if (charIndex <= current.length) {
+            const text = current.substring(0, charIndex);
+            textElement.textContent = text;
+            charIndex++;
 
-              setTimeout(startTyping, typeSpeed);
-            } else {
-              typingText.classList.add('is-hidden');
+            setTimeout(startTyping, typeSpeed);
+          } else {
+            typingText.classList.add('is-hidden');
 
-              setTimeout(() => {
-                typingText.classList.remove('is-hidden');
-                charIndex = 0;
-                textIndex = (textIndex + 1) % textArray.length;
-                startTyping();
-              }, pauseEnd);
-            }
+            setTimeout(() => {
+              typingText.classList.remove('is-hidden');
+              charIndex = 0;
+              textIndex = (textIndex + 1) % textArray.length;
+              startTyping();
+            }, pauseEnd);
           }
         }
       };
