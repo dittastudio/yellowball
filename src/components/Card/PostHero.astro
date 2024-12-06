@@ -77,7 +77,7 @@ const {
       '',
     ]}
   >
-    <div class="card-post-hero__bg">
+    <div class="card-post-hero__bg h-full">
       {hasSlotDefault && <slot />}
     </div>
   </div>
@@ -177,7 +177,6 @@ const {
   .card-post-hero__bg {
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       position: relative;
-      height: 100%;
       will-change: transform;
       z-index: -1;
 
