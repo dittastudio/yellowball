@@ -2,8 +2,9 @@
 import Button from '@/components/Elements/Button.astro';
 import FormCheckbox from '@/components/Fields/Checkbox.astro';
 import FormControl from '@/components/Fields/Control.astro';
-import FormInput from '@/components/Fields/Input.astro';
 import FormGroup from '@/components/Fields/Group.astro';
+import FormInput from '@/components/Fields/Input.astro';
+import FormFile from '@/components/Fields/File.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 ---
 
@@ -326,17 +327,17 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
     class="hidden"
     headline="Anything to share? Brief, technical scope or supporting documents?"
   >
-    <input type="file" name="file" id="file" />
+    <FormFile label="Add attachment" name="file" id="file" />
   </FormGroup>
 
-  <FormGroup>
+  <div class="w-full flex flex-col gap-30 items-start justify-start">
     <FormCheckbox color="white" name="agree" id="agree" value="agree">
       I agree to the Yellowball
       <a href="/" class="underline">Privacy Policy</a>
     </FormCheckbox>
-  </FormGroup>
 
-  <button type="submit">
-    <Button text="Submit" hasArrow />
-  </button>
+    <button type="submit">
+      <Button text="Submit" hasArrow />
+    </button>
+  </div>
 </form>

@@ -8,7 +8,7 @@ interface Group {
 type Props = HTMLAttributes<'div'> & Group;
 
 const { headline = '', ...rest } = Astro.props as Props;
-const classes = [rest.class, 'flex flex-col justify-start gap-20'].filter(
+const classes = ['flex flex-col justify-start gap-20', rest.class].filter(
   Boolean,
 );
 const { class: className, ...attrs } = rest;
