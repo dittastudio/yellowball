@@ -3,24 +3,32 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 
 interface Props {
   theme?: string;
+  isTopOfPage?: boolean;
   class?: string;
 }
 
-const { theme = 'dark', class: className } = Astro.props as Props;
+const {
+  theme = 'dark',
+  isTopOfPage = false,
+  class: className,
+} = Astro.props as Props;
 ---
 
 <div
   data-js-theme={theme}
   class:list={[
-    theme === 'light'
-      ? 'light light:bg-cream light:text-navy rounded-40 lg:rounded-80'
-      : null,
+    theme === 'light' ? 'light light:bg-cream light:text-navy' : null,
+    isTopOfPage
+      ? '-mt-[var(--header-height)] rounded-b-40 lg:rounded-b-80'
+      : 'rounded-40 lg:rounded-80',
   ]}
 >
   {
     theme === 'light' ? (
-      <LayoutLines class={className} theme={theme}>
-        <slot />
+      <LayoutLines class:list={[className]} theme={theme}>
+        <div class={isTopOfPage ? 'pt-[var(--header-height)]' : null}>
+          <slot />
+        </div>
       </LayoutLines>
     ) : (
       <slot />

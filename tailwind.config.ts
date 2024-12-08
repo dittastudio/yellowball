@@ -59,7 +59,7 @@ export default {
     'peer-checked:bg-purple',
     'peer-checked:bg-white',
   ],
-  darkMode: 'selector',
+  darkMode: ['selector'],
   theme: {
     colors: {
       current: "currentColor",
@@ -279,7 +279,7 @@ export default {
   },
   plugins: [
     function ({ addVariant }: any) {
-      addVariant('light', ':where(.light, .light &)')
+      addVariant('light', '&:where(.light, .light *)')
     },
     exposeColors({
       extract: [

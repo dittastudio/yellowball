@@ -1,0 +1,60 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+---
+
+<Layout title="Home">
+  <main>
+    <LayoutTheme theme="light" isTopOfPage>
+      <section class={classSection}>
+        <BlockHero color="navy" shape="triangle">
+          <Fragment slot="top">
+            <Breadcrumb
+              shape="triangle"
+              items={[
+                { color: 'yellow', title: 'Web Design', href: '/' },
+                { color: 'white', title: 'Yellowball Lite', href: '/' },
+              ]}
+            />
+          </Fragment>
+
+          <Fragment slot="headline">
+            <TextReveal
+              onEnter
+              tag="h1"
+              class="font-heading text-fluid-h1 font-semibold text-balance"
+            >
+              Affordable web design Yellowball Lite lorem
+            </TextReveal>
+          </Fragment>
+
+          <Fragment slot="bottom">
+            <p class="text-17 md:text-21 text-navy-lightest text-balance">
+              Yellowball Lite is the perfect solution for businesses who want a
+              sleek, modern website without breaking the bank. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.
+
+              <a
+                href="/"
+                class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
+              >
+                <LinkArrow>Let’s Chat</LinkArrow>
+              </a>
+            </p>
+          </Fragment>
+        </BlockHero>
+      </section>
+
+      <section class={classSection}>
+        <BlockFAQs color="navy" shape="triangle" />
+      </section>
+    </LayoutTheme>
+  </main>
+</Layout>
