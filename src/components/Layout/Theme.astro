@@ -1,4 +1,6 @@
 ---
+import LayoutLines from '@/components/Layout/Lines.astro';
+
 interface Props {
   theme?: string;
   class?: string;
@@ -10,9 +12,18 @@ const { theme = 'dark', class: className } = Astro.props as Props;
 <div
   data-js-theme={theme}
   class:list={[
-    theme === 'light' ? 'bg-cream text-navy rounded-40 lg:rounded-80' : null,
-    className,
+    theme === 'light'
+      ? 'light light:bg-cream light:text-navy rounded-40 lg:rounded-80'
+      : null,
   ]}
 >
-  <slot />
+  {
+    theme === 'light' ? (
+      <LayoutLines class={className} theme={theme}>
+        <slot />
+      </LayoutLines>
+    ) : (
+      <slot />
+    )
+  }
 </div>

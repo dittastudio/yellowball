@@ -20,10 +20,10 @@ const hoverClasses = {
 };
 
 const isOpenClasses = {
-  green: '[&.is-open]:text-green',
-  blue: '[&.is-open]:text-blue',
-  yellow: '[&.is-open]:text-yellow',
-  purple: '[&.is-open]:text-purple',
+  green: '[.accordion-item.is-open_&]:text-green',
+  blue: '[.accordion-item.is-open_&]:text-blue',
+  yellow: '[.accordion-item.is-open_&]:text-yellow',
+  purple: '[.accordion-item.is-open_&]:text-purple',
 };
 ---
 
@@ -102,11 +102,7 @@ const isOpenClasses = {
 
 <section
   data-js="accordion-item"
-  class:list={[
-    'accordion-item w-full text-21 md:text-28',
-    isOpenClasses[color as keyof typeof isOpenClasses],
-    className,
-  ]}
+  class:list={['accordion-item w-full text-21 md:text-28', className]}
 >
   <button
     data-js-accordion-header
@@ -115,6 +111,7 @@ const isOpenClasses = {
     class:list={[
       'group/accordion flex items-baseline gap-28 md:gap-40 py-30 md:pt-40 md:pb-30 w-full',
       'font-heading font-semibold text-left',
+      isOpenClasses[color as keyof typeof isOpenClasses],
     ]}
   >
     <span class:list={['accordion-item__icon', colourText[color]]}></span>
@@ -144,9 +141,11 @@ const isOpenClasses = {
       >
         <div
           data-js-accordion-body-inner
-          class="prose max-w-[850px] prose-p:text-18 prose-p:sm:text-21 prose-p:m-0 [&_p+p]:mt-[1em] text-grey pb-40 opacity-0"
+          class="prose max-w-[850px] prose-p:text-18 prose-p:sm:text-21 prose-p:m-0 [&_p+p]:mt-[1em] pb-40 text-current opacity-0"
         >
-          <slot name="body" />
+          <div class="opacity-60">
+            <slot name="body" />
+          </div>
         </div>
       </article>
     )

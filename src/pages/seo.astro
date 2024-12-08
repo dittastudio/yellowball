@@ -27,7 +27,6 @@ import BlockServiceList from '@/components/Block/ServiceList.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 
 import LayoutTheme from '@/components/Layout/Theme.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -295,25 +294,23 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockCardStacks
-            description="As a leading boutique, London-based SEO agency, our SEO consultants can help you with everything from eCommerce SEO, SEO Audits, technical SEO and SEO migration."
-          >
-            <Fragment slot="headline">
-              <TextReveal
-                tag="h2"
-                class="font-heading text-fluid-h2 font-semibold"
-              >
-                <span class="relative !inline-block">
-                  SEO campaigns
-                  <UnderlineGradient />
-                </span>
-                that work as hard as you do
-              </TextReveal>
-            </Fragment>
-          </BlockCardStacks>
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockCardStacks
+          description="As a leading boutique, London-based SEO agency, our SEO consultants can help you with everything from eCommerce SEO, SEO Audits, technical SEO and SEO migration."
+        >
+          <Fragment slot="headline">
+            <TextReveal
+              tag="h2"
+              class="font-heading text-fluid-h2 font-semibold"
+            >
+              <span class="relative !inline-block">
+                SEO campaigns
+                <UnderlineGradient />
+              </span>
+              that work as hard as you do
+            </TextReveal>
+          </Fragment>
+        </BlockCardStacks>
       </LayoutTheme>
     </section>
 
@@ -338,10 +335,8 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockTestimonials />
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
       </LayoutTheme>
     </section>
 
@@ -376,10 +371,8 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockGoogle />
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockGoogle />
       </LayoutTheme>
     </section>
 

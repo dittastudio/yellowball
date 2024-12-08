@@ -8,7 +8,6 @@ import BlockHero from '@/components/Block/Hero.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 
 import LayoutTheme from '@/components/Layout/Theme.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -47,10 +46,8 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockTestimonials />
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
       </LayoutTheme>
     </section>
   </main>
