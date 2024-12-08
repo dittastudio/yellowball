@@ -6,6 +6,8 @@ import BlockFAQs from '@/components/Block/FAQs.astro';
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import BlockButtons from '@/components/Block/Buttons.astro';
+import Button from '@/components/Elements/Button.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 ---
@@ -50,6 +52,18 @@ const classSection = 'py-50 md:py-[75px]';
             </p>
           </Fragment>
         </BlockHero>
+      </section>
+
+      <section class={classSection}>
+        <BlockButtons>
+          <a href="/">
+            <Button text="Speak to a Web Expert" type="navy" />
+          </a>
+
+          <a href="/">
+            <Button text="View all Projects" type="white-bordered" hasArrow />
+          </a>
+        </BlockButtons>
       </section>
 
       <section class={classSection}>

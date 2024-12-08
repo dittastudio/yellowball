@@ -16,13 +16,32 @@ const {
 } = Astro.props as Props;
 
 const typeClasses = {
-  white:
-    'bg-white text-navy before:border-transparent [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
-  navy: 'bg-navy text-white before:border-transparent [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
-  'white-bordered':
-    'bg-white text-navy before:border-grey [a:hover_&]:before:border-yellow [button:hover_&]:before:border-yellow [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
-  'navy-bordered':
-    'bg-navy text-white before:border-white [a:hover_&]:before:border-yellow [button:hover_&]:before:border-yellow [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
+  white: [
+    'bg-white text-navy before:border-transparent',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
+    '[a:hover_&]:light:bg-navy [a:hover_&]:light:text-white',
+    '[button:hover_&]:light:bg-navy [button:hover_&]:light:text-white',
+  ],
+  navy: [
+    'bg-navy text-white before:border-transparent',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
+    '[a:hover_&]:light:bg-navy/80 [a:hover_&]:light:text-white',
+    '[button:hover_&]:light:bg-navy/80 [button:hover_&]:light:text-white',
+  ],
+  'white-bordered': [
+    'bg-white text-navy before:border-grey',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
+    '[a:hover_&]:bg-navy [a:hover_&]:text-white [a:hover_&]:light:before:border-navy',
+    '[button:hover_&]:bg-navy [button:hover_&]:text-white [button:hover_&]:light:before:border-navy',
+  ],
+  'navy-bordered': [
+    'bg-navy text-white before:border-white',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
+  ],
 };
 ---
 
