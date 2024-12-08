@@ -14,6 +14,8 @@ import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import CardService from '@/components/Card/Service.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThickStart = 'pt-100 md:pt-[150px]';
@@ -58,6 +60,13 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
                 <LinkArrow>Let’s Chat</LinkArrow>
               </a>
             </p>
+          </Fragment>
+
+          <Fragment slot="extra">
+            <Cursors hasExit>
+              <Cursor title="Design Team" class="bg-yellow" />
+              <Cursor title="Developers" class="bg-grey" />
+            </Cursors>
           </Fragment>
         </BlockHero>
       </section>
