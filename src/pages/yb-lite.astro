@@ -1,0 +1,162 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
+import Button from '@/components/Elements/Button.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
+import CardService from '@/components/Card/Service.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThickStart = 'pt-100 md:pt-[150px]';
+const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
+---
+
+<Layout title="Home">
+  <main>
+    <LayoutTheme theme="light" isTopOfPage>
+      <section class={classSection}>
+        <BlockHero color="navy" shape="triangle">
+          <Fragment slot="top">
+            <Breadcrumb
+              shape="triangle"
+              items={[
+                { color: 'yellow', title: 'Web Design', href: '/' },
+                { color: 'white', title: 'Yellowball Lite', href: '/' },
+              ]}
+            />
+          </Fragment>
+
+          <Fragment slot="headline">
+            <TextReveal
+              onEnter
+              tag="h1"
+              class="font-heading text-fluid-h1 font-semibold text-balance"
+            >
+              Affordable web design Yellowball Lite lorem
+            </TextReveal>
+          </Fragment>
+
+          <Fragment slot="bottom">
+            <p class="text-17 md:text-21 text-navy-lightest text-balance">
+              Yellowball Lite is the perfect solution for businesses who want a
+              sleek, modern website without breaking the bank. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.
+
+              <a
+                href="/"
+                class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
+              >
+                <LinkArrow>Let’s Chat</LinkArrow>
+              </a>
+            </p>
+          </Fragment>
+
+          <Fragment slot="extra">
+            <Cursors hasExit>
+              <Cursor title="Design Team" class="bg-yellow" />
+              <Cursor title="Developers" class="bg-grey" />
+            </Cursors>
+          </Fragment>
+        </BlockHero>
+      </section>
+
+      <section class={classSection}>
+        <BlockButtons>
+          <a href="/">
+            <Button text="Speak to a Web Expert" type="navy" />
+          </a>
+
+          <a href="/">
+            <Button text="View all Projects" type="white-bordered" hasArrow />
+          </a>
+        </BlockButtons>
+      </section>
+
+      <section class={classSection}>
+        <BlockLogoTicker />
+      </section>
+
+      <section class={classSection}>
+        <BlockFAQs color="navy" shape="triangle" />
+      </section>
+
+      <section class={classSectionThickEnd}>
+        <BlockTestimonials />
+      </section>
+    </LayoutTheme>
+
+    <section class={classSectionThickStart}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Other Services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceCards>
+        <Fragment slot="cards">
+          <CardServiceHero
+            headline="Web Design"
+            description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+            cta="See our services"
+            shape="triangle"
+            color="yellow"
+            class="col-span-full"
+          >
+            <img
+              src="/images/test-service-1.webp"
+              width="1230"
+              height="756"
+              alt=""
+            />
+          </CardServiceHero>
+
+          <CardService
+            headline="SEO"
+            description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+            shape="square"
+            color="green"
+          >
+            <img
+              src="/images/test-service-2.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+
+          <CardService
+            headline="Paid Search"
+            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+            shape="circle"
+            color="blue"
+          >
+            <img
+              src="/images/test-service-3.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+        </Fragment>
+      </BlockServiceCards>
+    </section>
+  </main>
+</Layout>

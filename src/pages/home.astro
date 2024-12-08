@@ -28,7 +28,6 @@ import BlockServiceList from '@/components/Block/ServiceList.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 
 import LayoutTheme from '@/components/Layout/Theme.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
 
 const exampleServiceListItems: any = [
   {
@@ -221,25 +220,23 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockCardStacks
-            description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
-          >
-            <Fragment slot="headline">
-              <TextReveal
-                tag="h2"
-                class="font-heading text-fluid-h2 font-semibold"
-              >
-                Rooted in London, connected
-                <span class="relative !inline-block">
-                  worldwide
-                  <UnderlineGradient />
-                </span>
-              </TextReveal>
-            </Fragment>
-          </BlockCardStacks>
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockCardStacks
+          description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
+        >
+          <Fragment slot="headline">
+            <TextReveal
+              tag="h2"
+              class="font-heading text-fluid-h2 font-semibold"
+            >
+              Rooted in London, connected
+              <span class="relative !inline-block">
+                worldwide
+                <UnderlineGradient />
+              </span>
+            </TextReveal>
+          </Fragment>
+        </BlockCardStacks>
       </LayoutTheme>
     </section>
 
@@ -318,10 +315,8 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light">
-        <LayoutLines theme="light" class={classSectionThick}>
-          <BlockTestimonials />
-        </LayoutLines>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
       </LayoutTheme>
     </section>
 

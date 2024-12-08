@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import LayoutLines from '@/components/Layout/Lines.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import AccordionItem from '@/components/Accordion/Item.astro';
@@ -236,28 +235,25 @@ const classCardCSSCols =
       <div class="flex flex-col items-start gap-8">
         <Breadcrumb
           shape="square"
-          color="green"
           items={[
-            { title: 'SEO', href: '/' },
-            { title: 'SEO Audit Services', href: '/' },
+            { color: 'green', title: 'SEO', href: '/' },
+            { color: 'green', title: 'SEO Audit Services', href: '/' },
           ]}
         />
 
         <Breadcrumb
           shape="triangle"
-          color="yellow"
           items={[
-            { title: 'Web Design', href: '/' },
-            { title: 'WordPress Development', href: '/' },
+            { color: 'yellow', title: 'Web Design', href: '/' },
+            { color: 'yellow', title: 'WordPress Development', href: '/' },
           ]}
         />
 
         <Breadcrumb
           shape="circle"
-          color="blue"
           items={[
-            { title: 'PPC', href: '/' },
-            { title: 'PPC Ad Campaigns', href: '/' },
+            { color: 'blue', title: 'PPC', href: '/' },
+            { color: 'blue', title: 'PPC Ad Campaigns', href: '/' },
           ]}
         />
       </div>
@@ -558,21 +554,18 @@ const classCardCSSCols =
       </div>
     </StyleguideSection>
 
-    <LayoutTheme theme="light">
-      <LayoutLines theme="light" class="py-100">
-        <StyleguideSection title="Light Theme Layout">
-          <div
-            class="flex flex-col min-h-[50vh] items-center justify-center text-center"
+    <LayoutTheme theme="light" class="py-100">
+      <StyleguideSection title="Light Theme Layout">
+        <div
+          class="flex flex-col min-h-[50vh] items-center justify-center text-center"
+        >
+          <p
+            class="font-heading font-bold text-fluid-h3 opacity-30 text-balance"
           >
-            <p
-              class="font-heading font-bold text-fluid-h3 opacity-30 text-balance"
-            >
-              The header changes to light theme when it scrolls into this
-              section
-            </p>
-          </div>
-        </StyleguideSection>
-      </LayoutLines>
+            The header changes to light theme when it scrolls into this section
+          </p>
+        </div>
+      </StyleguideSection>
     </LayoutTheme>
   </main>
 </Layout>
