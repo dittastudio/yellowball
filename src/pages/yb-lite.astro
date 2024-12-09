@@ -19,6 +19,7 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
+import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThickStart = 'pt-100 md:pt-[150px]';
@@ -115,6 +116,17 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
 
       <section class={classSection}>
         <BlockLogoTicker />
+      </section>
+
+      <section class={classSection}>
+        <BlockNumbered type="split">
+          <img
+            src="/images/test-profile-1.webp"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </BlockNumbered>
       </section>
 
       <section class={classSection}>
@@ -241,6 +253,57 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
             </RichText>
           </Fragment>
         </BlockSplitRichText>
+      </section>
+
+      <section class={classSection}>
+        <BlockIconTextCards
+          heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
+          items={[
+            {
+              icon: 'outline-info-migration',
+              title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Augue amet id enim consequat',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Quis sed eget in aliquam',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Vitae massa quam et nam ac',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+          ]}
+        />
+      </section>
+
+      <section class={classSection}>
+        <BlockIconTextCards
+          heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
+          items={[
+            {
+              icon: 'outline-info-migration',
+              title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Augue amet id enim consequat',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Quis sed eget in aliquam',
+              copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+            },
+          ]}
+        />
       </section>
 
       <section class={classSection}>
