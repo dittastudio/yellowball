@@ -1,6 +1,4 @@
 ---
-const classesGlobals =
-  'prose-headings:text-current prose-headings:font-heading prose-headings:font-semibold prose-headings:m-0 prose-p:text-current prose-p:opacity-50 prose-p:m-0';
 const classesH2 = 'prose-h1:text-fluid-h2 prose-h2:text-fluid-h2';
 const classesH3 = 'prose-h3:text-fluid-h3';
 const classesH4 = 'prose-h4:text-34 md:prose-h4:text-48';
@@ -13,7 +11,8 @@ const classesP =
 <div
   class:list={[
     'prose text-current',
-    classesGlobals,
+    'prose-headings:text-current prose-headings:font-heading prose-headings:font-semibold prose-headings:mt-0 prose-headings:mb-[0.6em]',
+    'prose-p:text-current prose-p:opacity-50 prose-p:m-0 [&_p_+_p]:mt-[1em]',
     classesH2,
     classesH3,
     classesH4,

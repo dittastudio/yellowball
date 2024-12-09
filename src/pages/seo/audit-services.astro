@@ -1,0 +1,144 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockNumbered from '@/components/Block/Numbered.astro';
+import BlockFAQs from '@/components/Block/FAQs.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+import Button from '@/components/Elements/Button.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import CardService from '@/components/Card/Service.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+const classSectionStart = 'pt-50 md:pt-[75px]';
+---
+
+<Layout title="SEO">
+  <main>
+    <section>
+      <BlockHero color="green" shape="square">
+        <Fragment slot="top">
+          <Breadcrumb
+            shape="square"
+            items={[
+              { color: 'green', title: 'SEO', href: '/' },
+              { color: 'green', title: 'SEO Audit Services', href: '/' },
+            ]}
+          />
+        </Fragment>
+
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance"
+          >
+            <mark class="text-green">SEO Audit Services</mark> lorem ipsum dolor
+            sit
+          </TextReveal>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class={classSection}>
+      <BlockNumbered type="split">
+        <img
+          src="/images/test-profile-1.webp"
+          width="673"
+          height="379"
+          alt=""
+        />
+      </BlockNumbered>
+    </section>
+
+    <section class={classSection}>
+      <BlockNumbered />
+    </section>
+
+    <section class={classSection}>
+      <BlockNumbered type="split" />
+    </section>
+
+    <section class={classSection}>
+      <BlockFAQs color="green" shape="square" />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="square" color="green">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-40 lg:text-64 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Ready to start your SEO Campaign?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get a quote today" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+
+    <section class={classSectionStart}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 font-semibold text-balance"
+          >
+            Other Services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceCards>
+        <Fragment slot="cards">
+          <CardService
+            headline="SEO"
+            description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+            shape="square"
+            color="green"
+          >
+            <img
+              src="/images/test-service-2.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+
+          <CardService
+            headline="Paid Search"
+            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+            shape="circle"
+            color="blue"
+          >
+            <img
+              src="/images/test-service-3.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+        </Fragment>
+      </BlockServiceCards>
+    </section>
+  </main>
+</Layout>
