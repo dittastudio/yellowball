@@ -3,16 +3,21 @@ import NumberedText from '@/components/Elements/NumberedText.astro';
 
 interface Props {
   type?: 'full' | 'split' | 'split-media';
+  color?: ColorTypes;
   class?: string;
 }
 
-const { type = 'full', class: className } = Astro.props as Props;
+const {
+  type = 'full',
+  color = 'current',
+  class: className,
+} = Astro.props as Props;
 
 const hasMedia = !!Astro.slots.default && type === 'split';
 
 const classesGrid = {
   full: 'grid-cols-1',
-  split: 'grid-cols-1 grid-cols-2 lg:grid-cols-12 items-center',
+  split: 'grid-cols-1 grid-cols-2 lg:grid-cols-12 lgMax:items-center',
 };
 
 const classesMedia = {
@@ -59,7 +64,7 @@ const classesList = {
 
   <h5
     class:list={[
-      'text-26 md:text-36 font-heading font-semibold text-balance',
+      'text-fluid-h5 font-heading font-semibold text-balance',
       classesHeading[type as keyof typeof classesHeading],
     ]}
   >
@@ -69,7 +74,7 @@ const classesList = {
 
   <ul
     class:list={[
-      'grid gap-x-12 md:gap-x-30 gap-y-40 w-full',
+      'grid gap-x-12 md:gap-x-30 gap-y-40 md:gap-y-100 w-full',
       classesList[type as keyof typeof classesList],
     ]}
   >
@@ -77,6 +82,7 @@ const classesList = {
       [...Array(4)].map((_, index) => (
         <li>
           <NumberedText
+            {color}
             number={index + 1}
             text="The UK's leading WordPress agency with 250+ stunning websites live."
           />

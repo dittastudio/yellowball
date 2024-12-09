@@ -24,23 +24,23 @@ const {
 >
   <a
     href="/"
-    class="group w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-30 border border-navy/15"
+    class="group rounded-30 lg:rounded-50 p-30 lg:p-50 gap-30 border-navy/15 flex flex-col items-start justify-start w-full h-full border"
   >
-    <div class="flex flex-col justify-start items-start gap-30">
+    <div class="gap-30 flex flex-col items-start justify-start">
       <div class="relative w-full">
         <h4
-          class="font-heading font-semibold text-34 lg:text-48 text-balance text-navy"
+          class="font-heading text-fluid-h4 text-balance text-navy font-semibold"
         >
           {headline}
         </h4>
 
         <Icon
           name="arrow-ne"
-          class="absolute right-0 top-15 block size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300 shrink-0"
+          class="top-15 size-10 md:size-12 group-hover:translate-x-2 group-hover:-translate-y-2 shrink-0 absolute right-0 block transition-transform duration-300"
         />
       </div>
 
-      <p class="font-normal text-15 lg:text-18 text-navy-lightest text-balance">
+      <p class="text-15 lg:text-18 text-navy-lightest text-balance font-normal">
         {description}
       </p>
     </div>

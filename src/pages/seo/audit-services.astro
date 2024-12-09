@@ -16,6 +16,8 @@ import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import CardService from '@/components/Card/Service.astro';
 import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
+import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
+import BlockCarouselIconTextCards from '@/components/Block/CarouselIconTextCards.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -50,7 +52,7 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
     </section>
 
     <section class={classSection}>
-      <BlockNumbered type="split">
+      <BlockNumbered type="split" color="green">
         <img
           src="/images/test-profile-1.webp"
           width="673"
@@ -61,7 +63,7 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
     </section>
 
     <section class={classSection}>
-      <BlockSplitRichText reverse>
+      <BlockSplitRichText>
         <Fragment slot="media">
           <img
             src="/images/test-profile-1.webp"
@@ -109,7 +111,7 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
     </section>
 
     <section class={classSection}>
-      <BlockSplitRichText>
+      <BlockSplitRichText reverse>
         <Fragment slot="media">
           <img
             src="/images/test-profile-1.webp"
@@ -151,24 +153,68 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light" class={classSectionThick}>
-        <BlockSplitRichText>
-          <img
-            src="/images/test-profile-1.webp"
-            width="673"
-            height="379"
-            alt=""
-          />
-        </BlockSplitRichText>
-      </LayoutTheme>
+      <BlockIconTextCards
+        color="green"
+        heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
+        items={[
+          {
+            icon: 'outline-info-migration',
+            title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Augue amet id enim consequat',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Quis sed eget in aliquam',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Lorem ipsum dolor sit amet',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+        ]}
+      />
     </section>
 
     <section class={classSection}>
-      <BlockNumbered />
+      <BlockIconTextCards
+        color="green"
+        heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
+        items={[
+          {
+            icon: 'outline-info-migration',
+            title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Augue amet id enim consequat',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Quis sed eget in aliquam',
+            copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+          },
+        ]}
+      />
     </section>
 
     <section class={classSection}>
-      <BlockNumbered type="split" />
+      <BlockCarouselIconTextCards color="green" />
+    </section>
+
+    <section class={classSection}>
+      <BlockNumbered color="green" />
+    </section>
+
+    <section class={classSection}>
+      <BlockNumbered color="green" type="split" />
     </section>
 
     <section class={classSection}>
@@ -186,7 +232,7 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
         <CardPrompt shape="square" color="green">
           <Fragment slot="headline">
             <h3
-              class="font-heading font-semibold text-40 lg:text-64 text-balance max-w-[20ch] lg:max-w-[14ch]"
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
             >
               Ready to start your SEO Campaign?
             </h3>

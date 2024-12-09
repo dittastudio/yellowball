@@ -154,6 +154,48 @@ export default {
           letterSpacing: '-0.04em'
         },
       ],
+      'fluid-h4': [
+        `${
+          clamp({
+            minPixels: 34,
+            minViewportWidthPixels: screenSizes.md,
+            maxPixels: 48,
+            maxViewportWidthPixels: screenSizes.base,
+          })
+        }`,
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
+      ],
+      'fluid-h5': [
+        `${
+          clamp({
+            minPixels: 26,
+            minViewportWidthPixels: screenSizes.md,
+            maxPixels: 36,
+            maxViewportWidthPixels: screenSizes.base,
+          })
+        }`,
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
+      ],
+      'fluid-h6': [
+        `${
+          clamp({
+            minPixels: 21,
+            minViewportWidthPixels: screenSizes.md,
+            maxPixels: 28,
+            maxViewportWidthPixels: screenSizes.base,
+          })
+        }`,
+        {
+          lineHeight: '1.2',
+          letterSpacing: '-0.04em'
+        },
+      ],
     },
     letterSpacing: {
       'tight': '-0.02em',

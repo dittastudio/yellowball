@@ -1,0 +1,54 @@
+---
+import CarouselIconText from '@/components/Carousel/IconText.astro';
+
+interface Props {
+  color?: ColorTypes;
+}
+
+const { color = 'current' } = Astro.props as Props;
+
+const exampleSlide1 = {
+  icon: 'outline-info-migration',
+  title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+  copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+};
+
+const exampleSlide2 = {
+  icon: 'outline-info-migration',
+  title: 'Augue amet id enim consequat',
+  copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+};
+
+const exampleSlide3 = {
+  icon: 'outline-info-migration',
+  title: 'Quis sed eget in aliquam',
+  copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+};
+
+const exampleSlide4 = {
+  icon: 'outline-info-migration',
+  title: 'Lorem ipsum dolor sit amet',
+  copy: 'Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit',
+};
+
+const exampleSlides: any = [
+  exampleSlide1,
+  exampleSlide2,
+  exampleSlide3,
+  exampleSlide4,
+  exampleSlide1,
+  exampleSlide2,
+  exampleSlide3,
+  exampleSlide4,
+];
+---
+
+<!-- Begin Block: CarouselIconText -->
+<div class="wrapper">
+  <CarouselIconText
+    {color}
+    heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
+    slides={exampleSlides}
+  />
+</div>
+<!-- End Block: CarouselIconText -->
