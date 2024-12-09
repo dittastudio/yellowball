@@ -25,6 +25,7 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 import TagList from '@/components/Elements/TagList.astro';
+import RichText from '@/components/Elements/RichText.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -56,6 +57,34 @@ const classCardCSSCols =
     >
       <h1>Styleguide</h1>
     </section>
+
+    <StyleguideSection title="RichText">
+      <RichText>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+          voluptas cumque minus eaque quas, quaerat dignissimos, possimus
+          laboriosam recusandae, fuga ea!
+        </p>
+
+        <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+        <Fragment slot="ctas">
+          <a href="/">
+            <Button text="Primary CTA" hasArrow />
+          </a>
+
+          <a href="/">
+            <Button type="secondary" text="Secondary CTA" />
+          </a>
+        </Fragment>
+      </RichText>
+    </StyleguideSection>
 
     <StyleguideSection title="Logo">
       <div class="flex flex-wrap gap-8">
@@ -203,21 +232,21 @@ const classCardCSSCols =
         </button>
 
         <button type="button">
-          <Button text="Button white border" type="navy-bordered" />
+          <Button text="Button white border" type="secondary" />
         </button>
       </div>
 
       <div class="bg-cream p-20 flex flex-wrap gap-8 mt-40">
         <button type="button">
-          <Button text="Button Navy" type="navy" />
+          <Button text="Button Navy" />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" type="navy" hasArrow />
+          <Button text="Button Navy" hasArrow />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" type="white-bordered" hasArrow />
+          <Button text="Button Navy" type="secondary" hasArrow />
         </button>
       </div>
     </StyleguideSection>

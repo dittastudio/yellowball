@@ -3,7 +3,7 @@ import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   class?: string;
-  type?: 'white' | 'white-bordered' | 'navy-bordered' | 'navy';
+  type?: 'primary' | 'secondary';
   text: string;
   hasArrow?: boolean;
 }
@@ -11,36 +11,26 @@ interface Props {
 const {
   class: className,
   text,
-  type = 'white',
+  type = 'primary',
   hasArrow = false,
 } = Astro.props as Props;
 
 const typeClasses = {
-  white: [
+  primary: [
     'bg-white text-navy before:border-transparent',
+    'light:bg-navy light:text-white before:border-transparent',
     '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
-    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
-    '[a:hover_&]:light:bg-navy [a:hover_&]:light:text-white',
-    '[button:hover_&]:light:bg-navy [button:hover_&]:light:text-white',
-  ],
-  navy: [
-    'bg-navy text-white before:border-transparent',
-    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
-    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
     '[a:hover_&]:light:bg-navy/90 [a:hover_&]:light:text-white',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
     '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white',
   ],
-  'white-bordered': [
-    'bg-white text-navy before:border-grey',
-    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
-    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
-    '[a:hover_&]:light:bg-navy/90 [a:hover_&]:light:text-white [a:hover_&]:light:before:border-navy',
-    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white [button:hover_&]:light:before:border-navy',
-  ],
-  'navy-bordered': [
+  secondary: [
     'bg-navy text-white before:border-white',
+    'light:bg-white light:text-navy light:before:border-grey',
     '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
+    '[a:hover_&]:light:bg-white [a:hover_&]:light:before:border-navy',
     '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
+    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white [button:hover_&]:light:before:border-navy',
   ],
 };
 ---

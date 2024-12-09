@@ -14,7 +14,9 @@ const classSection = 'py-50 md:py-[75px]';
     </section>
 
     <section class={classSection}>
-      <ul class="wrapper grid gap-10">
+      <ul
+        class="wrapper flex flex-col gap-24 [&_ul]:flex [&_ul]:flex-col [&_ul]:pt-8 [&_ul]:pl-40"
+      >
         <li class="text-40 font-heading">
           <a
             href="/home"
@@ -30,6 +32,17 @@ const classSection = 'py-50 md:py-[75px]';
           >
             SEO
           </a>
+
+          <ul>
+            <li>
+              <a
+                href="/seo/audit-services"
+                class="hover:text-green transition-colors duration-300"
+              >
+                Audit Services
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="text-40 font-heading">
           <a href="/ppc" class="hover:text-blue transition-colors duration-300">
