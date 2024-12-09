@@ -14,5 +14,5 @@ interface TagObject {
   color?: ColorTypes;
 }
 
-type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple' | 'white'
+type ColorTypes = 'green' | 'blue' | 'yellow' | 'purple' | 'white' | 'navy'
 type ShapeTypes = 'circle' | 'square' | 'triangle'

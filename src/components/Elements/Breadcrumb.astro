@@ -3,25 +3,22 @@ import { colourText, colourBackground } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 type Item = {
+  color: ColorTypes;
   title: string;
   href: string;
 };
 
 interface Props {
   shape: 'circle' | 'square' | 'triangle';
-  color?: ColorTypes;
   items: Item[];
   class?: string;
 }
 
 const {
   shape = 'triangle',
-  color = 'yellow',
   items = [],
   class: className,
 } = Astro.props as Props;
-
-const lastItemClasses = `${colourBackground[color]} text-navy`;
 ---
 
 <ul
@@ -38,8 +35,11 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
           class:list={[
             'flex justify-center items-center gap-6 rounded-10 px-14 md:px-20 pt-[calc(10.5/12*1em)] pb-[calc(9.5/12*1em)] font-bold leading-[1]',
             index === items.length - 1 && items.length > 1
-              ? lastItemClasses
-              : 'text-white border border-white/10 bg-navy',
+              ? `${colourBackground[item.color]} text-navy`
+              : 'text-white border border-solid border-navy-lighter bg-navy',
+            item.color === 'white'
+              ? 'border border-solid border-navy/15'
+              : null,
           ]}
         >
           {index === 0 && (
@@ -50,7 +50,7 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
                 shape === 'triangle'
                   ? 'w-[calc(11/12*1em)] h-[calc(10/12*1em)]'
                   : 'size-[calc(10/12*1em)]',
-                colourText[color],
+                colourText[item.color],
               ]}
             />
           )}
@@ -59,7 +59,7 @@ const lastItemClasses = `${colourBackground[color]} text-navy`;
         </a>
 
         {index < items.length - 1 && (
-          <Icon name="chevron-right" class="block text-white w-7 h-11" />
+          <Icon name="chevron-right" class="block w-7 h-11" />
         )}
       </li>
     ))
