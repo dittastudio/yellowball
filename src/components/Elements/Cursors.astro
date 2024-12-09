@@ -22,6 +22,7 @@ const { hasExit = null } = Astro.props as Props;
     ) as NodeListOf<HTMLElement>;
     const timelines: gsap.core.Timeline[] = [];
     const getRandomDuration = () => gsap.utils.random(1, 2);
+    let canMoveX = true;
 
     const createTimeline = (cursor: HTMLElement) => {
       const timeline = gsap.timeline({
@@ -55,6 +56,8 @@ const { hasExit = null } = Astro.props as Props;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!canMoveX) return;
+
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
@@ -101,6 +104,8 @@ const { hasExit = null } = Astro.props as Props;
               scrub: 1.5,
               invalidateOnRefresh: true,
               onEnter: () => {
+                canMoveX = false;
+
                 if (isPlaying) {
                   timelines.forEach(timeline => timeline.pause());
                   isPlaying = false;
@@ -114,6 +119,7 @@ const { hasExit = null } = Astro.props as Props;
                     ScrollTrigger.refresh();
                     timelines.forEach(timeline => timeline.play());
                     isPlaying = true;
+                    canMoveX = true;
                   });
                 }
               },
