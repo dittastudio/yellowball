@@ -16,13 +16,32 @@ const {
 } = Astro.props as Props;
 
 const typeClasses = {
-  white:
-    'bg-white text-navy [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
-  navy: 'bg-navy text-white [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
-  'white-bordered':
-    'bg-white text-navy before:border-grey [a:hover_&]:before:border-navy [button:hover_&]:before:border-navy [a:hover_&]:bg-navy [button:hover_&]:bg-navy [a:hover_&]:text-white [button:hover_&]:text-white',
-  'navy-bordered':
-    'bg-navy text-white before:border-white [a:hover_&]:before:border-yellow [button:hover_&]:before:border-yellow [a:hover_&]:bg-yellow [button:hover_&]:bg-yellow [a:hover_&]:text-navy [button:hover_&]:text-navy',
+  white: [
+    'bg-white text-navy before:border-transparent',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
+    '[a:hover_&]:light:bg-navy [a:hover_&]:light:text-white',
+    '[button:hover_&]:light:bg-navy [button:hover_&]:light:text-white',
+  ],
+  navy: [
+    'bg-navy text-white before:border-transparent',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
+    '[a:hover_&]:light:bg-navy/90 [a:hover_&]:light:text-white',
+    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white',
+  ],
+  'white-bordered': [
+    'bg-white text-navy before:border-grey',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
+    '[a:hover_&]:light:bg-navy/90 [a:hover_&]:light:text-white [a:hover_&]:light:before:border-navy',
+    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white [button:hover_&]:light:before:border-navy',
+  ],
+  'navy-bordered': [
+    'bg-navy text-white before:border-white',
+    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
+    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
+  ],
 };
 ---
 
@@ -32,7 +51,7 @@ const typeClasses = {
     'px-[36px] py-[1em]',
     'rounded-20 transition-colors duration-250 ease-smooth',
     'font-heading font-bold leading-[1.467] md:leading-[1.2223] text-15 md:text-18',
-    'before:absolute before:inset-0 before:border before:border-solid before:border-transparent before:rounded-[inherit] before:transition-colors before:duration-250 before:ease-smooth',
+    'before:absolute before:inset-0 before:border before:border-solid before:rounded-[inherit] before:transition-colors before:duration-250 before:ease-smooth',
     'after:absolute after:inset-0 after:opacity-0 after:rounded-[inherit] after:transition-opacity after:duration-250 after:ease-smooth after:bg-navy',
     '[a:active_&]:after:opacity-10 [button:active_&]:after:opacity-10',
     typeClasses[type],

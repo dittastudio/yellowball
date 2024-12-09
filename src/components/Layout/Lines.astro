@@ -1,7 +1,7 @@
 ---
 interface Props {
   theme?: string;
-  class?: string;
+  class?: string | undefined;
 }
 
 const { theme = 'dark', class: className } = Astro.props as Props;
