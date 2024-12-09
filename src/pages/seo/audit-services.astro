@@ -14,6 +14,7 @@ import Button from '@/components/Elements/Button.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import CardService from '@/components/Card/Service.astro';
+import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -56,6 +57,30 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
           alt=""
         />
       </BlockNumbered>
+    </section>
+
+    <section class={classSection}>
+      <BlockSplitRichText>
+        <img
+          src="/images/test-profile-1.webp"
+          width="673"
+          height="379"
+          alt=""
+        />
+      </BlockSplitRichText>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockSplitRichText>
+          <img
+            src="/images/test-profile-1.webp"
+            width="673"
+            height="379"
+            alt=""
+          />
+        </BlockSplitRichText>
+      </LayoutTheme>
     </section>
 
     <section class={classSection}>

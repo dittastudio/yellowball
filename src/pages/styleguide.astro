@@ -69,16 +69,20 @@ const classCardCSSCols =
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
           voluptas cumque minus eaque quas, quaerat dignissimos, possimus
-          laboriosam recusandae, fuga ea! Eum atque aliquam quidem magnam fuga
-          accusamus neque modi!
+          laboriosam recusandae, fuga ea!
         </p>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-          voluptas cumque minus eaque quas, quaerat dignissimos, possimus
-          laboriosam recusandae, fuga ea! Eum atque aliquam quidem magnam fuga
-          accusamus neque modi!
-        </p>
+        <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+        <Fragment slot="ctas">
+          <a href="/">
+            <Button text="Primary CTA" hasArrow />
+          </a>
+
+          <a href="/">
+            <Button type="secondary" text="Secondary CTA" />
+          </a>
+        </Fragment>
       </RichText>
     </StyleguideSection>
 
@@ -228,21 +232,21 @@ const classCardCSSCols =
         </button>
 
         <button type="button">
-          <Button text="Button white border" type="navy-bordered" />
+          <Button text="Button white border" type="secondary" />
         </button>
       </div>
 
       <div class="bg-cream p-20 flex flex-wrap gap-8 mt-40">
         <button type="button">
-          <Button text="Button Navy" type="navy" />
+          <Button text="Button Navy" />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" type="navy" hasArrow />
+          <Button text="Button Navy" hasArrow />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" type="white-bordered" hasArrow />
+          <Button text="Button Navy" type="secondary" hasArrow />
         </button>
       </div>
     </StyleguideSection>
