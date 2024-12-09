@@ -1,61 +1,89 @@
 ---
-import RichText from '@/components/Elements/RichText.astro';
-import Button from '@/components/Elements/Button.astro';
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 
 interface Props {
+  color?: ColorTypes;
+  shape?: ShapeTypes;
   reverse?: boolean;
   class?: string;
 }
 
-const { reverse = false, class: className } = Astro.props as Props;
+const {
+  color = 'green',
+  shape = 'triangle',
+  reverse = false,
+  class: className,
+} = Astro.props as Props;
 ---
 
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const shapes = document.querySelectorAll(
+    '[data-js="block-split-rich-text"]',
+  ) as NodeListOf<HTMLElement>;
+
+  shapes.forEach(shape => {
+    const icon = shape.querySelector(
+      '[data-js-block-split-rich-text-icon]',
+    ) as HTMLElement;
+
+    if (icon) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          markers: false,
+          trigger: icon,
+          start: 'top center',
+          end: 'top 25%',
+          scrub: 1.5,
+        },
+      });
+
+      tl.from(icon, {
+        opacity: 0,
+        y: '10%',
+        scale: 0.95,
+        ease: 'linear',
+      });
+    }
+  });
+</script>
+
 <!-- Begin Block: SplitRichText -->
-<div
-  class:list={[
-    'wrapper',
-    'grid grid-cols-1 lg:grid-cols-12 lg:grid-flow-col-dense',
-    'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
-    className,
-  ]}
->
+<div data-js="block-split-rich-text" class:list={['wrapper', className]}>
+  <ShapeGradient
+    data-js-block-split-rich-text-icon
+    {shape}
+    {color}
+    class:list={[
+      'relative -mb-[30%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]',
+      reverse ? 'mr-auto -translate-x-[50%]' : 'ml-auto',
+    ]}
+  />
+
   <div
     class:list={[
-      reverse ? 'lg:col-start-8 lg:col-span-5' : 'lg:col-span-5',
-      'bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden',
+      'grid grid-cols-1 lg:grid-cols-12 lg:grid-flow-col-dense',
+      'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
     ]}
   >
-    <slot />
-  </div>
+    <div
+      class:list={[
+        reverse ? 'lg:col-start-8 lg:col-span-5' : 'lg:col-span-5',
+        'bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden',
+      ]}
+    >
+      <slot name="media" />
+    </div>
 
-  <div
-    class:list={[reverse ? 'lg:col-span-6' : 'lg:col-start-7 lg:col-span-6']}
-  >
-    <RichText>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-        voluptas cumque minus eaque quas, quaerat dignissimos, possimus
-        laboriosam recusandae, fuga ea!
-      </p>
-
-      <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
-
-      <Fragment slot="ctas">
-        <a href="/">
-          <Button type="primary" text="Primary CTA" hasArrow />
-        </a>
-
-        <a href="/">
-          <Button type="secondary" text="Secondary CTA" />
-        </a>
-      </Fragment>
-    </RichText>
+    <div
+      class:list={[reverse ? 'lg:col-span-6' : 'lg:col-start-7 lg:col-span-6']}
+    >
+      <slot name="richtext" />
+    </div>
   </div>
 </div>
 <!-- End Block: SplitRichText -->

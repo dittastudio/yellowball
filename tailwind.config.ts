@@ -67,7 +67,6 @@ export default {
       offblack: "#838383",
       black: "#000000",
       white: "#FFFFFF",
-      whiteRgba: 'rgb(255 255 255 / <alpha-value>)',
       yellow: "#EAFF01",
       green: "#ADF454",
       blue: "#51DBEA",

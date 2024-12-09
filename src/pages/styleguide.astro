@@ -60,7 +60,7 @@ const classCardCSSCols =
 <Layout title="Styleguide">
   <main>
     <section
-      class="wrapper font-heading text-fluid-h1 font-semibold text-center opacity-50 my-120"
+      class="wrapper font-heading text-fluid-h1 my-120 font-semibold text-center opacity-50"
     >
       <h1>Styleguide</h1>
     </section>
@@ -87,7 +87,14 @@ const classCardCSSCols =
           </a>
 
           <a href="/">
-            <Button type="secondary" text="Secondary CTA" />
+            <Button
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+                borderColor: 'white',
+              }}
+              text="Secondary CTA"
+            />
           </a>
         </Fragment>
       </RichText>
@@ -102,8 +109,8 @@ const classCardCSSCols =
     <StyleguideSection title="Shapes">
       <div class="flex flex-wrap items-end gap-8">
         <Icon name="shape-triangle" class="block w-[23px] h-20 text-yellow" />
-        <Icon name="shape-square" class="block size-20 text-green" />
-        <Icon name="shape-circle" class="block size-20 text-blue" />
+        <Icon name="shape-square" class="size-20 text-green block" />
+        <Icon name="shape-circle" class="size-20 text-blue block" />
         <Icon name="shape-pentagon" class="block w-[21px] h-20 text-purple" />
       </div>
     </StyleguideSection>
@@ -235,29 +242,77 @@ const classCardCSSCols =
     <StyleguideSection title="Buttons">
       <div class="flex flex-wrap gap-8">
         <button type="button">
-          <Button text="Button" />
+          <Button text="Button" hasArrow />
         </button>
 
         <button type="button">
-          <Button text="BUTTON" hasArrow />
-        </button>
-
-        <button type="button">
-          <Button text="Button white border" type="secondary" />
+          <Button
+            text="Button"
+            options={{
+              textColor: 'white',
+              bgColor: 'navy',
+              borderColor: 'white',
+            }}
+          />
         </button>
       </div>
 
-      <div class="bg-cream p-20 flex flex-wrap gap-8 mt-40">
+      <div class="bg-yellow flex flex-wrap gap-8 p-20 mt-40">
         <button type="button">
-          <Button text="Button Navy" />
+          <Button
+            text="Button"
+            optionsHover={{
+              textColor: 'white',
+              bgColor: 'navy',
+            }}
+            hasArrow
+          />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" hasArrow />
+          <Button
+            text="Button"
+            options={{
+              textColor: 'white',
+              bgColor: 'navy',
+              borderColor: 'transparent',
+            }}
+            optionsHover={{
+              textColor: 'navy',
+              bgColor: 'white',
+            }}
+          />
+        </button>
+      </div>
+
+      <div class="bg-cream flex flex-wrap gap-8 p-20 mt-40">
+        <button type="button">
+          <Button
+            text="Button"
+            options={{
+              textColor: 'white',
+              bgColor: 'navy',
+              borderColor: 'transparent',
+            }}
+            optionsHover={{
+              textColor: 'white',
+              bgColor: 'navy-light',
+            }}
+            hasArrow
+          />
         </button>
 
         <button type="button">
-          <Button text="Button Navy" type="secondary" hasArrow />
+          <Button
+            text="Button"
+            options={{
+              borderColor: 'grey',
+            }}
+            optionsHover={{
+              bgColor: 'white',
+              borderColor: 'navy',
+            }}
+          />
         </button>
       </div>
     </StyleguideSection>
@@ -375,7 +430,7 @@ const classCardCSSCols =
       <div class={classCardGrid3}>
         <CardProfile role="Director of SEO" name="Simon Ensor" color="green">
           <img
-            class="object-cover size-full"
+            class="size-full object-cover"
             src="/images/test-profile-1.webp"
             alt="Simon Ensor"
             width="1"
@@ -385,7 +440,7 @@ const classCardCSSCols =
 
         <CardProfile role="Director of SEO" name="Simon Ensor" color="yellow">
           <img
-            class="object-cover size-full"
+            class="size-full object-cover"
             src="/images/test-profile-1.webp"
             alt="Simon Ensor"
             width="1"
@@ -395,7 +450,7 @@ const classCardCSSCols =
 
         <CardProfile role="Director of SEO" name="Simon Ensor" color="purple">
           <img
-            class="object-cover size-full"
+            class="size-full object-cover"
             src="/images/test-profile-1.webp"
             alt="Simon Ensor"
             width="1"
@@ -750,7 +805,7 @@ const classCardCSSCols =
           class="flex flex-col min-h-[50vh] items-center justify-center text-center"
         >
           <p
-            class="font-heading font-bold text-fluid-h3 opacity-30 text-balance"
+            class="font-heading text-fluid-h3 opacity-30 text-balance font-bold"
           >
             The header changes to light theme when it scrolls into this section
           </p>

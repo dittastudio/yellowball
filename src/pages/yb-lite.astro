@@ -81,11 +81,32 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
       <section class={classSection}>
         <BlockButtons>
           <a href="/">
-            <Button text="Speak to a Web Expert" />
+            <Button
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+                borderColor: 'transparent',
+              }}
+              optionsHover={{
+                textColor: 'white',
+                bgColor: 'navy-light',
+              }}
+              text="Speak to a Web Expert"
+            />
           </a>
 
           <a href="/">
-            <Button text="View all Projects" type="secondary" hasArrow />
+            <Button
+              text="View all Projects"
+              options={{
+                borderColor: 'grey',
+              }}
+              optionsHover={{
+                bgColor: 'white',
+                borderColor: 'navy',
+              }}
+              hasArrow
+            />
           </a>
         </BlockButtons>
       </section>
