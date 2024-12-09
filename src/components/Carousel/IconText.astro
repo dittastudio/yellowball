@@ -16,8 +16,6 @@ interface Props {
 
 const { heading, slides, class: className } = Astro.props as Props;
 
-const classes = ['carousel-icon-text', className];
-
 const classNavButton =
   'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth';
 ---
@@ -100,10 +98,10 @@ const classNavButton =
 
 <div
   data-js="carousel-icon-text"
-  class:list={classes}
+  class:list={['carousel-icon-text flex flex-col gap-50 md:gap-70', className]}
   style={`--_slidesNumber: ${slides?.length}`}
 >
-  <div class="flex justify-between">
+  <div class="flex items-end justify-between gap-30">
     <h2 class="font-heading text-fluid-h4 text-balance font-semibold">
       {heading}
     </h2>
@@ -186,6 +184,7 @@ const classNavButton =
   .carousel-icon-text__swiper-slide {
     padding-left: var(--inner-gutter);
     width: 100%;
+    height: 100%;
 
     @media screen(sm) {
       width: calc(1 / 2 * 100%);
