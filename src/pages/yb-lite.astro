@@ -17,6 +17,8 @@ import Cursors from '@/components/Elements/Cursors.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
+import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
+import RichText from '@/components/Elements/RichText.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThickStart = 'pt-100 md:pt-[150px]';
@@ -116,11 +118,129 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
       </section>
 
       <section class={classSection}>
-        <BlockNumbered />
+        <BlockSplitRichText color="navy">
+          <Fragment slot="media">
+            <img
+              src="/images/test-profile-1.webp"
+              width="673"
+              height="379"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="richtext">
+            <RichText>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+                voluptas cumque minus eaque quas, quaerat dignissimos, possimus
+                laboriosam recusandae, fuga ea!
+              </p>
+
+              <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+              <Fragment slot="ctas">
+                <a href="/">
+                  <Button
+                    text="Primary CTA"
+                    options={{
+                      textColor: 'white',
+                      bgColor: 'navy',
+                      borderColor: 'transparent',
+                    }}
+                    optionsHover={{
+                      textColor: 'white',
+                      bgColor: 'navy-light',
+                    }}
+                    hasArrow
+                  />
+                </a>
+
+                <a href="/">
+                  <Button
+                    text="Button"
+                    options={{
+                      borderColor: 'grey',
+                    }}
+                    optionsHover={{
+                      bgColor: 'white',
+                      borderColor: 'navy',
+                    }}
+                    text="Secondary CTA"
+                  />
+                </a>
+              </Fragment>
+            </RichText>
+          </Fragment>
+        </BlockSplitRichText>
       </section>
 
       <section class={classSection}>
-        <BlockNumbered type="split" />
+        <BlockSplitRichText color="navy" reverse>
+          <Fragment slot="media">
+            <img
+              src="/images/test-profile-1.webp"
+              width="673"
+              height="379"
+              alt=""
+            />
+          </Fragment>
+
+          <Fragment slot="richtext">
+            <RichText>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+                voluptas cumque minus eaque quas, quaerat dignissimos, possimus
+                laboriosam recusandae, fuga ea!
+              </p>
+
+              <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+              <Fragment slot="ctas">
+                <a href="/">
+                  <Button
+                    text="Primary CTA"
+                    options={{
+                      textColor: 'white',
+                      bgColor: 'navy',
+                      borderColor: 'transparent',
+                    }}
+                    optionsHover={{
+                      textColor: 'white',
+                      bgColor: 'navy-light',
+                    }}
+                    hasArrow
+                  />
+                </a>
+
+                <a href="/">
+                  <Button
+                    text="Button"
+                    options={{
+                      borderColor: 'grey',
+                    }}
+                    optionsHover={{
+                      bgColor: 'white',
+                      borderColor: 'navy',
+                    }}
+                    text="Secondary CTA"
+                  />
+                </a>
+              </Fragment>
+            </RichText>
+          </Fragment>
+        </BlockSplitRichText>
       </section>
 
       <section class={classSection}>
@@ -132,6 +252,14 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
             alt=""
           />
         </BlockNumbered>
+      </section>
+
+      <section class={classSection}>
+        <BlockNumbered />
+      </section>
+
+      <section class={classSection}>
+        <BlockNumbered type="split" />
       </section>
 
       <section class={classSection}>

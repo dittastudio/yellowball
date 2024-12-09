@@ -60,7 +60,7 @@ const {
     {color}
     class:list={[
       'relative -mb-[65%] md:-mb-[30%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]',
-      reverse ? '-translate-x-1/2' : 'left-full -translate-x-1/2',
+      reverse ? 'left-full -translate-x-1/2' : '-translate-x-1/2',
     ]}
   />
 
@@ -72,7 +72,7 @@ const {
   >
     <div
       class:list={[
-        reverse ? 'lg:col-start-8 lg:col-span-5' : 'lg:col-span-5',
+        reverse ? 'lg:col-span-5' : 'lg:col-start-8 lg:col-span-5',
         'bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden',
       ]}
     >
@@ -81,7 +81,7 @@ const {
 
     <div
       class:list={[
-        reverse ? 'lg:col-span-6 -order-1' : 'lg:col-start-7 lg:col-span-6',
+        reverse ? 'lg:col-start-7 lg:col-span-6' : 'lg:col-span-6 -order-1',
       ]}
     >
       <slot name="richtext" />
