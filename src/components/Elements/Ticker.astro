@@ -72,13 +72,13 @@ const { class: className, spacingClasses = '' } = Astro.props as Props;
 </script>
 
 <div data-js="ticker" class:list={['contain-layout', className]}>
-  <div data-js-container class="flex justify-center">
+  <div data-js-container class="flex justify-center transform-gpu">
     {
       [...Array(4)].map(() => (
-        <div data-js-wrapper class="min-w-full shrink-0">
+        <div data-js-wrapper class="min-w-full shrink-0 transform-gpu">
           <div
             data-js-list
-            class="select-none flex justify-center shrink-0 min-w-full"
+            class="select-none flex justify-center shrink-0 min-w-full transform-gpu"
           >
             <div
               class:list={[
@@ -101,19 +101,19 @@ const { class: className, spacingClasses = '' } = Astro.props as Props;
 
     @keyframes tickerLeft {
       0% {
-        transform: translateX(0);
+        translate: 0 0 0;
       }
       100% {
-        transform: translateX(-100%);
+        translate: -100% 0 0;
       }
     }
 
     @keyframes tickerRight {
       0% {
-        transform: translateX(0);
+        translate: 0 0 0;
       }
       100% {
-        transform: translateX(100%);
+        translate: 100% 0 0;
       }
     }
 
