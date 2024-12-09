@@ -21,39 +21,27 @@ const { hasExit = null } = Astro.props as Props;
       ':scope > *',
     ) as NodeListOf<HTMLElement>;
     const timelines: gsap.core.Timeline[] = [];
-    const easings = [
-      'power1.inOut',
-      'power2.inOut',
-      'power3.inOut',
-      'power4.inOut',
-    ];
-
     const getRandomDuration = () => gsap.utils.random(1.5, 5);
-    const getRandomEasing = () => gsap.utils.random(easings);
-    const getRandomPosition = (cursor: HTMLElement) => ({
-      x: gsap.utils.random(0, section.offsetWidth - cursor.offsetWidth),
-      y: gsap.utils.random(0, section.offsetHeight - cursor.offsetHeight),
-    });
 
     const createTimeline = (cursor: HTMLElement) => {
-      const timeline = gsap.timeline({ repeat: -1 });
+      const timeline = gsap.timeline({ repeat: -1, yoyo: true });
 
       const animate = () => {
-        const position = getRandomPosition(cursor);
         const duration = getRandomDuration();
-        const easing = getRandomEasing();
 
-        // Clear any existing animations on this timeline.
-        // Avoids the "double" firing glitch. Do not remove.
         timeline.clear();
 
-        timeline.to(cursor, {
-          x: position.x,
-          y: position.y,
-          duration: duration,
-          ease: easing,
-          onComplete: animate,
-        });
+        timeline
+          .to(cursor, {
+            duration,
+            y: gsap.utils.random(-50, 0),
+            ease: 'sine.inOut',
+          })
+          .to(cursor, {
+            duration,
+            y: gsap.utils.random(0, 50),
+            ease: 'sine.inOut',
+          });
       };
 
       animate();
@@ -61,38 +49,32 @@ const { hasExit = null } = Astro.props as Props;
       return timeline;
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const percentages = {
+        x: mouseX / window.innerWidth,
+        y: mouseY / window.innerHeight,
+      };
+
+      const rangeX = gsap.utils.mapRange(0, 1, -100, 100, percentages.x);
+
+      cursors.forEach(cursor => {
+        gsap.to(cursor, {
+          x: `${rangeX}px`,
+          duration: 1,
+          ease: 'sine.out',
+        });
+      });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
     const run = () => {
       cursors.forEach(cursor => {
-        gsap.set(cursor, {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: 0,
-          opacity: 0,
-          scale: 0,
-          x: Math.random() * section.offsetWidth,
-          y: Math.random() * section.offsetHeight,
-        });
-      });
-
-      gsap.set(section, {
-        opacity: 1,
-      });
-
-      gsap.delayedCall(0.25, () => {
-        gsap.to(cursors, {
-          opacity: 1,
-          scale: 1,
-          stagger: 0.1,
-          duration: 1,
-          ease: 'elastic.out(1,0.6)',
-          onComplete: () => {
-            cursors.forEach(cursor => {
-              const timeline = createTimeline(cursor);
-              timelines.push(timeline);
-            });
-          },
-        });
+        const timeline = createTimeline(cursor);
+        timelines.push(timeline);
       });
 
       if (section.hasAttribute('data-js-exit')) {
@@ -123,7 +105,7 @@ const { hasExit = null } = Astro.props as Props;
                 clearDelay();
 
                 if (!isPlaying) {
-                  delayedCall = gsap.delayedCall(5, () => {
+                  delayedCall = gsap.delayedCall(2.5, () => {
                     ScrollTrigger.refresh();
                     timelines.forEach(timeline => timeline.play());
                     isPlaying = true;
@@ -133,10 +115,20 @@ const { hasExit = null } = Astro.props as Props;
             },
           })
           .to(cursors, {
-            x: (_index, target) =>
-              section.offsetWidth / 2 - target.offsetWidth / 2,
-            y: (_index, _target) =>
-              section.offsetHeight + 0.5 * section.offsetHeight,
+            x: (_index, target) => {
+              const targetRect = target.getBoundingClientRect();
+              const sectionRect = section.getBoundingClientRect();
+              const offset = sectionRect.x - (targetRect.x - sectionRect.x);
+
+              return sectionRect.width / 2 - (targetRect.width - offset);
+            },
+            y: (_index, target) => {
+              const targetRect = target.getBoundingClientRect();
+              const sectionRect = section.getBoundingClientRect();
+              const offset = sectionRect.y - (targetRect.y - sectionRect.y);
+
+              return sectionRect.height * 1.25 - (targetRect.height - offset);
+            },
           })
           .to(cursors, {
             scale: 0,
@@ -154,7 +146,7 @@ const { hasExit = null } = Astro.props as Props;
 <div
   data-js="cursors"
   data-js-exit={hasExit}
-  class="absolute inset-0 z-10 opacity-0 pointer-events-none"
+  class="absolute inset-0 z-10 pointer-events-none"
 >
   <slot />
 </div>
