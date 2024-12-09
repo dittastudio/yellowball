@@ -104,14 +104,14 @@ const classes = ['card-service-hero', className];
   {...rest}
 >
   <div
-    class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
+    class="transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform rounded-30 lg:rounded-40 w-full h-full overflow-hidden text-left transition-transform duration-300 ease-out"
   >
     <a
       href="/"
-      class="card-service-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
+      class="card-service-hero__link group rounded-30 lg:rounded-40 bg-white/10 block w-full h-full p-1"
     >
       <div
-        class="card-service-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+        class="card-service-hero__inner rounded-30 lg:rounded-40 bg-card relative z-10 w-full h-full overflow-hidden"
       >
         {
           shape && (
@@ -120,7 +120,7 @@ const classes = ['card-service-hero', className];
               name={`shape-${shape}`}
               width={200}
               height={200}
-              class="absolute top-0 left-0 z-0 text-white opacity-10 pointer-events-none"
+              class="opacity-10 absolute top-0 left-0 z-0 text-white pointer-events-none"
             />
           )
         }
@@ -128,9 +128,9 @@ const classes = ['card-service-hero', className];
         <div
           class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_53%]"
         >
-          <div class="flex flex-col justify-start items-start gap-30 md:gap-40">
+          <div class="gap-30 md:gap-40 flex flex-col items-start justify-start">
             <h3
-              class="flex items-baseline font-heading font-semibold text-40 lg:text-64 text-balance"
+              class="font-heading text-fluid-h3 text-balance flex items-baseline font-semibold"
             >
               {headline}&nbsp;{
                 shape && colorShape && (
@@ -144,13 +144,13 @@ const classes = ['card-service-hero', className];
               }
             </h3>
 
-            <p class="font-normal text-18 lg:text-21 text-grey text-balance">
+            <p class="text-18 lg:text-21 text-grey text-balance font-normal">
               {description}
             </p>
 
             <button
               type="button"
-              class="font-heading font-bold text-15 lg:text-18 text-white text-balance mt-auto flex items-center gap-12"
+              class="font-heading text-15 lg:text-18 text-balance flex items-center gap-12 mt-auto font-bold text-white"
             >
               {cta}
               <Icon name="arrow-s" class="size-15 md:size-[17px]" />
@@ -160,7 +160,7 @@ const classes = ['card-service-hero', className];
           {
             hasSlotDefault && (
               <div>
-                <div class="w-full shadow-media lgMax:mt-20">
+                <div class="shadow-media lgMax:mt-20 w-full">
                   <slot />
                 </div>
               </div>

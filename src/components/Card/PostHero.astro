@@ -66,7 +66,7 @@ const {
   ]}
   {...rest}
 >
-  <div class="relative z-1 h-full overflow-hidden rounded-30 md:rounded-40">
+  <div class="z-1 rounded-30 md:rounded-40 relative h-full overflow-hidden">
     {hasSlotDefault && <slot />}
   </div>
 
@@ -93,18 +93,18 @@ const {
       'after:opacity-70 group-hover:after:opacity-80',
     ]}
   >
-    <div class="mt-auto flex flex-col gap-16 md:gap-20">
+    <div class="md:gap-20 flex flex-col gap-16 mt-auto">
       <TagList size="large" items={tags} />
 
       <h3
-        class="font-heading font-semibold text-34 lg:text-48 max-w-[18em] text-balance"
+        class="font-heading font-semibold text-fluid-h4 max-w-[18em] text-balance"
       >
         {headline}
       </h3>
 
       {
         time && (
-          <p class="flex items-center pt-10 md:pt-30 gap-6 lg:gap-8 text-11 lg:text-13 font-heading font-bold text-grey">
+          <p class="md:pt-30 lg:gap-8 text-11 lg:text-13 font-heading text-grey flex items-center gap-6 pt-10 font-bold">
             <Icon name="clock" class="size-10 lg:size-14" />
             {time}
           </p>
@@ -117,7 +117,7 @@ const {
         name="arrow-ne"
         width={12}
         height={12}
-        class="block size-10 md:size-12 group-hover:translate-x-1/2 group-hover:-translate-y-1/2 transition-transform duration-300"
+        class="size-10 md:size-12 group-hover:translate-x-1/2 group-hover:-translate-y-1/2 block transition-transform duration-300"
       />
     </div>
   </div>

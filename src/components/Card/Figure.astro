@@ -80,25 +80,25 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 >
   <a
     href="/"
-    class="group relative w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-5 lg:gap-10 border border-navy/15 overflow-hidden"
+    class="group rounded-30 lg:rounded-50 p-30 lg:p-50 lg:gap-10 border-navy/15 relative flex flex-col items-start justify-start w-full h-full gap-5 overflow-hidden border"
   >
     {
       figure && unit && (
-        <p class="flex font-heading font-semibold text-56 lg:text-80 text-balance text-navy">
+        <p class="font-heading text-fluid-h1 text-balance text-navy flex font-semibold">
           <span data-js-figure>{figure}</span>
           {unit}
         </p>
       )
     }
 
-    <div class="z-10 flex flex-col justify-start items-start gap-15">
+    <div class="gap-15 z-10 flex flex-col items-start justify-start">
       <h3
-        class="font-heading font-semibold text-21 lg:text-28 text-balance text-navy"
+        class="font-heading text-fluid-h6 text-balance text-navy font-semibold"
       >
         {headline}
       </h3>
 
-      <p class="font-normal text-15 lg:text-18 text-navy-lightest text-balance">
+      <p class="text-15 lg:text-18 text-navy-lightest text-balance font-normal">
         {description}
       </p>
     </div>
