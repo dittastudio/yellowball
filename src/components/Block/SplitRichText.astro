@@ -10,7 +10,7 @@ interface Props {
 
 const {
   color = 'green',
-  shape = 'triangle',
+  shape = 'square',
   reverse = false,
   class: className,
 } = Astro.props as Props;
@@ -59,14 +59,14 @@ const {
     {shape}
     {color}
     class:list={[
-      'relative -mb-[30%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]',
+      'relative -mb-[65%] md:-mb-[30%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]',
       reverse ? '-translate-x-1/2' : 'left-full -translate-x-1/2',
     ]}
   />
 
   <div
     class:list={[
-      'grid grid-cols-1 lg:grid-cols-12 lg:grid-flow-col-dense',
+      'grid grid-cols-1 lg:grid-cols-12 lg:grid-flow-col-dense items-center',
       'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
     ]}
   >
@@ -80,7 +80,9 @@ const {
     </div>
 
     <div
-      class:list={[reverse ? 'lg:col-span-6' : 'lg:col-start-7 lg:col-span-6']}
+      class:list={[
+        reverse ? 'lg:col-span-6 -order-1' : 'lg:col-start-7 lg:col-span-6',
+      ]}
     >
       <slot name="richtext" />
     </div>

@@ -180,15 +180,30 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
 
               <Fragment slot="ctas">
                 <a href="/">
-                  <Button text="Primary CTA" hasArrow />
+                  <Button
+                    text="Primary CTA"
+                    options={{
+                      textColor: 'white',
+                      bgColor: 'navy',
+                      borderColor: 'transparent',
+                    }}
+                    optionsHover={{
+                      textColor: 'white',
+                      bgColor: 'navy-light',
+                    }}
+                    hasArrow
+                  />
                 </a>
 
                 <a href="/">
                   <Button
+                    text="Button"
                     options={{
-                      textColor: 'white',
-                      bgColor: 'navy',
-                      borderColor: 'white',
+                      borderColor: 'grey',
+                    }}
+                    optionsHover={{
+                      bgColor: 'white',
+                      borderColor: 'navy',
                     }}
                     text="Secondary CTA"
                   />
