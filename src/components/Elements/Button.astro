@@ -1,9 +1,19 @@
 ---
+import { colourText, colourBackground } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
   class?: string;
-  type?: 'primary' | 'secondary';
+  options?: {
+    textColor?: ColorTypes;
+    bgColor?: ColorTypes;
+    borderColor?: ColorTypes;
+  };
+  optionsHover?: {
+    textColor?: ColorTypes;
+    bgColor?: ColorTypes;
+    borderColor?: ColorTypes;
+  };
   text: string;
   hasArrow?: boolean;
 }
@@ -11,28 +21,117 @@ interface Props {
 const {
   class: className,
   text,
-  type = 'primary',
+  options = {
+    textColor: 'navy',
+    bgColor: 'white',
+    borderColor: 'transparent',
+  },
+  optionsHover = {
+    textColor: 'navy',
+    bgColor: 'yellow',
+    borderColor: 'transparent',
+  },
   hasArrow = false,
 } = Astro.props as Props;
 
-const typeClasses = {
-  primary: [
-    'bg-white text-navy before:border-transparent',
-    'light:bg-navy light:text-white before:border-transparent',
-    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy',
-    '[a:hover_&]:light:bg-navy/90 [a:hover_&]:light:text-white',
-    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy',
-    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white',
-  ],
-  secondary: [
-    'bg-navy text-white before:border-white',
-    'light:bg-white light:text-navy light:before:border-grey',
-    '[a:hover_&]:bg-yellow [a:hover_&]:text-navy [a:hover_&]:before:border-yellow',
-    '[a:hover_&]:light:bg-white [a:hover_&]:light:before:border-navy',
-    '[button:hover_&]:bg-yellow [button:hover_&]:text-navy [button:hover_&]:before:border-yellow',
-    '[button:hover_&]:light:bg-navy/90 [button:hover_&]:light:text-white [button:hover_&]:light:before:border-navy',
-  ],
+const colourBorder: Record<string, string> = {
+  current: 'before:border-current',
+  transparent: 'before:border-transparent',
+  offblack: 'before:border-offblack',
+  black: 'before:border-black',
+  white: 'before:border-white',
+  yellow: 'before:border-yellow',
+  green: 'before:border-green',
+  blue: 'before:border-blue',
+  purple: 'before:border-purple',
+  navy: 'before:border-navy',
+  'navy-light': 'before:border-navy-light',
+  'navy-lighter': 'before:border-navy-lighter',
+  'navy-lightest': 'before:border-navy-lightest',
+  cream: 'before:border-cream',
+  grey: 'before:border-grey',
+  'grey-light': 'before:border-grey-light',
+} as const;
+
+const colourTextHover: Record<string, string> = {
+  current: '[:is(a:hover,_button:hover)_&]:text-current',
+  transparent: '[:is(a:hover,_button:hover)_&]:text-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:text-offblack',
+  black: '[:is(a:hover,_button:hover)_&]:text-black',
+  white: '[:is(a:hover,_button:hover)_&]:text-white',
+  yellow: '[:is(a:hover,_button:hover)_&]:text-yellow',
+  green: '[:is(a:hover,_button:hover)_&]:text-green',
+  blue: '[:is(a:hover,_button:hover)_&]:text-blue',
+  purple: '[:is(a:hover,_button:hover)_&]:text-purple',
+  navy: '[:is(a:hover,_button:hover)_&]:text-navy',
+  'navy-light': '[:is(a:hover,_button:hover)_&]:text-navy-light',
+  'navy-lighter': '[:is(a:hover,_button:hover)_&]:text-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:text-navy-lightest',
+  cream: '[:is(a:hover,_button:hover)_&]:text-cream',
+  grey: '[:is(a:hover,_button:hover)_&]:text-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:text-grey-light',
+} as const;
+
+const colourBackgroundHover: Record<string, string> = {
+  current: '[:is(a:hover,_button:hover)_&]:bg-current',
+  transparent: '[:is(a:hover,_button:hover)_&]:bg-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:bg-offblack',
+  black: '[:is(a:hover,_button:hover)_&]:bg-black',
+  white: '[:is(a:hover,_button:hover)_&]:bg-white',
+  yellow: '[:is(a:hover,_button:hover)_&]:bg-yellow',
+  green: '[:is(a:hover,_button:hover)_&]:bg-green',
+  blue: '[:is(a:hover,_button:hover)_&]:bg-blue',
+  purple: '[:is(a:hover,_button:hover)_&]:bg-purple',
+  navy: '[:is(a:hover,_button:hover)_&]:bg-navy',
+  'navy-light': '[:is(a:hover,_button:hover)_&]:bg-navy-light',
+  'navy-lighter': '[:is(a:hover,_button:hover)_&]:bg-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:bg-navy-lightest',
+  cream: '[:is(a:hover,_button:hover)_&]:bg-cream',
+  grey: '[:is(a:hover,_button:hover)_&]:bg-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:bg-grey-light',
+} as const;
+
+const colourBorderHover: Record<string, string> = {
+  current: '[:is(a:hover,_button:hover)_&]:before:border-current',
+  transparent: '[:is(a:hover,_button:hover)_&]:before:border-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:before:border-offblack',
+  black: '[:is(a:hover,_button:hover)_&]:before:border-black',
+  white: '[:is(a:hover,_button:hover)_&]:before:border-white',
+  yellow: '[:is(a:hover,_button:hover)_&]:before:border-yellow',
+  green: '[:is(a:hover,_button:hover)_&]:before:border-green',
+  blue: '[:is(a:hover,_button:hover)_&]:before:border-blue',
+  purple: '[:is(a:hover,_button:hover)_&]:before:border-purple',
+  navy: '[:is(a:hover,_button:hover)_&]:before:border-navy',
+  'navy-light': '[:is(a:hover,_button:hover)_&]:before:border-navy-light',
+  'navy-lighter': '[:is(a:hover,_button:hover)_&]:before:border-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:before:border-navy-lightest',
+  cream: '[:is(a:hover,_button:hover)_&]:before:border-cream',
+  grey: '[:is(a:hover,_button:hover)_&]:before:border-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:before:border-grey-light',
+} as const;
+
+const optionsProps = {
+  textColor: 'navy',
+  bgColor: 'white',
+  borderColor: 'transparent',
+  ...options,
 };
+
+const optionsHoverProps = {
+  textColor: 'navy',
+  bgColor: 'yellow',
+  borderColor: 'transparent',
+  ...optionsHover,
+};
+
+const classesTextColor = colourText[optionsProps.textColor];
+const classesBgColor = colourBackground[optionsProps.bgColor];
+const classesBorderColor = colourBorder[optionsProps.borderColor];
+
+const classesTextColorHover = colourTextHover[optionsHoverProps.textColor];
+const classesBgColorHover = colourBackgroundHover[optionsHoverProps.bgColor];
+const classesBorderColorHover =
+  colourBorderHover[optionsHoverProps.borderColor];
 ---
 
 <span
@@ -44,7 +143,12 @@ const typeClasses = {
     'before:absolute before:inset-0 before:border before:border-solid before:rounded-[inherit] before:transition-colors before:duration-250 before:ease-smooth',
     'after:absolute after:inset-0 after:opacity-0 after:rounded-[inherit] after:transition-opacity after:duration-250 after:ease-smooth after:bg-navy',
     '[a:active_&]:after:opacity-10 [button:active_&]:after:opacity-10',
-    typeClasses[type],
+    classesTextColor,
+    classesBgColor,
+    classesBorderColor,
+    classesTextColorHover,
+    classesBgColorHover,
+    classesBorderColorHover,
     className,
   ]}
 >
