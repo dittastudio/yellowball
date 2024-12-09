@@ -1,0 +1,33 @@
+---
+const classesH2 = 'prose-h1:text-fluid-h2 prose-h2:text-fluid-h2';
+const classesH3 = 'prose-h3:text-fluid-h3';
+const classesH4 = 'prose-h4:text-34 md:prose-h4:text-48';
+const classesH5 = 'prose-h5:text-26 md:prose-h5:text-36';
+const classesH6 = 'prose-h6:text-21 md:prose-h6:text-28';
+const classesP =
+  'prose-p:text-17 md:prose-p:text-21 prose-p:text-body prose-p:font-normal';
+---
+
+<div
+  class:list={[
+    'prose text-current',
+    'prose-headings:text-current prose-headings:font-heading prose-headings:font-semibold prose-headings:mt-0 prose-headings:mb-[0.6em]',
+    'prose-p:text-current prose-p:opacity-50 prose-p:m-0 [&_p_+_p]:mt-[1em]',
+    classesH2,
+    classesH3,
+    classesH4,
+    classesH5,
+    classesH6,
+    classesP,
+  ]}
+>
+  <slot />
+
+  {
+    Astro.slots.ctas && (
+      <div class="flex flex-col sm:flex-row items-start justify-start gap-20 md:gap-20 mt-20 md:mt-50">
+        <slot name="ctas" />
+      </div>
+    )
+  }
+</div>

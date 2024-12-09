@@ -1,0 +1,61 @@
+---
+import RichText from '@/components/Elements/RichText.astro';
+import Button from '@/components/Elements/Button.astro';
+
+interface Props {
+  reverse?: boolean;
+  class?: string;
+}
+
+const { reverse = false, class: className } = Astro.props as Props;
+---
+
+<!-- Begin Block: SplitRichText -->
+<div
+  class:list={[
+    'wrapper',
+    'grid grid-cols-1 lg:grid-cols-12 lg:grid-flow-col-dense',
+    'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      reverse ? 'lg:col-start-8 lg:col-span-5' : 'lg:col-span-5',
+      'bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden',
+    ]}
+  >
+    <slot />
+  </div>
+
+  <div
+    class:list={[reverse ? 'lg:col-span-6' : 'lg:col-start-7 lg:col-span-6']}
+  >
+    <RichText>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+        voluptas cumque minus eaque quas, quaerat dignissimos, possimus
+        laboriosam recusandae, fuga ea!
+      </p>
+
+      <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+      <Fragment slot="ctas">
+        <a href="/">
+          <Button type="primary" text="Primary CTA" hasArrow />
+        </a>
+
+        <a href="/">
+          <Button type="secondary" text="Secondary CTA" />
+        </a>
+      </Fragment>
+    </RichText>
+  </div>
+</div>
+<!-- End Block: SplitRichText -->
