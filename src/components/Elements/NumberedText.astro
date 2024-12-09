@@ -1,0 +1,33 @@
+---
+interface Props {
+  number: number;
+  text: string;
+  class?: string;
+}
+
+const { number, text, class: className } = Astro.props as Props;
+---
+
+<p
+  class:list={[
+    'grid grid-cols-4 gap-x-12 sm:flex sm:flex-col max-w-[26em] sm:max-w-[16em]',
+    'text-15 md:text-18 font-heading font-bold text-pretty',
+    className,
+  ]}
+>
+  <span
+    class="col-span-1 numbered-text__index block text-fluid-h2 font-semibold tracking-tight opacity-15 -mb-[0.56em] whitespace-nowrap"
+  >
+    {number.toString().padStart(2, '0')}
+  </span>
+
+  <span class="col-span-3 block">
+    {text}
+  </span>
+</p>
+
+<style>
+  .numbered-text__index {
+    mask-image: linear-gradient(to top, transparent 35%, black 100%);
+  }
+</style>

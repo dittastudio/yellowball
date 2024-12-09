@@ -25,6 +25,7 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 import TagList from '@/components/Elements/TagList.astro';
+import BlockNumbered from '@/components/Block/Numbered.astro';
 
 const imageMobileTest: ImageObject = {
   src: '/images/portrait-1.webp',
@@ -56,6 +57,10 @@ const classCardCSSCols =
     >
       <h1>Styleguide</h1>
     </section>
+
+    <StyleguideSection title="Numbered" hasWrapper={false}>
+      <BlockNumbered />
+    </StyleguideSection>
 
     <StyleguideSection title="Logo">
       <div class="flex flex-wrap gap-8">

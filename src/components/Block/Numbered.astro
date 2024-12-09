@@ -1,0 +1,27 @@
+---
+import NumberedText from '@/components/Elements/NumberedText.astro';
+---
+
+<!-- Begin Block: Numbered -->
+<div class="wrapper flex flex-col gap-y-80 md:gap-y-100">
+  <h5 class="text-26 md:text-36 font-heading font-semibold text-balance">
+    Lorem ipsum dolor sit amet consectetur. Dolor semper rhoncus turpis
+    facilisis integer id lacus risus. Scelerisque scelerisque.
+  </h5>
+
+  <ul
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 md:gap-x-30 gap-y-40 w-full"
+  >
+    {
+      [...Array(4)].map((_, index) => (
+        <li>
+          <NumberedText
+            number={index + 1}
+            text="The UK's leading WordPress agency with 250+ stunning websites live."
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+<!-- End Block: Numbered -->
