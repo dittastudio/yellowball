@@ -21,15 +21,15 @@ const { headline, cta, class: className, ...rest } = Astro.props as Props;
 >
   <a
     href="/"
-    class="group w-full h-full rounded-30 lg:rounded-50 p-30 lg:p-50 flex flex-col justify-start items-start gap-30"
+    class="group rounded-30 lg:rounded-50 p-30 lg:p-50 gap-30 flex flex-col items-start justify-start w-full h-full"
   >
     <ShapeRow />
 
-    <h4 class="font-heading font-semibold text-21 lg:text-28 text-balance">
+    <h4 class="font-heading text-fluid-h6 text-balance font-semibold">
       {headline}
     </h4>
 
-    <LinkArrow class="font-heading font-bold text-15 lg:text-18">
+    <LinkArrow class="font-heading text-15 lg:text-18 font-bold">
       {cta}
     </LinkArrow>
   </a>

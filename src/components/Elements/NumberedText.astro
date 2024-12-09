@@ -1,11 +1,19 @@
 ---
+import { colourText } from '@/utils/maps';
+
 interface Props {
   number: number;
   text: string;
+  color?: ColorTypes;
   class?: string;
 }
 
-const { number, text, class: className } = Astro.props as Props;
+const {
+  number,
+  text,
+  color = 'current',
+  class: className,
+} = Astro.props as Props;
 ---
 
 <p
@@ -16,12 +24,15 @@ const { number, text, class: className } = Astro.props as Props;
   ]}
 >
   <span
-    class="col-span-1 numbered-text__index block text-fluid-h2 font-semibold opacity-15 -mt-[0.12em] -mb-[0.56em] whitespace-nowrap"
+    class:list={[
+      'numbered-text__index col-span-1 block text-fluid-h2 font-semibold opacity-15 -mt-[0.12em] -mb-[0.56em] whitespace-nowrap',
+      colourText[color],
+    ]}
   >
     {number.toString().padStart(2, '0')}
   </span>
 
-  <span class="col-span-3 block">
+  <span class="block col-span-3">
     {text}
   </span>
 </p>

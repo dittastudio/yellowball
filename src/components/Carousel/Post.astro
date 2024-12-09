@@ -12,17 +12,17 @@ interface Slide {
 }
 
 interface Props {
-  title: string;
+  heading: string;
   slides: Slide[];
   class?: string;
 }
 
-const { title, slides, class: className } = Astro.props as Props;
+const { heading, slides, class: className } = Astro.props as Props;
 
 const classes = ['carousel-post', className];
 
 const classNavButton =
-  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth';
+  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-250 ease-smooth';
 ---
 
 <script>
@@ -107,13 +107,13 @@ const classNavButton =
   style={`--_slidesNumber: ${slides?.length}`}
 >
   <div class="carousel-post__grid">
-    <div class="carousel-post__title text-center text-balance md:text-left">
+    <div class="carousel-post__title text-balance md:text-left text-center">
       <h3 class="font-heading text-fluid-h3 font-semibold">
-        {title}
+        {heading}
       </h3>
     </div>
 
-    <div class="carousel-post__slider mt-40 md:mt-70">
+    <div class="carousel-post__slider md:mt-70 mt-40">
       <div data-js-swiper class="carousel-post__swiper swiper">
         <div class="carousel-post__swiper-wrapper swiper-wrapper">
           {
@@ -132,18 +132,18 @@ const classNavButton =
           }
         </div>
 
-        <div class="text-center col-span-full mt-20 md:hidden">
+        <div class="col-span-full md:hidden mt-20 text-center">
           <div class="carousel-post__swiper-pagination swiper-pagination"></div>
         </div>
       </div>
     </div>
 
     <div
-      class="carousel-post__info flex gap-15 items-center justify-center mt-40 md:items-end md:justify-end md:mt-0"
+      class="carousel-post__info gap-15 md:items-end md:justify-end md:mt-0 flex items-center justify-center mt-40"
     >
       <div>
-        <div class="flex gap-15 h-full">
-          <div class="flex gap-15 mdMax:hidden">
+        <div class="gap-15 flex h-full">
+          <div class="gap-15 mdMax:hidden flex">
             <button
               type="button"
               class:list={[
@@ -151,7 +151,7 @@ const classNavButton =
                 classNavButton,
               ]}
             >
-              <Icon name="arrow-s" class="block size-14 rotate-90" />
+              <Icon name="arrow-s" class="size-14 block rotate-90" />
               <span class="sr-only">Previous Slide</span>
             </button>
 
@@ -162,7 +162,7 @@ const classNavButton =
                 classNavButton,
               ]}
             >
-              <Icon name="arrow-s" class="block size-14 -rotate-90" />
+              <Icon name="arrow-s" class="size-14 block -rotate-90" />
               <span class="sr-only">Next Slide</span>
             </button>
           </div>

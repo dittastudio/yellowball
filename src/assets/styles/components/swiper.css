@@ -70,6 +70,6 @@
   display: block;
   width: 100%;
   height: var(--_pill-height);
-  background-color: theme('colors.white');
+  background-color: currentColor;
   border-radius: theme('borderRadius.full');
 }
