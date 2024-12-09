@@ -11,16 +11,53 @@ type Props = HTMLAttributes<'input'> & Input;
 const { label, ...rest } = Astro.props as Props;
 ---
 
-<div>
+<script>
+  const fields = document.querySelectorAll('[data-js="file"]');
+
+  const handleChange = async (event: Event, info: HTMLElement) => {
+    const field = event.target as HTMLInputElement;
+
+    if (!info || !field.files || !field.files.length) {
+      return;
+    }
+
+    const file = field.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const fileSizeMb = Math.round(file.size / 1000 / 1000);
+    const fileInfo = !fileSizeMb
+      ? `${file.name}`
+      : `${file.name} (${fileSizeMb} MB)`;
+
+    info.textContent = fileInfo;
+  };
+
+  fields.forEach(field => {
+    const input = field.querySelector('input[type="file"]') as HTMLInputElement;
+    const info = field.querySelector('[data-js-file-info]') as HTMLElement;
+
+    if (input && info) {
+      input.addEventListener('change', event => handleChange(event, info));
+    }
+  });
+</script>
+
+<div data-js="file">
   <input type="file" class="sr-only" {...rest} />
 
   <label
     for={rest.id}
-    class:list={[
-      'flex items-center justify-start gap-10 font-heading text-18 lg:text-24 text-grey hover:text-white transition-colors duration-300 underline cursor-pointer',
-    ]}
+    class="flex items-start justify-start gap-10 font-heading text-18 lg:text-24 text-grey hover:text-white transition-colors duration-300 cursor-pointer"
   >
-    <Icon name="paperclip" class="size-24" />
-    {label}
+    <Icon name="paperclip" class="size-24 mt-1 lg:mt-5" />
+
+    <span class="flex flex-col items-start justify-start gap-5">
+      <span class="underline">Add attachment</span>
+      <span data-js-file-info class="text-12 lg:text-14 text-white w-full">
+      </span>
+    </span>
   </label>
 </div>

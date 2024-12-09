@@ -17,15 +17,41 @@ import Button from '@/components/Elements/Button.astro';
 
   <div class="flex gap-10 lgMax:flex-wrap">
     <button type="button" class="grow">
-      <Button text="Customise" class="w-full" />
+      <Button
+        text="Customise"
+        class="w-full"
+        optionsHover={{
+          textColor: 'white',
+          bgColor: 'navy',
+        }}
+      />
     </button>
 
     <button type="button" class="grow">
-      <Button text="Reject all" class="w-full" />
+      <Button
+        text="Reject all"
+        class="w-full"
+        optionsHover={{
+          textColor: 'white',
+          bgColor: 'navy',
+        }}
+      />
     </button>
 
     <button type="button" class="grow">
-      <Button text="Accept all" class="w-full" />
+      <Button
+        text="Accept all"
+        class="w-full"
+        options={{
+          textColor: 'white',
+          bgColor: 'navy',
+          borderColor: 'transparent',
+        }}
+        optionsHover={{
+          textColor: 'navy',
+          bgColor: 'white',
+        }}
+      />
     </button>
   </div>
 </div>
