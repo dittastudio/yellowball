@@ -1,6 +1,7 @@
 const colourText: Record<string, string> = {
   'current': 'text-current',
   'transparent': 'text-transparent',
+  'offblack': 'text-offblack',
   'black': 'text-black',
   'white': 'text-white',
   'yellow': 'text-yellow',
@@ -10,14 +11,16 @@ const colourText: Record<string, string> = {
   'navy': 'text-navy',
   'navy-light': 'text-navy-light',
   'navy-lighter': 'text-navy-lighter',
+  'navy-lightest': 'text-navy-lightest',
   'cream': 'text-cream',
   'grey': 'text-grey',
-
+  'grey-light': 'text-grey-light',
 } as const
 
 const colourBackground: Record<string, string> = {
   'current': 'bg-current',
   'transparent': 'bg-transparent',
+  'offblack': 'bg-offblack',
   'black': 'bg-black',
   'white': 'bg-white',
   'yellow': 'bg-yellow',
@@ -27,13 +30,16 @@ const colourBackground: Record<string, string> = {
   'navy': 'bg-navy',
   'navy-light': 'bg-navy-light',
   'navy-lighter': 'bg-navy-lighter',
+  'navy-lightest': 'bg-navy-lightest',
   'cream': 'bg-cream',
   'grey': 'bg-grey',
+  'grey-light': 'bg-grey-light',
 } as const
 
 const colourOutline: Record<string, string> = {
   'current': 'outline-current',
   'transparent': 'outline-transparent',
+  'offblack': 'outline-offblack',
   'black': 'outline-black',
   'white': 'outline-white',
   'yellow': 'outline-yellow',
@@ -43,8 +49,10 @@ const colourOutline: Record<string, string> = {
   'navy': 'outline-navy',
   'navy-light': 'outline-navy-light',
   'navy-lighter': 'outline-navy-lighter',
+  'navy-lightest': 'outline-navy-lightest',
   'cream': 'outline-cream',
   'grey': 'outline-grey',
+  'grey-light': 'outline-grey-light',
 } as const
 
 export { colourText, colourBackground, colourOutline }

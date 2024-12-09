@@ -37,6 +37,7 @@ const {
 const colourBorder: Record<string, string> = {
   current: 'before:border-current',
   transparent: 'before:border-transparent',
+  offblack: 'before:border-offblack',
   black: 'before:border-black',
   white: 'before:border-white',
   yellow: 'before:border-yellow',
@@ -46,13 +47,16 @@ const colourBorder: Record<string, string> = {
   navy: 'before:border-navy',
   'navy-light': 'before:border-navy-light',
   'navy-lighter': 'before:border-navy-lighter',
+  'navy-lightest': 'before:border-navy-lightest',
   cream: 'before:border-cream',
   grey: 'before:border-grey',
+  'grey-light': 'before:border-grey-light',
 } as const;
 
 const colourTextHover: Record<string, string> = {
   current: '[:is(a:hover,_button:hover)_&]:text-current',
   transparent: '[:is(a:hover,_button:hover)_&]:text-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:text-offblack',
   black: '[:is(a:hover,_button:hover)_&]:text-black',
   white: '[:is(a:hover,_button:hover)_&]:text-white',
   yellow: '[:is(a:hover,_button:hover)_&]:text-yellow',
@@ -62,13 +66,16 @@ const colourTextHover: Record<string, string> = {
   navy: '[:is(a:hover,_button:hover)_&]:text-navy',
   'navy-light': '[:is(a:hover,_button:hover)_&]:text-navy-light',
   'navy-lighter': '[:is(a:hover,_button:hover)_&]:text-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:text-navy-lightest',
   cream: '[:is(a:hover,_button:hover)_&]:text-cream',
   grey: '[:is(a:hover,_button:hover)_&]:text-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:text-grey-light',
 } as const;
 
 const colourBackgroundHover: Record<string, string> = {
   current: '[:is(a:hover,_button:hover)_&]:bg-current',
   transparent: '[:is(a:hover,_button:hover)_&]:bg-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:bg-offblack',
   black: '[:is(a:hover,_button:hover)_&]:bg-black',
   white: '[:is(a:hover,_button:hover)_&]:bg-white',
   yellow: '[:is(a:hover,_button:hover)_&]:bg-yellow',
@@ -78,13 +85,16 @@ const colourBackgroundHover: Record<string, string> = {
   navy: '[:is(a:hover,_button:hover)_&]:bg-navy',
   'navy-light': '[:is(a:hover,_button:hover)_&]:bg-navy-light',
   'navy-lighter': '[:is(a:hover,_button:hover)_&]:bg-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:bg-navy-lightest',
   cream: '[:is(a:hover,_button:hover)_&]:bg-cream',
   grey: '[:is(a:hover,_button:hover)_&]:bg-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:bg-grey-light',
 } as const;
 
 const colourBorderHover: Record<string, string> = {
   current: '[:is(a:hover,_button:hover)_&]:before:border-current',
   transparent: '[:is(a:hover,_button:hover)_&]:before:border-transparent',
+  offblack: '[:is(a:hover,_button:hover)_&]:before:border-offblack',
   black: '[:is(a:hover,_button:hover)_&]:before:border-black',
   white: '[:is(a:hover,_button:hover)_&]:before:border-white',
   yellow: '[:is(a:hover,_button:hover)_&]:before:border-yellow',
@@ -94,8 +104,10 @@ const colourBorderHover: Record<string, string> = {
   navy: '[:is(a:hover,_button:hover)_&]:before:border-navy',
   'navy-light': '[:is(a:hover,_button:hover)_&]:before:border-navy-light',
   'navy-lighter': '[:is(a:hover,_button:hover)_&]:before:border-navy-lighter',
+  'navy-lightest': '[:is(a:hover,_button:hover)_&]:before:border-navy-lightest',
   cream: '[:is(a:hover,_button:hover)_&]:before:border-cream',
   grey: '[:is(a:hover,_button:hover)_&]:before:border-grey',
+  'grey-light': '[:is(a:hover,_button:hover)_&]:before:border-grey-light',
 } as const;
 
 const optionsProps = {
