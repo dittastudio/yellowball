@@ -60,7 +60,7 @@ const {
     {color}
     class:list={[
       'relative -mb-[30%] -z-2 size-[80vw] md:size-[41.667vw] max-w-[600px] max-h-[600px]',
-      reverse ? 'mr-auto -translate-x-[50%]' : 'ml-auto',
+      reverse ? '-translate-x-1/2' : 'left-full -translate-x-1/2',
     ]}
   />
 
@@ -85,5 +85,6 @@ const {
       <slot name="richtext" />
     </div>
   </div>
+
+  <!-- End Block: SplitRichText -->
 </div>
-<!-- End Block: SplitRichText -->
