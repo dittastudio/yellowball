@@ -9,6 +9,7 @@ import Button from '@/components/Elements/Button.astro';
 import CardAvatars from '@/components/Card/Avatars.astro';
 import CardCta from '@/components/Card/Cta.astro';
 import CardFigure from '@/components/Card/Figure.astro';
+import CardInfo from '@/components/Card/Info.astro';
 import CardPost from '@/components/Card/Post.astro';
 import CardPostHero from '@/components/Card/PostHero.astro';
 import CardMedia from '@/components/Card/Media.astro';
@@ -18,10 +19,15 @@ import CardProject from '@/components/Card/Project.astro';
 import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
-import CookieBanner from '@/components/UI/CookieBanner.astro';
+import CookieDialog from '@/components/UI/CookieDialog.astro';
 import CubeIcon from '@/components/Elements/CubeIcon.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Icon from '@/components/Elements/Icon.astro';
+import FormCheckbox from '@/components/Fields/Checkbox.astro';
+import FormControl from '@/components/Fields/Control.astro';
+import FormGroup from '@/components/Fields/Group.astro';
+import FormInput from '@/components/Fields/Input.astro';
+import FormFile from '@/components/Fields/File.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
@@ -175,7 +181,7 @@ const classCardCSSCols =
     </StyleguideSection>
 
     <StyleguideSection title="Cookie Banner">
-      <CookieBanner />
+      <CookieDialog />
     </StyleguideSection>
 
     <StyleguideSection title="Cubes">
@@ -340,6 +346,28 @@ const classCardCSSCols =
             imageDesktop={imageDesktopTest}
           />
         </div>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Info">
+      <div class={classCardGrid2}>
+        <CardInfo title="Contact Details">
+          <p class="text-white font-heading text-18 md:text-20">
+            <a href="mailto:info@weareyellowball.com">
+              info@weareyellowball.com
+            </a>
+          </p>
+
+          <p class="text-white font-heading text-18 md:text-20">
+            020 8049 3080
+          </p>
+        </CardInfo>
+
+        <CardInfo title="Address">
+          <address class="text-white font-heading text-18 md:text-20">
+            Borough Yards, 13 Dirty Lane, London, SE1 9PA
+          </address>
+        </CardInfo>
       </div>
     </StyleguideSection>
 
@@ -585,6 +613,134 @@ const classCardCSSCols =
             cta="Get in touch"
           />
         </div>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Fields (Input, Group, Control, Checkbox, File)">
+      <div class="grid gap-60">
+        <FormInput
+          label="I am a basic input field"
+          type="text"
+          id="name"
+          name="name"
+          value=""
+          placeholder="placeholder"
+          required
+        />
+
+        <FormGroup
+          headline="I'm the label for control checkboxes (multiple choice)"
+        >
+          <div class="flex gap-15 flex-wrap">
+            <FormControl
+              type="checkbox"
+              color="yellow"
+              label="Web Design"
+              name="web-design"
+              id="web-design"
+              value="web-design"
+            />
+
+            <FormControl
+              type="checkbox"
+              color="green"
+              label="SEO"
+              name="seo"
+              id="seo"
+              value="seo"
+            />
+
+            <FormControl
+              type="checkbox"
+              color="blue"
+              label="PPC"
+              name="ppc"
+              id="ppc"
+              value="ppc"
+            />
+
+            <FormControl
+              type="checkbox"
+              color="white"
+              label="Other"
+              name="other"
+              id="other"
+              value="other"
+            />
+          </div>
+        </FormGroup>
+
+        <FormGroup headline="I'm the label for control radios (single choice)">
+          <div class="flex gap-15 flex-wrap">
+            <FormControl
+              type="radio"
+              color="yellow"
+              label="£0-5k"
+              name="web-design-budget"
+              id="web-design-budget-1"
+              value="web-design-budget-1"
+              checked
+            />
+
+            <FormControl
+              type="radio"
+              color="yellow"
+              label="£5-10k"
+              name="web-design-budget"
+              id="web-design-budget-2"
+              value="web-design-budget-2"
+            />
+
+            <FormControl
+              type="radio"
+              color="yellow"
+              label="£10-25k"
+              name="web-design-budget"
+              id="web-design-budget-3"
+              value="web-design-budget-3"
+            />
+
+            <FormControl
+              type="radio"
+              color="yellow"
+              label="£25-50k"
+              name="web-design-budget"
+              id="web-design-budget-4"
+              value="web-design-budget-4"
+            />
+
+            <FormControl
+              type="radio"
+              color="yellow"
+              label="£50k+"
+              name="web-design-budget"
+              id="web-design-budget-5"
+              value="web-design-budget-5"
+            />
+          </div>
+
+          <Fragment slot="bottom">
+            <p class="text-grey text-14 lg:text-16 text-balance">
+              Our bespoke web projects start at £25,000. For smaller budgets, we
+              recommend Yellowball Lite - our affordable, flexible WordPress
+              theme ideal for small businesses, startups and charities.
+              <a href="/">
+                <LinkArrow class="text-white">
+                  Visit Yellowball Lite
+                </LinkArrow>
+              </a>
+            </p>
+          </Fragment>
+        </FormGroup>
+
+        <FormCheckbox color="white" name="agree" id="agree" value="agree">
+          I am a simple checkbox with label
+          <a href="/" class="underline">Privacy Policy</a>
+        </FormCheckbox>
+
+        <FormGroup headline="I'm a file input field">
+          <FormFile label="Add attachment" name="file" id="file" />
+        </FormGroup>
       </div>
     </StyleguideSection>
 
