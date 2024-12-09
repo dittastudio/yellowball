@@ -57,9 +57,9 @@ const examplePosts: any = [
 <!-- Begin Block: PostList -->
 <div class="wrapper">
   <div
-    class="flex flex-wrap items-center justify-between gap-x-20 gap-y-40 pb-50 md:pb-60"
+    class="gap-x-20 gap-y-40 pb-50 md:pb-60 flex flex-wrap items-center justify-between"
   >
-    <h2 class="font-heading font-semibold text-fluid-h3">All posts</h2>
+    <h2 class="font-heading text-fluid-h3 font-semibold">All posts</h2>
 
     <div class="shrink-0 mdMax:w-full">
       <div class="mdMax:-mx-[var(--outer-gutter)]">
@@ -71,22 +71,43 @@ const examplePosts: any = [
           </li>
 
           <li>
-            <Button type="secondary" text="Web Design" />
+            <Button
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+                borderColor: 'white',
+              }}
+              text="Web Design"
+            />
           </li>
 
           <li>
-            <Button type="secondary" text="SEO" />
+            <Button
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+                borderColor: 'white',
+              }}
+              text="SEO"
+            />
           </li>
 
           <li>
-            <Button type="secondary" text="PPC" />
+            <Button
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+                borderColor: 'white',
+              }}
+              text="PPC"
+            />
           </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 md:gap-30">
+  <div class="sm:grid-cols-2 lg:grid-cols-3 md:gap-30 grid grid-cols-1 gap-20">
     {
       examplePosts?.map(({ tags, headline, color, time, image }: any) => (
         <CardPost {tags} {headline} {color} {time}>

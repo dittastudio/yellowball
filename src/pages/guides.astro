@@ -19,7 +19,7 @@ const classSection = 'py-50 md:py-[75px]';
           <TextReveal
             onEnter
             tag="h1"
-            class="font-heading text-fluid-h1 font-semibold text-balance"
+            class="font-heading text-fluid-h1 text-balance font-semibold"
           >
             News, insights & resources
           </TextReveal>
@@ -68,7 +68,14 @@ const classSection = 'py-50 md:py-[75px]';
         </button>
 
         <ButtonScrollToTop>
-          <Button type="secondary" text="Back to top" />
+          <Button
+            options={{
+              textColor: 'white',
+              bgColor: 'navy',
+              borderColor: 'white',
+            }}
+            text="Back to top"
+          />
         </ButtonScrollToTop>
       </BlockButtons>
     </section>
