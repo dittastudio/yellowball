@@ -1,0 +1,31 @@
+---
+import Button from '@/components/Elements/Button.astro';
+---
+
+<div
+  class="w-full max-w-[580px] flex flex-col gap-30 rounded-30 bg-yellow p-30 lg:p-40 text-navy"
+>
+  <div class="flex flex-col gap-10 items-start justify-start">
+    <h6 class="font-heading text-21 lg:text-28 font-semibold">
+      We value your privacy
+    </h6>
+    <p class="text-13 lg:text-16 text-balance">
+      We use cookies to enhance your experience on our website. Read our cookie
+      policy or update cookie preferences.
+    </p>
+  </div>
+
+  <div class="flex gap-10 lgMax:flex-wrap">
+    <button type="button" class="grow">
+      <Button text="Customise" class="w-full" />
+    </button>
+
+    <button type="button" class="grow">
+      <Button text="Reject all" class="w-full" />
+    </button>
+
+    <button type="button" class="grow">
+      <Button text="Accept all" class="w-full" />
+    </button>
+  </div>
+</div>
