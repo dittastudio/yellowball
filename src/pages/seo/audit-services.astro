@@ -17,6 +17,7 @@ import CardService from '@/components/Card/Service.astro';
 import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
 import BlockCardsIconText from '@/components/Block/CardsIconText.astro';
+import BlockCarouselCardIconText from '@/components/Block/CarouselCardIconText.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -25,6 +26,10 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
 
 <Layout title="SEO">
   <main>
+    <section class={classSection}>
+      <BlockCarouselCardIconText />
+    </section>
+
     <section>
       <BlockHero color="green" shape="square">
         <Fragment slot="top">

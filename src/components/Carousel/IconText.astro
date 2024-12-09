@@ -1,14 +1,11 @@
 ---
-import CardPost from '@/components/Card/Post.astro';
-import Button from '@/components/Elements/Button.astro';
+import CardIconText from '@/components/Card/IconText.astro';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Slide {
-  tags: TagObject[];
-  headline: string;
-  color: ColorTypes;
-  time: string;
-  image: ImageObject;
+  icon: string;
+  title: string;
+  copy: string;
 }
 
 interface Props {
@@ -19,7 +16,7 @@ interface Props {
 
 const { heading, slides, class: className } = Astro.props as Props;
 
-const classes = ['carousel-post', className];
+const classes = ['carousel-icon-text', className];
 
 const classNavButton =
   'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth';
@@ -31,7 +28,7 @@ const classNavButton =
   import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
   const carousels = document.querySelectorAll(
-    '[data-js=carousel-post]',
+    '[data-js=carousel-icon-text]',
   ) as NodeListOf<HTMLElement>;
 
   carousels.forEach(carousel => {
@@ -102,111 +99,70 @@ const classNavButton =
 </script>
 
 <div
-  data-js="carousel-post"
+  data-js="carousel-icon-text"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
-  <div class="carousel-post__grid">
-    <div class="carousel-post__title text-balance md:text-left text-center">
-      <h3 class="font-heading text-fluid-h3 font-semibold">
-        {heading}
-      </h3>
+  <div class="flex justify-between">
+    <h2 class="font-heading text-fluid-h4 text-balance font-semibold">
+      {heading}
+    </h2>
+
+    <div class="mdMax:hidden gap-15 flex">
+      <button
+        type="button"
+        class:list={[
+          'carousel-icon-text__swiper-button-prev swiper-button-prev',
+          classNavButton,
+        ]}
+      >
+        <Icon name="arrow-s" class="size-14 block rotate-90" />
+        <span class="sr-only">Previous Slide</span>
+      </button>
+
+      <button
+        type="button"
+        class:list={[
+          'carousel-icon-text__swiper-button-next swiper-button-next',
+          classNavButton,
+        ]}
+      >
+        <Icon name="arrow-s" class="size-14 block -rotate-90" />
+        <span class="sr-only">Next Slide</span>
+      </button>
     </div>
+  </div>
 
-    <div class="carousel-post__slider md:mt-70 mt-40">
-      <div data-js-swiper class="carousel-post__swiper swiper">
-        <div class="carousel-post__swiper-wrapper swiper-wrapper">
-          {
-            slides?.map(({ tags, headline, color, time, image }) => (
-              <div class="carousel-post__swiper-slide swiper-slide">
-                <CardPost {tags} {headline} {color} {time}>
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                  />
-                </CardPost>
-              </div>
-            ))
-          }
-        </div>
-
-        <div class="col-span-full md:hidden mt-20 text-center">
-          <div class="carousel-post__swiper-pagination swiper-pagination"></div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="carousel-post__info gap-15 md:items-end md:justify-end md:mt-0 flex items-center justify-center mt-40"
-    >
-      <div>
-        <div class="gap-15 flex h-full">
-          <div class="gap-15 mdMax:hidden flex">
-            <button
-              type="button"
-              class:list={[
-                'carousel-post__swiper-button-prev swiper-button-prev',
-                classNavButton,
-              ]}
-            >
-              <Icon name="arrow-s" class="size-14 block rotate-90" />
-              <span class="sr-only">Previous Slide</span>
-            </button>
-
-            <button
-              type="button"
-              class:list={[
-                'carousel-post__swiper-button-next swiper-button-next',
-                classNavButton,
-              ]}
-            >
-              <Icon name="arrow-s" class="size-14 block -rotate-90" />
-              <span class="sr-only">Next Slide</span>
-            </button>
+  <div data-js-swiper class="carousel-icon-text__swiper swiper">
+    <div class="carousel-icon-text__swiper-wrapper swiper-wrapper">
+      {
+        slides?.map(({ icon, title, copy }) => (
+          <div class="carousel-icon-text__swiper-slide swiper-slide">
+            <CardIconText {icon} {title} {copy} />
           </div>
+        ))
+      }
+    </div>
 
-          <button type="button">
-            <Button text="All posts" hasArrow />
-          </button>
-        </div>
+    <div class="col-span-full md:hidden mt-20 text-center">
+      <div class="carousel-icon-text__swiper-pagination swiper-pagination">
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .carousel-post {
+  .carousel-icon-text {
     width: 100%;
   }
 
-  .carousel-post__grid {
-    @media screen(md) {
-      display: grid;
-      grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
-    }
-  }
-
-  .carousel-post__title {
-    grid-area: title;
-  }
-
-  .carousel-post__info {
-    grid-area: info;
-  }
-
-  .carousel-post__slider {
-    grid-area: carousel;
-  }
-
-  .carousel-post__swiper {
+  .carousel-icon-text__swiper {
     display: grid;
     grid-template-columns: repeat(8, minmax(0, 1fr));
     margin-left: calc(-1 * var(--inner-gutter));
   }
 
-  .carousel-post__swiper-wrapper {
+  .carousel-icon-text__swiper-wrapper {
     grid-column: span 8;
 
     @media screen(xsToSm) {
@@ -217,17 +173,17 @@ const classNavButton =
         transform 0.5s var(--swiper-slide-ease),
         left 0.5s theme('transitionTimingFunction.smooth') !important;
 
-      .carousel-post.is-first-slide & {
+      .carousel-icon-text.is-first-slide & {
         left: -7%;
       }
 
-      .carousel-post.is-last-slide & {
+      .carousel-icon-text.is-last-slide & {
         left: 7%;
       }
     }
   }
 
-  .carousel-post__swiper-slide {
+  .carousel-icon-text__swiper-slide {
     padding-left: var(--inner-gutter);
     width: 100%;
 
@@ -240,12 +196,12 @@ const classNavButton =
     }
   }
 
-  .carousel-post__swiper-pagination {
+  .carousel-icon-text__swiper-pagination {
     display: inline-flex;
   }
 
-  .carousel-post__swiper-button-prev,
-  .carousel-post__swiper-button-next {
+  .carousel-icon-text__swiper-button-prev,
+  .carousel-icon-text__swiper-button-next {
     &:disabled {
       opacity: 0.5;
     }
