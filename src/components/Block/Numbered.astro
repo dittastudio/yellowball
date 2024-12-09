@@ -1,0 +1,88 @@
+---
+import NumberedText from '@/components/Elements/NumberedText.astro';
+
+interface Props {
+  type?: 'full' | 'split' | 'split-media';
+  class?: string;
+}
+
+const { type = 'full', class: className } = Astro.props as Props;
+
+const hasMedia = !!Astro.slots.default && type === 'split';
+
+const classesGrid = {
+  full: 'grid-cols-1',
+  split: 'grid-cols-1 grid-cols-2 lg:grid-cols-12 items-center',
+};
+
+const classesMedia = {
+  full: 'col-span-full',
+  split: 'col-span-full md:col-span-1 lg:col-span-5 lg:row-span-2',
+};
+
+const classesHeading = {
+  full: 'col-span-full',
+  split: hasMedia
+    ? 'col-span-full md:col-span-1 lg:col-start-7 lg:col-span-6'
+    : 'col-span-full lg:col-span-5',
+};
+
+const classesList = {
+  full: 'col-span-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+  split:
+    'col-span-full lg:col-start-7 lg:col-span-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2',
+};
+---
+
+<!-- Begin Block: Numbered -->
+<div
+  class:list={[
+    'wrapper',
+    'grid',
+    'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
+    classesGrid[type as keyof typeof classesGrid],
+    className,
+  ]}
+>
+  {
+    hasMedia && (
+      <div
+        class:list={[
+          'bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden',
+          classesMedia[type as keyof typeof classesMedia],
+        ]}
+      >
+        <slot />
+      </div>
+    )
+  }
+
+  <h5
+    class:list={[
+      'text-26 md:text-36 font-heading font-semibold text-balance',
+      classesHeading[type as keyof typeof classesHeading],
+    ]}
+  >
+    Lorem ipsum dolor sit amet consectetur. Dolor semper rhoncus turpis
+    facilisis integer id lacus risus. Scelerisque scelerisque.
+  </h5>
+
+  <ul
+    class:list={[
+      'grid gap-x-12 md:gap-x-30 gap-y-40 w-full',
+      classesList[type as keyof typeof classesList],
+    ]}
+  >
+    {
+      [...Array(4)].map((_, index) => (
+        <li>
+          <NumberedText
+            number={index + 1}
+            text="The UK's leading WordPress agency with 250+ stunning websites live."
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+<!-- End Block: Numbered -->
