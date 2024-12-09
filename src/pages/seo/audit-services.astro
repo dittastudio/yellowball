@@ -16,6 +16,7 @@ import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import CardService from '@/components/Card/Service.astro';
 import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
+import CardIconText from '@/components/Card/IconText.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -24,6 +25,28 @@ const classSectionStart = 'pt-50 md:pt-[75px]';
 
 <Layout title="SEO">
   <main>
+    <section class={classSection}>
+      <div class="wrapper">
+        <CardIconText
+          color="green"
+          title="Lorem ipsum dolor sit amet consectetur blandit diam"
+          copy="Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit gravida vitae et at."
+        />
+      </div>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <div class="wrapper">
+          <CardIconText
+            color="navy"
+            title="Lorem ipsum dolor sit amet consectetur blandit diam"
+            copy="Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit gravida vitae et at."
+          />
+        </div>
+      </LayoutTheme>
+    </section>
+
     <section>
       <BlockHero color="green" shape="square">
         <Fragment slot="top">
