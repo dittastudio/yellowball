@@ -1,6 +1,12 @@
 ---
 import CarouselIconText from '@/components/Carousel/IconText.astro';
 
+interface Props {
+  color?: ColorTypes;
+}
+
+const { color = 'current' } = Astro.props as Props;
+
 const exampleSlide1 = {
   icon: 'outline-info-migration',
   title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
@@ -40,6 +46,7 @@ const exampleSlides: any = [
 <!-- Begin Block: CarouselIconText -->
 <div class="wrapper">
   <CarouselIconText
+    {color}
     heading="Lorem ipsum dolor sit amet dolor semper rhoncus turpis facilisis integer id lacus risus. Scelerisque scelerisque."
     slides={exampleSlides}
   />

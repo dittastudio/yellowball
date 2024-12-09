@@ -20,6 +20,7 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
 import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
 import BlockCardIconText from '@/components/Block/CardIconText.astro';
+import BlockCarouselCardIconText from '@/components/Block/CarouselCardIconText.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThickStart = 'pt-100 md:pt-[150px]';
@@ -79,6 +80,10 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
             </Cursors>
           </Fragment>
         </BlockHero>
+      </section>
+
+      <section class={classSection}>
+        <BlockCarouselCardIconText />
       </section>
 
       <section class={classSection}>

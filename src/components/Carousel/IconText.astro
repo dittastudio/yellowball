@@ -9,15 +9,24 @@ interface Slide {
 }
 
 interface Props {
+  color?: ColorTypes;
   heading: string;
   slides: Slide[];
   class?: string;
 }
 
-const { heading, slides, class: className } = Astro.props as Props;
+const {
+  color = 'current',
+  heading,
+  slides,
+  class: className,
+} = Astro.props as Props;
 
-const classNavButton =
-  'size-[58px] rounded-20 border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-150 ease-smooth';
+const classNavButton = [
+  'size-[58px] rounded-20 border border-solid flex items-center justify-center transition-all duration-250 ease-smooth',
+  'bg-navy border-white hover:bg-white hover:text-navy',
+  'light:bg-white light:border-navy/15 light:hover:bg-navy light:hover:text-white',
+];
 ---
 
 <script>
@@ -136,7 +145,7 @@ const classNavButton =
       {
         slides?.map(({ icon, title, copy }) => (
           <div class="carousel-icon-text__swiper-slide swiper-slide">
-            <CardIconText {icon} {title} {copy} />
+            <CardIconText {color} {icon} {title} {copy} />
           </div>
         ))
       }
