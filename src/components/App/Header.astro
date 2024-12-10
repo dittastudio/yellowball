@@ -82,7 +82,7 @@ const navListTwo = [
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
+  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-nonex"
 >
   <a class="block" href="/">
     <AppHeaderLogo />
@@ -90,7 +90,7 @@ const navListTwo = [
   </a>
 
   <div class="header__outer">
-    <div class="header__inner">
+    <div data-lenis-prevent class="header__inner">
       <nav data-js-header-nav class={classNav}>
         <!-- <a class="block" href="/">
         <AppHeaderLogo />
@@ -137,7 +137,10 @@ const navListTwo = [
       border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 40px;
       border-radius: 16px;
+      width: 100%;
       height: 100%;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
     }
 
     @media screen(md) {
