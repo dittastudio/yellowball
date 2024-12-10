@@ -4,45 +4,41 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
-// const classNavListLink = 'block h-full';
-
-const navListOne = [
+const navListOne: HeaderNavigationItem[] = [
   {
     text: 'Services',
-    href: '/',
-    hasSubmenu: true,
     subMenu: [
       {
-        title: 'Web Services',
+        heading: 'Web Services',
         items: [
-          { text: 'WordPress Development', href: '/' },
-          { text: 'UX/UI Design', href: '/' },
-          { text: 'WooCommerce Development', href: '/' },
-          { text: 'Laravel Development', href: '/' },
-          { text: 'White Label Web Development', href: '/' },
-          { text: 'eCommerce', href: '/' },
+          { text: 'WordPress Development', url: '/' },
+          { text: 'UX/UI Design', url: '/' },
+          { text: 'WooCommerce Development', url: '/' },
+          { text: 'Laravel Development', url: '/' },
+          { text: 'White Label Web Development', url: '/' },
+          { text: 'eCommerce', url: '/' },
         ],
       },
       {
-        title: 'Other Services',
+        heading: 'Other Services',
         items: [
-          { text: 'SEO', href: '/' },
-          { text: 'Paid Search', href: '/' },
-          { text: 'Graphic Design', href: '/' },
+          { text: 'SEO', url: '/' },
+          { text: 'Paid Search', url: '/' },
+          { text: 'Graphic Design', url: '/' },
         ],
       },
     ],
   },
-  { text: 'Our Work', href: '/' },
-  { text: 'Agency', href: '/' },
+  { text: 'Our Work', url: '/' },
+  { text: 'Agency', url: '/' },
 ];
 
-const navListTwo = [
-  { text: 'Guides', href: '/' },
-  { text: 'Contact', href: '/' },
+const navListTwo: HeaderNavigationItem[] = [
+  { text: 'Guides', url: '/' },
+  { text: 'Contact', url: '/' },
   {
     text: 'Work with us',
-    href: '/',
+    url: '/',
     color: 'navy',
     type: 'alt',
   },
@@ -162,13 +158,16 @@ const navListTwo = [
       const itemSubMenuBack = item.querySelector(
         '[data-js-header-nav-item-submenu-back]',
       );
+      const itemSubMenuInner = item.querySelector(
+        '[data-js-header-nav-item-submenu-inner]',
+      );
 
       gsap.set(itemSubMenu, {
         x: 16,
         autoAlpha: 0,
       });
 
-      if (itemButton && itemSubMenu) {
+      if (itemButton && itemSubMenu && itemSubMenuInner) {
         itemButton.addEventListener('click', () => {
           const isOpen = itemButton.classList.toggle('is-subnav-open');
 
@@ -179,12 +178,32 @@ const navListTwo = [
               duration: 0.5,
               ease: 'power2.out',
             });
+
+            gsap.to(headerMenuCase, {
+              height: itemSubMenuInner.clientHeight,
+              duration: 0.5,
+              ease: 'power2.out',
+              onStart: () => {
+                item.style.position = 'unset';
+                item.style.overflow = 'unset';
+              },
+            });
           } else {
             gsap.to(itemSubMenu, {
               x: 16,
               autoAlpha: 0,
               duration: 0.25,
               ease: 'power2.out',
+            });
+
+            gsap.to(headerMenuCase, {
+              height: 'auto',
+              duration: 0.5,
+              ease: 'power2.out',
+              onComplete: () => {
+                item.style.position = 'relative';
+                item.style.overflow = 'hidden';
+              },
             });
           }
         });
@@ -195,6 +214,16 @@ const navListTwo = [
             autoAlpha: 0,
             duration: 0.25,
             ease: 'power2.out',
+          });
+
+          gsap.to(headerMenuCase, {
+            height: 'auto',
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: () => {
+              item.style.position = 'relative';
+              item.style.overflow = 'hidden';
+            },
           });
 
           itemButton.classList.remove('is-subnav-open');

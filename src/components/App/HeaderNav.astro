@@ -5,18 +5,7 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 interface Props {
   class?: string;
   hasLogo?: boolean;
-  items: {
-    text: string;
-    href: string;
-    type?: 'main' | 'alt';
-    subMenu?: {
-      heading: string;
-      items: {
-        text: string;
-        href: string;
-      }[];
-    };
-  }[];
+  items: HeaderNavigationItem[];
 }
 
 const {
@@ -105,12 +94,12 @@ const {
   <div data-js="header-nav" class:list={['header-nav md:relative', className]}>
     <ul data-js-header-nav-list class="header-nav__list">
       {
-        items?.map((item: any) => (
+        items?.map((item: HeaderNavigationItem) => (
           <li
             data-js-header-nav-item
             class:list={['h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
           >
-            {item.hasSubmenu ? (
+            {item.subMenu ? (
               <button
                 data-js-header-nav-item-button
                 class="block h-inherit p-12 md:p-3"
@@ -119,30 +108,36 @@ const {
                 <AppHeaderButton hasSubmenu={true}>{item.text}</AppHeaderButton>
               </button>
 
-              <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1 p-40 bg-navy-light">
-                <button data-js-header-nav-item-submenu-back type="button">
-                  ← Back
-                </button>
+              <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1 bg-navy-light">
+                <div data-js-header-nav-item-submenu-inner class="flex flex-col items-start gap-y-40 p-40">
+                  <button data-js-header-nav-item-submenu-back type="button">
+                    ← Back
+                  </button>
 
-                <div>
-                  <h5></h5>
-                  <ul>
-                    <li>
-                      <a href="/">Sub Item 1</a>
-                    </li>
-                    <li>
-                      <a href="/">Sub Item 2</a>
-                    </li>
-                  </ul>
+                  {item.subMenu.map(({ heading, items }) => (
+                    <div class="flex flex-col gap-y-15">
+                      <h5 class="font-heading font-semibold text-11 opacity-50">{heading}</h5>
+
+                      <ul class="font-heading font-semibold text-18">
+                        {
+                          items.map(({text, url}) => (
+                            <li>
+                              <a class="block p-15 -mx-12 md:p-12 md:-mx-15" href={url}>{text}</a>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </nav>
             ) : (
               <a
                 data-js-header-nav-item-link
                 class:list={['block h-inherit p-12 md:p-3']}
-                href={item.href}
+                href={item.url}
               >
-                <AppHeaderButton color={item.color}>
+                <AppHeaderButton color={item.color || null}>
                   {item.text}
                 </AppHeaderButton>
               </a>

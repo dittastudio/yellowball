@@ -1,14 +1,14 @@
 ---
 interface Props {
   class?: string;
-  color?: 'transparent' | 'navy' | 'yellow';
-  type?: 'main' | 'alt';
+  color?: 'transparent' | 'navy' | 'yellow' | null;
+  type?: 'default' | 'alt';
   hasSubmenu?: boolean;
 }
 
 const {
   class: className,
-  type = 'main',
+  type = 'default',
   color = 'transparent',
   hasSubmenu = false,
   ...rest
@@ -21,7 +21,7 @@ const {
     'flex items-center gap-8 h-inherit',
     'font-heading font-bold',
     `is-${color}`,
-    type === 'main'
+    type === 'default'
       ? 'text-16 md:text-13 lg:text-15 md:px-20 md:rounded-12 md:min-h-50'
       : 'text-13 lg:text-15 px-20 rounded-12 min-h-[42px]',
     className,
