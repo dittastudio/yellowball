@@ -1,0 +1,90 @@
+---
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+
+interface ListItem {
+  icon: string;
+  text: string;
+}
+
+interface Props {
+  color?: string;
+  title: string;
+  copy: string;
+  items: ListItem[];
+  class?: string;
+}
+
+const {
+  color = 'current',
+  title,
+  copy,
+  items,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const hasSlotDefault = !!Astro.slots.default;
+---
+
+<div
+  class:list={[
+    'grid grid-cols-1 gap-20 md:gap-30',
+    'w-full h-inherit rounded-30',
+    'border border-solid bg-navy-light border-white/10',
+    'light:bg-white light:border-navy/15',
+    hasSlotDefault
+      ? 'lg:grid-cols-12 p-30 md:p-50 lg:px-0 lg:py-50'
+      : 'md:grid-cols-2 p-30 md:p-50',
+    className,
+  ]}
+  {...rest}
+>
+  {
+    hasSlotDefault && (
+      <div class="lg:col-span-5 lg:row-span-2 lg:pl-50 lgMax:pb-30">
+        <div class="bg-grey w-full h-full rounded-20 md:rounded-40 aspect-square lg:aspect-auto [&_img]:size-full [&_img]:object-cover overflow-hidden">
+          <slot />
+        </div>
+      </div>
+    )
+  }
+
+  <h3
+    class:list={[
+      'font-heading text-fluid-h4 text-balance font-semibold',
+      hasSlotDefault
+        ? 'lg:col-start-7 lg:col-span-6 lg:row-span-1 lg:pr-50'
+        : '',
+    ]}
+  >
+    {title}
+  </h3>
+
+  <div
+    class:list={[
+      'flex flex-col gap-20 md:gap-50',
+      hasSlotDefault
+        ? 'lg:col-start-7 lg:col-span-6 lg:row-span-1 lg:pr-50'
+        : '',
+    ]}
+  >
+    <p class="text-15 md:text-18 text-pretty opacity-70">
+      {copy}
+    </p>
+
+    <ul class="flex flex-col gap-20 md:gap-24">
+      {
+        items?.map(({ icon, text }) => (
+          <li class="flex gap-15 md:gap-24 items-center">
+            <Icon
+              class:list={['size-22 shrink-0', colourText[color]]}
+              name={icon}
+            />
+            <p class="font-heading text-15 md:text-18 font-bold">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

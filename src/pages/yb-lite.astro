@@ -1,26 +1,28 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+
 import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCarouselIconTextCards from '@/components/Block/CarouselIconTextCards.astro';
 import BlockFAQs from '@/components/Block/FAQs.astro';
 import BlockHero from '@/components/Block/Hero.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
 import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
 import BlockNumbered from '@/components/Block/Numbered.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
+import CardIconTextHero from '@/components/Card/IconTextHero.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
-import LayoutTheme from '@/components/Layout/Theme.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
-import TextReveal from '@/components/Elements/TextReveal.astro';
-import BlockSplitRichText from '@/components/Block/SplitRichText.astro';
 import RichText from '@/components/Elements/RichText.astro';
-import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
-import BlockCarouselIconTextCards from '@/components/Block/CarouselIconTextCards.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThickStart = 'pt-100 md:pt-[150px]';
@@ -309,6 +311,67 @@ const classSectionThickEnd = 'pt-50 md:pt-[75px] pb-100 md:pb-[150px]';
 
       <section class={classSection}>
         <BlockCarouselIconTextCards />
+      </section>
+
+      <section class={classSection}>
+        <div class="wrapper">
+          <CardIconTextHero
+            title="Lorem ipsum dolor sit amet consectetur"
+            copy="Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit gravida vitae et at."
+            items={[
+              {
+                icon: 'outline-info-speech',
+                text: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+              },
+              {
+                icon: 'outline-info-globe',
+                text: 'Augue amet id enim consequat',
+              },
+              {
+                icon: 'outline-info-migration',
+                text: 'Quis sed eget in aliquam',
+              },
+              {
+                icon: 'outline-info-link',
+                text: 'Lorem ipsum dolor sit amet',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section class={classSection}>
+        <div class="wrapper">
+          <CardIconTextHero
+            title="Lorem ipsum dolor sit amet consectetur"
+            copy="Nunc congue vitae massa quam et nam ac odio. Lacus faucibus phasellus quisque egestas a. Augue amet id enim consequat nisl consequat vehicula vel aenean. Ultrices leo purus duis velit gravida vitae et at."
+            items={[
+              {
+                icon: 'outline-info-speech',
+                text: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+              },
+              {
+                icon: 'outline-info-globe',
+                text: 'Augue amet id enim consequat',
+              },
+              {
+                icon: 'outline-info-migration',
+                text: 'Quis sed eget in aliquam',
+              },
+              {
+                icon: 'outline-info-link',
+                text: 'Lorem ipsum dolor sit amet',
+              },
+            ]}
+          >
+            <img
+              src="/images/test-profile-1.webp"
+              width="673"
+              height="379"
+              alt=""
+            />
+          </CardIconTextHero>
+        </div>
       </section>
 
       <section class={classSection}>
