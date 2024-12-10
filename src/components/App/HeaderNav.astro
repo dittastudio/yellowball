@@ -98,7 +98,7 @@ const {
         items?.map((item: HeaderNavigationItem) => (
           <li
             data-js-header-nav-item
-            class:list={['h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
+            class:list={['relative overflow-hidden h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
           >
             {item.subMenu ? (
               <button

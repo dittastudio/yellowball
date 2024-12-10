@@ -172,8 +172,8 @@ const navListTwo: HeaderNavigationItem[] = [
       const openSubMenu = () => {
         if (isAnimating) return;
 
-        item.style.position = '';
-        item.style.overflow = '';
+        item.classList.remove('relative');
+        item.classList.remove('overflow-hidden');
 
         gsap.to(itemSubMenu, {
           x: 0,
@@ -214,8 +214,8 @@ const navListTwo: HeaderNavigationItem[] = [
           },
           onComplete: () => {
             isAnimating = false;
-            item.style.position = 'relative';
-            item.style.overflow = 'hidden';
+            item.classList.add('relative');
+            item.classList.add('overflow-hidden');
           },
         });
       };
