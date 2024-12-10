@@ -24,6 +24,9 @@ const navListTwo = [
   gsap.registerPlugin(ScrollTrigger);
 
   const header = document.querySelector('[data-js="header"]') as HTMLElement;
+  const headerInner = document.querySelector(
+    '[data-js-header-inner]',
+  ) as HTMLElement;
   const navs = document.querySelectorAll(
     '[data-js-header-nav]',
   ) as NodeListOf<HTMLElement>;
@@ -47,18 +50,33 @@ const navListTwo = [
           header.classList[checkIfLightTheme ? 'remove' : 'add']('text-white');
           header.classList[!checkIfLightTheme ? 'remove' : 'add']('text-navy');
 
+          headerInner.classList[checkIfLightTheme ? 'remove' : 'add'](
+            'mdMax:bg-navy-light',
+          );
+          headerInner.classList[checkIfLightTheme ? 'remove' : 'add'](
+            'mdMax:border-white/10',
+          );
+          headerInner.classList[!checkIfLightTheme ? 'remove' : 'add'](
+            'mdMax:bg-white',
+          );
+          headerInner.classList[!checkIfLightTheme ? 'remove' : 'add'](
+            'mdMax:border-navy/15',
+          );
+
           navs.forEach(nav => {
             nav.classList[checkIfLightTheme ? 'remove' : 'add'](
-              'bg-offblack/10',
+              'md:bg-offblack/10',
             );
+
             nav.classList[checkIfLightTheme ? 'remove' : 'add'](
-              'border-white/10',
+              'md:border-white/10',
+            );
+
+            nav.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'md:bg-grey-light/50',
             );
             nav.classList[!checkIfLightTheme ? 'remove' : 'add'](
-              'bg-grey-light/50',
-            );
-            nav.classList[!checkIfLightTheme ? 'remove' : 'add'](
-              'border-grey-light/30',
+              'md:border-grey-light/30',
             );
           });
         },
@@ -79,7 +97,7 @@ const navListTwo = [
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 p-12 md:p-18 md:pointer-events-nonex"
+  class="sticky top-0 z-50 p-12 md:p-18 md:pointer-events-none"
 >
   <a
     class="inline-block bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 transition-[background-color,border-color] duration-150 ease-smooth pointer-events-auto md:hidden"
@@ -90,7 +108,11 @@ const navListTwo = [
   </a>
 
   <div class="header__outer">
-    <div data-lenis-prevent class="header__inner">
+    <div
+      data-lenis-prevent
+      data-js-header-inner
+      class="header__inner mdMax:bg-navy-light mdMax:border mdMax:border-white/10"
+    >
       <div class="header__lists">
         <!-- <nav data-js-header-nav class={classNav}> -->
         <!-- <a class="block" href="/">
@@ -99,13 +121,13 @@ const navListTwo = [
         </a> -->
 
         <!-- <div class="mdMax:hiddenx"> -->
-        <AppHeaderNav hasLogo items={navListOne} />
+        <AppHeaderNav data-js-header-nav hasLogo items={navListOne} />
         <!-- </div> -->
         <!-- </nav> -->
 
         <!-- <nav data-js-header-nav class={classNav}> -->
         <!-- <div class="mdMax:hiddenx"> -->
-        <AppHeaderNav items={navListTwo} />
+        <AppHeaderNav data-js-header-nav items={navListTwo} />
         <!-- </div> -->
 
         <!-- <a class={classNavListLink} href="/">
@@ -130,13 +152,13 @@ const navListTwo = [
       width: 100%;
       height: calc(100vh - var(--header-height));
       padding: 12px;
+      padding-top: 0;
     }
   }
 
   .header__inner {
     @media screen(mdMax) {
-      background-color: theme('colors.navy-light');
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      /* border: 1px solid rgba(255, 255, 255, 0.1); */
       padding: 40px;
       border-radius: 16px;
       width: 100%;

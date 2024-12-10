@@ -11,7 +11,12 @@ interface Props {
   }[];
 }
 
-const { class: className, hasLogo = false, items } = Astro.props as Props;
+const {
+  class: className,
+  hasLogo = false,
+  items,
+  ...rest
+} = Astro.props as Props;
 ---
 
 <script>
@@ -77,6 +82,7 @@ const { class: className, hasLogo = false, items } = Astro.props as Props;
 
 <nav
   class="flex gap-4 md:bg-offblack/10 md:backdrop-blur-20 md:rounded-16 md:border border-white/10 md:p-3 md:pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth"
+  {...rest}
 >
   {
     hasLogo && (
