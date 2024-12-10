@@ -167,64 +167,71 @@ const navListTwo: HeaderNavigationItem[] = [
         autoAlpha: 0,
       });
 
+      let isAnimating = false;
+
+      const openSubMenu = () => {
+        if (isAnimating) return;
+
+        gsap.to(itemSubMenu, {
+          x: 0,
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+
+        gsap.to(headerMenuCase, {
+          height: itemSubMenuInner.clientHeight,
+          duration: 0.5,
+          ease: 'power2.out',
+          onStart: () => {
+            isAnimating = true;
+            item.style.position = 'unset';
+            item.style.overflow = 'unset';
+          },
+          onComplete: () => {
+            isAnimating = false;
+          },
+        });
+      };
+
+      const closeSubMenu = () => {
+        if (isAnimating) return;
+
+        gsap.to(itemSubMenu, {
+          x: 16,
+          autoAlpha: 0,
+          duration: 0.25,
+          ease: 'power2.out',
+        });
+
+        gsap.to(headerMenuCase, {
+          height: 'auto',
+          duration: 0.5,
+          ease: 'power2.out',
+          onStart: () => {
+            isAnimating = true;
+          },
+          onComplete: () => {
+            isAnimating = false;
+            item.style.position = 'relative';
+            item.style.overflow = 'hidden';
+          },
+        });
+      };
+
       if (itemButton && itemSubMenu && itemSubMenuInner) {
         itemButton.addEventListener('click', () => {
           const isOpen = itemButton.classList.toggle('is-subnav-open');
 
           if (isOpen) {
-            gsap.to(itemSubMenu, {
-              x: 0,
-              autoAlpha: 1,
-              duration: 0.5,
-              ease: 'power2.out',
-            });
-
-            gsap.to(headerMenuCase, {
-              height: itemSubMenuInner.clientHeight,
-              duration: 0.5,
-              ease: 'power2.out',
-              onStart: () => {
-                item.style.position = 'unset';
-                item.style.overflow = 'unset';
-              },
-            });
+            openSubMenu();
           } else {
-            gsap.to(itemSubMenu, {
-              x: 16,
-              autoAlpha: 0,
-              duration: 0.25,
-              ease: 'power2.out',
-            });
-
-            gsap.to(headerMenuCase, {
-              height: 'auto',
-              duration: 0.5,
-              ease: 'power2.out',
-              onComplete: () => {
-                item.style.position = 'relative';
-                item.style.overflow = 'hidden';
-              },
-            });
+            closeSubMenu();
           }
         });
 
         itemSubMenuBack?.addEventListener('click', () => {
-          gsap.to(itemSubMenu, {
-            x: 16,
-            autoAlpha: 0,
-            duration: 0.25,
-            ease: 'power2.out',
-          });
-
-          gsap.to(headerMenuCase, {
-            height: 'auto',
-            duration: 0.5,
-            ease: 'power2.out',
-            onComplete: () => {
-              item.style.position = 'relative';
-              item.style.overflow = 'hidden';
-            },
-          });
+          closeSubMenu();
 
           itemButton.classList.remove('is-subnav-open');
         });

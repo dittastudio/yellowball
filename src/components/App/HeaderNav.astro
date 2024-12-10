@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Elements/Icon.astro';
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
@@ -110,8 +111,9 @@ const {
 
               <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1 bg-navy-light">
                 <div data-js-header-nav-item-submenu-inner class="flex flex-col items-start gap-y-40 p-40">
-                  <button data-js-header-nav-item-submenu-back type="button">
-                    ← Back
+                  <button data-js-header-nav-item-submenu-back class="flex items-center gap-6 font-heading font-bold text-14 text-grey p-12 -m-12" type="button">
+                    <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
+                    Back
                   </button>
 
                   {item.subMenu.map(({ heading, items }) => (
