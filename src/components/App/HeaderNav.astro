@@ -1,15 +1,17 @@
 ---
+import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
 interface Props {
   class?: string;
+  hasLogo?: boolean;
   items: {
     text: string;
     href: string;
   }[];
 }
 
-const { class: className, items } = Astro.props as Props;
+const { class: className, hasLogo = false, items } = Astro.props as Props;
 ---
 
 <script>
@@ -73,39 +75,52 @@ const { class: className, items } = Astro.props as Props;
   });
 </script>
 
-<div data-js="header-nav" class:list={['header-nav', className]}>
-  <ul data-js-header-nav-list class="header-nav__list">
-    {
-      items?.map((item: any) => (
-        <li class="h-full">
-          {item.hasSubmenu ? (
-            <button
-              data-js-header-nav-item
-              class="block h-inherit p-3"
-              type="button"
-            >
-              <AppHeaderButton hasSubmenu={true} text={item.text} />
-            </button>
-          ) : (
-            <a
-              data-js-header-nav-item
-              class="block h-inherit p-3"
-              href={item.href}
-            >
-              <AppHeaderButton text={item.text} />
-            </a>
-          )}
-        </li>
-      ))
-    }
-  </ul>
+<nav
+  class="flex gap-4 md:bg-offblack/10 md:backdrop-blur-20 md:rounded-16 md:border border-white/10 md:p-3 md:pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth"
+>
+  {
+    hasLogo && (
+      <a class="hidden md:block" href="/">
+        <AppHeaderLogo />
+        <span class="sr-only">Home</span>
+      </a>
+    )
+  }
 
-  <span
-    data-js-header-nav-pill
-    class="header-nav__pill block bg-yellow rounded-[12px] h-full absolute top-0 left-0 -z-1 opacity-0 mdMax:hidden"
-  >
-  </span>
-</div>
+  <div data-js="header-nav" class:list={['header-nav', className]}>
+    <ul data-js-header-nav-list class="header-nav__list">
+      {
+        items?.map((item: any) => (
+          <li class="h-full">
+            {item.hasSubmenu ? (
+              <button
+                data-js-header-nav-item
+                class="block h-inherit p-12 md:p-3"
+                type="button"
+              >
+                <AppHeaderButton hasSubmenu={true} text={item.text} />
+              </button>
+            ) : (
+              <a
+                data-js-header-nav-item
+                class="block h-inherit p-12 md:p-3"
+                href={item.href}
+              >
+                <AppHeaderButton text={item.text} />
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+
+    <span
+      data-js-header-nav-pill
+      class="header-nav__pill block bg-yellow rounded-[12px] h-full absolute top-0 left-0 -z-1 opacity-0 mdMax:hidden"
+    >
+    </span>
+  </div>
+</nav>
 
 <style>
   .header-nav {
@@ -116,10 +131,10 @@ const { class: className, items } = Astro.props as Props;
 
   .header-nav__list {
     display: flex;
-    margin: -3px;
     flex-direction: column;
 
     @media screen(md) {
+      margin: -3px;
       flex-direction: row;
     }
   }

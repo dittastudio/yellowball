@@ -1,12 +1,9 @@
 ---
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
-import AppHeaderButton from '@/components/App/HeaderButton.astro';
+// import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 
-const classNav =
-  'flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth';
-
-const classNavListLink = 'block h-full';
+// const classNavListLink = 'block h-full';
 
 const navListOne = [
   { text: 'Services', href: '/', hasSubmenu: true },
@@ -82,39 +79,44 @@ const navListTwo = [
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-nonex"
+  class="sticky top-0 z-50 p-12 md:p-18 md:pointer-events-nonex"
 >
-  <a class="block" href="/">
+  <a
+    class="inline-block bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 transition-[background-color,border-color] duration-150 ease-smooth pointer-events-auto md:hidden"
+    href="/"
+  >
     <AppHeaderLogo />
     <span class="sr-only">Home</span>
   </a>
 
   <div class="header__outer">
     <div data-lenis-prevent class="header__inner">
-      <nav data-js-header-nav class={classNav}>
+      <div class="header__lists">
+        <!-- <nav data-js-header-nav class={classNav}> -->
         <!-- <a class="block" href="/">
-        <AppHeaderLogo />
-        <span class="sr-only">Home</span>
-      </a> -->
+          <AppHeaderLogo />
+          <span class="sr-only">Home</span>
+        </a> -->
 
-        <div class="mdMax:hiddenx">
-          <AppHeaderNav items={navListOne} />
-        </div>
-      </nav>
+        <!-- <div class="mdMax:hiddenx"> -->
+        <AppHeaderNav hasLogo items={navListOne} />
+        <!-- </div> -->
+        <!-- </nav> -->
 
-      <nav data-js-header-nav class={classNav}>
-        <div class="mdMax:hiddenx">
-          <AppHeaderNav items={navListTwo} />
-        </div>
+        <!-- <nav data-js-header-nav class={classNav}> -->
+        <!-- <div class="mdMax:hiddenx"> -->
+        <AppHeaderNav items={navListTwo} />
+        <!-- </div> -->
 
         <!-- <a class={classNavListLink} href="/">
-          <AppHeaderButton text="Work with us" type="navy" />
-        </a>
+            <AppHeaderButton text="Work with us" type="navy" />
+          </a>
 
-        <button type="button" class="md:hidden h-full">
-          <AppHeaderButton text="Menu" type="yellow" />
-        </button> -->
-      </nav>
+          <button type="button" class="md:hidden h-full">
+            <AppHeaderButton text="Menu" type="yellow" />
+          </button> -->
+        <!-- </nav> -->
+      </div>
     </div>
   </div>
 </header>
@@ -141,6 +143,12 @@ const navListTwo = [
       height: 100%;
       overflow-y: auto;
       overscroll-behavior-y: contain;
+    }
+  }
+
+  .header__lists {
+    @media screen(mdMax) {
+      margin: -12px;
     }
 
     @media screen(md) {

@@ -1,25 +1,27 @@
 <script>
-  const headerLogo = document.querySelector(
+  const logos = document.querySelectorAll(
     '[data-js=header-logo]',
-  ) as HTMLElement;
+  ) as NodeListOf<HTMLElement>;
 
-  if (headerLogo) {
-    let timeout: NodeJS.Timeout;
+  logos.forEach(logo => {
+    if (logo) {
+      let timeout: NodeJS.Timeout;
 
-    function handleMouseEnter() {
-      clearTimeout(timeout);
-      headerLogo.classList.add('has-hover');
+      function handleMouseEnter() {
+        clearTimeout(timeout);
+        logo.classList.add('has-hover');
+      }
+
+      function handleMouseLeave() {
+        timeout = setTimeout(() => {
+          logo.classList.remove('has-hover');
+        }, 500);
+      }
+
+      logo.addEventListener('mouseenter', handleMouseEnter);
+      logo.addEventListener('mouseleave', handleMouseLeave);
     }
-
-    function handleMouseLeave() {
-      timeout = setTimeout(() => {
-        headerLogo.classList.remove('has-hover');
-      }, 500);
-    }
-
-    headerLogo.addEventListener('mouseenter', handleMouseEnter);
-    headerLogo.addEventListener('mouseleave', handleMouseLeave);
-  }
+  });
 </script>
 
 <div data-js="header-logo" class="header-logo text-white">
