@@ -172,6 +172,9 @@ const navListTwo: HeaderNavigationItem[] = [
       const openSubMenu = () => {
         if (isAnimating) return;
 
+        item.style.position = '';
+        item.style.overflow = '';
+
         gsap.to(itemSubMenu, {
           x: 0,
           autoAlpha: 1,
@@ -180,13 +183,11 @@ const navListTwo: HeaderNavigationItem[] = [
         });
 
         gsap.to(headerMenuCase, {
-          height: itemSubMenuInner.clientHeight,
+          height: itemSubMenuInner.clientHeight + 2, // accounts for 1px border around scroll container
           duration: 0.5,
           ease: 'power2.out',
           onStart: () => {
             isAnimating = true;
-            item.style.position = 'unset';
-            item.style.overflow = 'unset';
           },
           onComplete: () => {
             isAnimating = false;
@@ -242,7 +243,7 @@ const navListTwo: HeaderNavigationItem[] = [
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
+  class="header sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
 >
   <div class="flex justify-between md:hidden">
     <a
@@ -301,7 +302,7 @@ const navListTwo: HeaderNavigationItem[] = [
   </div>
 </header>
 
-<style>
+<style is:global>
   .header__outer {
     @media screen(mdMax) {
       position: absolute;
