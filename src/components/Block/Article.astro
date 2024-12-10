@@ -2,7 +2,7 @@
 <div class="wrapper grid gap-x-30 gap-y-80 grid-cols-8 lg:grid-cols-12">
   {
     Astro.slots.content && (
-      <div class="lg:order-2 col-span-full lg:col-start-5 lg:col-span-8">
+      <div class="flex flex-col gap-50 lg:gap-100 lg:order-2 col-span-full lg:col-start-5 lg:col-span-8">
         <slot name="content" />
       </div>
     )

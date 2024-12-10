@@ -298,9 +298,6 @@ export default {
             '--tw-prose-th-borders': 'currentColor',
             '--tw-prose-td-borders': 'currentColor',
             color: 'currentColor',
-            ':is(p,li)': {
-              opacity: 0.7
-            },
           },
         },
       }),

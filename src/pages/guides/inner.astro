@@ -3,10 +3,12 @@ import Layout from '@/layouts/Layout.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import BlockArticle from '@/components/Block/Article.astro';
+import BlockEmbed from '@/components/Block/Embed.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockMedia from '@/components/Block/Media.astro';
-import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockQuote from '@/components/Block/Quote.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockTable from '@/components/Block/Table.astro';
 
 import CardPrompt from '@/components/Card/Prompt.astro';
 import CardService from '@/components/Card/Service.astro';
@@ -55,7 +57,9 @@ const classSectionThickStart = 'pt-100 md:pt-[150px]';
                 for the right reasons, which is why we have created this
                 article!
               </p>
+            </RichText>
 
+            <RichText>
               <h3>
                 H3 title or content strategies then, featured snippets should
                 offer an interesting opportunity.
@@ -157,6 +161,133 @@ const classSectionThickStart = 'pt-100 md:pt-[150px]';
               name="Preston Llewellyn"
               company="Independent Economics"
             />
+
+            <RichText>
+              <h5>H5 Example title</h5>
+
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <ol>
+                <li>
+                  We therefore need to ensure that any search term for which we
+                  create and optimise our content is relevant to your buyer
+                  personas and their buying funnel.
+                </li>
+                <li>
+                  There is a really good study published by A.J Ghergich for
+                  SEMrush that explores questions, prepositions and comparisons.
+                </li>
+                <li>
+                  It also mentioned pricing being an end of funnel type query
+                  that can be targeted, so we highly recommend you having a read
+                  of it as well.
+                </li>
+              </ol>
+            </RichText>
+
+            <BlockEmbed
+              platform="youtube"
+              src="https://www.youtube-nocookie.com/embed/dMIk_kzvoBM?si=8Ph8iv7FAmrIqmZ7"
+            />
+
+            <RichText>
+              <h6>H6 Example title</h6>
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <p>
+                We therefore need to ensure that any search term for which we
+                create and optimise our content is relevant to your buyer
+                personas and their buying funnel. There is a really good study
+                published by A.J Ghergich for SEMrush that explores questions,
+                prepositions and comparisons. It also mentioned pricing being an
+                end of funnel type query that can be targeted, so we highly
+                recommend you having a read of it as well.
+              </p>
+            </RichText>
+
+            <BlockTable>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Title</th>
+                    <th>Title</th>
+                    <th>Title</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                </tbody>
+              </table>
+            </BlockTable>
+
+            <RichText>
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <ul>
+                <li>
+                  We therefore need to ensure that any search term for which we
+                  create and optimise our content is relevant to your buyer
+                  personas and their buying funnel.
+                </li>
+                <li>
+                  There is a really good study published by A.J Ghergich for
+                  SEMrush that explores questions, prepositions and comparisons.
+                </li>
+                <li>
+                  It also mentioned pricing being an end of funnel type query
+                  that can be targeted, so we highly recommend you having a read
+                  of it as well.
+                </li>
+              </ul>
+            </RichText>
           </Fragment>
 
           <Fragment slot="aside">
