@@ -12,6 +12,7 @@ import CardFigure from '@/components/Card/Figure.astro';
 import CardInfo from '@/components/Card/Info.astro';
 import CardPost from '@/components/Card/Post.astro';
 import CardPostHero from '@/components/Card/PostHero.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
 import CardMedia from '@/components/Card/Media.astro';
 import CardProfile from '@/components/Card/Profile.astro';
 import CardProfileSummary from '@/components/Card/ProfileSummary.astro';
@@ -48,11 +49,10 @@ const imageDesktopTest: ImageObject = {
   height: 900,
 };
 
+const classCardGrid1 = 'grid grid-cols-1 gap-12 lg:gap-30';
+const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
 const classCardGrid3 =
   'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-30';
-
-const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
-
 const classCardCSSCols =
   'flex flex-col md:block md:columns-2 md:gap-30 max-w-[1200px] mx-auto';
 ---
@@ -401,6 +401,24 @@ const classCardCSSCols =
             imageDesktop={imageDesktopTest}
           />
         </div>
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Card Prompt">
+      <div class={classCardGrid1}>
+        <CardPrompt shape="square" color="green">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Ready to start your SEO Campaign?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get a quote today" hasArrow />
+          </Fragment>
+        </CardPrompt>
       </div>
     </StyleguideSection>
 
