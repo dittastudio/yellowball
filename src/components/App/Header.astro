@@ -1,6 +1,6 @@
 ---
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
-// import AppHeaderButton from '@/components/App/HeaderButton.astro';
+import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
 
 // const classNavListLink = 'block h-full';
@@ -14,6 +14,7 @@ const navListOne = [
 const navListTwo = [
   { text: 'Guides', href: '/' },
   { text: 'Contact', href: '/' },
+  { text: 'Work with us', href: '/', color: 'navy' },
 ];
 ---
 
@@ -24,9 +25,7 @@ const navListTwo = [
   gsap.registerPlugin(ScrollTrigger);
 
   const header = document.querySelector('[data-js="header"]') as HTMLElement;
-  const headerInner = document.querySelector(
-    '[data-js-header-inner]',
-  ) as HTMLElement;
+
   const navs = document.querySelectorAll(
     '[data-js-header-nav]',
   ) as NodeListOf<HTMLElement>;
@@ -47,20 +46,11 @@ const navListTwo = [
           const checkIfLightTheme =
             isActive && section.getAttribute('data-js-theme') === 'light';
 
-          header.classList[checkIfLightTheme ? 'remove' : 'add']('text-white');
-          header.classList[!checkIfLightTheme ? 'remove' : 'add']('text-navy');
-
-          headerInner.classList[checkIfLightTheme ? 'remove' : 'add'](
-            'mdMax:bg-navy-light',
+          header.classList[checkIfLightTheme ? 'remove' : 'add'](
+            'md:text-white',
           );
-          headerInner.classList[checkIfLightTheme ? 'remove' : 'add'](
-            'mdMax:border-white/10',
-          );
-          headerInner.classList[!checkIfLightTheme ? 'remove' : 'add'](
-            'mdMax:bg-white',
-          );
-          headerInner.classList[!checkIfLightTheme ? 'remove' : 'add'](
-            'mdMax:border-navy/15',
+          header.classList[!checkIfLightTheme ? 'remove' : 'add'](
+            'md:text-navy',
           );
 
           navs.forEach(nav => {
@@ -99,36 +89,36 @@ const navListTwo = [
   data-js="header"
   class="sticky top-0 z-50 p-12 md:p-18 md:pointer-events-none"
 >
-  <a
-    class="inline-block bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 transition-[background-color,border-color] duration-150 ease-smooth pointer-events-auto md:hidden"
-    href="/"
-  >
-    <AppHeaderLogo />
-    <span class="sr-only">Home</span>
-  </a>
+  <div class="flex justify-between md:hidden">
+    <a
+      class="inline-block bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 transition-[background-color,border-color] duration-150 ease-smooth pointer-events-auto"
+      href="/"
+    >
+      <AppHeaderLogo />
+      <span class="sr-only">Home</span>
+    </a>
+
+    <div
+      class="flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth"
+    >
+      <a class="block h-full" href="/">
+        <AppHeaderButton type="alt" text="Work with us" color="navy" />
+      </a>
+
+      <button type="button" class="h-full">
+        <AppHeaderButton type="alt" text="Menu" color="yellow" />
+      </button>
+    </div>
+  </div>
 
   <div class="header__outer">
     <div
       data-lenis-prevent
-      data-js-header-inner
       class="header__inner mdMax:bg-navy-light mdMax:border mdMax:border-white/10"
     >
       <div class="header__lists">
-        <!-- <nav data-js-header-nav class={classNav}> -->
-        <!-- <a class="block" href="/">
-          <AppHeaderLogo />
-          <span class="sr-only">Home</span>
-        </a> -->
-
-        <!-- <div class="mdMax:hiddenx"> -->
         <AppHeaderNav data-js-header-nav hasLogo items={navListOne} />
-        <!-- </div> -->
-        <!-- </nav> -->
-
-        <!-- <nav data-js-header-nav class={classNav}> -->
-        <!-- <div class="mdMax:hiddenx"> -->
         <AppHeaderNav data-js-header-nav items={navListTwo} />
-        <!-- </div> -->
 
         <!-- <a class={classNavListLink} href="/">
             <AppHeaderButton text="Work with us" type="navy" />
@@ -158,11 +148,10 @@ const navListTwo = [
 
   .header__inner {
     @media screen(mdMax) {
-      /* border: 1px solid rgba(255, 255, 255, 0.1); */
       padding: 40px;
       border-radius: 16px;
       width: 100%;
-      height: 100%;
+      max-height: 100%;
       overflow-y: auto;
       overscroll-behavior-y: contain;
     }

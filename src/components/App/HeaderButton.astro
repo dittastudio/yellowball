@@ -1,7 +1,8 @@
 ---
 interface Props {
   class?: string;
-  type?: 'transparent' | 'navy' | 'yellow';
+  color?: 'transparent' | 'navy' | 'yellow';
+  type?: 'main' | 'alt';
   text: string;
   hasSubmenu?: boolean;
 }
@@ -9,7 +10,8 @@ interface Props {
 const {
   class: className,
   text,
-  type = 'transparent',
+  type = 'main',
+  color = 'transparent',
   hasSubmenu = false,
   ...rest
 } = Astro.props as Props;
@@ -18,9 +20,12 @@ const {
 <span
   class:list={[
     'app-header-link',
-    'flex items-center gap-8 h-inherit md:px-20 md:rounded-12 md:min-h-50',
-    'font-heading text-16 md:text-13 lg:text-15 font-bold',
-    `is-${type}`,
+    'flex items-center gap-8 h-inherit',
+    'font-heading font-bold',
+    `is-${color}`,
+    type === 'main'
+      ? 'text-16 md:text-13 lg:text-15 md:px-20 md:rounded-12 md:min-h-50'
+      : 'text-13 lg:text-15 px-20 rounded-12 min-h-[42px]',
     className,
   ]}
   {...rest}
@@ -50,8 +55,8 @@ const {
     transition:
       color theme('transitionDuration.200')
         theme('transitionTimingFunction.smooth'),
-      background-color theme('transitionDuration.200')
-        theme('transitionTimingFunction.smooth');
+      background-color theme('transitionDuration.400')
+        theme('transitionTimingFunction.smooth') 0.1s;
 
     &::after {
       content: '';
@@ -68,7 +73,7 @@ const {
       --button-bg-color: theme('colors.transparent');
       --button-text-color: currentColor;
 
-      @media screen(md) {
+      /* @media screen(md) {
         @media (hover: hover) {
           :global(a):hover &,
           :global(button):not(:disabled):hover & {
@@ -76,7 +81,7 @@ const {
             --button-text-color: theme('colors.navy');
           }
         }
-      }
+      } */
     }
 
     &.is-navy {
@@ -93,8 +98,13 @@ const {
       @media (hover: hover) {
         :global(a):hover &,
         :global(button):not(:disabled):hover & {
-          --button-bg-color: theme('colors.yellow');
+          --button-bg-color: transparent;
           --button-text-color: theme('colors.navy');
+
+          transition:
+            color theme('transitionDuration.200')
+              theme('transitionTimingFunction.smooth'),
+            background-color 0s;
         }
       }
     }

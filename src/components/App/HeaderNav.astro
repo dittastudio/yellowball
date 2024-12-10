@@ -109,10 +109,13 @@ const {
             ) : (
               <a
                 data-js-header-nav-item
-                class="block h-inherit p-12 md:p-3"
+                class:list={[
+                  'block h-inherit p-12 md:p-3',
+                  item.type === 'navy' && 'mdMax:hidden',
+                ]}
                 href={item.href}
               >
-                <AppHeaderButton text={item.text} />
+                <AppHeaderButton text={item.text} color={item.color} />
               </a>
             )}
           </li>
