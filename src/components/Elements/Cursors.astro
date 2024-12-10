@@ -21,25 +21,31 @@ const { hasExit = null } = Astro.props as Props;
       ':scope > *',
     ) as NodeListOf<HTMLElement>;
     const timelines: gsap.core.Timeline[] = [];
-    const getRandomDuration = () => gsap.utils.random(1.5, 5);
+    const getRandomDuration = () => gsap.utils.random(1, 2);
+    let canMoveX = true;
 
     const createTimeline = (cursor: HTMLElement) => {
-      const timeline = gsap.timeline({ repeat: -1, yoyo: true });
+      const timeline = gsap.timeline({
+        repeat: -1,
+        // yoyo: false
+      });
 
       const animate = () => {
         const duration = getRandomDuration();
+        // const distance = gsap.utils.random(50, 100);
 
         timeline.clear();
 
         timeline
           .to(cursor, {
             duration,
-            y: gsap.utils.random(-50, 0),
+            y: -50,
             ease: 'sine.inOut',
+            // onComplete: animate,
           })
           .to(cursor, {
             duration,
-            y: gsap.utils.random(0, 50),
+            y: 0,
             ease: 'sine.inOut',
           });
       };
@@ -50,6 +56,8 @@ const { hasExit = null } = Astro.props as Props;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!canMoveX) return;
+
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
@@ -91,11 +99,13 @@ const { hasExit = null } = Astro.props as Props;
             scrollTrigger: {
               markers: false,
               trigger: section,
-              start: '-20% top',
-              end: 'bottom top',
+              start: '5% top',
+              end: '110% top',
               scrub: 1.5,
               invalidateOnRefresh: true,
               onEnter: () => {
+                canMoveX = false;
+
                 if (isPlaying) {
                   timelines.forEach(timeline => timeline.pause());
                   isPlaying = false;
@@ -109,6 +119,7 @@ const { hasExit = null } = Astro.props as Props;
                     ScrollTrigger.refresh();
                     timelines.forEach(timeline => timeline.play());
                     isPlaying = true;
+                    canMoveX = true;
                   });
                 }
               },
@@ -127,7 +138,11 @@ const { hasExit = null } = Astro.props as Props;
               const sectionRect = section.getBoundingClientRect();
               const offset = sectionRect.y - (targetRect.y - sectionRect.y);
 
-              return sectionRect.height * 1.25 - (targetRect.height - offset);
+              return (
+                sectionRect.top +
+                sectionRect.height * 1.5 -
+                (targetRect.height - offset)
+              );
             },
           })
           .to(cursors, {
