@@ -82,30 +82,67 @@ const navListTwo = [
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 flex justify-between p-12 md:p-18 pointer-events-none"
+  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
 >
-  <nav data-js-header-nav class={classNav}>
-    <a class="block" href="/">
-      <AppHeaderLogo />
-      <span class="sr-only">Home</span>
-    </a>
+  <a class="block" href="/">
+    <AppHeaderLogo />
+    <span class="sr-only">Home</span>
+  </a>
 
-    <div class="mdMax:hidden">
-      <AppHeaderNav items={navListOne} />
+  <div class="header__outer">
+    <div class="header__inner">
+      <nav data-js-header-nav class={classNav}>
+        <!-- <a class="block" href="/">
+        <AppHeaderLogo />
+        <span class="sr-only">Home</span>
+      </a> -->
+
+        <div class="mdMax:hiddenx">
+          <AppHeaderNav items={navListOne} />
+        </div>
+      </nav>
+
+      <nav data-js-header-nav class={classNav}>
+        <div class="mdMax:hiddenx">
+          <AppHeaderNav items={navListTwo} />
+        </div>
+
+        <!-- <a class={classNavListLink} href="/">
+          <AppHeaderButton text="Work with us" type="navy" />
+        </a>
+
+        <button type="button" class="md:hidden h-full">
+          <AppHeaderButton text="Menu" type="yellow" />
+        </button> -->
+      </nav>
     </div>
-  </nav>
-
-  <nav data-js-header-nav class={classNav}>
-    <div class="mdMax:hidden">
-      <AppHeaderNav items={navListTwo} />
-    </div>
-
-    <a class={classNavListLink} href="/">
-      <AppHeaderButton text="Work with us" type="navy" />
-    </a>
-
-    <button type="button" class="md:hidden h-full">
-      <AppHeaderButton text="Menu" type="yellow" />
-    </button>
-  </nav>
+  </div>
 </header>
+
+<style>
+  .header__outer {
+    @media screen(mdMax) {
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      padding: 12px;
+    }
+  }
+
+  .header__inner {
+    @media screen(mdMax) {
+      background-color: theme('colors.navy-light');
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 16px;
+      height: 100%;
+    }
+
+    @media screen(md) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+</style>

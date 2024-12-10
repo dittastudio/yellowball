@@ -19,7 +19,7 @@ const {
   class:list={[
     'app-header-link',
     'flex items-center gap-8 h-inherit px-20 rounded-12',
-    'font-heading text-13 lg:text-15 font-bold',
+    'font-heading text-16 md:text-13 lg:text-15 font-bold',
     `is-${type}`,
     className,
   ]}
@@ -68,11 +68,13 @@ const {
       --button-bg-color: theme('colors.transparent');
       --button-text-color: currentColor;
 
-      @media (hover: hover) {
-        :global(a):hover &,
-        :global(button):not(:disabled):hover & {
-          --button-bg-color: transparent;
-          --button-text-color: theme('colors.navy');
+      @media screen(md) {
+        @media (hover: hover) {
+          :global(a):hover &,
+          :global(button):not(:disabled):hover & {
+            --button-bg-color: transparent;
+            --button-text-color: theme('colors.navy');
+          }
         }
       }
     }
@@ -87,11 +89,13 @@ const {
       --button-text-color: theme('colors.navy');
     }
 
-    @media (hover: hover) {
-      :global(a):hover &,
-      :global(button):not(:disabled):hover & {
-        --button-bg-color: theme('colors.yellow');
-        --button-text-color: theme('colors.navy');
+    @media screen(md) {
+      @media (hover: hover) {
+        :global(a):hover &,
+        :global(button):not(:disabled):hover & {
+          --button-bg-color: theme('colors.yellow');
+          --button-text-color: theme('colors.navy');
+        }
       }
     }
 
