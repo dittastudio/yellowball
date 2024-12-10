@@ -1,0 +1,35 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Props {
+  quote: string;
+  name: string;
+  company: string;
+}
+
+const { quote, name, company } = Astro.props as Props;
+---
+
+<!-- Begin Block: Quote -->
+<div
+  class="w-full flex flex-col gap-20 rounded-30 lg:rounded-40 bg-white text-navy border border-navy/15 p-40 lg:p-60"
+>
+  {
+    quote && (
+      <Icon name="quote-66" class="size-40 lg:size-50 text-yellow" />
+
+      <blockquote class:list={['flex flex-col gap-15 lg:gap-20']}>
+        <p class="text-34 lg:text-48 font-heading text-balance">{quote}</p>
+      </blockquote>
+    )
+  }
+
+  {
+    name && company && (
+      <p class="text-12 lg:text-14 font-heading flex items-center gap-5 pt-5 mt-auto font-bold">
+        {name} <span>&bullet;</span> <cite class="not-italic">{company}</cite>
+      </p>
+    )
+  }
+</div>
+<!-- End Block: Quote -->

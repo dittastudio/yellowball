@@ -13,6 +13,7 @@ const li = '[&_li]:mt-0 [&_li]:mb-10 [&_li]:pl-5';
 const elements =
   '[&_:is(ul,ol,p)]:mt-0 [&_:is(ul,ol,p)]:mb-20 lg:[&_:is(ul,ol,p)]:mb-28';
 const adjacentLists = '[&_p+:is(ul,ol)]:pt-5 lg:[&_p+:is(ul,ol)]:pt-0';
+const lastElement = '[&_>*:last-child]:mb-0';
 ---
 
 <div
@@ -28,6 +29,7 @@ const adjacentLists = '[&_p+:is(ul,ol)]:pt-5 lg:[&_p+:is(ul,ol)]:pt-0';
     adjacentLists,
     li,
     elements,
+    lastElement,
   ]}
 >
   <slot />
