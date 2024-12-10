@@ -81,7 +81,7 @@ const {
 </script>
 
 <nav
-  class="flex gap-4 md:bg-offblack/10 md:backdrop-blur-20 md:rounded-16 md:border border-white/10 md:p-3 md:pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth"
+  class="flex gap-4 md:bg-offblack/10 md:backdrop-blur-20 md:rounded-16 md:border border-white/10 md:p-3 transition-[background-color,border-color] duration-150 ease-smooth"
   {...rest}
 >
   {
@@ -97,25 +97,37 @@ const {
     <ul data-js-header-nav-list class="header-nav__list">
       {
         items?.map((item: any) => (
-          <li class="h-full">
+          <li
+            class:list={['h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
+          >
             {item.hasSubmenu ? (
               <button
                 data-js-header-nav-item
                 class="block h-inherit p-12 md:p-3"
                 type="button"
               >
-                <AppHeaderButton hasSubmenu={true} text={item.text} />
+                <AppHeaderButton hasSubmenu={true}>{item.text}</AppHeaderButton>
               </button>
+
+              <nav class="absolute top-[var(--header-height)] left-0 z-1 p-[52px] w-screen bg-green">
+                <ul>
+                  <li>
+                    <a href="/">Sub Item 1</a>
+                  </li>
+                  <li>
+                    <a href="/">Sub Item 2</a>
+                  </li>
+                </ul>
+              </nav>
             ) : (
               <a
                 data-js-header-nav-item
-                class:list={[
-                  'block h-inherit p-12 md:p-3',
-                  item.type === 'navy' && 'mdMax:hidden',
-                ]}
+                class:list={['block h-inherit p-12 md:p-3']}
                 href={item.href}
               >
-                <AppHeaderButton text={item.text} color={item.color} />
+                <AppHeaderButton color={item.color}>
+                  {item.text}
+                </AppHeaderButton>
               </a>
             )}
           </li>

@@ -3,13 +3,11 @@ interface Props {
   class?: string;
   color?: 'transparent' | 'navy' | 'yellow';
   type?: 'main' | 'alt';
-  text: string;
   hasSubmenu?: boolean;
 }
 
 const {
   class: className,
-  text,
   type = 'main',
   color = 'transparent',
   hasSubmenu = false,
@@ -41,7 +39,7 @@ const {
       />
     )
   }
-  {text}
+  <slot />
 </span>
 
 <style>

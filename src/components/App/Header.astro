@@ -2,6 +2,7 @@
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import AppHeaderButton from '@/components/App/HeaderButton.astro';
 import AppHeaderNav from '@/components/App/HeaderNav.astro';
+import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 // const classNavListLink = 'block h-full';
 
@@ -14,7 +15,7 @@ const navListOne = [
 const navListTwo = [
   { text: 'Guides', href: '/' },
   { text: 'Contact', href: '/' },
-  { text: 'Work with us', href: '/', color: 'navy' },
+  { text: 'Work with us', href: '/', color: 'navy', type: 'alt' },
 ];
 ---
 
@@ -25,7 +26,6 @@ const navListTwo = [
   gsap.registerPlugin(ScrollTrigger);
 
   const header = document.querySelector('[data-js="header"]') as HTMLElement;
-
   const navs = document.querySelectorAll(
     '[data-js-header-nav]',
   ) as NodeListOf<HTMLElement>;
@@ -82,12 +82,48 @@ const navListTwo = [
     const resizeTarget: HTMLBodyElement | any = document.querySelector('body');
 
     resizeObserver.observe(resizeTarget);
+
+    //Menu
+    const headerMenuButton = document.querySelector(
+      '[data-js-header-menu-button]',
+    ) as HTMLElement;
+    const headerMenuButtonText = document.querySelector(
+      '[data-js-header-menu-button-text]',
+    ) as HTMLElement;
+    const headerMenuCase = document.querySelector(
+      '[data-js-header-menu-case]',
+    ) as HTMLElement;
+
+    headerMenuButton.addEventListener('click', () => {
+      const isOpen = headerMenuButton.classList.toggle('is-open');
+      header.classList.toggle('is-open');
+
+      if (isOpen) {
+        headerMenuButtonText.textContent = 'Close'; // Change text to "Close"
+      } else {
+        headerMenuButtonText.textContent = 'Menu'; // Change text back to "Menu"
+      }
+
+      if (isOpen) {
+        gsap.to(headerMenuCase, {
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+      } else {
+        gsap.to(headerMenuCase, {
+          autoAlpha: 0,
+          duration: 0.25,
+          ease: 'power2.out',
+        });
+      }
+    });
   }
 </script>
 
 <header
   data-js="header"
-  class="sticky top-0 z-50 p-12 md:p-18 md:pointer-events-none"
+  class="sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
 >
   <div class="flex justify-between md:hidden">
     <a
@@ -102,11 +138,15 @@ const navListTwo = [
       class="flex gap-4 bg-offblack/10 backdrop-blur-20 rounded-16 border border-white/10 p-3 pointer-events-auto transition-[background-color,border-color] duration-150 ease-smooth"
     >
       <a class="block h-full" href="/">
-        <AppHeaderButton type="alt" text="Work with us" color="navy" />
+        <AppHeaderButton type="alt" color="navy">
+          Work with us
+        </AppHeaderButton>
       </a>
 
-      <button type="button" class="h-full">
-        <AppHeaderButton type="alt" text="Menu" color="yellow" />
+      <button data-js-header-menu-button type="button" class="h-full">
+        <AppHeaderButton type="alt" color="yellow">
+          <span data-js-header-menu-button-text>Menu</span>
+        </AppHeaderButton>
       </button>
     </div>
   </div>
@@ -114,21 +154,39 @@ const navListTwo = [
   <div class="header__outer">
     <div
       data-lenis-prevent
-      class="header__inner mdMax:bg-navy-light mdMax:border mdMax:border-white/10"
+      data-js-header-menu-case
+      class="header__inner mdMax:bg-navy-light mdMax:border mdMax:border-white/10 pointer-events-auto"
     >
-      <div class="header__lists">
+      <div class="mdMax:-m-12 md:flex md:justify-between">
         <AppHeaderNav data-js-header-nav hasLogo items={navListOne} />
         <AppHeaderNav data-js-header-nav items={navListTwo} />
+      </div>
 
-        <!-- <a class={classNavListLink} href="/">
+      <div
+        class="mt-60 flex flex-col gap-20 font-heading font-bold text-11 md:hidden"
+      >
+        <a href="/" class="block w-fit p-12 -m-12">
+          <ShapeRow />
+          <span class="sr-only">Home</span>
+        </a>
+
+        <div class="flex flex-col gap-16 mt-10 opacity-50">
+          <a href="tel:+442080493080" class="block p-12 -m-12">020 8049 3080</a>
+
+          <a href="mailto:hello@weareyellowball.com" class="block p-12 -m-12">
+            hello@weareyellowball.com
+          </a>
+        </div>
+      </div>
+
+      <!-- <a class={classNavListLink} href="/">
             <AppHeaderButton text="Work with us" type="navy" />
           </a>
 
           <button type="button" class="md:hidden h-full">
             <AppHeaderButton text="Menu" type="yellow" />
           </button> -->
-        <!-- </nav> -->
-      </div>
+      <!-- </nav> -->
     </div>
   </div>
 </header>
@@ -154,17 +212,6 @@ const navListTwo = [
       max-height: 100%;
       overflow-y: auto;
       overscroll-behavior-y: contain;
-    }
-  }
-
-  .header__lists {
-    @media screen(mdMax) {
-      margin: -12px;
-    }
-
-    @media screen(md) {
-      display: flex;
-      justify-content: space-between;
     }
   }
 </style>
