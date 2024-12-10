@@ -9,7 +9,7 @@ const classNav =
 const classNavListLink = 'block h-full';
 
 const navListOne = [
-  { text: 'Services', href: '/' },
+  { text: 'Services', href: '/', hasSubmenu: true },
   { text: 'Our Work', href: '/' },
   { text: 'Agency', href: '/' },
 ];
@@ -100,12 +100,12 @@ const navListTwo = [
       <AppHeaderNav items={navListTwo} />
     </div>
 
-    <button type="button" class="md:hidden h-full">
-      <AppHeaderButton text="Menu" type="yellow" />
-    </button>
-
     <a class={classNavListLink} href="/">
       <AppHeaderButton text="Work with us" type="navy" />
     </a>
+
+    <button type="button" class="md:hidden h-full">
+      <AppHeaderButton text="Menu" type="yellow" />
+    </button>
   </nav>
 </header>

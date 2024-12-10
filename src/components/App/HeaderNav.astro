@@ -78,13 +78,23 @@ const { class: className, items } = Astro.props as Props;
     {
       items?.map((item: any) => (
         <li class="h-full">
-          <a
-            data-js-header-nav-item
-            class="block h-inherit p-3"
-            href={item.href}
-          >
-            <AppHeaderButton text={item.text} />
-          </a>
+          {item.hasSubmenu ? (
+            <button
+              data-js-header-nav-item
+              class="block h-inherit p-3"
+              type="button"
+            >
+              <AppHeaderButton hasSubmenu={true} text={item.text} />
+            </button>
+          ) : (
+            <a
+              data-js-header-nav-item
+              class="block h-inherit p-3"
+              href={item.href}
+            >
+              <AppHeaderButton text={item.text} />
+            </a>
+          )}
         </li>
       ))
     }

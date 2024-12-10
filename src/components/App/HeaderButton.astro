@@ -3,12 +3,14 @@ interface Props {
   class?: string;
   type?: 'transparent' | 'navy' | 'yellow';
   text: string;
+  hasSubmenu?: boolean;
 }
 
 const {
   class: className,
   text,
   type = 'transparent',
+  hasSubmenu = false,
   ...rest
 } = Astro.props as Props;
 ---
@@ -16,13 +18,24 @@ const {
 <span
   class:list={[
     'app-header-link',
-    'flex items-center h-inherit px-24 rounded-12',
+    'flex items-center gap-8 h-inherit px-20 rounded-12',
     'font-heading text-13 lg:text-15 font-bold',
     `is-${type}`,
     className,
   ]}
   {...rest}
 >
+  {
+    hasSubmenu && (
+      <span
+        class:list={[
+          'relative shrink-0 size-10',
+          'before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-inherit before:h-2 before:bg-current',
+          'after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-inherit after:h-2 after:bg-current after:rotate-90',
+        ]}
+      />
+    )
+  }
   {text}
 </span>
 

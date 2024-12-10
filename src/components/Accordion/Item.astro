@@ -116,7 +116,16 @@ const isOpenClasses = {
       isOpenClasses[color as keyof typeof isOpenClasses],
     ]}
   >
-    <span class:list={['accordion-item__icon', colourText[color]]}></span>
+    <span
+      class:list={[
+        'accordion-item__icon',
+        'relative shrink-0',
+        'before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-inherit before:h-2 before:bg-current',
+        'after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-inherit after:h-2 after:bg-current',
+        colourText[color],
+      ]}
+    >
+    </span>
 
     {
       Astro.slots.header && (
@@ -174,25 +183,10 @@ const isOpenClasses = {
   }
 
   .accordion-item__icon {
-    position: relative;
     width: var(--accordion-icon-size);
     height: var(--accordion-icon-size);
-    flex-shrink: 0;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      translate: -50% -50%;
-      width: inherit;
-      height: 2px;
-      background-color: currentColor;
-    }
 
     &::after {
-      transform: rotate(90deg);
       animation: accordion-rotate-close 0.5s
         theme('transitionTimingFunction.inOutQuart') both;
 
