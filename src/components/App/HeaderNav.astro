@@ -8,6 +8,14 @@ interface Props {
   items: {
     text: string;
     href: string;
+    type?: 'main' | 'alt';
+    subMenu?: {
+      heading: string;
+      items: {
+        text: string;
+        href: string;
+      }[];
+    };
   }[];
 }
 
@@ -36,7 +44,8 @@ const {
     const ease = 'back.out(0.6)';
 
     const updatePill = (target: any) => {
-      const { offsetWidth, offsetLeft } = target.firstElementChild;
+      console.dir(target);
+      const { offsetWidth, offsetLeft } = target.children[0].children[0];
 
       if (pillActive) {
         gsap.to(pill, {
@@ -93,7 +102,7 @@ const {
     )
   }
 
-  <div data-js="header-nav md:relative" class:list={['header-nav', className]}>
+  <div data-js="header-nav" class:list={['header-nav md:relative', className]}>
     <ul data-js-header-nav-list class="header-nav__list">
       {
         items?.map((item: any) => (
@@ -115,17 +124,21 @@ const {
                   ← Back
                 </button>
 
-                <ul>
-                  <li>
-                    <a href="/">Sub Item 1</a>
-                  </li>
-                  <li>
-                    <a href="/">Sub Item 2</a>
-                  </li>
-                </ul>
+                <div>
+                  <h5></h5>
+                  <ul>
+                    <li>
+                      <a href="/">Sub Item 1</a>
+                    </li>
+                    <li>
+                      <a href="/">Sub Item 2</a>
+                    </li>
+                  </ul>
+                </div>
               </nav>
             ) : (
               <a
+                data-js-header-nav-item-link
                 class:list={['block h-inherit p-12 md:p-3']}
                 href={item.href}
               >
@@ -147,7 +160,7 @@ const {
   </div>
 </nav>
 
-<style>
+<style is:global>
   .header-nav {
     display: flex;
     height: 100%;

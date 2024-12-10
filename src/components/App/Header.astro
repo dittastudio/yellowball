@@ -7,7 +7,32 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 // const classNavListLink = 'block h-full';
 
 const navListOne = [
-  { text: 'Services', href: '/', hasSubmenu: true },
+  {
+    text: 'Services',
+    href: '/',
+    hasSubmenu: true,
+    subMenu: [
+      {
+        title: 'Web Services',
+        items: [
+          { text: 'WordPress Development', href: '/' },
+          { text: 'UX/UI Design', href: '/' },
+          { text: 'WooCommerce Development', href: '/' },
+          { text: 'Laravel Development', href: '/' },
+          { text: 'White Label Web Development', href: '/' },
+          { text: 'eCommerce', href: '/' },
+        ],
+      },
+      {
+        title: 'Other Services',
+        items: [
+          { text: 'SEO', href: '/' },
+          { text: 'Paid Search', href: '/' },
+          { text: 'Graphic Design', href: '/' },
+        ],
+      },
+    ],
+  },
   { text: 'Our Work', href: '/' },
   { text: 'Agency', href: '/' },
 ];
@@ -15,7 +40,12 @@ const navListOne = [
 const navListTwo = [
   { text: 'Guides', href: '/' },
   { text: 'Contact', href: '/' },
-  { text: 'Work with us', href: '/', color: 'navy', type: 'alt' },
+  {
+    text: 'Work with us',
+    href: '/',
+    color: 'navy',
+    type: 'alt',
+  },
 ];
 ---
 
