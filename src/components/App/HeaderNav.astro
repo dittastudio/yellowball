@@ -93,23 +93,28 @@ const {
     )
   }
 
-  <div data-js="header-nav" class:list={['header-nav', className]}>
+  <div data-js="header-nav md:relative" class:list={['header-nav', className]}>
     <ul data-js-header-nav-list class="header-nav__list">
       {
         items?.map((item: any) => (
           <li
+            data-js-header-nav-item
             class:list={['h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
           >
             {item.hasSubmenu ? (
               <button
-                data-js-header-nav-item
+                data-js-header-nav-item-button
                 class="block h-inherit p-12 md:p-3"
                 type="button"
               >
                 <AppHeaderButton hasSubmenu={true}>{item.text}</AppHeaderButton>
               </button>
 
-              <nav class="absolute top-[var(--header-height)] left-0 z-1 p-[52px] w-screen bg-green">
+              <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1 p-40 bg-navy-light">
+                <button data-js-header-nav-item-submenu-back type="button">
+                  ← Back
+                </button>
+
                 <ul>
                   <li>
                     <a href="/">Sub Item 1</a>
@@ -121,7 +126,6 @@ const {
               </nav>
             ) : (
               <a
-                data-js-header-nav-item
                 class:list={['block h-inherit p-12 md:p-3']}
                 href={item.href}
               >
@@ -145,7 +149,6 @@ const {
 
 <style>
   .header-nav {
-    position: relative;
     display: flex;
     height: 100%;
   }
