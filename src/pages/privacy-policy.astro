@@ -1,0 +1,294 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockText from '@/components/Block/Text.astro';
+
+import LayoutTheme from '@/components/Layout/Theme.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Thank You">
+  <main>
+    <section>
+      <BlockHero>
+        <Fragment slot="top">
+          <p class="text-15 lg:text-18 font-heading">Legal</p>
+        </Fragment>
+
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 font-semibold text-balance max-w-[16ch]"
+          >
+            Privacy Policy
+          </TextReveal>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockText>
+          <h6>Website Privacy Policy</h6>
+          <p>
+            This privacy policy is for this website; weareyellowball.com and
+            served by Yellowball Ltd, Borough Yards, 13 Dirty Ln, London SE1 9PA
+            and governs the privacy of its users who choose to use it. It
+            explains how we comply with the GDPR (General Data Protection
+            Regulation), the DPA (Data Protection Act) [pre GDPR enforcement]
+            and the PECR (Privacy and Electronic Communications Regulations).
+          </p>
+          <p>
+            This policy will explain areas of this website that may affect your
+            privacy and personal details, how we process, collect, manage and
+            store those details and how your rights under the GDPR, DPA & PECR
+            are adhere to. Additionally it will explain the use of cookies or
+            software, advertising or commercial sponsorship from third parties.
+            Further explanations may be provided for specific pages or features
+            of this website in order to help you understand how we, this website
+            and its third parties (if any) interact with you and your computer /
+            device in order to serve it to you. Our contact information is
+            provided if you have any questions.
+          </p>
+
+          <h6>The DPA & GDPR May 2018</h6>
+          <p>
+            We and this website complies to the DPA (Data Protection Act 1998)
+            and already complies to the GDPR (General Data Protection
+            Regulation) which comes into affect from May 2018. We will update
+            this policy accordingly after the completion of the UK’s exit from
+            the European Union.
+          </p>
+
+          <h6>Use of Cookies</h6>
+          <p>
+            This website uses cookies to better the users experience while
+            visiting the website. As required by legislation, where applicable
+            this website uses a cookie control system, allowing the user to give
+            explicit permission or to deny the use of /saving of cookies on
+            their computer / device.
+          </p>
+
+          <h6>What are Cookies?</h6>
+          <p>
+            Cookies are small files saved to the user’s computers hard drive
+            that track, save and store information about the user’s interactions
+            and usage of the website. This allows the website, through its
+            server to provide the users with a tailored experience within this
+            website.
+          </p>
+          <p>
+            Users are advised that if they wish to deny the use and saving of
+            cookies from this website on to their computers hard drive they
+            should take necessary steps within their web browsers security
+            settings to block all cookies from this website and its external
+            serving vendors or use the cookie control system if available upon
+            their first visit.
+          </p>
+
+          <h6>Website Visitor Tracking</h6>
+          <p>
+            This website uses tracking software to monitor its visitors to
+            better understand how they use it. The software will save a cookie
+            to your computers hard drive in order to track and monitor your
+            engagement and usage of the website, but will not store, save or
+            collect personal information.
+          </p>
+
+          <h6>Downloads & Media Files</h6>
+          <p>
+            Any downloadable documents, files or media made available on this
+            website are provided to users at their own risk. While all
+            precautions have been undertaken to ensure only genuine downloads
+            are available users are advised to verify their authenticity using
+            third party anti virus software or similar applications.
+          </p>
+          <p>
+            We accept no responsibility for third party downloads and downloads
+            provided by external third party websites and advise users to verify
+            their authenticity using third party anti virus software or similar
+            applications.
+          </p>
+
+          <h6>Contact & Communication With us</h6>
+          <p>
+            Users contacting this us through this website do so at their own
+            discretion and provide any such personal details requested at their
+            own risk. Your personal information is kept private and stored
+            securely until a time it is no longer required or has no use.
+          </p>
+          <p>
+            Where we have clearly stated and made you aware of the fact, and
+            where you have given your express permission, we may use your
+            details to send you products/services information through a mailing
+            list system. This is done in accordance with the regulations named
+            in ‘The policy’ above.
+          </p>
+
+          <h6>Email Mailing List & Marketing Messages</h6>
+          <p>
+            We operate an email mailing list program, used to inform subscribers
+            about products, services and/or news we supply/publish. Users can
+            subscribe through an online automated process where they have given
+            their explicit permission. Subscriber personal details are
+            collected, processed, managed and stored in accordance with the
+            regulations named in ‘The policy’ above. Subscribers can unsubscribe
+            at any time through an automated online service, or if not
+            available, other means as detailed in the footer of sent marketing
+            messages. The type and content of marketing messages subscribers
+            receive, and if it may contain third party content, is clearly
+            outlined at the point of subscription.
+          </p>
+          <p>
+            Email marketing messages may contain tracking beacons / tracked
+            clickable links or similar server technologies in order to track
+            subscriber activity within email marketing messages. Where used,
+            such marketing messages may record a range of subscriber data
+            relating to engagement, geographic, demographics and already stored
+            subscriber data.
+          </p>
+          <p>
+            Our EMS (email marketing service) provider is; Campaign Monitor and
+            you can read their privacy policy in the resources section.
+          </p>
+
+          <h6>External Website Links & Third Parties</h6>
+          <p>
+            Although we only look to include quality, safe and relevant external
+            links, users are advised to adopt a policy of caution before
+            clicking any external web links mentioned throughout this website.
+          </p>
+          <p>
+            Shortened URL’s; URL shortening is a technique used on the web to
+            shorten URL’s (Uniform Resource Locators) to something substantially
+            shorter. This technique is especially used in social media and looks
+            similar to this (example: http://bit.ly/zyVUBo). Users should take
+            caution before clicking on shortened URL links and verify their
+            authenticity before proceeding.
+          </p>
+          <p>
+            We cannot guarantee or verify the contents of any externally linked
+            website despite our best efforts. Users should therefore note they
+            click on external links at their own risk and we cannot be held
+            liable for any damages or implications caused by visiting any
+            external links mentioned.
+          </p>
+
+          <h6>Social Media Policy & Usage</h6>
+          <p>
+            We adopt a Social Media Policy to ensure our business and our staff
+            conduct themselves accordingly online. While we may have official
+            profiles on social media platforms users are advised to verify
+            authenticity of such profiles before engaging with, or sharing
+            information with such profiles. We will never ask for user passwords
+            or personal details on social media platforms. Users are advised to
+            conduct themselves appropriately when engaging with us on social
+            media.
+          </p>
+          <p>
+            There may be instances where our website features social sharing
+            buttons, which help share web content directly from web pages to the
+            respective social media platforms. You use social sharing buttons at
+            your own discretion and accept that doing so may publish content to
+            your social media profile feed or page.
+          </p>
+
+          <h2>H2 Example title</h2>
+          <ol>
+            <li>
+              We therefore need to ensure that any search term for which we
+              create and optimise our content is relevant to your buyer personas
+              and their buying funnel.
+            </li>
+            <li>
+              There is a really good study published by A.J Ghergich for SEMrush
+              that explores questions, prepositions and comparisons.
+            </li>
+            <li>
+              It also mentioned pricing being an end of funnel type query that
+              can be targeted, so we highly recommend you having a read of it as
+              well.
+            </li>
+          </ol>
+
+          <h3>H3 Example title</h3>
+          <ul>
+            <li>
+              We therefore need to ensure that any search term for which we
+              create and optimise our content is relevant to your buyer personas
+              and their buying funnel.
+            </li>
+            <li>
+              There is a really good study published by A.J Ghergich for SEMrush
+              that explores questions, prepositions and comparisons.
+            </li>
+            <li>
+              It also mentioned pricing being an end of funnel type query that
+              can be targeted, so we highly recommend you having a read of it as
+              well.
+            </li>
+          </ul>
+
+          <h4>H4 Example title</h4>
+          <p>
+            A key part of a content strategy is establishing your buyer personas
+            and their corresponding buying funnel. Without this you run the risk
+            of creating content for the sake of it. Targeting snippets that have
+            low search volumes or result in virtually no additional traffic may
+            help you gain brownie points with your management or client for a
+            short period. But ultimately traffic and conversions are the end
+            game.
+          </p>
+          <ol>
+            <li>
+              We therefore need to ensure that any search term for which we
+              create and optimise our content is relevant to your buyer personas
+              and their buying funnel.
+            </li>
+            <li>
+              There is a really good study published by A.J Ghergich for SEMrush
+              that explores questions, prepositions and comparisons.
+            </li>
+            <li>
+              It also mentioned pricing being an end of funnel type query that
+              can be targeted, so we highly recommend you having a read of it as
+              well.
+            </li>
+          </ol>
+
+          <h5>H5 Example title</h5>
+          <p>
+            A key part of a content strategy is establishing your buyer personas
+            and their corresponding buying funnel. Without this you run the risk
+            of creating content for the sake of it. Targeting snippets that have
+            low search volumes or result in virtually no additional traffic may
+            help you gain brownie points with your management or client for a
+            short period. But ultimately traffic and conversions are the end
+            game.
+          </p>
+          <ol>
+            <li>
+              We therefore need to ensure that any search term for which we
+              create and optimise our content is relevant to your buyer personas
+              and their buying funnel.
+            </li>
+            <li>
+              There is a really good study published by A.J Ghergich for SEMrush
+              that explores questions, prepositions and comparisons.
+            </li>
+            <li>
+              It also mentioned pricing being an end of funnel type query that
+              can be targeted, so we highly recommend you having a read of it as
+              well.
+            </li>
+          </ol>
+        </BlockText>
+      </LayoutTheme>
+    </section>
+  </main>
+</Layout>
