@@ -82,6 +82,7 @@ export default {
       cream: "#F7F7F0",
       grey: "#BBBBBB",
       'grey-light': "#E6E6E6",
+      'grey-lightRgba': 'rgb(230 230 230 / <alpha-value>)',
 
       // TEMP NAMES
       card: "#28293A",

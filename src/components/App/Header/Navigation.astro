@@ -1,0 +1,89 @@
+---
+import { navList } from './data';
+
+import AppHeaderBackground from '@/components/App/Header/Background.astro';
+---
+
+<div class="header-navigation">
+  <div data-lenis-prevent class="header-navigation__scroll">
+    <div class="header-navigation__case">
+      {
+        navList.map(({ menuItems }) => (
+          <AppHeaderBackground isDesktopOnly>
+            <nav class="header-navigation__nav">
+              <ul class="header-navigation__list">
+                {
+                  menuItems.map(({ text, url, subMenu }) => (
+                    <li>
+                      {
+                        subMenu ? (
+                          <button type="button">{text}</button>
+
+                          <nav>
+                            <button>Back</button>
+
+                            {
+                              subMenu.map(({ heading, subMenuItems }) => (
+                                <div>
+                                  <h5>{heading}</h5>
+
+                                  <ul>
+                                    {
+                                      subMenuItems.map(({ text, url }) => (
+                                        <li>
+                                          <a href={url}>{text}</a>
+                                        </li>
+                                      ))
+                                    }
+                                  </ul>
+                                </div>
+                              ))
+                            }
+                          </nav>
+                        ) : (
+                          <a href={url}>{text}</a>
+                        )
+                      }
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </AppHeaderBackground>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .header-navigation {
+    @media screen(mdMax) {
+      @apply px-12 pb-12;
+
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      height: calc(100svh - var(--header-height));
+    }
+  }
+
+  .header-navigation__scroll {
+    @media screen(mdMax) {
+      @apply p-40 rounded-16 bg-navy-light border border-white/10;
+
+      width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+    }
+  }
+
+  .header-navigation__case {
+    @media screen(md) {
+      @apply flex justify-between;
+    }
+  }
+</style>

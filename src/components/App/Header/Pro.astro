@@ -1,10 +1,9 @@
 ---
-import { navList } from './data';
-
 import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import AppHeaderBackground from '@/components/App/Header/Background.astro';
 import AppHeaderMenuButton from '@/components/App/Header/MenuButton.astro';
 import AppHeaderButton from '@/components/App/HeaderButton.astro';
+import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
 ---
 
 <script>
@@ -23,6 +22,10 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+
+      if (this.isMenuOpen) window.lenis.stop();
+      else window.lenis.start();
+
       console.log('Is Header Open:', this.isMenuOpen);
     },
 
@@ -31,25 +34,13 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
       console.log('Is SubMenu Open:', this.isSubMenuOpen);
     },
   } as NavigationStore);
-
-  console.log(Alpine.store('navigation'));
-
-  // Alpine.data('header', () => ({
-
-  // }));
 </script>
 
-<header
-  x-data
-  class="header"
-  data-js="header-pro"
-  :class="{ 'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen }"
->
+<header x-data class="header" data-js="header-pro">
   <nav class="header__menu-mobile">
     <AppHeaderBackground>
       <a class="header__menu-mobile__logo" href="/">
         <AppHeaderLogo />
-        <span class="sr-only">Home</span>
       </a>
     </AppHeaderBackground>
 
@@ -71,6 +62,8 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
       </div>
     </AppHeaderBackground>
   </nav>
+
+  <AppHeaderNavigation />
 
   <!-- {
     navList.map(({ menuItems }) => (
@@ -119,11 +112,9 @@ import AppHeaderButton from '@/components/App/HeaderButton.astro';
 
 <style is:global>
   .header {
-    --header-bg: theme('colors.offblackRgba/0.1');
-    --header-border: 1px solid theme('colors.whiteRgba/0.1');
-
     position: sticky;
     top: 0;
+    z-index: 50;
     padding: theme('spacing.12');
 
     @media screen(md) {
