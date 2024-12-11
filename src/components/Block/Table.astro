@@ -18,7 +18,11 @@
   table {
     @apply w-full table-auto text-15 lg:text-18 text-left;
 
-    tr {
+    thead tr {
+      @apply border-b border-navy/15;
+    }
+
+    tbody tr:not(:last-child) {
       @apply border-b border-navy/15;
     }
 
