@@ -116,32 +116,78 @@ const navListTwo: HeaderNavigationItem[] = [
     const headerMenuButtonText = document.querySelector(
       '[data-js-header-menu-button-text]',
     ) as HTMLElement;
-    const headerMenuCase = document.querySelector(
-      '[data-js-header-menu-case]',
+    const headerMenuInner = document.querySelector(
+      '[data-js-header-menu-inner]',
     ) as HTMLElement;
 
-    headerMenuButton.addEventListener('click', () => {
-      const isOpen = headerMenuButton.classList.toggle('is-open');
-      header.classList.toggle('is-open');
+    let isMenuOpen = false;
 
-      if (isOpen) {
-        headerMenuButtonText.textContent = 'Close'; // Change text to "Close"
-      } else {
-        headerMenuButtonText.textContent = 'Menu'; // Change text back to "Menu"
-      }
+    let mm = gsap.matchMedia();
 
-      if (isOpen) {
-        gsap.to(headerMenuCase, {
+    mm.add('(max-width: 769px)', () => {
+      const setupAnimation = gsap.set(headerMenuInner, {
+        autoAlpha: 0,
+      });
+
+      return () => {
+        setupAnimation.kill(); // Kill the animation instance
+        gsap.set(headerMenuInner, { clearProps: 'all' }); // Clear all inline styles
+      };
+    });
+
+    const openMenu = () => {
+      isMenuOpen = true;
+      headerMenuButtonText.textContent = 'Close';
+      window.lenis.stop();
+
+      mm.add('(max-width: 769px)', () => {
+        const closeMenuAnimation = gsap.to(headerMenuInner, {
           autoAlpha: 1,
           duration: 0.5,
           ease: 'power2.out',
         });
-      } else {
-        gsap.to(headerMenuCase, {
+
+        return () => {
+          closeMenuAnimation.kill(); // Kill the animation instance
+          gsap.set(headerMenuInner, { clearProps: 'all' }); // Clear all inline styles
+        };
+      });
+    };
+
+    const closeMenu = () => {
+      isMenuOpen = false;
+      headerMenuButtonText.textContent = 'Menu';
+      window.lenis.start();
+
+      mm.add('(max-width: 769px)', () => {
+        const closeMenuAnimation = gsap.to(headerMenuInner, {
           autoAlpha: 0,
           duration: 0.25,
           ease: 'power2.out',
         });
+
+        return () => {
+          closeMenuAnimation.kill(); // Kill the animation instance
+          gsap.set(headerMenuInner, { clearProps: 'all' }); // Clear all inline styles
+        };
+      });
+    };
+
+    headerMenuButton.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('click', (event: MouseEvent) => {
+      const target = event.target as Element | null;
+
+      if (isMenuOpen && target && !header.contains(target)) {
+        closeMenu();
       }
     });
 
@@ -162,6 +208,16 @@ const navListTwo: HeaderNavigationItem[] = [
         '[data-js-header-nav-item-submenu-inner]',
       );
 
+      const headerNavButtons = header.querySelectorAll(
+        '[data-js-header-nav-item-button]',
+      );
+      const headerNavLinks = header.querySelectorAll(
+        '[data-js-header-nav-item-link]',
+      );
+      const headerMenuFooter = header.querySelector(
+        '[data-js-header-menu-footer]',
+      );
+
       gsap.set(itemSubMenu, {
         x: 16,
         autoAlpha: 0,
@@ -172,52 +228,80 @@ const navListTwo: HeaderNavigationItem[] = [
       const openSubMenu = () => {
         if (isAnimating) return;
 
-        item.classList.remove('relative');
-        item.classList.remove('overflow-hidden');
+        item.classList.remove('mdMax:relative');
+        item.classList.remove('mdMax:overflow-hidden');
 
-        gsap.to(itemSubMenu, {
-          x: 0,
-          autoAlpha: 1,
-          duration: 0.5,
-          ease: 'power2.out',
-        });
+        let tl = gsap.timeline();
 
-        gsap.to(headerMenuCase, {
-          height: itemSubMenuInner.clientHeight + 2, // accounts for 1px border around scroll container
-          duration: 0.5,
-          ease: 'power2.out',
+        tl.to([headerNavButtons, headerNavLinks, headerMenuFooter], {
+          autoAlpha: 0,
+          duration: 0.3,
+          ease: 'power4.out',
           onStart: () => {
             isAnimating = true;
           },
-          onComplete: () => {
-            isAnimating = false;
-          },
-        });
+        })
+          .to(
+            headerMenuInner,
+            {
+              height: (itemSubMenuInner?.clientHeight || 0) + 2, // accounts for 1px border around scroll container
+              duration: 0.4,
+              ease: 'back.out(0.6)',
+            },
+            '<50%',
+          )
+          .to(
+            itemSubMenu,
+            {
+              x: 0,
+              autoAlpha: 1,
+              duration: 0.5,
+              ease: 'power4.out',
+              onComplete: () => {
+                isAnimating = false;
+              },
+            },
+            '<50%',
+          );
       };
 
       const closeSubMenu = () => {
         if (isAnimating) return;
 
-        gsap.to(itemSubMenu, {
+        let tl = gsap.timeline();
+
+        tl.to(itemSubMenu, {
           x: 16,
           autoAlpha: 0,
           duration: 0.25,
-          ease: 'power2.out',
-        });
-
-        gsap.to(headerMenuCase, {
-          height: 'auto',
-          duration: 0.5,
-          ease: 'power2.out',
+          ease: 'power4.out',
           onStart: () => {
             isAnimating = true;
           },
-          onComplete: () => {
-            isAnimating = false;
-            item.classList.add('relative');
-            item.classList.add('overflow-hidden');
-          },
-        });
+        })
+          .to(
+            headerMenuInner,
+            {
+              height: 'auto',
+              duration: 0.4,
+              ease: 'back.out(0.6)',
+            },
+            '<50%',
+          )
+          .to(
+            [headerNavButtons, headerNavLinks, headerMenuFooter],
+            {
+              autoAlpha: 1,
+              duration: 0.3,
+              ease: 'power4.out',
+              onComplete: () => {
+                isAnimating = false;
+                item.classList.add('mdMax:relative');
+                item.classList.add('mdMax:overflow-hidden');
+              },
+            },
+            '<50%',
+          );
       };
 
       if (itemButton && itemSubMenu && itemSubMenuInner) {
@@ -274,7 +358,7 @@ const navListTwo: HeaderNavigationItem[] = [
   <div class="header__outer">
     <div
       data-lenis-prevent
-      data-js-header-menu-case
+      data-js-header-menu-inner
       class="header__inner mdMax:relative mdMax:bg-navy-light mdMax:border mdMax:border-white/10 pointer-events-auto"
     >
       <div class="mdMax:-m-12 md:flex md:justify-between">
@@ -283,6 +367,7 @@ const navListTwo: HeaderNavigationItem[] = [
       </div>
 
       <div
+        data-js-header-menu-footer
         class="mt-60 flex flex-col gap-20 font-heading font-bold text-11 md:hidden"
       >
         <a href="/" class="block w-fit p-12 -m-12">

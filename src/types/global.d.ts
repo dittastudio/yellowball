@@ -1,5 +1,6 @@
 interface Window {
   scrollTimeout?: number;
+  lenis: import('lenis').default;
 }
 
 interface ImageObject {

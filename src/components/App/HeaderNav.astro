@@ -34,7 +34,6 @@ const {
     const ease = 'back.out(0.6)';
 
     const updatePill = (target: any) => {
-      console.dir(target);
       const { offsetWidth, offsetLeft } = target.children[0].children[0];
 
       if (pillActive) {
@@ -92,39 +91,39 @@ const {
     )
   }
 
-  <div data-js="header-nav" class:list={['header-nav md:relative', className]}>
-    <ul data-js-header-nav-list class="header-nav__list">
+  <div data-js="header-nav" class:list={['header-nav md:relative w-full', className]}>
+    <ul data-js-header-nav-list class="header-nav__list mdMax:w-full">
       {
         items?.map((item: HeaderNavigationItem) => (
           <li
             data-js-header-nav-item
-            class:list={['relative overflow-hidden h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
+            class:list={['mdMax:relative mdMax:overflow-hidden h-full', item.type === 'alt' ? 'mdMax:hidden' : '']}
           >
             {item.subMenu ? (
               <button
                 data-js-header-nav-item-button
-                class="block h-inherit p-12 md:p-3"
+                class="block w-full h-inherit p-12 md:p-3"
                 type="button"
               >
                 <AppHeaderButton hasSubmenu={true}>{item.text}</AppHeaderButton>
               </button>
 
-              <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1 ">
+              <nav data-js-header-nav-item-submenu class="absolute top-0 left-0 size-full z-1">
                 <div data-js-header-nav-item-submenu-inner class="flex flex-col items-start gap-y-40 p-40 bg-navy-light">
-                  <button data-js-header-nav-item-submenu-back class="flex items-center gap-6 font-heading font-bold text-14 text-grey p-12 -m-12" type="button">
+                  <button data-js-header-nav-item-submenu-back class="w-full flex items-center gap-6 font-heading font-bold text-14 text-grey p-12 -m-12" type="button">
                     <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
                     Back
                   </button>
 
                   {item.subMenu.map(({ heading, items }) => (
-                    <div class="flex flex-col gap-y-15">
+                    <div class="w-full flex flex-col gap-y-15">
                       <h5 class="font-heading font-semibold text-11 opacity-50">{heading}</h5>
 
                       <ul>
                         {
                           items.map(({text, url}) => (
                             <li>
-                              <a class="font-heading font-semibold text-18 block p-15 -mx-12 md:p-12 md:-mx-15" href={url}>{text}</a>
+                              <a class="block font-heading font-semibold text-18 p-15 -mx-12 md:p-12 md:-mx-15" href={url}>{text}</a>
                             </li>
                           ))
                         }
