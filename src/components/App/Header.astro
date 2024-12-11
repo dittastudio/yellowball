@@ -57,6 +57,7 @@ const navListTwo: HeaderNavigationItem[] = [
   ) as NodeListOf<HTMLElement>;
 
   if (header) {
+    // Theme Styles
     const sections = document.querySelectorAll(
       '[data-js-theme]',
     ) as NodeListOf<HTMLElement>;
@@ -124,7 +125,7 @@ const navListTwo: HeaderNavigationItem[] = [
 
     let mm = gsap.matchMedia();
 
-    mm.add('(max-width: 769px)', () => {
+    mm.add('(max-width: 767px)', () => {
       const setupAnimation = gsap.set(headerMenuInner, {
         autoAlpha: 0,
       });
@@ -197,26 +198,28 @@ const navListTwo: HeaderNavigationItem[] = [
     ) as NodeListOf<HTMLElement>;
 
     navItems.forEach(item => {
-      const itemButton = item.querySelector('[data-js-header-nav-item-button]');
+      const itemButton = item.querySelector(
+        '[data-js-header-nav-item-button]',
+      ) as HTMLElement;
       const itemSubMenu = item.querySelector(
         '[data-js-header-nav-item-submenu]',
-      );
+      ) as HTMLElement;
       const itemSubMenuBack = item.querySelector(
         '[data-js-header-nav-item-submenu-back]',
-      );
+      ) as HTMLElement;
       const itemSubMenuInner = item.querySelector(
         '[data-js-header-nav-item-submenu-inner]',
-      );
+      ) as HTMLElement;
 
       const headerNavButtons = header.querySelectorAll(
         '[data-js-header-nav-item-button]',
-      );
+      ) as NodeListOf<HTMLElement>;
       const headerNavLinks = header.querySelectorAll(
         '[data-js-header-nav-item-link]',
-      );
+      ) as NodeListOf<HTMLElement>;
       const headerMenuFooter = header.querySelector(
         '[data-js-header-menu-footer]',
-      );
+      ) as HTMLElement;
 
       gsap.set(itemSubMenu, {
         x: 16,
@@ -244,7 +247,7 @@ const navListTwo: HeaderNavigationItem[] = [
           .to(
             headerMenuInner,
             {
-              height: (itemSubMenuInner?.clientHeight || 0) + 2, // accounts for 1px border around scroll container
+              height: Math.ceil(itemSubMenuInner.offsetHeight || 0) + 3, // accounts for 1px border around scroll container
               duration: 0.4,
               ease: 'back.out(0.6)',
             },

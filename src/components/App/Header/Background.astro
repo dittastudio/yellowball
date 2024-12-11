@@ -1,0 +1,81 @@
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const headerPro = document.querySelector(
+    '[data-js="header-pro"]',
+  ) as HTMLElement;
+
+  const backgrounds = document.querySelectorAll(
+    '[data-js="header-background"]',
+  ) as NodeListOf<HTMLElement>;
+
+  backgrounds.forEach(background => {
+    if (background) {
+      // Theme Styles
+      const sections = document.querySelectorAll(
+        '[data-js-theme]',
+      ) as NodeListOf<HTMLElement>;
+
+      const halfHeaderHeight = headerPro.clientHeight / 2;
+
+      sections.forEach(section => {
+        ScrollTrigger.create({
+          markers: false,
+          trigger: section,
+          start: `top ${halfHeaderHeight}px`,
+          end: `bottom ${halfHeaderHeight}px`,
+          onToggle: ({ isActive }) => {
+            const checkIfLightTheme =
+              isActive && section.getAttribute('data-js-theme') === 'light';
+
+            // Dark Theme
+            background.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'text-white',
+            );
+            background.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'bg-offblack/10',
+            );
+            background.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'border-white/10',
+            );
+
+            // Light Theme
+            background.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'text-navy',
+            );
+            background.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'bg-grey-light/50',
+            );
+            background.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'border-grey-light/30',
+            );
+          },
+        });
+      });
+
+      const resizeObserver = new ResizeObserver(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+
+      const resizeTarget: HTMLBodyElement | any =
+        document.querySelector('body');
+
+      resizeObserver.observe(resizeTarget);
+    }
+  });
+</script>
+
+<div
+  data-js="header-background"
+  class:list={[
+    'text-white bg-offblack/10 border border-solid border-white/10',
+    'rounded-16 backdrop-blur-20 p-3',
+  ]}
+>
+  <slot />
+</div>

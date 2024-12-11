@@ -4,6 +4,8 @@ import tailwind from '@astrojs/tailwind';
 import htmlBeautifier from 'astro-html-beautifier';
 import { generateSprite } from './src/utils/sprite';
 
+import alpinejs from '@astrojs/alpinejs';
+
 export default defineConfig({
   compressHTML: false,
   scopedStyleStrategy: 'where',
@@ -69,5 +71,6 @@ export default defineConfig({
        **/
       applyBaseStyles: false,
     }),
+    alpinejs()
   ],
 });

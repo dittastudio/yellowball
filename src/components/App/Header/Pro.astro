@@ -1,0 +1,158 @@
+---
+import { navList } from './data';
+
+import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
+import AppHeaderBackground from '@/components/App/Header/Background.astro';
+import AppHeaderMenuButton from '@/components/App/Header/MenuButton.astro';
+import AppHeaderButton from '@/components/App/HeaderButton.astro';
+---
+
+<script>
+  import Alpine from 'alpinejs';
+
+  type NavigationStore = {
+    isMenuOpen: boolean;
+    isSubMenuOpen: boolean;
+    toggleMenu: () => void;
+    toggleSubMenu: () => void;
+  };
+
+  Alpine.store('navigation', {
+    isMenuOpen: false,
+    isSubMenuOpen: false,
+
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      console.log('Is Header Open:', this.isMenuOpen);
+    },
+
+    toggleSubMenu() {
+      this.isSubMenuOpen = !this.isSubMenuOpen;
+      console.log('Is SubMenu Open:', this.isSubMenuOpen);
+    },
+  } as NavigationStore);
+
+  console.log(Alpine.store('navigation'));
+
+  // Alpine.data('header', () => ({
+
+  // }));
+</script>
+
+<header
+  x-data
+  class="header"
+  data-js="header-pro"
+  :class="{ 'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen }"
+>
+  <nav class="header__menu-mobile">
+    <AppHeaderBackground>
+      <a class="header__menu-mobile__logo" href="/">
+        <AppHeaderLogo />
+        <span class="sr-only">Home</span>
+      </a>
+    </AppHeaderBackground>
+
+    <AppHeaderBackground>
+      <div class="header__menu-mobile__list">
+        <a class="header__menu-mobile__list__item" href="/">
+          <AppHeaderButton type="alt" color="navy">
+            Work with us
+          </AppHeaderButton>
+        </a>
+
+        <button
+          @click="$store.navigation.toggleMenu()"
+          type="button"
+          class="header__menu-mobile__list__item"
+        >
+          <AppHeaderMenuButton />
+        </button>
+      </div>
+    </AppHeaderBackground>
+  </nav>
+
+  <!-- {
+    navList.map(({ menuItems }) => (
+      <nav>
+        <ul>
+          {
+            menuItems.map(({ text, url, subMenu }) => (
+              <li>
+                {
+                  subMenu ? (
+                    <button type="button">{text}</button>
+
+                    <nav>
+                      <button>Back</button>
+
+                      {
+                        subMenu.map(({ heading, subMenuItems }) => (
+                          <div>
+                            <h5>{heading}</h5>
+
+                            <ul>
+                              {
+                                subMenuItems.map(({ text, url }) => (
+                                  <li>
+                                    <a href={url}>{text}</a>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                          </div>
+                        ))
+                      }
+                    </nav>
+                  ) : (
+                    <a href={url}>{text}</a>
+                  )
+                }
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    ))
+  } -->
+</header>
+
+<style is:global>
+  .header {
+    --header-bg: theme('colors.offblackRgba/0.1');
+    --header-border: 1px solid theme('colors.whiteRgba/0.1');
+
+    position: sticky;
+    top: 0;
+    padding: theme('spacing.12');
+
+    @media screen(md) {
+      padding: theme('spacing.18');
+    }
+  }
+
+  .header__menu-mobile {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen(md) {
+      display: none;
+    }
+  }
+
+  .header__menu-mobile__logo {
+    display: block;
+  }
+
+  .header__menu-mobile__list {
+    display: flex;
+    gap: 4px;
+  }
+
+  .header__menu-mobile__list__item {
+    display: block;
+    padding: 2px;
+    margin: -2px;
+    height: 100%;
+  }
+</style>

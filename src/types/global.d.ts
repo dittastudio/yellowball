@@ -1,6 +1,7 @@
 interface Window {
   scrollTimeout?: number;
   lenis: import('lenis').default;
+  Alpine: import('alpinejs').Alpine;
 }
 
 interface ImageObject {
@@ -25,7 +26,7 @@ interface HeaderNavigationSubMenuItem {
 
 interface HeaderNavigationSubMenu {
   heading: string;
-  items: HeaderNavigationSubMenuItem[];
+  subMenuItems: HeaderNavigationSubMenuItem[];
 }
 
 interface HeaderNavigationItem {
@@ -34,4 +35,9 @@ interface HeaderNavigationItem {
   type?: 'default' | 'alt';
   color?: 'transparent' | 'navy' | 'yellow';
   subMenu?: HeaderNavigationSubMenu[];
+}
+
+interface HeaderNavigation {
+  position: 'left' | 'right';
+  menuItems: HeaderNavigationItem[];
 }
