@@ -73,6 +73,7 @@ const classes = ['carousel-project', className];
 
 <div
   data-js="carousel-project"
+  data-css="carousel-project"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
@@ -95,34 +96,36 @@ const classes = ['carousel-project', className];
   </div>
 </div>
 
-<style>
-  .carousel-project {
-    --_nudge: theme('spacing.50');
+<style is:global>
+  [data-css='carousel-project'] {
+    .carousel-project {
+      --_nudge: theme('spacing.50');
 
-    width: 100%;
-  }
-
-  .swiper {
-    --swiper-slide-duration: 1s;
-
-    padding-bottom: var(--_nudge);
-  }
-
-  .swiper-slide {
-    translate: 0 var(--_nudge) 0;
-    transition: translate theme('transitionDuration.500')
-      theme('transitionTimingFunction.smooth');
-
-    &.swiper-slide-active {
-      translate: 0 0 0;
+      width: 100%;
     }
-  }
 
-  .swiper-pagination {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    z-index: 2;
+    .swiper {
+      --swiper-slide-duration: 1s;
+
+      padding-bottom: var(--_nudge);
+    }
+
+    .swiper-slide {
+      translate: 0 var(--_nudge) 0;
+      transition: translate theme('transitionDuration.500')
+        theme('transitionTimingFunction.smooth');
+
+      &.swiper-slide-active {
+        translate: 0 0 0;
+      }
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
   }
 </style>

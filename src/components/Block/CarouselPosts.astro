@@ -1,5 +1,5 @@
 ---
-import CarouselPost from '@/components/Carousel/Post.astro';
+import CarouselPost, { type Slide } from '@/components/Carousel/Post.astro';
 
 interface Props {
   headline?: string;
@@ -8,22 +8,11 @@ interface Props {
 
 const { headline = '', items = 0 } = Astro.props as Props;
 
-type Post = {
-  tags: { title: string; color: string }[];
-  headline: string;
-  time: string;
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-};
-
-const post: Post = {
+const post: Slide = {
   tags: [{ title: 'PPC', color: 'yellow' }],
   headline: '10 Steps to a Reliable Website Marketing Strategy',
   time: '3 Min Read',
+  color: 'blue',
   image: {
     src: '/images/test-laptop.webp',
     alt: '',
@@ -32,7 +21,7 @@ const post: Post = {
   },
 };
 
-const posts: Post[] = [...Array(items).fill(post)];
+const posts: Slide[] = [...Array(items).fill(post)];
 ---
 
 <!-- Begin Block: CarouselPosts -->

@@ -13,7 +13,7 @@ const { theme = 'dark', class: className } = Astro.props as Props;
   <slot />
 </div>
 
-<style>
+<style is:global>
   .layout-lines {
     position: relative;
     contain: paint;

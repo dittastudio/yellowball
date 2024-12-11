@@ -27,6 +27,7 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
       const sections = form.querySelectorAll('[data-js-service]');
 
       sections.forEach(section => {
+        section.classList.remove('flex');
         section.classList.add('hidden');
       });
 
@@ -38,6 +39,7 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
         if (wrappers?.length) {
           wrappers.forEach(wrapper => {
             wrapper.classList.remove('hidden');
+            wrapper.classList.add('flex');
           });
         }
       });

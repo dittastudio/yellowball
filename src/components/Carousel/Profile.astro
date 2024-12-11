@@ -86,6 +86,7 @@ const classes = ['carousel-profile', className];
 
 <div
   data-js="carousel-profile"
+  data-css="carousel-profile"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
@@ -127,8 +128,10 @@ const classes = ['carousel-profile', className];
       <div class="carousel-profile__swiper-pagination swiper-pagination"></div>
     </div>
   </div>
+</div>
 
-  <style>
+<style is:global>
+  [data-css='carousel-profile'] {
     .carousel-profile__swiper {
       display: grid;
       grid-template-columns: repeat(8, minmax(0, 1fr));
@@ -172,5 +175,5 @@ const classes = ['carousel-profile', className];
     .carousel-profile__swiper-pagination {
       display: inline-flex;
     }
-  </style>
-</div>
+  }
+</style>
