@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-interface Input {
+interface Base {
   label: string;
 }
 
-type Props = HTMLAttributes<'input'> & Input;
+type Props = HTMLAttributes<'input'> & Base;
 
 const { label, ...rest } = Astro.props as Props;
 ---

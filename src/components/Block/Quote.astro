@@ -1,19 +1,21 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import Icon from '@/components/Elements/Icon.astro';
 
-interface Props {
+interface Base {
   quote: string;
   name: string;
   company: string;
 }
 
-const { quote, name, company } = Astro.props as Props;
+type Props = HTMLAttributes<'div'> & Base;
+
+const {  quote, name, company , ...rest } = Astro.props as Props;
+const classes = ['w-full flex flex-col gap-20 rounded-30 lg:rounded-40 bg-white text-navy border border-navy/15 p-40 lg:p-60', rest.class].filter(Boolean);
 ---
 
 <!-- Begin Block: Quote -->
-<div
-  class="w-full flex flex-col gap-20 rounded-30 lg:rounded-40 bg-white text-navy border border-navy/15 p-40 lg:p-60"
->
+<div class:list={classes}>
   {
     quote && (
       <Icon name="quote-66" class="size-40 lg:size-50 text-yellow" />

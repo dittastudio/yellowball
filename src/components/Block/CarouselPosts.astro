@@ -1,7 +1,26 @@
 ---
 import CarouselPost from '@/components/Carousel/Post.astro';
 
-const examplePost = {
+interface Props {
+  headline?: string;
+  items?: number;
+}
+
+const { headline = '', items = 0 } = Astro.props as Props;
+
+type Post = {
+  tags: { title: string; color: string }[];
+  headline: string;
+  time: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+};
+
+const post: Post = {
   tags: [{ title: 'PPC', color: 'yellow' }],
   headline: '10 Steps to a Reliable Website Marketing Strategy',
   time: '3 Min Read',
@@ -13,20 +32,11 @@ const examplePost = {
   },
 };
 
-const examplePosts: any = [
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-  examplePost,
-];
+const posts: Post[] = [...Array(items).fill(post)];
 ---
 
 <!-- Begin Block: CarouselPosts -->
 <div class="wrapper">
-  <CarouselPost heading="Resources & insights" slides={examplePosts} />
+  <CarouselPost heading={headline} slides={posts} />
 </div>
 <!-- End Block: CarouselPosts -->

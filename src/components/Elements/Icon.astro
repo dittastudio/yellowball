@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-interface Icon {
+interface Base {
   name: string;
 }
 
-type Props = HTMLAttributes<'svg'> & Icon;
+type Props = HTMLAttributes<'svg'> & Base;
 
 const { name, ...rest } = Astro.props;
 ---

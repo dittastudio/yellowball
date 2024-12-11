@@ -3,27 +3,43 @@ import Layout from '@/layouts/Layout.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import BlockArticle from '@/components/Block/Article.astro';
+import BlockArticleHeader from '@/components/Block/ArticleHeader.astro';
+import BlockCarouselPosts from '@/components/Block/CarouselPosts.astro';
 import BlockEmbed from '@/components/Block/Embed.astro';
-import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockMedia from '@/components/Block/Media.astro';
 import BlockQuote from '@/components/Block/Quote.astro';
-import BlockServiceCards from '@/components/Block/ServiceCards.astro';
 import BlockTable from '@/components/Block/Table.astro';
 
 import CardPrompt from '@/components/Card/Prompt.astro';
-import CardService from '@/components/Card/Service.astro';
-import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import RichText from '@/components/Elements/RichText.astro';
-import TextReveal from '@/components/Elements/TextReveal.astro';
 
 const classSection = 'py-50 md:py-[75px]';
-const classSectionThickStart = 'pt-100 md:pt-[150px]';
 ---
 
 <Layout title="Guides - Inner">
   <main>
     <LayoutTheme theme="light" isTopOfPage>
-      <section></section>
+      <section class={classSection}>
+        <BlockArticleHeader
+          headline="A Beginner's Guide to Website Maintenance"
+          author="Nic Lapham"
+          date="October 15, 2024"
+          time="3 min read"
+        />
+      </section>
+
+      <section class={classSection}>
+        <BlockMedia class="wrapper">
+          <Fragment slot="media">
+            <img
+              src="/images/test-post-hero.jpg"
+              width="1448"
+              height="864"
+              alt=""
+            />
+          </Fragment>
+        </BlockMedia>
+      </section>
 
       <section class={classSection}>
         <BlockArticle>
@@ -315,67 +331,8 @@ const classSectionThickStart = 'pt-100 md:pt-[150px]';
       </section>
     </LayoutTheme>
 
-    <section class={classSectionThickStart}>
-      <BlockHeroText>
-        <Fragment slot="headline">
-          <TextReveal
-            tag="h2"
-            class="font-heading text-fluid-h2 text-balance font-semibold"
-          >
-            Other Services
-          </TextReveal>
-        </Fragment>
-      </BlockHeroText>
-    </section>
-
-    <section class={classSection}>
-      <BlockServiceCards>
-        <Fragment slot="cards">
-          <CardServiceHero
-            headline="Web Design"
-            description="We craft visually stunning, user-friendly websites that engage and convert your audience."
-            cta="See our services"
-            shape="triangle"
-            color="yellow"
-            class="col-span-full"
-          >
-            <img
-              src="/images/test-service-1.webp"
-              width="1230"
-              height="756"
-              alt=""
-            />
-          </CardServiceHero>
-
-          <CardService
-            headline="SEO"
-            description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
-            shape="square"
-            color="green"
-          >
-            <img
-              src="/images/test-service-2.webp"
-              width="1032"
-              height="430"
-              alt=""
-            />
-          </CardService>
-
-          <CardService
-            headline="Paid Search"
-            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
-            shape="circle"
-            color="blue"
-          >
-            <img
-              src="/images/test-service-3.webp"
-              width="1032"
-              height="430"
-              alt=""
-            />
-          </CardService>
-        </Fragment>
-      </BlockServiceCards>
+    <section class={['pb-50 md:pb-[75px] pt-100 md:pt-150']}>
+      <BlockCarouselPosts headline="Related articles" items={3} />
     </section>
   </main>
 </Layout>

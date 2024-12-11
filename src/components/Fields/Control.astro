@@ -2,12 +2,12 @@
 import type { HTMLAttributes } from 'astro/types';
 import { colourOutline, colourBackground } from '@/utils/maps';
 
-interface Input {
+interface Base {
   label: string;
   color?: ColorTypes;
 }
 
-type Props = HTMLAttributes<'input'> & Input;
+type Props = HTMLAttributes<'input'> & Base;
 
 const { label, color = 'green', ...rest } = Astro.props as Props;
 ---

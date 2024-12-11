@@ -2,11 +2,11 @@
 import type { HTMLAttributes } from 'astro/types';
 import Icon from '@/components/Elements/Icon.astro';
 
-interface Input {
+interface Base {
   label: string;
 }
 
-type Props = HTMLAttributes<'input'> & Input;
+type Props = HTMLAttributes<'input'> & Base;
 
 const { label, ...rest } = Astro.props as Props;
 ---

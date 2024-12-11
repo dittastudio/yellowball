@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-interface Group {
+interface Base {
   headline?: string;
 }
 
-type Props = HTMLAttributes<'div'> & Group;
+type Props = HTMLAttributes<'div'> & Base;
 
 const { headline = '', ...rest } = Astro.props as Props;
 const classes = ['flex flex-col justify-start gap-20', rest.class].filter(
