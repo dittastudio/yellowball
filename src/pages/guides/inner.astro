@@ -1,0 +1,381 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+
+import BlockArticle from '@/components/Block/Article.astro';
+import BlockEmbed from '@/components/Block/Embed.astro';
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockMedia from '@/components/Block/Media.astro';
+import BlockQuote from '@/components/Block/Quote.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockTable from '@/components/Block/Table.astro';
+
+import CardPrompt from '@/components/Card/Prompt.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
+import RichText from '@/components/Elements/RichText.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThickStart = 'pt-100 md:pt-[150px]';
+---
+
+<Layout title="Guides - Inner">
+  <main>
+    <LayoutTheme theme="light" isTopOfPage>
+      <section></section>
+
+      <section class={classSection}>
+        <BlockArticle>
+          <Fragment slot="content">
+            <RichText>
+              <p>
+                Over the last 10 years, Google has been constantly revising
+                their search results, both in terms of aesthetics and function.
+                10 blue links are no longer the norm. The SERPs (search engine
+                results pages) are now jam-packed with sitelinks, local packs,
+                knowledge graphs, instant answers, video and image carousels,
+                not to mention tabs for flights, images, news, maps and more.
+              </p>
+
+              <p>
+                Featured snippets have been growing in stature over recent
+                years, with Ahrefs releasing a study showing that featured
+                snippets now appear for around 12.5% of queries. The study also
+                shows that featured snippets are far more likely to appear for
+                informational searches, rather than navigational or
+                transactional searches.
+              </p>
+
+              <p>
+                For content strategies then, featured snippets should offer an
+                interesting opportunity. At first glance it seems as though they
+                are most useful for top of the funnel acquisition, and this is
+                mostly true. However, there are also opportunities within
+                pricing tables and list based snippets. Regardless though, it’s
+                important that the right type of featured snippets are targeted
+                for the right reasons, which is why we have created this
+                article!
+              </p>
+            </RichText>
+
+            <RichText>
+              <h3>
+                H3 title or content strategies then, featured snippets should
+                offer an interesting opportunity.
+              </h3>
+
+              <p>
+                We briefly discussed this in our previous article but wanted to
+                dive into a little more detail here. Having criteria upon which
+                to base your targeting decisions will provide structure and
+                guidelines to your operational plans. Featured snippets can be
+                very enticing, so these criteria should help you remain focussed
+                on your SEO goals:
+              </p>
+
+              <p>
+                This may seem like an obvious one, but when you type in the
+                query, does a featured snippet appear? If yes, you can be
+                confident that Google considers it to be the correct type of
+                search for a featured snippet. Bear in mind though that more and
+                more queries are being returned with a featured snippet. If one
+                doesn’t appear right now, that doesn’t mean that it won’t in the
+                future. It may also mean that Google doesn’t consider the
+                current answers provided by websites to be sufficient. It’s a
+                slightly riskier tactic to assign resources to a featured
+                snippet that doesn’t already exist, so it’s worth approaching it
+                with caution. Would this be part of your normal content
+                strategy? Do you stand a good chance of ranking on page one?
+                Regardless of the potential for a featured snippet, would this
+                search term (and subsequent content) deliver valuable traffic to
+                your site?
+              </p>
+
+              <p>
+                How do you find these featured snippets? Through a combination
+                of more traditional research as well as utilising tools such as
+                SEMrush or Ahrefs. For example, SEMrush allow you to find
+                featured snippets that are currently occupied by your
+                competitors, which is pretty handy! Both of these platforms do a
+                good job of explaining how to find featured snippets (alongside
+                Moz) so jump over to their websites for more info on sniffing
+                out opportunities.
+              </p>
+            </RichText>
+
+            <BlockMedia caption="Optional image caption">
+              <Fragment slot="media">
+                <img
+                  src="/images/test-post-hero.jpg"
+                  width="1448"
+                  height="864"
+                  alt=""
+                />
+              </Fragment>
+            </BlockMedia>
+
+            <RichText>
+              <h4>H4 Example title</h4>
+              <p>
+                We briefly discussed this in our previous article but wanted to
+                dive into a little more detail here. Having criteria upon which
+                to base your targeting decisions will provide structure and
+                guidelines to your operational plans. Featured snippets can be
+                very enticing, so these criteria should help you remain focussed
+                on your SEO goals:
+              </p>
+
+              <p>
+                This may seem like an obvious one, but when you type in the
+                query, does a featured snippet appear? If yes, you can be
+                confident that Google considers it to be the correct type of
+                search for a featured snippet. Bear in mind though that more and
+                more queries are being returned with a featured snippet. If one
+                doesn’t appear right now, that doesn’t mean that it won’t in the
+                future. It may also mean that Google doesn’t consider the
+                current answers provided by websites to be sufficient. It’s a
+                slightly riskier tactic to assign resources to a featured
+                snippet that doesn’t already exist, so it’s worth approaching it
+                with caution. Would this be part of your normal content
+                strategy? Do you stand a good chance of ranking on page one?
+                Regardless of the potential for a featured snippet, would this
+                search term (and subsequent content) deliver valuable traffic to
+                your site?
+              </p>
+
+              <p>
+                How do you find these featured snippets? Through a combination
+                of more traditional research as well as utilising tools such as
+                SEMrush or Ahrefs. For example, SEMrush allow you to find
+                featured snippets that are currently occupied by your
+                competitors, which is pretty handy! Both of these platforms do a
+                good job of explaining how to find featured snippets (alongside
+                Moz) so jump over to their websites for more info on sniffing
+                out opportunities.
+              </p>
+            </RichText>
+
+            <BlockQuote
+              quote="A big thank you to the team at Yellowball, who helped us with both our rebranding and built our new website."
+              name="Preston Llewellyn"
+              company="Independent Economics"
+            />
+
+            <RichText>
+              <h5>H5 Example title</h5>
+
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <ol>
+                <li>
+                  We therefore need to ensure that any search term for which we
+                  create and optimise our content is relevant to your buyer
+                  personas and their buying funnel.
+                </li>
+                <li>
+                  There is a really good study published by A.J Ghergich for
+                  SEMrush that explores questions, prepositions and comparisons.
+                </li>
+                <li>
+                  It also mentioned pricing being an end of funnel type query
+                  that can be targeted, so we highly recommend you having a read
+                  of it as well.
+                </li>
+              </ol>
+            </RichText>
+
+            <BlockEmbed
+              platform="youtube"
+              src="https://www.youtube-nocookie.com/embed/dMIk_kzvoBM?si=8Ph8iv7FAmrIqmZ7"
+            />
+
+            <RichText>
+              <h6>H6 Example title</h6>
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <p>
+                We therefore need to ensure that any search term for which we
+                create and optimise our content is relevant to your buyer
+                personas and their buying funnel. There is a really good study
+                published by A.J Ghergich for SEMrush that explores questions,
+                prepositions and comparisons. It also mentioned pricing being an
+                end of funnel type query that can be targeted, so we highly
+                recommend you having a read of it as well.
+              </p>
+            </RichText>
+
+            <BlockTable>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Title</th>
+                    <th>Title</th>
+                    <th>Title</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                  <tr>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                    <td>Table data</td>
+                  </tr>
+                </tbody>
+              </table>
+            </BlockTable>
+
+            <RichText>
+              <p>
+                A key part of a content strategy is establishing your buyer
+                personas and their corresponding buying funnel. Without this you
+                run the risk of creating content for the sake of it. Targeting
+                snippets that have low search volumes or result in virtually no
+                additional traffic may help you gain brownie points with your
+                management or client for a short period. But ultimately traffic
+                and conversions are the end game.
+              </p>
+
+              <ul>
+                <li>
+                  We therefore need to ensure that any search term for which we
+                  create and optimise our content is relevant to your buyer
+                  personas and their buying funnel.
+                </li>
+                <li>
+                  There is a really good study published by A.J Ghergich for
+                  SEMrush that explores questions, prepositions and comparisons.
+                </li>
+                <li>
+                  It also mentioned pricing being an end of funnel type query
+                  that can be targeted, so we highly recommend you having a read
+                  of it as well.
+                </li>
+              </ul>
+            </RichText>
+          </Fragment>
+
+          <Fragment slot="aside">
+            <CardPrompt shape="square" color="green" mini hasArrow>
+              <Fragment slot="headline">
+                <h3
+                  class="font-heading font-semibold text-28 text-balance max-w-[20ch] lg:max-w-[14ch]"
+                >
+                  Discover our PPC Services
+                </h3>
+              </Fragment>
+            </CardPrompt>
+
+            <CardPrompt shape="triangle" color="yellow" mini hasArrow>
+              <Fragment slot="headline">
+                <h3
+                  class="font-heading font-semibold text-28 text-balance max-w-[20ch] lg:max-w-[14ch]"
+                >
+                  Speak to a PPC Expert
+                </h3>
+              </Fragment>
+            </CardPrompt>
+          </Fragment>
+        </BlockArticle>
+      </section>
+    </LayoutTheme>
+
+    <section class={classSectionThickStart}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            Other Services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+    </section>
+
+    <section class={classSection}>
+      <BlockServiceCards>
+        <Fragment slot="cards">
+          <CardServiceHero
+            headline="Web Design"
+            description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+            cta="See our services"
+            shape="triangle"
+            color="yellow"
+            class="col-span-full"
+          >
+            <img
+              src="/images/test-service-1.webp"
+              width="1230"
+              height="756"
+              alt=""
+            />
+          </CardServiceHero>
+
+          <CardService
+            headline="SEO"
+            description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+            shape="square"
+            color="green"
+          >
+            <img
+              src="/images/test-service-2.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+
+          <CardService
+            headline="Paid Search"
+            description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+            shape="circle"
+            color="blue"
+          >
+            <img
+              src="/images/test-service-3.webp"
+              width="1032"
+              height="430"
+              alt=""
+            />
+          </CardService>
+        </Fragment>
+      </BlockServiceCards>
+    </section>
+  </main>
+</Layout>

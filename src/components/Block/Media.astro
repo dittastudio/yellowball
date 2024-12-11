@@ -1,0 +1,27 @@
+---
+interface Props {
+  caption?: string;
+}
+
+const { caption = '' } = Astro.props as Props;
+---
+
+<!-- Begin Block: Media -->
+<figure class="w-full grid gap-28 grid-cols-1">
+  {
+    Astro.slots.media && (
+      <div class="w-full rounded-30 lg:rounded-40 overflow-hidden">
+        <slot name="media" />
+      </div>
+    )
+  }
+
+  {
+    caption && (
+      <figcaption class="text-12 lg:text-13 font-heading font-semibold">
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>
+<!-- End Block: Media -->

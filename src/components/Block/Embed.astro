@@ -1,0 +1,27 @@
+---
+interface Props {
+  title?: string | null;
+  platform: 'youtube';
+  src: string;
+}
+
+const { title = null, platform, src } = Astro.props as Props;
+---
+
+<!-- Begin Block: Embed -->
+<div class="w-full">
+  {
+    platform === 'youtube' && (
+      <iframe
+        class="w-full aspect-video"
+        width="100%"
+        src={src}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      />
+    )
+  }
+</div>
+<!-- End Block: Embed -->

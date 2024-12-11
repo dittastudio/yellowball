@@ -278,6 +278,29 @@ export default {
       inOutBack: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
     },
     extend: {
+      typography: () => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'currentColor',
+            '--tw-prose-headings': 'currentColor',
+            '--tw-prose-lead': 'currentColor',
+            '--tw-prose-links': 'currentColor',
+            '--tw-prose-bold': 'currentColor',
+            '--tw-prose-counters': 'currentColor',
+            '--tw-prose-bullets': 'currentColor',
+            '--tw-prose-hr': 'currentColor',
+            '--tw-prose-quotes': 'currentColor',
+            '--tw-prose-quote-borders': 'currentColor',
+            '--tw-prose-captions': 'currentColor',
+            '--tw-prose-code': 'currentColor',
+            '--tw-prose-pre-code': 'currentColor',
+            '--tw-prose-pre-bg': 'currentColor',
+            '--tw-prose-th-borders': 'currentColor',
+            '--tw-prose-td-borders': 'currentColor',
+            color: 'currentColor',
+          },
+        },
+      }),
       borderRadius: {
         8: '8px',
         10: '10px',
