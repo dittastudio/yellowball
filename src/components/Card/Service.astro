@@ -130,9 +130,11 @@ const classes = ['card-service', className];
         >
           <div class="relative w-full flex justify-between items-start">
             <h4
-              class="flex items-baseline font-heading text-32 lg:text-48 font-semibold text-balance"
+              class="flex items-baseline gap-10 font-heading text-32 lg:text-48 font-semibold text-balance"
             >
-              {headline}&nbsp;{
+              {headline}
+
+              {
                 shape && colorShape && (
                   <Icon
                     name={`shape-${shape}`}
