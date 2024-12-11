@@ -419,6 +419,27 @@ const classCardCSSCols =
             <Button text="Get a quote today" hasArrow />
           </Fragment>
         </CardPrompt>
+
+        <CardPrompt shape="square" color="green" theme="light">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Ready to start your SEO Campaign?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button
+              text="Get a quote today"
+              options={{
+                textColor: 'white',
+                bgColor: 'navy',
+              }}
+              hasArrow
+            />
+          </Fragment>
+        </CardPrompt>
       </div>
     </StyleguideSection>
 
@@ -435,7 +456,13 @@ const classCardCSSCols =
         </CardPrompt>
 
         <div class="light">
-          <CardPrompt shape="triangle" color="yellow" mini hasArrow>
+          <CardPrompt
+            shape="triangle"
+            color="yellow"
+            theme="light"
+            mini
+            hasArrow
+          >
             <Fragment slot="headline">
               <h3
                 class="font-heading font-semibold text-28 text-balance max-w-[20ch] lg:max-w-[14ch]"
