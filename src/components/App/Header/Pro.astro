@@ -13,6 +13,7 @@ import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
     isMenuOpen: boolean;
     isSubMenuOpen: boolean;
     toggleMenu: () => void;
+    closeMenu: () => void;
     toggleSubMenu: () => void;
   };
 
@@ -22,11 +23,15 @@ import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+      console.log('Is Header Open:', this.isMenuOpen);
 
       if (this.isMenuOpen) window.lenis.stop();
       else window.lenis.start();
+    },
 
-      console.log('Is Header Open:', this.isMenuOpen);
+    closeMenu() {
+      this.isMenuOpen = false;
+      window.lenis.start();
     },
 
     toggleSubMenu() {
@@ -34,6 +39,22 @@ import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
       console.log('Is SubMenu Open:', this.isSubMenuOpen);
     },
   } as NavigationStore);
+
+  const $storeNavigation = Alpine.store('navigation') as NavigationStore;
+
+  const screenMd = window.matchMedia('(min-width: 768px)'); // Example: Desktop breakpoint at 1024px
+
+  const handleMediaChange = (event: MediaQueryListEvent) => {
+    if (event.matches || !event.matches) {
+      $storeNavigation.closeMenu();
+    }
+  };
+
+  screenMd.addEventListener('change', handleMediaChange);
+
+  if (screenMd.matches || !screenMd.matches) {
+    $storeNavigation.closeMenu();
+  }
 </script>
 
 <header x-data class="header" data-js="header-pro">

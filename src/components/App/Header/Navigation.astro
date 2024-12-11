@@ -1,57 +1,13 @@
 ---
 import { navList } from './data';
 
-import AppHeaderBackground from '@/components/App/Header/Background.astro';
+import AppHeaderNavigationList from '@/components/App/Header/NavigationList.astro';
 ---
 
 <div class="header-navigation">
   <div data-lenis-prevent class="header-navigation__scroll">
     <div class="header-navigation__case">
-      {
-        navList.map(({ menuItems }) => (
-          <AppHeaderBackground isDesktopOnly>
-            <nav class="header-navigation__nav">
-              <ul class="header-navigation__list">
-                {
-                  menuItems.map(({ text, url, subMenu }) => (
-                    <li>
-                      {
-                        subMenu ? (
-                          <button type="button">{text}</button>
-
-                          <nav>
-                            <button>Back</button>
-
-                            {
-                              subMenu.map(({ heading, subMenuItems }) => (
-                                <div>
-                                  <h5>{heading}</h5>
-
-                                  <ul>
-                                    {
-                                      subMenuItems.map(({ text, url }) => (
-                                        <li>
-                                          <a href={url}>{text}</a>
-                                        </li>
-                                      ))
-                                    }
-                                  </ul>
-                                </div>
-                              ))
-                            }
-                          </nav>
-                        ) : (
-                          <a href={url}>{text}</a>
-                        )
-                      }
-                    </li>
-                  ))
-                }
-              </ul>
-            </nav>
-          </AppHeaderBackground>
-        ))
-      }
+      {navList.map(({ menuItems }) => <AppHeaderNavigationList {menuItems} />)}
     </div>
   </div>
 </div>
@@ -85,5 +41,19 @@ import AppHeaderBackground from '@/components/App/Header/Background.astro';
     @media screen(md) {
       @apply flex justify-between;
     }
+  }
+
+  .header-navigation__list {
+    @apply flex flex-col;
+
+    @screen md {
+      @apply flex-row gap-4;
+    }
+  }
+
+  .header-navigation__button {
+    display: block;
+    padding: 2px;
+    margin: -2px;
   }
 </style>

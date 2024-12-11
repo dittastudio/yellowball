@@ -1,0 +1,164 @@
+---
+import AppHeaderBackground from '@/components/App/Header/Background.astro';
+import AppHeaderNavigationButton from '@/components/App/Header/NavigationButton.astro';
+
+interface Props {
+  menuItems: HeaderNavigationItem[];
+}
+
+const { menuItems } = Astro.props as Props;
+---
+
+<script>
+  import gsap from 'gsap';
+
+  const navs = document.querySelectorAll(
+    '[data-js=navigation-list]',
+  ) as NodeListOf<HTMLElement>;
+
+  navs.forEach(nav => {
+    const navItems = nav.querySelectorAll('[data-js-navigation-list-item]');
+    const pill = nav.querySelector('[data-js-navigation-list-pill]');
+
+    let pillActive = false;
+    const duration = 0.3;
+    const ease = 'back.out(0.6)';
+
+    const updatePill = (target: any) => {
+      const { offsetWidth, offsetLeft } = target.children[0].children[0];
+
+      if (pillActive) {
+        gsap.to(pill, {
+          opacity: 1,
+          width: offsetWidth,
+          left: offsetLeft,
+          duration,
+          ease,
+        });
+      } else {
+        gsap.set(pill, {
+          width: offsetWidth,
+          left: offsetLeft,
+        });
+
+        gsap.to(pill, {
+          opacity: 1,
+          duration,
+          ease,
+          onStart: () => {
+            pillActive = true;
+          },
+        });
+      }
+    };
+
+    const hidePill = () => {
+      gsap.to(pill, {
+        opacity: 0,
+        duration,
+        ease,
+      });
+    };
+
+    nav?.addEventListener('mouseleave', () => (pillActive = false));
+
+    navItems?.forEach(item => {
+      item.addEventListener('mouseenter', e => updatePill(e.target));
+      item.addEventListener('mouseleave', hidePill);
+    });
+  });
+</script>
+
+<AppHeaderBackground isDesktopOnly>
+  <nav data-js="navigation-list" class="navigation-list">
+    <ul class="navigation-list__list">
+      {
+        menuItems.map(({ text, url, subMenu }) => (
+          <li data-js-navigation-list-item>
+            {
+              subMenu ? (
+                <button class="navigation-list__button" type="button">
+                  <AppHeaderNavigationButton hasSubmenu>
+                    {text}
+                  </AppHeaderNavigationButton>
+                </button>
+
+                <nav class="hidden">
+                  <button>Back</button>
+
+                  {
+                    subMenu.map(({ heading, subMenuItems }) => (
+                      <div>
+                        <h5>{heading}</h5>
+
+                        <ul>
+                          {
+                            subMenuItems.map(({ text, url }) => (
+                              <li>
+                                <a class="block" href={url}>
+                                    {text}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    ))
+                  }
+                </nav>
+              ) : (
+                <a class="navigation-list__button" href={url}>
+                  <AppHeaderNavigationButton>
+                    {text}
+                  </AppHeaderNavigationButton>
+                </a>
+              )
+            }
+          </li>
+        ))
+      }
+    </ul>
+
+    <span
+      data-js-navigation-list-pill
+      class="navigation-list__pill"
+    >
+    </span>
+  </nav>
+</AppHeaderBackground>
+
+<style>
+  .navigation-list {
+    @media screen(md) {
+      @apply relative;
+    }
+  }
+
+  .navigation-list__list {
+    @apply flex flex-col;
+
+    @screen md {
+      @apply flex-row gap-4;
+    }
+  }
+
+  .navigation-list__button {
+    display: block;
+    padding: 2px;
+    margin: -2px;
+  }
+
+  .navigation-list__nav {
+    @media screen(md) {
+      @apply relative;
+    }
+  }
+
+  .navigation-list__pill {
+    @apply block bg-yellow rounded-[12px] h-full absolute top-0 left-0 -z-1 opacity-0;
+
+    @media screen(mdMax) {
+      @apply hidden;
+    }
+  }
+</style>

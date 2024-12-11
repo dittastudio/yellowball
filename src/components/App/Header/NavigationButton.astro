@@ -1,0 +1,66 @@
+---
+interface Props {
+  hasSubmenu?: boolean;
+}
+
+const { hasSubmenu = false } = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    'navigation-button',
+    'flex items-center gap-8 h-inherit',
+    'font-heading font-bold',
+    'text-16 md:text-13 lg:text-15 md:px-20 md:rounded-12 md:min-h-50',
+  ]}
+>
+  {
+    hasSubmenu && (
+      <span
+        class:list={[
+          'relative shrink-0 size-10',
+          'before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-inherit before:h-2 before:bg-current',
+          'after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-inherit after:h-2 after:bg-current after:rotate-90',
+        ]}
+      />
+    )
+  }
+  <slot />
+</span>
+
+<style>
+  .navigation-button {
+    position: relative;
+    background-color: transparent;
+    color: currentColor;
+    transition: color theme('transitionDuration.200')
+      theme('transitionTimingFunction.smooth');
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: theme('colors.navy');
+      opacity: 0;
+      border-radius: inherit;
+      transition: opacity theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth');
+    }
+
+    @media screen(md) {
+      @media (hover: hover) {
+        :global(a):hover &,
+        :global(button):not(:disabled):hover & {
+          color: theme('colors.navy');
+        }
+      }
+    }
+
+    :global(a):active &,
+    :global(button):not(:disabled):active & {
+      &::after {
+        opacity: 0.1;
+      }
+    }
+  }
+</style>

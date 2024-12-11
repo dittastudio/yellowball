@@ -17,6 +17,8 @@ const { isDesktopOnly = false } = Astro.props as Props;
   ) as NodeListOf<HTMLElement>;
 
   backgrounds.forEach(background => {
+    const screenMd = 768;
+
     if (background) {
       const sections = document.querySelectorAll(
         '[data-js-theme]',
@@ -53,11 +55,11 @@ const { isDesktopOnly = false } = Astro.props as Props;
       sections.forEach(section => {
         let mm = gsap.matchMedia();
 
-        mm.add('(min-width: 768px)', () => {
+        mm.add(`(min-width: ${screenMd}px)`, () => {
           initThemeTrigger(section);
         });
 
-        mm.add('(max-width: 767px)', () => {
+        mm.add(`(max-width: ${screenMd - 1}px)`, () => {
           initThemeTrigger(section);
         });
       });
@@ -66,7 +68,6 @@ const { isDesktopOnly = false } = Astro.props as Props;
 
   const resizeObserver = new ResizeObserver(() => {
     requestAnimationFrame(() => {
-      console.log('Resize Observer');
       ScrollTrigger.refresh();
     });
   });
@@ -91,6 +92,12 @@ const { isDesktopOnly = false } = Astro.props as Props;
     --header-bg-theme-text-color: theme('colors.white');
     --header-bg-theme-bg-color: theme('colors.offblack/0.1');
     --header-bg-theme-border-color: theme('colors.white/0.1');
+
+    transition:
+      background-color theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth'),
+      border-color theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth');
 
     &.is-light {
       --header-bg-theme-text-color: theme('colors.navy');
