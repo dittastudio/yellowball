@@ -8,6 +8,14 @@ interface Props {
 }
 
 const { menuItem } = Astro.props as Props;
+
+const classesHover = {
+  green: 'hover:text-green',
+  blue: 'hover:text-blue',
+  yellow: 'hover:text-yellow',
+  purple: 'hover:text-purple',
+  navy: 'hover:text-navy',
+};
 ---
 
 <script>
@@ -64,11 +72,16 @@ const { menuItem } = Astro.props as Props;
                   {heading}
                 </h5>
 
-                <ul class="w-full flex flex-col -my-12">
-                  {subMenuItems.map(({ text, url }) => (
+                <ul class="navigation-list__submenu__list w-full flex flex-col -my-12">
+                  {subMenuItems.map(({ text, url, color }) => (
                     <li>
                       <a
-                        class="block font-heading font-semibold text-18 py-12"
+                        class:list={[
+                          'navigation-list__submenu__list-link block font-heading font-semibold text-18 py-12',
+                          color
+                            ? classesHover[color as keyof typeof classesHover]
+                            : null,
+                        ]}
                         href={url}
                       >
                         {text}
@@ -121,18 +134,21 @@ const { menuItem } = Astro.props as Props;
       p-40;
 
     max-width: calc(100vw - ((12px * 2) + 2px));
-    translate: 16px 0 0;
     opacity: 0;
-    visibility: hidden;
+    translate: 16px 0 0;
+    pointer-events: none;
     background-color: theme('colors.navy-light');
     z-index: 1;
-    transition: all theme('transitionDuration.500')
-      theme('transitionTimingFunction.outBack');
+    transition:
+      opacity theme('transitionDuration.500')
+        theme('transitionTimingFunction.outBack'),
+      translate theme('transitionDuration.500')
+        theme('transitionTimingFunction.outBack');
 
     .navigation-list-item.is-submenu-open & {
       opacity: 1;
-      visibility: visible;
       translate: 0 0 0;
+      pointer-events: auto;
     }
 
     @media screen(md) {
@@ -146,6 +162,19 @@ const { menuItem } = Astro.props as Props;
         whitespace-nowrap;
 
       max-width: calc(100vw - 36px);
+    }
+  }
+
+  .navigation-list__submenu__list-link {
+    opacity: 1;
+    transition:
+      opacity theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth'),
+      color theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
+
+    .navigation-list__submenu__list:hover &:not(:hover) {
+      opacity: 0.25;
     }
   }
 </style>

@@ -23,6 +23,7 @@ interface TagObject {
 interface HeaderNavigationSubMenuItem {
   text: string;
   url: string;
+  color?: ColorTypes;
 }
 
 interface HeaderNavigationSubMenu {
