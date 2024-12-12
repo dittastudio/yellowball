@@ -1,0 +1,169 @@
+---
+import HeaderLogo from '@/components/App/Header/Logo.astro';
+import HeaderBackground from '@/components/App/Header/Background.astro';
+// import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
+import NavigationListItem from '@/components/App/Header/NavigationListItem.astro';
+
+interface Props {
+  menuItems: HeaderNavigationItem[];
+  hasLogo?: boolean;
+}
+
+const { menuItems, hasLogo = false } = Astro.props as Props;
+---
+
+<script>
+  import gsap from 'gsap';
+
+  const navs = document.querySelectorAll(
+    '[data-js=navigation-list]',
+  ) as NodeListOf<HTMLElement>;
+
+  navs.forEach(nav => {
+    const navLogo = nav.querySelector('[data-js-navigation-list-logo]');
+    const navList = nav.querySelector('[data-js-navigation-list-list]');
+    const navItems = nav.querySelectorAll('[data-js-navigation-list-item]');
+    const pill = nav.querySelector('[data-js-navigation-list-pill]');
+
+    let pillActive = false;
+
+    const duration = 0.3;
+    const ease = 'back.out(0.6)';
+
+    const updatePill = (target: any) => {
+      const { offsetWidth, offsetLeft } = target.children[0].children[0];
+
+      if (pillActive) {
+        gsap.to(pill, {
+          opacity: 1,
+          width: offsetWidth,
+          x: offsetLeft,
+          duration,
+          ease,
+        });
+      } else {
+        gsap.set(pill, {
+          width: offsetWidth,
+          x: offsetLeft,
+        });
+
+        gsap.to(pill, {
+          opacity: 1,
+          duration,
+          ease,
+          onStart: () => {
+            pillActive = true;
+          },
+        });
+      }
+    };
+
+    const hidePill = () => {
+      gsap.to(pill, {
+        opacity: 0,
+        duration,
+        ease,
+      });
+    };
+
+    navList?.addEventListener('mouseleave', () => (pillActive = false));
+
+    navItems?.forEach(item => {
+      item.addEventListener('mouseenter', e => updatePill(e.target));
+      item.addEventListener('mouseleave', hidePill);
+    });
+
+    let timeout: NodeJS.Timeout;
+
+    navLogo?.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
+      navList?.classList.add('lg:pointer-events-none');
+    });
+
+    navLogo?.addEventListener('mouseleave', () => {
+      timeout = setTimeout(() => {
+        navList?.classList.remove('lg:pointer-events-none');
+      }, 500);
+    });
+  });
+</script>
+
+<HeaderBackground isDesktopOnly>
+  <nav data-js="navigation-list" class="navigation-list">
+    {
+      hasLogo && (
+        <a data-js-navigation-list-logo class="mdMax:hidden relative" href="/">
+          <HeaderLogo />
+          <span class="sr-only">Home</span>
+        </a>
+      )
+    }
+
+    <ul data-js-navigation-list-list class="navigation-list__list">
+      {
+        menuItems.map((menuItem: HeaderNavigationItem) => (
+          <li
+            data-js-navigation-list-item
+            class={menuItem.type === 'navy' ? 'mdMax:hidden' : ''}
+          >
+            <NavigationListItem menuItem={menuItem} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <span data-js-navigation-list-pill class="navigation-list__pill"></span>
+  </nav>
+</HeaderBackground>
+
+<style>
+  .navigation-list {
+    @media screen(md) {
+      pointer-events: auto;
+
+      @apply relative
+        flex
+        gap-4;
+    }
+  }
+
+  .navigation-list__logo {
+    @apply block
+      p-2
+      -m-2;
+  }
+
+  .navigation-list__list {
+    @apply flex
+      flex-col
+      -my-12;
+
+    @media screen(md) {
+      @apply flex-row
+        gap-4
+        my-0;
+    }
+  }
+
+  .navigation-list__nav {
+    @media screen(md) {
+      @apply relative;
+    }
+  }
+
+  .navigation-list__pill {
+    @apply block
+      bg-yellow
+      rounded-12
+      h-full
+      absolute
+      top-0
+      left-0
+      -z-1
+      opacity-0;
+
+    @media screen(mdMax) {
+      @apply hidden;
+    }
+  }
+</style>

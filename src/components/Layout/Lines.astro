@@ -17,6 +17,7 @@ const { theme = 'dark', class: className } = Astro.props as Props;
   .layout-lines {
     position: relative;
     contain: paint;
+    min-height: inherit;
 
     &.is-dark {
       --line-color: rgba(255, 255, 255, 0.1);

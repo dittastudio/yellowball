@@ -1,0 +1,117 @@
+<span
+  x-data
+  :class="$store.navigation.isMenuOpen && 'is-open'"
+  class="header-menu-button font-heading font-bold text-13 lg:text-15"
+>
+  <span class="header-menu-button__inner">
+    <span class="header-menu-button__text header-menu-button__text--open">
+      Menu
+    </span>
+
+    <span class="header-menu-button__text header-menu-button__text--close">
+      Close
+    </span>
+  </span>
+</span>
+
+<style is:global>
+  .header-menu-button {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding-inline: theme('spacing.20');
+    border-radius: theme('borderRadius.12');
+    background-color: theme('colors.yellow');
+    color: theme('colors.navy');
+    transition: background-color 0.3s theme('transitionTimingFunction.smooth');
+
+    &.is-open {
+      background-color: theme('colors.white');
+    }
+  }
+
+  .header-menu-button__inner {
+    display: grid;
+    grid-template-areas: 'stack';
+  }
+
+  .header-menu-button__text {
+    grid-area: stack;
+    transform: translateZ(0);
+
+    &--open {
+      opacity: 1;
+      scale: 1;
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.smooth'),
+        scale 0.25s theme('transitionTimingFunction.smooth');
+
+      .header-menu-button.is-open & {
+        opacity: 0;
+        scale: 0.9;
+
+        transition:
+          opacity 0.1s theme('transitionTimingFunction.smooth'),
+          scale 0.1s theme('transitionTimingFunction.smooth');
+      }
+    }
+
+    &--close {
+      opacity: 0;
+      scale: 0.9;
+
+      transition:
+        opacity 0.1s theme('transitionTimingFunction.smooth'),
+        scale 0.1s theme('transitionTimingFunction.smooth');
+
+      .header-menu-button.is-open & {
+        opacity: 1;
+        scale: 1;
+
+        transition:
+          opacity 0.25s theme('transitionTimingFunction.smooth'),
+          scale 0.25s theme('transitionTimingFunction.smooth');
+      }
+    }
+  }
+
+  .header__menu-mobile__button-open {
+    display: block;
+    transition:
+      opacity 0.25s theme('transitionTimingFunction.smooth'),
+      scale 0.25s theme('transitionTimingFunction.smooth');
+
+    .header.is-open & {
+      opacity: 0;
+      scale: 0.9;
+
+      transition:
+        opacity 0.1s theme('transitionTimingFunction.smooth'),
+        scale 0.1s theme('transitionTimingFunction.smooth');
+    }
+  }
+
+  .header__menu-mobile__button-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    scale: 0.9;
+    background-color: white;
+    border-radius: 12px;
+    transition:
+      opacity 0.1s theme('transitionTimingFunction.smooth'),
+      scale 0.1s theme('transitionTimingFunction.smooth');
+
+    .header.is-open & {
+      opacity: 1;
+      scale: 1;
+
+      transition:
+        opacity 0.25s theme('transitionTimingFunction.smooth'),
+        scale 0.25s theme('transitionTimingFunction.smooth');
+    }
+  }
+</style>
