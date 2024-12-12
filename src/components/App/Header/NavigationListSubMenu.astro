@@ -1,4 +1,6 @@
 ---
+import Icon from '@/components/Elements/Icon.astro';
+
 interface Props {
   subMenu: HeaderNavigationSubMenu[];
 }
@@ -8,18 +10,30 @@ const { subMenu } = Astro.props as Props;
 
 <div class="navigation-submenu">
   <nav class="">
-    <button class="md:hidden">Back</button>
+    <button
+      data-js-header-nav-item-submenu-back
+      class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey"
+      type="button"
+    >
+      <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
+      Back
+    </button>
 
-    <div class="sm:flex whitespace-nowrap gap-x-80 pr-160">
+    <div class="md:flex gap-x-80 pr-160">
       {
         subMenu.map(({ heading, subMenuItems }) => (
-          <div>
-            <h5>{heading}</h5>
+          <div class="flex flex-col items-start gap-y-24">
+            <h5 class="font-heading font-semibold text-11 opacity-50">
+              {heading}
+            </h5>
 
-            <ul>
+            <ul class="w-full flex flex-col -my-12">
               {subMenuItems.map(({ text, url }) => (
                 <li>
-                  <a class="block" href={url}>
+                  <a
+                    class="block font-heading font-semibold text-18 py-12"
+                    href={url}
+                  >
                     {text}
                   </a>
                 </li>
@@ -40,6 +54,8 @@ const { subMenu } = Astro.props as Props;
       w-full
       p-40;
 
+    max-width: calc(100vw - 36px);
+
     @media screen(md) {
       @apply top-[calc(var(--header-height)_-_22px)]
         -left-4
@@ -47,7 +63,8 @@ const { subMenu } = Astro.props as Props;
         bg-navy-light
         border
         border-white/10
-        rounded-16;
+        rounded-16
+        whitespace-nowrap;
     }
   }
 </style>

@@ -73,7 +73,6 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
       item.addEventListener('mouseleave', hidePill);
     });
 
-
     let timeout: NodeJS.Timeout;
 
     navLogo?.addEventListener('mouseenter', () => {
@@ -93,7 +92,7 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
   <nav data-js="navigation-list" class="navigation-list">
     {
       hasLogo && (
-        <a data-js-navigation-list-logo class="hidden md:block" href="/">
+        <a data-js-navigation-list-logo class="mdMax:hidden relative" href="/">
           <AppHeaderLogo />
           <span class="sr-only">Home</span>
         </a>
@@ -151,18 +150,25 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
 
   .navigation-list__list {
     @apply flex
-      flex-col;
+      flex-col
+      -my-12;
 
     @media screen(md) {
       @apply flex-row
-        gap-4;
+        gap-4
+        my-0;
     }
   }
 
   .navigation-list__button {
     @apply block
-      p-2
-      -m-2;
+      py-12;
+
+    @media screen(md) {
+      @apply block
+        p-2
+        -m-2;
+    }
   }
 
   .navigation-list__nav {
