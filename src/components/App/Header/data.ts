@@ -38,8 +38,7 @@ export const navList: HeaderNavigation[] = [
       {
         text: 'Work with us',
         url: '/',
-        color: 'navy',
-        type: 'alt',
+        type: 'navy',
       },
     ]
   },

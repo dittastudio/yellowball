@@ -1,6 +1,7 @@
 ---
 import AppHeaderBackground from '@/components/App/Header/Background.astro';
-import AppHeaderNavigationButton from '@/components/App/Header/NavigationButton.astro';
+import AppHeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
+import AppHeaderNavigationListSubMenu from '@/components/App/Header/NavigationListSubmenu.astro';
 
 interface Props {
   menuItems: HeaderNavigationItem[];
@@ -73,44 +74,22 @@ const { menuItems } = Astro.props as Props;
   <nav data-js="navigation-list" class="navigation-list">
     <ul class="navigation-list__list">
       {
-        menuItems.map(({ text, url, subMenu }) => (
-          <li data-js-navigation-list-item>
+        menuItems.map(({ text, url, type, subMenu }) => (
+          <li data-js-navigation-list-item class={type === 'navy' ? 'mdMax:hidden' : ''}>
             {
               subMenu ? (
                 <button class="navigation-list__button" type="button">
-                  <AppHeaderNavigationButton hasSubmenu>
+                  <AppHeaderNavigationListButton hasSubmenu>
                     {text}
-                  </AppHeaderNavigationButton>
+                  </AppHeaderNavigationListButton>
                 </button>
 
-                <nav class="hidden">
-                  <button>Back</button>
-
-                  {
-                    subMenu.map(({ heading, subMenuItems }) => (
-                      <div>
-                        <h5>{heading}</h5>
-
-                        <ul>
-                          {
-                            subMenuItems.map(({ text, url }) => (
-                              <li>
-                                <a class="block" href={url}>
-                                    {text}
-                                </a>
-                              </li>
-                            ))
-                          }
-                        </ul>
-                      </div>
-                    ))
-                  }
-                </nav>
+                <AppHeaderNavigationListSubMenu {subMenu} />
               ) : (
                 <a class="navigation-list__button" href={url}>
-                  <AppHeaderNavigationButton>
+                  <AppHeaderNavigationListButton type={type || 'transparent'}>
                     {text}
-                  </AppHeaderNavigationButton>
+                  </AppHeaderNavigationListButton>
                 </a>
               )
             }
@@ -135,17 +114,19 @@ const { menuItems } = Astro.props as Props;
   }
 
   .navigation-list__list {
-    @apply flex flex-col;
+    @apply flex
+      flex-col;
 
-    @screen md {
-      @apply flex-row gap-4;
+    @media screen(md) {
+      @apply flex-row
+        gap-4;
     }
   }
 
   .navigation-list__button {
-    display: block;
-    padding: 2px;
-    margin: -2px;
+    @apply block
+      p-2
+      -m-2;
   }
 
   .navigation-list__nav {
@@ -155,7 +136,15 @@ const { menuItems } = Astro.props as Props;
   }
 
   .navigation-list__pill {
-    @apply block bg-yellow rounded-[12px] h-full absolute top-0 left-0 -z-1 opacity-0;
+    @apply block
+      bg-yellow
+      rounded-[12px]
+      h-full
+      absolute
+      top-0
+      left-0
+      -z-1
+      opacity-0;
 
     @media screen(mdMax) {
       @apply hidden;

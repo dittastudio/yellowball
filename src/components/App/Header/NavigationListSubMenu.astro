@@ -1,0 +1,53 @@
+---
+interface Props {
+  subMenu: HeaderNavigationSubMenu[];
+}
+
+const { subMenu } = Astro.props as Props;
+---
+
+<div class="navigation-submenu">
+  <nav class="">
+    <button class="md:hidden">Back</button>
+
+    <div class="sm:flex whitespace-nowrap gap-x-80 pr-160">
+      {
+        subMenu.map(({ heading, subMenuItems }) => (
+          <div>
+            <h5>{heading}</h5>
+
+            <ul>
+              {subMenuItems.map(({ text, url }) => (
+                <li>
+                  <a class="block" href={url}>
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </nav>
+</div>
+
+<style>
+  .navigation-submenu {
+    @apply absolute
+      top-0
+      left-0
+      w-full
+      p-40;
+
+    @media screen(md) {
+      @apply top-[calc(var(--header-height)_-_22px)]
+        -left-4
+        w-fit
+        bg-navy-light
+        border
+        border-white/10
+        rounded-16;
+    }
+  }
+</style>

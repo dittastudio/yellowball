@@ -32,8 +32,7 @@ interface HeaderNavigationSubMenu {
 interface HeaderNavigationItem {
   text: string;
   url?: string;
-  type?: 'default' | 'alt';
-  color?: 'transparent' | 'navy' | 'yellow';
+  type?: 'transparent' | 'navy';
   subMenu?: HeaderNavigationSubMenu[];
 }
 
