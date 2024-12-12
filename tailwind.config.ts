@@ -65,8 +65,11 @@ export default {
       current: "currentColor",
       transparent: "transparent",
       offblack: "#838383",
+      offblackRgba: 'rgb(131 131 131 / <alpha-value>)',
       black: "#000000",
+      blackRgba: 'rgb(0 0 0 / <alpha-value>)',
       white: "#FFFFFF",
+      whiteRgba: 'rgb(255 255 255 / <alpha-value>)',
       yellow: "#EAFF01",
       green: "#ADF454",
       blue: "#51DBEA",
@@ -79,6 +82,7 @@ export default {
       cream: "#F7F7F0",
       grey: "#BBBBBB",
       'grey-light': "#E6E6E6",
+      'grey-lightRgba': 'rgb(230 230 230 / <alpha-value>)',
 
       // TEMP NAMES
       card: "#28293A",

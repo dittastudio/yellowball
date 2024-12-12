@@ -1,0 +1,134 @@
+---
+import HeaderLogo from '@/components/App/Header/Logo.astro';
+import HeaderBackground from '@/components/App/Header/Background.astro';
+import HeaderMenuButton from '@/components/App/Header/MenuButton.astro';
+import HeaderNavigation from '@/components/App/Header/Navigation.astro';
+import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
+---
+
+<script>
+  import Alpine from 'alpinejs';
+
+  Alpine.store('navigation', {
+    isMenuOpen: false,
+    isSubMenuOpen: false,
+
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+
+      if (this.isMenuOpen) {
+        window.lenis.stop();
+      } else window.lenis.start();
+    },
+
+    closeMenu() {
+      this.isMenuOpen = false;
+      this.isSubMenuOpen = false;
+      window.lenis.start();
+    },
+
+    toggleSubMenu() {
+      this.isMenuOpen = true;
+      this.isSubMenuOpen = !this.isSubMenuOpen;
+    },
+  } as NavigationStore);
+</script>
+
+<header
+  x-data
+  :class="{'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen}"
+  class="header"
+  data-js="header-pro"
+>
+  <nav class="header__menu-mobile">
+    <HeaderBackground>
+      <a class="header__menu-mobile__logo" href="/">
+        <HeaderLogo />
+      </a>
+    </HeaderBackground>
+
+    <HeaderBackground>
+      <div class="header__menu-mobile__list">
+        <a class="header__menu-mobile__list__item" href="/">
+          <HeaderMenuLink>Work with us</HeaderMenuLink>
+        </a>
+
+        <button
+          @click="$store.navigation.toggleMenu()"
+          type="button"
+          class="header__menu-mobile__list__item"
+        >
+          <HeaderMenuButton />
+        </button>
+      </div>
+    </HeaderBackground>
+  </nav>
+
+  <HeaderNavigation />
+
+  <button @click="$store.navigation.closeMenu()" class="header__close">
+    Close menus
+  </button>
+</header>
+
+<style is:global>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: theme('spacing.12');
+    pointer-events: none;
+    isolation: isolate;
+
+    @media screen(md) {
+      padding: theme('spacing.18');
+    }
+  }
+
+  .header__menu-mobile {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen(md) {
+      display: none;
+    }
+  }
+
+  .header__menu-mobile__logo,
+  .header__menu-mobile__list {
+    pointer-events: auto;
+  }
+
+  .header__menu-mobile__logo {
+    display: block;
+  }
+
+  .header__menu-mobile__list {
+    display: flex;
+    gap: 4px;
+  }
+
+  .header__menu-mobile__list__item {
+    display: block;
+    padding: 2px;
+    margin: -2px;
+    height: 100%;
+  }
+
+  .header__close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+
+    .header.is-open &,
+    .header.is-submenu-open & {
+      pointer-events: auto;
+    }
+  }
+</style>

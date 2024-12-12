@@ -1,6 +1,12 @@
 interface Window {
   scrollTimeout?: number;
+  lenis: import('lenis').default;
+  Alpine: import('alpinejs').Alpine;
 }
+
+type ColorTypes = 'current' | 'transparent' | 'offblack' | 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'blue-google' | 'purple' | 'navy' | 'navy-light' | 'navy-lighter' | 'navy-lightest' | 'cream' | 'grey' | 'grey-light'
+type ShapeTypes = 'circle' | 'square' | 'triangle' | 'pentagon'
+type ThemeTypes = 'light' | 'dark'
 
 interface ImageObject {
   src: string
@@ -14,6 +20,34 @@ interface TagObject {
   color?: ColorTypes;
 }
 
-type ColorTypes = 'current' | 'transparent' | 'offblack' | 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'blue-google' | 'purple' | 'navy' | 'navy-light' | 'navy-lighter' | 'navy-lightest' | 'cream' | 'grey' | 'grey-light'
-type ShapeTypes = 'circle' | 'square' | 'triangle'
-type ThemeTypes = 'light' | 'dark'
+interface HeaderNavigationSubMenuItem {
+  text: string;
+  url: string;
+  color?: ColorTypes;
+  shape?: ShapeTypes;
+}
+
+interface HeaderNavigationSubMenu {
+  heading: string;
+  subMenuItems: HeaderNavigationSubMenuItem[];
+}
+
+interface HeaderNavigationItem {
+  text: string;
+  url?: string;
+  type?: 'transparent' | 'navy';
+  subMenu?: HeaderNavigationSubMenu[];
+}
+
+interface HeaderNavigation {
+  position: 'left' | 'right';
+  menuItems: HeaderNavigationItem[];
+}
+
+type NavigationStore = {
+  isMenuOpen: boolean;
+  isSubMenuOpen: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+  toggleSubMenu: () => void;
+};

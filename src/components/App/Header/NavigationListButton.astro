@@ -1,0 +1,99 @@
+---
+interface Props {
+  type?: 'transparent' | 'navy';
+  hasSubmenu?: boolean;
+}
+
+const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
+---
+
+<span
+  x-data
+  x-bind:class="$store.navigation.isSubMenuOpen && 'is-active'"
+  class:list={[
+    'navigation-list-button',
+    'flex items-center gap-8 h-inherit',
+    'font-heading font-bold',
+    'text-16 md:text-13 lg:text-15 md:px-20 md:rounded-12 md:min-h-50',
+    type === 'navy' ? 'is-type-navy md:px-28' : 'md:px-20',
+    hasSubmenu && 'has-submenu',
+  ]}
+>
+  {
+    hasSubmenu && (
+      <span
+        class:list={[
+          'relative shrink-0 size-10',
+          'before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-inherit before:h-2 before:bg-current',
+          'after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-inherit after:h-2 after:bg-current after:rotate-90',
+        ]}
+      />
+    )
+  }
+  <slot />
+</span>
+
+<style>
+  .navigation-list-button {
+    position: relative;
+    color: currentColor;
+    transition: color theme('transitionDuration.200')
+      theme('transitionTimingFunction.smooth');
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: theme('colors.navy');
+      opacity: 0;
+      border-radius: inherit;
+      transition: opacity theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth');
+    }
+
+    @media screen(md) {
+      @media (hover: hover) {
+        :global(a):hover &,
+        :global(button):not(:disabled):hover & {
+          color: theme('colors.navy');
+        }
+      }
+
+      &.has-submenu.is-active {
+        color: theme('colors.navy');
+      }
+    }
+
+    :global(a):active &,
+    :global(button):not(:disabled):active & {
+      &::after {
+        opacity: 0.1;
+      }
+    }
+
+    &.is-type-navy {
+      @media screen(md) {
+        color: theme('colors.white');
+        background-color: theme('colors.navy');
+
+        transition:
+          color theme('transitionDuration.200')
+            theme('transitionTimingFunction.smooth'),
+          background-color theme('transitionDuration.200')
+            theme('transitionTimingFunction.smooth') 0.1s;
+
+        @media (hover: hover) {
+          :global(a):hover &,
+          :global(button):not(:disabled):hover & {
+            background-color: transparent;
+
+            transition:
+              color theme('transitionDuration.200')
+                theme('transitionTimingFunction.smooth'),
+              background-color 0s;
+          }
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+interface Props {
+  isDesktopOnly?: boolean;
+}
+
+const { isDesktopOnly = false } = Astro.props as Props;
+---
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const backgrounds = document.querySelectorAll(
+    '[data-js="header-background"]',
+  ) as NodeListOf<HTMLElement>;
+
+  backgrounds.forEach(background => {
+    const screenMd = 768;
+
+    if (background) {
+      const sections = document.querySelectorAll(
+        '[data-js-theme]',
+      ) as NodeListOf<HTMLElement>;
+
+      const initThemeTrigger = (trigger: HTMLElement) => {
+        const headerPro = document.querySelector(
+          '[data-js="header-pro"]',
+        ) as HTMLElement;
+
+        ScrollTrigger.create({
+          markers: false,
+          trigger: trigger,
+          start: `top ${headerPro.offsetHeight / 2}px`,
+          end: `bottom ${headerPro.offsetHeight / 2}px`,
+          onToggle: ({ isActive }) => {
+            const checkIfLightTheme =
+              isActive && trigger.getAttribute('data-js-theme') === 'light';
+
+            // Dark Theme
+            background.classList[checkIfLightTheme ? 'remove' : 'add'](
+              'is-dark',
+            );
+
+            // Light Theme
+            background.classList[!checkIfLightTheme ? 'remove' : 'add'](
+              'is-light',
+            );
+          },
+          invalidateOnRefresh: true,
+        });
+      };
+
+      sections.forEach(section => {
+        let mm = gsap.matchMedia();
+
+        mm.add(`(min-width: ${screenMd}px)`, () => {
+          initThemeTrigger(section);
+        });
+
+        mm.add(`(max-width: ${screenMd - 1}px)`, () => {
+          initThemeTrigger(section);
+        });
+      });
+    }
+  });
+
+  const resizeObserver = new ResizeObserver(() => {
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  });
+
+  const resizeTarget: HTMLBodyElement | any = document.querySelector('body');
+
+  resizeObserver.observe(resizeTarget);
+</script>
+
+<div
+  data-js="header-background"
+  class:list={[
+    'header-background',
+    isDesktopOnly ? 'is-desktop-only' : 'is-both',
+  ]}
+>
+  <slot />
+</div>
+
+<style>
+  .header-background {
+    --header-bg-theme-text-color: theme('colors.white');
+    --header-bg-theme-bg-color: theme('colors.offblack/0.1');
+    --header-bg-theme-border-color: theme('colors.white/0.1');
+
+    transition:
+      background-color theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth'),
+      border-color theme('transitionDuration.200')
+        theme('transitionTimingFunction.smooth');
+
+    &.is-light {
+      --header-bg-theme-text-color: theme('colors.navy');
+      --header-bg-theme-bg-color: theme('colors.grey-lightRgba/0.5');
+      --header-bg-theme-border-color: theme('colors.grey-lightRgba/0.3');
+    }
+
+    &.is-both {
+      color: var(--header-bg-theme-text-color);
+      background-color: var(--header-bg-theme-bg-color);
+      border: 1px solid var(--header-bg-theme-border-color);
+      border-radius: theme('borderRadius.16');
+      backdrop-filter: blur(20px);
+      padding: theme('spacing.3');
+    }
+
+    &.is-desktop-only {
+      @media screen(md) {
+        color: var(--header-bg-theme-text-color);
+        background-color: var(--header-bg-theme-bg-color);
+        border: 1px solid var(--header-bg-theme-border-color);
+        border-radius: theme('borderRadius.16');
+        backdrop-filter: blur(20px);
+        padding: theme('spacing.3');
+      }
+    }
+  }
+</style>

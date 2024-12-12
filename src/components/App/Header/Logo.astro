@@ -1,25 +1,27 @@
 <script>
-  const headerLogo = document.querySelector(
+  const logos = document.querySelectorAll(
     '[data-js=header-logo]',
-  ) as HTMLElement;
+  ) as NodeListOf<HTMLElement>;
 
-  if (headerLogo) {
-    let timeout: NodeJS.Timeout;
+  logos.forEach(logo => {
+    if (logo) {
+      let timeout: NodeJS.Timeout;
 
-    function handleMouseEnter() {
-      clearTimeout(timeout);
-      headerLogo.classList.add('has-hover');
+      function handleMouseEnter() {
+        clearTimeout(timeout);
+        logo.classList.add('has-hover');
+      }
+
+      function handleMouseLeave() {
+        timeout = setTimeout(() => {
+          logo.classList.remove('has-hover');
+        }, 500);
+      }
+
+      logo.addEventListener('mouseenter', handleMouseEnter);
+      logo.addEventListener('mouseleave', handleMouseLeave);
     }
-
-    function handleMouseLeave() {
-      timeout = setTimeout(() => {
-        headerLogo.classList.remove('has-hover');
-      }, 500);
-    }
-
-    headerLogo.addEventListener('mouseenter', handleMouseEnter);
-    headerLogo.addEventListener('mouseleave', handleMouseLeave);
-  }
+  });
 </script>
 
 <div data-js="header-logo" class="header-logo text-white">
@@ -28,6 +30,7 @@
     viewBox="0 0 165 50"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Yellowball Logo</title>
     <path
       class="header-logo__letter header-logo__letter--y"
       d="M34.3481 17.6438H30.7814L26.9 28.612L22.6524 17.6438H19L25.2299 32.4178C25.1314 32.6408 23.2745 36.9792 23.2745 36.9792H26.6724L34.3467 17.6438H34.3481Z"
@@ -132,6 +135,22 @@
       &:hover {
         animation: header-grow-enter 0.5s
           theme('transitionTimingFunction.smooth') both;
+      }
+
+      /* Prevent the hover animation flicker, relative to link */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--end-width);
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        pointer-events: auto;
       }
     }
 
