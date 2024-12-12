@@ -54,26 +54,20 @@ export default defineConfig({
       indent_empty_lines: false,
     }),
     favicons({
-      input: { 
-        favicons: ['./src/icons/favicon.svg']
-      },
-      name: "Yellowball",
-      short_name: "Yellowball",
-      // icons: {
-      //   favicons: true,
-      //   android: true,
-      //   appleIcon: true,
-      //   appleStartup: true,
-      //   windows: true,
-      //   yandex: true,
+      masterPicture: './src/icons/favicon.svg',
+      emitAssets: true,
+      faviconsDarkMode: false,
+      appName: 'Yellowball',
+      appShortName: 'Yellowball',
+      appDescription: '',
+      lang: 'en-GB',
+      background: 'transparent',
+      theme_color: '#fff',
+      // input: { 
+      //   favicons: ['./src/icons/favicon.svg']
       // },
-      // pixel_art: true,
-      // manifestMaskable: false,
-      // output: {
-      //   images: true,
-      //   files: true,
-      //   html: true,
-      // },
+      // name: "Yellowball",
+      // short_name: "Yellowball",
     }),
     tailwind({
       /**
