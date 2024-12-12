@@ -104,6 +104,8 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
   .header-navigation__scroll {
     @media screen(mdMax) {
+      pointer-events: auto;
+
       @apply relative
         p-40
         rounded-16
@@ -114,10 +116,6 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
         max-h-full
         overflow-y-auto
         overscroll-y-contain;
-    }
-
-    @media screen(mdMax) {
-      @apply relative;
     }
   }
 

@@ -52,7 +52,12 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
   }
 </script>
 
-<header x-data class="header" data-js="header-pro">
+<header
+  x-data
+  :class="{'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen}"
+  class="header"
+  data-js="header-pro"
+>
   <nav class="header__menu-mobile">
     <HeaderBackground>
       <a class="header__menu-mobile__logo" href="/">
@@ -78,6 +83,10 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
   </nav>
 
   <HeaderNavigation />
+
+  <button @click="$store.navigation.closeMenu()" class="header__close">
+    Close menus
+  </button>
 </header>
 
 <style is:global>
@@ -86,6 +95,8 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
     top: 0;
     z-index: 50;
     padding: theme('spacing.12');
+    pointer-events: none;
+    isolation: isolate;
 
     @media screen(md) {
       padding: theme('spacing.18');
@@ -99,6 +110,11 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
     @media screen(md) {
       display: none;
     }
+  }
+
+  .header__menu-mobile__logo,
+  .header__menu-mobile__list {
+    pointer-events: auto;
   }
 
   .header__menu-mobile__logo {
@@ -115,5 +131,22 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
     padding: 2px;
     margin: -2px;
     height: 100%;
+  }
+
+  .header__close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+
+    .header.is-open &,
+    .header.is-submenu-open & {
+      pointer-events: auto;
+    }
   }
 </style>

@@ -119,6 +119,8 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
 <style>
   .navigation-list {
     @media screen(md) {
+      pointer-events: auto;
+
       @apply relative
         flex
         gap-4;
