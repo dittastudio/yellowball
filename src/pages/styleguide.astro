@@ -60,6 +60,8 @@ const classCardCSSCols =
 
         <Fragment slot="content">
           <RichText>
+            <h3>Modale</h3>
+
             <p>
               Lorem ipsum odor amet, consectetuer adipiscing elit. Diam maximus
               sociosqu luctus interdum nostra volutpat fames ipsum porttitor. Ad
@@ -96,6 +98,8 @@ const classCardCSSCols =
               bibendum luctus curabitur porta.
             </p>
 
+            <h4>Avanti amico mio</h4>
+
             <p>
               Ad sit class taciti duis potenti hac rutrum. Duis pellentesque
               habitasse phasellus risus rhoncus curae lorem. Posuere tempor
@@ -127,6 +131,8 @@ const classCardCSSCols =
               suspendisse elementum. Penatibus semper class nibh; urna iaculis
               ridiculus convallis laoreet.
             </p>
+
+            <h4>È stato un piacere</h4>
 
             <p>
               Ridiculus porta molestie ultrices molestie ad dis praesent quam.
@@ -161,6 +167,8 @@ const classCardCSSCols =
               orci.
             </p>
 
+            <h6>Finalmente</h6>
+
             <p>
               Rhoncus mus per erat magna vitae porta habitant ad adipiscing.
               Litora feugiat dapibus inceptos varius condimentum luctus nec.
@@ -178,38 +186,159 @@ const classCardCSSCols =
     </StyleguideSection>
 
     <StyleguideSection title="RichText">
-      <RichText>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
+      <div class={classCardGrid1}>
+        <RichText>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-          voluptas cumque minus eaque quas, quaerat dignissimos, possimus
-          laboriosam recusandae, fuga ea!
-        </p>
+          <p>
+            Lorem ipsum <em>dolor sit amet consectetur</em> adipisicing elit. Aliquam
+            voluptas <strong>cumque minus eaque</strong> quas, quaerat dignissimos,
+            possimus laboriosam recusandae, fuga ea! Hendrerit quaerat dui senectus
+            dignissimos
+            <a href="#">tempor pellentesque</a> cursus porttitor.
+          </p>
 
-        <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+          <p>
+            Litora conubia hendrerit finibus fringilla commodo posuere.
+            Hendrerit tempor pellentesque cursus porttitor dui senectus habitant
+            pulvinar. Vitae egestas velit <strong>mauris maecenas</strong> sapien.
+            Ullamcorper tempus potenti imperdiet pretium eros porta tempor. Hendrerit
+            turpis aliquet at fringilla proin. Luctus fusce finibus nulla posuere
+            lacus sagittis odio ut turpis.
+          </p>
 
-        <Fragment slot="ctas">
-          <a href="/">
-            <Button text="Primary CTA" hasArrow />
-          </a>
+          <ul>
+            <li>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Inventore perspiciatis <em>ducimus ad mollitia</em> repudiandae repellendus
+              aliquid unde, delectus minima, nostrum dolorem rerum vel ex rem atque.
+              Doloremque beatae eos ad?
+            </li>
+            <li>Voluptatem voluptatum quibusdam quia nemo doloribus.</li>
+            <li>Ultricies luctus dictumst hendrerit dignissim fusce</li>
+          </ul>
 
-          <a href="/">
-            <Button
-              options={{
-                textColor: 'white',
-                bgColor: 'navy',
-                borderColor: 'white',
-              }}
-              text="Secondary CTA"
-            />
-          </a>
-        </Fragment>
-      </RichText>
+          <p>
+            Odio molestie praesent enim malesuada ante placerat ligula. Eu
+            imperdiet nascetur augue senectus quisque donec ad sapien urna.
+            Iaculis posuere <strong>ullamcorper placerat</strong> pellentesque penatibus.
+            Egestas faucibus ipsum lorem tincidunt nisi. Diam ligula sed natoque
+            eu mauris per primis. Ex natoque ad sed ipsum aliquet netus duis duis.
+          </p>
+
+          <ol>
+            <li>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Inventore perspiciatis ducimus, ad mollitia repudiandae
+              repellendus aliquid unde, delectus minima, nostrum dolorem rerum
+              vel ex rem atque. Doloremque beatae eos ad?
+            </li>
+            <li>Voluptatem voluptatum quibusdam quia nemo doloribus.</li>
+            <li>Ultricies luctus dictumst hendrerit dignissim fusce</li>
+          </ol>
+
+          <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+          <Fragment slot="ctas">
+            <a href="/">
+              <Button text="Primary CTA" hasArrow />
+            </a>
+
+            <a href="/">
+              <Button
+                options={{
+                  textColor: 'white',
+                  bgColor: 'navy',
+                  borderColor: 'white',
+                }}
+                text="Secondary CTA"
+              />
+            </a>
+          </Fragment>
+        </RichText>
+
+        <div class="light p-40 bg-cream">
+          <RichText>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+
+            <p>
+              Lorem ipsum <em>dolor sit amet consectetur</em> adipisicing elit. Aliquam
+              voluptas <strong>cumque minus eaque</strong> quas, quaerat dignissimos,
+              possimus laboriosam recusandae, fuga ea! Hendrerit quaerat dui senectus
+              dignissimos
+              <a href="#">tempor pellentesque</a> cursus porttitor.
+            </p>
+
+            <p>
+              Litora conubia hendrerit finibus fringilla commodo posuere.
+              Hendrerit tempor pellentesque cursus porttitor dui senectus
+              habitant pulvinar. Vitae egestas velit <strong>
+                mauris maecenas
+              </strong> sapien. Ullamcorper tempus potenti imperdiet pretium eros
+              porta tempor. Hendrerit turpis aliquet at fringilla proin. Luctus fusce
+              finibus nulla posuere lacus sagittis odio ut turpis.
+            </p>
+
+            <ul>
+              <li>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Inventore perspiciatis <em>ducimus ad mollitia</em> repudiandae repellendus
+                aliquid unde, delectus minima, nostrum dolorem rerum vel ex rem atque.
+                Doloremque beatae eos ad?
+              </li>
+              <li>Voluptatem voluptatum quibusdam quia nemo doloribus.</li>
+              <li>Ultricies luctus dictumst hendrerit dignissim fusce</li>
+            </ul>
+
+            <p>
+              Odio molestie praesent enim malesuada ante placerat ligula. Eu
+              imperdiet nascetur augue senectus quisque donec ad sapien urna.
+              Iaculis posuere <strong>ullamcorper placerat</strong> pellentesque
+              penatibus. Egestas faucibus ipsum lorem tincidunt nisi. Diam ligula
+              sed natoque eu mauris per primis. Ex natoque ad sed ipsum aliquet netus
+              duis duis.
+            </p>
+
+            <ol>
+              <li>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Inventore perspiciatis ducimus, ad mollitia repudiandae
+                repellendus aliquid unde, delectus minima, nostrum dolorem rerum
+                vel ex rem atque. Doloremque beatae eos ad?
+              </li>
+              <li>Voluptatem voluptatum quibusdam quia nemo doloribus.</li>
+              <li>Ultricies luctus dictumst hendrerit dignissim fusce</li>
+            </ol>
+
+            <p>Eum atque aliquam quidem magnam fuga accusamus neque modi!</p>
+
+            <Fragment slot="ctas">
+              <a href="/">
+                <Button text="Primary CTA" hasArrow />
+              </a>
+
+              <a href="/">
+                <Button
+                  options={{
+                    textColor: 'white',
+                    bgColor: 'navy',
+                    borderColor: 'white',
+                  }}
+                  text="Secondary CTA"
+                />
+              </a>
+            </Fragment>
+          </RichText>
+        </div>
+      </div>
     </StyleguideSection>
 
     <StyleguideSection title="Logo">
