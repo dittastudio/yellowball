@@ -76,6 +76,7 @@ export default {
       'blue-google': "#1a0dab",
       purple: "#A58EF7",
       navy: "#1C1D2C",
+      navyRgba: 'rgb(28 29 44 / <alpha-value>)',
       'navy-light': "#2A2B3A",
       'navy-lighter': "#3E3E4E",
       'navy-lightest': "#474747",
