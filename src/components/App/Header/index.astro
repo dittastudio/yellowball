@@ -1,9 +1,8 @@
 ---
-import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
-import AppHeaderBackground from '@/components/App/Header/Background.astro';
-import AppHeaderMenuButton from '@/components/App/Header/MenuButton.astro';
-import AppHeaderButton from '@/components/App/HeaderButton.astro';
-import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
+import HeaderLogo from '@/components/App/Header/Logo.astro';
+import HeaderBackground from '@/components/App/Header/Background.astro';
+import HeaderMenuButton from '@/components/App/Header/MenuButton.astro';
+import HeaderNavigation from '@/components/App/Header/Navigation.astro';
 ---
 
 <script>
@@ -59,18 +58,18 @@ import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
 
 <header x-data class="header" data-js="header-pro">
   <nav class="header__menu-mobile">
-    <AppHeaderBackground>
+    <HeaderBackground>
       <a class="header__menu-mobile__logo" href="/">
-        <AppHeaderLogo />
+        <HeaderLogo />
       </a>
-    </AppHeaderBackground>
+    </HeaderBackground>
 
-    <AppHeaderBackground>
+    <HeaderBackground>
       <div class="header__menu-mobile__list">
         <a class="header__menu-mobile__list__item" href="/">
-          <AppHeaderButton type="alt" color="navy">
-            Work with us
-          </AppHeaderButton>
+          <!-- <HeaderMenuButton type="alt" color="navy"> -->
+          Work with us
+          <!-- </HeaderMenuButton> -->
         </a>
 
         <button
@@ -78,57 +77,13 @@ import AppHeaderNavigation from '@/components/App/Header/Navigation.astro';
           type="button"
           class="header__menu-mobile__list__item"
         >
-          <AppHeaderMenuButton />
+          <HeaderMenuButton />
         </button>
       </div>
-    </AppHeaderBackground>
+    </HeaderBackground>
   </nav>
 
-  <AppHeaderNavigation />
-
-  <!-- {
-    navList.map(({ menuItems }) => (
-      <nav>
-        <ul>
-          {
-            menuItems.map(({ text, url, subMenu }) => (
-              <li>
-                {
-                  subMenu ? (
-                    <button type="button">{text}</button>
-
-                    <nav>
-                      <button>Back</button>
-
-                      {
-                        subMenu.map(({ heading, subMenuItems }) => (
-                          <div>
-                            <h5>{heading}</h5>
-
-                            <ul>
-                              {
-                                subMenuItems.map(({ text, url }) => (
-                                  <li>
-                                    <a href={url}>{text}</a>
-                                  </li>
-                                ))
-                              }
-                            </ul>
-                          </div>
-                        ))
-                      }
-                    </nav>
-                  ) : (
-                    <a href={url}>{text}</a>
-                  )
-                }
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-    ))
-  } -->
+  <HeaderNavigation />
 </header>
 
 <style is:global>

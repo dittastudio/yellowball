@@ -1,8 +1,8 @@
 ---
-import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
-import AppHeaderBackground from '@/components/App/Header/Background.astro';
-import AppHeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
-import AppHeaderNavigationListSubMenu from '@/components/App/Header/NavigationListSubmenu.astro';
+import HeaderLogo from '@/components/App/Header/Logo.astro';
+import HeaderBackground from '@/components/App/Header/Background.astro';
+import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
+import HeaderNavigationListSubMenu from '@/components/App/Header/NavigationListSubMenu.astro';
 
 interface Props {
   menuItems: HeaderNavigationItem[];
@@ -88,12 +88,12 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
   });
 </script>
 
-<AppHeaderBackground isDesktopOnly>
+<HeaderBackground isDesktopOnly>
   <nav data-js="navigation-list" class="navigation-list">
     {
       hasLogo && (
         <a data-js-navigation-list-logo class="mdMax:hidden relative" href="/">
-          <AppHeaderLogo />
+          <HeaderLogo />
           <span class="sr-only">Home</span>
         </a>
       )
@@ -106,17 +106,17 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
             {
               subMenu ? (
                 <button class="navigation-list__button" type="button">
-                  <AppHeaderNavigationListButton hasSubmenu>
+                  <HeaderNavigationListButton hasSubmenu>
                     {text}
-                  </AppHeaderNavigationListButton>
+                  </HeaderNavigationListButton>
                 </button>
 
-                <AppHeaderNavigationListSubMenu {subMenu} />
+                <HeaderNavigationListSubMenu {subMenu} />
               ) : (
                 <a class="navigation-list__button" href={url}>
-                  <AppHeaderNavigationListButton type={type || 'transparent'}>
+                  <HeaderNavigationListButton type={type || 'transparent'}>
                     {text}
-                  </AppHeaderNavigationListButton>
+                  </HeaderNavigationListButton>
                 </a>
               )
             }
@@ -131,7 +131,7 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     >
     </span>
   </nav>
-</AppHeaderBackground>
+</HeaderBackground>
 
 <style>
   .navigation-list {

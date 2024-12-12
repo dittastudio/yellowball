@@ -1,7 +1,7 @@
 ---
 import { navList } from './data';
 
-import AppHeaderNavigationList from '@/components/App/Header/NavigationList.astro';
+import HeaderNavigationList from '@/components/App/Header/NavigationList.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
 ---
 
@@ -10,7 +10,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
     <div class="header-navigation__case">
       {
         navList.map(({ menuItems }, index) => (
-          <AppHeaderNavigationList {menuItems} hasLogo={index === 0} />
+          <HeaderNavigationList {menuItems} hasLogo={index === 0} />
         ))
       }
     </div>
