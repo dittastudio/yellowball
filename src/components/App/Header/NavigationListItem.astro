@@ -73,7 +73,7 @@ const classesHover = {
                 </h5>
 
                 <ul class="navigation-list__submenu__list w-full flex flex-col -my-12">
-                  {subMenuItems.map(({ text, url, color }) => (
+                  {subMenuItems.map(({ text, url, color, shape }) => (
                     <li>
                       <a
                         class:list={[
@@ -90,7 +90,7 @@ const classesHover = {
                       <div class="navigation-list__submenu__list-link__shape">
                         <ShapeGradient
                           data-js-block-faqs-icon
-                          shape="triangle"
+                          shape={shape || 'triangle'}
                           color={color || 'yellow'}
                           class="txranslate-x-[20%] xmd:translate-x-[35%] xtranslate-y-[10%] size-[250px] md:size-[200px]"
                         />
@@ -100,13 +100,6 @@ const classesHover = {
                 </ul>
               </div>
             ))}
-
-            {/* <ShapeGradient
-              data-js-block-faqs-icon
-              shape="triangle"
-              color="yellow"
-              class="absolute bottom-0 right-0 translate-x-[20%] md:translate-x-[35%] translate-y-[10%] -z-2 size-[250px] md:size-[200px]"
-            /> */}
           </div>
         </nav>
       </div>

@@ -5,7 +5,7 @@ interface Window {
 }
 
 type ColorTypes = 'current' | 'transparent' | 'offblack' | 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'blue-google' | 'purple' | 'navy' | 'navy-light' | 'navy-lighter' | 'navy-lightest' | 'cream' | 'grey' | 'grey-light'
-type ShapeTypes = 'circle' | 'square' | 'triangle'
+type ShapeTypes = 'circle' | 'square' | 'triangle' | 'pentagon'
 type ThemeTypes = 'light' | 'dark'
 
 interface ImageObject {
@@ -24,6 +24,7 @@ interface HeaderNavigationSubMenuItem {
   text: string;
   url: string;
   color?: ColorTypes;
+  shape?: ShapeTypes;
 }
 
 interface HeaderNavigationSubMenu {
