@@ -1,16 +1,15 @@
 ---
+import { componentProperties } from '@/utils/helpers';
 import CardProfile from '@/components/Card/Profile.astro';
 import CardProfileSummary from '@/components/Card/ProfileSummary.astro';
 
 interface Props {
   slides: any[];
   color?: ColorTypes;
-  class?: string;
 }
 
-const { slides, color = 'green', class: className } = Astro.props as Props;
-
-const classes = ['carousel-profile', className];
+const { slides, color = 'green', ...rest } = Astro.props as Props;
+const { classes, attributes } = componentProperties(['carousel-profile'], rest);
 ---
 
 <script>
@@ -89,11 +88,12 @@ const classes = ['carousel-profile', className];
   data-css="carousel-profile"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
+  {...attributes}
 >
   <div data-js-swiper class="carousel-profile__swiper swiper">
     <div class="carousel-profile__swiper-wrapper swiper-wrapper">
       {
-        slides?.map(slide =>
+        slides.map(slide =>
           slide.type === 'profile' ? (
             <div class="carousel-profile__swiper-slide swiper-slide">
               <CardProfile role={slide.role} name={slide.name} {color}>

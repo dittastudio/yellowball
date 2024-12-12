@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { twMerge } from 'tailwind-merge';
+import { componentProperties } from '@/utils/helpers';
 
 interface Base {
   headline?: string;
@@ -9,13 +9,13 @@ interface Base {
 type Props = HTMLAttributes<'div'> & Base;
 
 const { headline = '', ...rest } = Astro.props as Props;
-const classes = ['flex flex-col justify-start gap-20', rest.class].filter(
-  Boolean,
+const { classes, attributes } = componentProperties(
+  ['flex flex-col justify-start gap-20'],
+  rest,
 );
-const { class: className, ...attrs } = rest;
 ---
 
-<div class:list={twMerge(classes)} {...attrs}>
+<div class:list={classes} {...attributes}>
   {
     headline && (
       <p class="font-heading text-18 lg:text-22 text-balance">{headline}</p>

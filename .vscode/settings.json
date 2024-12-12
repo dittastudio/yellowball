@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 13,
+  "editor.fontSize": 12.5,
   "editor.fontFamily": "Geist Mono, Menlo, Monaco, 'Courier New', monospace",
   "typescript.suggest.autoImports": false,
   "javascript.suggest.autoImports": false,
