@@ -18,25 +18,6 @@ const classesHover = {
 };
 ---
 
-<script>
-  // import gsap from 'gsap';
-  // import Alpine from 'alpinejs';
-
-  // Alpine.data('navigationListItem', () => ({
-  //   init() {
-  //     this.$watch('$store.navigation.isSubMenuOpen', value => {
-  //       if (value) {
-  //         gsap.
-
-  //         console.log('Submenu open list item', value);
-  //       } else {
-  //         console.log('Submenu closed list item', value);
-  //       }
-  //     });
-  //   },
-  // }));
-</script>
-
 {
   menuItem.subMenu ? (
     <div
@@ -54,7 +35,7 @@ const classesHover = {
         </HeaderNavigationListButton>
       </button>
 
-      <div class="navigation-list__submenu">
+      <div data-js-navigation-list-submenu class="navigation-list__submenu">
         <nav class="flex flex-col gap-30">
           <button
             @click="$store.navigation.toggleSubMenu()"
