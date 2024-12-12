@@ -1,13 +1,15 @@
 ---
+import AppHeaderLogo from '@/components/App/HeaderLogo.astro';
 import AppHeaderBackground from '@/components/App/Header/Background.astro';
 import AppHeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
 import AppHeaderNavigationListSubMenu from '@/components/App/Header/NavigationListSubmenu.astro';
 
 interface Props {
   menuItems: HeaderNavigationItem[];
+  hasLogo?: boolean;
 }
 
-const { menuItems } = Astro.props as Props;
+const { menuItems, hasLogo = false } = Astro.props as Props;
 ---
 
 <script>
@@ -18,10 +20,13 @@ const { menuItems } = Astro.props as Props;
   ) as NodeListOf<HTMLElement>;
 
   navs.forEach(nav => {
+    const navLogo = nav.querySelector('[data-js-navigation-list-logo]');
+    const navList = nav.querySelector('[data-js-navigation-list-list]');
     const navItems = nav.querySelectorAll('[data-js-navigation-list-item]');
     const pill = nav.querySelector('[data-js-navigation-list-pill]');
 
     let pillActive = false;
+
     const duration = 0.3;
     const ease = 'back.out(0.6)';
 
@@ -61,18 +66,41 @@ const { menuItems } = Astro.props as Props;
       });
     };
 
-    nav?.addEventListener('mouseleave', () => (pillActive = false));
+    navList?.addEventListener('mouseleave', () => pillActive = false);
 
     navItems?.forEach(item => {
       item.addEventListener('mouseenter', e => updatePill(e.target));
       item.addEventListener('mouseleave', hidePill);
+    });
+
+
+    let timeout: NodeJS.Timeout;
+
+    navLogo?.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
+      navList?.classList.add('lg:pointer-events-none');
+    });
+
+    navLogo?.addEventListener('mouseleave', () => {
+      timeout = setTimeout(() => {
+        navList?.classList.remove('lg:pointer-events-none');
+      }, 500);
     });
   });
 </script>
 
 <AppHeaderBackground isDesktopOnly>
   <nav data-js="navigation-list" class="navigation-list">
-    <ul class="navigation-list__list">
+    {
+      hasLogo && (
+        <a data-js-navigation-list-logo class="hidden md:block" href="/">
+          <AppHeaderLogo />
+          <span class="sr-only">Home</span>
+        </a>
+      )
+    }
+
+    <ul data-js-navigation-list-list class="navigation-list__list">
       {
         menuItems.map(({ text, url, type, subMenu }) => (
           <li data-js-navigation-list-item class={type === 'navy' ? 'mdMax:hidden' : ''}>
@@ -109,8 +137,16 @@ const { menuItems } = Astro.props as Props;
 <style>
   .navigation-list {
     @media screen(md) {
-      @apply relative;
+      @apply relative
+        flex
+        gap-4;
     }
+  }
+
+  .navigation-list__logo  {
+    @apply block
+      p-2
+      -m-2;
   }
 
   .navigation-list__list {
@@ -138,7 +174,7 @@ const { menuItems } = Astro.props as Props;
   .navigation-list__pill {
     @apply block
       bg-yellow
-      rounded-[12px]
+      rounded-12
       h-full
       absolute
       top-0
