@@ -136,6 +136,22 @@
         animation: header-grow-enter 0.5s
           theme('transitionTimingFunction.smooth') both;
       }
+
+      /* Prevent the hover animation flicker */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--end-width);
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        pointer-events: auto;
+      }
     }
 
     @media not (hover: hover) {
