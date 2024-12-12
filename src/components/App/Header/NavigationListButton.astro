@@ -8,12 +8,15 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
 ---
 
 <span
+  x-data
+  x-bind:class="$store.navigation.isSubMenuOpen && 'is-active'"
   class:list={[
     'navigation-list-button',
     'flex items-center gap-8 h-inherit',
     'font-heading font-bold',
     'text-16 md:text-13 lg:text-15 md:px-20 md:rounded-12 md:min-h-50',
     type === 'navy' ? 'is-type-navy md:px-28' : 'md:px-20',
+    hasSubmenu && 'has-submenu',
   ]}
 >
   {
@@ -54,6 +57,10 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
         :global(button):not(:disabled):hover & {
           color: theme('colors.navy');
         }
+      }
+
+      &.has-submenu.is-active {
+        color: theme('colors.navy');
       }
     }
 

@@ -9,14 +9,6 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 <script>
   import Alpine from 'alpinejs';
 
-  type NavigationStore = {
-    isMenuOpen: boolean;
-    isSubMenuOpen: boolean;
-    toggleMenu: () => void;
-    closeMenu: () => void;
-    toggleSubMenu: () => void;
-  };
-
   Alpine.store('navigation', {
     isMenuOpen: false,
     isSubMenuOpen: false,
@@ -25,8 +17,10 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
       this.isMenuOpen = !this.isMenuOpen;
       console.log('Is Header Open:', this.isMenuOpen);
 
-      if (this.isMenuOpen) window.lenis.stop();
-      else window.lenis.start();
+      if (this.isMenuOpen) {
+        window.lenis.stop();
+        this.isSubMenuOpen = false;
+      } else window.lenis.start();
     },
 
     closeMenu() {

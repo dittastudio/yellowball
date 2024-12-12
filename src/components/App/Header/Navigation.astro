@@ -5,7 +5,23 @@ import HeaderNavigationList from '@/components/App/Header/NavigationList.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
 ---
 
-<div class="header-navigation">
+<script>
+  import Alpine from 'alpinejs';
+
+  Alpine.data('headerNavigation', () => ({
+    init() {
+      const $storeNavigation = this.$store.navigation as NavigationStore;
+
+      console.log('state', $storeNavigation.isMenuOpen);
+    },
+  }));
+</script>
+
+<div
+  x-data="headerNavigation"
+  class="header-navigation"
+  :class="$store.navigation.isMenuOpen && 'is-open'"
+>
   <div data-lenis-prevent class="header-navigation__scroll">
     <div class="header-navigation__case">
       {
@@ -42,6 +58,15 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       top: var(--header-height);
       height: calc(100vh - var(--header-height));
       height: calc(100svh - var(--header-height));
+      opacity: 0;
+      translate: 0 -16px 0;
+      transition: all 0.25s theme('transitionTimingFunction.outBack');
+
+      &.is-open {
+        opacity: 1;
+        translate: 0 0 0;
+        transition: all 0.5s theme('transitionTimingFunction.outBack');
+      }
     }
   }
 

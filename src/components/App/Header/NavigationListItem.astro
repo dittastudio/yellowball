@@ -1,0 +1,144 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
+import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
+
+interface Props {
+  menuItem: HeaderNavigationItem;
+}
+
+const { menuItem } = Astro.props as Props;
+---
+
+<script>
+  import Alpine from 'alpinejs';
+
+  Alpine.data('navigationListItem', () => ({
+    init() {
+      const $storeNavigation = this.$store.navigation as NavigationStore;
+
+      console.log('state', $storeNavigation.isMenuOpen);
+    },
+  }));
+</script>
+
+{
+  menuItem.subMenu ? (
+    <div
+      x-data="navigationListItem"
+      class="navigation-list-item"
+      x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
+    >
+      <button
+        @click="$store.navigation.toggleSubMenu()"
+        class="navigation-list-item__button"
+        type="button"
+      >
+        <HeaderNavigationListButton hasSubmenu>
+          {menuItem.text}
+        </HeaderNavigationListButton>
+      </button>
+
+      <div class="navigation-list__submenu">
+        <nav class="flex flex-col gap-30">
+          <button
+            @click="$store.navigation.toggleSubMenu()"
+            class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey"
+            type="button"
+          >
+            <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
+            Back
+          </button>
+
+          <div class="flex flex-col md:flex-row gap-50 md:gap-80 md:pr-160">
+            {menuItem.subMenu.map(({ heading, subMenuItems }) => (
+              <div class="flex flex-col items-start gap-y-24">
+                <h5 class="font-heading font-semibold text-11 opacity-50">
+                  {heading}
+                </h5>
+
+                <ul class="w-full flex flex-col -my-12">
+                  {subMenuItems.map(({ text, url }) => (
+                    <li>
+                      <a
+                        class="block font-heading font-semibold text-18 py-12"
+                        href={url}
+                      >
+                        {text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <ShapeGradient
+              data-js-block-faqs-icon
+              shape="triangle"
+              color="yellow"
+              class="absolute bottom-0 right-0 translate-x-[20%] md:translate-x-[35%] translate-y-[10%] -z-2 size-[250px] md:size-[200px]"
+            />
+          </div>
+        </nav>
+      </div>
+    </div>
+  ) : (
+    <a class="navigation-list-item__button" href={menuItem.url}>
+      <HeaderNavigationListButton type={menuItem.type || 'transparent'}>
+        {menuItem.text}
+      </HeaderNavigationListButton>
+    </a>
+  )
+}
+
+<style is:global>
+  .navigation-list-item__button {
+    @apply block
+      w-full
+      py-12;
+
+    @media screen(md) {
+      @apply block
+        w-auto
+        p-2
+        -m-2;
+    }
+  }
+
+  .navigation-list__submenu {
+    @apply absolute
+      top-0
+      left-0
+      overflow-hidden
+      w-full
+      p-40;
+
+    max-width: calc(100vw - ((12px * 2) + 2px));
+    translate: 16px 0 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: theme('colors.navy-light');
+    z-index: 1;
+    transition: all theme('transitionDuration.500')
+      theme('transitionTimingFunction.outBack');
+
+    .navigation-list-item.is-submenu-open & {
+      opacity: 1;
+      visibility: visible;
+      translate: 0 0 0;
+    }
+
+    @media screen(md) {
+      @apply top-[calc(var(--header-height)_-_22px)]
+        -left-4
+        w-fit
+        bg-navy-light
+        border
+        border-white/10
+        rounded-16
+        whitespace-nowrap;
+
+      max-width: calc(100vw - 36px);
+    }
+  }
+</style>

@@ -41,3 +41,11 @@ interface HeaderNavigation {
   position: 'left' | 'right';
   menuItems: HeaderNavigationItem[];
 }
+
+type NavigationStore = {
+  isMenuOpen: boolean;
+  isSubMenuOpen: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+  toggleSubMenu: () => void;
+};
