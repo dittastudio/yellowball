@@ -14,8 +14,12 @@
   .prose {
     @apply prose-headings:font-heading prose-headings:font-semibold text-15 md:text-18 prose-h1:text-fluid-h1 prose-h2:text-fluid-h2 prose-h3:text-fluid-h3 prose-h4:text-fluid-h4 prose-h5:text-fluid-h5 prose-h6:text-fluid-h6;
 
-    @apply [&_:is(p,li)]:opacity-70;
+    @apply [&_strong]:font-bold;
+    @apply [&_em]:italic;
+    @apply [&_:is(p,li)]:text-grey light:[&_:is(p,li)]:text-navy-lightest;
+    @apply [&_:is(strong,a,em)]:text-white light:[&_:is(strong,a,em)]:text-navy;
     @apply [&_:is(h1,h2,h3,h4,h5,h6)]:mt-0 [&_:is(ul,ol,p)+:is(h1,h2,h3,h4,h5,h6)]:mt-50 [&_:is(h1,h2,h3,h4,h5,h6)]:mb-15 lg:[&_:is(h1,h2,h3,h4,h5,h6)]:mb-28;
+    @apply [&_:is(h1,h2,h3,h4,h5,h6)]:text-white light:[&_:is(h1,h2,h3,h4,h5,h6)]:text-navy;
     @apply [&_li]:mt-0 [&_li]:mb-10 [&_li]:pl-5;
     @apply [&_:is(ul,ol,p)]:mt-0 [&_:is(ul,ol,p)]:mb-20 lg:[&_:is(ul,ol,p)]:mb-28;
     @apply [&_p+:is(ul,ol)]:pt-5 lg:[&_p+:is(ul,ol)]:pt-0;
