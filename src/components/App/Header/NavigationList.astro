@@ -1,7 +1,6 @@
 ---
 import HeaderLogo from '@/components/App/Header/Logo.astro';
 import HeaderBackground from '@/components/App/Header/Background.astro';
-// import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
 import NavigationListItem from '@/components/App/Header/NavigationListItem.astro';
 
 interface Props {
@@ -31,7 +30,9 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     const ease = 'back.out(0.6)';
 
     const updatePill = (target: any) => {
-      const { offsetWidth, offsetLeft } = target.children[0].children[0];
+      const { offsetWidth, offsetLeft } = target.querySelector(
+        '[data-js=navigation-list-button]',
+      );
 
       if (pillActive) {
         gsap.to(pill, {
@@ -42,6 +43,8 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
           ease,
         });
       } else {
+        pillActive = false;
+
         gsap.set(pill, {
           width: offsetWidth,
           x: offsetLeft,
@@ -69,7 +72,14 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     navList?.addEventListener('mouseleave', () => (pillActive = false));
 
     navItems?.forEach(item => {
-      item.addEventListener('mouseenter', e => updatePill(e.target));
+      item.addEventListener('mouseenter', event => {
+        const target = (event.target as Element).querySelector(
+          '[data-js-navigation-list-item-pill]',
+        ) as HTMLElement;
+
+        if (target) updatePill(target);
+      });
+
       item.addEventListener('mouseleave', hidePill);
     });
 
