@@ -2,7 +2,6 @@
 import 'lenis/dist/lenis.css';
 import '@/assets/styles/global.css';
 import LayoutLines from '@/components/Layout/Lines.astro';
-import AppHeader from '@/components/App/Header/index.astro';
 
 interface Props {
   title: string;
@@ -56,8 +55,6 @@ const { title } = Astro.props;
 
   <body class="font-body text-16 antialiased min-h-screen">
     <LayoutLines>
-      <AppHeader />
-
       <slot />
     </LayoutLines>
   </body>

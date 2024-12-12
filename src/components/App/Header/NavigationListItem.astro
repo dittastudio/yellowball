@@ -26,6 +26,7 @@ const classesHover = {
       x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
     >
       <button
+        data-js-navigation-list-item-pill
         @click="$store.navigation.toggleSubMenu()"
         class="navigation-list-item__button"
         type="button"
@@ -86,7 +87,11 @@ const classesHover = {
       </div>
     </div>
   ) : (
-    <a class="navigation-list-item__button" href={menuItem.url}>
+    <a
+      data-js-navigation-list-item-pill
+      class="navigation-list-item__button"
+      href={menuItem.url}
+    >
       <HeaderNavigationListButton type={menuItem.type || 'transparent'}>
         {menuItem.text}
       </HeaderNavigationListButton>

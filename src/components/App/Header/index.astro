@@ -67,7 +67,7 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
   <HeaderNavigation />
 
   <button @click="$store.navigation.closeMenu()" class="header__close">
-    Close menus
+    <span class="sr-only">Close menus</span>
   </button>
 </header>
 
@@ -126,9 +126,19 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
     cursor: default;
     pointer-events: none;
 
-    .header.is-open &,
-    .header.is-submenu-open & {
-      pointer-events: auto;
+    @media screen(md) {
+      .header.is-submenu-open & {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    @media screen(mdMax) {
+      .header.is-open &,
+      .header.is-submenu-open & {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 </style>
