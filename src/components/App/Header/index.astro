@@ -15,7 +15,6 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      console.log('Is Header Open:', this.isMenuOpen);
 
       if (this.isMenuOpen) {
         window.lenis.stop();
@@ -31,7 +30,6 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 
     toggleSubMenu() {
       this.isSubMenuOpen = !this.isSubMenuOpen;
-      console.log('Is SubMenu Open:', this.isSubMenuOpen);
     },
   } as NavigationStore);
 
@@ -41,6 +39,7 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 
   const handleMediaChange = (event: MediaQueryListEvent) => {
     if (event.matches || !event.matches) {
+      // console.log('Close Menus Event:', event.matches);
       $storeNavigation.closeMenu();
     }
   };
@@ -48,6 +47,7 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
   screenMd.addEventListener('change', handleMediaChange);
 
   if (screenMd.matches || !screenMd.matches) {
+    // console.log('Close Menus Init:', screenMd.matches);
     $storeNavigation.closeMenu();
   }
 </script>

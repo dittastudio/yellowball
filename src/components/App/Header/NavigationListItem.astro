@@ -86,18 +86,27 @@ const classesHover = {
                       >
                         {text}
                       </a>
+
+                      <div class="navigation-list__submenu__list-link__shape">
+                        <ShapeGradient
+                          data-js-block-faqs-icon
+                          shape="triangle"
+                          color={color || 'yellow'}
+                          class="txranslate-x-[20%] xmd:translate-x-[35%] xtranslate-y-[10%] size-[250px] md:size-[200px]"
+                        />
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
 
-            <ShapeGradient
+            {/* <ShapeGradient
               data-js-block-faqs-icon
               shape="triangle"
               color="yellow"
               class="absolute bottom-0 right-0 translate-x-[20%] md:translate-x-[35%] translate-y-[10%] -z-2 size-[250px] md:size-[200px]"
-            />
+            /> */}
           </div>
         </nav>
       </div>
@@ -168,13 +177,43 @@ const classesHover = {
   .navigation-list__submenu__list-link {
     opacity: 1;
     transition:
-      opacity theme('transitionDuration.150')
+      opacity theme('transitionDuration.500')
         theme('transitionTimingFunction.smooth'),
       color theme('transitionDuration.150')
         theme('transitionTimingFunction.smooth');
 
     .navigation-list__submenu__list:hover &:not(:hover) {
       opacity: 0.25;
+    }
+  }
+
+  .navigation-list__submenu__list-link__shape {
+    position: absolute;
+    bottom: -5%;
+    right: -7.5%;
+    opacity: 0;
+    z-index: -1;
+
+    @media screen(md) {
+      right: -10%;
+    }
+
+    scale: 0.8;
+    pointer-events: none;
+    transition:
+      opacity theme('transitionDuration.100')
+        theme('transitionTimingFunction.out'),
+      scale theme('transitionDuration.100')
+        theme('transitionTimingFunction.out') 0.1s;
+
+    .navigation-list__submenu__list-link:hover ~ & {
+      opacity: 1;
+      scale: 1;
+      transition:
+        opacity theme('transitionDuration.1500')
+          theme('transitionTimingFunction.out') 0.1s,
+        scale theme('transitionDuration.500')
+          theme('transitionTimingFunction.out') 0.1s;
     }
   }
 </style>

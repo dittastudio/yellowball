@@ -27,6 +27,8 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       let mm = gsap.matchMedia();
 
       this.$watch('$store.navigation.isSubMenuOpen', value => {
+        console.log('Is Submenu Open?', value);
+
         if (value) {
           mm.add('(max-width: 767px)', () => {
             gsap.to('.header-navigation__scroll', {
