@@ -1,13 +1,18 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Base {
   caption?: string;
 }
 
-const { caption = '' } = Astro.props as Props;
+type Props = HTMLAttributes<'div'> & Base;
+
+const { caption = '', ...rest } = Astro.props as Props;
+const classes = ['w-full grid gap-28 grid-cols-1', rest.class].filter(Boolean);
 ---
 
 <!-- Begin Block: Media -->
-<figure class="w-full grid gap-28 grid-cols-1">
+<figure class:list={classes}>
   {
     Astro.slots.media && (
       <div class="w-full rounded-30 lg:rounded-40 overflow-hidden">

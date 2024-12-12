@@ -1,15 +1,19 @@
 ---
-// interface Props {
-//   title?: string | null;
-//   platform: 'youtube';
-//   src: string;
-// }
+import type { HTMLAttributes } from 'astro/types';
 
-// const { title = null, platform, src } = Astro.props as Props;
+interface Base {}
+
+type Props = HTMLAttributes<'div'> & Base;
+
+const { ...rest } = Astro.props as Props;
+const classes = [
+  'w-full overflow-x-auto bg-white rounded-10 lg:rounded-20',
+  rest.class,
+].filter(Boolean);
 ---
 
 <!-- Begin Block: Table -->
-<div class="w-full overflow-x-auto bg-white rounded-10 lg:rounded-20">
+<div class:list={classes}>
   <slot />
 </div>
 <!-- End Block: Table -->
@@ -18,7 +22,11 @@
   table {
     @apply w-full table-auto text-15 lg:text-18 text-left;
 
-    tr {
+    thead tr {
+      @apply border-b border-navy/15;
+    }
+
+    tbody tr:not(:last-child) {
       @apply border-b border-navy/15;
     }
 

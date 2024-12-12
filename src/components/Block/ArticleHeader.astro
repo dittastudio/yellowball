@@ -1,0 +1,74 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+interface Props {
+  headline: string;
+  author: string;
+  color?: ColorTypes;
+  date?: string;
+  time?: string;
+  class?: string;
+}
+
+const {
+  headline,
+  author,
+  color,
+  date,
+  time,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<!-- Begin Block: ArticleHeader -->
+<div class:list={['']} {...rest}>
+  <div
+    class="wrapper grid gap-x-30 gap-y-40 lg:gap-y-30 grid-cols-8 lg:grid-cols-12 lg:grid-rows-[1fr_auto] lg:items-end"
+  >
+    <div
+      class="col-span-full lg:col-span-3 lg:col-start-1 flex lg:flex-col gap-20 lg:gap-10 text-navy-lightest"
+    >
+      {
+        date && (
+          <p class="text-12 lg:text-14 font-heading font-bold">/ {date}</p>
+        )
+      }
+
+      {
+        time && (
+          <p class="flex items-center gap-6 lg:gap-8 text-12 lg:text-14 font-heading font-bold">
+            <Icon name="clock" class="-mt-1 size-12 lg:size-14" />
+            {time}
+          </p>
+        )
+      }
+    </div>
+
+    <div class="col-span-full lg:col-span-9 lg:col-start-4 lg:row-span-full">
+      <TextReveal
+        tag="h1"
+        class="font-heading font-semibold text-44 lg:text-80 text-balance lg:-mb-20"
+        onEnter
+      >
+        {headline}
+      </TextReveal>
+    </div>
+
+    <div
+      class="col-span-full lg:col-span-3 lg:col-start-1 w-full flex gap-20 items-center"
+    >
+      <img
+        src="/images/test-avatar-5.webp"
+        alt="Author"
+        class="size-50 rounded-12 outline outline-1 outline-navy/15"
+      />
+
+      <p class="text-14 font-heading font-bold text-navy-lightest">
+        {author}
+      </p>
+    </div>
+  </div>
+</div>
+<!-- End Block: ArticleHeader -->

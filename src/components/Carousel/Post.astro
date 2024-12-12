@@ -3,7 +3,7 @@ import CardPost from '@/components/Card/Post.astro';
 import Button from '@/components/Elements/Button.astro';
 import Icon from '@/components/Elements/Icon.astro';
 
-interface Slide {
+export interface Slide {
   tags: TagObject[];
   headline: string;
   color: ColorTypes;
@@ -103,6 +103,7 @@ const classNavButton =
 
 <div
   data-js="carousel-post"
+  data-css="carousel-post"
   class:list={classes}
   style={`--_slidesNumber: ${slides?.length}`}
 >
@@ -117,7 +118,7 @@ const classNavButton =
       <div data-js-swiper class="carousel-post__swiper swiper">
         <div class="carousel-post__swiper-wrapper swiper-wrapper">
           {
-            slides?.map(({ tags, headline, color, time, image }) => (
+            slides.map(({ tags, headline, color, time, image }) => (
               <div class="carousel-post__swiper-slide swiper-slide">
                 <CardPost {tags} {headline} {color} {time}>
                   <img
@@ -176,78 +177,80 @@ const classNavButton =
   </div>
 </div>
 
-<style>
-  .carousel-post {
-    width: 100%;
-  }
+<style is:global>
+  [data-css='carousel-post'] {
+    .carousel-post {
+      width: 100%;
+    }
 
-  .carousel-post__grid {
-    @media screen(md) {
+    .carousel-post__grid {
+      @media screen(md) {
+        display: grid;
+        grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
+      }
+    }
+
+    .carousel-post__title {
+      grid-area: title;
+    }
+
+    .carousel-post__info {
+      grid-area: info;
+    }
+
+    .carousel-post__slider {
+      grid-area: carousel;
+    }
+
+    .carousel-post__swiper {
       display: grid;
-      grid-template-areas: 'title title title info' 'carousel carousel carousel carousel';
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      margin-left: calc(-1 * var(--inner-gutter));
     }
-  }
 
-  .carousel-post__title {
-    grid-area: title;
-  }
+    .carousel-post__swiper-wrapper {
+      grid-column: span 8;
 
-  .carousel-post__info {
-    grid-area: info;
-  }
+      @media screen(xsToSm) {
+        grid-column: span 7;
+        left: 0;
 
-  .carousel-post__slider {
-    grid-area: carousel;
-  }
+        transition:
+          transform 0.5s var(--swiper-slide-ease),
+          left 0.5s theme('transitionTimingFunction.smooth') !important;
 
-  .carousel-post__swiper {
-    display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    margin-left: calc(-1 * var(--inner-gutter));
-  }
+        .carousel-post.is-first-slide & {
+          left: -7%;
+        }
 
-  .carousel-post__swiper-wrapper {
-    grid-column: span 8;
-
-    @media screen(xsToSm) {
-      grid-column: span 7;
-      left: 0;
-
-      transition:
-        transform 0.5s var(--swiper-slide-ease),
-        left 0.5s theme('transitionTimingFunction.smooth') !important;
-
-      .carousel-post.is-first-slide & {
-        left: -7%;
-      }
-
-      .carousel-post.is-last-slide & {
-        left: 7%;
+        .carousel-post.is-last-slide & {
+          left: 7%;
+        }
       }
     }
-  }
 
-  .carousel-post__swiper-slide {
-    padding-left: var(--inner-gutter);
-    width: 100%;
+    .carousel-post__swiper-slide {
+      padding-left: var(--inner-gutter);
+      width: 100%;
 
-    @media screen(sm) {
-      width: calc(1 / 2 * 100%);
+      @media screen(sm) {
+        width: calc(1 / 2 * 100%);
+      }
+
+      @media screen(xl) {
+        width: calc(1 / 3 * 100%);
+      }
     }
 
-    @media screen(xl) {
-      width: calc(1 / 3 * 100%);
+    .carousel-post__swiper-pagination {
+      display: inline-flex;
     }
-  }
 
-  .carousel-post__swiper-pagination {
-    display: inline-flex;
-  }
-
-  .carousel-post__swiper-button-prev,
-  .carousel-post__swiper-button-next {
-    &:disabled {
-      opacity: 0.5;
+    .carousel-post__swiper-button-prev,
+    .carousel-post__swiper-button-next {
+      &:disabled {
+        opacity: 0.5;
+      }
     }
   }
 </style>

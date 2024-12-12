@@ -1,12 +1,12 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-interface Reveal {
+interface Base {
   tag?: string;
   onEnter?: boolean | null;
 }
 
-type Props = HTMLAttributes<'div'> & Reveal;
+type Props = HTMLAttributes<'div'> & Base;
 
 const { tag = 'div', onEnter = null, ...rest } = Astro.props as Props;
 const Element = tag;

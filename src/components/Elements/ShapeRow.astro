@@ -23,7 +23,7 @@ const { class: className } = Astro.props as Props;
   />
 </div>
 
-<style>
+<style is:global>
   .shape-row__item {
     :global(a):hover & {
       animation-name: wave;

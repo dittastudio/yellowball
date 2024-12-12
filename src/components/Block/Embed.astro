@@ -1,15 +1,20 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Base {
   title?: string | null;
   platform: 'youtube';
   src: string;
 }
 
-const { title = null, platform, src } = Astro.props as Props;
+type Props = HTMLAttributes<'div'> & Base;
+
+const { title = null, platform, src, ...rest } = Astro.props as Props;
+const classes = ['w-full', rest.class].filter(Boolean);
 ---
 
 <!-- Begin Block: Embed -->
-<div class="w-full">
+<div class:list={classes}>
   {
     platform === 'youtube' && (
       <iframe
