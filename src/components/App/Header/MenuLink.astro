@@ -1,0 +1,15 @@
+<span class="header-menu-link font-heading font-bold text-13 lg:text-15">
+  <slot />
+</span>
+
+<style is:global>
+  .header-menu-link {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding-inline: theme('spacing.20');
+    border-radius: theme('borderRadius.12');
+    background-color: theme('colors.navy');
+    color: theme('colors.white');
+  }
+</style>
