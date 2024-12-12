@@ -6,13 +6,45 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 ---
 
 <script>
+  // import Alpine from 'alpinejs';
+
+  // Alpine.data('headerNavigation', () => ({
+  //   init() {
+  //     const $storeNavigation = this.$store.navigation as NavigationStore;
+
+  //     console.log('state', $storeNavigation.isMenuOpen);
+  //   },
+  // }));
+  import gsap from 'gsap';
   import Alpine from 'alpinejs';
 
   Alpine.data('headerNavigation', () => ({
     init() {
-      const $storeNavigation = this.$store.navigation as NavigationStore;
+      const submenu = document.querySelector(
+        '.navigation-list__submenu',
+      ) as HTMLElement;
 
-      console.log('state', $storeNavigation.isMenuOpen);
+      let mm = gsap.matchMedia();
+
+      this.$watch('$store.navigation.isSubMenuOpen', value => {
+        if (value) {
+          mm.add('(max-width: 767px)', () => {
+            gsap.to('.header-navigation__scroll', {
+              height: submenu.offsetHeight + 3,
+              duration: 0.5,
+              ease: 'back.out(0.6)',
+            });
+          });
+        } else {
+          mm.add('(max-width: 767px)', () => {
+            gsap.to('.header-navigation__scroll', {
+              height: 'auto',
+              duration: 0.5,
+              ease: 'back.out(0.6)',
+            });
+          });
+        }
+      });
     },
   }));
 </script>

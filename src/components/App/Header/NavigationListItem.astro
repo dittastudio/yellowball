@@ -11,21 +11,28 @@ const { menuItem } = Astro.props as Props;
 ---
 
 <script>
-  import Alpine from 'alpinejs';
+  // import gsap from 'gsap';
+  // import Alpine from 'alpinejs';
 
-  Alpine.data('navigationListItem', () => ({
-    init() {
-      const $storeNavigation = this.$store.navigation as NavigationStore;
+  // Alpine.data('navigationListItem', () => ({
+  //   init() {
+  //     this.$watch('$store.navigation.isSubMenuOpen', value => {
+  //       if (value) {
+  //         gsap.
 
-      console.log('state', $storeNavigation.isMenuOpen);
-    },
-  }));
+  //         console.log('Submenu open list item', value);
+  //       } else {
+  //         console.log('Submenu closed list item', value);
+  //       }
+  //     });
+  //   },
+  // }));
 </script>
 
 {
   menuItem.subMenu ? (
     <div
-      x-data="navigationListItem"
+      x-data
       class="navigation-list-item"
       x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
     >
