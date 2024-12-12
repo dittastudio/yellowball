@@ -60,7 +60,6 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 {
   Astro.slots.content && (
     <dialog
-      data-css="modal"
       data-lenis-prevent
       class="fixed inset-0 w-full h-dvh max-w-none max-h-none bg-navy opacity-0 transition-opacity duration-300 overflow-hidden text-white [&::backdrop]:hidden"
     >
