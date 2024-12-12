@@ -15,16 +15,11 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-
-      if (this.isMenuOpen) {
-        window.lenis.stop();
-      } else window.lenis.start();
     },
 
     closeMenu() {
       this.isMenuOpen = false;
       this.isSubMenuOpen = false;
-      window.lenis.start();
     },
 
     toggleSubMenu() {
