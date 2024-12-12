@@ -1,3 +1,5 @@
+import { twMerge } from 'tailwind-merge';
+
 type Procedure = (...args: any[]) => void;
 
 function debounce<T extends Procedure>(func: T, wait: number): (...args: Parameters<T>) => void {
@@ -14,5 +16,18 @@ function debounce<T extends Procedure>(func: T, wait: number): (...args: Paramet
   };
 }
 
+const componentProperties = (classes: (string|undefined)[], rest: Record<string, any>) => {
+  const classNames = [
+    ...classes,
+    rest.class,
+  ].filter(Boolean);
 
-export { debounce };
+  const { class: className, ...attrs } = rest;
+
+  return {
+    classes: twMerge(classNames),
+    attributes: attrs
+  };
+}
+
+export { debounce, componentProperties };

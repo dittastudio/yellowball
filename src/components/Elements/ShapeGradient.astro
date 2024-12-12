@@ -1,29 +1,27 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
-interface Props {
+interface Base {
   shape: 'circle' | 'square' | 'triangle';
   color?: ColorTypes;
-  class?: string;
 }
 
-const {
-  shape = 'triangle',
-  color = 'yellow',
-  class: className,
-  ...rest
-} = Astro.props as Props;
----
+type Props = HTMLAttributes<'div'> & Base;
 
-<div
-  class:list={[
+const { shape = 'triangle', color = 'yellow', ...rest } = Astro.props as Props;
+const { classes, attributes } = componentProperties(
+  [
     'shape-gradient z-0 isolate pointer-events-none overflow-hidden',
     colourText[color],
-    className,
-  ]}
-  {...rest}
->
+  ],
+  rest,
+);
+---
+
+<div class:list={classes} {...attributes}>
   <Icon
     name={`shape-${shape}`}
     class="block size-full max-w-full max-h-full opacity-[0.2]"

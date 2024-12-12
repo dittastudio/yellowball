@@ -1,17 +1,13 @@
 ---
+import { componentProperties } from '@/utils/helpers';
 import NumberedText from '@/components/Elements/NumberedText.astro';
 
 interface Props {
   type?: 'full' | 'split' | 'split-media';
   color?: ColorTypes;
-  class?: string;
 }
 
-const {
-  type = 'full',
-  color = 'current',
-  class: className,
-} = Astro.props as Props;
+const { type = 'full', color = 'current', ...rest } = Astro.props as Props;
 
 const hasMedia = !!Astro.slots.default && type === 'split';
 
@@ -37,18 +33,18 @@ const classesList = {
   split:
     'col-span-full lg:col-start-7 lg:col-span-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2',
 };
+
+const { classes, attributes } = componentProperties(
+  [
+    'wrapper grid gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
+    classesGrid[type as keyof typeof classesGrid],
+  ],
+  rest,
+);
 ---
 
 <!-- Begin Block: Numbered -->
-<div
-  class:list={[
-    'wrapper',
-    'grid',
-    'gap-x-12 md:gap-x-30 gap-y-80 md:gap-y-100',
-    classesGrid[type as keyof typeof classesGrid],
-    className,
-  ]}
->
+<div class:list={classes} {...attributes}>
   {
     hasMedia && (
       <div

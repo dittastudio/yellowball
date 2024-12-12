@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 
 interface Base {
   tag?: string;
@@ -10,8 +11,7 @@ type Props = HTMLAttributes<'div'> & Base;
 
 const { tag = 'div', onEnter = null, ...rest } = Astro.props as Props;
 const Element = tag;
-const classes = [rest.class, 'opacity-0'].filter(Boolean);
-const { class: className, ...attrs } = rest;
+const { classes, attributes } = componentProperties(['opacity-0'], rest);
 ---
 
 <script>
@@ -112,7 +112,7 @@ const { class: className, ...attrs } = rest;
   data-js="text-reveal"
   data-js-on-enter={onEnter}
   class:list={classes}
-  {...attrs}
+  {...attributes}
 >
   <slot />
 </Element>

@@ -1,36 +1,27 @@
 ---
+import { componentProperties } from '@/utils/helpers';
 import { colourText } from '@/utils/maps';
 
 interface Props {
   role: string;
   name: string;
   color?: ColorTypes;
-  class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
-
-const {
-  role,
-  name,
-  color = 'green',
-  class: className,
-  ...rest
-} = Astro.props as Props;
----
-
-<a
-  href="/"
-  class:list={[
+const { role, name, color = 'green', ...rest } = Astro.props as Props;
+const { classes, attributes } = componentProperties(
+  [
     'block w-full h-full text-center p-12 pb-24 md:p-20 md:pb-40',
     'flex flex-col gap-24 md:gap-40',
     'text-white bg-navy-light border border-white/10 rounded-20 md:rounded-30',
-    className,
-  ]}
-  {...rest}
->
+  ],
+  rest,
+);
+---
+
+<a href="/" class:list={classes} {...attributes}>
   {
-    hasSlotDefault && (
+    Astro.slots.default && (
       <div class="w-full aspect-square rounded-8 md:rounded-10 overflow-hidden">
         <slot />
       </div>
