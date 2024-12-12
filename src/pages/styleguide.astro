@@ -23,31 +23,18 @@ import CardServiceHero from '@/components/Card/ServiceHero.astro';
 import CookieDialog from '@/components/UI/CookieDialog.astro';
 import CubeIcon from '@/components/Elements/CubeIcon.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
-import Icon from '@/components/Elements/Icon.astro';
 import FormCheckbox from '@/components/Fields/Checkbox.astro';
 import FormControl from '@/components/Fields/Control.astro';
 import FormGroup from '@/components/Fields/Group.astro';
 import FormInput from '@/components/Fields/Input.astro';
 import FormFile from '@/components/Fields/File.astro';
+import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
+import Modal from '@/components/UI/Modal.astro';
+import RichText from '@/components/Elements/RichText.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 import TagList from '@/components/Elements/TagList.astro';
-import RichText from '@/components/Elements/RichText.astro';
-
-const imageMobileTest: ImageObject = {
-  src: '/images/portrait-1.webp',
-  alt: 'portrait 1',
-  width: 900,
-  height: 1600,
-};
-
-const imageDesktopTest: ImageObject = {
-  src: '/images/landscape-1.webp',
-  alt: 'landscape 1',
-  width: 1600,
-  height: 900,
-};
 
 const classCardGrid1 = 'grid grid-cols-1 gap-12 lg:gap-30';
 const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
@@ -64,6 +51,131 @@ const classCardCSSCols =
     >
       <h1>Styleguide</h1>
     </section>
+
+    <StyleguideSection title="Modal">
+      <Modal>
+        <Fragment slot="trigger">
+          <Button text="Open Modal" />
+        </Fragment>
+
+        <Fragment slot="content">
+          <RichText>
+            <p>
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Diam maximus
+              sociosqu luctus interdum nostra volutpat fames ipsum porttitor. Ad
+              dictum facilisis nisl blandit augue justo tristique ultrices
+              lacus. Curae erat sapien consectetur condimentum elit urna leo.
+              Neque nascetur justo leo luctus etiam risus. Hendrerit molestie
+              cursus nibh maecenas platea suscipit nisi sociosqu urna. Eleifend
+              sed quam nec natoque dis condimentum cursus mi at. Ultrices
+              finibus dolor taciti fermentum egestas fames blandit hac.
+              Elementum nisl curabitur maximus elementum at.
+            </p>
+
+            <p>
+              Habitasse mauris feugiat, tortor finibus phasellus eleifend?
+              Vestibulum maximus natoque aptent vel metus sodales suscipit leo!
+              Sodales ullamcorper lectus curae efficitur massa aptent. Class
+              viverra at sed curabitur porttitor fames fames hendrerit massa.
+              Mattis ligula nascetur mauris mollis phasellus venenatis cursus
+              imperdiet. Sapien rutrum tincidunt lacus pulvinar ac consequat!
+              Accumsan ornare urna commodo ipsum at; erat elementum risus
+              posuere. Eget diam duis mus quis risus arcu; dignissim
+              ullamcorper. Etiam velit primis erat; sociosqu fusce rutrum aenean
+              at vestibulum.
+            </p>
+
+            <p>
+              Magna magna etiam vulputate potenti primis eu. Varius nullam metus
+              neque magna commodo pharetra litora venenatis. Ante tortor hac
+              tempor nibh a adipiscing. Venenatis faucibus elementum erat
+              eleifend sollicitudin nullam duis augue. Ex himenaeos dictumst
+              suscipit quam neque. Duis phasellus sodales litora ex neque
+              finibus. Platea pharetra ex duis facilisis auctor habitant.
+              Iaculis eleifend nibh enim torquent odio dis? Egestas orci duis
+              bibendum luctus curabitur porta.
+            </p>
+
+            <p>
+              Ad sit class taciti duis potenti hac rutrum. Duis pellentesque
+              habitasse phasellus risus rhoncus curae lorem. Posuere tempor
+              accumsan nostra consectetur eu finibus adipiscing quisque.
+              Tincidunt vestibulum proin leo laoreet quis. Neque dignissim
+              fringilla tellus imperdiet condimentum. Netus suscipit integer
+              nibh platea tristique litora sem augue. Per facilisi velit sodales
+              faucibus vel vulputate.
+            </p>
+
+            <p>
+              Consequat volutpat torquent, posuere magna praesent ad. Arcu vel
+              tincidunt laoreet potenti congue. Accumsan aenean nisi auctor
+              adipiscing penatibus convallis tempus aliquet sapien. Sed aliquam
+              primis adipiscing nam duis. Nascetur faucibus potenti dictumst nec
+              finibus ornare magna nullam. Morbi erat hendrerit viverra sit
+              suspendisse augue posuere curae. Blandit nisi interdum mollis
+              porttitor euismod placerat laoreet ante.
+            </p>
+
+            <p>
+              Et erat viverra facilisi taciti vehicula scelerisque efficitur.
+              Interdum ligula ante bibendum litora pharetra aptent. Ligula enim
+              platea litora orci natoque pulvinar. Orci curabitur imperdiet
+              turpis suspendisse facilisis, dis pharetra phasellus. Sit fames
+              mus eget in interdum malesuada. Ac phasellus metus ac dictum
+              posuere sed torquent eros. Nostra sagittis fringilla aliquam leo;
+              leo facilisi turpis. Vehicula condimentum adipiscing netus
+              suspendisse elementum. Penatibus semper class nibh; urna iaculis
+              ridiculus convallis laoreet.
+            </p>
+
+            <p>
+              Ridiculus porta molestie ultrices molestie ad dis praesent quam.
+              Dictum pharetra in rutrum nibh et vulputate. Morbi etiam leo
+              auctor volutpat rhoncus fusce pharetra tempus. Massa penatibus
+              natoque duis nam diam habitant posuere maximus. Condimentum
+              gravida arcu risus rhoncus urna. Nam vestibulum nisi felis ipsum
+              cras. Cursus urna tortor non, tristique fames aliquam facilisis
+              praesent. Vivamus netus diam porta magnis risus congue quam
+              ridiculus. Id eros turpis facilisi nulla eget pretium aenean.
+            </p>
+
+            <p>
+              Odio molestie praesent enim malesuada ante placerat ligula. Eu
+              imperdiet nascetur augue senectus quisque donec ad sapien urna.
+              Iaculis posuere ullamcorper placerat pellentesque penatibus.
+              Egestas faucibus ipsum lorem tincidunt nisi. Diam ligula sed
+              natoque eu mauris per primis. Ex natoque ad sed ipsum aliquet
+              netus duis duis.
+            </p>
+
+            <p>
+              Litora conubia hendrerit finibus fringilla commodo posuere.
+              Hendrerit tempor pellentesque cursus porttitor dui senectus
+              habitant pulvinar. Vitae egestas velit mauris maecenas sapien.
+              Ullamcorper tempus potenti imperdiet pretium eros porta tempor.
+              Hendrerit turpis aliquet at fringilla proin. Luctus fusce finibus
+              nulla posuere lacus sagittis odio ut turpis. Ultricies luctus
+              nullam litora aptent potenti dictumst hendrerit dignissim fusce.
+              Magna consequat vitae condimentum sociosqu nisi duis lacus proin
+              enim. Porta integer dignissim auctor a tellus libero consequat
+              orci.
+            </p>
+
+            <p>
+              Rhoncus mus per erat magna vitae porta habitant ad adipiscing.
+              Litora feugiat dapibus inceptos varius condimentum luctus nec.
+              Tortor vel molestie sollicitudin posuere non et quisque. Fringilla
+              purus penatibus fringilla risus vivamus mauris. Commodo facilisis
+              nisi vehicula hendrerit himenaeos senectus quisque. Tellus gravida
+              amet nunc nullam dis. Ornare justo ante sapien fringilla maecenas
+              parturient. Scelerisque aenean nec tempor nullam class diam
+              venenatis. Sem in hac bibendum condimentum, mollis aliquam felis.
+              Volutpat eu et felis mattis eu fringilla est congue interdum.
+            </p>
+          </RichText>
+        </Fragment>
+      </Modal>
+    </StyleguideSection>
 
     <StyleguideSection title="RichText">
       <RichText>
@@ -397,8 +509,18 @@ const classCardCSSCols =
       <div class={classCardGrid3}>
         <div class="col-span-2">
           <CardProject
-            imageMobile={imageMobileTest}
-            imageDesktop={imageDesktopTest}
+            imageMobile={{
+              src: '/images/portrait-1.webp',
+              alt: 'portrait 1',
+              width: 900,
+              height: 1600,
+            }}
+            imageDesktop={{
+              src: '/images/landscape-1.webp',
+              alt: 'landscape 1',
+              width: 1600,
+              height: 900,
+            }}
           />
         </div>
       </div>

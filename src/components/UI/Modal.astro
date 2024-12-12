@@ -1,0 +1,86 @@
+---
+import Button from '@/components/Elements/Button.astro';
+import LayoutLines from '@/components/Layout/Lines.astro';
+---
+
+<script>
+  const modals = document.querySelectorAll('[data-js="modal"]');
+
+  const isValidDialog = (element: HTMLDialogElement | null) => {
+    return Boolean(
+      element &&
+        element instanceof HTMLDialogElement &&
+        element.nodeName === 'DIALOG',
+    );
+  };
+
+  const open = (_event: Event, dialog: HTMLDialogElement) => {
+    dialog.showModal();
+    dialog.classList.remove('opacity-0');
+    dialog.classList.add('opacity-100');
+  };
+
+  const close = (_event: Event, dialog: HTMLDialogElement) => {
+    dialog.classList.remove('opacity-100');
+    dialog.classList.add('opacity-0');
+
+    console.log('close');
+
+    window.setTimeout(() => {
+      console.log('close timeout');
+      dialog.close();
+    }, 300);
+  };
+
+  modals.forEach(modal => {
+    const dialog = modal?.nextElementSibling as HTMLDialogElement;
+
+    if (!isValidDialog(dialog)) {
+      return;
+    }
+
+    const closeTrigger = dialog.querySelector('[data-js="modal-close"]');
+
+    modal.addEventListener('click', event => open(event, dialog));
+    // dialog.addEventListener('cancel', event => close(event, dialog));
+    dialog.addEventListener('close', event => close(event, dialog));
+
+    closeTrigger?.addEventListener('click', event => close(event, dialog));
+  });
+</script>
+
+{
+  Astro.slots.trigger && (
+    <button data-js="modal" type="button">
+      <slot name="trigger" />
+    </button>
+  )
+}
+
+{
+  Astro.slots.content && (
+    <dialog
+      data-css="modal"
+      data-lenis-prevent
+      class="fixed inset-0 w-full h-dvh max-w-none max-h-none bg-navy opacity-0 transition-opacity duration-300 overflow-hidden text-white [&::backdrop]:hidden"
+    >
+      <LayoutLines class="w-full h-full">
+        <header class="absolute top-0 left-0 w-full min-h-100 bg-purple/50">
+          header area
+        </header>
+
+        <div class="w-full h-full overflow-y-scroll overscroll-contain">
+          <div class="wrapper grid grid-cols-1 place-items-center overflow-hidden">
+            <div class="w-full max-w-screen-md py-120 lg:py-160">
+              <button data-js="modal-close" type="button" class="mb-40">
+                <Button text="Close Modal" />
+              </button>
+
+              <slot name="content" />
+            </div>
+          </div>
+        </div>
+      </LayoutLines>
+    </dialog>
+  )
+}
