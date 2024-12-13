@@ -1,14 +1,21 @@
 <span
   x-data
   :class="$store.navigation.isMenuOpen && 'is-open'"
-  class="header-menu-button font-heading font-bold text-13 lg:text-15"
+  class:list={[
+    'header-menu-button',
+    'font-heading font-bold text-13 lg:text-15',
+    'flex items-center min-h-[42px] px-20 rounded-12 bg-yellow text-navy',
+    'transition-[background-color] duration-300 ease-smooth',
+  ]}
 >
-  <span class="header-menu-button__inner">
-    <span class="header-menu-button__text header-menu-button__text--open">
+  <span class="header-menu-button__inner relative">
+    <span class="header-menu-button__text header-menu-button__text--open block">
       Menu
     </span>
 
-    <span class="header-menu-button__text header-menu-button__text--close">
+    <span
+      class="header-menu-button__text header-menu-button__text--close absolute inset-0 flex items-center justify-center"
+    >
       Close
     </span>
   </span>
@@ -16,15 +23,6 @@
 
 <style is:global>
   .header-menu-button {
-    display: flex;
-    align-items: center;
-    min-height: 42px;
-    padding-inline: theme('spacing.20');
-    border-radius: theme('borderRadius.12');
-    background-color: theme('colors.yellow');
-    color: theme('colors.navy');
-    transition: background-color 0.3s theme('transitionTimingFunction.smooth');
-
     &.is-open {
       background-color: theme('colors.white');
     }
@@ -76,7 +74,6 @@
   }
 
   .header__menu-mobile__button-open {
-    display: block;
     transition:
       opacity 0.25s theme('transitionTimingFunction.smooth'),
       scale 0.25s theme('transitionTimingFunction.smooth');
@@ -92,11 +89,6 @@
   }
 
   .header__menu-mobile__button-close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    inset: 0;
     opacity: 0;
     scale: 0.9;
     background-color: theme('colors.white');

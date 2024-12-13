@@ -32,26 +32,26 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 <header
   x-data
   :class="{'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen}"
-  class="header"
+  class="header sticky top-0 z-50 p-12 md:p-18 pointer-events-none"
   data-js="header-pro"
 >
-  <nav class="header__menu-mobile">
+  <nav class="flex justify-between md:hidden">
     <HeaderBackground>
-      <a class="header__menu-mobile__logo" href="/">
+      <a class="block pointer-events-auto" href="/">
         <HeaderLogo />
       </a>
     </HeaderBackground>
 
     <HeaderBackground>
-      <div class="header__menu-mobile__list">
-        <a class="header__menu-mobile__list__item" href="/">
+      <div class="flex gap-4">
+        <a class="block p-2 -m-2 h-full pointer-events-auto" href="/">
           <HeaderMenuLink>Work with us</HeaderMenuLink>
         </a>
 
         <button
+          class="pointer-events-auto"
           @click="$store.navigation.toggleMenu()"
           type="button"
-          class="header__menu-mobile__list__item"
         >
           <HeaderMenuButton />
         </button>
@@ -61,64 +61,17 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 
   <HeaderNavigation />
 
-  <button @click="$store.navigation.closeMenu()" class="header__close">
+  <button
+    @click="$store.navigation.closeMenu()"
+    class="header__close absolute top-0 left-0 w-full h-screen -z-1 cursor-default"
+  >
     <span class="sr-only">Close menus</span>
   </button>
 </header>
 
 <style is:global>
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding: theme('spacing.12');
-    pointer-events: none;
-    isolation: isolate;
-
-    @media screen(md) {
-      padding: theme('spacing.18');
-    }
-  }
-
-  .header__menu-mobile {
-    display: flex;
-    justify-content: space-between;
-
-    @media screen(md) {
-      display: none;
-    }
-  }
-
-  .header__menu-mobile__logo,
-  .header__menu-mobile__list {
-    pointer-events: auto;
-  }
-
-  .header__menu-mobile__logo {
-    display: block;
-  }
-
-  .header__menu-mobile__list {
-    display: flex;
-    gap: 4px;
-  }
-
-  .header__menu-mobile__list__item {
-    display: block;
-    padding: 2px;
-    margin: -2px;
-    height: 100%;
-  }
-
   .header__close {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
     opacity: 0;
-    cursor: default;
     pointer-events: none;
 
     @media screen(md) {

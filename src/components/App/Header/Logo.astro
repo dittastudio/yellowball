@@ -24,7 +24,10 @@
   });
 </script>
 
-<div data-js="header-logo" class="header-logo text-white">
+<div
+  data-js="header-logo"
+  class="header-logo text-white rounded-12 bg-navy overflow-hidden"
+>
   <svg
     class="header-logo__svg"
     viewBox="0 0 165 50"
@@ -121,10 +124,7 @@
       --icon-size: 50px;
     }
 
-    border-radius: theme('borderRadius.12');
-    background-color: theme('colors.navy');
     width: var(--start-width);
-    overflow: hidden;
 
     @media screen(lg) {
       &.has-hover {
