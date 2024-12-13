@@ -39,7 +39,9 @@ const classesHover = {
     data-js-navigation-list-submenu
     class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
   >
-    <nav class="navigation-submenu__inner relative flex flex-col gap-40 p-40">
+    <nav
+      class="navigation-submenu__inner relative overflow-hidden flex flex-col gap-40 p-40"
+    >
       <button
         @click="$store.navigation.toggleSubMenu()"
         class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey p-40 -m-40"
