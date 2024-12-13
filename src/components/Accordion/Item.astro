@@ -48,11 +48,15 @@ const isOpenClasses = {
       opacity: 0,
       duration: 0.2,
       ease: 'power2.inOut',
-    }).to(body, {
-      height: 0,
-      duration: 0.5,
-      ease: 'power4.inOut',
-    });
+    }).to(
+      body,
+      {
+        height: 0,
+        duration: 0.5,
+        ease: 'power4.inOut',
+      },
+      '<',
+    );
 
     item.classList.remove('is-open');
     body.setAttribute('aria-label', 'Open Item');
