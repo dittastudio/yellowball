@@ -21,13 +21,13 @@ const classesHover = {
 
 <div
   x-data
-  class="navigation-submenu"
+  class="navigation-submenu flex flex-col"
   x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
 >
   <button
     data-js-navigation-pill-hover-item
     @click="$store.navigation.toggleSubMenu()"
-    class="block w-full py-12 md:w-auto md:p-2 md:-m-2"
+    class="block px-40 py-12 -mx-40 md:w-auto md:p-2 md:-m-2"
     type="button"
   >
     <HeaderNavigationListButton hasSubmenu>
@@ -37,12 +37,12 @@ const classesHover = {
 
   <div
     data-js-navigation-list-submenu
-    class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full p-40 text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
+    class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
   >
-    <nav class="navigation-submenu__inner flex flex-col gap-40">
+    <nav class="navigation-submenu__inner relative flex flex-col gap-40 p-40">
       <button
         @click="$store.navigation.toggleSubMenu()"
-        class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey"
+        class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey p-40 -m-40"
         type="button"
       >
         <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
@@ -57,12 +57,12 @@ const classesHover = {
                 {heading}
               </h5>
 
-              <ul class="navigation-submenu__list w-full flex flex-col -my-12">
+              <ul class="navigation-submenu__list w-full flex flex-col -mx-40 -my-12">
                 {subMenuItems.map(({ text, url, color, shape }) => (
                   <li>
                     <a
                       class:list={[
-                        'navigation-submenu__list-link block font-heading font-semibold text-18 py-8 md:py-12',
+                        'navigation-submenu__list-link block font-heading font-semibold text-18 px-40 py-8 md:py-12',
                         color
                           ? classesHover[color as keyof typeof classesHover]
                           : null,
@@ -87,28 +87,28 @@ const classesHover = {
           ))
         }
       </div>
-    </nav>
 
-    <div
-      class="navigation-submenu__shape absolute -bottom-[5%] -right-[12.5%] -z-1 md:hidden"
-    >
-      <ShapeGradient
-        data-js-block-faqs-icon
-        shape="triangle"
-        color="yellow"
-        class="size-[250px]"
-      />
-    </div>
+      <div
+        class="navigation-submenu__shape absolute bottom-0 right-0 -translate-x-[-35%] -translate-y-[-30%] -z-1 md:hidden"
+      >
+        <ShapeGradient
+          data-js-block-faqs-icon
+          shape="triangle"
+          color="yellow"
+          class="size-[250px]"
+        />
+      </div>
+    </nav>
   </div>
 </div>
 
 <style is:global>
   .navigation-submenu__wrapper {
-    --submenu-padding: theme('spacing.12');
+    --submenu-padding: theme('spacing.24');
     --submenu-border-width: theme('spacing.2');
 
     max-width: calc(
-      100vw - ((var(--submenu-padding) * 2) + var(--submenu-border-width))
+      100vw - (var(--submenu-padding) + var(--submenu-border-width))
     );
     pointer-events: none;
 
@@ -119,6 +119,9 @@ const classesHover = {
     @media screen(md) {
       top: calc(var(--header-height) - 22px);
       max-width: calc(100vw - 36px);
+      max-height: calc(100vh - (var(--submenu-padding) + var(--header-height)));
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
     }
 
     @media screen(mdMax) {

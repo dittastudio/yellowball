@@ -18,7 +18,7 @@ const { menuItem } = Astro.props as Props;
   ) : (
     <a
       data-js-navigation-pill-hover-item
-      class="block w-full py-12 md:w-auto md:p-2 md:-m-2"
+      class="block px-40 py-12 -mx-40 md:w-auto md:p-2 md:-m-2"
       href={menuItem.url}
     >
       <HeaderNavigationListButton type={menuItem.type || 'transparent'}>
