@@ -69,14 +69,18 @@ const isOpenClasses = {
       '[data-js-accordion-body-inner]',
     ) as HTMLElement;
 
-    tl.to(body, {
-      height: 'auto',
-      duration: 0.5,
-      ease: 'power4.inOut',
-      onComplete: () => {
-        gsap.set(body, { height: 'auto' }); // Set to auto for flexible height
+    tl.to(
+      body,
+      {
+        height: 'auto',
+        duration: 0.5,
+        ease: 'power4.inOut',
+        onComplete: () => {
+          gsap.set(body, { height: 'auto' }); // Set to auto for flexible height
+        },
       },
-    }).to(
+      '<',
+    ).to(
       bodyInner,
       {
         opacity: 1,
