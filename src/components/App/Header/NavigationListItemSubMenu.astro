@@ -37,9 +37,9 @@ const classesHover = {
 
   <div
     data-js-navigation-list-submenu
-    class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full p-40 text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
+    class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
   >
-    <nav class="navigation-submenu__inner flex flex-col gap-40">
+    <nav class="navigation-submenu__inner relative flex flex-col gap-40 p-40">
       <button
         @click="$store.navigation.toggleSubMenu()"
         class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey p-40 -m-40"
@@ -87,18 +87,18 @@ const classesHover = {
           ))
         }
       </div>
-    </nav>
 
-    <div
-      class="navigation-submenu__shape absolute -bottom-[5%] -right-[12.5%] -z-1 md:hidden"
-    >
-      <ShapeGradient
-        data-js-block-faqs-icon
-        shape="triangle"
-        color="yellow"
-        class="size-[250px]"
-      />
-    </div>
+      <div
+        class="navigation-submenu__shape absolute bottom-0 right-0 -translate-x-[-35%] -translate-y-[-30%] -z-1 md:hidden"
+      >
+        <ShapeGradient
+          data-js-block-faqs-icon
+          shape="triangle"
+          color="yellow"
+          class="size-[250px]"
+        />
+      </div>
+    </nav>
   </div>
 </div>
 
@@ -119,6 +119,11 @@ const classesHover = {
     @media screen(md) {
       top: calc(var(--header-height) - 22px);
       max-width: calc(100vw - 36px);
+      max-height: calc(
+        100vh - ((var(--submenu-padding) * 2) + var(--header-height))
+      );
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
     }
 
     @media screen(mdMax) {
