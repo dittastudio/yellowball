@@ -108,25 +108,13 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
   .header-navigation__scroll {
     @media screen(mdMax) {
-      pointer-events: auto;
-
-      @apply relative
-        rounded-16
-        bg-navy-light
-        border
-        border-white/10
-        w-full
-        max-h-full
-        overflow-y-auto
-        overscroll-y-contain;
+      @apply relative rounded-16 bg-navy-light border border-white/10 w-full max-h-full overflow-y-auto overscroll-y-contain pointer-events-auto;
     }
   }
 
   .header-navigation__inner {
     @media screen(mdMax) {
-      @apply relative
-        overflow-hidden
-        p-40;
+      @apply relative overflow-hidden p-40;
     }
 
     @media screen(md) {
@@ -135,14 +123,10 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
   }
 
   .header-navigation__case {
-    @apply flex
-      flex-col
-      gap-24;
+    @apply flex flex-col gap-24;
 
     @media screen(md) {
-      @apply flex-row
-        justify-between
-        gap-0;
+      @apply flex-row justify-between gap-0;
     }
   }
 </style>
