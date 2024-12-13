@@ -61,7 +61,9 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       <div class="header-navigation__case">
         {
           navList.map(({ menuItems }, index) => (
-            <HeaderNavigationList {menuItems} hasLogo={index === 0} />
+            <div class="header-navigation__list">
+              <HeaderNavigationList {menuItems} hasLogo={index === 0} />
+            </div>
           ))
         }
       </div>
@@ -88,12 +90,6 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 <style>
   .header-navigation {
-    pointer-events: none;
-
-    &.is-open {
-      pointer-events: auto;
-    }
-
     @media screen(mdMax) {
       @apply absolute left-0 px-12 pb-12 w-full;
 
@@ -145,6 +141,14 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
     @media screen(md) {
       @apply flex-row justify-between gap-0;
+    }
+  }
+
+  .header-navigation__list {
+    pointer-events: none;
+
+    .header-navigation.is-open & {
+      pointer-events: auto;
     }
   }
 </style>
