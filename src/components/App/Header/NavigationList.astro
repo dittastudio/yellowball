@@ -80,7 +80,7 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     navItems?.forEach(item => {
       item.addEventListener('mouseenter', event => {
         const target = (event.target as Element).querySelector(
-          '[data-js-navigation-list-item-pill]',
+          '[data-js-navigation-pill-hover-item]',
         ) as HTMLElement;
 
         if (target) updatePill(target);
