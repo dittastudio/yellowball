@@ -25,7 +25,7 @@ const { class: className } = Astro.props as Props;
 
 <style is:global>
   .shape-row__item {
-    :global(a):hover & {
+    a:hover & {
       animation-name: wave;
       animation-duration: theme('transitionDuration.500');
       animation-timing-function: theme('transitionTimingFunction.outBack');
