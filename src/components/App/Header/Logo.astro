@@ -3,8 +3,8 @@
     '[data-js=header-logo]',
   ) as NodeListOf<HTMLElement>;
 
-  logos.forEach(logo => {
-    if (logo) {
+  if (logos) {
+    logos.forEach(logo => {
       let timeout: NodeJS.Timeout;
 
       function handleMouseEnter() {
@@ -20,8 +20,8 @@
 
       logo.addEventListener('mouseenter', handleMouseEnter);
       logo.addEventListener('mouseleave', handleMouseLeave);
-    }
-  });
+    });
+  }
 </script>
 
 <div

@@ -220,12 +220,12 @@ const classesHover = {
   .navigation-list__submenu__list-link__shape {
     position: absolute;
     bottom: -5%;
-    right: -7.5%;
+    right: -10%;
     opacity: 0;
     z-index: -1;
 
-    @media screen(md) {
-      right: -10%;
+    @media screen(mdMax) {
+      display: none;
     }
 
     scale: 0.9;
