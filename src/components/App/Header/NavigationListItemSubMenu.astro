@@ -104,11 +104,11 @@ const classesHover = {
 
 <style is:global>
   .navigation-submenu__wrapper {
-    --submenu-padding: theme('spacing.12');
+    --submenu-padding: theme('spacing.24');
     --submenu-border-width: theme('spacing.2');
 
     max-width: calc(
-      100vw - ((var(--submenu-padding) * 2) + var(--submenu-border-width))
+      100vw - (var(--submenu-padding) + var(--submenu-border-width))
     );
     pointer-events: none;
 
@@ -119,9 +119,7 @@ const classesHover = {
     @media screen(md) {
       top: calc(var(--header-height) - 22px);
       max-width: calc(100vw - 36px);
-      max-height: calc(
-        100vh - ((var(--submenu-padding) * 2) + var(--header-height))
-      );
+      max-height: calc(100vh - (var(--submenu-padding) + var(--header-height)));
       overflow-y: auto;
       overscroll-behavior-y: contain;
     }
