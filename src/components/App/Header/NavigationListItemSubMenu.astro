@@ -35,7 +35,10 @@ const classesHover = {
     </HeaderNavigationListButton>
   </button>
 
-  <div data-js-navigation-list-submenu class="navigation-submenu__wrapper">
+  <div
+    data-js-navigation-list-submenu
+    class="navigation-submenu__wrapper absolute top-0 left-0 overflow-hidden w-full p-40 text-white bg-navy-light z-1 md:-left-4 md:w-fit md:border md:border-white/10 md:rounded-16 md:whitespace-nowrap"
+  >
     <nav class="navigation-submenu__inner flex flex-col gap-40">
       <button
         @click="$store.navigation.toggleSubMenu()"
@@ -104,19 +107,9 @@ const classesHover = {
     --submenu-padding: theme('spacing.12');
     --submenu-border-width: theme('spacing.2');
 
-    @apply absolute
-      top-0
-      left-0
-      overflow-hidden
-      w-full
-      p-40;
-
-    color: theme('colors.white');
     max-width: calc(
       100vw - ((var(--submenu-padding) * 2) + var(--submenu-border-width))
     );
-    background-color: theme('colors.navy-light');
-    z-index: 1;
     pointer-events: none;
 
     .navigation-submenu.is-submenu-open & {
@@ -124,15 +117,7 @@ const classesHover = {
     }
 
     @media screen(md) {
-      @apply top-[calc(var(--header-height)_-_22px)]
-        -left-4
-        w-fit
-        bg-navy-light
-        border
-        border-white/10
-        rounded-16
-        whitespace-nowrap;
-
+      top: calc(var(--header-height) - 22px);
       max-width: calc(100vw - 36px);
     }
 
@@ -210,9 +195,9 @@ const classesHover = {
   }
 
   .navigation-submenu__list-link__shape {
+    pointer-events: none;
     opacity: 0;
     scale: 0.9;
-    pointer-events: none;
     transition:
       opacity theme('transitionDuration.100')
         theme('transitionTimingFunction.out'),

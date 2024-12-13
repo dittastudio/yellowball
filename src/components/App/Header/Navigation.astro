@@ -48,17 +48,20 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 <div
   data-js="header-navigation"
-  class="header-navigation"
+  class="header-navigation mdMax:absolute mdMax:left-0 mdMax:px-12 mdMax:pb-12 mdMax:w-full"
   x-data="headerNavigation"
   :class="$store.navigation.isMenuOpen && 'is-open'"
 >
   <div
     data-js-header-navigation-scroll
     data-lenis-prevent
-    class="header-navigation__scroll"
+    class="mdMax:relative mdMax:rounded-16 mdMax:bg-navy-light mdMax:border mdMax:border-white/10 mdMax:w-full mdMax:max-h-full mdMax:overflow-y-auto mdMax:overscroll-y-contain"
   >
-    <div data-js-header-navigation-inner class="header-navigation__inner">
-      <div class="header-navigation__case">
+    <div
+      data-js-header-navigation-inner
+      class="header-navigation__inner mdMax:relative mdMax:overflow-hidden mdMax:p-40"
+    >
+      <div class="flex flex-col md:flex-row md:justify-between gap-24 md:gap-0">
         {
           navList.map(({ menuItems }, index) => (
             <div class="header-navigation__list">
@@ -91,11 +94,10 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 <style is:global>
   .header-navigation {
     @media screen(mdMax) {
-      @apply absolute left-0 px-12 pb-12 w-full;
-
       top: var(--header-height);
       height: calc(100vh - var(--header-height));
       height: calc(100svh - var(--header-height));
+
       opacity: 0;
       translate: 0 -16px 0;
       transition:
@@ -112,16 +114,8 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
     }
   }
 
-  .header-navigation__scroll {
-    @media screen(mdMax) {
-      @apply relative rounded-16 bg-navy-light border border-white/10 w-full max-h-full overflow-y-auto overscroll-y-contain;
-    }
-  }
-
   .header-navigation__inner {
     @media screen(mdMax) {
-      @apply relative overflow-hidden p-40;
-
       opacity: 0;
       transition: opacity 0.2s theme('transitionTimingFunction.smooth');
 
@@ -133,14 +127,6 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
     @media screen(md) {
       height: auto !important;
-    }
-  }
-
-  .header-navigation__case {
-    @apply flex flex-col gap-24;
-
-    @media screen(md) {
-      @apply flex-row justify-between gap-0;
     }
   }
 

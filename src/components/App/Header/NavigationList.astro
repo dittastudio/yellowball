@@ -105,17 +105,27 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
 </script>
 
 <HeaderBackground isDesktopOnly>
-  <nav data-js="navigation-list" class="navigation-list">
+  <nav
+    data-js="navigation-list"
+    class="md:relative md:flex md:gap-4 md:pointer-events-auto"
+  >
     {
       hasLogo && (
-        <a data-js-navigation-list-logo class="mdMax:hidden relative" href="/">
+        <a
+          data-js-navigation-list-logo
+          class="relative block p-2 -m-2 mdMax:hidden"
+          href="/"
+        >
           <HeaderLogo />
           <span class="sr-only">Home</span>
         </a>
       )
     }
 
-    <ul data-js-navigation-list-list class="navigation-list__list">
+    <ul
+      data-js-navigation-list-list
+      class="flex flex-col -my-12 md:flex-row md:gap-4 md:my-0"
+    >
       {
         menuItems.map((menuItem: HeaderNavigationItem) => (
           <li
@@ -128,40 +138,10 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
       }
     </ul>
 
-    <span data-js-navigation-list-pill class="navigation-list__pill"></span>
+    <span
+      data-js-navigation-list-pill
+      class="navigation-list__pill block bg-yellow rounded-12 h-full absolute top-0 left-0 -z-1 opacity-0 mdMax:hidden"
+    >
+    </span>
   </nav>
 </HeaderBackground>
-
-<style is:global>
-  .navigation-list {
-    @media screen(md) {
-      @apply relative flex gap-4 pointer-events-auto;
-    }
-  }
-
-  .navigation-list__logo {
-    @apply block p-2 -m-2;
-  }
-
-  .navigation-list__list {
-    @apply flex flex-col -my-12;
-
-    @media screen(md) {
-      @apply flex-row gap-4 my-0;
-    }
-  }
-
-  .navigation-list__nav {
-    @media screen(md) {
-      @apply relative;
-    }
-  }
-
-  .navigation-list__pill {
-    @apply block bg-yellow rounded-12 h-full absolute top-0 left-0 -z-1 opacity-0;
-
-    @media screen(mdMax) {
-      @apply hidden;
-    }
-  }
-</style>
