@@ -35,6 +35,7 @@ import RichText from '@/components/Elements/RichText.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 import TagList from '@/components/Elements/TagList.astro';
+import CarouselTicker from '@/components/Carousel/Ticker.astro';
 
 const classCardGrid1 = 'grid grid-cols-1 gap-12 lg:gap-30';
 const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
@@ -51,6 +52,10 @@ const classCardCSSCols =
     >
       <h1>Styleguide</h1>
     </section>
+
+    <StyleguideSection title="Carousel Ticker">
+      <CarouselTicker slides={['1', '2', '3', '1', '2', '3', '1', '2', '3']} />
+    </StyleguideSection>
 
     <StyleguideSection title="Modal">
       <Modal>

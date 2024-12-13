@@ -1,0 +1,377 @@
+---
+import CardRating from '@/components/Card/Rating.astro';
+
+export type Props = {
+  slides: any[];
+  direction?: 'ltr' | 'rtl';
+  autoScroll?: boolean;
+};
+
+const { slides, direction = 'ltr', autoScroll = true } = Astro.props as Props;
+---
+
+<div
+  x-data={`carousel('${slides?.length}', '${direction}', ${autoScroll})`}
+  class="carousel-card"
+  @mouseenter="setHasInteracted"
+  @mouseleave="removeHasInteracted"
+>
+  <div
+    x-ref="carousel"
+    class="carousel-card__slider"
+    @keydown="eventKeydown"
+    @focus="eventKeyboardFocus"
+    @blur="eventKeyboardBlur"
+    tabindex="0"
+  >
+    {
+      slides?.length &&
+        slides.map(slide => (
+          <div class="carousel-card__slide">
+            <CardRating
+              quote="I'm delighted with the finished website & delivery of the project."
+              name="Isabella"
+              company="Ballet with Isabella"
+            >
+              <img
+                src="/images/test-laptop.webp"
+                width="500"
+                height="300"
+                alt=""
+              />
+            </CardRating>
+          </div>
+        ))
+    }
+  </div>
+
+  {
+    slides?.length >= 3 && (
+      <>
+        <button
+          type="button"
+          @click="goToSlide('prev')"
+          class="carousel-card__arrow carousel-card__arrow--prev"
+        >
+          <span class="sr-only">Previous slide</span>
+        </button>
+        <button
+          type="button"
+          @click="goToSlide('next')"
+          class="carousel-card__arrow carousel-card__arrow--next"
+        >
+          <span class="sr-only">Next slide</span>
+        </button>
+      </>
+    )
+  }
+</div>
+
+<script>
+  import Alpine from 'alpinejs';
+  import KeenSlider, {
+    type KeenSliderHooks,
+    type KeenSliderInstance,
+    type KeenSliderOptions,
+  } from 'keen-slider';
+
+  const sliderOptions = {
+    idleTime: 2000,
+    activeClass: 'carousel-card__slide--active',
+  };
+
+  Alpine.data('carousel', (slidesLength, direction, autoScroll) => ({
+    observer: null as IntersectionObserver | null,
+    hasInteracted: false,
+    carousel: null as KeenSliderInstance | null,
+    direction: direction === 'rtl' ? 1 : -1,
+    focused: false,
+    hasIntersected: false,
+    slidesTotal: Number(slidesLength),
+    animation: {
+      duration: 15000 * Number(slidesLength),
+      easing: (t: number) => t,
+    },
+    timeout: null as ReturnType<typeof setTimeout> | null,
+
+    init() {
+      this.createObserver();
+
+      const optimisedConfig = this.createOptimisedConfig(Number(slidesLength));
+
+      this.carousel = new KeenSlider(this.$refs.carousel, {
+        selector: '.carousel-card__slide',
+        ...(optimisedConfig as KeenSliderOptions<{}, {}, KeenSliderHooks>),
+        defaultAnimation: {
+          duration: 500,
+          easing: (x: number) => 1 - (1 - x) ** 4, // easeOutQuart Maths function https://easings.net/#easeOutQuart
+        },
+
+        created: slider => {
+          this.addActiveClass(
+            slider.slides,
+            slider.track.details.rel,
+            sliderOptions.activeClass,
+          );
+        },
+
+        updated: slider => {
+          if (autoScroll) {
+            this.playTickerSlider(slider);
+          }
+        },
+
+        dragStarted: () => {
+          this.setHasInteracted();
+        },
+
+        animationEnded: slider => {
+          /* Resets loop of slides */
+          if (autoScroll) {
+            this.resetTickerSlider(slider);
+          }
+        },
+
+        slideChanged: (slider: KeenSliderInstance) => {
+          this.resetActiveClass(slider.slides, sliderOptions.activeClass);
+
+          this.addActiveClass(
+            slider.slides,
+            slider.track.details.rel,
+            sliderOptions.activeClass,
+          );
+        },
+      }) as any;
+
+      if (autoScroll) {
+        this.$watch('hasInteracted', value => {
+          if (value) {
+            this.pauseTickerSlider(this.carousel as KeenSliderInstance | null);
+          } else {
+            if (this.hasIntersected)
+              this.playTickerSlider(this.carousel as KeenSliderInstance | null);
+          }
+        });
+
+        this.$watch('hasIntersected', value => {
+          if (!value)
+            this.pauseTickerSlider(this.carousel as KeenSliderInstance | null);
+          else
+            this.playTickerSlider(this.carousel as KeenSliderInstance | null);
+        });
+      }
+    },
+
+    createOptimisedConfig(slidesLength: number) {
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+      const slidesConfig = {
+        origin: 'center',
+        perView: 'auto',
+      };
+
+      if (Number(slidesLength) === 2) {
+        slidesConfig.origin = 'auto';
+      }
+
+      return {
+        loop: Number(slidesLength) >= 3 || (slidesLength == 2 && isMobile),
+        drag: Number(slidesLength) >= 3 || (slidesLength == 2 && isMobile),
+        slides: slidesConfig,
+        centered: Number(slidesLength) === 1 ? true : false,
+        breakpoints: {
+          '(max-width: 767px)': {
+            loop: Number(slidesLength) == 2 || Number(slidesLength) >= 3,
+          },
+          '(min-width: 768px)': {
+            loop: Number(slidesLength) >= 3 || Number(slidesLength) == 2,
+          },
+        },
+      };
+    },
+
+    setHasInteracted() {
+      this.hasInteracted = true;
+
+      if (this.isTouchDevice()) {
+        this.timeout && clearTimeout(this.timeout);
+
+        this.timeout = setTimeout(() => {
+          this.hasInteracted = false;
+        }, sliderOptions.idleTime);
+      }
+    },
+
+    removeHasInteracted() {
+      this.hasInteracted = false;
+    },
+
+    playTickerSlider(slider: KeenSliderInstance | null) {
+      slider?.moveToIdx(
+        slider.track.details.abs + this.slidesTotal * this.direction,
+        true,
+        this.animation,
+      );
+    },
+
+    pauseTickerSlider(slider: KeenSliderInstance | null) {
+      slider?.animator.stop();
+    },
+
+    resetTickerSlider(carousel: KeenSliderInstance) {
+      if (!this.hasIntersected) return;
+
+      if (this.hasInteracted) this.pauseTickerSlider(carousel);
+      else this.playTickerSlider(carousel);
+    },
+
+    isTouchDevice() {
+      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    },
+
+    goToSlide(action: 'prev' | 'next') {
+      if (this.carousel) this.carousel[action]();
+      this.setHasInteracted();
+    },
+
+    addActiveClass(slides: HTMLElement[], index: number, className: string) {
+      slides[index].classList.add(className);
+    },
+
+    resetActiveClass(slides: HTMLElement[], className: string) {
+      slides.forEach((slide: HTMLElement) => {
+        slide.classList.remove(className);
+      });
+    },
+
+    eventKeyboardFocus() {
+      this.focused = true;
+    },
+
+    eventKeyboardBlur() {
+      this.focused = false;
+    },
+
+    eventKeydown(event: KeyboardEvent) {
+      if (!this.focused) return;
+      switch (event.key) {
+        case 'Left':
+        case 'ArrowLeft':
+          this.goToSlide('prev');
+          break;
+        case 'Right':
+        case 'ArrowRight':
+          this.goToSlide('next');
+          break;
+        default:
+          break;
+      }
+    },
+
+    createObserver() {
+      let options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0,
+      };
+
+      this.observer = new IntersectionObserver(entries => {
+        entries.forEach(
+          ({ isIntersecting }) => (this.hasIntersected = isIntersecting),
+        );
+      }, options) as any;
+
+      this.observer && this.observer.observe(this.$el);
+    },
+  }));
+</script>
+
+<style>
+  .carousel-card {
+    --slide-gap: theme('spacing.4');
+    --slide-gutter: 30px;
+    --slide-width: 400px;
+
+    @screen md {
+      --slide-gap: theme('spacing.12');
+      /* --slide-gutter: calc(theme('spacing.50') - (var(--slide-gap) * 3)); */
+      /* --slide-width: calc(50% - var(--slide-gutter)); */
+    }
+
+    position: relative;
+  }
+
+  .carousel-card__slider:not([data-keen-slider-disabled]) {
+    touch-action: pan-y;
+    user-select: none;
+
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    &[data-keen-slider-reverse] {
+      flex-direction: row-reverse;
+    }
+
+    &[data-keen-slider-v] {
+      flex-wrap: wrap;
+    }
+  }
+
+  .carousel-card__slide {
+    position: relative;
+
+    flex-shrink: 0;
+
+    /*
+      Issue with keen-slider when using width calc
+      percentages which makes slider sometimes skip
+      to beginning. Prefers whole percentage numbers.
+      May need to change if too noticable.
+    */
+    width: var(--slide-width);
+    min-height: 100%;
+    padding-inline: var(--slide-gap);
+
+    /* & > :global(*) {
+      height: 100%;
+    } */
+  }
+
+  .carousel-card__arrow {
+    --arrow-width: theme('spacing.50');
+
+    @screen md {
+      --arrow-width: calc(var(--slide-width) / 2);
+    }
+
+    pointer-events: auto;
+
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: var(--arrow-width);
+    height: 100%;
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+
+  .carousel-card__cursor {
+    width: 100%;
+    height: 100%;
+  }
+</style>
