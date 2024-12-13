@@ -22,6 +22,7 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     const navLogo = nav.querySelector('[data-js-navigation-list-logo]');
     const navList = nav.querySelector('[data-js-navigation-list-list]');
     const navItems = nav.querySelectorAll('[data-js-navigation-list-item]');
+    const navSubMenu = nav.querySelector('[data-js-navigation-list-submenu]');
     const pill = nav.querySelector('[data-js-navigation-list-pill]');
 
     let pillActive = false;
@@ -70,6 +71,11 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
     };
 
     navList?.addEventListener('mouseleave', () => (pillActive = false));
+
+    navSubMenu?.addEventListener('mouseenter', () => {
+      pillActive = false;
+      hidePill();
+    });
 
     navItems?.forEach(item => {
       item.addEventListener('mouseenter', event => {
