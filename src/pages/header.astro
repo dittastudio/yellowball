@@ -1,0 +1,24 @@
+---
+import Layout from '@/layouts/Minimal.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+---
+
+<Layout title="Index">
+  <main>
+    <section class="flex items-center justify-center text-center min-h-screen">
+      <div class="wrapper font-heading font-semibold text-fluid-h1">
+        Header Test
+      </div>
+    </section>
+
+    <LayoutTheme theme="light">
+      <section
+        class="flex items-center justify-center text-center min-h-screen"
+      >
+        <div class="wrapper font-heading font-semibold text-fluid-h1">
+          Header Test
+        </div>
+      </section>
+    </LayoutTheme>
+  </main>
+</Layout>

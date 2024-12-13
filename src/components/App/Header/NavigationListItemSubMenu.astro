@@ -1,0 +1,232 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
+import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
+
+interface Props {
+  text: string;
+  subMenu: HeaderNavigationSubMenu[];
+}
+
+const { text, subMenu } = Astro.props as Props;
+
+const classesHover = {
+  green: 'hover:text-green',
+  blue: 'hover:text-blue',
+  yellow: 'hover:text-yellow',
+  purple: 'hover:text-purple',
+  navy: 'hover:text-navy',
+};
+---
+
+<div
+  x-data
+  class="navigation-submenu"
+  x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
+>
+  <button
+    data-js-navigation-pill-hover-item
+    @click="$store.navigation.toggleSubMenu()"
+    class="block w-full py-12 md:w-auto md:p-2 md:-m-2"
+    type="button"
+  >
+    <HeaderNavigationListButton hasSubmenu>
+      {text}
+    </HeaderNavigationListButton>
+  </button>
+
+  <div data-js-navigation-list-submenu class="navigation-submenu__wrapper">
+    <nav class="navigation-submenu__inner flex flex-col gap-40">
+      <button
+        @click="$store.navigation.toggleSubMenu()"
+        class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey"
+        type="button"
+      >
+        <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
+        Back
+      </button>
+
+      <div class="flex flex-col md:flex-row gap-50 md:gap-80 md:pr-160">
+        {
+          subMenu.map(({ heading, subMenuItems }) => (
+            <div class="flex flex-col items-start gap-y-24">
+              <h5 class="font-heading font-semibold text-11 opacity-50">
+                {heading}
+              </h5>
+
+              <ul class="navigation-submenu__list w-full flex flex-col -my-12">
+                {subMenuItems.map(({ text, url, color, shape }) => (
+                  <li>
+                    <a
+                      class:list={[
+                        'navigation-submenu__list-link block font-heading font-semibold text-18 py-8 md:py-12',
+                        color
+                          ? classesHover[color as keyof typeof classesHover]
+                          : null,
+                      ]}
+                      href={url}
+                    >
+                      {text}
+                    </a>
+
+                    <div class="navigation-submenu__list-link__shape absolute -bottom-[5%] -right-[10%] -z-1 mdMax:hidden">
+                      <ShapeGradient
+                        data-js-block-faqs-icon
+                        shape={shape || 'triangle'}
+                        color={color || 'yellow'}
+                        class="size-[200px]"
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </nav>
+
+    <div
+      class="navigation-submenu__shape absolute -bottom-[5%] -right-[12.5%] -z-1 md:hidden"
+    >
+      <ShapeGradient
+        data-js-block-faqs-icon
+        shape="triangle"
+        color="yellow"
+        class="size-[250px]"
+      />
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .navigation-submenu__wrapper {
+    --submenu-padding: theme('spacing.12');
+    --submenu-border-width: theme('spacing.2');
+
+    @apply absolute
+      top-0
+      left-0
+      overflow-hidden
+      w-full
+      p-40;
+
+    color: theme('colors.white');
+    max-width: calc(
+      100vw - ((var(--submenu-padding) * 2) + var(--submenu-border-width))
+    );
+    background-color: theme('colors.navy-light');
+    z-index: 1;
+    pointer-events: none;
+
+    .navigation-submenu.is-submenu-open & {
+      pointer-events: auto;
+    }
+
+    @media screen(md) {
+      @apply top-[calc(var(--header-height)_-_22px)]
+        -left-4
+        w-fit
+        bg-navy-light
+        border
+        border-white/10
+        rounded-16
+        whitespace-nowrap;
+
+      max-width: calc(100vw - 36px);
+    }
+
+    @media screen(mdMax) {
+      opacity: 0;
+      transition: opacity theme('transitionDuration.500')
+        theme('transitionTimingFunction.outBack') 0.2s;
+
+      .navigation-submenu.is-submenu-open & {
+        opacity: 1;
+        transition: opacity theme('transitionDuration.250')
+          theme('transitionTimingFunction.smooth');
+      }
+    }
+
+    @media screen(md) {
+      opacity: 0;
+      translate: 16px 0 0;
+      transition:
+        opacity 0.5s theme('transitionTimingFunction.out'),
+        translate 0.5s theme('transitionTimingFunction.outBack');
+
+      .navigation-submenu.is-submenu-open & {
+        opacity: 1;
+        translate: 0 0 0;
+        transition:
+          opacity 0.5s theme('transitionTimingFunction.outBack'),
+          translate 0.5s theme('transitionTimingFunction.outBack');
+      }
+    }
+  }
+
+  .navigation-submenu__inner {
+    @media screen(mdMax) {
+      opacity: 0;
+      translate: 16px 0 0;
+      transition:
+        opacity theme('transitionDuration.100')
+          theme('transitionTimingFunction.smooth'),
+        translate 0.2s 0.2s;
+
+      .navigation-submenu.is-submenu-open & {
+        opacity: 1;
+        translate: 0 0 0;
+        transition:
+          opacity theme('transitionDuration.300')
+            theme('transitionTimingFunction.smooth') 0.2s,
+          translate theme('transitionDuration.300')
+            theme('transitionTimingFunction.outBack') 0.2s;
+      }
+    }
+
+    @media screen(md) {
+      opacity: 0;
+      transition: opacity 0.1s theme('transitionTimingFunction.smooth');
+
+      .navigation-submenu.is-submenu-open & {
+        opacity: 1;
+        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0.1s;
+      }
+    }
+  }
+
+  .navigation-submenu__list-link {
+    opacity: 1;
+    transition:
+      opacity theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth'),
+      color theme('transitionDuration.150')
+        theme('transitionTimingFunction.smooth');
+
+    .navigation-submenu__list:hover &:not(:hover) {
+      opacity: 0.25;
+    }
+  }
+
+  .navigation-submenu__list-link__shape {
+    opacity: 0;
+    scale: 0.9;
+    pointer-events: none;
+    transition:
+      opacity theme('transitionDuration.100')
+        theme('transitionTimingFunction.out'),
+      scale theme('transitionDuration.100')
+        theme('transitionTimingFunction.out') 0.1s;
+
+    .navigation-submenu__list-link:hover ~ & {
+      opacity: 1;
+      scale: 1;
+      transition:
+        opacity theme('transitionDuration.500')
+          theme('transitionTimingFunction.out') 0.1s,
+        scale theme('transitionDuration.500')
+          theme('transitionTimingFunction.out') 0.1s;
+    }
+  }
+</style>

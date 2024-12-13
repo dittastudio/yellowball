@@ -61,7 +61,9 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       <div class="header-navigation__case">
         {
           navList.map(({ menuItems }, index) => (
-            <HeaderNavigationList {menuItems} hasLogo={index === 0} />
+            <div class="header-navigation__list">
+              <HeaderNavigationList {menuItems} hasLogo={index === 0} />
+            </div>
           ))
         }
       </div>
@@ -88,12 +90,6 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
 <style>
   .header-navigation {
-    pointer-events: none;
-
-    &.is-open {
-      pointer-events: auto;
-    }
-
     @media screen(mdMax) {
       @apply absolute left-0 px-12 pb-12 w-full;
 
@@ -103,7 +99,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       opacity: 0;
       translate: 0 -16px 0;
       transition:
-        opacity 0.2s theme('transitionTimingFunction.out') 0.2s,
+        opacity 0.2s theme('transitionTimingFunction.out') 0s,
         translate 0s 0.4s;
 
       &.is-open {
@@ -131,7 +127,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
       .header-navigation.is-open & {
         opacity: 1;
-        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0.1s;
+        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0s;
       }
     }
 
@@ -145,6 +141,14 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
     @media screen(md) {
       @apply flex-row justify-between gap-0;
+    }
+  }
+
+  .header-navigation__list {
+    pointer-events: none;
+
+    .header-navigation.is-open & {
+      pointer-events: auto;
     }
   }
 </style>

@@ -1,6 +1,5 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
-import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
+import NavigationListItemSubMenu from '@/components/App/Header/NavigationListItemSubMenu.astro';
 import HeaderNavigationListButton from '@/components/App/Header/NavigationListButton.astro';
 
 interface Props {
@@ -8,88 +7,18 @@ interface Props {
 }
 
 const { menuItem } = Astro.props as Props;
-
-const classesHover = {
-  green: 'hover:text-green',
-  blue: 'hover:text-blue',
-  yellow: 'hover:text-yellow',
-  purple: 'hover:text-purple',
-  navy: 'hover:text-navy',
-};
 ---
 
 {
   menuItem.subMenu ? (
-    <div
-      x-data
-      class="navigation-list-item"
-      x-bind:class="$store.navigation.isSubMenuOpen && 'is-submenu-open'"
-    >
-      <button
-        data-js-navigation-list-item-pill
-        @click="$store.navigation.toggleSubMenu()"
-        class="navigation-list-item__button"
-        type="button"
-      >
-        <HeaderNavigationListButton hasSubmenu>
-          {menuItem.text}
-        </HeaderNavigationListButton>
-      </button>
-
-      <div data-js-navigation-list-submenu class="navigation-list__submenu">
-        <nav class="navigation-list__submenu__inner flex flex-col gap-30">
-          <button
-            @click="$store.navigation.toggleSubMenu()"
-            class="md:hidden w-full flex items-center gap-6 font-heading font-bold text-14 text-grey"
-            type="button"
-          >
-            <Icon name="arrow-s" class="block size-[0.8em] rotate-90" />
-            Back
-          </button>
-
-          <div class="flex flex-col md:flex-row gap-50 md:gap-80 md:pr-160">
-            {menuItem.subMenu.map(({ heading, subMenuItems }) => (
-              <div class="flex flex-col items-start gap-y-24">
-                <h5 class="font-heading font-semibold text-11 opacity-50">
-                  {heading}
-                </h5>
-
-                <ul class="navigation-list__submenu__list w-full flex flex-col -my-12">
-                  {subMenuItems.map(({ text, url, color, shape }) => (
-                    <li>
-                      <a
-                        class:list={[
-                          'navigation-list__submenu__list-link block font-heading font-semibold text-18 py-12',
-                          color
-                            ? classesHover[color as keyof typeof classesHover]
-                            : null,
-                        ]}
-                        href={url}
-                      >
-                        {text}
-                      </a>
-
-                      <div class="navigation-list__submenu__list-link__shape">
-                        <ShapeGradient
-                          data-js-block-faqs-icon
-                          shape={shape || 'triangle'}
-                          color={color || 'yellow'}
-                          class="txranslate-x-[20%] xmd:translate-x-[35%] xtranslate-y-[10%] size-[250px] md:size-[200px]"
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </nav>
-      </div>
-    </div>
+    <NavigationListItemSubMenu
+      text={menuItem.text}
+      subMenu={menuItem.subMenu}
+    />
   ) : (
     <a
-      data-js-navigation-list-item-pill
-      class="navigation-list-item__button"
+      data-js-navigation-pill-hover-item
+      class="block w-full py-12 md:w-auto md:p-2 md:-m-2"
       href={menuItem.url}
     >
       <HeaderNavigationListButton type={menuItem.type || 'transparent'}>
@@ -98,152 +27,3 @@ const classesHover = {
     </a>
   )
 }
-
-<style is:global>
-  .navigation-list-item__button {
-    @apply block
-      w-full
-      py-12;
-
-    @media screen(md) {
-      @apply block
-        w-auto
-        p-2
-        -m-2;
-    }
-  }
-
-  .navigation-list__submenu {
-    @apply absolute
-      top-0
-      left-0
-      overflow-hidden
-      w-full
-      p-40;
-
-    color: theme('colors.white');
-    max-width: calc(100vw - ((12px * 2) + 2px));
-    background-color: theme('colors.navy-light');
-    z-index: 1;
-    pointer-events: none;
-
-    .navigation-list-item.is-submenu-open & {
-      pointer-events: auto;
-    }
-
-    @media screen(md) {
-      @apply top-[calc(var(--header-height)_-_22px)]
-        -left-4
-        w-fit
-        bg-navy-light
-        border
-        border-white/10
-        rounded-16
-        whitespace-nowrap;
-
-      max-width: calc(100vw - 36px);
-    }
-
-    @media screen(mdMax) {
-      opacity: 0;
-      transition: opacity theme('transitionDuration.500')
-        theme('transitionTimingFunction.outBack') 0.2s;
-
-      .navigation-list-item.is-submenu-open & {
-        opacity: 1;
-        transition: opacity theme('transitionDuration.250')
-          theme('transitionTimingFunction.smooth');
-      }
-    }
-
-    @media screen(md) {
-      opacity: 0;
-      translate: 16px 0 0;
-      transition:
-        opacity 0.2s theme('transitionTimingFunction.out') 0.2s,
-        translate 0s 0.4s;
-
-      .navigation-list-item.is-submenu-open & {
-        opacity: 1;
-        translate: 0 0 0;
-        transition:
-          opacity 0.5s theme('transitionTimingFunction.outBack'),
-          translate 0.5s theme('transitionTimingFunction.outBack');
-      }
-    }
-  }
-
-  .navigation-list__submenu__inner {
-    @media screen(mdMax) {
-      opacity: 0;
-      translate: 16px 0 0;
-      transition:
-        opacity theme('transitionDuration.100')
-          theme('transitionTimingFunction.smooth'),
-        translate 0.2s 0.2s;
-
-      .navigation-list-item.is-submenu-open & {
-        opacity: 1;
-        translate: 0 0 0;
-        transition:
-          opacity theme('transitionDuration.300')
-            theme('transitionTimingFunction.smooth') 0.2s,
-          translate theme('transitionDuration.300')
-            theme('transitionTimingFunction.outBack') 0.2s;
-      }
-    }
-
-    @media screen(md) {
-      opacity: 0;
-      transition: opacity 0.2s theme('transitionTimingFunction.smooth');
-
-      .navigation-list-item.is-submenu-open & {
-        opacity: 1;
-        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0.1s;
-      }
-    }
-  }
-
-  .navigation-list__submenu__list-link {
-    opacity: 1;
-    transition:
-      opacity theme('transitionDuration.150')
-        theme('transitionTimingFunction.smooth'),
-      color theme('transitionDuration.150')
-        theme('transitionTimingFunction.smooth');
-
-    .navigation-list__submenu__list:hover &:not(:hover) {
-      opacity: 0.25;
-    }
-  }
-
-  .navigation-list__submenu__list-link__shape {
-    position: absolute;
-    bottom: -5%;
-    right: -10%;
-    opacity: 0;
-    z-index: -1;
-
-    @media screen(mdMax) {
-      display: none;
-    }
-
-    scale: 0.9;
-    pointer-events: none;
-    transition:
-      opacity theme('transitionDuration.100')
-        theme('transitionTimingFunction.out'),
-      scale theme('transitionDuration.100')
-        theme('transitionTimingFunction.out') 0.1s;
-
-    .navigation-list__submenu__list-link:hover ~ & {
-      opacity: 1;
-      scale: 1;
-      transition:
-        opacity theme('transitionDuration.500')
-          theme('transitionTimingFunction.out') 0.1s,
-        scale theme('transitionDuration.500')
-          theme('transitionTimingFunction.out') 0.1s;
-    }
-  }
-</style>
