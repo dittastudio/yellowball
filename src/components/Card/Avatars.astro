@@ -1,27 +1,71 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
-interface Props {
+interface Base {
   headline: string;
   description: string;
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+type Props = HTMLAttributes<'div'> & Base;
 
-const {
-  headline,
-  description,
-  class: className,
-  ...rest
-} = Astro.props as Props;
+const { headline, description, ...rest } = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  ['w-full bg-white text-left rounded-30 lg:rounded-50'],
+  rest,
+);
 ---
 
-<div
-  data-js="card-avatars"
-  class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
-  {...rest}
->
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cardAvatars = document.querySelectorAll(
+    '[data-js="card-avatars"]',
+  ) as NodeListOf<HTMLElement>;
+
+  if (cardAvatars?.length) {
+    cardAvatars.forEach(card => {
+      const avatars = card.querySelector('[data-js-avatars]') as HTMLElement;
+
+      if (avatars) {
+        const images = avatars.querySelectorAll('img');
+
+        if (images?.length) {
+          gsap.fromTo(
+            images,
+            {
+              yPercent: 50,
+              opacity: 0,
+              scale: 0.75,
+            },
+            {
+              yPercent: 0,
+              opacity: 1,
+              scale: 1,
+              stagger: 0.1,
+              ease: 'power4.out',
+              scrollTrigger: {
+                markers: false,
+                trigger: card,
+                scrub: 1.5,
+                start: 'bottom bottom',
+                end: 'bottom center',
+              },
+            },
+          );
+        }
+      }
+    });
+  }
+</script>
+
+<div data-js="card-avatars" class:list={classes} {...attributes}>
   <a
     href="/"
     class="group rounded-30 lg:rounded-50 p-30 lg:p-50 gap-30 border-navy/15 flex flex-col items-start justify-start w-full h-full border"
@@ -46,8 +90,11 @@ const {
     </div>
 
     {
-      hasSlotDefault && (
-        <div class="w-full [&>img]:rounded-12 [&>img]:lg:rounded-16 [&>img]:outline [&>img]:outline-1 [&>img]:outline-navy/15 grid grid-cols-5 gap-10 lg:gap-15 p-1">
+      Astro.slots.default && (
+        <div
+          data-js-avatars
+          class="w-full [&>img]:rounded-12 [&>img]:lg:rounded-16 [&>img]:outline [&>img]:outline-1 [&>img]:outline-navy/15 grid grid-cols-5 gap-10 lg:gap-15 p-1"
+        >
           <slot />
         </div>
       )

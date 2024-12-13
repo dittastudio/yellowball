@@ -1,29 +1,90 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 import { colourText } from '@/utils/maps';
 
-interface Props {
+interface Base {
   number: number;
   text: string;
   color?: ColorTypes;
-  class?: string;
 }
 
-const {
-  number,
-  text,
-  color = 'current',
-  class: className,
-} = Astro.props as Props;
----
+type Props = HTMLAttributes<'p'> & Base;
 
-<p
-  class:list={[
+const { number, text, color = 'current', ...rest } = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  [
     'grid grid-cols-4 gap-x-12 sm:flex sm:flex-col max-w-[26em] sm:max-w-[16em] place-items-start',
     'text-15 md:text-18 font-heading font-bold text-pretty',
-    className,
-  ]}
->
+  ],
+  rest,
+);
+---
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const numbereds = document.querySelectorAll(
+    '[data-js="numbered-text"]',
+  ) as NodeListOf<HTMLElement>;
+
+  if (numbereds?.length) {
+    numbereds.forEach(numbered => {
+      const number = numbered.querySelector('[data-js-number]') as HTMLElement;
+      const text = numbered.querySelector('[data-js-text]') as HTMLElement;
+
+      if (number && text) {
+        gsap.fromTo(
+          number,
+          {
+            yPercent: 100,
+            opacity: 0,
+          },
+          {
+            yPercent: 0,
+            opacity: 0.15,
+            ease: 'power4.out',
+            scrollTrigger: {
+              markers: false,
+              trigger: numbered,
+              scrub: 1.5,
+              start: 'top bottom',
+              end: 'bottom center',
+            },
+          },
+        );
+
+        gsap.fromTo(
+          text,
+          {
+            yPercent: 200,
+            opacity: 0,
+          },
+          {
+            yPercent: 0,
+            opacity: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+              markers: false,
+              trigger: numbered,
+              scrub: 1.5,
+              start: 'top bottom',
+              end: 'bottom center',
+            },
+          },
+        );
+      }
+    });
+  }
+</script>
+
+<p data-js="numbered-text" class:list={classes} {...attributes}>
   <span
+    data-js-number
     class:list={[
       'numbered-text__index col-span-1 block text-fluid-h2 font-semibold opacity-15 -mt-[0.12em] -mb-[0.56em] whitespace-nowrap',
       colourText[color],
@@ -32,7 +93,7 @@ const {
     {number.toString().padStart(2, '0')}
   </span>
 
-  <span class="block col-span-3">
+  <span data-js-text class="block col-span-3">
     {text}
   </span>
 </p>

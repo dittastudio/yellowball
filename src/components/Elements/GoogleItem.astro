@@ -1,8 +1,10 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 import { colourText } from '@/utils/maps';
 
-interface Props {
+interface Base {
   color?: ColorTypes;
   shape?: ShapeTypes;
   isSponsored?: boolean;
@@ -12,6 +14,8 @@ interface Props {
   copy: string;
 }
 
+type Props = HTMLAttributes<'div'> & Base;
+
 const {
   color = 'blue',
   shape = 'circle',
@@ -20,10 +24,16 @@ const {
   url,
   heading,
   copy,
+  ...rest
 } = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  ['md:gap-24 flex flex-col gap-20'],
+  rest,
+);
 ---
 
-<div class="md:gap-24 flex flex-col gap-20">
+<div class:list={classes} {...attributes}>
   {isSponsored && <p class="text-15 font-heading font-bold">Sponsored</p>}
 
   <div class="flex gap-12">
@@ -49,6 +59,7 @@ const {
   <h3 class="text-fluid-h6 font-heading text-blue-google font-semibold">
     {heading}
   </h3>
+
   <p class="text-15 md:text-18 text-navy-lightest">
     {copy}
   </p>

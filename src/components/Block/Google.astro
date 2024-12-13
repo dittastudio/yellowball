@@ -6,8 +6,50 @@ import TypingText from '@/components/UI/TypingText.astro';
 const lgMedia = '(min-width: 1024px)';
 ---
 
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const googles = document.querySelectorAll(
+    '[data-js="google"]',
+  ) as NodeListOf<HTMLElement>;
+
+  if (googles?.length) {
+    googles.forEach(google => {
+      const items = google.querySelectorAll(
+        '[data-js-item]',
+      ) as NodeListOf<HTMLElement>;
+
+      items.forEach(item => {
+        gsap.fromTo(
+          item,
+          {
+            x: 40,
+            autoAlpha: 0,
+            skewX: -3,
+          },
+          {
+            x: 0,
+            autoAlpha: 1,
+            skewX: 0,
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 80%',
+              end: 'center center',
+              scrub: 1.5,
+            },
+          },
+        );
+      });
+    });
+  }
+</script>
+
 <!-- Begin Block: Google -->
 <div
+  data-js="google"
   class="wrapper grid grid-cols-1 md:grid-cols-12 gap-x-12 md:gap-x-30 gap-y-60 md:gap-y-80"
 >
   <div class="md:col-span-2 self-center">
@@ -53,6 +95,7 @@ const lgMedia = '(min-width: 1024px)';
     class="md:col-start-3 md:col-span-10 xl:col-start-3 xl:col-span-8 flex flex-col gap-60 md:gap-80"
   >
     <GoogleItem
+      data-js-item
       isSponsored={true}
       title="Yellowball PPC"
       url="https://www.weareyellowball.com"
@@ -61,6 +104,7 @@ const lgMedia = '(min-width: 1024px)';
     />
 
     <GoogleItem
+      data-js-item
       shape="square"
       color="green"
       isSponsored={false}
@@ -71,6 +115,7 @@ const lgMedia = '(min-width: 1024px)';
     />
 
     <GoogleItem
+      data-js-item
       shape="square"
       color="green"
       isSponsored={false}
@@ -81,6 +126,7 @@ const lgMedia = '(min-width: 1024px)';
     />
 
     <GoogleItem
+      data-js-item
       shape="square"
       color="green"
       isSponsored={false}
@@ -91,6 +137,7 @@ const lgMedia = '(min-width: 1024px)';
     />
 
     <GoogleItem
+      data-js-item
       shape="triangle"
       color="yellow"
       isSponsored={true}
