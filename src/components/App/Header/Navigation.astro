@@ -103,7 +103,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
       opacity: 0;
       translate: 0 -16px 0;
       transition:
-        opacity 0.2s theme('transitionTimingFunction.out') 0.2s,
+        opacity 0.2s theme('transitionTimingFunction.out') 0s,
         translate 0s 0.4s;
 
       &.is-open {
@@ -131,7 +131,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
 
       .header-navigation.is-open & {
         opacity: 1;
-        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0.1s;
+        transition: opacity 0.3s theme('transitionTimingFunction.smooth') 0s;
       }
     }
 
