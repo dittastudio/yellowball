@@ -87,7 +87,7 @@ const { isDesktopOnly = false } = Astro.props as Props;
   <slot />
 </div>
 
-<style>
+<style is:global>
   .header-background {
     --header-bg-theme-text-color: theme('colors.white');
     --header-bg-theme-bg-color: theme('colors.offblack/0.1');

@@ -34,7 +34,7 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
   <slot />
 </span>
 
-<style>
+<style is:global>
   .navigation-list-button {
     position: relative;
     transition:
@@ -56,8 +56,8 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
 
     @media screen(md) {
       @media (hover: hover) {
-        :global(a):hover &,
-        :global(button):not(:disabled):hover & {
+        a:hover &,
+        button:not(:disabled):hover & {
           color: theme('colors.navy');
         }
       }
@@ -68,8 +68,8 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
       }
     }
 
-    :global(a):active &,
-    :global(button):not(:disabled):active & {
+    a:active &,
+    button:not(:disabled):active & {
       &::after {
         opacity: 0.1;
       }
@@ -87,8 +87,8 @@ const { type = 'transparent', hasSubmenu = false } = Astro.props as Props;
             theme('transitionTimingFunction.smooth') 0.1s;
 
         @media (hover: hover) {
-          :global(a):hover &,
-          :global(button):not(:disabled):hover & {
+          a:hover &,
+          button:not(:disabled):hover & {
             background-color: transparent;
 
             transition:
