@@ -11,7 +11,7 @@ import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
-import UnderlineGradient from '@/components/Elements/UnderlineGradient.astro';
+import TextUnderline from '@/components/Elements/TextUnderline.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
 import BlockCardStacks from '@/components/Block/CardStacks.astro';
@@ -248,10 +248,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
               class="font-heading text-fluid-h2 font-semibold"
             >
               Rooted in London, connected
-              <span class="relative !inline-block">
-                worldwide
-                <UnderlineGradient />
-              </span>
+              <TextUnderline>worldwide</TextUnderline>
             </TextReveal>
           </Fragment>
         </BlockCardStacks>

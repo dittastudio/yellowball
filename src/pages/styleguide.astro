@@ -35,6 +35,9 @@ import RichText from '@/components/Elements/RichText.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 import StyleguideSection from '@/components/Tools/StyleguideSection.astro';
 import TagList from '@/components/Elements/TagList.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import TextUnderline from '@/components/Elements/TextUnderline.astro';
 
 const classCardGrid1 = 'grid grid-cols-1 gap-12 lg:gap-30';
 const classCardGrid2 = 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-30';
@@ -355,6 +358,20 @@ const classCardCSSCols =
         <Icon name="shape-square" class="size-20 text-green block" />
         <Icon name="shape-circle" class="size-20 text-blue block" />
         <Icon name="shape-pentagon" class="block w-[21px] h-20 text-purple" />
+      </div>
+    </StyleguideSection>
+
+    <StyleguideSection title="Text Treatments">
+      <div class:list={classCardGrid1}>
+        <TextReveal tag="h1" class="text-fluid-h1 font-heading">
+          Text Reveal
+        </TextReveal>
+        <h1 class="text-fluid-h1 font-heading">
+          <TextGradient>Text Gradient</TextGradient>
+        </h1>
+        <h1 class="text-fluid-h1 font-heading">
+          <TextUnderline>Text Underline</TextUnderline>
+        </h1>
       </div>
     </StyleguideSection>
 
