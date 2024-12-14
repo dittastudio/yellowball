@@ -87,53 +87,43 @@ const { hasExit = null } = Astro.props as Props;
       if (section.hasAttribute('data-js-exit')) {
         let delayedCall: gsap.core.Tween | null = null;
 
-        // Pause.
-        ScrollTrigger.create({
-          markers: false,
-          trigger: section,
-          start: 'top top',
-          scrub: 1.5,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            canMoveX = false;
-
-            if (isPlaying) {
-              timelines.forEach(timeline => timeline.pause());
-              isPlaying = false;
-            }
-          },
-          onLeaveBack: () => {
-            delayedCall?.kill();
-            delayedCall = null;
-
-            if (!isPlaying) {
-              delayedCall = gsap.delayedCall(1.5, () => {
-                ScrollTrigger.refresh();
-                timelines.forEach(timeline => timeline.play());
-                isPlaying = true;
-                canMoveX = true;
-              });
-            }
-          },
-        });
-
-        // Movement.
         gsap
           .timeline({
             scrollTrigger: {
               markers: false,
               trigger: section,
-              start: '10% top',
-              end: '100% top',
+              start: '-10% top',
+              end: 'bottom top',
               scrub: 1.5,
               invalidateOnRefresh: true,
               onEnter: () => {
-                isPlaying = false;
                 canMoveX = false;
+
+                if (isPlaying) {
+                  timelines.forEach(timeline => timeline.pause());
+                  isPlaying = false;
+                }
+              },
+              onLeaveBack: () => {
+                delayedCall?.kill();
+                delayedCall = null;
+
+                if (!isPlaying) {
+                  delayedCall = gsap.delayedCall(3, () => {
+                    ScrollTrigger.refresh();
+                    timelines.forEach(timeline => timeline.play());
+                    isPlaying = true;
+                    canMoveX = true;
+                  });
+                }
               },
               onLeave: () => {
-                isPlaying = false;
                 canMoveX = false;
+
+                if (isPlaying) {
+                  timelines.forEach(timeline => timeline.pause());
+                  isPlaying = false;
+                }
               },
             },
           })
@@ -152,7 +142,7 @@ const { hasExit = null } = Astro.props as Props;
 
               return (
                 sectionRect.top +
-                sectionRect.height * 1.5 -
+                (sectionRect.height + sectionRect.height / 4) -
                 (targetRect.height - offset)
               );
             },
@@ -160,7 +150,7 @@ const { hasExit = null } = Astro.props as Props;
           .to(
             cursors,
             {
-              rotate: index => (index % 2 ? 45 : -45),
+              rotate: index => (index % 2 ? 30 : -30),
               opacity: 0,
             },
             '<15%',
