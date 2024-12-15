@@ -55,8 +55,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
   <div
     data-js-header-navigation-scroll
     data-lenis-prevent
-    class="mdMax:relative mdMax:rounded-16 mdMax:bg-navy-light mdMax:border mdMax:border-white/10 mdMax:w-full mdMax:max-h-full mdMax:overflow-y-auto mdMax:overscroll-y-contain"
-    style="-webkit-overflow-scrolling: touch;"
+    class="header-navigation__scroll mdMax:relative mdMax:rounded-16 mdMax:bg-navy-light mdMax:border mdMax:border-white/10 mdMax:w-full mdMax:max-h-full mdMax:overflow-y-scroll mdMax:overscroll-y-contain"
   >
     <div
       data-js-header-navigation-inner
@@ -97,7 +96,7 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
     @media screen(mdMax) {
       top: var(--header-height);
       height: calc(100vh - var(--header-height));
-      height: calc(100svh - var(--header-height));
+      height: calc(100dvh - var(--header-height));
 
       opacity: 0;
       translate: 0 -16px 0;
@@ -111,6 +110,17 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
         transition:
           opacity 0.5s theme('transitionTimingFunction.outBack'),
           translate 0.5s theme('transitionTimingFunction.outBack');
+      }
+    }
+  }
+
+  /* Mobile activate click */
+  .header-navigation__scroll {
+    @media screen(mdMax) {
+      pointer-events: none;
+
+      .header-navigation.is-open & {
+        pointer-events: auto;
       }
     }
   }
@@ -131,11 +141,14 @@ import ShapeRow from '@/components/Elements/ShapeRow.astro';
     }
   }
 
+  /* Desktop activate click */
   .header-navigation__list {
-    pointer-events: none;
+    @media screen(md) {
+      pointer-events: none;
 
-    .header-navigation.is-open & {
-      pointer-events: auto;
+      .header-navigation.is-open & {
+        pointer-events: auto;
+      }
     }
   }
 </style>
