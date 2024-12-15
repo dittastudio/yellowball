@@ -130,7 +130,7 @@ const { menuItems, hasLogo = false } = Astro.props as Props;
         menuItems.map((menuItem: HeaderNavigationItem) => (
           <li
             data-js-navigation-list-item
-            class={menuItem.type === 'navy' ? 'mdMax:hidden' : ''}
+            class={menuItem.type === 'navy' ? 'mdMax:hidden' : null}
           >
             <NavigationListItem menuItem={menuItem} />
           </li>
