@@ -12,7 +12,7 @@ type Props = HTMLAttributes<'input'> & Base;
 const { label, color = 'green', ...rest } = Astro.props as Props;
 ---
 
-<div data-js="control">
+<div>
   <input class="peer sr-only" {...rest} />
 
   <label
