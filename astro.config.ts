@@ -16,17 +16,14 @@ export default defineConfig({
   },
   vite: {
     build: {
-      minify: true,
+      minify: false,
       sourcemap: false,
       cssCodeSplit: false,
       rollupOptions: {
         output: {
-          manualChunks: () => 'app',
-          entryFileNames: 'assets/app.[hash].js',
-          chunkFileNames: (_chunkInfo) => {
-            // console.log(chunkInfo)
-            return 'assets/app.[hash].js'
-          },
+          manualChunks: (id) => id.includes('node_modules') ? 'vendor' : 'app',
+          entryFileNames: 'assets/app.js',
+          chunkFileNames: (chunkInfo) => (chunkInfo.name === 'vendor') ? 'assets/vendor.[hash].js' : 'assets/app.[hash].js',
           assetFileNames: 'assets/app.[hash].[ext]',
         },
       },
