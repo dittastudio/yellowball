@@ -66,20 +66,19 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
 
       const setStickyHeight = () => {
         const { height } = stickyEl.getBoundingClientRect();
-        const offset = 30;
         const windowHeight = window.innerHeight;
         const headerHeight =
           document.querySelector('[data-js="header"]')?.clientHeight;
 
         if (!headerHeight) return;
 
-        if (windowHeight < height + headerHeight + offset) {
+        if (windowHeight < height + headerHeight) {
           stickyEl.style.position = 'static';
         } else {
           stickyEl.style.position = 'sticky';
           stickyEl.style.setProperty(
             '--sticky-height',
-            `calc((50vh - ${height / 2}px) + ${offset}px)`,
+            `calc((50vh - ${height / 2}px))`,
           );
         }
       };
