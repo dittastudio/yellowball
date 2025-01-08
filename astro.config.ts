@@ -16,7 +16,7 @@ export default defineConfig({
   },
   vite: {
     build: {
-      minify: false,
+      minify: true,
       sourcemap: false,
       cssCodeSplit: false,
       rollupOptions: {
