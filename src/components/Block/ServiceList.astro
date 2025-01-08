@@ -116,7 +116,9 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
 
       {
         description && (
-          <p class="text-17 md:text-21 text-grey text-balance">{description}</p>
+          <p class="text-17 md:text-21 text-grey text-balance max-w-[42ch]">
+            {description}
+          </p>
         )
       }
 
