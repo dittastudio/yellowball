@@ -1,6 +1,6 @@
 ---
 import CardPost from '@/components/Card/Post.astro';
-import Button from '@/components/Elements/Button.astro';
+import FormControl from '@/components/Fields/Control.astro';
 
 const examplePost: any = {
   tags: [
@@ -64,42 +64,49 @@ const examplePosts: any = [
     <div class="shrink-0 mdMax:w-full">
       <div class="mdMax:-mx-[var(--outer-gutter)]">
         <ul
-          class="scroll-x mdMax:px-[var(--outer-gutter)] flex gap-10 md:gap-12 whitespace-nowrap"
+          class="scroll-x py-2 mdMax:px-[var(--outer-gutter)] flex gap-10 md:gap-12 whitespace-nowrap"
         >
           <li>
-            <Button text="All posts" />
-          </li>
-
-          <li>
-            <Button
-              options={{
-                textColor: 'white',
-                bgColor: 'navy',
-                borderColor: 'white',
-              }}
-              text="Web Design"
+            <FormControl
+              type="checkbox"
+              color="white"
+              label="All posts"
+              name="all"
+              id="all"
+              value="all"
             />
           </li>
 
           <li>
-            <Button
-              options={{
-                textColor: 'white',
-                bgColor: 'navy',
-                borderColor: 'white',
-              }}
-              text="SEO"
+            <FormControl
+              type="checkbox"
+              color="yellow"
+              label="Web Design"
+              name="web-design"
+              id="web-design"
+              value="web-design"
             />
           </li>
 
           <li>
-            <Button
-              options={{
-                textColor: 'white',
-                bgColor: 'navy',
-                borderColor: 'white',
-              }}
-              text="PPC"
+            <FormControl
+              type="checkbox"
+              color="green"
+              label="SEO"
+              name="seo"
+              id="seo"
+              value="seo"
+            />
+          </li>
+
+          <li>
+            <FormControl
+              type="checkbox"
+              color="blue"
+              label="PPC"
+              name="ppc"
+              id="ppc"
+              value="ppc"
             />
           </li>
         </ul>
