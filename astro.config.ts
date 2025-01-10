@@ -3,7 +3,6 @@ import favicons from 'astro-favicons';
 import tailwind from '@astrojs/tailwind';
 import htmlBeautifier from 'astro-html-beautifier';
 import { generateSprite } from './src/utils/sprite';
-
 import alpinejs from '@astrojs/alpinejs';
 
 export default defineConfig({
@@ -53,7 +52,6 @@ export default defineConfig({
           beautify: true,
           indent_level: 2
         },
-        // Only minify vendor code
         ecma: 2020,
         module: true,
       },
