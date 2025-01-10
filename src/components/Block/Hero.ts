@@ -49,4 +49,4 @@ function FnHero() {
   });
 }
 
-FnHero();
+export default FnHero;

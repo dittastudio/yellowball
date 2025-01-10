@@ -31,4 +31,4 @@ function FnPostHero() {
   });
 }
 
-FnPostHero();
+export default FnPostHero;

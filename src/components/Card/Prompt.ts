@@ -29,4 +29,4 @@ function FnPrompt() {
   });
 }
 
-FnPrompt();
+export default FnPrompt;

@@ -30,4 +30,4 @@ function FnTestimonials() {
   });
 }
 
-FnTestimonials();
+export default FnTestimonials;

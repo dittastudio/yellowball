@@ -69,4 +69,4 @@ function FnService() {
   });
 }
 
-FnService();
+export default FnService;

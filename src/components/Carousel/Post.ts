@@ -74,4 +74,4 @@ function FnPost() {
   });
 }
 
-FnPost();
+export default FnPost;

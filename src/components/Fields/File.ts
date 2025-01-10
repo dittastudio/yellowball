@@ -32,4 +32,4 @@ function FnFile() {
   });
 }
 
-FnFile();
+export default FnFile;

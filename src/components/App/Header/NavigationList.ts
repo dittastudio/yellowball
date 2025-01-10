@@ -91,4 +91,4 @@ function FnNavigationList() {
   });
 }
 
-FnNavigationList();
+export default FnNavigationList;

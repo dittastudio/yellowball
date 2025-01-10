@@ -62,4 +62,4 @@ function FnTicker() {
   });
 }
 
-FnTicker();
+export default FnTicker;

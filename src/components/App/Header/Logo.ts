@@ -24,4 +24,4 @@ function FnLogo() {
   }
 }
 
-FnLogo();
+export default FnLogo;

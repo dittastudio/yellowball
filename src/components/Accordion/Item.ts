@@ -88,4 +88,4 @@ function FnItem() {
   });
 }
 
-FnItem();
+export default FnItem;

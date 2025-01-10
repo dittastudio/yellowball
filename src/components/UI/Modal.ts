@@ -40,4 +40,4 @@ function FnModal() {
   }
 }
 
-FnModal();
+export default FnModal;

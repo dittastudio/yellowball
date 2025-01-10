@@ -40,4 +40,4 @@ function FnHeadingBanner() {
   }
 }
 
-FnHeadingBanner();
+export default FnHeadingBanner;

@@ -69,4 +69,4 @@ function FnServiceHero() {
   });
 }
 
-FnServiceHero();
+export default FnServiceHero;

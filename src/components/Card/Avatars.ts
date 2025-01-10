@@ -44,4 +44,4 @@ function FnAvatars() {
   }
 }
 
-FnAvatars();
+export default FnAvatars;

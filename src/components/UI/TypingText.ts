@@ -47,4 +47,4 @@ function FnTypingText() {
   });
 }
 
-FnTypingText();
+export default FnTypingText;

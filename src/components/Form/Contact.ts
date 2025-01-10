@@ -41,4 +41,4 @@ function FnContact() {
   });
 }
 
-FnContact();
+export default FnContact;

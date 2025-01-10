@@ -39,4 +39,4 @@ function FnGoogle() {
   }
 }
 
-FnGoogle();
+export default FnGoogle;

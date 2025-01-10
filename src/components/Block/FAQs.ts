@@ -34,4 +34,4 @@ function FnFAQs() {
   });
 }
 
-FnFAQs();
+export default FnFAQs;

@@ -58,4 +58,4 @@ function FnNumberedText() {
   }
 }
 
-FnNumberedText();
+export default FnNumberedText;

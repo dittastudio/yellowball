@@ -55,4 +55,4 @@ function FnFooter() {
   }
 }
 
-FnFooter();
+export default FnFooter;

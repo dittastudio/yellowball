@@ -17,4 +17,4 @@ function FnProjectHero() {
   });
 }
 
-FnProjectHero();
+export default FnProjectHero;

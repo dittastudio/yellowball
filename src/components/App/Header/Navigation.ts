@@ -1,5 +1,5 @@
-import gsap from 'gsap';
 import Alpine from 'alpinejs';
+import gsap from 'gsap';
 
 function FnNavigation() {
   const navigationInner = document.querySelector(
@@ -39,4 +39,4 @@ function FnNavigation() {
   }));
 }
 
-FnNavigation();
+export default FnNavigation;

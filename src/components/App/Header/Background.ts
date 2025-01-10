@@ -69,4 +69,4 @@ function FnBackground() {
   resizeObserver.observe(resizeTarget);
 }
 
-FnBackground();
+export default FnBackground;

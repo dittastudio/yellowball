@@ -78,4 +78,4 @@ function FnServiceList() {
   }
 }
 
-FnServiceList();
+export default FnServiceList;

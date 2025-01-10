@@ -156,4 +156,4 @@ function FnCursors() {
   });
 }
 
-FnCursors();
+export default FnCursors;

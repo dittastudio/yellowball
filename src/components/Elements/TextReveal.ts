@@ -92,4 +92,4 @@ function FnTextReveal() {
   });
 }
 
-FnTextReveal();
+export default FnTextReveal;

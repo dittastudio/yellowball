@@ -34,4 +34,4 @@ function FnSplitRichText() {
   });
 }
 
-FnSplitRichText();
+export default FnSplitRichText;

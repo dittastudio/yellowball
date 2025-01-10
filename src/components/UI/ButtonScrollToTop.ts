@@ -21,4 +21,4 @@ function FnButtonScrollToTop() {
   });
 }
 
-FnButtonScrollToTop();
+export default FnButtonScrollToTop;

@@ -74,4 +74,4 @@ function FnIconText() {
   });
 }
 
-FnIconText();
+export default FnIconText;

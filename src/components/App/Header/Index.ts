@@ -21,4 +21,4 @@ function FnIndex() {
   } as NavigationStore);
 }
 
-FnIndex();
+export default FnIndex;

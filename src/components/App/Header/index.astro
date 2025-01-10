@@ -6,29 +6,6 @@ import HeaderNavigation from '@/components/App/Header/Navigation.astro';
 import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 ---
 
-<script>
-  // import Alpine from 'alpinejs';
-
-  // Alpine.store('navigation', {
-  //   isMenuOpen: false,
-  //   isSubMenuOpen: false,
-
-  //   toggleMenu() {
-  //     this.isMenuOpen = !this.isMenuOpen;
-  //   },
-
-  //   closeMenu() {
-  //     this.isMenuOpen = false;
-  //     this.isSubMenuOpen = false;
-  //   },
-
-  //   toggleSubMenu() {
-  //     this.isMenuOpen = true;
-  //     this.isSubMenuOpen = !this.isSubMenuOpen;
-  //   },
-  // } as NavigationStore);
-</script>
-
 <header
   x-data
   :class="{'is-open': $store.navigation.isMenuOpen, 'is-submenu-open': $store.navigation.isSubMenuOpen}"

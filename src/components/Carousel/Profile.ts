@@ -69,4 +69,4 @@ function FnProfile() {
   });
 }
 
-FnProfile();
+export default FnProfile;

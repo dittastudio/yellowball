@@ -45,4 +45,4 @@ function FnFigure() {
   });
 }
 
-FnFigure();
+export default FnFigure;

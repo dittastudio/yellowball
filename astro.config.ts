@@ -15,17 +15,47 @@ export default defineConfig({
     inlineStylesheets: 'never',
   },
   vite: {
+    // build: {
+    //   minify: false,
+    //   sourcemap: false,
+    //   cssCodeSplit: false,
+    //   rollupOptions: {
+    //     output: {
+    //       manualChunks: (id) => id.includes('node_modules') ? 'vendor' : 'app',
+    //       entryFileNames: 'assets/app.js',
+    //       assetFileNames: 'assets/app.[ext]',
+    //     },
+    //   },
+    // },
     build: {
-      minify: true,
       sourcemap: false,
       cssCodeSplit: false,
       rollupOptions: {
         output: {
           manualChunks: (id) => id.includes('node_modules') ? 'vendor' : 'app',
-          entryFileNames: 'assets/app.js',
-          chunkFileNames: (chunkInfo) => (chunkInfo.name === 'vendor') ? 'assets/vendor.[hash].js' : 'assets/app.[hash].js',
-          assetFileNames: 'assets/app.[hash].[ext]',
+          entryFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'vendor') {
+              return 'assets/vendor.[name].min.js';
+            }
+
+            return 'assets/app.[name].js';
+          },
+          assetFileNames: 'assets/app.[name].[ext]',
         },
+      },
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          defaults: false,
+        },
+        mangle: false,
+        format: {
+          beautify: true,
+          indent_level: 2
+        },
+        // Only minify vendor code
+        ecma: 2020,
+        module: true,
       },
     },
   },

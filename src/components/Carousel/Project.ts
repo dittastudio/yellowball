@@ -53,4 +53,4 @@ function FnProject() {
   });
 }
 
-FnProject();
+export default FnProject;

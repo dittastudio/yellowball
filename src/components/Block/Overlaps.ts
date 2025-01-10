@@ -39,4 +39,4 @@ function FnOverlaps() {
   });
 }
 
-FnOverlaps();
+export default FnOverlaps;
