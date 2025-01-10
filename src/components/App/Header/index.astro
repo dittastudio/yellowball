@@ -7,26 +7,26 @@ import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 ---
 
 <script>
-  import Alpine from 'alpinejs';
+  // import Alpine from 'alpinejs';
 
-  Alpine.store('navigation', {
-    isMenuOpen: false,
-    isSubMenuOpen: false,
+  // Alpine.store('navigation', {
+  //   isMenuOpen: false,
+  //   isSubMenuOpen: false,
 
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
+  //   toggleMenu() {
+  //     this.isMenuOpen = !this.isMenuOpen;
+  //   },
 
-    closeMenu() {
-      this.isMenuOpen = false;
-      this.isSubMenuOpen = false;
-    },
+  //   closeMenu() {
+  //     this.isMenuOpen = false;
+  //     this.isSubMenuOpen = false;
+  //   },
 
-    toggleSubMenu() {
-      this.isMenuOpen = true;
-      this.isSubMenuOpen = !this.isSubMenuOpen;
-    },
-  } as NavigationStore);
+  //   toggleSubMenu() {
+  //     this.isMenuOpen = true;
+  //     this.isSubMenuOpen = !this.isSubMenuOpen;
+  //   },
+  // } as NavigationStore);
 </script>
 
 <header
