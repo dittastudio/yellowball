@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import htmlBeautifier from 'astro-html-beautifier';
 import { generateSprite } from './src/utils/sprite';
 import alpinejs from '@astrojs/alpinejs';
+import * as terser from 'terser';
 
 export default defineConfig({
   compressHTML: false,
@@ -14,46 +15,44 @@ export default defineConfig({
     inlineStylesheets: 'never',
   },
   vite: {
-    // build: {
-    //   minify: false,
-    //   sourcemap: false,
-    //   cssCodeSplit: false,
-    //   rollupOptions: {
-    //     output: {
-    //       manualChunks: (id) => id.includes('node_modules') ? 'vendor' : 'app',
-    //       entryFileNames: 'assets/app.js',
-    //       assetFileNames: 'assets/app.[ext]',
-    //     },
-    //   },
-    // },
     build: {
       sourcemap: false,
       cssCodeSplit: false,
+      cssMinify: true,
+      ssr: false,
+      minify: false,
       rollupOptions: {
         output: {
           manualChunks: (id) => id.includes('node_modules') ? 'vendor' : 'app',
           entryFileNames: (chunkInfo) => {
-            if (chunkInfo.name === 'vendor') {
-              return 'assets/vendor.[name].min.js';
-            }
-
-            return 'assets/app.[name].js';
+            return chunkInfo.name === 'vendor' 
+              ? 'assets/vendor.[hash].js'
+              : 'assets/app.[hash].js';
           },
           assetFileNames: 'assets/app.[name].[ext]',
         },
-      },
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          defaults: false,
-        },
-        mangle: false,
-        format: {
-          beautify: true,
-          indent_level: 2
-        },
-        ecma: 2020,
-        module: true,
+        plugins: [
+          {
+            name: 'selective-minify',
+            async transform(code, id) {
+              // Only apply minification to vendor chunks
+              if (id.includes('node_modules')) {
+                const result = await terser.minify(code, {
+                  compress: true,
+                  mangle: true,
+                  format: {
+                    comments: false
+                  }
+                });
+                return {
+                  code: result.code || '',
+                  map: null
+                };
+              }
+              return null; // Return null to skip transformation for non-vendor code
+            }
+          }
+        ]
       },
     },
   },
@@ -88,17 +87,8 @@ export default defineConfig({
       lang: 'en-GB',
       background: 'transparent',
       theme_color: '#fff',
-      // input: { 
-      //   favicons: ['./src/icons/favicon.svg']
-      // },
-      // name: "Yellowball",
-      // short_name: "Yellowball",
     }),
     tailwind({
-      /**
-       * Removes automatic insertion of TW styles, base/component/utilities.
-       * Manually imported in global.css for custom order.
-       **/
       applyBaseStyles: false,
     }),
     alpinejs()
