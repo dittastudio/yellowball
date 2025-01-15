@@ -1,3 +1,5 @@
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Lenis from 'lenis';
 
 import FnItem from '@/components/Accordion/Item.ts'
@@ -36,6 +38,8 @@ import FnContact from '@/components/Form/Contact.ts'
 import FnButtonScrollToTop from '@/components/UI/ButtonScrollToTop.ts'
 import FnModal from '@/components/UI/Modal.ts'
 import FnTypingText from '@/components/UI/TypingText.ts'
+
+gsap.registerPlugin(ScrollTrigger)
 
 new Lenis({
   autoRaf: true,

@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 function FnTicker() {
   const tickers = document.querySelectorAll(
     '[data-js="ticker"]',

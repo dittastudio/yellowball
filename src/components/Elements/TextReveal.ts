@@ -1,9 +1,6 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import SplitType from 'split-type';
 import { debounce } from '@/utils/helpers';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function FnTextReveal() {
   const textReveal = document.querySelectorAll(

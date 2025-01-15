@@ -1,7 +1,4 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function FnSplitRichText() {
   const shapes = document.querySelectorAll(

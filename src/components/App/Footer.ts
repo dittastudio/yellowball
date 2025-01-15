@@ -1,7 +1,4 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function FnFooter() {
   const footer = document.querySelector('[data-js="footer"]') as HTMLElement;

@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 function FnCursors() {
   const sections = document.querySelectorAll(
     '[data-js="cursors"]',
