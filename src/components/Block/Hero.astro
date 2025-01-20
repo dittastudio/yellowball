@@ -12,7 +12,10 @@ const { color = 'blue', shape } = Astro.props as Props;
 <!-- Begin Block: Hero -->
 <div
   data-js="hero"
-  class="wrapper md:gap-60 py-50 relative flex flex-col items-center justify-start gap-40 text-center"
+  class:list={[
+    'wrapper md:gap-60 py-50 relative flex flex-col items-center justify-start gap-40 text-center',
+    !Astro.slots.top && 'pt-60 md:pt-110',
+  ]}
 >
   {
     shape && (
