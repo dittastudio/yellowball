@@ -1,0 +1,65 @@
+---
+import { colourText } from '@/utils/maps';
+import Button from '@/components/Elements/Button.astro';
+import TagCategory from '@/components/Elements/TagCategory.astro';
+
+interface Props {
+  color?: ColorTypes;
+  title: string;
+  heading: string;
+  categories: {
+    shape: ShapeTypes;
+    color: ColorTypes;
+    text: string;
+  }[];
+  cta: {
+    label: string;
+    url: string;
+  };
+}
+
+const {
+  color = 'yellow',
+  title,
+  heading,
+  categories,
+  cta,
+} = Astro.props as Props;
+---
+
+<!-- Begin Block: HeroWork -->
+<div class="wrapper relative flex flex-col gap-20 md:gap-50 pt-15 md:pt-40">
+  <p
+    class:list={[
+      'text-15 md:text-18 font-heading font-bold',
+      colourText[color],
+    ]}
+  >
+    {title}
+  </p>
+
+  <div class="flex flex-col gap-30">
+    <h1
+      class="font-heading text-fluid-h2 text-pretty font-semibold max-w-[18ch]"
+    >
+      {heading}
+    </h1>
+
+    <div class="flex flex-wrap justify-between items-center gap-30 md:gap-20">
+      <ul class="flex flex-wrap gap-12">
+        {
+          categories?.map(({ shape, color, text }) => (
+            <li>
+              <TagCategory {shape} {color} {text} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <a href={cta.url}>
+        <Button text="Visit site" hasArrow />
+      </a>
+    </div>
+  </div>
+</div>
+<!-- End Block: HeroWork -->

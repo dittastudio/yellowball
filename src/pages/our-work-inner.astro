@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Button from '@/components/Elements/Button.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+
+import BlockHeroWork from '@/components/Block/HeroWork.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+// const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Our Work">
+  <main>
+    <section class={classSection}>
+      <BlockHeroWork
+        title="Client name"
+        heading="Project tagline lorem ipsum dolor"
+        categories={[
+          {
+            shape: 'triangle',
+            color: 'yellow',
+            text: 'Web Design & Development',
+          },
+          { shape: 'square', color: 'green', text: 'SEO' },
+          { shape: 'circle', color: 'blue', text: 'PPC' },
+        ]}
+        cta={{ label: 'Visit site', url: 'https://www.google.com' }}
+      />
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="triangle" color="yellow">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Want to see more from our portfolio?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get in touch" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+  </main>
+</Layout>
