@@ -1,5 +1,7 @@
 ---
 import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+
 // import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
@@ -8,6 +10,7 @@ interface Props {
   description: string;
   cta: string;
   color?: ColorTypes;
+  hoverColor?: string;
   theme?: ThemeTypes;
   class?: string;
 }
@@ -19,6 +22,7 @@ const {
   description,
   cta,
   color = 'current',
+  hoverColor = color,
   theme = 'dark',
   class: className,
   ...rest
@@ -31,16 +35,14 @@ const classes = [
   theme === 'light' ? 'text-navy' : '',
   className,
 ];
-
-const colourHoverMap: Record<string, string> = {
-  yellow: 'before:text-yellow',
-  green: 'before:text-green',
-  blue: 'before:text-blue',
-  purple: 'before:text-purple',
-} as const;
 ---
 
-<div data-js="card-work" class:list={classes} {...rest}>
+<div
+  data-js="card-work"
+  class:list={classes}
+  style={`--hover-color: ${hoverColor}`}
+  {...rest}
+>
   <div
     class="transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform rounded-30 lg:rounded-40 w-full h-full overflow-hidden text-left transition-transform duration-300 ease-out"
   >
@@ -49,48 +51,95 @@ const colourHoverMap: Record<string, string> = {
       class:list={[
         'card-work__link group rounded-[inherit] block w-full h-full p-1 bg-white/10',
         theme === 'light' ? 'bg-navy/15' : 'bg-white/15',
-        colourHoverMap[color],
       ]}
     >
       <div
         class:list={[
           'card-work__inner rounded-[inherit] relative z-10 w-full h-full overflow-hidden',
           theme === 'light' ? 'bg-white' : 'bg-card',
-          colourHoverMap[color],
         ]}
       >
         <div
-          class="card-work__content rounded-[inherit] relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-y-30 lg:grid-cols-2"
+          class="card-work__content relative z-20 rounded-[inherit] w-full h-full p-30 lg:p-60 flex flex-col gap-y-40"
         >
-          <div class="md:gap-30 flex flex-col items-start justify-start gap-20">
+          <div class="flex items-start justify-between">
             <div
-              class="gap-30 md:gap-40 flex flex-col items-start justify-start"
+              class="flex flex-col items-start justify-start gap-60 lg:w-1/2 lg:pr-30"
             >
-              <p
-                class:list={[
-                  theme === 'dark' && colorTitle,
-                  'font-heading font-bold text-15 lg:text-18 text-balance',
-                ]}
-              >
-                {title}
-              </p>
+              <div class="flex flex-col items-start justify-start gap-30">
+                <p
+                  class:list={[
+                    theme === 'dark' && colorTitle,
+                    'font-heading font-bold text-15 lg:text-18 text-balance mb-5',
+                  ]}
+                >
+                  {title}
+                </p>
 
-              <h3 class="font-heading text-fluid-h4 text-balance font-semibold">
-                {headline}
-              </h3>
+                <h3
+                  class="font-heading text-fluid-h4 text-balance font-semibold"
+                >
+                  {headline}
+                </h3>
+
+                <p
+                  class="font-normal text-15 lg:text-18 opacity-70 text-pretty max-w-[36ch]"
+                >
+                  {description}
+                </p>
+              </div>
+
+              <ul
+                class="mdMax:hidden flex flex-col items-start justify-start gap-30 text-15 lg:text-18 font-heading font-bold"
+              >
+                <li class="flex items-center gap-30">
+                  <Icon
+                    name="outline-arrow-right-box"
+                    class:list={[
+                      'size-22 shrink-0',
+                      theme === 'dark' && colorTitle,
+                    ]}
+                  />
+
+                  <p>Bespoke customer login area</p>
+                </li>
+
+                <li class="flex items-center gap-30">
+                  <Icon
+                    name="outline-wallet"
+                    class:list={[
+                      'size-22 shrink-0',
+                      theme === 'dark' && colorTitle,
+                    ]}
+                  />
+
+                  <p>Online payments & subscription management</p>
+                </li>
+
+                <li class="flex items-center gap-30">
+                  <Icon
+                    name="outline-filters"
+                    class:list={[
+                      'size-22 shrink-0',
+                      theme === 'dark' && colorTitle,
+                    ]}
+                  />
+
+                  <p>Intuitive filters & content feeds</p>
+                </li>
+              </ul>
             </div>
 
-            <p
-              class="font-normal text-15 lg:text-18 opacity-70 text-pretty max-w-[36ch]"
-            >
-              {description}
-            </p>
+            <Icon
+              name="arrow-ne"
+              class="size-10 md:size-12 group-hover:translate-x-1/2 group-hover:-translate-y-1/2 transition-transform duration-300"
+            />
           </div>
 
           {
             hasSlotDefault && (
-              <div>
-                <div class="shadow-media w-full">
+              <div class="lg:absolute lg:inset-0 lg:p-60 lg:flex lg:items-end lg:justify-end">
+                <div class="shadow-media lgMax:max-w-[400px] lgMax:mx-auto lg:w-1/2 -mb-30 lg:-mb-60">
                   <slot />
                 </div>
               </div>
@@ -106,7 +155,7 @@ const colourHoverMap: Record<string, string> = {
   .card-work__content {
     box-shadow:
       0px 0px 100px theme('colors.navy') inset,
-      20px 20px 50px theme('colors.card') inset;
+      0px 0px 50px theme('colors.card') inset;
 
     .card-work.theme-light & {
       box-shadow: none;
@@ -116,21 +165,40 @@ const colourHoverMap: Record<string, string> = {
   .card-work__link,
   .card-work__inner {
     &::before {
-      opacity: 0;
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
-      translate: var(--x) var(--y) 0;
-      width: 150%;
+      width: 100%;
       aspect-ratio: 1;
       pointer-events: none;
+      opacity: 0;
       transition: opacity 0.3s ease;
-      background-image: radial-gradient(currentColor, transparent, transparent);
+      background-image: radial-gradient(var(--hover-color) 0%, transparent 50%);
+      width: 150%;
+      height: auto;
+      translate: var(--x) var(--y) 0;
+      background-image: radial-gradient(
+        var(--hover-color),
+        transparent,
+        transparent
+      );
 
       .card-work.theme-light & {
-        color: theme('colors.navy-lightest');
+        --hover-color: theme('colors.navy-lightest');
+      }
+
+      @media screen(lg) {
+        opacity: 0;
+        width: 150%;
+        height: auto;
+        translate: var(--x) var(--y) 0;
+        background-image: radial-gradient(
+          var(--hover-color),
+          transparent,
+          transparent
+        );
       }
     }
   }
