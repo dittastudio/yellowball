@@ -65,8 +65,10 @@ const classes = [
       >
         <div
           class:list={[
-            'card-work__content relative z-20 rounded-[inherit] w-full h-full flex flex-col justify-between gap-y-40 md:gap-y-70',
-            size === 'small' ? 'p-30 lg:p-40' : 'p-30 lg:p-60',
+            'card-work__content relative z-20 rounded-[inherit] w-full h-full flex flex-col justify-between',
+            size === 'small'
+              ? 'p-30 lg:p-40 gap-y-40 md:gap-y-50'
+              : 'p-30 lg:p-60 gap-y-40 md:gap-y-70',
           ]}
         >
           <div
@@ -78,7 +80,12 @@ const classes = [
             ]}
           >
             <div class="w-full flex flex-col items-start justify-start gap-60">
-              <div class="flex flex-col items-start justify-start gap-30">
+              <div
+                class:list={[
+                  'flex flex-col items-start justify-start',
+                  size === 'small' ? 'gap-20' : 'gap-30',
+                ]}
+              >
                 <p
                   class:list={[
                     theme === 'dark' && colorTitle,
@@ -119,6 +126,9 @@ const classes = [
                     class:list={[
                       'absolute inset-0 -z-1 [&>img]:w-full [&>img]:h-full [&>img]:object-cover [&>video]:w-full [&>video]:h-full [&>video]:object-cover',
                       'before:content-[""] before:absolute before:inset-0 before:bg-navy/75',
+                      theme === 'light'
+                        ? 'before:bg-white/35'
+                        : 'before:bg-navy/75',
                     ]}
                   >
                     <slot />

@@ -1,11 +1,18 @@
 ---
 import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
+import Tag from '@/components/Elements/Tag.astro';
+
+type ListItemType = {
+  icon: string;
+  text: string;
+};
 
 interface Props {
   title: string;
   headline: string;
   description: string;
+  list?: ListItemType[];
   cta: string;
   color?: ColorTypes;
   hoverColor?: string;
@@ -18,6 +25,7 @@ const {
   title,
   headline,
   description,
+  list,
   cta,
   color = 'current',
   hoverColor = color,
@@ -71,8 +79,10 @@ const classes = [
                   class:list={[
                     theme === 'dark' && colorTitle,
                     'font-heading font-bold text-15 lg:text-18 text-balance mb-5',
+                    'flex items-center gap-15',
                   ]}
                 >
+                  {theme === 'light' && <Tag text="Lite" />}
                   {title}
                 </p>
 
@@ -89,45 +99,25 @@ const classes = [
                 </p>
               </div>
 
-              <ul
-                class="mdMax:hidden flex flex-col items-start justify-start gap-30 text-15 lg:text-18 font-heading font-bold"
-              >
-                <li class="flex items-center gap-30">
-                  <Icon
-                    name="outline-arrow-right-box"
-                    class:list={[
-                      'size-22 shrink-0',
-                      theme === 'dark' && colorTitle,
-                    ]}
-                  />
+              {
+                list?.length && (
+                  <ul class="mdMax:hidden flex flex-col items-start justify-start gap-30 text-15 lg:text-18 font-heading font-bold">
+                    {list.map(item => (
+                      <li class="flex items-center gap-30">
+                        <Icon
+                          name={item.icon}
+                          class:list={[
+                            'size-22 shrink-0',
+                            theme === 'dark' && colorTitle,
+                          ]}
+                        />
 
-                  <p>Bespoke customer login area</p>
-                </li>
-
-                <li class="flex items-center gap-30">
-                  <Icon
-                    name="outline-wallet"
-                    class:list={[
-                      'size-22 shrink-0',
-                      theme === 'dark' && colorTitle,
-                    ]}
-                  />
-
-                  <p>Online payments & subscription management</p>
-                </li>
-
-                <li class="flex items-center gap-30">
-                  <Icon
-                    name="outline-filters"
-                    class:list={[
-                      'size-22 shrink-0',
-                      theme === 'dark' && colorTitle,
-                    ]}
-                  />
-
-                  <p>Intuitive filters & content feeds</p>
-                </li>
-              </ul>
+                        <p>{item.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )
+              }
             </div>
 
             <Icon
@@ -139,7 +129,7 @@ const classes = [
           {
             hasSlotDefault && (
               <div class="lg:absolute lg:inset-0 lg:p-60 lg:flex lg:items-end lg:justify-end">
-                <div class="shadow-media lgMax:max-w-[500px] lgMax:mx-auto lg:w-1/2 -mb-30 lg:-mb-60">
+                <div class="shadow-media lgMax:max-w-[500px] lgMax:mx-auto lg:w-1/2 -mb-30 lg:-mb-60 h-full [&_img]:w-full [&_img]:h-full [&_img]:object-contain [&_img]:object-bottom">
                   <slot />
                 </div>
               </div>
