@@ -1,6 +1,6 @@
 function FnCardBackgroundGradientHoverEffect() {
   const cards = document.querySelectorAll(
-    '[data-js="card-case-study-hero"], [data-js="card-project-hero"], [data-js="card-work"]',
+    '[data-js="card-background-gradient-hover-effect"]',
   ) as NodeListOf<HTMLElement>;
 
   cards.forEach(card => {

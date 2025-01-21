@@ -2,8 +2,6 @@
 import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
-// import LinkArrow from '@/components/Elements/LinkArrow.astro';
-
 interface Props {
   title: string;
   headline: string;
@@ -30,7 +28,7 @@ const {
 
 const colorTitle = colourText[color as keyof typeof colourText] ?? '';
 const classes = [
-  'card-work',
+  'card-work-hero',
   `theme-${theme}`,
   theme === 'light' ? 'text-navy' : '',
   className,
@@ -38,7 +36,7 @@ const classes = [
 ---
 
 <div
-  data-js="card-work"
+  data-js="card-background-gradient-hover-effect"
   class:list={classes}
   style={`--hover-color: ${hoverColor}`}
   {...rest}
@@ -49,18 +47,18 @@ const classes = [
     <a
       href="/"
       class:list={[
-        'card-work__link group rounded-[inherit] block w-full h-full p-1 bg-white/10',
+        'card-work-hero__link group rounded-[inherit] block w-full h-full p-1 bg-white/10',
         theme === 'light' ? 'bg-navy/15' : 'bg-white/15',
       ]}
     >
       <div
         class:list={[
-          'card-work__inner rounded-[inherit] relative z-10 w-full h-full overflow-hidden',
+          'card-work-hero__inner rounded-[inherit] relative z-10 w-full h-full overflow-hidden',
           theme === 'light' ? 'bg-white' : 'bg-card',
         ]}
       >
         <div
-          class="card-work__content relative z-20 rounded-[inherit] w-full h-full p-30 lg:p-60 flex flex-col gap-y-40"
+          class="card-work-hero__content relative z-20 rounded-[inherit] w-full h-full p-30 lg:p-60 flex flex-col gap-y-40"
         >
           <div class="flex items-start justify-between">
             <div
@@ -152,18 +150,18 @@ const classes = [
 </div>
 
 <style is:global>
-  .card-work__content {
+  .card-work-hero__content {
     box-shadow:
       0px 0px 100px theme('colors.navy') inset,
       0px 0px 50px theme('colors.card') inset;
 
-    .card-work.theme-light & {
+    .card-work-hero.theme-light & {
       box-shadow: none;
     }
   }
 
-  .card-work__link,
-  .card-work__inner {
+  .card-work-hero__link,
+  .card-work-hero__inner {
     &::before {
       content: '';
       position: absolute;
@@ -185,7 +183,7 @@ const classes = [
         transparent
       );
 
-      .card-work.theme-light & {
+      .card-work-hero.theme-light & {
         --hover-color: theme('colors.navy-lightest');
       }
 
@@ -203,13 +201,13 @@ const classes = [
     }
   }
 
-  .card-work__link {
+  .card-work-hero__link {
     &:hover {
       &::before {
         opacity: 1;
       }
 
-      .card-work__inner {
+      .card-work-hero__inner {
         &::before {
           opacity: 0.2;
         }

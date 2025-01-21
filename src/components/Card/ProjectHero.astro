@@ -33,7 +33,11 @@ const colourHoverMap: Record<string, string> = {
 } as const;
 ---
 
-<div data-js="card-project-hero" class:list={classes} {...rest}>
+<div
+  data-js="card-background-gradient-hover-effect"
+  class:list={classes}
+  {...rest}
+>
   <div
     class="transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform rounded-30 lg:rounded-40 w-full h-full overflow-hidden text-left transition-transform duration-300 ease-out"
   >
