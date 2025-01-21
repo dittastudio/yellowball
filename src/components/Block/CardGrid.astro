@@ -1,4 +1,5 @@
 ---
+import CardWork from '@/components/Card/Work.astro';
 import CardWorkHero from '@/components/Card/WorkHero.astro';
 
 const lgMedia = '(min-width: 1024px)';
@@ -6,7 +7,9 @@ const lgMedia = '(min-width: 1024px)';
 
 <!-- Begin Block: CardGrid -->
 <div class="wrapper">
-  <ul class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+  <ul
+    class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 gap-y-50 md:gap-y-80"
+  >
     <li class="col-span-full">
       <CardWorkHero
         title="Ballet with Isabella"
@@ -34,6 +37,39 @@ const lgMedia = '(min-width: 1024px)';
       </CardWorkHero>
     </li>
 
+    <li class="col-span-full lg:col-span-6">
+      <CardWork
+        title="Ballet with Isabella"
+        headline="Elite Online & Studio Ballet Training"
+        cta="Explore Project"
+        color="yellow"
+        hoverColor="#553BB4"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
+    </li>
+
+    <li class="col-span-full lg:col-span-6">
+      <CardWork
+        title="Ballet with Isabella"
+        headline="Elite Online & Studio Ballet Training"
+        cta="Explore Project"
+        color="yellow"
+        isMediaBackground
+      >
+        <video
+          src="/images/test-work-video.mp4"
+          autoplay
+          playsinline
+          muted
+          loop
+          width="498"
+          height="308"
+        >
+        </video>
+      </CardWork>
+    </li>
+
     <li class="col-span-full">
       <CardWorkHero
         title="Ballet with Isabella"
@@ -52,6 +88,29 @@ const lgMedia = '(min-width: 1024px)';
       </CardWorkHero>
     </li>
 
+    <li class="col-span-full lg:col-span-6">
+      <CardWork
+        title="Ballet with Isabella"
+        headline="Elite Online & Studio Ballet Training"
+        cta="Explore Project"
+        color="yellow"
+        hoverColor="#553BB4"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
+    </li>
+
+    <li class="col-span-full lg:col-span-6">
+      <CardWork
+        theme="light"
+        title="AirX"
+        headline="Leading Private Jet Air Charter"
+        cta="Explore Project"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
+    </li>
+
     <li class="col-span-full">
       <CardWorkHero
         theme="light"
@@ -68,6 +127,43 @@ const lgMedia = '(min-width: 1024px)';
           alt=""
         />
       </CardWorkHero>
+    </li>
+
+    <li class="col-span-full md:col-span-6 lg:col-span-4">
+      <CardWork
+        size="small"
+        title="Ballet with Isabella"
+        headline="Elite Online & Studio Ballet Training"
+        cta="Explore Project"
+        color="yellow"
+        hoverColor="#553BB4"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
+    </li>
+
+    <li class="col-span-full md:col-span-6 lg:col-span-4">
+      <CardWork
+        size="small"
+        theme="light"
+        title="AirX"
+        headline="Leading Private Jet Air Charter"
+        cta="Explore Project"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
+    </li>
+
+    <li class="col-span-full md:col-span-6 lg:col-span-4">
+      <CardWork
+        size="small"
+        theme="light"
+        title="AirX"
+        headline="Leading Private Jet Air Charter"
+        cta="Explore Project"
+      >
+        <img src="/images/test-work-1.png" width="498" height="308" alt="" />
+      </CardWork>
     </li>
   </ul>
 </div>
