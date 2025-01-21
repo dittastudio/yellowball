@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Lenis from 'lenis';
 
+import FnFauxGraph from '@/components/UI/FauxGraph';
 import FnCardEffect from '@/components/Card/CardEffect'
 import FnItem from '@/components/Accordion/Item.ts'
 import FnBackground from '@/components/App/Header/Background.ts'
@@ -45,6 +46,7 @@ new Lenis({
   autoRaf: true,
 });
 
+FnFauxGraph()
 FnCardEffect()
 FnItem()
 FnBackground()

@@ -1,4 +1,5 @@
 import FnCardEffect from '@/components/Card/CardEffect'
+import FnFauxGraph from '@/components/UI/FauxGraph';
 
 function FnModal() {
   const modals = document.querySelectorAll('[data-js="modal"]');
@@ -18,6 +19,7 @@ function FnModal() {
     // This is a hack. We need to re-run this method for any effect cards inside a modal.
     // Because getBoundingClientRect() will return 0 if the element is hidden.
     FnCardEffect()
+    FnFauxGraph()
   };
 
   const close = (_event: Event, dialog: HTMLDialogElement) => {

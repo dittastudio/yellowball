@@ -12,6 +12,7 @@ import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
+import FauxGraph from '@/components/UI/FauxGraph.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import Modal from '@/components/UI/Modal.astro';
@@ -247,8 +248,10 @@ const exampleServiceListItems: any = [
                   <h3 class="text-15 lg:text-18 text-green">Key Results</h3>
 
                   <div
-                    class="w-full p-30 lg:p-60 flex flex-col gap-20 text-white bg-navy-light border border-white/10 rounded-30 lg:rounded-40"
+                    class="w-full p-30 lg:p-60 flex flex-col gap-60 text-white bg-navy-light border border-white/10 rounded-30 lg:rounded-40"
                   >
+                    <FauxGraph />
+
                     <h4 class="text-fluid-h3 font-heading">
                       <span class="text-green">2,754%</span> increase in non-branded
                       click-throughs via search
