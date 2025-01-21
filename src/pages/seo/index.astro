@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import ModalTicker from '@/components/UI/ModalTicker.astro';
+
 import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardCaseStudyHero from '@/components/Card/CaseStudyHero.astro';
@@ -10,6 +12,7 @@ import CardRating from '@/components/Card/Rating.astro';
 import CardService from '@/components/Card/Service.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
+import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import Modal from '@/components/UI/Modal.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
@@ -194,74 +197,156 @@ const exampleServiceListItems: any = [
             </Fragment>
 
             <Fragment slot="content">
-              <h1 class="text-fluid-h1 font-heading">
-                <span class="text-green">11,650%</span> increase in top 10 ranking
-                keywords
-              </h1>
+              <div class="grid gap-70 lg:gap-100">
+                <div class="grid gap-20 lg:gap-40">
+                  <div class="flex gap-20 items-center justify-start">
+                    <img
+                      class="size-40 lg:size-50"
+                      src="/images/test-logo-rsvp-call-center.svg"
+                      width="50"
+                      height="50"
+                      alt=""
+                    />
 
-              <CardClientOverview
-                headline="Client Overview"
-                description="Founded in 1988, RSVP is the UK’s oldest call centre, offering omni-channel service and sales support to clients across various sectors. What sets RSVP apart is its unique workforce of professional actors and performers, delivering communication excellence for over 30 years."
-                shape="square"
-                color="green"
-              >
-                <img
-                  src="/images/test-service-1.webp"
-                  width="1230"
-                  height="756"
-                  alt=""
+                    <p class="font-heading text-16 lg:text-24 font-semibold">
+                      RSVP Call Center
+                    </p>
+                  </div>
+
+                  <h1 class="text-fluid-h1 font-heading">
+                    <span class="text-green">11,650%</span> increase in top 10 ranking
+                    keywords
+                  </h1>
+                </div>
+
+                <CardClientOverview
+                  headline="Client Overview"
+                  description="Founded in 1988, RSVP is the UK’s oldest call centre, offering omni-channel service and sales support to clients across various sectors. What sets RSVP apart is its unique workforce of professional actors and performers, delivering communication excellence for over 30 years."
+                  shape="square"
+                  color="green"
+                >
+                  <img
+                    src="/images/test-service-1.webp"
+                    width="1230"
+                    height="756"
+                    alt=""
+                  />
+                </CardClientOverview>
+
+                <div class="grid gap-30 lg:gap-40 font-heading">
+                  <h3 class="text-15 lg:text-18 text-green">Challenge</h3>
+                  <p class="text-21 lg:text-28">
+                    RSVP aimed to increase brand awareness and attract new
+                    business, as well as recruit call centre staff, specifically
+                    actors seeking flexible work between roles. Improving search
+                    visibility was key to achieving these goals.
+                  </p>
+                </div>
+
+                <div class="grid gap-30 lg:gap-40 font-heading">
+                  <h3 class="text-15 lg:text-18 text-green">Key Results</h3>
+
+                  <div
+                    class="w-full p-30 lg:p-60 flex flex-col gap-20 text-white bg-navy-light border border-white/10 rounded-30 lg:rounded-40"
+                  >
+                    <h4 class="text-fluid-h3 font-heading">
+                      <span class="text-green">2,754%</span> increase in non-branded
+                      click-throughs via search
+                    </h4>
+
+                    <ul
+                      class="flex flex-col gap-15 lg:gap-20 text-21 lg:text-28"
+                    >
+                      <li class="flex items-start gap-15 lg:gap-28">
+                        <Icon
+                          name="circle-checkmark"
+                          class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
+                        />
+
+                        <span>
+                          <span class="text-green">201.7% increase</span> in new
+                          users via organic traffic
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-15 lg:gap-28">
+                        <Icon
+                          name="circle-checkmark"
+                          class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
+                        />
+                        <span>
+                          <span class="text-green">11,650% increase</span> in top
+                          10 ranking keywords (from 2 to 235)
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-15 lg:gap-28">
+                        <Icon
+                          name="circle-checkmark"
+                          class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
+                        />
+                        <span>
+                          <span class="text-green">394% increase</span> in total
+                          ranking keywords (from 294 to 1,452)
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-15 lg:gap-28">
+                        <Icon
+                          name="circle-checkmark"
+                          class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
+                        />
+                        <span>
+                          Organic search now drives <span class="text-green">
+                            66.4%
+                          </span> of total new users (up from 38.6%)
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="grid gap-30 lg:gap-40 font-heading">
+                  <h3 class="text-15 lg:text-18 text-green">Solution</h3>
+                  <p class="text-21 lg:text-28">
+                    Yellowball implemented a comprehensive SEO strategy,
+                    including a full website migration, technical audits,
+                    content creation, and link-building. Over three years, we
+                    enhanced on-site optimisation, created pillar content, and
+                    established RSVP as an authority in their sector.
+                  </p>
+                </div>
+
+                <div class="grid gap-30 lg:gap-40 font-heading">
+                  <h3 class="text-15 lg:text-18 text-green">Outcome</h3>
+                  <p class="text-21 lg:text-28">
+                    Across 3 years, Yellowball significantly boosted RSVP’s
+                    search visibility, leading to substantial growth in both
+                    lead generation and recruitment efforts.
+                  </p>
+                </div>
+
+                <CardRating
+                  quote="I've been really delighted by Yellowball's efficiency and expertise since signing up with them 3 months ago to build a new website, SEO and PPC. They are clearly leaders in their field and I can highly recommend them."
+                  name="Christopher Eden"
+                  company="Santis Health"
                 />
-              </CardClientOverview>
 
-              <div class="grid gap-30 lg:gap-40 font-heading">
-                <h3 class="text-15 lg:text-18 text-green">Challenge</h3>
-                <p class="text-21 lg:text-28">
-                  RSVP aimed to increase brand awareness and attract new
-                  business, as well as recruit call centre staff, specifically
-                  actors seeking flexible work between roles. Improving search
-                  visibility was key to achieving these goals.
-                </p>
+                <CardRating
+                  quote="I'm delighted with the finished website & delivery of the project."
+                  name="Isabella"
+                  company="Ballet with Isabella"
+                  forceMedia
+                >
+                  <img
+                    src="/images/test-laptop.webp"
+                    width="500"
+                    height="300"
+                    alt=""
+                  />
+                </CardRating>
               </div>
+            </Fragment>
 
-              <div class="grid gap-30 lg:gap-40 font-heading">
-                <h3 class="text-15 lg:text-18 text-green">Solution</h3>
-                <p class="text-21 lg:text-28">
-                  Yellowball implemented a comprehensive SEO strategy, including
-                  a full website migration, technical audits, content creation,
-                  and link-building. Over three years, we enhanced on-site
-                  optimisation, created pillar content, and established RSVP as
-                  an authority in their sector.
-                </p>
-              </div>
-
-              <div class="grid gap-30 lg:gap-40 font-heading">
-                <h3 class="text-15 lg:text-18 text-green">Outcome</h3>
-                <p class="text-21 lg:text-28">
-                  Across 3 years, Yellowball significantly boosted RSVP’s search
-                  visibility, leading to substantial growth in both lead
-                  generation and recruitment efforts.
-                </p>
-              </div>
-
-              <CardRating
-                quote="I've been really delighted by Yellowball's efficiency and expertise since signing up with them 3 months ago to build a new website, SEO and PPC. They are clearly leaders in their field and I can highly recommend them."
-                name="Christopher Eden"
-                company="Santis Health"
-              />
-
-              <CardRating
-                quote="I'm delighted with the finished website & delivery of the project."
-                name="Isabella"
-                company="Ballet with Isabella"
-                forceMedia
-              >
-                <img
-                  src="/images/test-laptop.webp"
-                  width="500"
-                  height="300"
-                  alt=""
-                />
-              </CardRating>
+            <Fragment slot="footer">
+              <ModalTicker text="Next case study" />
             </Fragment>
           </Modal>
         </div>

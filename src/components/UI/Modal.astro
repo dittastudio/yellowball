@@ -42,6 +42,12 @@ import LayoutLines from '@/components/Layout/Lines.astro';
               <slot name="content" />
             </div>
           </div>
+
+          {Astro.slots.footer && (
+            <div class="w-full pb-120 lg:pb-160">
+              <slot name="footer" />
+            </div>
+          )}
         </div>
       </LayoutLines>
     </dialog>
