@@ -10,12 +10,18 @@ interface Props {
 const { client, color, class: className, ...rest } = Astro.props as Props;
 
 const classes = ['card-case-study-hero', className];
+
+const colourHoverMap: Record<string, string> = {
+  yellow: 'before:text-yellow',
+  green: 'before:text-green',
+  blue: 'before:text-blue',
+  purple: 'before:text-purple',
+} as const;
 ---
 
 <div
-  data-js="card-case-study-hero"
+  data-js="card-background-gradient-hover-effect"
   class:list={classes}
-  style={`--color: var(--yellowball-${color})`}
   {...rest}
 >
   <div
@@ -23,10 +29,16 @@ const classes = ['card-case-study-hero', className];
   >
     <a
       href="/"
-      class="card-case-study-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1"
+      class:list={[
+        'card-case-study-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1',
+        colourHoverMap[color as keyof typeof colourHoverMap],
+      ]}
     >
       <div
-        class="card-case-study-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden"
+        class:list={[
+          'card-case-study-hero__inner relative z-10 w-full h-full rounded-30 lg:rounded-40 bg-card overflow-hidden',
+          colourHoverMap[color as keyof typeof colourHoverMap],
+        ]}
       >
         <div
           class="card-case-study-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_380px] lg:grid-rows-[auto_auto]"
@@ -66,8 +78,8 @@ const classes = ['card-case-study-hero', className];
   .card-case-study-hero {
     &__content {
       box-shadow:
-        0px 0px 100px var(--yellowball-navy) inset,
-        20px 20px 50px var(--yellowball-card) inset;
+        0px 0px 100px theme('colors.navy') inset,
+        20px 20px 50px theme('colors.card') inset;
     }
 
     &__link,
@@ -85,7 +97,7 @@ const classes = ['card-case-study-hero', className];
         pointer-events: none;
         transition: opacity 0.3s ease;
         background-image: radial-gradient(
-          var(--color),
+          currentColor,
           transparent,
           transparent
         );

@@ -1,0 +1,110 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Button from '@/components/Elements/Button.astro';
+import ButtonScrollToTop from '@/components/UI/ButtonScrollToTop.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
+import Cursors from '@/components/Elements/Cursors.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
+import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardGrid from '@/components/Block/CardGrid.astro';
+import BlockHero from '@/components/Block/Hero.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+
+import LayoutTheme from '@/components/Layout/Theme.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+---
+
+<Layout title="Our Work">
+  <main>
+    <section class={classSection}>
+      <BlockHero color="green">
+        <Fragment slot="headline">
+          <TextReveal
+            onEnter
+            tag="h1"
+            class="font-heading text-fluid-h1 text-balance font-semibold"
+          >
+            <TextGradient>Bespoke</TextGradient> web design that captivates & converts
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <p class="text-17 md:text-21 text-grey text-balance">
+            Explore our award-winning web design portfolio below.
+          </p>
+        </Fragment>
+
+        <Fragment slot="extra">
+          <Cursors hasExit>
+            <Cursor
+              title="PPC Team"
+              class="bg-blue absolute top-[10%] left-[20%]"
+            />
+            <Cursor
+              title="Design Team"
+              class="bg-yellow absolute top-[5%] right-[20%]"
+            />
+            <Cursor
+              title="SEO Team"
+              class="bg-green absolute bottom-[2%] left-[5%]"
+            />
+            <Cursor
+              title="Developers"
+              class="bg-grey absolute bottom-[5%] right-[5%]"
+            />
+          </Cursors>
+        </Fragment>
+      </BlockHero>
+    </section>
+
+    <section class:list={[classSection, 'relative z-10']}>
+      <BlockCardGrid />
+    </section>
+
+    <section class={classSection}>
+      <BlockButtons>
+        <ButtonScrollToTop>
+          <Button
+            options={{
+              textColor: 'white',
+              bgColor: 'navy',
+              borderColor: 'white',
+            }}
+            text="Back to top"
+          />
+        </ButtonScrollToTop>
+      </BlockButtons>
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="triangle" color="yellow">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Want to see more from our portfolio?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get in touch" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
+      </LayoutTheme>
+    </section>
+  </main>
+</Layout>
