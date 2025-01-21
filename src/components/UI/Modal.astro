@@ -7,9 +7,9 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 
 {
   Astro.slots.trigger && (
-    <button data-js="modal" type="button">
+    <div data-js="modal" role="button">
       <slot name="trigger" />
-    </button>
+    </div>
   )
 }
 
@@ -38,7 +38,7 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 
         <div class="w-full h-full overflow-y-scroll overscroll-contain">
           <div class="wrapper grid grid-cols-1 place-items-center overflow-hidden">
-            <div class="w-full max-w-screen-md py-120 lg:py-160">
+            <div class="w-full max-w-[835px] py-120 lg:py-160">
               <slot name="content" />
             </div>
           </div>

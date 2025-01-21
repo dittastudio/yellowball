@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Lenis from 'lenis';
 
+import FnCardEffect from '@/components/Card/CardEffect'
 import FnItem from '@/components/Accordion/Item.ts'
 import FnBackground from '@/components/App/Header/Background.ts'
 import FnIndex from '@/components/App/Header/Index.ts'
@@ -23,7 +24,6 @@ import FnPostHero from '@/components/Card/PostHero.ts'
 import FnProjectHero from '@/components/Card/ProjectHero.ts'
 import FnPrompt from '@/components/Card/Prompt.ts'
 import FnService from '@/components/Card/Service.ts'
-import FnServiceHero from '@/components/Card/ServiceHero.ts'
 import FnIconText from '@/components/Carousel/IconText.ts'
 import FnPost from '@/components/Carousel/Post.ts'
 import FnProfile from '@/components/Carousel/Profile.ts'
@@ -45,6 +45,7 @@ new Lenis({
   autoRaf: true,
 });
 
+FnCardEffect()
 FnItem()
 FnBackground()
 FnIndex()
@@ -66,7 +67,6 @@ FnPostHero()
 FnProjectHero()
 FnPrompt()
 FnService()
-FnServiceHero()
 FnIconText()
 FnPost()
 FnProfile()

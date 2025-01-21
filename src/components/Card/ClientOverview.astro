@@ -5,7 +5,6 @@ import Icon from '@/components/Elements/Icon.astro';
 interface Props {
   headline: string;
   description: string;
-  cta: string;
   shape?: ShapeTypes;
   color?: ColorTypes;
   class?: string;
@@ -15,19 +14,18 @@ const hasSlotDefault = !!Astro.slots.default;
 const {
   headline,
   description,
-  cta,
   shape,
   color,
   class: className,
   ...rest
 } = Astro.props as Props;
 
-const colorShape = colourText[color as keyof typeof colourText] ?? '';
-const classes = ['card-service-hero', className];
+const colorHeadline = colourText[color as keyof typeof colourText] ?? '';
+const classes = ['card-client-overview', className];
 ---
 
 <div
-  data-js-effect="tilt|glow|shape"
+  data-js-effect="glow|shape"
   class:list={classes}
   style={`--color: var(--yellowball-${color})`}
   {...rest}
@@ -37,55 +35,39 @@ const classes = ['card-service-hero', className];
   >
     <a
       href="/"
-      class="card-service-hero__link group rounded-30 lg:rounded-40 bg-white/10 block w-full h-full p-1"
+      class="card-client-overview__link group rounded-30 lg:rounded-40 bg-white/10 block w-full h-full p-1"
     >
       <div
-        class="card-service-hero__inner rounded-30 lg:rounded-40 bg-card relative z-10 w-full h-full overflow-hidden"
+        class="card-client-overview__inner rounded-30 lg:rounded-40 bg-card relative z-10 w-full h-full overflow-hidden"
       >
         {
           shape && (
             <Icon
               data-js="shape"
               name={`shape-${shape}`}
-              width={200}
-              height={200}
+              width={160}
+              height={160}
               class="opacity-10 absolute top-0 left-0 z-0 text-white pointer-events-none"
             />
           )
         }
 
         <div
-          class="card-service-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_53%]"
+          class="card-client-overview__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-50 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-2"
         >
-          <div class="gap-30 md:gap-40 flex flex-col items-start justify-start">
+          <div class="gap-20 md:gap-30 flex flex-col items-start justify-start">
             <h3
-              class="font-heading text-fluid-h3 gap-10 text-balance flex items-baseline font-semibold"
+              class:list={[
+                colorHeadline,
+                'font-heading font-semibold text-15 lg:text-18 text-balance flex items-baseline gap-10',
+              ]}
             >
               {headline}
-
-              {
-                shape && colorShape && (
-                  <Icon
-                    name={`shape-${shape}`}
-                    width={shape === 'triangle' ? 24 : 21}
-                    height={21}
-                    class:list={[colorShape, 'inline-block ml-5']}
-                  />
-                )
-              }
             </h3>
 
-            <p class="text-18 lg:text-21 text-grey text-balance font-normal">
+            <p class="font-normal text-15 lg:text-18 text-grey text-balance">
               {description}
             </p>
-
-            <button
-              type="button"
-              class="font-heading text-15 lg:text-18 text-balance flex items-center gap-12 mt-auto font-bold text-white"
-            >
-              {cta}
-              <Icon name="arrow-s" class="size-15 md:size-[17px]" />
-            </button>
           </div>
 
           {
@@ -104,7 +86,7 @@ const classes = ['card-service-hero', className];
 </div>
 
 <style is:global>
-  .card-service-hero {
+  .card-client-overview {
     &__content {
       box-shadow:
         0px 0px 100px var(--yellowball-navy) inset,
@@ -139,7 +121,7 @@ const classes = ['card-service-hero', className];
           opacity: 1;
         }
 
-        .card-service-hero__inner {
+        .card-client-overview__inner {
           &::before {
             opacity: 0.2;
           }
