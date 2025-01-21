@@ -7,9 +7,8 @@
 
   <div
     class:list={[
-      'absolute -bottom-[0.15em] left-1/2 -translate-x-1/2 -z-1',
+      'block-404__number absolute -bottom-[0.15em] left-1/2 -translate-x-1/2 -z-1',
       'text-card font-heading font-bold text-[55vw] md:text-[51vw] leading-[1] tracking-[0.04em]',
-      'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-navy after:via-90% after:to-transparent',
       'pointer-events-none',
     ]}
     style="-webkit-text-stroke: 3vw currentColor;"
@@ -17,4 +16,10 @@
     404
   </div>
 </div>
+
+<style is:global>
+  .block-404__number {
+    mask-image: linear-gradient(to top, transparent 10%, white 100%);
+  }
+</style>
 <!-- End Block: 404 -->

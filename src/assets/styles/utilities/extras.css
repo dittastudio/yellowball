@@ -60,9 +60,9 @@
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
     background: linear-gradient(to right,
-      var(--yellowball-yellow),
-      var(--yellowball-green) 50%,
-      var(--yellowball-blue)
+      theme('colors.yellow'),
+      theme('colors.green') 50%,
+      theme('colors.blue')
     );
   }
 }

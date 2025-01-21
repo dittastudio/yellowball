@@ -26,7 +26,6 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@tailwind-plugin/expose-colors": "^1.1.8",
     "@tailwindcss/typography": "^0.5.15",
     "@types/jsdom": "^21.1.7",
     "@types/svg-sprite": "^0.0.39",
