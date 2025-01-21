@@ -1,6 +1,6 @@
-function FnProjectHero() {
+function FnCardBackgroundGradientHoverEffect() {
   const cards = document.querySelectorAll(
-    '[data-js="card-project-hero"]',
+    '[data-js="card-case-study-hero"], [data-js="card-project-hero"], [data-js="card-work"]',
   ) as NodeListOf<HTMLElement>;
 
   cards.forEach(card => {
@@ -17,4 +17,4 @@ function FnProjectHero() {
   });
 }
 
-export default FnProjectHero;
+export default FnCardBackgroundGradientHoverEffect;

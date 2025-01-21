@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro';
 
 import Button from '@/components/Elements/Button.astro';
 import ButtonScrollToTop from '@/components/UI/ButtonScrollToTop.astro';
-import CardProjectHero from '@/components/Card/ProjectHero.astro';
 import CardPrompt from '@/components/Card/Prompt.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import Cursors from '@/components/Elements/Cursors.astro';
@@ -11,6 +10,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
 import BlockButtons from '@/components/Block/Buttons.astro';
+import BlockCardGrid from '@/components/Block/CardGrid.astro';
 import BlockHero from '@/components/Block/Hero.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
@@ -65,8 +65,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class:list={[classSection, 'relative z-10']}>
+      <BlockCardGrid />
       <!-- <BlockOverlaps> -->
-      <CardProjectHero
+      <!-- <CardWork
         title="Faith Ibiza"
         headline="VIP Ibiza Concierge Services"
         description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
@@ -79,9 +80,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
           height="379"
           alt=""
         />
-      </CardProjectHero>
+      </CardWork>
 
-      <CardProjectHero
+      <CardWork
         title="Ballet with Isabella"
         headline="Elite Online Ballet Training"
         description="A bespoke WordPress build featuring a customer login area, a member live area and an on-demand online studio which houses over 100 classes, courses, plans and workshops for ballet students."
@@ -94,9 +95,9 @@ const classSectionThick = 'py-100 md:py-[150px]';
           height="379"
           alt=""
         />
-      </CardProjectHero>
+      </CardWork>
 
-      <CardProjectHero
+      <CardWork
         title="Shirakawa 1958"
         headline="The World's Rarest Japanese Whisky"
         description="This bespoke WordPress and WooCommerce website build features elegant typography, a sumptuous colour palette and a super-slick checkout flow."
@@ -109,7 +110,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
           height="379"
           alt=""
         />
-      </CardProjectHero>
+      </CardWork> -->
       <!-- </BlockOverlaps> -->
     </section>
 
