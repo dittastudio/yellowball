@@ -23,24 +23,22 @@ function FnFauxGraph() {
       return;
     }
 
-    const dLineFrom = 'M 0 300 C 300 300 500 300 700 300';
-    const dLineTo = 'M 0 300 C 300 300 300 100 700 80';
-    const dShapeFrom = `${dLineFrom} L 700 350 L 0 350 Z`;
-    const dShapeTo = `${dLineTo} L 700 350 L 0 350 Z`;
     const duration = 2;
     const ease = 'expo.inOut';
     const fromValue = Number(figure.dataset.jsFrom?.replace(/\D/g, "").trim() || 0)
     const toValue = Number(figure.dataset.jsTo?.replace(/\D/g, "").trim() || 0)
+    const dLineFrom = 'M 7 300 C 300 300 500 300 693 300';
+    const dLineTo = 'M 7 300 C 300 300 300 100 693 80';
+    const dShapeFrom = `${dLineFrom} L 693 350 L 7 350 Z`;
+    const dShapeTo = `${dLineTo} L 693 350 L 7 350 Z`;
 
     gsap
       .timeline({
-        // repeat: -1,
         scrollTrigger: {
           scroller: '.modal',
           markers: false,
           trigger: graph,
           start: 'top center',
-          // end: 'bottom bottom',
           scrub: false,
         },
       })
@@ -102,9 +100,7 @@ function FnFauxGraph() {
           snap: { textContent: 1 },
           ease: ease,
           onUpdate: function () {
-            console.log(toValue)
             if (figure.textContent) {
-              console.log(figure.textContent);
               figure.textContent = parseInt(
                 figure.textContent,
               ).toLocaleString();
