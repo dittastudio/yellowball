@@ -8,11 +8,14 @@ import IconList from '@/components/Elements/IconList.astro';
 import Testimonial from '@/components/Elements/Testimonial.astro';
 import Quote from '@/components/Elements/Quote.astro';
 import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
+import MediaCombo from '@/components/Elements/MediaCombo.astro';
+import CardRating from '@/components/Card/Rating.astro';
 
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
 import BlockMedia from '@/components/Block/Media.astro';
 import BlockSplitTitleRichText from '@/components/Block/SplitTitleRichText.astro';
+import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 ---
@@ -141,13 +144,164 @@ const classSection = 'py-50 md:py-[75px]';
       <div class="wrapper">
         <UIBeforeAfter>
           <Fragment slot="before">
-            <img src="/images/test-work-before.jpg" alt="" />
+            <img
+              src="/images/test-work-before.jpg"
+              alt=""
+              width="618"
+              height="927"
+            />
           </Fragment>
 
           <Fragment slot="after">
-            <img src="/images/test-work-after.jpg" alt="" />
+            <img
+              src="/images/test-work-after.jpg"
+              alt=""
+              width="618"
+              height="927"
+            />
           </Fragment>
         </UIBeforeAfter>
+      </div>
+    </section>
+
+    <section class={classSection}>
+      <div class="wrapper flex flex-col gap-24 md:gap-30">
+        <MediaCombo
+          items={[
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+          ]}
+        />
+
+        <MediaCombo
+          items={[
+            {
+              src: '/images/test-work-before.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-work-before.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+          ]}
+        />
+
+        <MediaCombo
+          items={[
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-work-before.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+          ]}
+        />
+
+        <MediaCombo
+          reverse
+          items={[
+            {
+              src: '/images/test-work-before.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+          ]}
+        />
+
+        <MediaCombo
+          items={[
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+            {
+              src: '/images/test-post-hero.jpg',
+              alt: '',
+              width: 618,
+              height: 927,
+            },
+          ]}
+        />
+      </div>
+    </section>
+
+    <section class={classSection}>
+      <BlockIconTextCards
+        color="green"
+        items={[
+          {
+            icon: 'outline-info-migration',
+            title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Augue amet id enim consequat',
+          },
+          {
+            icon: 'outline-info-migration',
+            title: 'Quis sed eget in aliquam',
+          },
+        ]}
+      />
+    </section>
+
+    <section class={classSection}>
+      <div class="wrapper">
+        <CardRating
+          quote="I'm delighted with the finished website & delivery of the project."
+          name="Isabella"
+          company="Ballet with Isabella"
+          forceMedia
+        >
+          <img src="/images/test-laptop.webp" width="500" height="300" alt="" />
+        </CardRating>
       </div>
     </section>
 

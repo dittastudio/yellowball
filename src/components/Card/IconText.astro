@@ -6,7 +6,7 @@ interface Props {
   icon?: string;
   color?: string;
   title: string;
-  copy: string;
+  copy?: string;
   class?: string;
 }
 
@@ -37,7 +37,5 @@ const {
     </h3>
   </div>
 
-  <p class="text-15 md:text-18 text-pretty opacity-70">
-    {copy}
-  </p>
+  {copy && <p class="text-15 md:text-18 text-pretty opacity-70">{copy}</p>}
 </div>
