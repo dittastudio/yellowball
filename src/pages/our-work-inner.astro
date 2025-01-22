@@ -2,13 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 
 import Button from '@/components/Elements/Button.astro';
+
 import CardPrompt from '@/components/Card/Prompt.astro';
 
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
+import BlockMedia from '@/components/Block/Media.astro';
 
 const classSection = 'py-50 md:py-[75px]';
-// const classSectionThick = 'py-100 md:py-[150px]';
 ---
 
 <Layout title="Our Work">
@@ -16,7 +17,7 @@ const classSection = 'py-50 md:py-[75px]';
     <section class={classSection}>
       <BlockHeroWork
         title="Client name"
-        heading="Project tagline lorem ipsum dolor"
+        heading="Elite online ballet training for every dancer’s journey"
         categories={[
           {
             shape: 'triangle',
@@ -28,6 +29,19 @@ const classSection = 'py-50 md:py-[75px]';
         ]}
         cta={{ label: 'Visit site', url: 'https://www.google.com' }}
       />
+    </section>
+
+    <section class={classSection}>
+      <BlockMedia class="wrapper" hasBorder>
+        <Fragment slot="media">
+          <img
+            src="/images/test-post-hero.jpg"
+            width="1448"
+            height="864"
+            alt=""
+          />
+        </Fragment>
+      </BlockMedia>
     </section>
 
     <section class={classSection}>

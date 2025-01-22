@@ -3,23 +3,25 @@ import type { HTMLAttributes } from 'astro/types';
 
 interface Base {
   caption?: string;
+  hasBorder?: boolean;
 }
 
 type Props = HTMLAttributes<'div'> & Base;
 
-const { caption = '', ...rest } = Astro.props as Props;
+const { caption = '', hasBorder = false, ...rest } = Astro.props as Props;
 const classes = ['w-full grid gap-28 grid-cols-1', rest.class].filter(Boolean);
 ---
 
 <!-- Begin Block: Media -->
 <figure class:list={classes}>
-  {
-    Astro.slots.media && (
-      <div class="w-full rounded-30 lg:rounded-40 overflow-hidden">
-        <slot name="media" />
-      </div>
-    )
-  }
+  <div
+    class:list={[
+      'w-full rounded-30 lg:rounded-40 overflow-hidden',
+      hasBorder ? 'border border-solid border-navy-lighter' : '',
+    ]}
+  >
+    {Astro.slots.media && <slot name="media" />}
+  </div>
 
   {
     caption && (
