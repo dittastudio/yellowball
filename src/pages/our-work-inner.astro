@@ -2,13 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 
 import Button from '@/components/Elements/Button.astro';
-
+import RichText from '@/components/Elements/RichText.astro';
 import CardPrompt from '@/components/Card/Prompt.astro';
+import IconList from '@/components/Elements/IconList.astro';
 
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
 import BlockMedia from '@/components/Block/Media.astro';
-
+import BlockSplitTitleRichText from '@/components/Block/SplitTitleRichText.astro';
 const classSection = 'py-50 md:py-[75px]';
 ---
 
@@ -42,6 +43,68 @@ const classSection = 'py-50 md:py-[75px]';
           />
         </Fragment>
       </BlockMedia>
+    </section>
+
+    <section class={classSection}>
+      <BlockSplitTitleRichText title="The challenge">
+        <Fragment slot="richtext">
+          <RichText>
+            <h5>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore.
+            </h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </RichText>
+
+          <IconList
+            items={[
+              {
+                icon: 'outline-arrow-right-box',
+                text: 'Bespoke customer login area',
+              },
+              {
+                icon: 'outline-wallet',
+                text: 'Online payments & subscription management',
+              },
+              {
+                icon: 'outline-filters',
+                text: 'Intuitive filters & content feeds',
+              },
+            ]}
+            color="yellow"
+          />
+        </Fragment>
+      </BlockSplitTitleRichText>
+    </section>
+
+    <section class={classSection}>
+      <BlockSplitTitleRichText title="The challenge">
+        <Fragment slot="richtext">
+          <RichText>
+            <h5>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore.
+            </h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </RichText>
+        </Fragment>
+      </BlockSplitTitleRichText>
     </section>
 
     <section class={classSection}>
