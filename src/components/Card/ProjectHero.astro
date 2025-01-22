@@ -24,12 +24,18 @@ const {
 
 const colorTitle = colourText[color as keyof typeof colourText] ?? '';
 const classes = ['card-project-hero', className];
+
+const colourHoverMap: Record<string, string> = {
+  yellow: 'before:text-yellow',
+  green: 'before:text-green',
+  blue: 'before:text-blue',
+  purple: 'before:text-purple',
+} as const;
 ---
 
 <div
-  data-js="card-project-hero"
+  data-js="card-background-gradient-hover-effect"
   class:list={classes}
-  style={`--color: var(--yellowball-${color})`}
   {...rest}
 >
   <div
@@ -40,12 +46,14 @@ const classes = ['card-project-hero', className];
       class:list={[
         'card-project-hero__link group rounded-[inherit] block w-full h-full p-1 bg-white/10',
         'light:bg-navy/15',
+        colourHoverMap[color],
       ]}
     >
       <div
         class:list={[
           'card-project-hero__inner rounded-[inherit] relative z-10 w-full h-full overflow-hidden bg-card',
           'light:bg-white',
+          colourHoverMap[color],
         ]}
       >
         <div
@@ -98,16 +106,10 @@ const classes = ['card-project-hero', className];
 </div>
 
 <style is:global>
-  .card-project-hero {
-    [data-js-theme='light'] & {
-      --color: theme('colors.navy-lightest') !important;
-    }
-  }
-
   .card-project-hero__content {
     box-shadow:
-      0px 0px 100px var(--yellowball-navy) inset,
-      20px 20px 50px var(--yellowball-card) inset;
+      0px 0px 100px theme('colors.navy') inset,
+      20px 20px 50px theme('colors.card') inset;
 
     [data-js-theme='light'] & {
       box-shadow: none;
@@ -128,7 +130,11 @@ const classes = ['card-project-hero', className];
       aspect-ratio: 1;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      background-image: radial-gradient(var(--color), transparent, transparent);
+      background-image: radial-gradient(currentColor, transparent, transparent);
+
+      [data-js-theme='light'] & {
+        color: theme('colors.navy-lightest');
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 function FnPostHero() {
   const heros = document.querySelectorAll(
-    '[data-js=card-post-hero]',
+    '[data-js="card-post-hero"]',
   ) as NodeListOf<HTMLElement>;
 
   heros.forEach(hero => {

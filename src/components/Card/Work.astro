@@ -1,0 +1,211 @@
+---
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+import Tag from '@/components/Elements/Tag.astro';
+
+interface Props {
+  title: string;
+  headline: string;
+  cta: string;
+  color?: ColorTypes;
+  hoverColor?: string;
+  theme?: ThemeTypes;
+  isMediaBackground?: boolean;
+  size?: 'small' | 'large';
+  class?: string;
+}
+
+const hasSlotDefault = !!Astro.slots.default;
+const {
+  title,
+  headline,
+  cta,
+  color = 'current',
+  hoverColor = color,
+  theme = 'dark',
+  isMediaBackground = false,
+  size = 'large',
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const colorTitle = colourText[color as keyof typeof colourText] ?? '';
+const classes = [
+  'card-work h-full',
+  `theme-${theme}`,
+  theme === 'light' ? 'text-navy' : '',
+  className,
+];
+---
+
+<div
+  data-js="card-background-gradient-hover-effect"
+  class:list={classes}
+  style={`--hover-color: ${hoverColor}`}
+  {...rest}
+>
+  <div
+    class:list={[
+      'transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform rounded-30 lg:rounded-40 w-full h-full overflow-hidden text-left transition-transform duration-300 ease-out',
+      isMediaBackground ? 'aspect-square' : '',
+    ]}
+  >
+    <a
+      href="/"
+      class:list={[
+        'card-work__link group rounded-[inherit] block w-full h-full p-1 bg-white/10',
+        theme === 'light' ? 'bg-navy/15' : 'bg-white/15',
+      ]}
+    >
+      <div
+        class:list={[
+          'card-work__inner rounded-[inherit] relative z-10 w-full h-full overflow-hidden',
+          theme === 'light' ? 'bg-white' : 'bg-card',
+        ]}
+      >
+        <div
+          class:list={[
+            'card-work__content relative z-20 rounded-[inherit] w-full h-full flex flex-col justify-between',
+            size === 'small'
+              ? 'p-30 lg:p-40 gap-y-40 md:gap-y-50'
+              : 'p-30 lg:p-60 gap-y-40 md:gap-y-70',
+          ]}
+        >
+          <div
+            class:list={[
+              'flex',
+              isMediaBackground
+                ? 'flex-col-reverse items-end justify-between h-full'
+                : 'flex-col-reverse items-end justify-between lg:flex-row lg:items-start',
+            ]}
+          >
+            <div class="w-full flex flex-col items-start justify-start gap-60">
+              <div
+                class:list={[
+                  'flex flex-col items-start justify-start',
+                  size === 'small' ? 'gap-20' : 'gap-30',
+                ]}
+              >
+                <p
+                  class:list={[
+                    theme === 'dark' && colorTitle,
+                    'font-heading font-bold text-15 lg:text-18 text-balance mb-5',
+                    'flex items-center gap-15',
+                  ]}
+                >
+                  {theme === 'light' && <Tag text="Lite" />}
+                  {title}
+                </p>
+
+                <h3
+                  class="font-heading text-fluid-h4 text-balance font-semibold"
+                  class:list={[size === 'small' ? 'lg:text-fluid-h5' : '']}
+                >
+                  {headline}
+                </h3>
+              </div>
+            </div>
+
+            <Icon
+              name="arrow-ne"
+              class="shrink-0 size-10 md:size-12 group-hover:translate-x-1/2 group-hover:-translate-y-1/2 transition-transform duration-300"
+            />
+          </div>
+
+          {
+            hasSlotDefault && (
+              <>
+                {!isMediaBackground ? (
+                  <div class="-mb-30 lg:-mb-60">
+                    <div class="shadow-media lgMax:max-w-[500px] lgMax:mx-auto">
+                      <slot />
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    class:list={[
+                      'absolute inset-0 -z-1 [&>img]:w-full [&>img]:h-full [&>img]:object-cover [&>video]:w-full [&>video]:h-full [&>video]:object-cover',
+                      'before:content-[""] before:absolute before:inset-0 before:bg-navy/75',
+                      theme === 'light'
+                        ? 'before:bg-white/35'
+                        : 'before:bg-navy/75',
+                    ]}
+                  >
+                    <slot />
+                  </div>
+                )}
+              </>
+            )
+          }
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style is:global>
+  .card-work__content {
+    box-shadow:
+      0px 0px 100px theme('colors.navy') inset,
+      0px 0px 50px theme('colors.card') inset;
+
+    .card-work.theme-light & {
+      box-shadow: none;
+    }
+  }
+
+  .card-work__link,
+  .card-work__inner {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background-image: radial-gradient(var(--hover-color) 0%, transparent 50%);
+      width: 150%;
+      height: auto;
+      translate: var(--x) var(--y) 0;
+      background-image: radial-gradient(
+        var(--hover-color),
+        transparent,
+        transparent
+      );
+
+      .card-work.theme-light & {
+        --hover-color: theme('colors.navy-lightest');
+      }
+
+      @media screen(lg) {
+        opacity: 0;
+        width: 150%;
+        height: auto;
+        translate: var(--x) var(--y) 0;
+        background-image: radial-gradient(
+          var(--hover-color),
+          transparent,
+          transparent
+        );
+      }
+    }
+  }
+
+  .card-work__link {
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+
+      .card-work__inner {
+        &::before {
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+</style>

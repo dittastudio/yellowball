@@ -1,5 +1,4 @@
 import { type Config } from 'tailwindcss'
-import exposeColors from '@tailwind-plugin/expose-colors'
 import typography from '@tailwindcss/typography'
 import containerQueries from '@tailwindcss/container-queries'
 import tailwindcss3d from 'tailwindcss-3d'
@@ -30,9 +29,8 @@ const clamp = ({
 
   const intercept = minValueRems - slope * minViewportWidthRems
 
-  return `clamp(${minValueRems}rem, ${intercept}rem + ${
-    slope * 100
-  }vw, ${maxValueRems}rem)`
+  return `clamp(${minValueRems}rem, ${intercept}rem + ${slope * 100
+    }vw, ${maxValueRems}rem)`
 }
 
 export const screenSizes = {
@@ -119,13 +117,12 @@ export default {
       80: [`${pxToRem(80)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       100: [`${pxToRem(100)}rem`, { lineHeight: '1.2', letterSpacing: '-0.04em' }],
       'fluid-h1': [
-        `${
-          clamp({
-            minPixels: 56,
-            minViewportWidthPixels: screenSizes.xs,
-            maxPixels: 100,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 56,
+          minViewportWidthPixels: screenSizes.xs,
+          maxPixels: 100,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -133,13 +130,12 @@ export default {
         },
       ],
       'fluid-h2': [
-        `${
-          clamp({
-            minPixels: 44,
-            minViewportWidthPixels: screenSizes.md,
-            maxPixels: 80,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 44,
+          minViewportWidthPixels: screenSizes.md,
+          maxPixels: 80,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -147,13 +143,12 @@ export default {
         },
       ],
       'fluid-h3': [
-        `${
-          clamp({
-            minPixels: 40,
-            minViewportWidthPixels: screenSizes.md,
-            maxPixels: 64,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 40,
+          minViewportWidthPixels: screenSizes.md,
+          maxPixels: 64,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -161,13 +156,12 @@ export default {
         },
       ],
       'fluid-h4': [
-        `${
-          clamp({
-            minPixels: 34,
-            minViewportWidthPixels: screenSizes.md,
-            maxPixels: 48,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 34,
+          minViewportWidthPixels: screenSizes.md,
+          maxPixels: 48,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -175,13 +169,12 @@ export default {
         },
       ],
       'fluid-h5': [
-        `${
-          clamp({
-            minPixels: 26,
-            minViewportWidthPixels: screenSizes.md,
-            maxPixels: 36,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 26,
+          minViewportWidthPixels: screenSizes.md,
+          maxPixels: 36,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -189,13 +182,12 @@ export default {
         },
       ],
       'fluid-h6': [
-        `${
-          clamp({
-            minPixels: 21,
-            minViewportWidthPixels: screenSizes.md,
-            maxPixels: 28,
-            maxViewportWidthPixels: screenSizes.base,
-          })
+        `${clamp({
+          minPixels: 21,
+          minViewportWidthPixels: screenSizes.md,
+          maxPixels: 28,
+          maxViewportWidthPixels: screenSizes.base,
+        })
         }`,
         {
           lineHeight: '1.2',
@@ -361,20 +353,6 @@ export default {
     function ({ addVariant }: any) {
       addVariant('light', '&:where(.light, .light *)')
     },
-    exposeColors({
-      extract: [
-        'yellow',
-        'green',
-        'blue',
-        'purple',
-        'navy',
-        'cream',
-        'grey',
-        'card'
-      ],
-      prefix: `--yellowball`,
-      mode: 'hex'
-    }),
     tailwindcss3d,
     typography,
     containerQueries,

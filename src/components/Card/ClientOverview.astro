@@ -22,6 +22,13 @@ const {
 
 const colorHeadline = colourText[color as keyof typeof colourText] ?? '';
 const classes = ['card-client-overview', className];
+
+const colourHoverMap: Record<string, string> = {
+  yellow: 'before:text-yellow',
+  green: 'before:text-green',
+  blue: 'before:text-blue',
+  purple: 'before:text-purple',
+} as const;
 ---
 
 <div
@@ -34,10 +41,16 @@ const classes = ['card-client-overview', className];
     class="transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform rounded-30 lg:rounded-40 w-full h-full overflow-hidden text-left transition-transform duration-300 ease-out"
   >
     <div
-      class="card-client-overview__link group rounded-30 lg:rounded-40 bg-white/10 block w-full h-full p-1"
+      class:list={[
+        'card-client-overview__wrapper group rounded-30 lg:rounded-40 bg-white/10 block w-full h-full p-1',
+        colourHoverMap[color as keyof typeof colourHoverMap],
+      ]}
     >
       <div
-        class="card-client-overview__inner rounded-30 lg:rounded-40 bg-card relative z-10 w-full h-full overflow-hidden"
+        class:list={[
+          'card-client-overview__inner rounded-30 lg:rounded-40 bg-card relative z-10 w-full h-full overflow-hidden',
+          colourHoverMap[color as keyof typeof colourHoverMap],
+        ]}
       >
         {
           shape && (
@@ -88,11 +101,11 @@ const classes = ['card-client-overview', className];
   .card-client-overview {
     &__content {
       box-shadow:
-        0px 0px 100px var(--yellowball-navy) inset,
-        20px 20px 50px var(--yellowball-card) inset;
+        0px 0px 100px theme('colors.navy') inset,
+        20px 20px 50px theme('colors.card') inset;
     }
 
-    &__link,
+    &__wrapper,
     &__inner {
       &::before {
         opacity: 0;
@@ -107,14 +120,14 @@ const classes = ['card-client-overview', className];
         transition: opacity 0.3s ease;
         transform: translate3d(-50%, -50%, 0);
         background-image: radial-gradient(
-          var(--color),
+          currentColor,
           transparent,
           transparent
         );
       }
     }
 
-    &__link {
+    &__wrapper {
       &:hover {
         &::before {
           opacity: 1;
