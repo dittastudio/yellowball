@@ -6,15 +6,6 @@ function FnFauxGraph() {
   ) as NodeListOf<HTMLElement>;
 
   graphs.forEach(graph => {
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     markers: false,
-    //     trigger: footer,
-    //     start: '80% bottom',
-    //     end: 'bottom bottom',
-    //     scrub: 0,
-    //   },
-    // });
     const shape = graph.querySelector(
       '[data-js="faux-graph-shape"]',
     ) as HTMLElement;
@@ -38,10 +29,8 @@ function FnFauxGraph() {
     const dShapeTo = `${dLineTo} L 700 350 L 0 350 Z`;
     const duration = 2;
     const ease = 'expo.inOut';
-
-    // function numberWithCommas(x: number) {
-    //   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    // }
+    const fromValue = Number(figure.dataset.jsFrom?.replace(/\D/g, "").trim() || 0)
+    const toValue = Number(figure.dataset.jsTo?.replace(/\D/g, "").trim() || 0)
 
     gsap
       .timeline({
@@ -102,14 +91,18 @@ function FnFauxGraph() {
         },
         '<',
       )
-      .from(
+      .fromTo(
         figure,
         {
-          textContent: 0,
+          textContent: fromValue,
+        },
+        {
+          textContent: toValue,
           duration: duration,
           snap: { textContent: 1 },
           ease: ease,
           onUpdate: function () {
+            console.log(toValue)
             if (figure.textContent) {
               console.log(figure.textContent);
               figure.textContent = parseInt(
