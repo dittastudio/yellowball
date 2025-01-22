@@ -7,6 +7,7 @@ import CardPrompt from '@/components/Card/Prompt.astro';
 import IconList from '@/components/Elements/IconList.astro';
 import Testimonial from '@/components/Elements/Testimonial.astro';
 import Quote from '@/components/Elements/Quote.astro';
+import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
 
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
@@ -36,7 +37,7 @@ const classSection = 'py-50 md:py-[75px]';
     </section>
 
     <section class={classSection}>
-      <BlockMedia class="wrapper" hasBorder>
+      <BlockMedia class="wrapper">
         <Fragment slot="media">
           <img
             src="/images/test-post-hero.jpg"
@@ -134,6 +135,20 @@ const classSection = 'py-50 md:py-[75px]';
           />
         </Fragment>
       </BlockSplitTitleRichText>
+    </section>
+
+    <section class={classSection}>
+      <div class="wrapper">
+        <UIBeforeAfter>
+          <Fragment slot="before">
+            <img src="/images/test-work-before.jpg" alt="" />
+          </Fragment>
+
+          <Fragment slot="after">
+            <img src="/images/test-work-after.jpg" alt="" />
+          </Fragment>
+        </UIBeforeAfter>
+      </div>
     </section>
 
     <section class={classSection}>
