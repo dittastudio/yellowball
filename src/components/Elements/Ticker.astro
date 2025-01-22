@@ -2,12 +2,21 @@
 interface Props {
   class?: string;
   spacingClasses?: string;
+  speed?: number;
 }
 
-const { class: className, spacingClasses = '' } = Astro.props as Props;
+const {
+  class: className,
+  spacingClasses = '',
+  speed = 20,
+} = Astro.props as Props;
 ---
 
-<div data-js="ticker" class:list={['contain-layout', className]}>
+<div
+  data-js="ticker"
+  class:list={['contain-layout', className]}
+  style={`--ticker-speed: ${speed}s`}
+>
   <div data-js-container class="flex justify-center transform-gpu">
     {
       [...Array(4)].map(() => (
@@ -33,8 +42,6 @@ const { class: className, spacingClasses = '' } = Astro.props as Props;
 
 <style is:global>
   [data-js='ticker'] {
-    --speed: 20s;
-
     @keyframes tickerLeft {
       0% {
         translate: 0 0 0;
@@ -54,11 +61,11 @@ const { class: className, spacingClasses = '' } = Astro.props as Props;
     }
 
     [data-js-wrapper] {
-      animation: tickerRight var(--speed) linear infinite paused;
+      animation: tickerRight var(--ticker-speed) linear infinite paused;
     }
 
     [data-js-list] {
-      animation: tickerLeft var(--speed) linear infinite;
+      animation: tickerLeft var(--ticker-speed) linear infinite;
     }
   }
 </style>

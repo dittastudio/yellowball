@@ -10,6 +10,7 @@ import Quote from '@/components/Elements/Quote.astro';
 import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
 import MediaCombo from '@/components/Elements/MediaCombo.astro';
 import CardRating from '@/components/Card/Rating.astro';
+import UIModalTicker from '@/components/UI/ModalTicker.astro';
 
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
@@ -316,11 +317,51 @@ const classSection = 'py-50 md:py-[75px]';
             </h3>
           </Fragment>
 
+          <Fragment slot="copy">
+            <p class="font-body text-15 text-18 max-w-[55ch] text-cream">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+              nisi tempore cumque, inventore totam cum possimus unde nemo
+              aliquid magni accusamus culpa aperiam dolorum quis illum dolor
+              quos facere distinctio.
+            </p>
+          </Fragment>
+
           <Fragment slot="button">
             <Button text="Get in touch" hasArrow />
           </Fragment>
         </CardPrompt>
       </BlockPrompt>
+    </section>
+
+    <section class={classSection}>
+      <BlockPrompt>
+        <CardPrompt shape="circle" color="blue">
+          <Fragment slot="headline">
+            <h3
+              class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+            >
+              Want to see more from our portfolio?
+            </h3>
+          </Fragment>
+
+          <Fragment slot="copy">
+            <p class="font-body text-15 text-18 max-w-[55ch] text-cream">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+              nisi tempore cumque, inventore totam cum possimus unde nemo
+              aliquid magni accusamus culpa aperiam dolorum quis illum dolor
+              quos facere distinctio.
+            </p>
+          </Fragment>
+
+          <Fragment slot="button">
+            <Button text="Get in touch" hasArrow />
+          </Fragment>
+        </CardPrompt>
+      </BlockPrompt>
+    </section>
+
+    <section class={classSection}>
+      <UIModalTicker text="View next project" />
     </section>
   </main>
 </Layout>
