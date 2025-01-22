@@ -1,0 +1,65 @@
+<div data-js="faux-graph" class="relative">
+  <p
+    class="absolute top-0 right-0 font-heading text-26 lg:text-48 text-balance text-green flex font-semibold"
+  >
+    +<span data-js="faux-graph-figure" data-js-from="100" data-js-to="2754">
+      100
+    </span>%
+  </p>
+
+  <p
+    class="absolute bottom-50 lg:bottom-80 left-0 font-heading text-21 lg:text-36 text-balance text-white flex font-semibold"
+  >
+    100%
+  </p>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 700 350"
+    fill="none"
+    class="w-full h-auto"
+  >
+    <defs>
+      <linearGradient id="fade-gradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ADF454" stop-opacity="0.3"></stop>
+        <stop offset="100%" stop-color="#ADF454" stop-opacity="0"></stop>
+      </linearGradient>
+    </defs>
+
+    <path
+      data-js="faux-graph-shape"
+      d="M 7 300 C 300 300 500 300 693 300 L 693 350 L 7 350 Z"
+      fill="url(#fade-gradient)"
+    >
+    </path>
+
+    <path
+      data-js="faux-graph-line"
+      stroke="#ADF454"
+      stroke-width="3"
+      d="M 7 300 C 300 300 500 300 693 300"
+    >
+    </path>
+
+    <circle
+      cx="8.5"
+      cy="300"
+      r="7"
+      fill="#2a2b3a"
+      stroke="#ADF454"
+      stroke-width="3"
+    >
+    </circle>
+
+    <circle
+      data-js="faux-graph-dot"
+      cx="691.5"
+      cy="300"
+      r="7"
+      fill="#2a2b3a"
+      stroke="#ADF454"
+      stroke-width="3"
+    >
+    </circle>
+  </svg>
+</div>

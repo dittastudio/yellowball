@@ -6,7 +6,7 @@ function FnOverlaps() {
   ) as NodeListOf<HTMLElement>;
 
   sections.forEach(section => {
-    const items = section.querySelectorAll('li') as NodeListOf<HTMLElement>;
+    const items = section.querySelectorAll(':scope > li') as NodeListOf<HTMLElement>;
 
     items.forEach(item => {
       gsap

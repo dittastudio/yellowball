@@ -2,6 +2,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Lenis from 'lenis';
 
+import FnFauxGraph from '@/components/UI/FauxGraph';
+import FnCardEffect from '@/components/Card/CardEffect'
 import FnAvatars from '@/components/Card/Avatars.ts'
 import FnBackground from '@/components/App/Header/Background.ts'
 import FnButtonScrollToTop from '@/components/UI/ButtonScrollToTop.ts'
@@ -26,11 +28,10 @@ import FnNumberedText from '@/components/Elements/NumberedText.ts'
 import FnOverlaps from '@/components/Block/Overlaps.ts'
 import FnPost from '@/components/Carousel/Post.ts'
 import FnPostHero from '@/components/Card/PostHero.ts'
-import FnProfile from '@/components/Carousel/Profile.ts'
-import FnProject from '@/components/Carousel/Project.ts'
 import FnPrompt from '@/components/Card/Prompt.ts'
 import FnService from '@/components/Card/Service.ts'
-import FnServiceHero from '@/components/Card/ServiceHero.ts'
+import FnProfile from '@/components/Carousel/Profile.ts'
+import FnProject from '@/components/Carousel/Project.ts'
 import FnServiceList from '@/components/Block/ServiceList.ts'
 import FnSplitRichText from '@/components/Block/SplitRichText.ts'
 import FnTestimonials from '@/components/Carousel/Testimonials.ts'
@@ -44,6 +45,8 @@ new Lenis({
   autoRaf: true,
 });
 
+FnFauxGraph()
+FnCardEffect()
 FnAvatars()
 FnBackground()
 FnButtonScrollToTop()
@@ -72,7 +75,6 @@ FnProfile()
 FnProject()
 FnPrompt()
 FnService()
-FnServiceHero()
 FnServiceList()
 FnSplitRichText()
 FnTestimonials()

@@ -27,10 +27,9 @@ const colourHoverMap: Record<string, string> = {
   <div
     class="w-full h-full text-left transform-style-3d backface-hidden rotate-x-0 rotate-y-0 will-change-transform transition-transform duration-300 ease-out overflow-hidden rounded-30 lg:rounded-40"
   >
-    <a
-      href="/"
+    <div
       class:list={[
-        'card-case-study-hero__link group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1',
+        'card-case-study-hero__wrapper group w-full h-full block rounded-30 lg:rounded-40 bg-white/10 p-1',
         colourHoverMap[color as keyof typeof colourHoverMap],
       ]}
     >
@@ -70,7 +69,7 @@ const colourHoverMap: Record<string, string> = {
           </div>
         </div>
       </div>
-    </a>
+    </div>
   </div>
 </div>
 
@@ -82,7 +81,7 @@ const colourHoverMap: Record<string, string> = {
         20px 20px 50px theme('colors.card') inset;
     }
 
-    &__link,
+    &__wrapper,
     &__inner {
       &::before {
         opacity: 0;
@@ -104,7 +103,7 @@ const colourHoverMap: Record<string, string> = {
       }
     }
 
-    &__link {
+    &__wrapper {
       &:hover {
         &::before {
           opacity: 1;

@@ -1,5 +1,6 @@
 import { type Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
+import containerQueries from '@tailwindcss/container-queries'
 import tailwindcss3d from 'tailwindcss-3d'
 
 const pxToRem = (px: number, base = 16): number => px / base
@@ -198,6 +199,16 @@ export default {
       'tight': '-0.02em',
       'tighter': '-0.04em',
     },
+    containers: {
+      xs: `${screenSizes.xs}px`,
+      sm: `${screenSizes.sm}px`,
+      md: `${screenSizes.md}px`,
+      lg: `${screenSizes.lg}px`,
+      xl: `${screenSizes.xl}px`,
+      base: `${screenSizes.base}px`,
+      '2xl': `${screenSizes['2xl']}px`,
+      '3xl': `${screenSizes['3xl']}px`,
+    },
     screens: {
       xs: `${screenSizes.xs}px`,
       xsMax: { max: `${screenSizes.xs - 1}px` },
@@ -344,5 +355,6 @@ export default {
     },
     tailwindcss3d,
     typography,
+    containerQueries,
   ],
 } satisfies Config;
