@@ -8,7 +8,7 @@ interface IconTextCardItem {
 }
 
 interface Props {
-  color?: string;
+  color?: ColorTypes | null;
   heading?: string;
   items: IconTextCardItem[];
 }
@@ -30,7 +30,7 @@ const isInThrees = items.length % 3 === 0;
 
   <ul class="grid grid-cols-6 gap-24 sm:gap-12 md:gap-30">
     {
-      items.map(({ icon, title, copy }) => (
+      items?.map(({ icon, title, copy }) => (
         <li
           class:list={[
             isInThrees
@@ -39,7 +39,7 @@ const isInThrees = items.length % 3 === 0;
             'h-full',
           ]}
         >
-          <CardIconText color={color} {icon} {title} {copy} />
+          <CardIconText {color} {icon} {title} {copy} />
         </li>
       ))
     }
