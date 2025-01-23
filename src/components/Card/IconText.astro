@@ -3,10 +3,10 @@ import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  icon?: string;
-  color?: string;
+  color?: ColorTypes | null;
+  icon: string;
   title: string;
-  copy: string;
+  copy?: string | undefined;
   class?: string;
 }
 
@@ -30,14 +30,15 @@ const {
   {...rest}
 >
   <div class="gap-30 flex flex-col">
-    <Icon class:list={['size-22', colourText[color]]} name={icon} />
+    <Icon
+      class:list={['size-22', colourText[color as keyof typeof colourText]]}
+      name={icon}
+    />
 
     <h3 class="font-heading text-fluid-h6 text-balance font-semibold">
       {title}
     </h3>
   </div>
 
-  <p class="text-15 md:text-18 text-pretty opacity-70">
-    {copy}
-  </p>
+  {copy && <p class="text-15 md:text-18 text-pretty opacity-70">{copy}</p>}
 </div>

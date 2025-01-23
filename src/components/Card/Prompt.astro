@@ -57,6 +57,7 @@ const colouring =
       ]}
     >
       {Astro.slots.headline && <slot name="headline" />}
+      {Astro.slots.copy && <slot name="copy" />}
       {Astro.slots.button && <slot name="button" />}
     </div>
 

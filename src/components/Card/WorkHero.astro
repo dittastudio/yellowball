@@ -2,6 +2,7 @@
 import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 import Tag from '@/components/Elements/Tag.astro';
+import IconList from '@/components/Elements/IconList.astro';
 
 type ListItemType = {
   icon: string;
@@ -101,21 +102,10 @@ const classes = [
 
               {
                 list?.length && (
-                  <ul class="mdMax:hidden flex flex-col items-start justify-start gap-30 text-15 lg:text-18 font-heading font-bold">
-                    {list.map(item => (
-                      <li class="flex items-center gap-30">
-                        <Icon
-                          name={item.icon}
-                          class:list={[
-                            'size-22 shrink-0',
-                            theme === 'dark' && colorTitle,
-                          ]}
-                        />
-
-                        <p>{item.text}</p>
-                      </li>
-                    ))}
-                  </ul>
+                  <IconList
+                    items={list}
+                    color={theme === 'dark' ? color : null}
+                  />
                 )
               }
             </div>

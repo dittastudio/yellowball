@@ -31,14 +31,13 @@ const classes = twMerge(
   <a
     href="/"
     class:list={[
-      { '@sm:grid-cols-2': hasSlotDefault },
-      'group rounded-20 lg:rounded-30 p-15 lg:p-20 border-navy/15 w-full h-full border grid gap-15 lg:gap-20',
+      { '@sm:grid-cols-2 @sm:md:gap-x-30 @sm:lg:gap-x-60': hasSlotDefault },
+      'group rounded-20 lg:rounded-30 p-15 lg:p-20 border-navy/15 w-full h-full border grid gap-y-15 lg:gap-y-20',
     ]}
   >
     {
       hasSlotDefault && (
-        <div class="rounded-8 lg:rounded-10 relative w-full overflow-hidden [&_img]:size-full [&_img]:object-cover">
-          {/* hidden lg:block */}
+        <div class="rounded-8 lg:rounded-10 @sm:lg:rounded-20 relative w-full overflow-hidden [&_img]:size-full [&_img]:object-cover">
           <slot />
 
           <div class="bottom-20 left-20 size-64 bg-yellow rounded-20 absolute z-0 flex flex-col items-center justify-center">
@@ -49,7 +48,7 @@ const classes = twMerge(
     }
 
     <div
-      class="gap-15 p-15 lg:p-20 flex flex-col items-start justify-start flex-grow w-full"
+      class="gap-15 p-15 lg:p-20 flex flex-col items-start justify-start flex-grow w-full @sm:justify-center"
     >
       <div class="flex gap-5">
         <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
@@ -77,7 +76,7 @@ const classes = twMerge(
 
       {
         name && company && (
-          <p class="text-11 lg:text-13 font-heading flex items-center gap-5 pt-5 mt-auto font-bold">
+          <p class="text-11 lg:text-13 font-heading flex items-center gap-5 pt-5 mt-auto font-bold @sm:mt-0">
             {name} <span>&bullet;</span>{' '}
             <cite class="not-italic">{company}</cite>
           </p>

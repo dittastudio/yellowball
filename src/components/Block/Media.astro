@@ -13,13 +13,16 @@ const classes = ['w-full grid gap-28 grid-cols-1', rest.class].filter(Boolean);
 
 <!-- Begin Block: Media -->
 <figure class:list={classes}>
-  {
-    Astro.slots.media && (
-      <div class="w-full rounded-30 lg:rounded-40 overflow-hidden">
-        <slot name="media" />
-      </div>
-    )
-  }
+  <div
+    class:list={[
+      'relative w-full rounded-30 lg:rounded-40',
+      'before:absolute before:inset-0 before:outline before:outline-solid before:outline-current before:opacity-20 before:z-1 before:rounded-[inherit]',
+    ]}
+  >
+    <div class="overflow-hidden rounded-[inherit]">
+      {Astro.slots.media && <slot name="media" />}
+    </div>
+  </div>
 
   {
     caption && (
