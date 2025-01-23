@@ -15,10 +15,10 @@ const { theme = 'dark' } = Astro.props as Props;
         : 'bg-white border-navy/15',
     ]}
   >
-    <div class="relative flex justify-center items-center gap-2">
+    <div class="relative flex justify-center items-center gap-2 text-center">
       <label
         class:list={[
-          'ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
+          'ui-before-after__label relative z-1 w-1/2 shrink-0 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
           theme === 'dark'
             ? '[&:has(input:checked)]:text-navy'
             : '[&:has(input:checked)]:text-white',
@@ -38,7 +38,7 @@ const { theme = 'dark' } = Astro.props as Props;
 
       <label
         class:list={[
-          'ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
+          'ui-before-after__label relative z-1 w-1/2 shrink-0 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
           theme === 'dark'
             ? '[&:has(input:checked)]:text-navy'
             : '[&:has(input:checked)]:text-white',
@@ -57,7 +57,7 @@ const { theme = 'dark' } = Astro.props as Props;
 
       <span
         class:list={[
-          'ui-before-after__pill absolute top-0 left-0 min-w-[72px] h-full rounded-12',
+          'ui-before-after__pill absolute top-0 left-0 w-[calc(50%-1px)] h-full rounded-12',
           theme === 'dark' ? 'bg-yellow' : 'bg-navy',
         ]}
       >
@@ -116,7 +116,7 @@ const { theme = 'dark' } = Astro.props as Props;
     }
 
     .ui-before-after__container:has(.ui-before-after__input--after:checked) & {
-      translate: 100% 0 0;
+      translate: calc(100% + 2px) 0 0;
     }
   }
 
