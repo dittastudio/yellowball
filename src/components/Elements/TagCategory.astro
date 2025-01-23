@@ -4,15 +4,19 @@ import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
+  theme?: ThemeTypes;
   shape?: ShapeTypes;
   color?: ColorTypes;
+  size?: 'small' | 'large';
   text: string;
   class?: string;
 }
 
 const {
-  shape = 'square',
-  color = 'green',
+  theme = 'dark',
+  shape,
+  color = 'current',
+  size = 'small',
   text,
   class: className,
   ...rest
@@ -21,23 +25,29 @@ const {
 
 <span
   class:list={[
-    'flex justify-center items-center gap-6 rounded-10 px-14 md:px-16 pt-[calc(9.5/12*1em)] pb-[calc(10.5/12*1em)] text-10 md:text-12 font-heading font-bold',
-    'bg-card',
-    'border border-solid border-navy-lighter',
+    'flex justify-center items-center gap-6 rounded-10 px-14 md:px-16 pt-[calc(10.5/12*1em)] pb-[calc(9.5/12*1em)] font-heading font-bold border border-solid',
+    theme === 'dark'
+      ? 'bg-card border-navy-lighter'
+      : 'bg-white border-navy/15',
+    size === 'small' ? 'text-10 md:text-12' : 'text-12 md:text-14',
     className,
   ]}
   {...rest}
 >
-  <Icon
-    name={`shape-${shape}`}
-    class:list={[
-      'block -mt-[0.1em]',
-      shape === 'triangle'
-        ? 'w-[calc(11/12*1em)] h-[calc(10/12*1em)]'
-        : 'size-[calc(10/12*1em)]',
-      colourText[color],
-    ]}
-  />
+  {
+    shape && (
+      <Icon
+        name={`shape-${shape}`}
+        class:list={[
+          'block -mt-[0.1em]',
+          shape === 'triangle'
+            ? 'w-[calc(11/12*1em)] h-[calc(10/12*1em)]'
+            : 'size-[calc(10/12*1em)]',
+          colourText[color],
+        ]}
+      />
+    )
+  }
 
   <span class="leading-[1]">{text}</span>
 </span>

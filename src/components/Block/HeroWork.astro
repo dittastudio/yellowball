@@ -1,9 +1,9 @@
 ---
 import { colourText } from '@/utils/maps';
-import Button from '@/components/Elements/Button.astro';
 import TagCategory from '@/components/Elements/TagCategory.astro';
 
 interface Props {
+  theme?: ThemeTypes;
   color?: ColorTypes;
   title: string;
   heading: string;
@@ -12,18 +12,14 @@ interface Props {
     color: ColorTypes;
     text: string;
   }[];
-  cta: {
-    label: string;
-    url: string;
-  };
 }
 
 const {
-  color = 'yellow',
+  theme = 'dark',
+  color = 'current',
   title,
   heading,
   categories,
-  cta,
 } = Astro.props as Props;
 ---
 
@@ -31,10 +27,15 @@ const {
 <div class="wrapper relative flex flex-col gap-20 md:gap-50 pt-15 md:pt-40">
   <p
     class:list={[
-      'text-15 md:text-18 font-heading font-bold',
+      'text-15 md:text-18 font-heading font-bold flex items-baseline gap-20',
       colourText[color],
     ]}
   >
+    {
+      theme === 'light' && (
+        <TagCategory theme="light" text="Yellowball Lite" size="large" />
+      )
+    }
     {title}
   </p>
 
@@ -50,15 +51,13 @@ const {
         {
           categories?.map(({ shape, color, text }) => (
             <li>
-              <TagCategory {shape} {color} {text} />
+              <TagCategory {theme} {shape} {color} {text} />
             </li>
           ))
         }
       </ul>
 
-      <a href={cta.url}>
-        <Button text="Visit site" hasArrow />
-      </a>
+      {Astro.slots.cta && <slot name="cta" />}
     </div>
   </div>
 </div>

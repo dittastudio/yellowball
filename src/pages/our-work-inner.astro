@@ -34,6 +34,7 @@ const lgMedia = '(min-width: 1024px)';
   <main>
     <section class={classSection}>
       <BlockHeroWork
+        color="yellow"
         title="Client name"
         heading="Elite online ballet training for every dancer’s journey"
         categories={[
@@ -45,8 +46,13 @@ const lgMedia = '(min-width: 1024px)';
           { shape: 'square', color: 'green', text: 'SEO' },
           { shape: 'circle', color: 'blue', text: 'PPC' },
         ]}
-        cta={{ label: 'Visit site', url: 'https://www.google.com' }}
-      />
+      >
+        <Fragment slot="cta">
+          <a href="/">
+            <Button text="Visit site" hasArrow />
+          </a>
+        </Fragment>
+      </BlockHeroWork>
     </section>
 
     <section class={classSection}>

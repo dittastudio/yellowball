@@ -35,6 +35,7 @@ const lgMedia = '(min-width: 1024px)';
     <LayoutTheme theme="light" isTopOfPage>
       <section class={classSection}>
         <BlockHeroWork
+          theme="light"
           title="Client name"
           heading="Elite online ballet training for every dancer’s journey"
           categories={[
@@ -46,8 +47,25 @@ const lgMedia = '(min-width: 1024px)';
             { shape: 'square', color: 'green', text: 'SEO' },
             { shape: 'circle', color: 'blue', text: 'PPC' },
           ]}
-          cta={{ label: 'Visit site', url: 'https://www.google.com' }}
-        />
+        >
+          <Fragment slot="cta">
+            <a href="/">
+              <Button
+                text="Visit site"
+                options={{
+                  textColor: 'white',
+                  bgColor: 'navy',
+                  borderColor: 'transparent',
+                }}
+                optionsHover={{
+                  textColor: 'white',
+                  bgColor: 'navy-light',
+                }}
+                hasArrow
+              />
+            </a>
+          </Fragment>
+        </BlockHeroWork>
       </section>
 
       <section class={classSection}>
@@ -73,7 +91,7 @@ const lgMedia = '(min-width: 1024px)';
       </section>
 
       <section class={classSection}>
-        <BlockSplitTitleRichText title="The challenge">
+        <BlockSplitTitleRichText title="The challenge" theme="light">
           <Fragment slot="richtext">
             <RichText>
               <h5>
@@ -106,14 +124,13 @@ const lgMedia = '(min-width: 1024px)';
                   text: 'Intuitive filters & content feeds',
                 },
               ]}
-              color="yellow"
             />
           </Fragment>
         </BlockSplitTitleRichText>
       </section>
 
       <section class={classSection}>
-        <BlockSplitTitleRichText title="The challenge">
+        <BlockSplitTitleRichText title="The challenge" theme="light">
           <Fragment slot="richtext">
             <RichText>
               <h5>
@@ -135,10 +152,9 @@ const lgMedia = '(min-width: 1024px)';
       </section>
 
       <section class={classSection}>
-        <BlockSplitTitleRichText title="The challenge">
+        <BlockSplitTitleRichText title="The challenge" theme="light">
           <Fragment slot="richtext">
             <Quote
-              color="yellow"
               quote="Client quote block lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit"
               name="John Doe"
               company="Company Name"
@@ -148,10 +164,10 @@ const lgMedia = '(min-width: 1024px)';
       </section>
 
       <section class={classSection}>
-        <BlockSplitTitleRichText title="The challenge">
+        <BlockSplitTitleRichText title="The challenge" theme="light">
           <Fragment slot="richtext">
             <Testimonial
-              color="yellow"
+              theme="light"
               quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               name="John Doe"
               company="Company Name"

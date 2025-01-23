@@ -3,10 +3,11 @@ import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  color: ColorTypes;
+  color?: ColorTypes;
   quote: string;
   name: string;
   company: string;
+  theme?: ThemeTypes;
   class?: string;
 }
 
@@ -15,18 +16,24 @@ const {
   quote,
   name,
   company,
+  theme = 'dark',
   class: className,
 } = Astro.props as Props;
 ---
 
 <figure class:list={['flex flex-col gap-20', className]}>
   <div class="flex flex-col gap-30">
-    <div class="flex gap-5">
-      <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
-      <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
-      <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
-      <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
-      <Icon name="star" class="size-16 lg:size-20 text-yellow block" />
+    <div
+      class:list={[
+        'flex gap-5',
+        theme === 'light' ? 'text-navy' : 'text-yellow',
+      ]}
+    >
+      <Icon name="star" class="size-16 lg:size-20 block" />
+      <Icon name="star" class="size-16 lg:size-20 block" />
+      <Icon name="star" class="size-16 lg:size-20 block" />
+      <Icon name="star" class="size-16 lg:size-20 block" />
+      <Icon name="star" class="size-16 lg:size-20 block" />
     </div>
 
     <blockquote
