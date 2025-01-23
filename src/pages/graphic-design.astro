@@ -33,51 +33,64 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 const exampleServiceListItems: any = [
   {
-    headline: 'We Obsess Over Every Pixel',
-    description: `Our WordPress web design pros are relentless when it comes to results. We dive deep into every pixel, hunt down every conversion opportunity, and treat every ad pound like it's gold. From the smallest technical tweaks to big-picture strategy, we push your site to perform at its peak.`,
+    headline: 'Pitch Design Deck',
+    description: `From securing Series A funding pitch with a polished deck to wowing clients with a sleek slide deck, we bring clarity and style to every presentation. We transform your content into engaging, easy-to-follow visuals that deliver your message powerfully.`,
     icon: {
       type: 'outline',
       name: 'outline-info-paper',
     },
   },
   {
-    headline: 'Bespoke WordPress Training Delivered by Us',
-    description: `We don't just leave you with a finished website; we empower you to take control. Our custom WordPress training videos cover everything you need to know. Share them with your team to keep everyone on the same page.`,
+    headline: 'Branding & Logo Design',
+    description: `From initial concept to polished identity, we create brands that cut through the noise. Whether launching something new or refreshing an existing brand, we build designs that make an impact. Our branding designs capture the spirit of your brand while delivering a cohesive message that resonates with your audience.`,
     icon: {
       type: 'outline',
-      name: 'outline-info-speech',
+      name: 'outline-info-paper',
     },
   },
   {
-    headline: 'Aftercare & Support',
-    description: `Going live is just the start. Our team is here to keep your site future-proof, flexible, and always ready for change. From bespoke support packages to on-demand help, we've got your back - no strings attached. Stay ahead of the game and keep that oh-so-good new website smell!`,
+    headline: 'Brochure Design',
+    description: `Lorem ipsum dolor sit amet consectetur. Cursus proin nam viverra tempor ac in vulputate. Viverra convallis volutpat neque tellus volutpat non vestibulum. Blandit quis vulputate donec ligula. Risus justo ultrices diam massa semper ut.`,
     icon: {
       type: 'outline',
-      name: 'outline-info-migration',
+      name: 'outline-info-paper',
     },
   },
   {
-    headline: 'Seamless API Integrations',
-    description: `We'll ensure your WordPress website integrates smoothly with the tools and services your business relies on. From CRM systems and payment gateways to marketing automation platforms and third-party software, we specialise in custom API integrations that connect your website with your wider business ecosystem—streamlining workflows and enhancing efficiency.`,
+    headline: 'Presentation Design',
+    description: `Lorem ipsum dolor sit amet consectetur. Cursus proin nam viverra tempor ac in vulputate. Viverra convallis volutpat neque tellus volutpat non vestibulum. Blandit quis vulputate donec ligula. Risus justo ultrices diam massa semper ut.`,
     icon: {
       type: 'outline',
-      name: 'outline-info-basket',
+      name: 'outline-info-paper',
+    },
+  },
+  {
+    headline: 'Magazine Design',
+    description: `Lorem ipsum dolor sit amet consectetur. Cursus proin nam viverra tempor ac in vulputate. Viverra convallis volutpat neque tellus volutpat non vestibulum. Blandit quis vulputate donec ligula. Risus justo ultrices diam massa semper ut.`,
+    icon: {
+      type: 'outline',
+      name: 'outline-info-paper',
+    },
+  },
+  {
+    headline: 'Report Design',
+    description: `Lorem ipsum dolor sit amet consectetur. Cursus proin nam viverra tempor ac in vulputate. Viverra convallis volutpat neque tellus volutpat non vestibulum. Blandit quis vulputate donec ligula. Risus justo ultrices diam massa semper ut.`,
+    icon: {
+      type: 'outline',
+      name: 'outline-info-paper',
     },
   },
 ];
 ---
 
-<Layout title="WordPress">
+<Layout title="Graphic Design">
   <main>
     <section>
-      <BlockHero color="yellow" shape="triangle">
+      <BlockHero color="purple" shape="pentagon">
         <Fragment slot="top">
           <Breadcrumb
-            shape="triangle"
-            items={[
-              { color: 'yellow', title: 'Web Design', href: '/' },
-              { color: 'yellow', title: 'WordPress Development', href: '/' },
-            ]}
+            shape="pentagon"
+            items={[{ color: 'purple', title: 'Graphic Design', href: '/' }]}
           />
         </Fragment>
 
@@ -87,21 +100,21 @@ const exampleServiceListItems: any = [
             tag="h1"
             class="font-heading text-fluid-h1 text-balance font-semibold"
           >
-            <mark class="text-yellow">WordPress</mark> websites crafted to convert
+            <mark class="text-purple">Design</mark> that puts your brand in the spotlight
           </TextReveal>
         </Fragment>
 
         <Fragment slot="bottom">
           <p class="text-17 md:text-21 text-grey text-balance">
-            Yellowball crafts bespoke, high-performance WordPress websites that
-            not only look stunning but drive results. Ready to roll out a
-            website that works as hard as you do?
+            Specialising in logo and branding, brochures, pitch decks, reports,
+            and digital assets. Whether online or offline, we bring your brand
+            to life with striking visuals.
 
             <a
               href="/"
               class="ml-[0.4em] font-heading font-bold text-15 md:text-18"
             >
-              <LinkArrow class="text-yellow">Let's Chat</LinkArrow>
+              <LinkArrow class="text-purple">Let's Chat</LinkArrow>
             </a>
           </p>
         </Fragment>
@@ -109,12 +122,8 @@ const exampleServiceListItems: any = [
         <Fragment slot="extra">
           <Cursors hasExit>
             <Cursor
-              title="Design Team"
-              class="bg-yellow absolute bottom-[5%] left-[10%]"
-            />
-            <Cursor
-              title="Developers"
-              class="bg-grey absolute top-[10%] right-[10%]"
+              title="Graphics Team"
+              class="bg-purple absolute top-[10%] right-[20%]"
             />
           </Cursors>
         </Fragment>
@@ -128,7 +137,7 @@ const exampleServiceListItems: any = [
           headline="VIP Ibiza Concierge Services"
           description="A full redesign of the Faith Ibiza website from the ground up, featuring stunning hero images and videography, delightful animations and an intuitive party calendar."
           cta="Explore Project"
-          color="yellow"
+          color="purple"
         >
           <img
             src="/images/test-project-1.webp"
@@ -143,7 +152,7 @@ const exampleServiceListItems: any = [
           headline="Elite Online Ballet Training"
           description="A bespoke WordPress build featuring a customer login area, a member live area and an on-demand online studio which houses over 100 classes, courses, plans and workshops for ballet students."
           cta="Explore Project"
-          color="yellow"
+          color="purple"
         >
           <img
             src="/images/test-project-2.webp"
@@ -158,7 +167,7 @@ const exampleServiceListItems: any = [
           headline="The World's Rarest Japanese Whisky"
           description="This bespoke WordPress and WooCommerce website build features elegant typography, a sumptuous colour palette and a super-slick checkout flow."
           cta="Explore Project"
-          color="yellow"
+          color="purple"
         >
           <img
             src="/images/test-project-3.webp"
@@ -173,7 +182,7 @@ const exampleServiceListItems: any = [
     <section class={classSection}>
       <BlockButtons>
         <a href="/">
-          <Button text="Speak to a Web Expert" hasArrow />
+          <Button text="Speak to a Design Expert" hasArrow />
         </a>
 
         <a href="/">
@@ -196,15 +205,15 @@ const exampleServiceListItems: any = [
     <section class={classSection}>
       <LayoutTheme theme="light" class={classSectionThick}>
         <BlockCardStacks
-          description="Yellowball combines the best of both worlds: London-based expertise with the strength of a globally distributed team. We're big enough to tackle major challenges, yet small enough to care about every detail."
+          description="Yellowball isn’t just another digital design agency. We’re your fearless creative partner, blending bold ideas and strategic design to make your brand unforgettable. We don’t just design – we drive results that set you apart and boost your bottom line."
         >
           <Fragment slot="headline">
             <TextReveal
               tag="h2"
               class="font-heading text-fluid-h2 font-semibold"
             >
-              Rooted in London, connected
-              <TextUnderline>worldwide</TextUnderline>
+              Impactful designs that <TextUnderline>captivate</TextUnderline> &amp;
+              drive results
             </TextReveal>
           </Fragment>
         </BlockCardStacks>
@@ -213,24 +222,24 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockServiceList
-        color="yellow"
+        color="purple"
         items={exampleServiceListItems}
-        description="We offer an all-inclusive service for everything WordPress-related, from themes and plugins to hosting, support, and security."
+        description="We offer an all-inclusive service for everything Graphic Design related, from reports and brochures to magazines, websites, and apps."
       >
         <Fragment slot="headline">
           <TextReveal
             tag="h3"
             class="font-heading text-fluid-h3 font-semibold max-w-[12ch]"
           >
-            Your all-in-one<br />WordPress partner
+            Your all-in-one<br />Graphic Design<br />partner
           </TextReveal>
         </Fragment>
 
         <Fragment slot="extra">
           <Cursors>
             <Cursor
-              title="Design Team"
-              class="bg-yellow absolute top-[5%] right-[10%]"
+              title="Graphics Team"
+              class="bg-purple absolute top-[5%] right-[10%]"
             />
           </Cursors>
         </Fragment>
@@ -250,7 +259,7 @@ const exampleServiceListItems: any = [
             tag="h2"
             class="font-heading text-fluid-h2 text-balance font-semibold"
           >
-            Meet a few of the experts behind your WordPress website
+            Meet a few of the experts behind your designs
           </TextReveal>
         </Fragment>
 
@@ -268,11 +277,11 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <BlockCarouselProfiles color="yellow" />
+      <BlockCarouselProfiles color="purple" />
     </section>
 
     <section class={classSection}>
-      <BlockFAQs color="yellow" shape="triangle" />
+      <BlockFAQs color="purple" shape="pentagon" />
     </section>
 
     <section class={classSection}>
@@ -283,17 +292,23 @@ const exampleServiceListItems: any = [
 
     <section class={classSection}>
       <BlockPrompt>
-        <CardPrompt shape="triangle" color="yellow">
+        <CardPrompt shape="pentagon" color="purple">
           <Fragment slot="headline">
             <h3
               class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
             >
-              Ready to start your WordPress project?
+              Ready to start your design project?
             </h3>
           </Fragment>
 
           <Fragment slot="button">
-            <Button text="Get a quote today" hasArrow />
+            <Button
+              text="Get a quote today"
+              optionsHover={{
+                bgColor: 'purple',
+              }}
+              hasArrow
+            />
           </Fragment>
         </CardPrompt>
       </BlockPrompt>
