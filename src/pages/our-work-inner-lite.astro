@@ -1,0 +1,482 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
+
+import Button from '@/components/Elements/Button.astro';
+import RichText from '@/components/Elements/RichText.astro';
+import CardPrompt from '@/components/Card/Prompt.astro';
+import IconList from '@/components/Elements/IconList.astro';
+import Testimonial from '@/components/Elements/Testimonial.astro';
+import Quote from '@/components/Elements/Quote.astro';
+import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
+import MediaCombo from '@/components/Elements/MediaCombo.astro';
+import CardRating from '@/components/Card/Rating.astro';
+import UITickerCTA from '@/components/UI/TickerCTA.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
+
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
+import BlockHeroWork from '@/components/Block/HeroWork.astro';
+import BlockPrompt from '@/components/Block/Prompt.astro';
+import BlockMedia from '@/components/Block/Media.astro';
+import BlockSplitTitleRichText from '@/components/Block/SplitTitleRichText.astro';
+import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
+
+const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+const lgMedia = '(min-width: 1024px)';
+---
+
+<Layout title="Our Work">
+  <main>
+    <LayoutTheme theme="light" isTopOfPage>
+      <section class={classSection}>
+        <BlockHeroWork
+          title="Client name"
+          heading="Elite online ballet training for every dancer’s journey"
+          categories={[
+            {
+              shape: 'triangle',
+              color: 'yellow',
+              text: 'Web Design & Development',
+            },
+            { shape: 'square', color: 'green', text: 'SEO' },
+            { shape: 'circle', color: 'blue', text: 'PPC' },
+          ]}
+          cta={{ label: 'Visit site', url: 'https://www.google.com' }}
+        />
+      </section>
+
+      <section class={classSection}>
+        <BlockMedia class="wrapper">
+          <Fragment slot="media">
+            <picture>
+              <source
+                media={lgMedia}
+                srcset="/images/test-hero-work-desktop.jpg"
+                width="1226"
+                height="712"
+              />
+
+              <img
+                src="/images/test-hero-work-mobile.jpg"
+                width="342"
+                height="529"
+                alt="Insert alt here"
+              />
+            </picture>
+          </Fragment>
+        </BlockMedia>
+      </section>
+
+      <section class={classSection}>
+        <BlockSplitTitleRichText title="The challenge">
+          <Fragment slot="richtext">
+            <RichText>
+              <h5>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore.
+              </h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </RichText>
+
+            <IconList
+              items={[
+                {
+                  icon: 'outline-arrow-right-box',
+                  text: 'Bespoke customer login area',
+                },
+                {
+                  icon: 'outline-wallet',
+                  text: 'Online payments & subscription management',
+                },
+                {
+                  icon: 'outline-filters',
+                  text: 'Intuitive filters & content feeds',
+                },
+              ]}
+              color="yellow"
+            />
+          </Fragment>
+        </BlockSplitTitleRichText>
+      </section>
+
+      <section class={classSection}>
+        <BlockSplitTitleRichText title="The challenge">
+          <Fragment slot="richtext">
+            <RichText>
+              <h5>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore.
+              </h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </RichText>
+          </Fragment>
+        </BlockSplitTitleRichText>
+      </section>
+
+      <section class={classSection}>
+        <BlockSplitTitleRichText title="The challenge">
+          <Fragment slot="richtext">
+            <Quote
+              color="yellow"
+              quote="Client quote block lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit"
+              name="John Doe"
+              company="Company Name"
+            />
+          </Fragment>
+        </BlockSplitTitleRichText>
+      </section>
+
+      <section class={classSection}>
+        <BlockSplitTitleRichText title="The challenge">
+          <Fragment slot="richtext">
+            <Testimonial
+              color="yellow"
+              quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              name="John Doe"
+              company="Company Name"
+            />
+          </Fragment>
+        </BlockSplitTitleRichText>
+      </section>
+
+      <section class={classSection}>
+        <div class="wrapper">
+          <UIBeforeAfter theme="light">
+            <Fragment slot="before">
+              <img
+                src="/images/test-work-before.jpg"
+                alt=""
+                width="618"
+                height="927"
+              />
+            </Fragment>
+
+            <Fragment slot="after">
+              <img
+                src="/images/test-work-after.jpg"
+                alt=""
+                width="618"
+                height="927"
+              />
+            </Fragment>
+          </UIBeforeAfter>
+        </div>
+      </section>
+
+      <section class={classSection}>
+        <div class="wrapper flex flex-col gap-24 md:gap-30">
+          <MediaCombo
+            items={[
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+            ]}
+          />
+
+          <MediaCombo
+            items={[
+              {
+                src: '/images/test-work-before.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-work-before.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+            ]}
+          />
+
+          <MediaCombo
+            items={[
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-work-before.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+            ]}
+          />
+
+          <MediaCombo
+            reverse
+            items={[
+              {
+                src: '/images/test-work-before.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+            ]}
+          />
+
+          <MediaCombo
+            items={[
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+              {
+                src: '/images/test-post-hero.jpg',
+                alt: '',
+                width: 618,
+                height: 927,
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section class={classSection}>
+        <BlockIconTextCards
+          items={[
+            {
+              icon: 'outline-info-migration',
+              title: 'Lorem ipsum dolor sit amet consectetur blandit diam',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Augue amet id enim consequat',
+            },
+            {
+              icon: 'outline-info-migration',
+              title: 'Quis sed eget in aliquam',
+            },
+          ]}
+        />
+      </section>
+
+      <section class={classSection}>
+        <div class="wrapper">
+          <CardRating
+            quote="I'm delighted with the finished website & delivery of the project."
+            name="Isabella"
+            company="Ballet with Isabella"
+            forceMedia
+          >
+            <img
+              src="/images/test-laptop.webp"
+              width="500"
+              height="300"
+              alt=""
+            />
+          </CardRating>
+        </div>
+      </section>
+
+      <section class={classSection}>
+        <BlockPrompt>
+          <CardPrompt shape="square" color="green" theme="light">
+            <Fragment slot="headline">
+              <h3
+                class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+              >
+                Want to see more from our portfolio?
+              </h3>
+            </Fragment>
+
+            <Fragment slot="copy">
+              <p class="font-body text-15 md:text-18 max-w-[55ch]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis nisi tempore cumque, inventore totam cum possimus unde
+                nemo aliquid magni accusamus culpa aperiam dolorum quis illum
+                dolor quos facere distinctio.
+              </p>
+            </Fragment>
+
+            <Fragment slot="button">
+              <Button
+                text="Button"
+                options={{
+                  textColor: 'white',
+                  bgColor: 'navy',
+                  borderColor: 'transparent',
+                }}
+                optionsHover={{
+                  textColor: 'white',
+                  bgColor: 'navy-light',
+                }}
+                hasArrow
+              />
+            </Fragment>
+          </CardPrompt>
+        </BlockPrompt>
+      </section>
+
+      <section class={classSection}>
+        <BlockPrompt>
+          <CardPrompt shape="circle" color="blue" theme="light">
+            <Fragment slot="headline">
+              <h3
+                class="font-heading font-semibold text-fluid-h3 text-balance max-w-[20ch] lg:max-w-[14ch]"
+              >
+                Want to see more from our portfolio?
+              </h3>
+            </Fragment>
+
+            <Fragment slot="copy">
+              <p class="font-body text-15 md:text-18 max-w-[55ch]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis nisi tempore cumque, inventore totam cum possimus unde
+                nemo aliquid magni accusamus culpa aperiam dolorum quis illum
+                dolor quos facere distinctio.
+              </p>
+            </Fragment>
+
+            <Fragment slot="button">
+              <Button
+                text="Button"
+                options={{
+                  textColor: 'white',
+                  bgColor: 'navy',
+                  borderColor: 'transparent',
+                }}
+                optionsHover={{
+                  textColor: 'white',
+                  bgColor: 'navy-light',
+                }}
+                hasArrow
+              />
+            </Fragment>
+          </CardPrompt>
+        </BlockPrompt>
+      </section>
+
+      <section class={classSection}>
+        <UITickerCTA text="View next project" theme="light" />
+      </section>
+
+      <section class={classSectionThick}>
+        <BlockTestimonials />
+      </section>
+    </LayoutTheme>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            Explore our services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <div class={classSection}>
+        <BlockServiceCards>
+          <Fragment slot="cards">
+            <CardServiceHero
+              headline="Web Design"
+              description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+              cta="See our services"
+              shape="triangle"
+              color="yellow"
+              class="col-span-full"
+            >
+              <img
+                src="/images/test-service-1.webp"
+                width="1230"
+                height="756"
+                alt=""
+              />
+            </CardServiceHero>
+
+            <CardService
+              headline="SEO"
+              description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+              shape="square"
+              color="green"
+            >
+              <img
+                src="/images/test-service-2.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+
+            <CardService
+              headline="Paid Search"
+              description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+              shape="circle"
+              color="blue"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+          </Fragment>
+        </BlockServiceCards>
+      </div>
+    </section>
+  </main>
+</Layout>
