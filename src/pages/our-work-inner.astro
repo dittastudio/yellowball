@@ -11,7 +11,7 @@ import Quote from '@/components/Elements/Quote.astro';
 import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
 import MediaCombo from '@/components/Elements/MediaCombo.astro';
 import CardRating from '@/components/Card/Rating.astro';
-import UIModalTicker from '@/components/UI/ModalTicker.astro';
+import UITickerCTA from '@/components/UI/TickerCTA.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import CardService from '@/components/Card/Service.astro';
 import CardServiceHero from '@/components/Card/ServiceHero.astro';
@@ -363,7 +363,7 @@ const lgMedia = '(min-width: 1024px)';
           </Fragment>
 
           <Fragment slot="copy">
-            <p class="font-body text-15 text-18 max-w-[55ch] text-cream">
+            <p class="font-body text-15 md:text-18 max-w-[55ch] text-cream">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
               nisi tempore cumque, inventore totam cum possimus unde nemo
               aliquid magni accusamus culpa aperiam dolorum quis illum dolor
@@ -379,7 +379,7 @@ const lgMedia = '(min-width: 1024px)';
     </section>
 
     <section class={classSection}>
-      <UIModalTicker text="View next project" />
+      <UITickerCTA text="View next project" />
     </section>
 
     <section class={classSectionThick}>

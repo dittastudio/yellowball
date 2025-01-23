@@ -1,13 +1,11 @@
 ---
-import Icon from '@/components/Elements/Icon.astro';
-import Ticker from '@/components/Elements/Ticker.astro';
+import TickerCTA from '@/components/UI/TickerCTA.astro';
 
 interface Props {
   text: string;
 }
 
 const { text } = Astro.props as Props;
-const items: string[] = [text, text, text].filter(Boolean);
 ---
 
 <section class="block w-full pt-100 pb-50">
@@ -15,22 +13,7 @@ const items: string[] = [text, text, text].filter(Boolean);
     <div
       class="bg-yellow text-navy py-[1.9em] md:py-[1.15em] rounded-[0.8em] font-heading text-fluid-h1 font-semibold contain-paint"
     >
-      <Ticker
-        class="relative"
-        spacingClasses="gap-30 md:gap-50 px-15 md:px-[25px]"
-      >
-        {
-          items.map(text => (
-            <p class="inline-flex gap-30 md:gap-50 items-center">
-              {text}
-
-              <span class="bg-navy text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]">
-                <Icon name="arrow-ne" class="block size-[0.2em]" />
-              </span>
-            </p>
-          ))
-        }
-      </Ticker>
+      <TickerCTA text={text} theme="light" />
     </div>
   </div>
 </section>

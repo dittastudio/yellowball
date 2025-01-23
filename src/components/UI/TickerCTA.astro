@@ -4,24 +4,38 @@ import Ticker from '@/components/Elements/Ticker.astro';
 
 interface Props {
   text: string;
+  speed?: number;
+  theme?: ThemeTypes;
 }
 
-const { text } = Astro.props as Props;
+const { text, speed = 30, theme = 'dark' } = Astro.props as Props;
 const items: string[] = [text, text, text].filter(Boolean);
 ---
 
-<div class="text-white font-heading text-fluid-h1 font-semibold contain-paint">
+<div
+  class:list={[
+    'font-heading text-fluid-h1 font-semibold contain-paint',
+    theme === 'dark' ? 'text-white' : 'text-navy',
+  ]}
+>
   <Ticker
     class="relative"
     spacingClasses="gap-30 md:gap-50 px-15 md:px-[25px]"
-    speed={30}
+    {speed}
   >
     {
       items.map(text => (
         <p class="inline-flex gap-30 md:gap-50 items-center">
           {text}
 
-          <span class="bg-card text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em] border-2 border-navy-lighter">
+          <span
+            class:list={[
+              'shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]',
+              theme === 'dark'
+                ? 'bg-card border-2 border-navy-lighter'
+                : 'bg-navy text-white',
+            ]}
+          >
             <Icon name="arrow-ne" class="block size-[0.2em]" />
           </span>
         </p>
