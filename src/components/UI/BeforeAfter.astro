@@ -1,8 +1,28 @@
+---
+interface Props {
+  theme?: ThemeTypes;
+}
+
+const { theme = 'dark' } = Astro.props as Props;
+---
+
 <div class="ui-before-after__container flex flex-col items-center gap-y-30">
-  <div class="bg-navy border border-navy-lighter rounded-16 p-3">
+  <div
+    class:list={[
+      'rounded-16 p-3 border',
+      theme === 'dark'
+        ? 'bg-card border-navy-lighter'
+        : 'bg-white border-navy/15',
+    ]}
+  >
     <div class="relative flex justify-center items-center gap-2">
       <label
-        class="ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer"
+        class:list={[
+          'ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
+          theme === 'dark'
+            ? '[&:has(input:checked)]:text-navy'
+            : '[&:has(input:checked)]:text-white',
+        ]}
         for="before"
       >
         Before
@@ -17,7 +37,12 @@
       </label>
 
       <label
-        class="ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer"
+        class:list={[
+          'ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
+          theme === 'dark'
+            ? '[&:has(input:checked)]:text-navy'
+            : '[&:has(input:checked)]:text-white',
+        ]}
         for="after"
       >
         After
@@ -31,17 +56,28 @@
       </label>
 
       <span
-        class="ui-before-after__pill absolute top-0 left-0 min-w-[72px] h-full bg-yellow rounded-12"
+        class:list={[
+          'ui-before-after__pill absolute top-0 left-0 min-w-[72px] h-full rounded-12',
+          theme === 'dark' ? 'bg-yellow' : 'bg-navy',
+        ]}
       >
       </span>
     </div>
   </div>
 
   <div
-    class="mdMax:relative mdMax:aspect-[2/3] mdMax:overflow-hidden mdMax:w-full mdMax:bg-navy md:grid md:grid-cols-2 md:gap-x-30"
+    class:list={[
+      'mdMax:relative mdMax:aspect-[2/3] mdMax:overflow-hidden mdMax:w-full md:grid md:grid-cols-2 md:gap-x-30',
+      theme === 'dark' ? 'mdMax:bg-card' : 'mdMax:bg-white',
+    ]}
   >
     <div
-      class="md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border border-navy-lighter md:bg-navy aspect-[2/3] mdMax:absolute mdMax:inset-0"
+      class:list={[
+        'md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border aspect-[2/3] mdMax:absolute mdMax:inset-0',
+        theme === 'dark'
+          ? 'md:bg-card border-navy-lighter'
+          : 'md:bg-white border-navy/15',
+      ]}
     >
       <div
         class="ui-before-after__media ui-before-after__media--before [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
@@ -51,7 +87,12 @@
     </div>
 
     <div
-      class="md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border border-navy-lighter md:bg-navy aspect-[2/3] mdMax:absolute mdMax:inset-0"
+      class:list={[
+        'md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border aspect-[2/3] mdMax:absolute mdMax:inset-0',
+        theme === 'dark'
+          ? 'border-navy-lighter md:bg-navy'
+          : 'border-navy/15 md:bg-white',
+      ]}
     >
       <div
         class="ui-before-after__media ui-before-after__media--after [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
@@ -63,10 +104,6 @@
 </div>
 
 <style is:global>
-  .ui-before-after__label:has(.ui-before-after__input:checked) {
-    color: theme('colors.navy');
-  }
-
   .ui-before-after__pill {
     --before-after-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
 

@@ -5,7 +5,7 @@ import Ticker from '@/components/Elements/Ticker.astro';
 interface Props {
   text: string;
   speed?: number;
-  theme?: ThemeTypes;
+  theme?: ThemeTypes | 'footer';
 }
 
 const { text, speed = 30, theme = 'dark' } = Astro.props as Props;
@@ -31,9 +31,9 @@ const items: string[] = [text, text, text].filter(Boolean);
           <span
             class:list={[
               'shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em]',
-              theme === 'dark'
-                ? 'bg-card border-2 border-navy-lighter'
-                : 'bg-navy text-white',
+              theme === 'dark' && 'bg-card border-2 border-navy-lighter',
+              theme === 'light' && 'bg-white border-2 border-navy/15',
+              theme === 'footer' && 'bg-navy text-white',
             ]}
           >
             <Icon name="arrow-ne" class="block size-[0.2em]" />
