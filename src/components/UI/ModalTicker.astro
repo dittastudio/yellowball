@@ -10,26 +10,22 @@ const { text } = Astro.props as Props;
 const items: string[] = [text, text, text].filter(Boolean);
 ---
 
-<section class="block w-full">
-  <div
-    class="text-white font-heading text-fluid-h1 font-semibold contain-paint"
+<div class="text-white font-heading text-fluid-h1 font-semibold contain-paint">
+  <Ticker
+    class="relative"
+    spacingClasses="gap-30 md:gap-50 px-15 md:px-[25px]"
+    speed={30}
   >
-    <Ticker
-      class="relative"
-      spacingClasses="gap-30 md:gap-50 px-15 md:px-[25px]"
-      speed={30}
-    >
-      {
-        items.map(text => (
-          <p class="inline-flex gap-30 md:gap-50 items-center">
-            {text}
+    {
+      items.map(text => (
+        <p class="inline-flex gap-30 md:gap-50 items-center">
+          {text}
 
-            <span class="bg-card text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em] border-2 border-navy-lighter">
-              <Icon name="arrow-ne" class="block size-[0.2em]" />
-            </span>
-          </p>
-        ))
-      }
-    </Ticker>
-  </div>
-</section>
+          <span class="bg-card text-white shrink-0 size-[1em] flex items-center justify-center rounded-[0.3em] border-2 border-navy-lighter">
+            <Icon name="arrow-ne" class="block size-[0.2em]" />
+          </span>
+        </p>
+      ))
+    }
+  </Ticker>
+</div>

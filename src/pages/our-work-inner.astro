@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import Button from '@/components/Elements/Button.astro';
 import RichText from '@/components/Elements/RichText.astro';
@@ -11,7 +12,13 @@ import UIBeforeAfter from '@/components/UI/BeforeAfter.astro';
 import MediaCombo from '@/components/Elements/MediaCombo.astro';
 import CardRating from '@/components/Card/Rating.astro';
 import UIModalTicker from '@/components/UI/ModalTicker.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
+import CardService from '@/components/Card/Service.astro';
+import CardServiceHero from '@/components/Card/ServiceHero.astro';
 
+import BlockHeroText from '@/components/Block/HeroText.astro';
+import BlockServiceCards from '@/components/Block/ServiceCards.astro';
+import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockHeroWork from '@/components/Block/HeroWork.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
 import BlockMedia from '@/components/Block/Media.astro';
@@ -19,6 +26,8 @@ import BlockSplitTitleRichText from '@/components/Block/SplitTitleRichText.astro
 import BlockIconTextCards from '@/components/Block/IconTextCards.astro';
 
 const classSection = 'py-50 md:py-[75px]';
+const classSectionThick = 'py-100 md:py-[150px]';
+const lgMedia = '(min-width: 1024px)';
 ---
 
 <Layout title="Our Work">
@@ -43,12 +52,21 @@ const classSection = 'py-50 md:py-[75px]';
     <section class={classSection}>
       <BlockMedia class="wrapper">
         <Fragment slot="media">
-          <img
-            src="/images/test-post-hero.jpg"
-            width="1448"
-            height="864"
-            alt=""
-          />
+          <picture>
+            <source
+              media={lgMedia}
+              srcset="/images/test-hero-work-desktop.jpg"
+              width="1226"
+              height="712"
+            />
+
+            <img
+              src="/images/test-hero-work-mobile.jpg"
+              width="342"
+              height="529"
+              alt="Insert alt here"
+            />
+          </picture>
         </Fragment>
       </BlockMedia>
     </section>
@@ -362,6 +380,75 @@ const classSection = 'py-50 md:py-[75px]';
 
     <section class={classSection}>
       <UIModalTicker text="View next project" />
+    </section>
+
+    <section class={classSectionThick}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTestimonials />
+      </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            Explore our services
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <div class={classSection}>
+        <BlockServiceCards>
+          <Fragment slot="cards">
+            <CardServiceHero
+              headline="Web Design"
+              description="We craft visually stunning, user-friendly websites that engage and convert your audience."
+              cta="See our services"
+              shape="triangle"
+              color="yellow"
+              class="col-span-full"
+            >
+              <img
+                src="/images/test-service-1.webp"
+                width="1230"
+                height="756"
+                alt=""
+              />
+            </CardServiceHero>
+
+            <CardService
+              headline="SEO"
+              description="Rank higher and grow your business faster with our leading SEO team. We'll get your site to the top of Google to increase revenue, leads and results."
+              shape="square"
+              color="green"
+            >
+              <img
+                src="/images/test-service-2.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+
+            <CardService
+              headline="Paid Search"
+              description="Fast-track your brand's visibility with data-driven paid media strategies. Across Google, Instagram, Facebook and LinkedIn, we help you reach your audience instantly."
+              shape="circle"
+              color="blue"
+            >
+              <img
+                src="/images/test-service-3.webp"
+                width="1032"
+                height="430"
+                alt=""
+              />
+            </CardService>
+          </Fragment>
+        </BlockServiceCards>
+      </div>
     </section>
   </main>
 </Layout>
