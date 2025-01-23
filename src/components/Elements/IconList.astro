@@ -1,0 +1,40 @@
+---
+import { colourText } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+
+type IconTextObject = {
+  icon: string;
+  text: string;
+};
+
+interface Props {
+  items: IconTextObject[];
+  color?: ColorTypes | null;
+  class?: string;
+}
+
+const { items, color = 'current', class: className } = Astro.props as Props;
+---
+
+<ul
+  class:list={[
+    'flex flex-col items-start justify-start gap-30 text-15 lg:text-18 font-heading font-bold',
+    className,
+  ]}
+>
+  {
+    items.map(item => (
+      <li class="flex items-center gap-30">
+        <Icon
+          name={item.icon}
+          class:list={[
+            'size-22 shrink-0',
+            colourText[color as keyof typeof colourText],
+          ]}
+        />
+
+        <p>{item.text}</p>
+      </li>
+    ))
+  }
+</ul>

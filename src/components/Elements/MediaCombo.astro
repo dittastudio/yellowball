@@ -1,0 +1,61 @@
+---
+interface Props {
+  items: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }[];
+  reverse?: boolean;
+}
+
+const { items, reverse = false } = Astro.props as Props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-30">
+  {
+    items.map(({ src, alt, width, height }, index) => (
+      <div
+        class:list={[
+          'rounded-30 md:rounded-40 overflow-hidden size-full',
+          items.length === 1 && 'col-span-full aspect-[16/9] bg-yellow',
+          items.length === 2 && 'col-span-1 aspect-[16/18] bg-green',
+          items.length === 3 && 'bg-blue',
+          items.length === 3 &&
+            index === 0 &&
+            !reverse &&
+            'md:col-start-1 md:col-span-1 md:row-start-1 md:row-span-1 aspect-[16/9]',
+          items.length === 3 &&
+            index === 1 &&
+            !reverse &&
+            'md:col-start-1 md:col-span-1 md:row-start-2 md:row-span-1 aspect-[16/9]',
+          items.length === 3 &&
+            index === 2 &&
+            !reverse &&
+            'md:col-start-2 md:col-span-1 md:row-start-1 md:row-span-2 aspect-[16/18]',
+          items.length === 3 &&
+            index === 0 &&
+            reverse &&
+            'md:col-start-1 md:col-span-1 md:row-start-1 md:row-span-2 aspect-[16/18]',
+          items.length === 3 &&
+            index === 1 &&
+            reverse &&
+            'md:col-start-2 md:col-span-1 md:row-start-1 md:row-span-1 aspect-[16/9]',
+          items.length === 3 &&
+            index === 2 &&
+            reverse &&
+            'md:col-start-2 md:col-span-1 md:row-start-2 md:row-span-1 aspect-[16/9]',
+          items.length === 4 && 'md:col-span-1 aspect-[16/9] bg-grey',
+        ]}
+      >
+        <img
+          {src}
+          {alt}
+          {width}
+          {height}
+          class="w-full h-full object-cover opacity-10"
+        />
+      </div>
+    ))
+  }
+</div>

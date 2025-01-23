@@ -1,0 +1,118 @@
+<div class="ui-before-after__container flex flex-col items-center gap-y-30">
+  <div class="bg-navy border border-navy-lighter rounded-16 p-3">
+    <div class="relative flex justify-center items-center gap-2">
+      <label
+        class="ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer"
+        for="before"
+      >
+        Before
+
+        <input
+          class="ui-before-after__input ui-before-after__input--before absolute top-0 left-0 opacity-0"
+          type="radio"
+          name="before-after"
+          id="before"
+          checked
+        />
+      </label>
+
+      <label
+        class="ui-before-after__label relative z-1 w-/1/2 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer"
+        for="after"
+      >
+        After
+
+        <input
+          class="ui-before-after__input ui-before-after__input--after absolute top-0 left-0 opacity-0"
+          type="radio"
+          name="before-after"
+          id="after"
+        />
+      </label>
+
+      <span
+        class="ui-before-after__pill absolute top-0 left-0 min-w-[72px] h-full bg-yellow rounded-12"
+      >
+      </span>
+    </div>
+  </div>
+
+  <div
+    class="mdMax:relative mdMax:aspect-[2/3] mdMax:overflow-hidden mdMax:w-full mdMax:bg-navy md:grid md:grid-cols-2 md:gap-x-30"
+  >
+    <div
+      class="md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border border-navy-lighter md:bg-navy aspect-[2/3] mdMax:absolute mdMax:inset-0"
+    >
+      <div
+        class="ui-before-after__media ui-before-after__media--before [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
+      >
+        <slot name="before" />
+      </div>
+    </div>
+
+    <div
+      class="md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border border-navy-lighter md:bg-navy aspect-[2/3] mdMax:absolute mdMax:inset-0"
+    >
+      <div
+        class="ui-before-after__media ui-before-after__media--after [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
+      >
+        <slot name="after" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ui-before-after__label:has(.ui-before-after__input:checked) {
+    color: theme('colors.navy');
+  }
+
+  .ui-before-after__pill {
+    --before-after-ease: cubic-bezier(0.24, 1.2, 0.24, 1);
+
+    pointer-events: none;
+    transition: translate theme('transitionDuration.500')
+      var(--before-after-ease);
+
+    .ui-before-after__container:has(.ui-before-after__input--before:checked) & {
+      translate: 0 0 0;
+    }
+
+    .ui-before-after__container:has(.ui-before-after__input--after:checked) & {
+      translate: 100% 0 0;
+    }
+  }
+
+  .ui-before-after__media {
+    transition: opacity theme('transitionDuration.500')
+      theme('transitionTimingFunction.out');
+
+    .ui-before-after__container:has(.ui-before-after__input--before:checked)
+      &--before {
+      opacity: 1;
+    }
+
+    .ui-before-after__container:has(.ui-before-after__input--after:checked)
+      &--after {
+      opacity: 1;
+    }
+
+    .ui-before-after__container:has(.ui-before-after__input--before:checked)
+      &--after {
+      opacity: 0;
+
+      @media screen(md) {
+        opacity: 0.2;
+      }
+    }
+
+    .ui-before-after__container:has(.ui-before-after__input--after:checked)
+      &--before {
+      opacity: 0;
+
+      @media screen(md) {
+        opacity: 0.2;
+      }
+    }
+  }
+</style>
