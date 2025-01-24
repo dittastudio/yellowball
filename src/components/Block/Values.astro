@@ -5,24 +5,53 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
 <!-- Begin Block: Values -->
 <div class="wrapper">
   <div class="flex flex-col gap-100">
-    <TextReveal tag="h3" class="font-heading text-fluid-h2 font-semibold">
-      Our values
-      <span class="!block pl-[1ch]">keep us rolling</span>
-    </TextReveal>
+    <div
+      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
+    >
+      <div class="md:col-start-3 md:col-span-2">
+        <div class="-translate-x-40">
+          <div class="aspect-[3/4] rounded-20 bg-grey"></div>
+        </div>
+      </div>
 
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
-      <div class="col-start-2 col-span-6 flex flex-col gap-y-20 md:gap-y-40">
-        <h4 class="font-heading text-fluid-h3 font-semibold">Drive Forward</h4>
-        <p class="ml-20 md:ml-50 text-15 md:text-18 text-grey">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
-          sunt alias quas ab illum error numquam animi cum. Impedit eveniet
-          architecto animi dolore quos dolorem. Velit necessitatibus sapiente
-          voluptates.
-        </p>
+      <div class="col-start-6 col-span-6 flex flex-col gap-y-20 md:gap-y-40">
+        <TextReveal tag="h3" class="font-heading text-fluid-h2 font-semibold">
+          Our values
+          <span class="!block pl-[1ch]">keep us rolling</span>
+        </TextReveal>
       </div>
     </div>
 
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+    <div
+      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
+    >
+      <div
+        class="col-start-2 col-span-6 flex flex-col gap-y-20 md:gap-y-40 self-end"
+      >
+        <h4 class="font-heading text-fluid-h3 font-semibold">Drive Forward</h4>
+        <p class="ml-20 md:ml-50 text-15 md:text-18 text-grey">
+          We’re always evolving, pushing boundaries, and driving progress. Every
+          project is an opportunity to improve and inject fresh energy into your
+          business, helping you stay ahead of the curve.
+        </p>
+      </div>
+
+      <div class="md:col-start-9 md:col-span-2">
+        <div class="aspect-[2/3] rounded-20 bg-grey"></div>
+      </div>
+
+      <div class="md:col-start-11 md:col-span-2">
+        <div class="aspect-[1/1] rounded-20 bg-grey w-[60%]"></div>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
+    >
+      <div class="md:col-start-1 md:col-span-4 p-20">
+        <div class="aspect-[3/2] rounded-20 bg-grey"></div>
+      </div>
+
       <div
         class="col-span-full md:col-start-8 md:col-span-5 flex flex-col gap-y-20 md:gap-y-40"
       >
@@ -38,8 +67,10 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
       </div>
     </div>
 
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
-      <div class="col-start-3 col-span-6 flex flex-col gap-y-20 md:gap-y-40">
+    <div
+      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
+    >
+      <div class="col-start-3 col-span-5 flex flex-col gap-y-20 md:gap-y-40">
         <h4 class="font-heading text-fluid-h3 font-semibold">Think Bold</h4>
         <p class="-ml-20 md:-ml-50 text-15 md:text-18 text-grey">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
@@ -48,9 +79,25 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
           voluptates.
         </p>
       </div>
+
+      <div class="md:col-start-10 md:col-span-3">
+        <div class="translate-x-80">
+          <div class="aspect-[3/2] rounded-20 bg-grey"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+    <div
+      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-end"
+    >
+      <div class="md:col-start-4 md:col-span-2">
+        <div class="aspect-[1/1] rounded-20 bg-grey w-1/2 ml-auto mb-40"></div>
+      </div>
+
+      <div class="md:col-start-6 md:col-span-2">
+        <div class="aspect-[2/3] rounded-20 bg-grey"></div>
+      </div>
+
       <div
         class="col-span-full md:col-start-9 md:col-span-4 flex flex-col gap-y-20 md:gap-y-40"
       >
@@ -66,7 +113,13 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
       </div>
     </div>
 
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+    <div class="relative grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+      <div
+        class="absolute top-0 left-0 -translate-x-[60%] -translate-y-[60%] w-1/3 -z-1"
+      >
+        <div class="aspect-[4/3] rounded-20 bg-grey"></div>
+      </div>
+
       <div
         class="col-start-2 col-span-7 md:col-start-4 md:col-span-6 flex flex-col gap-y-20 md:gap-y-40"
       >
@@ -79,6 +132,12 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
           architecto animi dolore quos dolorem. Velit necessitatibus sapiente
           voluptates.
         </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
+      <div class="md:col-start-3 md:col-span-8 p-40">
+        <div class="aspect-[16/9] rounded-20 bg-grey"></div>
       </div>
     </div>
   </div>
