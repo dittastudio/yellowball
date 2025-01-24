@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 
 import LayoutTheme from '@/components/Layout/Theme.astro';
@@ -12,7 +13,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 <Layout title="Agency">
   <main>
     <section class={classSection}>
-      <div class="flex items-center justify-center">Parallax Values</div>
+      <BlockValues />
     </section>
 
     <section class={classSection}>
