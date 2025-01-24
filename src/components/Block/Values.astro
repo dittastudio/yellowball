@@ -2,6 +2,9 @@
 import Icon from '@/components/Elements/Icon.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
+const baseYellowDotClasses =
+  'absolute -z-1 opacity-15 bg-yellow size-20 rounded-full';
+
 const baseGridClasses =
   'relative grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30';
 
@@ -98,7 +101,10 @@ const baseImageClasses =
 
         <!-- Yellow Dot -->
         <div
-          class="absolute top-[-15%] left-[70%] md:top-[0%] md:right-[0%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+          class:list={[
+            baseYellowDotClasses,
+            'top-[-15%] left-[70%] md:top-[0%] md:left-auto md:right-[0%]',
+          ]}
         >
         </div>
 
@@ -148,7 +154,10 @@ const baseImageClasses =
 
         <!-- Yellow Dot -->
         <div
-          class="absolute top-[110%] left-[50%] md:top-[100%] md:left-[3%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+          class:list={[
+            baseYellowDotClasses,
+            'top-[110%] left-[50%] md:top-[100%] md:left-[3%]',
+          ]}
         >
         </div>
       </div>
@@ -230,7 +239,10 @@ const baseImageClasses =
 
         <!-- Yellow Dot -->
         <div
-          class="absolute top-[60%] left-[90%] md:top-[0%] md:left-[80%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+          class:list={[
+            baseYellowDotClasses,
+            'top-[60%] left-[90%] md:top-[0%] md:left-[80%]',
+          ]}
         >
         </div>
       </div>
