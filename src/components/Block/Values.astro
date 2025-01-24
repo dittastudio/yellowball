@@ -1,7 +1,9 @@
 ---
+import Icon from '@/components/Elements/Icon.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
-const baseGridClasses = 'grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30';
+const baseGridClasses =
+  'relative grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30';
 
 const baseImageClasses =
   'relative rounded-20 overflow-hidden bg-navy [&>img]:opacity-50 [&>img]:object-cover [&>img]:size-full';
@@ -11,6 +13,7 @@ const baseImageClasses =
 <div class="overflow-hidden">
   <div class="wrapper">
     <div class="flex flex-col gap-100">
+      <!-- Section 1 -->
       <div class:list={[baseGridClasses, 'items-center']}>
         <div
           class="col-start-4 col-span-4 md:col-start-3 md:col-span-2 mdMax:pl-[15%] mdMax:translate-y-30 md:-translate-x-40"
@@ -30,6 +33,7 @@ const baseImageClasses =
         </div>
       </div>
 
+      <!-- Section 2 -->
       <div class:list={[baseGridClasses, 'gap-y-60 items-end']}>
         <div
           class="col-start-2 col-span-6 flex flex-col gap-y-20 md:gap-y-40 self-end"
@@ -58,8 +62,16 @@ const baseImageClasses =
             <img src="/images/test-values-3.jpg" alt="" />
           </div>
         </div>
+
+        <!-- Blue Circle -->
+        <div
+          class="absolute top-[45%] left-[80%] md:top-[50%] md:left-[50%] -z-1 opacity-15"
+        >
+          <Icon name="shape-circle" class="size-50 md:size-100 text-blue" />
+        </div>
       </div>
 
+      <!-- Section 3 -->
       <div class:list={[baseGridClasses, 'gap-y-60 items-center']}>
         <div
           class="col-start-4 col-span-5 md:col-start-1 md:col-span-4 md:p-20 mdMax:-translate-x-30"
@@ -83,8 +95,25 @@ const baseImageClasses =
             sapiente voluptates.
           </p>
         </div>
+
+        <!-- Yellow Dot -->
+        <div
+          class="absolute top-[-15%] left-[70%] md:top-[0%] md:right-[0%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+        >
+        </div>
+
+        <!-- Yellow Triangle -->
+        <div
+          class="absolute top-[15%] left-[-10%] md:top-[70%] md:left-[40%] -z-1 opacity-15"
+        >
+          <Icon
+            name="shape-triangle"
+            class="size-60 md:size-120 text-yellow rotate-6"
+          />
+        </div>
       </div>
 
+      <!-- Section 4 -->
       <div class:list={[baseGridClasses, 'gap-y-60 items-center']}>
         <div class="col-start-3 col-span-5 flex flex-col gap-y-20 md:gap-y-40">
           <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
@@ -106,8 +135,25 @@ const baseImageClasses =
             <img src="/images/test-values-5.jpg" alt="" />
           </div>
         </div>
+
+        <!-- Purple Pentagon -->
+        <div
+          class="absolute top-[15%] left-[12%] md:top-[30%] md:left-[67%] -z-1 opacity-15"
+        >
+          <Icon
+            name="shape-pentagon"
+            class="size-60 md:size-110 text-purple -rotate-[20deg]"
+          />
+        </div>
+
+        <!-- Yellow Dot -->
+        <div
+          class="absolute top-[110%] left-[50%] md:top-[100%] md:left-[3%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+        >
+        </div>
       </div>
 
+      <!-- Section 5 -->
       <div class:list={[baseGridClasses, 'gap-y-60 items-end']}>
         <div
           class="col-start-2 col-span-2 md:col-start-4 md:col-span-2 md:pl-[35%] pb-[35%] md:pb-[25%]"
@@ -144,6 +190,7 @@ const baseImageClasses =
         </div>
       </div>
 
+      <!-- Section 6 -->
       <div class:list={[baseGridClasses, 'relative gap-y-60 items-center']}>
         <div
           class="mdMax:col-start-4 mdMax:col-span-4 md:absolute md:top-0 md:left-0 md:-translate-x-[35%] md:-translate-y-[62.5%] md:w-[25%] md:-z-1"
@@ -170,8 +217,25 @@ const baseImageClasses =
             sapiente voluptates.
           </p>
         </div>
+
+        <!-- Green Square -->
+        <div
+          class="absolute top-[30%] left-[14%] md:top-[0%] md:left-[57%] -z-1 opacity-15"
+        >
+          <Icon
+            name="shape-square"
+            class="size-50 md:size-80 text-green rotate-[20deg]"
+          />
+        </div>
+
+        <!-- Yellow Dot -->
+        <div
+          class="absolute top-[60%] left-[90%] md:top-[0%] md:left-[80%] -z-1 opacity-15 bg-yellow size-20 rounded-full"
+        >
+        </div>
       </div>
 
+      <!-- Section 7 -->
       <div class:list={[baseGridClasses, 'items-center']}>
         <div class="col-span-full md:col-start-3 md:col-span-8 md:p-40">
           <div class:list={[baseImageClasses, 'aspect-[16/9]']}>
