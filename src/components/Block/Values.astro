@@ -1,165 +1,182 @@
 ---
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
+const baseGridClasses = 'grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30';
+
 const baseImageClasses =
   'relative rounded-20 overflow-hidden bg-navy [&>img]:opacity-50 [&>img]:object-cover [&>img]:size-full';
 ---
 
 <!-- Begin Block: Values -->
-<div class="wrapper">
-  <div class="flex flex-col gap-100">
-    <div
-      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
-    >
-      <div class="md:col-start-3 md:col-span-2">
-        <div class="-translate-x-40">
+<div class="overflow-hidden">
+  <div class="wrapper">
+    <div class="flex flex-col gap-100">
+      <div class:list={[baseGridClasses, 'items-center']}>
+        <div
+          class="col-start-4 col-span-4 md:col-start-3 md:col-span-2 mdMax:pl-[15%] mdMax:translate-y-30 md:-translate-x-40"
+        >
           <div class:list={[baseImageClasses, 'aspect-[3/4]']}>
             <img src="/images/test-values-1.jpg" alt="" />
           </div>
         </div>
-      </div>
 
-      <div class="col-start-6 col-span-6 flex flex-col gap-y-20 md:gap-y-40">
-        <TextReveal tag="h3" class="font-heading text-fluid-h2 font-semibold">
-          Our values
-          <span class="!block pl-[1ch]">keep us rolling</span>
-        </TextReveal>
-      </div>
-    </div>
-
-    <div
-      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
-    >
-      <div
-        class="col-start-2 col-span-6 flex flex-col gap-y-20 md:gap-y-40 self-end"
-      >
-        <h4 class="font-heading text-fluid-h3 font-semibold">Drive Forward</h4>
-        <p class="ml-20 md:ml-50 text-15 md:text-18 text-grey">
-          We’re always evolving, pushing boundaries, and driving progress. Every
-          project is an opportunity to improve and inject fresh energy into your
-          business, helping you stay ahead of the curve.
-        </p>
-      </div>
-
-      <div class="md:col-start-9 md:col-span-2">
-        <div class:list={[baseImageClasses, 'aspect-[2/3]']}>
-          <img src="/images/test-values-2.jpg" alt="" />
+        <div
+          class="col-span-full md:col-start-6 md:col-span-6 flex flex-col gap-y-20 md:gap-y-40"
+        >
+          <TextReveal tag="h2" class="font-heading text-fluid-h2 font-semibold">
+            Our values
+            <span class="!block pl-[1ch]">keep us rolling</span>
+          </TextReveal>
         </div>
       </div>
 
-      <div class="md:col-start-11 md:col-span-2">
-        <div class:list={[baseImageClasses, 'aspect-[1/1] w-[60%]']}>
-          <img src="/images/test-values-3.jpg" alt="" />
+      <div class:list={[baseGridClasses, 'gap-y-60 items-end']}>
+        <div
+          class="col-start-2 col-span-6 flex flex-col gap-y-20 md:gap-y-40 self-end"
+        >
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Drive Forward
+          </TextReveal>
+
+          <p class="ml-20 md:ml-50 text-15 md:text-18 text-grey">
+            We’re always evolving, pushing boundaries, and driving progress.
+            Every project is an opportunity to improve and inject fresh energy
+            into your business, helping you stay ahead of the curve.
+          </p>
+        </div>
+
+        <div class="mdMax:-order-1 col-span-3 md:col-start-9 md:col-span-2">
+          <div class:list={[baseImageClasses, 'aspect-[2/3]']}>
+            <img src="/images/test-values-2.jpg" alt="" />
+          </div>
+        </div>
+
+        <div
+          class="mdMax:-order-1 mdMax:translate-x-20 col-span-2 md:col-start-11 md:col-span-2 md:pr-[35%] pb-[50%] md:pb-[35%]"
+        >
+          <div class:list={[baseImageClasses, 'aspect-[1/1]']}>
+            <img src="/images/test-values-3.jpg" alt="" />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div
-      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
-    >
-      <div class="md:col-start-1 md:col-span-4 p-20">
-        <div class:list={[baseImageClasses, 'aspect-[3/2]']}>
-          <img src="/images/test-values-4.jpg" alt="" />
+      <div class:list={[baseGridClasses, 'gap-y-60 items-center']}>
+        <div
+          class="col-start-4 col-span-5 md:col-start-1 md:col-span-4 md:p-20 mdMax:-translate-x-30"
+        >
+          <div class:list={[baseImageClasses, 'aspect-[3/2]']}>
+            <img src="/images/test-values-4.jpg" alt="" />
+          </div>
+        </div>
+
+        <div
+          class="col-span-full md:col-start-8 md:col-span-5 flex flex-col gap-y-20 md:gap-y-40"
+        >
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Perfect the Details
+          </TextReveal>
+
+          <p class="ml-20 md:-ml-50 text-15 md:text-18 text-grey">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime,
+            amet sunt alias quas ab illum error numquam animi cum. Impedit
+            eveniet architecto animi dolore quos dolorem. Velit necessitatibus
+            sapiente voluptates.
+          </p>
         </div>
       </div>
 
-      <div
-        class="col-span-full md:col-start-8 md:col-span-5 flex flex-col gap-y-20 md:gap-y-40"
-      >
-        <h4 class="font-heading text-fluid-h3 font-semibold">
-          Perfect the Details
-        </h4>
-        <p class="ml-20 md:-ml-50 text-15 md:text-18 text-grey">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
-          sunt alias quas ab illum error numquam animi cum. Impedit eveniet
-          architecto animi dolore quos dolorem. Velit necessitatibus sapiente
-          voluptates.
-        </p>
-      </div>
-    </div>
+      <div class:list={[baseGridClasses, 'gap-y-60 items-center']}>
+        <div class="col-start-3 col-span-5 flex flex-col gap-y-20 md:gap-y-40">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Think Bold
+          </TextReveal>
 
-    <div
-      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-center"
-    >
-      <div class="col-start-3 col-span-5 flex flex-col gap-y-20 md:gap-y-40">
-        <h4 class="font-heading text-fluid-h3 font-semibold">Think Bold</h4>
-        <p class="-ml-20 md:-ml-50 text-15 md:text-18 text-grey">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
-          sunt alias quas ab illum error numquam animi cum. Impedit eveniet
-          architecto animi dolore quos dolorem. Velit necessitatibus sapiente
-          voluptates.
-        </p>
-      </div>
+          <p class="-ml-20 md:-ml-50 text-15 md:text-18 text-grey">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime,
+            amet sunt alias quas ab illum error numquam animi cum. Impedit
+            eveniet architecto animi dolore quos dolorem. Velit necessitatibus
+            sapiente voluptates.
+          </p>
+        </div>
 
-      <div class="md:col-start-10 md:col-span-3">
-        <div class="translate-x-80">
+        <div
+          class="mdMax:-order-1 col-span-4 col-start-5 translate-x-40 md:col-start-10 md:col-span-3 md:translate-x-80"
+        >
           <div class:list={[baseImageClasses, 'aspect-[3/2]']}>
             <img src="/images/test-values-5.jpg" alt="" />
           </div>
         </div>
       </div>
-    </div>
 
-    <div
-      class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30 items-end"
-    >
-      <div class="md:col-start-4 md:col-span-2">
+      <div class:list={[baseGridClasses, 'gap-y-60 items-end']}>
         <div
-          class:list={[baseImageClasses, 'aspect-[1/1] w-1/2 ml-auto mb-40']}
+          class="col-start-2 col-span-2 md:col-start-4 md:col-span-2 md:pl-[35%] pb-[35%] md:pb-[25%]"
         >
-          <img src="/images/test-values-6.jpg" alt="" />
+          <div class:list={[baseImageClasses, 'aspect-[1/1]']}>
+            <img src="/images/test-values-6.jpg" alt="" />
+          </div>
+        </div>
+
+        <div
+          class="col-span-3 md:col-start-6 md:col-span-2 mdMax:translate-x-20"
+        >
+          <div class:list={[baseImageClasses, 'aspect-[2/3]']}>
+            <img src="/images/test-values-2.jpg" alt="" />
+          </div>
+        </div>
+
+        <div
+          class="col-span-full md:col-start-9 md:col-span-4 flex flex-col gap-y-20 md:gap-y-40"
+        >
+          <TextReveal
+            tag="h3"
+            class="mdMax:ml-20 font-heading text-fluid-h3 font-semibold"
+          >
+            Build Trust
+          </TextReveal>
+
+          <p class="md:-ml-50 text-15 md:text-18 text-grey">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime,
+            amet sunt alias quas ab illum error numquam animi cum. Impedit
+            eveniet architecto animi dolore quos dolorem. Velit necessitatibus
+            sapiente voluptates.
+          </p>
         </div>
       </div>
 
-      <div class="md:col-start-6 md:col-span-2">
-        <div class:list={[baseImageClasses, 'aspect-[2/3]']}>
-          <img src="/images/test-values-2.jpg" alt="" />
+      <div class:list={[baseGridClasses, 'relative gap-y-60 items-center']}>
+        <div
+          class="mdMax:col-start-4 mdMax:col-span-4 md:absolute md:top-0 md:left-0 md:-translate-x-[35%] md:-translate-y-[62.5%] md:w-[25%] md:-z-1"
+        >
+          <div class:list={[baseImageClasses, 'aspect-[5/6]']}>
+            <img src="/images/test-values-7.jpg" alt="" />
+          </div>
+        </div>
+
+        <div
+          class="col-start-2 col-span-7 md:col-start-4 md:col-span-6 flex flex-col gap-y-20 md:gap-y-40"
+        >
+          <TextReveal
+            tag="h3"
+            class="max-w-[12ch] font-heading text-fluid-h3 font-semibold"
+          >
+            Own the Outcome
+          </TextReveal>
+
+          <p class="-ml-20 md:ml-50 text-15 md:text-18 text-grey">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime,
+            amet sunt alias quas ab illum error numquam animi cum. Impedit
+            eveniet architecto animi dolore quos dolorem. Velit necessitatibus
+            sapiente voluptates.
+          </p>
         </div>
       </div>
 
-      <div
-        class="col-span-full md:col-start-9 md:col-span-4 flex flex-col gap-y-20 md:gap-y-40"
-      >
-        <h4 class="mdMax:ml-20 font-heading text-fluid-h3 font-semibold">
-          Build Trust
-        </h4>
-        <p class="md:-ml-50 text-15 md:text-18 text-grey">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
-          sunt alias quas ab illum error numquam animi cum. Impedit eveniet
-          architecto animi dolore quos dolorem. Velit necessitatibus sapiente
-          voluptates.
-        </p>
-      </div>
-    </div>
-
-    <div class="relative grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
-      <div
-        class="absolute top-0 left-0 -translate-x-[60%] -translate-y-[60%] w-1/3 -z-1"
-      >
-        <div class:list={[baseImageClasses, 'aspect-[4/3]']}>
-          <img src="/images/test-values-7.jpg" alt="" />
-        </div>
-      </div>
-
-      <div
-        class="col-start-2 col-span-7 md:col-start-4 md:col-span-6 flex flex-col gap-y-20 md:gap-y-40"
-      >
-        <h4 class="font-heading text-fluid-h3 font-semibold max-w-[12ch]">
-          Own the Outcome
-        </h4>
-        <p class="-ml-20 md:ml-50 text-15 md:text-18 text-grey">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, amet
-          sunt alias quas ab illum error numquam animi cum. Impedit eveniet
-          architecto animi dolore quos dolorem. Velit necessitatibus sapiente
-          voluptates.
-        </p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-8 md:grid-cols-12 gap-x-12 md:gap-x-30">
-      <div class="md:col-start-3 md:col-span-8 p-40">
-        <div class:list={[baseImageClasses, 'aspect-[16/9]']}>
-          <img src="/images/test-values-8.jpg" alt="" />
+      <div class:list={[baseGridClasses, 'items-center']}>
+        <div class="col-span-full md:col-start-3 md:col-span-8 md:p-40">
+          <div class:list={[baseImageClasses, 'aspect-[16/9]']}>
+            <img src="/images/test-values-8.jpg" alt="" />
+          </div>
         </div>
       </div>
     </div>
