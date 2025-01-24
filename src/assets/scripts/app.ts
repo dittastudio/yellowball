@@ -39,7 +39,7 @@ import FnTextReveal from '@/components/Elements/TextReveal.ts'
 import FnTicker from '@/components/Elements/Ticker.ts'
 import FnTypingText from '@/components/UI/TypingText.ts'
 import FnValues from '@/components/Block/Values.ts'
-
+import FnTextScrub from '@/components/UI/TextScrub.ts'
 gsap.registerPlugin(ScrollTrigger)
 
 new Lenis({
@@ -83,3 +83,4 @@ FnTextReveal()
 FnTicker()
 FnTypingText()
 FnValues()
+FnTextScrub()
