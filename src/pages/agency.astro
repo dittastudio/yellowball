@@ -1,9 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import TextReveal from '@/components/Elements/TextReveal.astro';
+
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
-
+import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
 import LayoutTheme from '@/components/Layout/Theme.astro';
 
 const classSection = 'py-50 md:py-[75px]';
@@ -14,6 +16,21 @@ const classSectionThick = 'py-100 md:py-[150px]';
   <main>
     <section class={classSection}>
       <BlockValues />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockTeamGrid>
+          <Fragment slot="headline">
+            <TextReveal
+              tag="h2"
+              class="font-heading text-fluid-h2 text-balance font-semibold text-center"
+            >
+              Meet your Team
+            </TextReveal>
+          </Fragment>
+        </BlockTeamGrid>
+      </LayoutTheme>
     </section>
 
     <section class={classSection}>

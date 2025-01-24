@@ -3,17 +3,27 @@ import { componentProperties } from '@/utils/helpers';
 import { colourText } from '@/utils/maps';
 
 interface Props {
+  theme?: ThemeTypes;
   role: string;
   name: string;
   color?: ColorTypes;
 }
 
-const { role, name, color = 'green', ...rest } = Astro.props as Props;
+const {
+  theme = 'dark',
+  role,
+  name,
+  color = 'green',
+  ...rest
+} = Astro.props as Props;
 const { classes, attributes } = componentProperties(
   [
     'block w-full h-full text-center p-12 pb-24 md:p-20 md:pb-40',
     'flex flex-col gap-24 md:gap-40',
-    'text-white bg-navy-light border border-white/10 rounded-20 md:rounded-30',
+    'border rounded-20 md:rounded-30',
+    theme === 'dark'
+      ? 'text-white bg-navy-light border-white/10'
+      : 'text-navy bg-white border-navy/15',
   ],
   rest,
 );

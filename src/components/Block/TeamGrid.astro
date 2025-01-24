@@ -1,0 +1,34 @@
+---
+import CardProfile from '@/components/Card/Profile.astro';
+---
+
+<!-- Begin Block: TeamGrid -->
+<div class="wrapper flex flex-col gap-60 md:gap-120">
+  <slot name="headline" />
+
+  <ul
+    class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 md:gap-x-30 gap-y-12 md:gap-y-30"
+  >
+    {
+      [...Array(24)].map((_, index) => (
+        <li>
+          <CardProfile
+            role="Director of SEO"
+            name={`Team Member Name ${index + 1}`}
+            color="grey"
+            theme="light"
+          >
+            <img
+              class="size-full object-cover"
+              src="/images/test-profile-1.webp"
+              alt="Simon Ensor"
+              width="1"
+              height="1"
+            />
+          </CardProfile>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+<!-- End Block: TeamGrid -->
