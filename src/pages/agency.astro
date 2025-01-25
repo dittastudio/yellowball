@@ -5,6 +5,10 @@ import LayoutTheme from '@/components/Layout/Theme.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import UITextScrub from '@/components/UI/TextScrub.astro';
 import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
+import CardFigure from '@/components/Card/Figure.astro';
+import UITickerLogo from '@/components/UI/TickerLogo.astro';
+import CardIconText from '@/components/Card/IconText.astro';
+
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
@@ -61,6 +65,42 @@ const classSectionThick = 'py-100 md:py-[150px]';
               us.
             </p>
           </Fragment>
+
+          <Fragment slot="middle">
+            <UITickerLogo />
+          </Fragment>
+
+          <Fragment slot="stats">
+            <CardFigure
+              size="small"
+              figure={100}
+              unit="+"
+              headline="Active Clients"
+              description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
+              color="green"
+              shape="square"
+            />
+
+            <CardFigure
+              size="small"
+              figure={150}
+              unit="+"
+              headline="Websites Delivered"
+              description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
+              color="yellow"
+              shape="triangle"
+            />
+
+            <CardFigure
+              size="small"
+              figure={84}
+              unit="%"
+              headline="Client Rentention"
+              description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+              color="blue"
+              shape="circle"
+            />
+          </Fragment>
         </BlockStats>
       </LayoutTheme>
     </section>
@@ -78,6 +118,76 @@ const classSectionThick = 'py-100 md:py-[150px]';
           </Fragment>
         </BlockTeamGrid>
       </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockStats>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            <span class="!block pl-[1ch]">Do the best work</span>
+            of your life
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="description">
+          <p>
+            Join us to help rocket Yellowball forward on our journey to become
+            the UK’s leading boutique web design agency. We’re commercial,
+            creative and highly entrepreneurial in the way we operate. We were
+            founded over a decade ago with 150 beautiful bespoke projects under
+            our belt, but we’re just getting started!
+          </p>
+        </Fragment>
+
+        <Fragment slot="middle">
+          <div class="flex flex-wrap -m-15">
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-wallet"
+                title="Competitive salary, based on experience + commission and other incentives"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-house-person"
+                title="Flexible work-from-home scheme"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-plane-takeoff"
+                title="25 days holiday per annum plus UK Bank Holidays"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-piggy-bank"
+                title="A generous 7.5% employer pension contribution"
+                copy="We pay 100% of your salary, then 7.5% extra into your pension."
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-laptop"
+                title="MacBooks are our standard lorem ipsum dolor sit amet"
+                copy="We’ll provide whatever equipment helps you get your job done."
+              />
+            </div>
+          </div>
+        </Fragment>
+      </BlockStats>
     </section>
 
     <section class={classSection}>

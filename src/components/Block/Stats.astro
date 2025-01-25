@@ -5,9 +5,9 @@ import CardFigure from '@/components/Card/Figure.astro';
 ---
 
 <!-- Begin Block: Stats -->
-<div class="wrapper flex flex-col gap-60 md:gap-120">
+<div class="wrapper gap-60 md:gap-120 flex flex-col">
   <div
-    class="grid grid-cols-8 md:grid-cols-12 gap-x-12 gap-y-40 md:gap-x-30 md:gap-y-60"
+    class="md:grid-cols-12 gap-x-12 gap-y-40 md:gap-x-30 md:gap-y-60 grid grid-cols-8"
   >
     {
       Astro.slots.headline && (
@@ -28,44 +28,14 @@ import CardFigure from '@/components/Card/Figure.astro';
     }
   </div>
 
-  <UITickerLogo />
+  {Astro.slots.middle && <slot name="middle" />}
 
-  <ul class="grid grid-cols-1 lg:grid-cols-3 gap-24 md:gap-30">
-    <li>
-      <CardFigure
-        size="small"
-        figure={100}
-        unit="+"
-        headline="Active Clients"
-        description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
-        color="green"
-        shape="square"
-      />
-    </li>
-
-    <li>
-      <CardFigure
-        size="small"
-        figure={150}
-        unit="+"
-        headline="Websites Delivered"
-        description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
-        color="yellow"
-        shape="triangle"
-      />
-    </li>
-
-    <li>
-      <CardFigure
-        size="small"
-        figure={84}
-        unit="%"
-        headline="Client Rentention"
-        description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
-        color="blue"
-        shape="circle"
-      />
-    </li>
-  </ul>
+  {
+    Astro.slots.stats && (
+      <div class="lg:grid-cols-3 md:gap-30 grid grid-cols-1 gap-24">
+        <slot name="stats" />
+      </div>
+    )
+  }
 </div>
 <!-- End Block: Stats -->
