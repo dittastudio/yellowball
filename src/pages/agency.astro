@@ -12,7 +12,7 @@ import CardIconText from '@/components/Card/IconText.astro';
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
-import BlockStats from '@/components/Block/Stats.astro';
+import BlockHeadingTextStack from '@/components/Block/HeadingTextStack.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -38,7 +38,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <LayoutTheme theme="light" class={classSectionThick}>
-        <BlockStats>
+        <BlockHeadingTextStack>
           <Fragment slot="headline">
             <TextReveal
               tag="h2"
@@ -66,42 +66,42 @@ const classSectionThick = 'py-100 md:py-[150px]';
             </p>
           </Fragment>
 
-          <Fragment slot="middle">
+          <Fragment slot="bottom">
             <UITickerLogo />
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-24 md:gap-30">
+              <CardFigure
+                size="small"
+                figure={100}
+                unit="+"
+                headline="Active Clients"
+                description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
+                color="green"
+                shape="square"
+              />
+
+              <CardFigure
+                size="small"
+                figure={150}
+                unit="+"
+                headline="Websites Delivered"
+                description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
+                color="yellow"
+                shape="triangle"
+              />
+
+              <CardFigure
+                size="small"
+                figure={84}
+                unit="%"
+                headline="Client Rentention"
+                description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+                color="blue"
+                shape="circle"
+              />
+            </div>
           </Fragment>
-
-          <Fragment slot="stats">
-            <CardFigure
-              size="small"
-              figure={100}
-              unit="+"
-              headline="Active Clients"
-              description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
-              color="green"
-              shape="square"
-            />
-
-            <CardFigure
-              size="small"
-              figure={150}
-              unit="+"
-              headline="Websites Delivered"
-              description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
-              color="yellow"
-              shape="triangle"
-            />
-
-            <CardFigure
-              size="small"
-              figure={84}
-              unit="%"
-              headline="Client Rentention"
-              description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
-              color="blue"
-              shape="circle"
-            />
-          </Fragment>
-        </BlockStats>
+        </BlockHeadingTextStack>
       </LayoutTheme>
     </section>
 
@@ -121,7 +121,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <BlockStats>
+      <BlockHeadingTextStack>
         <Fragment slot="headline">
           <TextReveal
             tag="h2"
@@ -142,7 +142,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
           </p>
         </Fragment>
 
-        <Fragment slot="middle">
+        <Fragment slot="bottom">
           <div class="flex flex-wrap -m-15">
             <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
               <CardIconText
@@ -187,7 +187,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
             </div>
           </div>
         </Fragment>
-      </BlockStats>
+      </BlockHeadingTextStack>
     </section>
 
     <section class={classSection}>

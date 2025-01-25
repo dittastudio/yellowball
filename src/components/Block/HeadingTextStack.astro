@@ -1,10 +1,8 @@
 ---
 import RichText from '@/components/Elements/RichText.astro';
-import UITickerLogo from '@/components/UI/TickerLogo.astro';
-import CardFigure from '@/components/Card/Figure.astro';
 ---
 
-<!-- Begin Block: Stats -->
+<!-- Begin Block: HeadingTextStack -->
 <div class="wrapper gap-60 md:gap-120 flex flex-col">
   <div
     class="md:grid-cols-12 gap-x-12 gap-y-40 md:gap-x-30 md:gap-y-60 grid grid-cols-8"
@@ -28,14 +26,6 @@ import CardFigure from '@/components/Card/Figure.astro';
     }
   </div>
 
-  {Astro.slots.middle && <slot name="middle" />}
-
-  {
-    Astro.slots.stats && (
-      <div class="lg:grid-cols-3 md:gap-30 grid grid-cols-1 gap-24">
-        <slot name="stats" />
-      </div>
-    )
-  }
+  {Astro.slots.bottom && <slot name="bottom" />}
 </div>
-<!-- End Block: Stats -->
+<!-- End Block: HeadingTextStack -->
