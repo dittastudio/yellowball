@@ -9,6 +9,7 @@ interface Props {
   description: string;
   shape: ShapeTypes;
   color: ColorTypes;
+  size?: 'small' | 'large';
   class?: string;
 }
 
@@ -19,6 +20,7 @@ const {
   description,
   shape,
   color,
+  size = 'large',
   class: className,
   ...rest
 } = Astro.props as Props;
@@ -28,7 +30,10 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
 
 <div
   data-js="card-figure"
-  class:list={['w-full bg-white text-left rounded-30 lg:rounded-50', className]}
+  class:list={[
+    'w-full h-full bg-white text-left rounded-30 lg:rounded-50',
+    className,
+  ]}
   {...rest}
 >
   <a
@@ -37,7 +42,12 @@ const colorShape = colourText[color as keyof typeof colourText] ?? '';
   >
     {
       figure && unit && (
-        <p class="font-heading text-fluid-h1 text-balance text-navy flex font-semibold">
+        <p
+          class:list={[
+            'font-heading text-balance text-navy flex font-semibold',
+            size === 'small' ? 'text-fluid-h2' : 'text-fluid-h1',
+          ]}
+        >
           <span data-js-figure>{figure}</span>
           {unit}
         </p>

@@ -1,0 +1,41 @@
+---
+import Ticker from '@/components/Elements/Ticker.astro';
+
+const images = [
+  '/images/test-logo-1.png',
+  '/images/test-logo-2.png',
+  '/images/test-logo-3.png',
+  '/images/test-logo-4.png',
+  '/images/test-logo-5.png',
+  '/images/test-logo-6.png',
+  '/images/test-logo-7.png',
+];
+---
+
+<div class="ticker-logo isolate relative overflow-hidden">
+  <Ticker spacingClasses="gap-60 md:gap-100 px-30 md:px-50">
+    {
+      images.map(image => (
+        <img
+          class="w-[118px] aspect-[118/64]"
+          src={image}
+          alt=""
+          width={118}
+          height={64}
+        />
+      ))
+    }
+  </Ticker>
+</div>
+
+<style is:global>
+  .ticker-logo {
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      white 20%,
+      white 80%,
+      transparent 100%
+    );
+  }
+</style>

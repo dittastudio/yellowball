@@ -1,12 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import LayoutTheme from '@/components/Layout/Theme.astro';
 
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import UITextScrub from '@/components/UI/TextScrub.astro';
+import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
-import LayoutTheme from '@/components/Layout/Theme.astro';
+import BlockStats from '@/components/Block/Stats.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -28,6 +30,39 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <BlockValues />
+    </section>
+
+    <section class={classSection}>
+      <LayoutTheme theme="light" class={classSectionThick}>
+        <BlockStats>
+          <Fragment slot="headline">
+            <TextReveal
+              tag="h2"
+              class="font-heading text-fluid-h2 text-balance font-semibold"
+            >
+              Trusted by <TextScrubAvatars /> ambitious businesses everywhere
+            </TextReveal>
+          </Fragment>
+
+          <Fragment slot="description">
+            <p>
+              We attract clients who are ambitious, forward-thinking, and ready
+              to push boundaries and put the bounce into their businesses. We’re
+              sector and size agnostic – working with clients just like you
+              across B2B lead generation to eCommerce, tech startups and
+              corporate websites, we work with businesses that are looking to
+              elevate their digital presence and invest in meaningful growth.
+            </p>
+
+            <p>
+              Our clients trust us to challenge them creatively, drive their
+              digital strategies, and deliver results that help their businesses
+              grow. No two projects are ever the same, and that’s what excites
+              us.
+            </p>
+          </Fragment>
+        </BlockStats>
+      </LayoutTheme>
     </section>
 
     <section class={classSection}>
