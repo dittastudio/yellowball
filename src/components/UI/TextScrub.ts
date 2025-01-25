@@ -3,16 +3,31 @@ import SplitType from 'split-type';
 // import { debounce } from '@/utils/helpers';
 
 function FnTextScrub() {
-  const splitTypes = document.querySelectorAll(
-    "[data-js-text-scrub-content]",
-  ) as NodeListOf<HTMLElement>;
+  const textScrubs = document.querySelectorAll('[data-js="text-scrub"]') as NodeListOf<HTMLElement>;
 
-  splitTypes.forEach((paragraph, _) => {
-    console.log(paragraph);
+  textScrubs.forEach((textScrub) => {
+    const splitTypes = textScrub.querySelectorAll(
+      "[data-js-text-scrub-chars]",
+    ) as NodeListOf<HTMLElement>;
 
+    const charsArray: any[] = [];
+
+    splitTypes.forEach((paragraph, _) => {
+      const text = new SplitType(paragraph, {
+        types: 'chars, words',
+      });
+
+      if (text.chars) {
+        charsArray.push(...text.chars);
+      }
+    })
+
+    console.log(charsArray);
+
+    // splitTypes.forEach((paragraph, _) => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: paragraph,
+        trigger: textScrub,
         start: 'top 80%',
         end: 'top 20%',
         scrub: true,
@@ -20,11 +35,11 @@ function FnTextScrub() {
       },
     });
 
-    const text = new SplitType(paragraph, {
-      types: 'chars,words',
-    });
+    // const text = new SplitType(paragraph, {
+    //   types: 'chars,words',
+    // });
 
-    tl.from(text.chars, {
+    tl.from(charsArray, {
       opacity: 0,
       y: '-5%',
       skewY: -5,
@@ -34,6 +49,7 @@ function FnTextScrub() {
       duration: 1.5,
       stagger: 0.1,
     });
+    // });
   });
 }
 
