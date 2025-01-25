@@ -26,7 +26,7 @@ import BlockFAQs from '@/components/Block/FAQs.astro';
 import BlockGoogle from '@/components/Block/Google.astro';
 import BlockHero from '@/components/Block/Hero.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
-import BlockLogoTicker from '@/components/Block/LogoTicker.astro';
+import BlockTickerLogo from '@/components/Block/TickerLogo.astro';
 import BlockOverlaps from '@/components/Block/Overlaps.astro';
 import BlockPrompt from '@/components/Block/Prompt.astro';
 import BlockServiceCards from '@/components/Block/ServiceCards.astro';
@@ -198,9 +198,9 @@ const exampleServiceListItems: any = [
             </Fragment>
 
             <Fragment slot="content">
-              <div class="grid gap-70 lg:gap-100">
-                <div class="grid gap-20 lg:gap-40">
-                  <div class="flex gap-20 items-center justify-start">
+              <div class="gap-70 lg:gap-100 grid">
+                <div class="lg:gap-40 grid gap-20">
+                  <div class="flex items-center justify-start gap-20">
                     <img
                       class="size-40 lg:size-50"
                       src="/images/test-logo-rsvp-call-center.svg"
@@ -234,7 +234,7 @@ const exampleServiceListItems: any = [
                   />
                 </CardClientOverview>
 
-                <div class="grid gap-30 lg:gap-40 font-heading">
+                <div class="gap-30 lg:gap-40 font-heading grid">
                   <h3 class="text-15 lg:text-18 text-green">Challenge</h3>
                   <p class="text-21 lg:text-28">
                     RSVP aimed to increase brand awareness and attract new
@@ -244,11 +244,11 @@ const exampleServiceListItems: any = [
                   </p>
                 </div>
 
-                <div class="grid gap-30 lg:gap-40 font-heading">
+                <div class="gap-30 lg:gap-40 font-heading grid">
                   <h3 class="text-15 lg:text-18 text-green">Key Results</h3>
 
                   <div
-                    class="w-full p-30 lg:p-60 flex flex-col gap-60 text-white bg-navy-light border border-white/10 rounded-30 lg:rounded-40"
+                    class="p-30 lg:p-60 gap-60 bg-navy-light border-white/10 rounded-30 lg:rounded-40 flex flex-col w-full text-white border"
                   >
                     <FauxGraph />
 
@@ -258,9 +258,9 @@ const exampleServiceListItems: any = [
                     </h4>
 
                     <ul
-                      class="flex flex-col gap-15 lg:gap-20 text-21 lg:text-28"
+                      class="gap-15 lg:gap-20 text-21 lg:text-28 flex flex-col"
                     >
-                      <li class="flex items-start gap-15 lg:gap-28">
+                      <li class="gap-15 lg:gap-28 flex items-start">
                         <Icon
                           name="circle-checkmark"
                           class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
@@ -271,7 +271,7 @@ const exampleServiceListItems: any = [
                           users via organic traffic
                         </span>
                       </li>
-                      <li class="flex items-start gap-15 lg:gap-28">
+                      <li class="gap-15 lg:gap-28 flex items-start">
                         <Icon
                           name="circle-checkmark"
                           class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
@@ -281,7 +281,7 @@ const exampleServiceListItems: any = [
                           10 ranking keywords (from 2 to 235)
                         </span>
                       </li>
-                      <li class="flex items-start gap-15 lg:gap-28">
+                      <li class="gap-15 lg:gap-28 flex items-start">
                         <Icon
                           name="circle-checkmark"
                           class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
@@ -291,7 +291,7 @@ const exampleServiceListItems: any = [
                           ranking keywords (from 294 to 1,452)
                         </span>
                       </li>
-                      <li class="flex items-start gap-15 lg:gap-28">
+                      <li class="gap-15 lg:gap-28 flex items-start">
                         <Icon
                           name="circle-checkmark"
                           class="mt-7 size-16 lg:size-22 shrink-0 opacity-30"
@@ -306,7 +306,7 @@ const exampleServiceListItems: any = [
                   </div>
                 </div>
 
-                <div class="grid gap-30 lg:gap-40 font-heading">
+                <div class="gap-30 lg:gap-40 font-heading grid">
                   <h3 class="text-15 lg:text-18 text-green">Solution</h3>
                   <p class="text-21 lg:text-28">
                     Yellowball implemented a comprehensive SEO strategy,
@@ -317,7 +317,7 @@ const exampleServiceListItems: any = [
                   </p>
                 </div>
 
-                <div class="grid gap-30 lg:gap-40 font-heading">
+                <div class="gap-30 lg:gap-40 font-heading grid">
                   <h3 class="text-15 lg:text-18 text-green">Outcome</h3>
                   <p class="text-21 lg:text-28">
                     Across 3 years, Yellowball significantly boosted RSVP’s
@@ -460,7 +460,7 @@ const exampleServiceListItems: any = [
     </section>
 
     <section class={classSection}>
-      <BlockLogoTicker />
+      <BlockTickerLogo />
     </section>
 
     <section class={classSection}>
