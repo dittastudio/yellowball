@@ -1,0 +1,68 @@
+---
+import Button from '@/components/Elements/Button.astro';
+import Icon from '@/components/Elements/Icon.astro';
+import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+---
+
+<div data-js="text-scrub" class="text-center">
+  <p class="text-fluid-h3 font-semibold font-heading text-balance">
+    <span data-js-text-scrub-chars>We’re a</span>
+
+    <span data-js-text-scrub-icon class="inline">
+      <TextScrubAvatars />
+    </span>
+
+    <span data-js-text-scrub-chars>
+      hand-picked global team of over 25 exceptional
+    </span>
+
+    <Icon
+      data-js-text-scrub-icon
+      name="shape-triangle"
+      class="inline-block w-[0.9em] h-[0.8em] text-yellow drop-shadow-sm align-baseline"
+    />
+
+    <span data-js-text-scrub-chars>designers, engineers,</span>
+
+    <Icon
+      data-js-text-scrub-icon
+      name="shape-square"
+      class="inline-block size-[0.8em] text-green drop-shadow-sm align-baseline"
+    />
+
+    <span data-js-text-scrub-chars>SEO experts and</span>
+
+    <Icon
+      data-js-text-scrub-icon
+      name="shape-circle"
+      class="inline-block size-[0.8em] text-blue drop-shadow-sm align-baseline"
+    />
+
+    <span data-js-text-scrub-chars>paid media specialists, crafting</span>
+
+    <span data-js-text-scrub-icon class="inline">
+      <TextGradient>websites</TextGradient>
+    </span>
+
+    <span data-js-text-scrub-chars>
+      & digital experiences that work as hard as you do...
+    </span>
+
+    <span data-js-text-scrub-icon class="inline">
+      <button type="button" class="align-middle -mt-[2.5%]">
+        <Button
+          text="Let’s chat"
+          options={{
+            borderColor: 'grey',
+            bgColor: 'transparent',
+          }}
+          optionsHover={{
+            bgColor: 'white',
+            borderColor: 'navy',
+          }}
+        />
+      </button>
+    </span>
+  </p>
+</div>
