@@ -8,7 +8,9 @@ import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
 import CardFigure from '@/components/Card/Figure.astro';
 import UITickerLogo from '@/components/UI/TickerLogo.astro';
 import CardIconText from '@/components/Card/IconText.astro';
+import CardRole from '@/components/Card/Role.astro';
 
+import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
@@ -188,6 +190,55 @@ const classSectionThick = 'py-100 md:py-[150px]';
           </div>
         </Fragment>
       </BlockHeadingTextStack>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            Open Roles
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <div class={classSection}>
+        <div class="wrapper flex flex-col gap-24 md:gap-30">
+          <CardRole
+            cursorTitle="Design Team"
+            title="Midweight Web Designer"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="yellow"
+            icon="shape-triangle"
+          />
+
+          <CardRole
+            cursorTitle="Management Team"
+            title="Strategic Sales Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="cream"
+            icon="yellowball-y"
+          />
+
+          <CardRole
+            cursorTitle="SEO Team"
+            title="SEO Account Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="green"
+            icon="shape-square"
+          />
+
+          <CardRole
+            cursorTitle="PPC Team"
+            title="Junior PPC Account Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="blue"
+            icon="shape-circle"
+          />
+        </div>
+      </div>
     </section>
 
     <section class={classSection}>
