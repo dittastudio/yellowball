@@ -7,25 +7,33 @@ function FnTextScrub() {
     "[data-js-text-scrub-content]",
   ) as NodeListOf<HTMLElement>;
 
-  splitTypes.forEach((char, index) => {
-    const text = new SplitType(char, {
-      types: 'chars,words',
-    });
+  splitTypes.forEach((paragraph, _) => {
+    console.log(paragraph);
 
-    gsap.from(text.chars, {
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: char,
+        trigger: paragraph,
         start: 'top 80%',
         end: 'top 20%',
         scrub: true,
         markers: true,
       },
-      opacity: 0.1,
-      ease: 'power2.out',
-      stagger: 0.1,
     });
 
-    console.log(text);
+    const text = new SplitType(paragraph, {
+      types: 'chars,words',
+    });
+
+    tl.from(text.chars, {
+      opacity: 0,
+      y: '-5%',
+      skewY: -5,
+      scale: 0.9,
+      transformOrigin: 'top left',
+      ease: 'power2.out',
+      duration: 1.5,
+      stagger: 0.1,
+    });
   });
 }
 

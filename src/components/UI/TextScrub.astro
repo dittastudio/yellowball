@@ -1,11 +1,60 @@
+---
+import Button from '@/components/Elements/Button.astro';
+import Icon from '@/components/Elements/Icon.astro';
+import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+---
+
 <div class="text-center">
-  <p
-    data-js-text-scrub-content
-    class="text-fluid-h3 font-semibold font-heading text-balance"
-  >
-    We’re a [ICON] hand-picked global team of over 25 exceptional [ICON]
-    designers, engineers, [ICON] SEO experts and [ICON] paid media specialists,
-    crafting websites & digital experiences that work as hard as you do...
-    [Button]
+  <p class="text-fluid-h3 font-semibold font-heading text-balance">
+    <span data-js-text-scrub-content>We’re a</span>
+
+    <TextScrubAvatars />
+
+    <span data-js-text-scrub-content>
+      hand-picked global team of over 25 exceptional
+    </span>
+
+    <Icon
+      name="shape-triangle"
+      class="inline-block size-[0.9em] text-yellow drop-shadow-md align-baseline"
+    />
+
+    <span data-js-text-scrub-content>designers, engineers,</span>
+
+    <Icon
+      name="shape-square"
+      class="inline-block size-[0.8em] text-green drop-shadow-md align-baseline"
+    />
+
+    <span data-js-text-scrub-content>SEO experts and</span>
+
+    <Icon
+      name="shape-circle"
+      class="inline-block size-[0.8em] text-blue drop-shadow-md align-baseline"
+    />
+
+    <span data-js-text-scrub-content>paid media specialists, crafting</span>
+
+    <TextGradient>websites</TextGradient>
+
+    <span data-js-text-scrub-content>
+      & digital experiences that work as hard as you do...
+    </span>
+
+    <span>
+      <button type="button" class="align-bottom -translate-y-10">
+        <Button
+          text="Let’s chat"
+          options={{
+            borderColor: 'grey',
+          }}
+          optionsHover={{
+            bgColor: 'white',
+            borderColor: 'navy',
+          }}
+        />
+      </button>
+    </span>
   </p>
 </div>
