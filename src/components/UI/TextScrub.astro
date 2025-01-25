@@ -17,7 +17,7 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
 
     <Icon
       name="shape-triangle"
-      class="inline-block size-[0.9em] text-yellow drop-shadow-md align-baseline"
+      class="inline-block w-[0.9em] h-[0.8em] text-yellow drop-shadow-md align-baseline"
     />
 
     <span data-js-text-scrub-chars>designers, engineers,</span>
@@ -42,19 +42,17 @@ import TextGradient from '@/components/Elements/TextGradient.astro';
       & digital experiences that work as hard as you do...
     </span>
 
-    <span>
-      <button type="button" class="align-bottom -translate-y-10">
-        <Button
-          text="Let’s chat"
-          options={{
-            borderColor: 'grey',
-          }}
-          optionsHover={{
-            bgColor: 'white',
-            borderColor: 'navy',
-          }}
-        />
-      </button>
-    </span>
+    <button type="button" class="align-middle -mt-[2.5%]">
+      <Button
+        text="Let’s chat"
+        options={{
+          borderColor: 'grey',
+        }}
+        optionsHover={{
+          bgColor: 'white',
+          borderColor: 'navy',
+        }}
+      />
+    </button>
   </p>
 </div>
