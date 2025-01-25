@@ -1,6 +1,5 @@
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
-// import { debounce } from '@/utils/helpers';
 
 function FnTextScrub() {
   const textScrubs = document.querySelectorAll('[data-js="text-scrub"]') as NodeListOf<HTMLElement>;
@@ -10,11 +9,15 @@ function FnTextScrub() {
       "[data-js-text-scrub-chars]",
     ) as NodeListOf<HTMLElement>;
 
+    const icons = textScrub.querySelectorAll(
+      "[data-js-text-scrub-icon]",
+    ) as NodeListOf<HTMLElement>;
+
     const charsArray: any[] = [];
 
     splitTypes.forEach((paragraph, _) => {
       const text = new SplitType(paragraph, {
-        types: 'chars, words',
+        types: 'chars,words',
       });
 
       if (text.chars) {
@@ -22,9 +25,16 @@ function FnTextScrub() {
       }
     })
 
+    icons.forEach((icon) => {
+      charsArray.push(icon);
+    });
+
+    charsArray.sort((a, b) => {
+      return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+
     console.log(charsArray);
 
-    // splitTypes.forEach((paragraph, _) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: textScrub,
@@ -35,9 +45,6 @@ function FnTextScrub() {
       },
     });
 
-    // const text = new SplitType(paragraph, {
-    //   types: 'chars,words',
-    // });
 
     tl.from(charsArray, {
       opacity: 0,
@@ -49,7 +56,6 @@ function FnTextScrub() {
       duration: 1.5,
       stagger: 0.1,
     });
-    // });
   });
 }
 
