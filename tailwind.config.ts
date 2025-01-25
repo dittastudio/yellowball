@@ -190,7 +190,7 @@ export default {
         })
         }`,
         {
-          lineHeight: '1.2',
+          lineHeight: '1.5',
           letterSpacing: '-0.04em'
         },
       ],

@@ -1,0 +1,87 @@
+---
+import { colourText, colourBackground } from '@/utils/maps';
+import Icon from '@/components/Elements/Icon.astro';
+import Cursor from '@/components/Elements/Cursor.astro';
+import LinkArrow from '@/components/Elements/LinkArrow.astro';
+
+interface Props {
+  color?: ColorTypes | null;
+  icon: string;
+  cursorTitle?: string | undefined;
+  title: string;
+  copy?: string | undefined;
+  class?: string;
+}
+
+const {
+  icon = 'outline-info-migration',
+  title,
+  cursorTitle,
+  copy,
+  color = 'current',
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<div
+  class:list={[
+    'w-full h-full p-30 md:p-[6.25%] flex flex-col gap-20 md:gap-30 rounded-30 md:rounded-40 border',
+    'bg-navy-light border-white/10',
+    'light:bg-white light:border-navy/15',
+    className,
+  ]}
+  {...rest}
+>
+  <div class="flex justify-between items-start gap-30">
+    <div class="flex flex-col gap-20 md:gap-30 items-start">
+      <div class="flex flex-col md:flex-row items-baseline gap-30">
+        {
+          cursorTitle && (
+            <Cursor
+              title={cursorTitle}
+              class={colourBackground[color as keyof typeof colourBackground]}
+            />
+          )
+        }
+
+        <p
+          class="font-heading text-10 md:text-12 font-bold text-grey flex items-center gap-5"
+        >
+          Immediate Start<span>&bullet;</span>London & Remote
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-20">
+        <h3 class="font-heading text-fluid-h4 text-balance font-semibold">
+          {title}
+        </h3>
+
+        {
+          copy && (
+            <p class="text-15 md:text-18 text-pretty opacity-70 max-w-[70ch]">
+              {copy}
+            </p>
+          )
+        }
+      </div>
+
+      <LinkArrow class="font-heading text-15 md:text-18 font-bold">
+        Get in touch
+      </LinkArrow>
+    </div>
+
+    <div
+      class="mdMax:hidden shrink-0 size-100 flex items-center justify-center rounded-30 bg-navy border border-navy-lighter"
+    >
+      <Icon
+        name={icon}
+        class:list={[
+          'size-40',
+          icon === 'shape-triangle' ? 'w-[47px] h-40' : '',
+          colourText[color as keyof typeof colourText],
+        ]}
+      />
+    </div>
+  </div>
+</div>

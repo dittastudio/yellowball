@@ -1,0 +1,31 @@
+---
+import RichText from '@/components/Elements/RichText.astro';
+---
+
+<!-- Begin Block: HeadingTextStack -->
+<div class="wrapper gap-60 md:gap-120 flex flex-col">
+  <div
+    class="md:grid-cols-12 gap-x-12 gap-y-40 md:gap-x-30 md:gap-y-60 grid grid-cols-8"
+  >
+    {
+      Astro.slots.headline && (
+        <div class="col-span-full md:col-span-10 md:col-start-2">
+          <slot name="headline" />
+        </div>
+      )
+    }
+
+    {
+      Astro.slots.headline && (
+        <div class="col-span-full md:col-span-8 md:col-start-4">
+          <RichText>
+            <slot name="description" />
+          </RichText>
+        </div>
+      )
+    }
+  </div>
+
+  {Astro.slots.bottom && <slot name="bottom" />}
+</div>
+<!-- End Block: HeadingTextStack -->

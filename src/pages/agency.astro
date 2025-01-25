@@ -5,10 +5,16 @@ import LayoutTheme from '@/components/Layout/Theme.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 import UITextScrub from '@/components/UI/TextScrub.astro';
 import TextScrubAvatars from '@/components/Elements/TextScrubAvatars.astro';
+import CardFigure from '@/components/Card/Figure.astro';
+import UITickerLogo from '@/components/UI/TickerLogo.astro';
+import CardIconText from '@/components/Card/IconText.astro';
+import CardRole from '@/components/Card/Role.astro';
+
+import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
-import BlockStats from '@/components/Block/Stats.astro';
+import BlockHeadingTextStack from '@/components/Block/HeadingTextStack.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -34,7 +40,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
     <section class={classSection}>
       <LayoutTheme theme="light" class={classSectionThick}>
-        <BlockStats>
+        <BlockHeadingTextStack>
           <Fragment slot="headline">
             <TextReveal
               tag="h2"
@@ -61,7 +67,43 @@ const classSectionThick = 'py-100 md:py-[150px]';
               us.
             </p>
           </Fragment>
-        </BlockStats>
+
+          <Fragment slot="bottom">
+            <UITickerLogo />
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-24 md:gap-30">
+              <CardFigure
+                size="small"
+                figure={100}
+                unit="+"
+                headline="Active Clients"
+                description="We're trusted partners of brands across the UK, providing tailored, ongoing support that ensures their digital success."
+                color="green"
+                shape="square"
+              />
+
+              <CardFigure
+                size="small"
+                figure={150}
+                unit="+"
+                headline="Websites Delivered"
+                description="We've launched websites across every imaginable industry, helping B2B and B2C brands achieve their online goals with impactful, results-driven designs."
+                color="yellow"
+                shape="triangle"
+              />
+
+              <CardFigure
+                size="small"
+                figure={84}
+                unit="%"
+                headline="Client Rentention"
+                description="84% of our clients stay with us for three years or more, because when you build trust and deliver real results, why go anywhere else?"
+                color="blue"
+                shape="circle"
+              />
+            </div>
+          </Fragment>
+        </BlockHeadingTextStack>
       </LayoutTheme>
     </section>
 
@@ -78,6 +120,125 @@ const classSectionThick = 'py-100 md:py-[150px]';
           </Fragment>
         </BlockTeamGrid>
       </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeadingTextStack>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            <span class="!block pl-[1ch]">Do the best work</span>
+            of your life
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="description">
+          <p>
+            Join us to help rocket Yellowball forward on our journey to become
+            the UK’s leading boutique web design agency. We’re commercial,
+            creative and highly entrepreneurial in the way we operate. We were
+            founded over a decade ago with 150 beautiful bespoke projects under
+            our belt, but we’re just getting started!
+          </p>
+        </Fragment>
+
+        <Fragment slot="bottom">
+          <div class="flex flex-wrap -m-15">
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-wallet"
+                title="Competitive salary, based on experience + commission and other incentives"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-house-person"
+                title="Flexible work-from-home scheme"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-plane-takeoff"
+                title="25 days holiday per annum plus UK Bank Holidays"
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-piggy-bank"
+                title="A generous 7.5% employer pension contribution"
+                copy="We pay 100% of your salary, then 7.5% extra into your pension."
+              />
+            </div>
+
+            <div class="basis-1/3 min-w-[min(320px,_100%)] grow p-15">
+              <CardIconText
+                color="yellow"
+                icon="outline-laptop"
+                title="MacBooks are our standard lorem ipsum dolor sit amet"
+                copy="We’ll provide whatever equipment helps you get your job done."
+              />
+            </div>
+          </div>
+        </Fragment>
+      </BlockHeadingTextStack>
+    </section>
+
+    <section class={classSection}>
+      <BlockHeroText>
+        <Fragment slot="headline">
+          <TextReveal
+            tag="h2"
+            class="font-heading text-fluid-h2 text-balance font-semibold"
+          >
+            Open Roles
+          </TextReveal>
+        </Fragment>
+      </BlockHeroText>
+
+      <div class={classSection}>
+        <div class="wrapper flex flex-col gap-24 md:gap-30">
+          <CardRole
+            cursorTitle="Design Team"
+            title="Midweight Web Designer"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="yellow"
+            icon="shape-triangle"
+          />
+
+          <CardRole
+            cursorTitle="Management Team"
+            title="Strategic Sales Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="cream"
+            icon="yellowball-y"
+          />
+
+          <CardRole
+            cursorTitle="SEO Team"
+            title="SEO Account Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="green"
+            icon="shape-square"
+          />
+
+          <CardRole
+            cursorTitle="PPC Team"
+            title="Junior PPC Account Manager"
+            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+            color="blue"
+            icon="shape-circle"
+          />
+        </div>
+      </div>
     </section>
 
     <section class={classSection}>
