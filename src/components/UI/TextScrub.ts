@@ -39,8 +39,8 @@ function FnTextScrub() {
       scrollTrigger: {
         trigger: textScrub,
         start: 'top 80%',
-        end: 'top 20%',
-        scrub: true,
+        end: 'bottom center',
+        scrub: 1.5,
         markers: false,
       },
     });
