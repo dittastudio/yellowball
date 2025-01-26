@@ -9,7 +9,9 @@ import CardFigure from '@/components/Card/Figure.astro';
 import UITickerLogo from '@/components/UI/TickerLogo.astro';
 import CardIconText from '@/components/Card/IconText.astro';
 import CardRole from '@/components/Card/Role.astro';
+import TextUnderline from '@/components/Elements/TextUnderline.astro';
 
+import BlockStickyMap from '@/components/Block/StickyMap.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
 import BlockValues from '@/components/Block/Values.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
@@ -105,6 +107,39 @@ const classSectionThick = 'py-100 md:py-[150px]';
           </Fragment>
         </BlockHeadingTextStack>
       </LayoutTheme>
+    </section>
+
+    <section class={classSection}>
+      <BlockStickyMap>
+        <Fragment slot="headline">
+          <TextReveal tag="h2" class="font-heading text-fluid-h3 font-semibold">
+            <span class="!block pl-[2ch]">Rooted in</span>
+            London,
+            <span class="!block pl-[1ch]">connected</span>
+            <TextUnderline>worldwide</TextUnderline>
+          </TextReveal>
+        </Fragment>
+
+        <Fragment slot="richtext">
+          <h6>
+            We’re a globally distributed team, bringing together the brightest
+            designers, developers, SEO specialists, and PPC strategists from
+            around the world.
+          </h6>
+          <h6>
+            While our headquarters are rooted in London, we have a team in South
+            Africa and trusted partners across the world.
+          </h6>
+          <p>
+            Our culture is built on flexibility, openness, and collaboration.
+            With a zero-ego hiring policy, we ensure that every member of our
+            team is approachable, easy to work with, and ready to contribute
+            fresh, creative ideas. We give our team the freedom to work where
+            they’re most inspired, but we remain deeply connected – both to each
+            other and to our clients.
+          </p>
+        </Fragment>
+      </BlockStickyMap>
     </section>
 
     <section class={classSection}>
