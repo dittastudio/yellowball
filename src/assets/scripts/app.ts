@@ -14,6 +14,7 @@ import FnFauxGraph from '@/components/UI/FauxGraph';
 import FnFigure from '@/components/Card/Figure.ts'
 import FnFile from '@/components/Fields/File.ts'
 import FnFooter from '@/components/App/Footer.ts'
+import FnFruitMachine from '@/components/Block/FruitMachine';
 import FnGoogle from '@/components/Block/Google.ts'
 import FnHeadingBanner from '@/components/Block/HeadingBanner.ts'
 import FnHero from '@/components/Block/Hero.ts'
@@ -58,6 +59,7 @@ FnFauxGraph()
 FnFigure()
 FnFile()
 FnFooter()
+FnFruitMachine()
 FnGoogle()
 FnHeadingBanner()
 FnHero()

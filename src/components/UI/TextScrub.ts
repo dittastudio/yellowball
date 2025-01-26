@@ -33,8 +33,6 @@ function FnTextScrub() {
       return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
     });
 
-    console.log(charsArray);
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: textScrub,

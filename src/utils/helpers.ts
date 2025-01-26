@@ -16,7 +16,7 @@ function debounce<T extends Procedure>(func: T, wait: number): (...args: Paramet
   };
 }
 
-const componentProperties = (classes: (string|undefined)[], rest: Record<string, any>) => {
+const componentProperties = (classes: (string | undefined)[], rest: Record<string, any>) => {
   const classNames = [
     ...classes,
     rest.class,
@@ -30,4 +30,6 @@ const componentProperties = (classes: (string|undefined)[], rest: Record<string,
   };
 }
 
-export { debounce, componentProperties };
+const sleep = async (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
+
+export { debounce, componentProperties, sleep };

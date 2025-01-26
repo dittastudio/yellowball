@@ -1,9 +1,119 @@
 ---
-
+import Icon from '@/components/Elements/Icon.astro';
 ---
 
 <!-- Begin Block: FruitMachine -->
-<div class="wrapper">
-  <div class="">fruit machine</div>
+<div data-js="fruit-machine" class="fruit-machine text-center">
+  <div class="wrapper">
+    <p class="text-18 sm:text-24 font-heading font-bold">
+      Welcome to
+      <Icon
+        name="yellowball"
+        width={117}
+        height={22}
+        class="inline-block w-[82px] sm:w-[116px] h-auto"
+      />
+    </p>
+
+    <div
+      class="fruit-machine__container relative z-1 w-full max-w-[1050px] mx-auto aspect-[6/2.44] overflow-hidden pointer-events-none select-none"
+    >
+      <ul
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between gap-[2.5%] w-full aspect-[6/1.07]"
+      >
+        <li>
+          <img
+            src="/images/fruit-strip.svg"
+            class="fruit-machine__strip fruit-machine__strip-1 block w-full h-auto"
+          />
+        </li>
+        <li>
+          <img
+            src="/images/fruit-strip.svg"
+            class="fruit-machine__strip fruit-machine__strip-2 block w-full h-auto"
+          />
+        </li>
+        <li>
+          <img
+            src="/images/fruit-strip.svg"
+            class="fruit-machine__strip fruit-machine__strip-3 block w-full h-auto"
+          />
+        </li>
+        <li>
+          <img
+            src="/images/fruit-strip.svg"
+            class="fruit-machine__strip fruit-machine__strip-4 block w-full h-auto"
+          />
+        </li>
+        <li>
+          <img
+            src="/images/fruit-strip.svg"
+            class="fruit-machine__strip fruit-machine__strip-5 block w-full h-auto"
+          />
+        </li>
+      </ul>
+    </div>
+
+    <h1 class="text-fluid-h3 font-heading">
+      Why gamble with your next agency?
+      <span
+        class="fruit-machine__statement block opacity-0 transition-opacity duration-1000"
+      >
+        Win every time with Yellowball.
+      </span>
+    </h1>
+  </div>
 </div>
 <!-- End Block: FruitMachine -->
+
+<style is:global>
+  .fruit-machine {
+    --stripHeight: 100% / 34;
+    --stripSpeed: 3.5s;
+
+    &.spin {
+      .fruit-machine__strip {
+        transform: translate3d(0, calc(var(--stripHeight) * -32), 0);
+      }
+    }
+
+    &.spin-complete {
+      .fruit-machine__statement {
+        opacity: 1;
+      }
+    }
+
+    &__container {
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 5%,
+        black 50%,
+        transparent 95%
+      );
+    }
+
+    &__strip {
+      transition: transform var(--stripSpeed) cubic-bezier(0.35, 0.06, 0, 1.1);
+    }
+
+    &__strip-1 {
+      transform: translate3d(0, calc(var(--stripHeight) * -20), 0);
+    }
+
+    &__strip-2 {
+      transform: translate3d(0, calc(var(--stripHeight) * -6), 0);
+    }
+
+    &__strip-3 {
+      transform: translate3d(0, calc(var(--stripHeight) * -2), 0);
+    }
+
+    &__strip-4 {
+      transform: translate3d(0, calc(var(--stripHeight) * -8), 0);
+    }
+
+    &__strip-5 {
+      transform: translate3d(0, calc(var(--stripHeight) * -19), 0);
+    }
+  }
+</style>
