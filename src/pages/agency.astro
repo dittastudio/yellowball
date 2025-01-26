@@ -11,12 +11,13 @@ import CardIconText from '@/components/Card/IconText.astro';
 import CardRole from '@/components/Card/Role.astro';
 import TextUnderline from '@/components/Elements/TextUnderline.astro';
 
-import BlockStickyMap from '@/components/Block/StickyMap.astro';
+import BlockFruitMachine from '@/components/Block/FruitMachine.astro';
+import BlockHeadingTextStack from '@/components/Block/HeadingTextStack.astro';
 import BlockHeroText from '@/components/Block/HeroText.astro';
-import BlockValues from '@/components/Block/Values.astro';
+import BlockStickyMap from '@/components/Block/StickyMap.astro';
 import BlockTestimonials from '@/components/Block/Testimonials.astro';
 import BlockTeamGrid from '@/components/Block/TeamGrid.astro';
-import BlockHeadingTextStack from '@/components/Block/HeadingTextStack.astro';
+import BlockValues from '@/components/Block/Values.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
@@ -25,7 +26,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 <Layout title="Agency">
   <main>
     <section class={classSection}>
-      <div class="h-screen"></div>
+      <BlockFruitMachine />
     </section>
 
     <section class={classSection}>
