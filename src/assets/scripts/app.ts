@@ -35,12 +35,14 @@ import FnPrompt from '@/components/Card/Prompt.ts'
 import FnService from '@/components/Card/Service.ts'
 import FnServiceList from '@/components/Block/ServiceList.ts'
 import FnSplitRichText from '@/components/Block/SplitRichText.ts'
+import FnStickyMap from '@/components/Block/StickyMap';
 import FnTestimonials from '@/components/Carousel/Testimonials.ts'
 import FnTextReveal from '@/components/Elements/TextReveal.ts'
 import FnTicker from '@/components/Elements/Ticker.ts'
 import FnTypingText from '@/components/UI/TypingText.ts'
 import FnValues from '@/components/Block/Values.ts'
 import FnTextScrub from '@/components/UI/TextScrub.ts'
+
 gsap.registerPlugin(ScrollTrigger)
 
 new Lenis({
@@ -80,6 +82,7 @@ FnPrompt()
 FnService()
 FnServiceList()
 FnSplitRichText()
+FnStickyMap()
 FnTestimonials()
 FnTextReveal()
 FnTicker()

@@ -3,7 +3,7 @@ import RichText from '@/components/Elements/RichText.astro';
 ---
 
 <!-- Begin Block: StickyMap -->
-<div class="wrapper">
+<div data-js="sticky-map" class="wrapper">
   <div
     class="sticky-map grid grid-cols-1 lg:grid-cols-12 gap-x-30 lg:gap-y-80 items-start"
   >
@@ -16,7 +16,99 @@ import RichText from '@/components/Elements/RichText.astro';
     <div
       class="sticky-map__map col-span-full lg:col-span-7 lg:sticky lg:top-[var(--header-height)] lg:w-[150%] py-80 md:py-60 lgMax:-mx-[30%] lg:order-1"
     >
-      <img src="/images/map.png" alt="Map" width="1068" height="556" />
+      <div class="relative">
+        <svg
+          class="size-full"
+          width="2136"
+          height="1112"
+          viewBox="0 0 2136 1112"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <image href="/images/map.png" width="100%" height="100%" />
+
+          <mask id="mask-south-africa">
+            <path
+              id="mask-south-africa-path"
+              d="M988.68 330.125C1082.94 287.13 1221.56 449.34 1139.36 894.932"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-dasharray="none"
+            >
+            </path>
+          </mask>
+
+          <path
+            d="M988.68 330.125C1082.94 287.13 1221.56 449.34 1139.36 894.932"
+            stroke="#F7F7F0"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="5 10"
+            mask="url(#mask-south-africa)"
+          >
+          </path>
+
+          <mask id="mask-india">
+            <path
+              id="mask-india-path"
+              d="M987.589 328.277C1054.81 249.514 1322.34 226.545 1463.24 574.419"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-dasharray="none"
+            >
+            </path>
+          </mask>
+
+          <path
+            d="M987.589 328.277C1054.81 249.514 1322.34 226.545 1463.24 574.419"
+            stroke="#F7F7F0"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="5 10"
+            mask="url(#mask-india)"
+          >
+          </path>
+
+          <mask id="mask-usa">
+            <path
+              id="mask-usa-path"
+              d="M989.497 330.28C955.412 250.976 771.46 235.341 668.61 332.486"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-dasharray="none"
+            >
+            </path>
+          </mask>
+
+          <path
+            d="M989.497 330.28C955.412 250.976 771.46 235.341 668.61 332.486"
+            stroke="#F7F7F0"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="5 10"
+            mask="url(#mask-usa)"
+          >
+          </path>
+
+          <circle data-map-london cx="990" cy="330" r="10" fill="#EAFF01">
+          </circle>
+          <circle
+            data-map-south-africa
+            cx="1139"
+            cy="895"
+            r="10"
+            fill="#ADF454"
+          >
+          </circle>
+          <circle data-map-india cx="1463" cy="574" r="10" fill="#51DBEA">
+          </circle>
+          <circle data-map-usa cx="667" cy="333" r="10" fill="#A58EF7"></circle>
+        </svg>
+      </div>
     </div>
 
     <div
