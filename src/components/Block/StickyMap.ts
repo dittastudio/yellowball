@@ -6,6 +6,7 @@ function FnStickyMap() {
   ) as NodeListOf<HTMLElement>;
 
   maps.forEach(map => {
+    const mapImage = map.querySelector('[data-js-sticky-map-image]') as HTMLImageElement;
     const maskSouthAfrica = map.querySelector("#mask-south-africa-path") as SVGPathElement;
     const maskIndia = map.querySelector("#mask-india-path") as SVGPathElement;
     const maskUsaPath = map.querySelector("#mask-usa-path") as SVGPathElement;
@@ -50,9 +51,10 @@ function FnStickyMap() {
 
       gsap.timeline({
         scrollTrigger: {
-          markers: false,
-          trigger: map,
-          start: `top center`,
+          markers: true,
+          trigger: mapImage,
+          endTrigger: map,
+          start: `center bottom`,
           end: `bottom bottom`,
           scrub: 1.5,
         },
