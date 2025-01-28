@@ -82,7 +82,7 @@ const { theme = 'dark' } = Astro.props as Props;
       ]}
     >
       <div
-        class="ui-before-after__media ui-before-after__media--before [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
+        class="ui-before-after__media ui-before-after__media--before h-full [&>img]:size-full [&>img]:object-cover"
       >
         <slot name="before" />
       </div>
@@ -97,7 +97,7 @@ const { theme = 'dark' } = Astro.props as Props;
       ]}
     >
       <div
-        class="ui-before-after__media ui-before-after__media--after [&>img]:w-full [&>img]:h-full [&>img]:object-cover"
+        class="ui-before-after__media ui-before-after__media--after h-full [&>img]:size-full [&>img]:object-cover"
       >
         <slot name="after" />
       </div>
