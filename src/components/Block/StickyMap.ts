@@ -54,8 +54,8 @@ function FnStickyMap() {
           markers: true,
           trigger: mapImage,
           endTrigger: map,
-          start: `center bottom`,
-          end: `bottom bottom`,
+          start: 'center bottom',
+          end: 'bottom bottom',
           scrub: 1.5,
         },
       })

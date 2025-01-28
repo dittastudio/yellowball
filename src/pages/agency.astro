@@ -21,6 +21,7 @@ import BlockValues from '@/components/Block/Values.astro';
 
 const classSection = 'py-50 md:py-[75px]';
 const classSectionThick = 'py-100 md:py-[150px]';
+const classSectionThicker = 'py-120 md:py-[240px]';
 ---
 
 <Layout title="Agency">
@@ -30,7 +31,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
     </section>
 
     <section class={classSection}>
-      <LayoutTheme theme="light" class={classSectionThick}>
+      <LayoutTheme theme="light" class={classSectionThicker}>
         <div class="wrapper">
           <UITextScrub />
         </div>
@@ -242,37 +243,45 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
       <div class={classSection}>
         <div class="wrapper flex flex-col gap-24 md:gap-30">
-          <CardRole
-            cursorTitle="Design Team"
-            title="Midweight Web Designer"
-            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
-            color="yellow"
-            icon="shape-triangle"
-          />
+          <a href="/">
+            <CardRole
+              cursorTitle="Design Team"
+              title="Midweight Web Designer"
+              copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+              color="yellow"
+              icon="shape-triangle"
+            />
+          </a>
 
-          <CardRole
-            cursorTitle="Management Team"
-            title="Strategic Sales Manager"
-            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
-            color="cream"
-            icon="yellowball-y"
-          />
+          <a href="/">
+            <CardRole
+              cursorTitle="Management Team"
+              title="Strategic Sales Manager"
+              copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+              color="cream"
+              icon="yellowball-y"
+            />
+          </a>
 
-          <CardRole
-            cursorTitle="SEO Team"
-            title="SEO Account Manager"
-            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
-            color="green"
-            icon="shape-square"
-          />
+          <a href="/">
+            <CardRole
+              cursorTitle="SEO Team"
+              title="SEO Account Manager"
+              copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+              color="green"
+              icon="shape-square"
+            />
+          </a>
 
-          <CardRole
-            cursorTitle="PPC Team"
-            title="Junior PPC Account Manager"
-            copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
-            color="blue"
-            icon="shape-circle"
-          />
+          <a href="/">
+            <CardRole
+              cursorTitle="PPC Team"
+              title="Junior PPC Account Manager"
+              copy="Lorem ipsum dolor sit amet consectetur. Vel diam tortor enim elementum et quisque mi. Id dictum hac eget magna suspendisse posuere. Enim orci faucibus morbi in. Phasellus sociis ipsum aliquam neque iaculis nulla. Dui ac libero mollis libero. Dignissim ipsum commodo fusce egestas sed in diam laoreet."
+              color="blue"
+              icon="shape-circle"
+            />
+          </a>
         </div>
       </div>
     </section>
