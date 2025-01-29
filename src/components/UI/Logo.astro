@@ -2,20 +2,22 @@
 interface Props {
   sizeMobile?: string;
   sizeDesktop?: string;
+  isCentered?: boolean;
 }
 
-const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
+const {
+  sizeMobile = '42px',
+  sizeDesktop = '50px',
+  isCentered = false,
+} = Astro.props as Props;
 ---
 
 <div
   data-js="ui-logo"
-  class="ui-logo"
+  class:list={['ui-logo', isCentered ? 'ui-logo--centered' : '']}
   style={`--ui-logo-size-mobile: ${sizeMobile}; --ui-logo-size-desktop: ${sizeDesktop};`}
 >
-  <div
-    data-js-ui-logo-container
-    class="ui-logo__container text-white rounded-12 bg-navy overflow-hidden"
-  >
+  <div data-js-ui-logo-container class="ui-logo__container">
     <svg
       class="ui-logo__svg"
       viewBox="0 0 165 50"
@@ -118,6 +120,10 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
 
     width: var(--end-width);
     pointer-events: none;
+
+    &.ui-logo--centered {
+      /* width: auto; */
+    }
   }
 
   .ui-logo__container {
@@ -178,13 +184,8 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   }
 
   .ui-logo__svg {
-    width: 139px;
+    width: var(--end-width);
     height: var(--icon-size);
-
-    @media screen(md) {
-      width: 165px;
-      height: var(--icon-size);
-    }
   }
 
   .ui-logo__letter--y {
