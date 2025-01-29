@@ -1,6 +1,6 @@
 function FnUILogo() {
   const logos = document.querySelectorAll(
-    '[data-js=ui-logo]',
+    '[data-js="ui-logo"]',
   ) as NodeListOf<HTMLElement>;
 
   if (logos) {

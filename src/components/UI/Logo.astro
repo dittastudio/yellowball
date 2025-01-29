@@ -108,7 +108,6 @@ const {
 
 <style is:global>
   .ui-logo {
-    position: relative;
     --initial-scale: 1.368;
     --icon-size: var(--ui-logo-size-mobile);
     --start-width: var(--icon-size);
@@ -118,11 +117,12 @@ const {
       --icon-size: var(--ui-logo-size-desktop);
     }
 
+    position: relative;
     width: var(--end-width);
     pointer-events: none;
 
     &.ui-logo--centered {
-      /* width: auto; */
+      width: auto;
     }
   }
 
@@ -134,7 +134,8 @@ const {
       animation: ui-logo-grow-leave 0.5s
         theme('transitionTimingFunction.outExpo') both;
 
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: ui-logo-grow-enter 0.5s
           theme('transitionTimingFunction.smooth') both;
       }
@@ -196,7 +197,8 @@ const {
     @media screen(lg) {
       transition: all 0.5s theme('transitionTimingFunction.outBack');
 
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         scale: 1;
         translate: 0 0 0;
       }
@@ -212,7 +214,8 @@ const {
       animation: header-wave-leave 0.2s theme('transitionTimingFunction.smooth')
         both;
 
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: header-wave-enter 0.5s
           theme('transitionTimingFunction.smooth') both;
 
@@ -286,7 +289,8 @@ const {
       animation: ui-logo-bump-leave 0.2s
         theme('transitionTimingFunction.outBack') both;
 
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: ui-logo-bump-enter 0.2s
           theme('transitionTimingFunction.outBack') 0.7s both;
       }
@@ -319,7 +323,8 @@ const {
 
   .ui-logo__word-start {
     @media screen(lg) {
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: ui-logo-nudge-right-enter 0.15s
           theme('transitionTimingFunction.smooth') 0.7s both;
       }
@@ -338,7 +343,8 @@ const {
 
   .ui-logo__word-end {
     @media screen(lg) {
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: ui-logo-nudge-left-enter 0.15s
           theme('transitionTimingFunction.smooth') 0.7s both;
       }
@@ -359,7 +365,8 @@ const {
     translate: -3% 0 0;
     transition: translate 0s linear 0.1s;
 
-    .ui-logo:hover & {
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
       translate: 0 0 0;
       transition: translate 0.15s theme('transitionTimingFunction.smooth') 0.7s;
     }
@@ -377,7 +384,8 @@ const {
     @media screen(lg) {
       animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
 
-      .ui-logo:hover & {
+      .ui-logo:hover &,
+      .ui-logo.has-animation & {
         animation: ui-logo-roll-enter 0.7s var(--ball-ease-enter) both;
       }
     }

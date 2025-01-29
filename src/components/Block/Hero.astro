@@ -1,4 +1,5 @@
 ---
+import UILogo from '@/components/UI/Logo.astro';
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 
 interface Props {
@@ -13,7 +14,7 @@ const { color = 'blue', shape } = Astro.props as Props;
 <div
   data-js="hero"
   class:list={[
-    'wrapper md:gap-60 py-50 relative flex flex-col items-center justify-start gap-40 text-center',
+    'wrapper py-50 relative flex flex-col items-center justify-center gap-40 md:gap-60 text-center',
   ]}
 >
   {
@@ -34,9 +35,24 @@ const { color = 'blue', shape } = Astro.props as Props;
     )
   }
 
+  <div class="h-50">
+    <div
+      data-js-hero-logo
+      class="absolute top-50 left-0 right-0 flex items-center justify-center z-1"
+    >
+      <UILogo sizeMobile="50px" sizeDesktop="50px" isCentered />
+    </div>
+  </div>
+
   {Astro.slots.top && <slot name="top" />}
-  {Astro.slots.headline && <slot name="headline" />}
-  {Astro.slots.bottom && <slot name="bottom" />}
-  {Astro.slots.extra && <slot name="extra" />}
+
+  <div
+    data-js-hero-content
+    class="flex flex-col items-center justify-start gap-40 md:gap-60"
+  >
+    {Astro.slots.headline && <slot name="headline" />}
+    {Astro.slots.bottom && <slot name="bottom" />}
+    {Astro.slots.extra && <slot name="extra" />}
+  </div>
 </div>
 <!-- End Block: Hero -->
