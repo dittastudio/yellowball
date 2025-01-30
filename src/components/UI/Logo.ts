@@ -4,27 +4,23 @@ function FnUILogo() {
   ) as NodeListOf<HTMLElement>;
 
   if (logos) {
-    // logos.forEach(logo => {
-    //   const container = logo.querySelector(
-    //     '[data-js-ui-logo-container]',
-    //   ) as HTMLElement;
+    logos.forEach(logo => {
+      let timeout: NodeJS.Timeout;
 
-    //   let timeout: NodeJS.Timeout;
+      function handleMouseEnter() {
+        clearTimeout(timeout);
+        logo.classList.add('has-hover');
+      }
 
-    //   function handleMouseEnter() {
-    //     clearTimeout(timeout);
-    //     container.classList.add('has-hover');
-    //   }
+      function handleMouseLeave() {
+        timeout = setTimeout(() => {
+          logo.classList.remove('has-hover');
+        }, 500);
+      }
 
-    //   function handleMouseLeave() {
-    //     timeout = setTimeout(() => {
-    //       container.classList.remove('has-hover');
-    //     }, 500);
-    //   }
-
-    //   container.addEventListener('mouseenter', handleMouseEnter);
-    //   container.addEventListener('mouseleave', handleMouseLeave);
-    // });
+      logo.addEventListener('mouseenter', handleMouseEnter);
+      logo.addEventListener('mouseleave', handleMouseLeave);
+    });
   }
 }
 

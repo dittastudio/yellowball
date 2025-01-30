@@ -21,7 +21,6 @@ import FnHero from '@/components/Block/Hero.ts'
 import FnIconText from '@/components/Carousel/IconText.ts'
 import FnIndex from '@/components/App/Header/Index.ts'
 import FnItem from '@/components/Accordion/Item.ts'
-import FnLogo from '@/components/App/Header/Logo.ts'
 import FnModal from '@/components/UI/Modal.ts'
 import FnNavigation from '@/components/App/Header/Navigation.ts'
 import FnNavigationList from '@/components/App/Header/NavigationList.ts'
@@ -69,7 +68,6 @@ FnHero()
 FnIconText()
 FnIndex()
 FnItem()
-FnLogo()
 FnModal()
 FnNavigation()
 FnNavigationList()

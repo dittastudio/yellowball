@@ -71,8 +71,8 @@ function FnHero() {
         opacity: 0,
       });
 
-      const duration = 1.25;
-      const easing = 'back.out(0.8)';
+      const duration = 1.5;
+      const easing = 'elastic.out(1, 1.5)';
       const delay = 2.5;
 
       setTimeout(() => {
@@ -103,6 +103,9 @@ function FnHero() {
         y: 0,
         duration,
         ease: easing,
+        onComplete: () => {
+          gsap.set(header, { clearProps: "all" });
+        },
       },
         '<',
       );

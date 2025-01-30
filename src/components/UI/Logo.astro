@@ -2,19 +2,14 @@
 interface Props {
   sizeMobile?: string;
   sizeDesktop?: string;
-  isCentered?: boolean;
 }
 
-const {
-  sizeMobile = '42px',
-  sizeDesktop = '50px',
-  isCentered = false,
-} = Astro.props as Props;
+const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
 ---
 
 <div
   data-js="ui-logo"
-  class:list={['ui-logo', isCentered ? 'ui-logo--centered' : '']}
+  class="ui-logo"
   style={`--ui-logo-size-mobile: ${sizeMobile}; --ui-logo-size-desktop: ${sizeDesktop};`}
 >
   <div data-js-ui-logo-container class="ui-logo__container">
@@ -118,12 +113,7 @@ const {
     }
 
     position: relative;
-    width: var(--end-width);
     pointer-events: none;
-
-    &.ui-logo--centered {
-      width: auto;
-    }
   }
 
   .ui-logo__container {
@@ -131,8 +121,10 @@ const {
     width: var(--start-width);
 
     @media screen(lg) {
-      animation: ui-logo-grow-leave 0.5s
-        theme('transitionTimingFunction.outExpo') both;
+      .ui-logo.has-hover & {
+        animation: ui-logo-grow-leave 0.5s
+          theme('transitionTimingFunction.outExpo') both;
+      }
 
       .ui-logo:hover &,
       .ui-logo.has-animation & {
@@ -211,12 +203,14 @@ const {
     opacity: 0;
 
     @media screen(lg) {
-      animation: header-wave-leave 0.2s theme('transitionTimingFunction.smooth')
-        both;
+      .ui-logo.has-hover & {
+        animation: ui-logo-wave-leave 0.2s
+          theme('transitionTimingFunction.smooth') both;
+      }
 
       .ui-logo:hover &,
       .ui-logo.has-animation & {
-        animation: header-wave-enter 0.5s
+        animation: ui-logo-wave-enter 0.5s
           theme('transitionTimingFunction.smooth') both;
 
         .ui-logo__letter--e {
@@ -285,9 +279,11 @@ const {
     opacity: 0;
 
     @media screen(lg) {
-      translate: 0 20% 0;
-      animation: ui-logo-bump-leave 0.2s
-        theme('transitionTimingFunction.outBack') both;
+      .ui-logo.has-hover & {
+        translate: 0 20% 0;
+        animation: ui-logo-bump-leave 0.2s
+          theme('transitionTimingFunction.outBack') both;
+      }
 
       .ui-logo:hover &,
       .ui-logo.has-animation & {
@@ -382,7 +378,9 @@ const {
     transform-origin: 100% 65%;
 
     @media screen(lg) {
-      animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
+      .ui-logo.has-hover & {
+        animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
+      }
 
       .ui-logo:hover &,
       .ui-logo.has-animation & {
