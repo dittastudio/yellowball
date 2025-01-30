@@ -51,6 +51,9 @@ function FnHero() {
       const heroLogo = hero.querySelector('[data-js-hero-logo]') as HTMLElement;
       const heroLogoSVG = heroLogo.querySelector('[data-js="ui-logo"]') as HTMLElement;
       const heroContent = hero.querySelector('[data-js-hero-content]') as HTMLElement;
+      const cursors = hero.querySelector('[data-js="cursors"]') as HTMLElement;
+      const layoutLines = document.querySelector('[data-js="layout-lines"]') as HTMLElement;
+
       const tl = gsap.timeline();
 
       gsap.set(header, {
@@ -69,6 +72,14 @@ function FnHero() {
 
       gsap.set(heroContent, {
         opacity: 0,
+      });
+
+      gsap.set(cursors, {
+        scale: 2,
+      });
+
+      gsap.set(layoutLines, {
+        '--layout-line-top-opacity': 0,
       });
 
       const duration = 1.5;
@@ -101,6 +112,18 @@ function FnHero() {
       ).to(heroContent, {
         opacity: 1,
         y: 0,
+        duration,
+        ease: easing,
+      },
+        '<',
+      ).to(layoutLines, {
+        '--layout-line-top-opacity': 1,
+        duration,
+        ease: easing,
+      },
+        '<',
+      ).to(cursors, {
+        scale: 1,
         duration,
         ease: easing,
         onComplete: () => {

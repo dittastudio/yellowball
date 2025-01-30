@@ -7,7 +7,10 @@ interface Props {
 const { theme = 'dark', class: className } = Astro.props as Props;
 ---
 
-<div class:list={['layout-lines', `is-${theme}`, className]}>
+<div
+  data-js="layout-lines"
+  class:list={['layout-lines', `is-${theme}`, className]}
+>
   <div class="layout-lines__shape"></div>
 
   <slot />
@@ -93,6 +96,7 @@ const { theme = 'dark', class: className } = Astro.props as Props;
         left: 0;
         right: 0;
         height: 50vh;
+        opacity: var(--layout-line-top-opacity);
         background-image: linear-gradient(
           to bottom,
           theme('colors.navy') 0,

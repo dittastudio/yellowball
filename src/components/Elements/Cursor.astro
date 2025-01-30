@@ -10,6 +10,7 @@ const { title, class: className, ...rest } = Astro.props as Props;
 ---
 
 <p
+  data-js="cursor"
   class:list={[
     'text-12 font-bold text-navy rounded-8 px-10 py-4 inline-flex justify-center items-center gap-5 select-none',
     className,

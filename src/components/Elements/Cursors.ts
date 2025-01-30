@@ -120,10 +120,14 @@ function FnCursors() {
           .to(cursors, {
             x: (_index, target) => {
               const targetRect = target.getBoundingClientRect();
-              const sectionRect = section.getBoundingClientRect();
-              const offset = sectionRect.x - (targetRect.x - sectionRect.x);
+              // TODO: Check old code vs new code
+              // const sectionRect = section.getBoundingClientRect();
+              // const offset = sectionRect.x - (targetRect.x - sectionRect.x);
+              // return sectionRect.width / 2 - (targetRect.width - offset);
 
-              return sectionRect.width / 2 - (targetRect.width - offset);
+              const centerX = window.innerWidth / 2;
+              const newX = centerX - (targetRect.x + targetRect.width / 2);
+              return newX;
             },
             y: (_index, target) => {
               const targetRect = target.getBoundingClientRect();
@@ -132,7 +136,9 @@ function FnCursors() {
 
               return (
                 sectionRect.top +
-                (sectionRect.height + sectionRect.height / 4) -
+                // TODO: Check old code vs new code
+                // (sectionRect.height + sectionRect.height / 4) -
+                (sectionRect.height + sectionRect.height / 2) -
                 (targetRect.height - offset)
               );
             },
