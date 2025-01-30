@@ -57,8 +57,11 @@ function FnHero() {
       const tl = gsap.timeline();
 
       gsap.set(header, {
+        y: '-100%',
+      });
+
+      gsap.set(heroLogoSVG, {
         opacity: 0,
-        y: -100,
       });
 
       gsap.set(hero, {
@@ -83,14 +86,18 @@ function FnHero() {
       });
 
       const duration = 1.5;
-      const easing = 'elastic.out(1, 1.5)';
-      const delay = 2.5;
+      const easing = 'elastic.inOut(1, 1.5)';
+      const delay = 1;
 
-      setTimeout(() => {
-        heroLogoSVG.classList.add('has-animation');
-      }, 1000);
-
-      tl.to(header, {
+      tl.to(heroLogoSVG, {
+        opacity: 1,
+        duration,
+        ease: easing,
+        delay: 0.5,
+        onComplete: () => {
+          heroLogoSVG.classList.add('has-animation');
+        },
+      }).to(header, {
         opacity: 1,
         y: 0,
         duration,
