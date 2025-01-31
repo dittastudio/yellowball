@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Elements/Icon.astro';
 import UILogo from '@/components/UI/Logo.astro';
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 
@@ -42,14 +43,24 @@ const {
 
   {
     hasLogoAnimation && (
-      <div class="h-50">
-        <div
-          data-js-hero-logo
-          class="absolute top-50 left-0 right-0 flex items-center justify-center z-1 pointer-events-none"
-        >
-          <UILogo sizeMobile="50px" sizeDesktop="50px" />
+      <>
+        <div data-js-hero-logo-animated-container class="h-50">
+          <div
+            data-js-hero-logo-animated
+            class="absolute top-50 left-0 right-0 flex items-center justify-center z-1"
+          >
+            <UILogo noHover sizeMobile="50px" sizeDesktop="50px" />
+          </div>
         </div>
-      </div>
+
+        <Icon
+          data-js-hero-logo-static
+          class="hidden"
+          name="yellowball"
+          width="128"
+          height="39"
+        />
+      </>
     )
   }
 

@@ -1,7 +1,4 @@
 import gsap from 'gsap';
-// import Lenis from 'lenis';
-// import Alpine from 'alpinejs';
-// import type Alpine from 'alpinejs';
 
 function FnHero() {
   const heros = document.querySelectorAll(
@@ -47,7 +44,7 @@ function FnHero() {
       });
     }
 
-    const heroLogoContainer = hero.querySelector('[data-js-hero-logo]') as HTMLElement;
+    const heroLogoContainer = hero.querySelector('[data-js-hero-logo-animated]') as HTMLElement;
 
     if (hero && heroLogoContainer && window.scrollY < 5) {
       const heroLogo = heroLogoContainer.querySelector('[data-js="ui-logo"]') as HTMLElement;
@@ -68,25 +65,11 @@ function FnHero() {
         scale: 1.85,
       });
 
-      gsap.set(header, {
-        y: '-100%',
-      });
-
-      gsap.set(layoutLines, {
-        '--layout-line-top-opacity': 0,
-      });
-
-      gsap.set(hero, {
-        height: 'calc(100vh - var(--header-height))',
-      });
-
-      gsap.set(heroContent, {
-        opacity: 0,
-      });
-
-      gsap.set(cursors, {
-        scale: 2,
-      });
+      gsap.set(header, { y: '-100%' });
+      gsap.set(layoutLines, { '--layout-line-top-opacity': 0 });
+      gsap.set(hero, { height: 'calc(100vh - var(--header-height))' });
+      gsap.set(heroContent, { opacity: 0 });
+      gsap.set(cursors, { scale: 2 });
 
       const duration = 1.5;
       const ease = 'elastic.inOut(1, 1.5)';
@@ -142,15 +125,15 @@ function FnHero() {
             window.lenis.start();
           },
         }, '<')
-    }
+    } else {
+      const heroLogoAnimatedContainer = document.querySelector('[data-js-hero-logo-animated-container]') as HTMLElement;
+      const heroLogoStatic = document.querySelector('[data-js-hero-logo-static]') as HTMLElement;
 
-    // Alpine.data('hero', () => ({
-    //   init() {
-    //     this.$watch('$store.navigation.isMenuOpen', value => {
-    //       console.log(value);
-    //     });
-    //   },
-    // }));
+      if (heroLogoStatic) {
+        heroLogoAnimatedContainer.classList.add('hidden');
+        heroLogoStatic.classList.remove('hidden');
+      }
+    }
   });
 }
 

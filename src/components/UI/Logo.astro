@@ -2,15 +2,26 @@
 interface Props {
   sizeMobile?: string;
   sizeDesktop?: string;
+  noHover?: boolean;
+  noHoverMobileOnly?: boolean;
 }
 
-const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
+const {
+  sizeMobile = '42px',
+  sizeDesktop = '50px',
+  noHover = false,
+  noHoverMobileOnly = false,
+} = Astro.props as Props;
 ---
 
 <div
   data-js="ui-logo"
-  class="ui-logo"
-  style={`--ui-logo-size-mobile: ${sizeMobile}; --ui-logo-size-desktop: ${sizeDesktop};`}
+  class:list={[
+    'ui-logo is-full-logo',
+    noHover ? 'pointer-events-none' : '',
+    noHoverMobileOnly ? 'lgMax:pointer-events-none' : '',
+  ]}
+  style={`--logo-size-mobile: ${sizeMobile}; --logo-size-desktop: ${sizeDesktop};`}
 >
   <svg
     class="ui-logo__svg"
@@ -101,19 +112,23 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
 
 <style is:global>
   .ui-logo {
-    --initial-scale: 1.368;
-    --icon-size: var(--ui-logo-size-mobile);
-    --start-width: var(--icon-size);
-    --end-width: calc(var(--icon-size) * 3.3);
+    --logo-icon-size: var(--logo-size-mobile);
+    --logo-initial-scale: 1.368;
+    --logo-start-width: var(--logo-icon-size);
+    --logo-full-width: calc(var(--logo-icon-size) * 3.3);
 
     @media screen(md) {
-      --icon-size: var(--ui-logo-size-desktop);
+      --logo-icon-size: var(--logo-size-desktop);
     }
 
     position: relative;
-    width: var(--start-width);
+    width: var(--logo-start-width);
 
-    /* @media screen(lg) { */
+    /* Disable pointer events on hover */
+    @media not (hover: hover) {
+      pointer-events: none;
+    }
+
     &.has-hover {
       animation: ui-logo-grow-leave 0.5s
         theme('transitionTimingFunction.outExpo') both;
@@ -131,7 +146,7 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
       position: absolute;
       top: 0;
       left: 0;
-      width: var(--end-width);
+      width: var(--logo-full-width);
       height: 100%;
       z-index: 1;
       pointer-events: none;
@@ -144,42 +159,35 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     }
   }
 
-  @media not (hover: hover) {
-    animation: none;
-  }
-  /* } */
-
   @keyframes ui-logo-grow-enter {
     from {
-      width: var(--start-width);
+      width: var(--logo-start-width);
     }
 
     to {
-      width: var(--end-width);
+      width: var(--logo-full-width);
     }
   }
 
   @keyframes ui-logo-grow-leave {
     from {
-      width: var(--end-width);
+      width: var(--logo-full-width);
     }
 
     to {
-      width: var(--start-width);
+      width: var(--logo-start-width);
     }
   }
 
   .ui-logo__svg {
-    width: var(--end-width);
-    height: var(--icon-size);
+    width: var(--logo-full-width);
+    height: var(--logo-icon-size);
   }
 
   .ui-logo__letter--y {
-    scale: var(--initial-scale);
+    scale: var(--logo-initial-scale);
     translate: 0 -20% 0;
     transform-origin: 19% 14%;
-
-    /* @media screen(lg) { */
     transition: all 0.5s theme('transitionTimingFunction.outBack');
 
     .ui-logo:hover &,
@@ -188,14 +196,12 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
       translate: 0 0 0;
     }
   }
-  /* } */
 
   .ui-logo__letter:not(.ui-logo__letter--y, .ui-logo__letter--o) {
     --delay: 0.025s;
 
     opacity: 0;
 
-    /* @media screen(lg) { */
     .ui-logo.has-hover & {
       animation: ui-logo-wave-leave 0.2s
         theme('transitionTimingFunction.smooth') both;
@@ -239,7 +245,6 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
       }
     }
   }
-  /* } */
 
   @keyframes ui-logo-wave-enter {
     0% {
@@ -271,7 +276,6 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   .ui-logo__letter--o {
     opacity: 0;
 
-    /* @media screen(lg) { */
     .ui-logo.has-hover & {
       translate: 0 20% 0;
       animation: ui-logo-bump-leave 0.2s
@@ -284,7 +288,6 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
         theme('transitionTimingFunction.outBack') 0.7s both;
     }
   }
-  /* } */
 
   @keyframes ui-logo-bump-enter {
     0% {
@@ -311,14 +314,12 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   }
 
   .ui-logo__word-start {
-    /* @media screen(lg) { */
     .ui-logo:hover &,
     .ui-logo.has-animation & {
       animation: ui-logo-nudge-right-enter 0.15s
         theme('transitionTimingFunction.smooth') 0.7s both;
     }
   }
-  /* } */
 
   @keyframes ui-logo-nudge-right-enter {
     0% {
@@ -331,14 +332,12 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   }
 
   .ui-logo__word-end {
-    /* @media screen(lg) { */
     .ui-logo:hover &,
     .ui-logo.has-animation & {
       animation: ui-logo-nudge-left-enter 0.15s
         theme('transitionTimingFunction.smooth') 0.7s both;
     }
   }
-  /* } */
 
   @keyframes ui-logo-nudge-left-enter {
     0% {
@@ -366,11 +365,10 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     --ball-ease-back: cubic-bezier(0.24, 1.2, 0.24, 1);
     --ball-ease-enter: cubic-bezier(0.68, -0.1, 0.32, 1.2);
 
-    scale: var(--initial-scale);
+    scale: var(--logo-initial-scale);
     translate: var(--ball-start-position);
     transform-origin: 100% 65%;
 
-    /* @media screen(lg) { */
     .ui-logo.has-hover & {
       animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
     }
@@ -380,11 +378,10 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
       animation: ui-logo-roll-enter 0.7s var(--ball-ease-enter) both;
     }
   }
-  /* } */
 
   @keyframes ui-logo-roll-enter {
     0% {
-      scale: var(--initial-scale);
+      scale: var(--logo-initial-scale);
       translate: var(--ball-start-position);
     }
 
@@ -401,7 +398,7 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     }
 
     100% {
-      scale: var(--initial-scale);
+      scale: var(--logo-initial-scale);
       translate: var(--ball-start-position);
     }
   }
