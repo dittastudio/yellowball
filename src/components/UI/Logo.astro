@@ -314,38 +314,23 @@ const {
   }
 
   .ui-logo__word-start {
+    translate: 3% 0 0;
+    transition: translate 0.15s theme('transitionTimingFunction.smooth');
+
     .ui-logo:hover &,
     .ui-logo.has-animation & {
-      animation: ui-logo-nudge-right-enter 0.15s
-        theme('transitionTimingFunction.smooth') 0.7s both;
-    }
-  }
-
-  @keyframes ui-logo-nudge-right-enter {
-    0% {
-      translate: 3% 0 0;
-    }
-
-    100% {
-      translate: 0% 0 0;
+      translate: 0 0 0;
+      transition: translate 0.15s theme('transitionTimingFunction.smooth') 0.7s;
     }
   }
 
   .ui-logo__word-end {
+    translate: -3% 0 0;
+    transition: translate 0.15s theme('transitionTimingFunction.smooth');
     .ui-logo:hover &,
     .ui-logo.has-animation & {
-      animation: ui-logo-nudge-left-enter 0.15s
-        theme('transitionTimingFunction.smooth') 0.7s both;
-    }
-  }
-
-  @keyframes ui-logo-nudge-left-enter {
-    0% {
-      translate: -3% 0 0;
-    }
-
-    100% {
-      translate: 0% 0 0;
+      translate: 0 0 0;
+      transition: translate 0.15s theme('transitionTimingFunction.smooth') 0.7s;
     }
   }
 
