@@ -41,17 +41,17 @@ function FnFruitMachine() {
             y: `${100 / 34 * -32}%`,
             duration: 2.5,
             ease: "power2.in",
-            stagger: 0.3,
+            stagger: 0.2,
           })
           .to(stripsLis, {
-            y: -50,
+            y: '20%',
             duration: 0,
-          }, '<68%')
+          }, '<75%')
           .to(stripsLis, {
             y: 0,
-            duration: 0.5,
+            duration: 0.75,
             ease: "elastic.out(1.2,0.3)",
-            stagger: 0.3,
+            stagger: 0.2,
           }, '<')
 
         await sleep(3800);
