@@ -44,10 +44,11 @@ function FnHero() {
       });
     }
 
-    const heroLogoContainer = hero.querySelector('[data-js-hero-logo-animated]') as HTMLElement;
+    const heroLogoContainer = document.querySelector('[data-js-hero-logo-animated-container]') as HTMLElement;
 
     if (hero && heroLogoContainer && window.scrollY < 5) {
-      const heroLogo = heroLogoContainer.querySelector('[data-js="ui-logo"]') as HTMLElement;
+      const heroLogoBox = hero.querySelector('[data-js-hero-logo-animated-box]') as HTMLElement;
+      const heroLogo = hero.querySelector('[data-js-hero-logo-animated-svg]') as HTMLElement;
 
       const header = document.querySelector('[data-js="header"]') as HTMLElement;
       const layoutLines = document.querySelector('[data-js="layout-lines"]') as HTMLElement;
@@ -60,8 +61,8 @@ function FnHero() {
         opacity: 0,
       });
 
-      gsap.set(heroLogoContainer, {
-        y: window.innerHeight / 2 - ((heroLogoContainer.offsetHeight * 1.5) + header.offsetHeight),
+      gsap.set(heroLogoBox, {
+        y: window.innerHeight / 2 - ((heroLogoBox.offsetHeight * 1.5) + header.offsetHeight),
         scale: 1.85,
       });
 
@@ -88,7 +89,7 @@ function FnHero() {
             heroLogo.classList.add('has-animation');
           },
         })
-        .to(heroLogoContainer, {
+        .to(heroLogoBox, {
           y: 0,
           scale: 1,
           duration,
@@ -126,11 +127,10 @@ function FnHero() {
           },
         }, '<')
     } else {
-      const heroLogoAnimatedContainer = document.querySelector('[data-js-hero-logo-animated-container]') as HTMLElement;
       const heroLogoStatic = document.querySelector('[data-js-hero-logo-static]') as HTMLElement;
 
       if (heroLogoStatic) {
-        heroLogoAnimatedContainer.classList.add('hidden');
+        heroLogoContainer.classList.add('hidden');
         heroLogoStatic.classList.remove('hidden');
       }
     }

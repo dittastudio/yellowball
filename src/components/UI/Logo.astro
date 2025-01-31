@@ -11,6 +11,7 @@ const {
   sizeDesktop = '50px',
   noHover = false,
   noHoverMobileOnly = false,
+  ...rest
 } = Astro.props as Props;
 ---
 
@@ -22,6 +23,7 @@ const {
     noHoverMobileOnly ? 'lgMax:pointer-events-none' : '',
   ]}
   style={`--logo-size-mobile: ${sizeMobile}; --logo-size-desktop: ${sizeDesktop};`}
+  {...rest}
 >
   <svg
     class="ui-logo__svg"
