@@ -3,7 +3,12 @@ import Icon from '@/components/Elements/Icon.astro';
 ---
 
 <!-- Begin Block: FruitMachine -->
-<div data-js="fruit-machine" class="fruit-machine text-center">
+<div data-js="fruit-machine" class="fruit-machine relative text-center">
+  <canvas
+    class="absolute top-0 left-0 z-50 size-full bg-transparent pointer-events-none"
+  >
+  </canvas>
+
   <div class="wrapper">
     <p class="text-18 sm:text-24 font-heading font-bold">
       Welcome to
@@ -93,7 +98,9 @@ import Icon from '@/components/Elements/Icon.astro';
     }
 
     &__strip {
-      transition: transform var(--stripSpeed) cubic-bezier(0.35, 0.06, 0, 1.1);
+      /* transition: transform var(--stripSpeed) cubic-bezier(0.35, 0.06, 0, 1.1); */
+      transition: transform var(--stripSpeed)
+        cubic-bezier(0.519, 0.354, 0, 1.128);
     }
 
     &__strip-1 {

@@ -51,7 +51,7 @@ function FnStickyMap() {
 
       gsap.timeline({
         scrollTrigger: {
-          markers: true,
+          markers: false,
           trigger: mapImage,
           endTrigger: map,
           start: 'center bottom',

@@ -7,43 +7,61 @@ function FnFruitMachine() {
     '[data-js="fruit-machine"]',
   ) as NodeListOf<HTMLElement>;
 
+  const setCanvasDimensions = (machine: HTMLElement, canvas: HTMLCanvasElement) => {
+    const top = machine.offsetTop;
+    const height = machine.offsetHeight
+    const minHeight = window.innerHeight;
+
+    canvas.style.top = `-${top}px`;
+    canvas.style.height = `${height + (top * 2)}px`;
+    canvas.style.minHeight = `${minHeight}px`;
+  }
+
   machines.forEach(machine => {
-    const confetti = new JSConfetti()
+    const canvas = machine.querySelector('canvas') as HTMLCanvasElement;
 
-    const doSpin = async () => {
-      machine.classList.add('spin');
+    if (canvas) {
+      setCanvasDimensions(machine, canvas);
 
-      await sleep(3500);
+      window.addEventListener('resize', () => setCanvasDimensions(machine, canvas));
 
-      machine.classList.add('spin-complete');
+      const confetti = new JSConfetti({ canvas })
 
-      await confetti.addConfetti({
-        confettiColors: [
-          "#FFFFFF",
-          "#EAFF01",
-          "#ADF454",
-          "#51DBEA",
-          "#A58EF7",
-          "#1C1D2C",
-          "#3E3E4E",
-          "#F7F7F0"
-        ]
-      })
+      const doSpin = async () => {
+        machine.classList.add('spin');
 
-      confetti.clearCanvas()
+        await sleep(3500);
+
+        machine.classList.add('spin-complete');
+
+        await confetti.addConfetti({
+          confettiColors: [
+            "#FFFFFF",
+            "#EAFF01",
+            "#ADF454",
+            "#51DBEA",
+            "#A58EF7",
+            "#1C1D2C",
+            "#3E3E4E",
+            "#F7F7F0"
+          ]
+        })
+
+        confetti.clearCanvas()
+      }
+
+      ScrollTrigger.create({
+        markers: false,
+        trigger: machine,
+        start: `top center`,
+        once: true,
+        onEnter: async () => {
+          await sleep(500);
+
+          doSpin();
+        },
+      });
     }
-
-    ScrollTrigger.create({
-      markers: false,
-      trigger: machine,
-      start: `top center`,
-      once: true,
-      onEnter: async () => {
-        await sleep(500);
-
-        doSpin();
-      },
-    });
   });
 }
 
