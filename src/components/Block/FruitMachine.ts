@@ -1,5 +1,6 @@
 import JSConfetti from 'js-confetti'
 import { sleep } from '@/utils/helpers';
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 function FnFruitMachine() {
@@ -28,9 +29,28 @@ function FnFruitMachine() {
       const confetti = new JSConfetti({ canvas })
 
       const doSpin = async () => {
-        machine.classList.add('spin');
+        // machine.classList.add('spin');
 
-        await sleep(3500);
+        const stripsLis = document.querySelectorAll('[data-js-fruit-machine-strip]');
+        const strips = document.querySelectorAll('.fruit-machine__strip');
+
+        const tl = gsap.timeline()
+
+        tl.to(strips, {
+          y: `${100 / 34 * -7}%`,
+          duration: 2.5,
+          ease: "power2.in",
+          stagger: 0.3,
+        }).fromTo(stripsLis, {
+          y: `-10%`,
+        }, {
+          y: `0%`,
+          duration: 0.5,
+          ease: "elastic.out(1.2,0.3)",
+          stagger: 0.3,
+        }, '<68%')
+
+        await sleep(4000);
 
         machine.classList.add('spin-complete');
 

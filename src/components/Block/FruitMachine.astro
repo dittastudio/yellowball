@@ -26,31 +26,31 @@ import Icon from '@/components/Elements/Icon.astro';
       <ul
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between gap-[2.5%] w-full aspect-[6/1.07]"
       >
-        <li>
+        <li data-js-fruit-machine-strip>
           <img
             src="/images/fruit-strip.svg"
             class="fruit-machine__strip fruit-machine__strip-1 block w-full h-auto"
           />
         </li>
-        <li>
+        <li data-js-fruit-machine-strip>
           <img
             src="/images/fruit-strip.svg"
             class="fruit-machine__strip fruit-machine__strip-2 block w-full h-auto"
           />
         </li>
-        <li>
+        <li data-js-fruit-machine-strip>
           <img
             src="/images/fruit-strip.svg"
             class="fruit-machine__strip fruit-machine__strip-3 block w-full h-auto"
           />
         </li>
-        <li>
+        <li data-js-fruit-machine-strip>
           <img
             src="/images/fruit-strip.svg"
             class="fruit-machine__strip fruit-machine__strip-4 block w-full h-auto"
           />
         </li>
-        <li>
+        <li data-js-fruit-machine-strip>
           <img
             src="/images/fruit-strip.svg"
             class="fruit-machine__strip fruit-machine__strip-5 block w-full h-auto"
@@ -74,13 +74,13 @@ import Icon from '@/components/Elements/Icon.astro';
 <style is:global>
   .fruit-machine {
     --stripHeight: 100% / 34;
-    --stripSpeed: 3.5s;
+    --stripSpeed: 2s;
 
-    &.spin {
+    /* &.spin {
       .fruit-machine__strip {
         transform: translate3d(0, calc(var(--stripHeight) * -32), 0);
       }
-    }
+    } */
 
     &.spin-complete {
       .fruit-machine__statement {
@@ -89,38 +89,97 @@ import Icon from '@/components/Elements/Icon.astro';
     }
 
     &__container {
-      mask-image: linear-gradient(
+      /* mask-image: linear-gradient(
         to bottom,
         transparent 5%,
         black 50%,
         transparent 95%
-      );
+      ); */
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 28%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &::before {
+        top: 0;
+        background-image: linear-gradient(
+            to bottom,
+            theme('colors.navy') 0%,
+            transparent 100%
+          ),
+          linear-gradient(to bottom, theme('colors.navy') 0%, transparent 100%),
+          linear-gradient(to bottom, theme('colors.navy') 0%, transparent 100%);
+      }
+
+      &::after {
+        bottom: 0;
+        background-image: linear-gradient(
+            to top,
+            theme('colors.navy') 0%,
+            transparent 100%
+          ),
+          linear-gradient(to top, theme('colors.navy') 0%, transparent 100%),
+          linear-gradient(to top, theme('colors.navy') 0%, transparent 100%);
+      }
     }
+
+    /* @keyframes spin {
+      0% {
+        transform: translate3d(0, calc(var(--stripHeight) * -32), 0);
+      }
+      90% {
+        transform: translate3d(0, calc(var(--strip-translate) + 2%), 0);
+      }
+      100% {
+        transform: translate3d(0, var(--strip-translate), 0);
+      }
+    } */
 
     &__strip {
+      --strip-depth: -32;
+
+      transform: translate3d(
+        0,
+        calc(var(--stripHeight) * var(--strip-depth)),
+        0
+      );
+      /* --strip-ease: linear; */
       /* transition: transform var(--stripSpeed) cubic-bezier(0.35, 0.06, 0, 1.1); */
-      transition: transform var(--stripSpeed)
-        cubic-bezier(0.519, 0.354, 0, 1.128);
+      /* transition: transform var(--stripSpeed)
+        cubic-bezier(0.519, 0.354, 0, 1.128); */
     }
 
-    &__strip-1 {
-      transform: translate3d(0, calc(var(--stripHeight) * -20), 0);
+    /* &__strip-1 {
+      --strip-translate: calc(var(--stripHeight) * -2);
+      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
     }
 
     &__strip-2 {
-      transform: translate3d(0, calc(var(--stripHeight) * -6), 0);
+      --strip-translate: calc(var(--stripHeight) * -12);
+      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
     }
 
     &__strip-3 {
-      transform: translate3d(0, calc(var(--stripHeight) * -2), 0);
+      --strip-translate: calc(var(--stripHeight) * -7);
+      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
     }
 
     &__strip-4 {
-      transform: translate3d(0, calc(var(--stripHeight) * -8), 0);
+      --strip-translate: calc(var(--stripHeight) * -22);
+      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
     }
 
     &__strip-5 {
-      transform: translate3d(0, calc(var(--stripHeight) * -19), 0);
-    }
+      --strip-translate: calc(var(--stripHeight) * -17);
+      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
+    } */
   }
 </style>
