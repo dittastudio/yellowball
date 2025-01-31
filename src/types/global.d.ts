@@ -1,4 +1,5 @@
 interface Window {
+  lenis?: Lenis;
   scrollTimeout?: number;
   Alpine: import('alpinejs').Alpine;
 }

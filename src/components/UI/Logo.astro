@@ -113,41 +113,41 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     position: relative;
     width: var(--start-width);
 
-    @media screen(lg) {
-      &.has-hover {
-        animation: ui-logo-grow-leave 0.5s
-          theme('transitionTimingFunction.outExpo') both;
-      }
-
-      &:hover,
-      &.has-animation {
-        animation: ui-logo-grow-enter 0.5s
-          theme('transitionTimingFunction.smooth') both;
-      }
-
-      /* Prevent the hover animation flicker, relative to link */
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: var(--end-width);
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
-        background: red;
-        opacity: 0;
-      }
-
-      &:hover::after {
-        pointer-events: auto;
-      }
+    /* @media screen(lg) { */
+    &.has-hover {
+      animation: ui-logo-grow-leave 0.5s
+        theme('transitionTimingFunction.outExpo') both;
     }
 
-    @media not (hover: hover) {
-      animation: none;
+    &:hover,
+    &.has-animation {
+      animation: ui-logo-grow-enter 0.5s
+        theme('transitionTimingFunction.smooth') both;
+    }
+
+    /* Prevent the hover animation flicker, relative to link */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--end-width);
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background: red;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      pointer-events: auto;
     }
   }
+
+  @media not (hover: hover) {
+    animation: none;
+  }
+  /* } */
 
   @keyframes ui-logo-grow-enter {
     from {
@@ -179,67 +179,67 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     translate: 0 -20% 0;
     transform-origin: 19% 14%;
 
-    @media screen(lg) {
-      transition: all 0.5s theme('transitionTimingFunction.outBack');
+    /* @media screen(lg) { */
+    transition: all 0.5s theme('transitionTimingFunction.outBack');
 
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        scale: 1;
-        translate: 0 0 0;
-      }
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      scale: 1;
+      translate: 0 0 0;
     }
   }
+  /* } */
 
   .ui-logo__letter:not(.ui-logo__letter--y, .ui-logo__letter--o) {
     --delay: 0.025s;
 
     opacity: 0;
 
-    @media screen(lg) {
-      .ui-logo.has-hover & {
-        animation: ui-logo-wave-leave 0.2s
-          theme('transitionTimingFunction.smooth') both;
+    /* @media screen(lg) { */
+    .ui-logo.has-hover & {
+      animation: ui-logo-wave-leave 0.2s
+        theme('transitionTimingFunction.smooth') both;
+    }
+
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      animation: ui-logo-wave-enter 0.5s
+        theme('transitionTimingFunction.smooth') both;
+
+      .ui-logo__letter--e {
+        animation-delay: calc(1 * var(--delay));
       }
 
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        animation: ui-logo-wave-enter 0.5s
-          theme('transitionTimingFunction.smooth') both;
+      &.ui-logo__letter--l1 {
+        animation-delay: calc(2 * var(--delay));
+      }
 
-        .ui-logo__letter--e {
-          animation-delay: calc(1 * var(--delay));
-        }
+      &.ui-logo__letter--l2 {
+        animation-delay: calc(3 * var(--delay));
+      }
 
-        &.ui-logo__letter--l1 {
-          animation-delay: calc(2 * var(--delay));
-        }
+      &.ui-logo__letter--w {
+        animation-delay: calc(4 * var(--delay));
+      }
 
-        &.ui-logo__letter--l2 {
-          animation-delay: calc(3 * var(--delay));
-        }
+      &.ui-logo__letter--b {
+        animation-delay: calc(5 * var(--delay));
+      }
 
-        &.ui-logo__letter--w {
-          animation-delay: calc(4 * var(--delay));
-        }
+      &.ui-logo__letter--a {
+        animation-delay: calc(6 * var(--delay));
+      }
 
-        &.ui-logo__letter--b {
-          animation-delay: calc(5 * var(--delay));
-        }
+      &.ui-logo__letter--l3 {
+        animation-delay: calc(7 * var(--delay));
+      }
 
-        &.ui-logo__letter--a {
-          animation-delay: calc(6 * var(--delay));
-        }
-
-        &.ui-logo__letter--l3 {
-          animation-delay: calc(7 * var(--delay));
-        }
-
-        &.ui-logo__letter--l4 {
-          animation-delay: calc(8 * var(--delay));
-        }
+      &.ui-logo__letter--l4 {
+        animation-delay: calc(8 * var(--delay));
       }
     }
   }
+  /* } */
 
   @keyframes ui-logo-wave-enter {
     0% {
@@ -271,20 +271,20 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   .ui-logo__letter--o {
     opacity: 0;
 
-    @media screen(lg) {
-      .ui-logo.has-hover & {
-        translate: 0 20% 0;
-        animation: ui-logo-bump-leave 0.2s
-          theme('transitionTimingFunction.outBack') both;
-      }
+    /* @media screen(lg) { */
+    .ui-logo.has-hover & {
+      translate: 0 20% 0;
+      animation: ui-logo-bump-leave 0.2s
+        theme('transitionTimingFunction.outBack') both;
+    }
 
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        animation: ui-logo-bump-enter 0.2s
-          theme('transitionTimingFunction.outBack') 0.7s both;
-      }
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      animation: ui-logo-bump-enter 0.2s
+        theme('transitionTimingFunction.outBack') 0.7s both;
     }
   }
+  /* } */
 
   @keyframes ui-logo-bump-enter {
     0% {
@@ -311,14 +311,14 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   }
 
   .ui-logo__word-start {
-    @media screen(lg) {
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        animation: ui-logo-nudge-right-enter 0.15s
-          theme('transitionTimingFunction.smooth') 0.7s both;
-      }
+    /* @media screen(lg) { */
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      animation: ui-logo-nudge-right-enter 0.15s
+        theme('transitionTimingFunction.smooth') 0.7s both;
     }
   }
+  /* } */
 
   @keyframes ui-logo-nudge-right-enter {
     0% {
@@ -331,14 +331,14 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
   }
 
   .ui-logo__word-end {
-    @media screen(lg) {
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        animation: ui-logo-nudge-left-enter 0.15s
-          theme('transitionTimingFunction.smooth') 0.7s both;
-      }
+    /* @media screen(lg) { */
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      animation: ui-logo-nudge-left-enter 0.15s
+        theme('transitionTimingFunction.smooth') 0.7s both;
     }
   }
+  /* } */
 
   @keyframes ui-logo-nudge-left-enter {
     0% {
@@ -370,17 +370,17 @@ const { sizeMobile = '42px', sizeDesktop = '50px' } = Astro.props as Props;
     translate: var(--ball-start-position);
     transform-origin: 100% 65%;
 
-    @media screen(lg) {
-      .ui-logo.has-hover & {
-        animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
-      }
+    /* @media screen(lg) { */
+    .ui-logo.has-hover & {
+      animation: ui-logo-roll-leave 0.5s var(--ball-ease-back) both;
+    }
 
-      .ui-logo:hover &,
-      .ui-logo.has-animation & {
-        animation: ui-logo-roll-enter 0.7s var(--ball-ease-enter) both;
-      }
+    .ui-logo:hover &,
+    .ui-logo.has-animation & {
+      animation: ui-logo-roll-enter 0.7s var(--ball-ease-enter) both;
     }
   }
+  /* } */
 
   @keyframes ui-logo-roll-enter {
     0% {

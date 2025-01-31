@@ -45,7 +45,7 @@ import FnValues from '@/components/Block/Values.ts'
 
 gsap.registerPlugin(ScrollTrigger)
 
-new Lenis({
+window.lenis = new Lenis({
   autoRaf: true,
 });
 

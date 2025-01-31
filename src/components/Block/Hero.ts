@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+// import Lenis from 'lenis';
 // import Alpine from 'alpinejs';
 // import type Alpine from 'alpinejs';
 
@@ -48,7 +49,7 @@ function FnHero() {
 
     const heroLogoContainer = hero.querySelector('[data-js-hero-logo]') as HTMLElement;
 
-    if (hero && heroLogoContainer) {
+    if (hero && heroLogoContainer && window.scrollY < 5) {
       const heroLogo = heroLogoContainer.querySelector('[data-js="ui-logo"]') as HTMLElement;
 
       const header = document.querySelector('[data-js="header"]') as HTMLElement;
@@ -97,6 +98,9 @@ function FnHero() {
           duration: 1,
           ease: "power3.out",
           delay: 0.5,
+          onStart: () => {
+            window.lenis.stop();
+          },
           onComplete: () => {
             heroLogo.classList.add('has-animation');
           },
@@ -135,6 +139,7 @@ function FnHero() {
           ease,
           onComplete: () => {
             gsap.set(header, { clearProps: "all" });
+            window.lenis.start();
           },
         }, '<')
     }
