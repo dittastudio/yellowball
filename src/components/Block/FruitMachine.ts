@@ -36,19 +36,23 @@ function FnFruitMachine() {
 
         const tl = gsap.timeline()
 
-        tl.to(strips, {
-          y: `${100 / 34 * -32}%`,
-          duration: 2.5,
-          ease: "power2.in",
-          stagger: 0.3,
-        }).fromTo(stripsLis, {
-          y: `10%`,
-        }, {
-          y: `0%`,
-          duration: 0.5,
-          ease: "elastic.out(1.2,0.3)",
-          stagger: 0.3,
-        }, '<68%')
+        tl
+          .to(strips, {
+            y: `${100 / 34 * -32}%`,
+            duration: 2.5,
+            ease: "power2.in",
+            stagger: 0.3,
+          })
+          .to(stripsLis, {
+            y: -50,
+            duration: 0,
+          }, '<68%')
+          .to(stripsLis, {
+            y: 0,
+            duration: 0.5,
+            ease: "elastic.out(1.2,0.3)",
+            stagger: 0.3,
+          }, '<')
 
         await sleep(3800);
 
