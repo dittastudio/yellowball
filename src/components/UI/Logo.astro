@@ -356,14 +356,14 @@ const {
     .ui-logo:hover &,
     .ui-logo.has-animation & {
       translate: 0 0 0;
-      transition: translate 0.15s theme('transitionTimingFunction.smooth') 0.7s;
+      transition: translate 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
     }
   }
 
   .ui-logo__ball {
     --ball-start-position: -59% 0 0;
     --ball-ease-back: cubic-bezier(0.24, 1.2, 0.24, 1);
-    --ball-ease-enter: cubic-bezier(0.68, -0.1, 0.32, 1.2);
+    --ball-ease-enter: cubic-bezier(0.68, -0.1, 0.32, 1.5);
 
     scale: var(--logo-initial-scale);
     translate: var(--ball-start-position);
