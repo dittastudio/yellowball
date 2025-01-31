@@ -37,12 +37,12 @@ function FnFruitMachine() {
         const tl = gsap.timeline()
 
         tl.to(strips, {
-          y: `${100 / 34 * -7}%`,
+          y: `${100 / 34 * -32}%`,
           duration: 2.5,
           ease: "power2.in",
           stagger: 0.3,
         }).fromTo(stripsLis, {
-          y: `-10%`,
+          y: `10%`,
         }, {
           y: `0%`,
           duration: 0.5,
@@ -50,7 +50,7 @@ function FnFruitMachine() {
           stagger: 0.3,
         }, '<68%')
 
-        await sleep(4000);
+        await sleep(3800);
 
         machine.classList.add('spin-complete');
 
