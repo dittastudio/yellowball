@@ -69,12 +69,11 @@ const {
     )
   }
 
-  {Astro.slots.top && <slot name="top" />}
-
   <div
     data-js-hero-content
     class="flex flex-col items-center justify-start gap-40 md:gap-60"
   >
+    {Astro.slots.top && <slot name="top" />}
     {Astro.slots.headline && <slot name="headline" />}
     {Astro.slots.bottom && <slot name="bottom" />}
     {Astro.slots.extra && <slot name="extra" />}

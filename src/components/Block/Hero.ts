@@ -44,7 +44,7 @@ function FnHero() {
       });
     }
 
-    const heroLogoContainer = document.querySelector('[data-js-hero-logo-animated-container]') as HTMLElement;
+    const heroLogoContainer = hero.querySelector('[data-js-hero-logo-animated-container]') as HTMLElement;
 
     if (hero && heroLogoContainer && window.scrollY < 5) {
       const heroLogoBox = hero.querySelector('[data-js-hero-logo-animated-box]') as HTMLElement;
