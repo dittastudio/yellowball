@@ -17,6 +17,7 @@
     "alpinejs": "^3.14.8",
     "astro": "^4.16.18",
     "astro-favicons": "^2.1.8",
+    "canvas-confetti": "^1.9.3",
     "gsap": "^3.12.7",
     "js-confetti": "^0.12.0",
     "lenis": "^1.1.20",
