@@ -29,8 +29,6 @@ function FnFruitMachine() {
       const confetti = new JSConfetti({ canvas })
 
       const doSpin = async () => {
-        // machine.classList.add('spin');
-
         const stripsLis = document.querySelectorAll('[data-js-fruit-machine-strip]');
         const strips = document.querySelectorAll('.fruit-machine__strip');
 
@@ -54,7 +52,7 @@ function FnFruitMachine() {
             stagger: 0.2,
           }, '<')
 
-        await sleep(3800);
+        await sleep(3400);
 
         machine.classList.add('spin-complete');
 
