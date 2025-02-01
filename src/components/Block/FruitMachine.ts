@@ -36,7 +36,7 @@ function FnFruitMachine() {
 
         tl
           .to(strips, {
-            y: `${100 / 34 * -32}%`,
+            '--fruit-strip-depth': -32,
             duration: 2.5,
             ease: "power2.in",
             stagger: 0.2,
