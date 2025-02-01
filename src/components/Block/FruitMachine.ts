@@ -1,5 +1,5 @@
-// import JSConfetti from 'js-confetti'
 import confetti from 'canvas-confetti';
+
 import { sleep } from '@/utils/helpers';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -45,39 +45,43 @@ function FnFruitMachine() {
         path: 'M17.0001 5.58654L5.69281 13.7739L10.0049 27H23.9953L28.3074 13.7739L17.0001 5.58654ZM18.4663 0.475082L32.715 10.7922C33.5942 11.4288 33.9622 12.56 33.6257 13.5921L28.1866 30.2749C27.8512 31.3038 26.8919 32 25.8098 32H8.19046C7.10832 32 6.14903 31.3038 5.8136 30.2749L0.374527 13.5921C0.0380617 12.56 0.406002 11.4288 1.2852 10.7922L15.5339 0.475082C16.4087 -0.158361 17.5915 -0.158361 18.4663 0.475082Z',
       });
 
-      const confettiOptions = {
-        particleCount: 50,
-        spread: 200,
-        origin: { x: -0.1, y: 0.5 },
-        scalar: 1.5,
-        angle: 0,
+      const realisticBurst = (particleRatio: number, direction: 'left' | 'right', opts: any) => {
+        myConfetti({
+          ...opts,
+          origin: { x: direction === 'left' ? -0.1 : 1.1, y: 0.6 },
+          angle: direction === 'left' ? 30 : 150,
+          particleCount: Math.floor(200 * particleRatio),
+        })
       }
 
-      myConfetti({
-        ...confettiOptions,
-        shapes: [triangle],
-        colors: ['#EAFF01']
-      });
-
-      myConfetti({
-        ...confettiOptions,
-        shapes: [square],
-        colors: ['#ADF454']
-      });
-
-      myConfetti({
-        ...confettiOptions,
-        shapes: [circle],
-        colors: ['#51DBEA']
-      });
-
-      myConfetti({
-        ...confettiOptions,
-        shapes: [pentagon],
-        colors: ['#A58EF7']
-      });
-
-      // const confetti = new JSConfetti({ canvas })
+      const burst = (direction: 'left' | 'right') => {
+        realisticBurst(0.25, direction, {
+          spread: 86,
+          startVelocity: 75,
+          shapes: [triangle],
+          colors: ['#EAFF01']
+        });
+        realisticBurst(0.2, direction, {
+          spread: 60,
+          shapes: [square],
+          colors: ['#ADF454']
+        });
+        realisticBurst(0.35, direction, {
+          spread: 100,
+          decay: 0.91,
+          scalar: 0.8,
+          shapes: [circle],
+          colors: ['#51DBEA']
+        });
+        realisticBurst(0.1, direction, {
+          spread: 120,
+          startVelocity: 25,
+          decay: 0.92,
+          scalar: 1.2,
+          shapes: [pentagon],
+          colors: ['#A58EF7']
+        });
+      }
 
       const doSpin = async () => {
         const stripsLis = document.querySelectorAll('[data-js-fruit-machine-strip]');
@@ -103,24 +107,16 @@ function FnFruitMachine() {
             stagger: 0.2,
           }, '<')
 
-        await sleep(3400);
+        await sleep(3300);
+        burst('left')
+        burst('right')
 
+        await sleep(750);
         machine.classList.add('spin-complete');
 
-        // await confetti.addConfetti({
-        //   confettiColors: [
-        //     "#FFFFFF",
-        //     "#EAFF01",
-        //     "#ADF454",
-        //     "#51DBEA",
-        //     "#A58EF7",
-        //     "#1C1D2C",
-        //     "#3E3E4E",
-        //     "#F7F7F0"
-        //   ]
-        // })
-
-        // confetti.clearCanvas()
+        setTimeout(() => {
+          confetti.reset();
+        }, 5000);
       }
 
       ScrollTrigger.create({
