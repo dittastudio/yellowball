@@ -84,23 +84,23 @@ function FnFruitMachine() {
       }
 
       const doSpin = async () => {
-        const stripsLis = document.querySelectorAll('[data-js-fruit-machine-strip]');
-        const strips = document.querySelectorAll('.fruit-machine__strip');
+        const stripItems = machine.querySelectorAll('[data-js-fruit-machine-strip-item]');
+        const stripImages = machine.querySelectorAll('[data-js-fruit-machine-strip-image]');
 
         const tl = gsap.timeline()
 
         tl
-          .to(strips, {
+          .to(stripImages, {
             '--fruit-strip-depth': -32,
             duration: 2.5,
             ease: "power2.in",
             stagger: 0.2,
           })
-          .to(stripsLis, {
+          .to(stripItems, {
             y: '20%',
             duration: 0,
           }, '<75%')
-          .to(stripsLis, {
+          .to(stripItems, {
             y: 0,
             duration: 0.75,
             ease: "elastic.out(1.2,0.3)",
