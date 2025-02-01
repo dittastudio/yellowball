@@ -73,133 +73,77 @@ import Icon from '@/components/Elements/Icon.astro';
 
 <style is:global>
   .fruit-machine {
-    --stripHeight: 100% / 34;
-    --stripSpeed: 2s;
+    --fruit-strip-Height: 100% / 34;
+  }
 
-    /* &.spin {
-      .fruit-machine__strip {
-        transform: translate3d(0, calc(var(--stripHeight) * -32), 0);
-      }
-    } */
+  .fruit-machine__statement {
+    .fruit-machine.spin-complete & {
+      opacity: 1;
+    }
+  }
 
-    &.spin-complete {
-      .fruit-machine__statement {
-        opacity: 1;
-      }
+  .fruit-machine__container {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 28%;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    &__container {
-      /* mask-image: linear-gradient(
+    &::before {
+      --fruit-gradient: linear-gradient(
         to bottom,
-        transparent 5%,
-        black 50%,
-        transparent 95%
-      ); */
-      position: relative;
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 28%;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      &::before {
-        top: 0;
-        background-image: linear-gradient(
-            to bottom,
-            theme('colors.navy') 0%,
-            transparent 100%
-          ),
-          linear-gradient(to bottom, theme('colors.navy') 0%, transparent 100%),
-          linear-gradient(to bottom, theme('colors.navy') 0%, transparent 100%);
-      }
-
-      &::after {
-        bottom: 0;
-        background-image: linear-gradient(
-            to top,
-            theme('colors.navy') 0%,
-            transparent 100%
-          ),
-          linear-gradient(to top, theme('colors.navy') 0%, transparent 100%),
-          linear-gradient(to top, theme('colors.navy') 0%, transparent 100%);
-      }
-    }
-
-    /* @keyframes spin {
-      0% {
-        transform: translate3d(0, calc(var(--stripHeight) * -32), 0);
-      }
-      90% {
-        transform: translate3d(0, calc(var(--strip-translate) + 2%), 0);
-      }
-      100% {
-        transform: translate3d(0, var(--strip-translate), 0);
-      }
-    } */
-
-    &__strip {
-      --strip-depth: -2;
-
-      transform: translate3d(
-        0,
-        calc(var(--stripHeight) * var(--strip-depth)),
-        0
+        theme('colors.navy') 0%,
+        transparent 100%
       );
-      /* --strip-ease: linear; */
-      /* transition: transform var(--stripSpeed) cubic-bezier(0.35, 0.06, 0, 1.1); */
-      /* transition: transform var(--stripSpeed)
-        cubic-bezier(0.519, 0.354, 0, 1.128); */
+
+      top: 0;
+      background-image: var(--fruit-gradient), var(--fruit-gradient),
+        var(--fruit-gradient);
     }
 
-    &__strip-1 {
-      --strip-depth: -5;
-    }
+    &::after {
+      --fruit-gradient: linear-gradient(
+        to top,
+        theme('colors.navy') 0%,
+        transparent 100%
+      );
 
-    &__strip-2 {
-      --strip-depth: -1;
+      bottom: 0;
+      background-image: var(--fruit-gradient), var(--fruit-gradient),
+        var(--fruit-gradient);
     }
+  }
 
-    &__strip-3 {
-      --strip-depth: -7;
-    }
+  .fruit-machine__strip {
+    --strip-depth: -2;
 
-    &__strip-4 {
-      --strip-depth: -3;
-    }
+    translate: 0 calc(var(--fruit-strip-Height) * var(--strip-depth)) 0;
+  }
 
-    &__strip-5 {
-      --strip-depth: -4;
-    }
+  .fruit-machine__strip-1 {
+    --strip-depth: -5;
+  }
 
-    /* &__strip-1 {
-      --strip-translate: calc(var(--stripHeight) * -2);
-      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
-    }
+  .fruit-machine__strip-2 {
+    --strip-depth: -1;
+  }
 
-    &__strip-2 {
-      --strip-translate: calc(var(--stripHeight) * -12);
-      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
-    }
+  .fruit-machine__strip-3 {
+    --strip-depth: -7;
+  }
 
-    &__strip-3 {
-      --strip-translate: calc(var(--stripHeight) * -7);
-      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
-    }
+  .fruit-machine__strip-4 {
+    --strip-depth: -3;
+  }
 
-    &__strip-4 {
-      --strip-translate: calc(var(--stripHeight) * -22);
-      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
-    }
-
-    &__strip-5 {
-      --strip-translate: calc(var(--stripHeight) * -17);
-      animation: spin var(--stripSpeed) var(--strip-ease) forwards;
-    } */
+  .fruit-machine__strip-5 {
+    --strip-depth: -4;
   }
 </style>
