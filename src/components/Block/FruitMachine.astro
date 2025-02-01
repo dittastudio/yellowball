@@ -21,10 +21,10 @@ import Icon from '@/components/Elements/Icon.astro';
     </p>
 
     <div
-      class="fruit-machine__container relative z-1 w-full max-w-[1050px] mx-auto aspect-[6/2.44] overflow-hidden pointer-events-none select-none"
+      class="fruit-machine__container relative z-1 w-full max-w-[1050px] mx-auto aspect-[6/2.44] overflow-hidden select-none"
     >
       <ul
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between gap-[2.5%] w-full aspect-[6/1.07]"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between gap-[2.5%] w-full h-[calc(50%_-_(6/1.07_*_1%))] aspect-[6/1.07]"
       >
         <li data-js-fruit-machine-strip-item>
           <img
@@ -77,10 +77,6 @@ import Icon from '@/components/Elements/Icon.astro';
 <!-- End Block: FruitMachine -->
 
 <style is:global>
-  .fruit-machine {
-    --fruit-strip-height: 100% / 34;
-  }
-
   .fruit-machine__statement {
     .fruit-machine.spin-complete & {
       opacity: 1;
@@ -127,6 +123,7 @@ import Icon from '@/components/Elements/Icon.astro';
   }
 
   .fruit-machine__strip {
+    --fruit-strip-height: calc(100% / 34);
     --fruit-strip-depth: -2;
 
     translate: 0 calc(var(--fruit-strip-height) * var(--fruit-strip-depth)) 0;
