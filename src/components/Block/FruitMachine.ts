@@ -103,23 +103,20 @@ function FnFruitMachine() {
           }, '<75%')
           .to(stripItems, {
             y: 0,
-            duration: 0.75,
+            duration: 1,
             ease: "elastic.out(1.2,0.3)",
             stagger: 0.2,
           }, '<')
+          .add(() => {
+            burst('left')
+            burst('right')
+          }, '-=0.25');
 
-        await sleep(3300);
-
-        burst('left')
-        burst('right')
-
-        await sleep(750);
-
+        await sleep(tl.duration() * 1000 + 500);
         machine.classList.add('spin-complete');
 
-        setTimeout(() => {
-          confetti.reset();
-        }, 5000);
+        await sleep(5000);
+        confetti.reset();
       }
 
       ScrollTrigger.create({
