@@ -103,7 +103,7 @@ function FnFruitMachine() {
           .to(stripItems, {
             y: 0,
             duration: 1,
-            ease: "elastic.out(1.2,0.3)",
+            ease: "elastic.out(1.2,0.5)",
             stagger: 0.2,
           }, '<')
           .add(() => {
