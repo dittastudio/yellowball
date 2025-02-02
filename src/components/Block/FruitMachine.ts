@@ -51,6 +51,7 @@ function FnFruitMachine() {
           origin: { x: direction === 'left' ? -0.1 : 1.1, y: 0.6 },
           angle: direction === 'left' ? 30 : 150,
           particleCount: Math.floor(200 * particleRatio),
+          scalar: 1,
         })
       }
 
@@ -69,7 +70,6 @@ function FnFruitMachine() {
         realisticBurst(0.35, direction, {
           spread: 100,
           decay: 0.91,
-          scalar: 0.8,
           shapes: [circle],
           colors: ['#51DBEA']
         });
@@ -77,7 +77,6 @@ function FnFruitMachine() {
           spread: 120,
           startVelocity: 25,
           decay: 0.92,
-          scalar: 1.2,
           shapes: [pentagon],
           colors: ['#A58EF7']
         });
