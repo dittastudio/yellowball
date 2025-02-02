@@ -16,6 +16,7 @@ function FnStickyMap() {
     const markerUsa = map.querySelector("[data-map-usa]") as SVGCircleElement;
 
     if (
+      mapImage &&
       maskSouthAfrica &&
       maskIndia &&
       maskUsaPath &&
@@ -54,7 +55,7 @@ function FnStickyMap() {
           markers: false,
           trigger: mapImage,
           endTrigger: map,
-          start: 'center bottom',
+          start: 'bottom bottom',
           end: 'bottom bottom',
           scrub: 1.5,
         },
