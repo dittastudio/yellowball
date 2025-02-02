@@ -92,7 +92,7 @@ function FnFruitMachine() {
 
         tl
           .to(stripImages, {
-            '--fruit-strip-depth': -32,
+            '--fruit-strip-depth': -31.45,
             duration: 2.5,
             ease: "power2.in",
             stagger: 0.2,

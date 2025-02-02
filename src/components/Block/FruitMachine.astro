@@ -23,9 +23,7 @@ import Icon from '@/components/Elements/Icon.astro';
     <div
       class="fruit-machine__container relative z-1 w-full max-w-[1050px] mx-auto aspect-[6/2.44] overflow-hidden select-none"
     >
-      <ul
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-between gap-[2.5%] w-full aspect-[6/1.07]"
-      >
+      <ul class="flex justify-between items-start gap-[2.5%] w-full">
         <li>
           <img
             src="/images/fruit-strip.svg"
@@ -79,8 +77,6 @@ import Icon from '@/components/Elements/Icon.astro';
   }
 
   .fruit-machine__container {
-    position: relative;
-
     &::before,
     &::after {
       content: '';
@@ -119,28 +115,28 @@ import Icon from '@/components/Elements/Icon.astro';
 
   .fruit-machine__strip {
     --fruit-strip-height: calc(100% / 34);
-    --fruit-strip-depth: -2;
+    --fruit-strip-depth: -1.45;
 
     translate: 0 calc(var(--fruit-strip-height) * var(--fruit-strip-depth)) 0;
   }
 
   .fruit-machine__strip-1 {
-    --fruit-strip-depth: -5;
+    --fruit-strip-depth: -4.45;
   }
 
   .fruit-machine__strip-2 {
-    --fruit-strip-depth: -1;
+    --fruit-strip-depth: -0.45;
   }
 
   .fruit-machine__strip-3 {
-    --fruit-strip-depth: -7;
+    --fruit-strip-depth: -6.45;
   }
 
   .fruit-machine__strip-4 {
-    --fruit-strip-depth: -3;
+    --fruit-strip-depth: -2.45;
   }
 
   .fruit-machine__strip-5 {
-    --fruit-strip-depth: -4;
+    --fruit-strip-depth: -3.45;
   }
 </style>
