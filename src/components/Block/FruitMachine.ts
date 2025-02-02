@@ -53,7 +53,7 @@ function FnFruitMachine() {
           origin: { x: direction === 'left' ? -0.1 : 1.1, y: 0.6 },
           angle: direction === 'left' ? 30 : 150,
           particleCount: Math.floor(200 * particleRatio),
-          scalar: 1.5,
+          scalar: 1.25,
         })
       }
 
@@ -87,7 +87,6 @@ function FnFruitMachine() {
       const doSpin = async () => {
         const stripItems = machine.querySelectorAll('li');
         const stripImages = machine.querySelectorAll('li img');
-
         const tl = gsap.timeline()
 
         tl

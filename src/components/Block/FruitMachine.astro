@@ -26,31 +26,31 @@ import Icon from '@/components/Elements/Icon.astro';
       <ul class="flex justify-between items-start gap-[2.5%] w-full">
         <li>
           <img
-            src="/images/fruit-strip.svg"
+            src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-1 block w-full h-auto"
           />
         </li>
         <li>
           <img
-            src="/images/fruit-strip.svg"
+            src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-2 block w-full h-auto"
           />
         </li>
         <li>
           <img
-            src="/images/fruit-strip.svg"
+            src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-3 block w-full h-auto"
           />
         </li>
         <li>
           <img
-            src="/images/fruit-strip.svg"
+            src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-4 block w-full h-auto"
           />
         </li>
         <li>
           <img
-            src="/images/fruit-strip.svg"
+            src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-5 block w-full h-auto"
           />
         </li>
@@ -70,73 +70,80 @@ import Icon from '@/components/Elements/Icon.astro';
 <!-- End Block: FruitMachine -->
 
 <style is:global>
-  .fruit-machine__statement {
-    .fruit-machine.spin-complete & {
-      opacity: 1;
-    }
-  }
-
-  .fruit-machine__container {
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 28%;
-      z-index: 1;
-      pointer-events: none;
+  .fruit-machine {
+    &__statement {
+      .fruit-machine.spin-complete & {
+        opacity: 1;
+      }
     }
 
-    &::before {
-      --fruit-gradient: linear-gradient(
-        to bottom,
-        theme('colors.navy') 0%,
-        transparent 100%
-      );
+    &__container {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 28%;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-      top: 0;
-      background-image: var(--fruit-gradient), var(--fruit-gradient),
-        var(--fruit-gradient);
+      &::before {
+        --fruit-gradient: linear-gradient(
+          to bottom,
+          theme('colors.navy') 0%,
+          transparent 100%
+        );
+
+        top: 0;
+        background-image: var(--fruit-gradient), var(--fruit-gradient),
+          var(--fruit-gradient);
+      }
+
+      &::after {
+        --fruit-gradient: linear-gradient(
+          to top,
+          theme('colors.navy') 0%,
+          transparent 100%
+        );
+
+        bottom: 0;
+        background-image: var(--fruit-gradient), var(--fruit-gradient),
+          var(--fruit-gradient);
+      }
     }
 
-    &::after {
-      --fruit-gradient: linear-gradient(
-        to top,
-        theme('colors.navy') 0%,
-        transparent 100%
-      );
+    &__strip {
+      --fruit-strip-height: calc(100% / 34);
+      --fruit-strip-depth: -1.45;
 
-      bottom: 0;
-      background-image: var(--fruit-gradient), var(--fruit-gradient),
-        var(--fruit-gradient);
+      translate: 0 calc(var(--fruit-strip-height) * var(--fruit-strip-depth)) 0;
     }
-  }
 
-  .fruit-machine__strip {
-    --fruit-strip-height: calc(100% / 34);
-    --fruit-strip-depth: -1.45;
+    &__strip-1 {
+      --fruit-strip-depth: -4.45;
+      /* --fruit-strip-depth: -5; */
+    }
 
-    translate: 0 calc(var(--fruit-strip-height) * var(--fruit-strip-depth)) 0;
-  }
+    &__strip-2 {
+      --fruit-strip-depth: -0.45;
+      /* --fruit-strip-depth: -1; */
+    }
 
-  .fruit-machine__strip-1 {
-    --fruit-strip-depth: -4.45;
-  }
+    &__strip-3 {
+      --fruit-strip-depth: -6.45;
+      /* --fruit-strip-depth: -7; */
+    }
 
-  .fruit-machine__strip-2 {
-    --fruit-strip-depth: -0.45;
-  }
+    &__strip-4 {
+      --fruit-strip-depth: -2.45;
+      /* --fruit-strip-depth: -3; */
+    }
 
-  .fruit-machine__strip-3 {
-    --fruit-strip-depth: -6.45;
-  }
-
-  .fruit-machine__strip-4 {
-    --fruit-strip-depth: -2.45;
-  }
-
-  .fruit-machine__strip-5 {
-    --fruit-strip-depth: -3.45;
+    &__strip-5 {
+      --fruit-strip-depth: -3.45;
+      /* --fruit-strip-depth: -4; */
+    }
   }
 </style>
