@@ -4,6 +4,7 @@ interface Props {
   sizeDesktop?: string;
   noHover?: boolean;
   noHoverMobileOnly?: boolean;
+  class?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   sizeDesktop = '50px',
   noHover = false,
   noHoverMobileOnly = false,
+  class: className,
   ...rest
 } = Astro.props as Props;
 ---
@@ -21,6 +23,7 @@ const {
     'ui-logo is-full-logo',
     noHover ? 'pointer-events-none' : '',
     noHoverMobileOnly ? 'lgMax:pointer-events-none' : '',
+    className,
   ]}
   style={`--logo-size-mobile: ${sizeMobile}; --logo-size-desktop: ${sizeDesktop};`}
   {...rest}
