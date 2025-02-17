@@ -123,22 +123,25 @@ const classSectionThick = 'py-100 md:py-[150px]';
         </Fragment>
 
         <Fragment slot="extra">
-          <Cursors hasExit>
+          <Cursors
+            hasExit
+            class="relative w-full h-80 md:h-auto md:absolute md:inset-0 md:z-10"
+          >
             <Cursor
               title="PPC Team"
-              class="bg-blue absolute -top-[20%] left-[15%]"
+              class="bg-blue absolute bottom-0 right-0 md:bottom-auto md:right-auto md:-top-[30%] md:left-[15%]"
             />
             <Cursor
               title="Design Team"
-              class="bg-yellow absolute -top-[20%] right-[15%]"
+              class="bg-yellow absolute top-0 right-[35%] md:-top-[30%] md:right-[15%]"
             />
             <Cursor
               title="SEO Team"
-              class="bg-green absolute bottom-[0%] left-[0%]"
+              class="bg-green absolute bottom-0 left-0 md:bottom-[-20%] xl:bottom-[5%] md:left-[5%]"
             />
             <Cursor
               title="Developers"
-              class="bg-grey absolute bottom-[0%] right-[0%]"
+              class="mdMax:hidden bg-grey absolute md:bottom-[-20%] xl:bottom-[5%] right-[5%]"
             />
           </Cursors>
         </Fragment>
