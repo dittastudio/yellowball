@@ -212,25 +212,25 @@ const classSectionThick = 'py-100 md:py-[150px]';
         items={exampleServiceListItems}
         description="We offer a full suite of web design services that transform your brand story into digital experiences."
       >
+        <Fragment slot="extra">
+          <Cursors>
+            <Cursor
+              title="Design Team"
+              class="bg-yellow absolute top-0 right-[10%]"
+            />
+            <Cursor
+              title="Developers"
+              class="bg-grey absolute top-[40%] right-[20%]"
+            />
+          </Cursors>
+        </Fragment>
+
         <Fragment slot="headline">
           <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
             End-to-end
             <span class="!block pl-[2ch]">web design</span>
             <span class="!block pl-[1ch]">services</span>
           </TextReveal>
-        </Fragment>
-
-        <Fragment slot="extra">
-          <Cursors>
-            <Cursor
-              title="Design Team"
-              class="bg-yellow absolute top-[10%] right-[10%]"
-            />
-            <Cursor
-              title="Developers"
-              class="bg-grey absolute bottom-[10%] right-[15%]"
-            />
-          </Cursors>
         </Fragment>
       </BlockServiceList>
     </section>

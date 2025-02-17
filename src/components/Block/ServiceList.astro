@@ -31,6 +31,7 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
     <div
       class="relative w-full lg:col-span-1 flex flex-col justify-start items-start gap-40 md:gap-40"
     >
+      {Astro.slots.extra && <slot name="extra" />}
       {Astro.slots.headline && <slot name="headline" />}
 
       {
@@ -44,8 +45,6 @@ const { color = 'yellow', items, description = '' } = Astro.props as Props;
       <a href="/" class="block">
         <Button text="Let's Chat" hasArrow />
       </a>
-
-      {Astro.slots.extra && <slot name="extra" />}
     </div>
   </div>
 

@@ -217,6 +217,15 @@ const exampleServiceListItems: any = [
         items={exampleServiceListItems}
         description="We offer an all-inclusive service for everything WordPress-related, from themes and plugins to hosting, support, and security."
       >
+        <Fragment slot="extra">
+          <Cursors class="relative w-full h-1">
+            <Cursor
+              title="Design Team"
+              class="bg-yellow absolute top-0 right-[20%]"
+            />
+          </Cursors>
+        </Fragment>
+
         <Fragment slot="headline">
           <TextReveal
             tag="h3"
@@ -224,15 +233,6 @@ const exampleServiceListItems: any = [
           >
             Your all-in-one<br />WordPress partner
           </TextReveal>
-        </Fragment>
-
-        <Fragment slot="extra">
-          <Cursors>
-            <Cursor
-              title="Design Team"
-              class="bg-yellow absolute top-[5%] right-[10%]"
-            />
-          </Cursors>
         </Fragment>
       </BlockServiceList>
     </section>

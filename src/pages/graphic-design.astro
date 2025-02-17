@@ -226,6 +226,15 @@ const exampleServiceListItems: any = [
         items={exampleServiceListItems}
         description="We offer an all-inclusive service for everything Graphic Design related, from reports and brochures to magazines, websites, and apps."
       >
+        <Fragment slot="extra">
+          <Cursors class="relative w-full h-1">
+            <Cursor
+              title="Graphics Team"
+              class="bg-purple absolute top-0 right-[20%]"
+            />
+          </Cursors>
+        </Fragment>
+
         <Fragment slot="headline">
           <TextReveal
             tag="h3"
@@ -233,15 +242,6 @@ const exampleServiceListItems: any = [
           >
             Your all-in-one<br />Graphic Design<br />partner
           </TextReveal>
-        </Fragment>
-
-        <Fragment slot="extra">
-          <Cursors>
-            <Cursor
-              title="Graphics Team"
-              class="bg-purple absolute top-[5%] right-[10%]"
-            />
-          </Cursors>
         </Fragment>
       </BlockServiceList>
     </section>

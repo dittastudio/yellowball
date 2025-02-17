@@ -317,19 +317,19 @@ const exampleServiceListItems: any = [
         items={exampleServiceListItems}
         description="Lorem ipsum dolor sit amet consectetur. Viverra in ut in quis ultrices proin sed eget nunc ornare purus."
       >
-        <Fragment slot="headline">
-          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
-            Your all-in-one<br />Paid Search partner
-          </TextReveal>
-        </Fragment>
-
         <Fragment slot="extra">
-          <Cursors>
+          <Cursors class="relative w-full h-1">
             <Cursor
               title="PPC Team"
               class="bg-blue absolute top-0 right-[20%]"
             />
           </Cursors>
+        </Fragment>
+
+        <Fragment slot="headline">
+          <TextReveal tag="h3" class="font-heading text-fluid-h3 font-semibold">
+            Your all-in-one<br />Paid Search partner
+          </TextReveal>
         </Fragment>
       </BlockServiceList>
     </section>
