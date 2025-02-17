@@ -1,8 +1,14 @@
+---
+import { hasSlot } from '@/utils/helpers';
+
+const hasSlotCtas = await hasSlot(Astro.slots, 'ctas');
+---
+
 <div class="richtext">
   <slot />
 
   {
-    Astro.slots.ctas && (
+    hasSlotCtas && (
       <div class="sm:flex-row md:gap-20 md:mt-50 flex flex-col items-start justify-start gap-20 mt-20">
         <slot name="ctas" />
       </div>

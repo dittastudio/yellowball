@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { componentProperties } from '@/utils/helpers';
+import { componentProperties, hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Base {
@@ -11,6 +11,7 @@ interface Base {
 
 type Props = HTMLAttributes<'div'> & Base;
 
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const { headline, description, ...rest } = Astro.props as Props;
 
 const { classes, attributes } = componentProperties(
@@ -44,7 +45,7 @@ const { classes, attributes } = componentProperties(
     </div>
 
     {
-      Astro.slots.default && (
+      hasSlotDefault && (
         <div
           data-js-avatars
           class="w-full [&>img]:rounded-12 [&>img]:lg:rounded-16 [&>img]:outline [&>img]:outline-1 [&>img]:outline-navy/15 grid grid-cols-5 gap-10 lg:gap-15 p-1"

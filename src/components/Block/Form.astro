@@ -1,9 +1,17 @@
+---
+import { hasSlot } from '@/utils/helpers';
+
+const hasSlotContent = await hasSlot(Astro.slots, 'content');
+const hasSlotForm = await hasSlot(Astro.slots, 'form');
+const hasSlotAside = await hasSlot(Astro.slots, 'aside');
+---
+
 <!-- Begin Block: Form -->
 <div class="wrapper grid gap-x-30 gap-y-80 grid-cols-8 lg:grid-cols-12">
   <div class="lg:order-2 col-span-full lg:col-start-6 lg:col-span-7">
     <div class="flex flex-col gap-60 lg:gap-80">
       {
-        Astro.slots.content && (
+        hasSlotContent && (
           <div class=" flex flex-col justify-start items-start gap-40 lg:gap-60">
             <slot name="content" />
           </div>
@@ -11,7 +19,7 @@
       }
 
       {
-        Astro.slots.form && (
+        hasSlotForm && (
           <div>
             <slot name="form" />
           </div>
@@ -21,7 +29,7 @@
   </div>
 
   {
-    Astro.slots.aside && (
+    hasSlotAside && (
       <aside class="lg:order-1 flex flex-col justify-start items-start gap-20 col-span-full lg:col-start-1 lg:col-span-5 xl:col-span-4">
         <slot name="aside" />
       </aside>

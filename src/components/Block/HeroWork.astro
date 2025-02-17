@@ -1,5 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
+import { hasSlot } from '@/utils/helpers';
 import TagCategory from '@/components/Elements/TagCategory.astro';
 
 interface Props {
@@ -21,6 +22,7 @@ const {
   heading,
   categories,
 } = Astro.props as Props;
+const hasSlotCta = await hasSlot(Astro.slots, 'cta');
 ---
 
 <!-- Begin Block: HeroWork -->
@@ -57,7 +59,7 @@ const {
         }
       </ul>
 
-      {Astro.slots.cta && <slot name="cta" />}
+      {hasSlotCta && <slot name="cta" />}
     </div>
   </div>
 </div>

@@ -1,9 +1,16 @@
+---
+import { hasSlot } from '@/utils/helpers';
+
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotLinks = await hasSlot(Astro.slots, 'links');
+---
+
 <!-- Begin Block: 404 -->
 <div
   class="wrapper text-center flex flex-col justify-start items-center gap-40 md:gap-60"
 >
-  {Astro.slots.headline && <slot name="headline" />}
-  {Astro.slots.links && <slot name="links" />}
+  {hasSlotHeadline && <slot name="headline" />}
+  {hasSlotLinks && <slot name="links" />}
 
   <div
     class:list={[

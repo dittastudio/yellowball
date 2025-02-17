@@ -1,5 +1,5 @@
 ---
-import { componentProperties } from '@/utils/helpers';
+import { componentProperties, hasSlot } from '@/utils/helpers';
 import NumberedText from '@/components/Elements/NumberedText.astro';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 const { type = 'full', color = 'current', ...rest } = Astro.props as Props;
 
-const hasMedia = !!Astro.slots.default && type === 'split';
+const hasMedia = (await hasSlot(Astro.slots, 'default')) && type === 'split';
 
 const classesGrid = {
   full: 'grid-cols-1',

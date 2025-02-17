@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { colourOutline, colourBackground } from '@/utils/maps';
+import { hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Base {
@@ -9,6 +10,7 @@ interface Base {
 
 type Props = HTMLAttributes<'input'> & Base;
 
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const { color = 'green', ...rest } = Astro.props as Props;
 ---
 
@@ -33,7 +35,7 @@ const { color = 'green', ...rest } = Astro.props as Props;
     </span>
 
     {
-      Astro.slots.default && (
+      hasSlotDefault && (
         <span>
           <slot />
         </span>

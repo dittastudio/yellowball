@@ -1,4 +1,5 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import CardAvatars from '@/components/Card/Avatars.astro';
 import CardCta from '@/components/Card/Cta.astro';
 import CardFigure from '@/components/Card/Figure.astro';
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { description = '' } = Astro.props as Props;
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
 ---
 
 <!-- Begin Block: CardStacks -->
@@ -18,7 +20,7 @@ const { description = '' } = Astro.props as Props;
       class="grid grid-cols-8 md:grid-cols-12 xl:grid-cols-10 gap-12 md:gap-30 gap-y-60 md:gap-y-80"
     >
       {
-        Astro.slots.headline && (
+        hasSlotHeadline && (
           <div class="col-span-full">
             <slot name="headline" />
           </div>

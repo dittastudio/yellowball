@@ -1,5 +1,9 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import RichText from '@/components/Elements/RichText.astro';
+
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotBottom = await hasSlot(Astro.slots, 'bottom');
 ---
 
 <!-- Begin Block: HeadingTextStack -->
@@ -8,15 +12,11 @@ import RichText from '@/components/Elements/RichText.astro';
     class="md:grid-cols-12 gap-x-12 gap-y-40 md:gap-x-30 md:gap-y-60 grid grid-cols-8"
   >
     {
-      Astro.slots.headline && (
+      hasSlotHeadline && (
         <div class="col-span-full md:col-span-10 md:col-start-2">
           <slot name="headline" />
         </div>
-      )
-    }
 
-    {
-      Astro.slots.headline && (
         <div class="col-span-full md:col-span-8 md:col-start-4">
           <RichText>
             <slot name="description" />
@@ -26,6 +26,6 @@ import RichText from '@/components/Elements/RichText.astro';
     }
   </div>
 
-  {Astro.slots.bottom && <slot name="bottom" />}
+  {hasSlotBottom && <slot name="bottom" />}
 </div>
 <!-- End Block: HeadingTextStack -->

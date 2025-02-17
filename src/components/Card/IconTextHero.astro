@@ -1,5 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
+import { hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface ListItem {
@@ -24,7 +25,7 @@ const {
   ...rest
 } = Astro.props as Props;
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 ---
 
 <div

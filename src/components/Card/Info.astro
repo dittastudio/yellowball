@@ -1,9 +1,12 @@
 ---
+import { hasSlot } from '@/utils/helpers';
+
 interface Props {
   title: string;
   class?: string;
 }
 
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const { title, class: className, ...rest } = Astro.props as Props;
 ---
 
@@ -22,7 +25,7 @@ const { title, class: className, ...rest } = Astro.props as Props;
     </p>
 
     {
-      Astro.slots.default && (
+      hasSlotDefault && (
         <div>
           <slot />
         </div>

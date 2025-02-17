@@ -1,5 +1,9 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import RichText from '@/components/Elements/RichText.astro';
+
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotRichtext = await hasSlot(Astro.slots, 'richtext');
 ---
 
 <!-- Begin Block: StickyMap -->
@@ -10,7 +14,7 @@ import RichText from '@/components/Elements/RichText.astro';
     <div
       class="sticky-map__title col-span-full lg:col-span-5 lg:row-start-1 lg:row-end-1 lg:pt-[60%]"
     >
-      {Astro.slots.headline && <slot name="headline" />}
+      {hasSlotHeadline && <slot name="headline" />}
     </div>
 
     <div
@@ -116,7 +120,7 @@ import RichText from '@/components/Elements/RichText.astro';
       class="sticky-map__text col-span-full lg:col-span-5 lg:row-start-2 lg:pb-[40%]"
     >
       {
-        Astro.slots.richtext && (
+        hasSlotRichtext && (
           <RichText>
             <slot name="richtext" />
           </RichText>

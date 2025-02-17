@@ -1,5 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
+import { hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
 
@@ -29,6 +30,9 @@ const colouring =
   theme === 'dark'
     ? 'text-white bg-navy-light border-white/10'
     : 'text-navy bg-white border-navy/15';
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotCopy = await hasSlot(Astro.slots, 'copy');
+const hasSlotButton = await hasSlot(Astro.slots, 'button');
 ---
 
 <div
@@ -56,9 +60,9 @@ const colouring =
         mini ? 'gap-30' : 'gap-30 lg:gap-60',
       ]}
     >
-      {Astro.slots.headline && <slot name="headline" />}
-      {Astro.slots.copy && <slot name="copy" />}
-      {Astro.slots.button && <slot name="button" />}
+      {hasSlotHeadline && <slot name="headline" />}
+      {hasSlotCopy && <slot name="copy" />}
+      {hasSlotButton && <slot name="button" />}
     </div>
 
     {

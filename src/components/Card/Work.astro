@@ -15,7 +15,7 @@ interface Props {
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const {
   title,
   headline,

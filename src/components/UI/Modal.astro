@@ -1,12 +1,17 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import HeaderLogo from '@/components/App/Header/Logo.astro';
 import HeaderBackground from '@/components/App/Header/Background.astro';
 import HeaderMenuLink from '@/components/App/Header/MenuLink.astro';
 import LayoutLines from '@/components/Layout/Lines.astro';
+
+const hasSlotTrigger = await hasSlot(Astro.slots, 'trigger');
+const hasSlotContent = await hasSlot(Astro.slots, 'content');
+const hasSlotFooter = await hasSlot(Astro.slots, 'footer');
 ---
 
 {
-  Astro.slots.trigger && (
+  hasSlotTrigger && (
     <div data-js="modal" role="button">
       <slot name="trigger" />
     </div>
@@ -14,7 +19,7 @@ import LayoutLines from '@/components/Layout/Lines.astro';
 }
 
 {
-  Astro.slots.content && (
+  hasSlotContent && (
     <dialog
       data-lenis-prevent
       class="fixed inset-0 w-full h-dvh max-w-none max-h-none bg-navy opacity-0 transition-opacity duration-300 overflow-hidden text-white [&::backdrop]:hidden"
@@ -43,7 +48,7 @@ import LayoutLines from '@/components/Layout/Lines.astro';
             </div>
           </div>
 
-          {Astro.slots.footer && (
+          {hasSlotFooter && (
             <div class="w-full pb-120 lg:pb-160">
               <slot name="footer" />
             </div>

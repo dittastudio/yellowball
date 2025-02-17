@@ -1,11 +1,13 @@
 ---
+import { hasSlot } from '@/utils/helpers';
+
 interface Props {
   headline: string;
   description: string;
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 
 const {
   headline,

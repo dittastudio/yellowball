@@ -1,4 +1,5 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 
 interface Props {
@@ -8,7 +9,10 @@ interface Props {
 }
 
 const { client, color, class: className, ...rest } = Astro.props as Props;
-
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotMedia = await hasSlot(Astro.slots, 'media');
+const hasSlotLogo = await hasSlot(Astro.slots, 'logo');
+const hasSlotDescription = await hasSlot(Astro.slots, 'description');
 const classes = ['card-case-study-hero', className];
 
 const colourHoverMap: Record<string, string> = {
@@ -42,10 +46,10 @@ const colourHoverMap: Record<string, string> = {
         <div
           class="card-case-study-hero__content rounded-30 lg:rounded-40 relative z-20 w-full h-full p-30 lg:p-60 grid grid-cols-1 gap-30 lg:gap-40 lg:grid-cols-[1fr_380px] lg:grid-rows-[auto_auto]"
         >
-          {Astro.slots.headline && <slot name="headline" />}
+          {hasSlotHeadline && <slot name="headline" />}
 
           {
-            Astro.slots.media && (
+            hasSlotMedia && (
               <div class="lg:row-span-2">
                 <div class="w-full shadow-media lg:self-end lg:-mb-60">
                   <slot name="media" />
@@ -58,14 +62,14 @@ const colourHoverMap: Record<string, string> = {
             class="flex flex-col lg:self-end justify-start items-start gap-20 lg:gap-30"
           >
             <div class="flex gap-20 items-center justify-start">
-              {Astro.slots.logo && <slot name="logo" />}
+              {hasSlotLogo && <slot name="logo" />}
 
               <LinkArrow class="font-heading text-16 lg:text-24 font-semibold">
                 {client}
               </LinkArrow>
             </div>
 
-            {Astro.slots.description && <slot name="description" />}
+            {hasSlotDescription && <slot name="description" />}
           </div>
         </div>
       </div>

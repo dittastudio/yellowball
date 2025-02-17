@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { hasSlot } from '@/utils/helpers';
 
 interface Base {
   caption?: string;
@@ -9,6 +10,7 @@ type Props = HTMLAttributes<'div'> & Base;
 
 const { caption = '', ...rest } = Astro.props as Props;
 const classes = ['w-full grid gap-28 grid-cols-1', rest.class].filter(Boolean);
+const hasSlotMedia = await hasSlot(Astro.slots, 'media');
 ---
 
 <!-- Begin Block: Media -->
@@ -20,7 +22,7 @@ const classes = ['w-full grid gap-28 grid-cols-1', rest.class].filter(Boolean);
     ]}
   >
     <div class="overflow-hidden rounded-[inherit]">
-      {Astro.slots.media && <slot name="media" />}
+      {hasSlotMedia && <slot name="media" />}
     </div>
   </div>
 

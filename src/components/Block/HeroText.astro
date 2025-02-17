@@ -1,8 +1,15 @@
+---
+import { hasSlot } from '@/utils/helpers';
+
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotDescription = await hasSlot(Astro.slots, 'description');
+---
+
 <!-- Begin Block: HeroText -->
 <div
   class="wrapper relative flex flex-col justify-start items-center gap-40 md:gap-60 text-center"
 >
-  {Astro.slots.headline && <slot name="headline" />}
-  {Astro.slots.description && <slot name="description" />}
+  {hasSlotHeadline && <slot name="headline" />}
+  {hasSlotDescription && <slot name="description" />}
 </div>
 <!-- End Block: HeroText -->

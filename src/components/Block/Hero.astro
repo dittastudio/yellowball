@@ -1,4 +1,5 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 import UILogo from '@/components/UI/Logo.astro';
 import ShapeGradient from '@/components/Elements/ShapeGradient.astro';
@@ -14,6 +15,11 @@ const {
   shape,
   hasLogoAnimation = false,
 } = Astro.props as Props;
+
+const hasSlotTop = await hasSlot(Astro.slots, 'top');
+const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
+const hasSlotBottom = await hasSlot(Astro.slots, 'bottom');
+const hasSlotExtra = await hasSlot(Astro.slots, 'extra');
 ---
 
 <!-- Begin Block: Hero -->
@@ -73,10 +79,10 @@ const {
     data-js-hero-content
     class="flex flex-col items-center justify-start gap-40 md:gap-50 transform-style-3d"
   >
-    {Astro.slots.top && <slot name="top" />}
-    {Astro.slots.headline && <slot name="headline" />}
-    {Astro.slots.bottom && <slot name="bottom" />}
-    {Astro.slots.extra && <slot name="extra" />}
+    {hasSlotTop && <slot name="top" />}
+    {hasSlotHeadline && <slot name="headline" />}
+    {hasSlotBottom && <slot name="bottom" />}
+    {hasSlotExtra && <slot name="extra" />}
   </div>
 </div>
 <!-- End Block: Hero -->

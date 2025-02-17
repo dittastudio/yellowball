@@ -1,5 +1,5 @@
 ---
-import { componentProperties } from '@/utils/helpers';
+import { componentProperties, hasSlot } from '@/utils/helpers';
 import { colourText } from '@/utils/maps';
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
   color?: ColorTypes;
 }
 
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const {
   theme = 'dark',
   role,
@@ -31,7 +32,7 @@ const { classes, attributes } = componentProperties(
 
 <div class:list={classes} {...attributes}>
   {
-    Astro.slots.default && (
+    hasSlotDefault && (
       <div class="w-full aspect-square rounded-8 md:rounded-10 overflow-hidden">
         <slot />
       </div>

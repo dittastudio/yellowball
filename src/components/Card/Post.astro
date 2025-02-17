@@ -1,4 +1,5 @@
 ---
+import { hasSlot } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 import TagList from '@/components/Elements/TagList.astro';
 
@@ -10,7 +11,7 @@ interface Props {
   class?: string;
 }
 
-const hasSlotDefault = !!Astro.slots.default;
+const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 
 const {
   tags,

@@ -1,5 +1,6 @@
 ---
 import { colourText } from '@/utils/maps';
+import { hasSlot } from '@/utils/helpers';
 
 interface Props {
   id: string;
@@ -9,6 +10,8 @@ interface Props {
 
 const { id, color = 'green', class: className } = Astro.props as Props;
 
+const hasSlotHeader = await hasSlot(Astro.slots, 'header');
+const hasSlotBody = await hasSlot(Astro.slots, 'body');
 const headerId = `accordion-item-header-${id}`;
 const bodyId = `accordion-item-body-${id}`;
 
@@ -55,7 +58,7 @@ const isOpenClasses = {
     </span>
 
     {
-      Astro.slots.header && (
+      hasSlotHeader && (
         <span
           class:list={[
             'block transition-colors duration-250 ease-smooth',
@@ -69,7 +72,7 @@ const isOpenClasses = {
   </button>
 
   {
-    Astro.slots.body && (
+    hasSlotBody && (
       <article
         data-js-accordion-body
         class="pl-[calc(var(--accordion-icon-size)_+_28px)] md:pl-[calc(var(--accordion-icon-size)_+_40px)] h-0 overflow-hidden"
