@@ -51,9 +51,11 @@ function FnHero() {
       const heroLogo = hero.querySelector('[data-js-hero-logo-animated-svg]') as HTMLElement;
 
       const header = document.querySelector('[data-js="header"]') as HTMLElement;
-      const layoutLines = document.querySelector('[data-js="layout-lines"]') as HTMLElement;
+      const layoutLines = document.querySelector('[data-js-layout-lines-shape]') as HTMLElement;
       const heroContent = hero.querySelector('[data-js-hero-content]') as HTMLElement;
       const cursors = hero.querySelector('[data-js="cursors"]') as HTMLElement;
+
+      document.documentElement.classList.remove('has-no-hero-animation');
 
       const tl = gsap.timeline();
 
@@ -67,7 +69,7 @@ function FnHero() {
       });
 
       gsap.set(header, { y: '-100%' });
-      gsap.set(layoutLines, { '--layout-line-top-opacity': 0 });
+      gsap.set(layoutLines, { opacity: 0 });
       gsap.set(hero, { height: 'calc(100vh - var(--header-height))' });
       gsap.set(heroContent, { opacity: 0 });
       gsap.set(cursors, { scale: 2 });
@@ -108,12 +110,11 @@ function FnHero() {
         }, '<')
         .to(heroContent, {
           opacity: 1,
-          y: 0,
           duration,
           ease,
         }, '<')
         .to(layoutLines, {
-          '--layout-line-top-opacity': 1,
+          opacity: 1,
           duration,
           ease,
         }, '<')
@@ -122,7 +123,8 @@ function FnHero() {
           duration,
           ease,
           onComplete: () => {
-            gsap.set(header, { clearProps: "all" });
+            document.documentElement.classList.add('has-no-hero-animation');
+            gsap.set([header, layoutLines, hero, heroContent, cursors], { clearProps: "all" });
             window.lenis.start();
           },
         }, '<')
@@ -133,6 +135,8 @@ function FnHero() {
         heroLogoContainer.classList.add('hidden');
         heroLogoStatic.classList.remove('hidden');
       }
+
+      document.documentElement.classList.add('has-no-hero-animation');
     }
   });
 }

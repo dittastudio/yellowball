@@ -71,7 +71,7 @@ const {
 
   <div
     data-js-hero-content
-    class="flex flex-col items-center justify-start gap-40 md:gap-60"
+    class="flex flex-col items-center justify-start gap-40 md:gap-60 transform-style-3d"
   >
     {Astro.slots.top && <slot name="top" />}
     {Astro.slots.headline && <slot name="headline" />}
@@ -80,3 +80,21 @@ const {
   </div>
 </div>
 <!-- End Block: Hero -->
+
+<style is:global>
+  html:not(.has-no-hero-animation) {
+    [data-js='header'] {
+      translate: 0 -100% 0;
+    }
+
+    [data-js='hero'] {
+      height: calc(100vh - var(--header-height));
+    }
+
+    [data-js-layout-lines-shape],
+    [data-js-hero-logo-animated-svg],
+    [data-js-hero-content] {
+      opacity: 0;
+    }
+  }
+</style>
