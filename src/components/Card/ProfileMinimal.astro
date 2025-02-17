@@ -19,9 +19,9 @@ const {
 
 const { classes, attributes } = componentProperties(
   [
-    'block w-full h-full text-center p-12 pb-24 md:p-20 md:pb-40',
-    'flex flex-col gap-24 md:gap-40',
-    'border rounded-20 md:rounded-30',
+    'block w-full h-full text-center p-8 pb-14 md:p-12 md:pb-22',
+    'flex flex-col gap-14 md:gap-20',
+    'border rounded-16 md:rounded-24',
     theme === 'dark'
       ? 'text-white bg-navy-light border-white/10'
       : 'text-navy bg-white border-navy/15',
@@ -33,23 +33,23 @@ const { classes, attributes } = componentProperties(
 <div class:list={classes} {...attributes}>
   {
     Astro.slots.default && (
-      <div class="w-full aspect-square rounded-8 md:rounded-10 overflow-hidden">
+      <div class="w-full aspect-square rounded-t-8 rounded-b-12 md:rounded-12 overflow-hidden">
         <slot />
       </div>
     )
   }
 
-  <div class="flex flex-col gap-12 md:gap-20 px-20">
+  <div class="flex flex-col gap-5 md:gap-8 px-20">
     <p
       class:list={[
-        'font-heading font-bold text-11 md:text-13 text-balance',
+        'font-heading font-bold text-8 md:text-10 text-balance',
         colourText[color],
       ]}
     >
       {role}
     </p>
 
-    <h3 class="font-heading font-semibold text-18 md:text-24 text-balance">
+    <h3 class="font-heading font-bold text-15 md:text-18 text-balance">
       {name}
     </h3>
   </div>

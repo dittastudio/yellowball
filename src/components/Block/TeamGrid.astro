@@ -1,5 +1,5 @@
 ---
-import CardProfile from '@/components/Card/Profile.astro';
+import CardProfileMinimal from '@/components/Card/ProfileMinimal.astro';
 ---
 
 <!-- Begin Block: TeamGrid -->
@@ -12,7 +12,7 @@ import CardProfile from '@/components/Card/Profile.astro';
     {
       [...Array(24)].map((_, index) => (
         <li>
-          <CardProfile
+          <CardProfileMinimal
             role="Director of SEO"
             name={`Team Member Name ${index + 1}`}
             color="grey"
@@ -25,7 +25,7 @@ import CardProfile from '@/components/Card/Profile.astro';
               width="1"
               height="1"
             />
-          </CardProfile>
+          </CardProfileMinimal>
         </li>
       ))
     }
