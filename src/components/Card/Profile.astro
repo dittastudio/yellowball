@@ -29,7 +29,7 @@ const { classes, attributes } = componentProperties(
 );
 ---
 
-<a href="/" class:list={classes} {...attributes}>
+<div class:list={classes} {...attributes}>
   {
     Astro.slots.default && (
       <div class="w-full aspect-square rounded-8 md:rounded-10 overflow-hidden">
@@ -52,4 +52,4 @@ const { classes, attributes } = componentProperties(
       {name}
     </h3>
   </div>
-</a>
+</div>

@@ -68,6 +68,12 @@ const { classes, attributes } = componentProperties(['carousel-profile'], rest);
     }
 
     .carousel-profile__swiper-wrapper {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+
       grid-column: span 8;
 
       @media screen(xsToSm) {

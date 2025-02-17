@@ -31,15 +31,11 @@
   --_pill-padding-x: 4px;
   --_pill-padding-y: 20px;
   --_pill-width: 16px;
-  --_pill-height: 8px;
+  --_pill-height: 4px;
   --_pill-width-active: 24px;
   --_pill-container: calc(
     (var(--_pill-width) * var(--_slidesNumber)) + var(--_pill-width-active)
   );
-
-  @media screen(md) {
-    --_pill-height: 4px;
-  }
 
   display: flex;
   width: var(--_pill-container);
