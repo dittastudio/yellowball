@@ -18,7 +18,7 @@ const { label, color = 'green', ...rest } = Astro.props as Props;
   <label
     for={rest.id}
     class:list={[
-      'inline-flex text-white outline outline-white outline-1 -outline-offset-1 justify-center items-baseline gap-8 md:gap-12 select-none px-20 pt-16 pb-15 md:px-30 rounded-20 font-heading text-15 md:text-18 font-bold peer-checked:text-navy transition-all duration-200 cursor-pointer',
+      'inline-flex text-white outline outline-white outline-1 -outline-offset-1 justify-center items-baseline gap-8 md:gap-12 select-none px-20 pt-16 pb-15 md:px-30 rounded-20 font-heading text-15 md:text-18 font-bold peer-checked:text-navy transition-all duration-200 cursor-pointer hover:bg-[rgba(255,255,255,0.075)]',
       `peer-checked:${colourOutline[color]}`,
       `peer-checked:${colourBackground[color]}`,
     ]}
