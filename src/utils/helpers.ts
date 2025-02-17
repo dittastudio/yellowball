@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+import type { AstroGlobal } from 'astro';
 
 type Procedure = (...args: any[]) => void;
 
@@ -30,6 +31,11 @@ const componentProperties = (classes: (string | undefined)[], rest: Record<strin
   };
 }
 
+async function hasSlot(slot: AstroGlobal['slots'], name: string) {
+  const renderedContent = await slot.render(name);
+  return !!renderedContent.trim().length;
+}
+
 const sleep = async (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
 
-export { debounce, componentProperties, sleep };
+export { debounce, componentProperties, sleep, hasSlot };

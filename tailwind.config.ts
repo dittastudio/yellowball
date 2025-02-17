@@ -92,6 +92,7 @@ export default {
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
+      9: [`${pxToRem(9)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       10: [`${pxToRem(10)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       11: [`${pxToRem(11)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       12: [`${pxToRem(12)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
