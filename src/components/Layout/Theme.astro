@@ -5,12 +5,14 @@ interface Props {
   theme?: string;
   isTopOfPage?: boolean;
   class?: string;
+  hasNoLines?: boolean;
 }
 
 const {
   theme = 'dark',
   isTopOfPage = false,
   class: className,
+  hasNoLines = false,
 } = Astro.props as Props;
 ---
 
@@ -25,7 +27,11 @@ const {
 >
   {
     theme === 'light' ? (
-      <LayoutLines class:list={[className]} theme={theme}>
+      <LayoutLines
+        class:list={[className]}
+        theme={theme}
+        hasNoLines={hasNoLines}
+      >
         <div class={isTopOfPage ? 'pt-[var(--header-height)]' : null}>
           <slot />
         </div>
