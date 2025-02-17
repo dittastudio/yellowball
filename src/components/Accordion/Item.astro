@@ -79,11 +79,9 @@ const isOpenClasses = {
       >
         <div
           data-js-accordion-body-inner
-          class="prose max-w-[850px] prose-p:text-18 prose-p:sm:text-21 prose-p:m-0 [&_p+p]:mt-[1em] pb-40 text-current opacity-0"
+          class="prose text-grey light:text-navy-lightest max-w-[850px] prose-p:text-18 prose-p:sm:text-21 prose-p:m-0 [&_p+p]:mt-[1em] pb-40 text-current opacity-0"
         >
-          <div class="opacity-60">
-            <slot name="body" />
-          </div>
+          <slot name="body" />
         </div>
       </article>
     )
