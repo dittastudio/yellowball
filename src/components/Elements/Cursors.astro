@@ -1,15 +1,24 @@
 ---
+import { componentProperties } from '@/utils/helpers';
+
 interface Props {
   hasExit?: boolean | null;
+  class?: string;
 }
 
-const { hasExit = null } = Astro.props as Props;
+const { hasExit = null, ...rest } = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  ['absolute inset-0 z-10 pointer-events-none'],
+  rest,
+);
 ---
 
 <div
   data-js="cursors"
   data-js-exit={hasExit}
-  class="absolute inset-0 z-10 pointer-events-none"
+  class:list={classes}
+  {...attributes}
 >
   <slot />
 </div>
