@@ -92,6 +92,7 @@ export default {
       body: ["Reddit Sans", "sans-serif"],
     },
     fontSize: {
+      8: [`${pxToRem(8)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       9: [`${pxToRem(9)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       10: [`${pxToRem(10)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       11: [`${pxToRem(11)}rem`, { lineHeight: '1.4', letterSpacing: '-0.01em' }],
@@ -316,6 +317,7 @@ export default {
         12: '12px',
         16: '16px',
         20: '20px',
+        24: '24px',
         30: '30px',
         40: '40px',
         80: '80px',

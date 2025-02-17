@@ -2,16 +2,25 @@
 interface Props {
   theme?: string;
   class?: string | undefined;
+  hasNoLines?: boolean;
 }
 
-const { theme = 'dark', class: className } = Astro.props as Props;
+const {
+  theme = 'dark',
+  class: className,
+  hasNoLines = false,
+} = Astro.props as Props;
 ---
 
 <div
   data-js="layout-lines"
   class:list={['layout-lines', `is-${theme}`, className]}
 >
-  <div data-js-layout-lines-shape class="layout-lines__shape"></div>
+  {
+    !hasNoLines && (
+      <div data-js-layout-lines-shape class="layout-lines__shape" />
+    )
+  }
 
   <slot />
 </div>
