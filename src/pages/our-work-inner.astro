@@ -58,21 +58,42 @@ const lgMedia = '(min-width: 1024px)';
     <section class={classSection}>
       <BlockMedia class="wrapper">
         <Fragment slot="media">
-          <picture>
-            <source
-              media={lgMedia}
-              srcset="/images/test-hero-work-desktop.jpg"
-              width="1226"
-              height="712"
-            />
+          <div class="relative">
+            <video
+              class="absolute inset-0 -z-1 w-full h-full object-cover"
+              src="/images/test-work-video.mp4"
+              autoplay
+              playsinline
+              muted
+              loop
+              width="498"
+              height="308"
+            >
+            </video>
 
-            <img
-              src="/images/test-hero-work-mobile.jpg"
-              width="342"
-              height="529"
-              alt="Insert alt here"
-            />
-          </picture>
+            <!-- Optional gradient for video, please remove if not needed -->
+            <div
+              class="absolute inset-0 -z-1 bg-gradient-to-tr from-[#5D3FC3] to-[#6A4FB8] opacity-85"
+            >
+            </div>
+            <!-- Optional gradient for video, please remove if not needed -->
+
+            <picture>
+              <source
+                media={lgMedia}
+                srcset="/images/test-hero-work-desktop.png"
+                width="1226"
+                height="712"
+              />
+
+              <img
+                src="/images/test-hero-work-mobile.png"
+                width="342"
+                height="529"
+                alt="Insert alt here"
+              />
+            </picture>
+          </div>
         </Fragment>
       </BlockMedia>
     </section>
