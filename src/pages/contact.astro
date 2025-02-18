@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro';
 
 import CardInfo from '@/components/Card/Info.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
-import TextReveal from '@/components/Elements/TextReveal.astro';
 import FormContact from '@/components/Form/Contact.astro';
 
 import BlockForm from '@/components/Block/Form.astro';
@@ -16,13 +15,9 @@ const classSection = 'py-50 md:py-[75px]';
     <section class={classSection}>
       <BlockForm>
         <Fragment slot="content">
-          <TextReveal
-            onEnter
-            tag="h1"
-            class="font-heading text-fluid-h1 font-semibold"
-          >
-            Let's get the ball <TextGradient>rolling</TextGradient>
-          </TextReveal>
+          <h1 class="font-heading text-fluid-h1 font-semibold">
+            Let's get the<br /> ball <TextGradient>rolling</TextGradient>
+          </h1>
 
           <p class="text-17 md:text-21 text-grey text-balance">
             We're a boutique, London-based web design agency, crafting stunning,

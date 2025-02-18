@@ -1,6 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import BlockForm from '@/components/Block/Form.astro';
+import Button from '@/components/Elements/Button.astro';
+import FormContact from '@/components/Form/Contact.astro';
 import Icon from '@/components/Elements/Icon.astro';
+import Modal from '@/components/UI/Modal.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
 ---
 
 <Layout title="Index">
@@ -11,8 +16,8 @@ import Icon from '@/components/Elements/Icon.astro';
       </div>
     </section>
 
-    <section>
-      <ul class="wrapper flex flex-col gap-10 text-18 font-heading">
+    <section class="wrapper flex flex-col gap-50">
+      <ul class="flex flex-col gap-10 text-18 font-heading">
         <li>
           <a
             href="/home"
@@ -155,6 +160,33 @@ import Icon from '@/components/Elements/Icon.astro';
           </a>
         </li>
       </ul>
+
+      <Modal>
+        <Fragment slot="trigger">
+          <Button text="Open Contact Form" />
+        </Fragment>
+
+        <Fragment slot="content">
+          <BlockForm>
+            <Fragment slot="content">
+              <h1 class="font-heading text-fluid-h1 font-semibold">
+                Let's get the<br /> ball
+                <TextGradient>rolling</TextGradient>
+              </h1>
+
+              <p class="text-17 md:text-21 text-grey text-balance">
+                We're a boutique, London-based web design agency, crafting
+                stunning, bespoke websites that captivate and convert. Ready to
+                get the ball rolling? Let's chat!
+              </p>
+            </Fragment>
+
+            <Fragment slot="form">
+              <FormContact />
+            </Fragment>
+          </BlockForm>
+        </Fragment>
+      </Modal>
     </section>
   </main>
 </Layout>
