@@ -4,29 +4,36 @@ interface Props {
 }
 
 const { theme = 'dark' } = Astro.props as Props;
+
+const classLabel = [
+  'ui-before-after__label relative w-1/2 md:w-auto shrink-0 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none mdMax:cursor-pointer',
+  'md:bg-white md:text-navy md:border md:border-navy/15',
+  theme === 'dark'
+    ? 'mdMax:[&:has(input:checked)]:text-navy'
+    : 'mdMax:[&:has(input:checked)]:text-white',
+];
+
+const classMediaContainer = [
+  'md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border aspect-[2/3] mdMax:absolute mdMax:inset-0',
+  theme === 'dark'
+    ? 'md:bg-card border-navy-lighter'
+    : 'md:bg-white border-navy/15',
+];
 ---
 
 <div class="ui-before-after__container flex flex-col items-center gap-y-30">
   <div
     class:list={[
-      'rounded-16 p-3 border',
+      'mdMax:rounded-16 mdMax:p-3 mdMax:border md:w-full',
       theme === 'dark'
-        ? 'bg-card border-navy-lighter'
-        : 'bg-white border-navy/15',
+        ? 'mdMax:bg-card mdMax:border-navy-lighter'
+        : 'mdMax:bg-white mdMax:border-navy/15',
     ]}
   >
     <div
-      class="relative z-1 flex justify-center items-center gap-2 text-center"
+      class="relative z-1 flex justify-center items-center gap-2 text-center md:justify-around md:gap-x-30"
     >
-      <label
-        class:list={[
-          'ui-before-after__label relative w-1/2 shrink-0 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
-          theme === 'dark'
-            ? '[&:has(input:checked)]:text-navy'
-            : '[&:has(input:checked)]:text-white',
-        ]}
-        for="before"
-      >
+      <label class:list={classLabel} for="before">
         Before
 
         <input
@@ -38,15 +45,7 @@ const { theme = 'dark' } = Astro.props as Props;
         />
       </label>
 
-      <label
-        class:list={[
-          'ui-before-after__label relative w-1/2 shrink-0 font-heading font-bold text-12 px-18 py-10 rounded-12 transition-colors duration-200 ease-smooth select-none cursor-pointer',
-          theme === 'dark'
-            ? '[&:has(input:checked)]:text-navy'
-            : '[&:has(input:checked)]:text-white',
-        ]}
-        for="after"
-      >
+      <label class:list={classLabel} for="after">
         After
 
         <input
@@ -59,7 +58,7 @@ const { theme = 'dark' } = Astro.props as Props;
 
       <span
         class:list={[
-          'ui-before-after__pill absolute top-0 left-0 w-[calc(50%-1px)] h-full rounded-12 -z-1',
+          'ui-before-after__pill absolute top-0 left-0 w-[calc(50%-1px)] h-full rounded-12 -z-1 md:hidden',
           theme === 'dark' ? 'bg-yellow' : 'bg-navy',
         ]}
       >
@@ -73,14 +72,7 @@ const { theme = 'dark' } = Astro.props as Props;
       theme === 'dark' ? 'mdMax:bg-card' : 'mdMax:bg-white',
     ]}
   >
-    <div
-      class:list={[
-        'md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border aspect-[2/3] mdMax:absolute mdMax:inset-0',
-        theme === 'dark'
-          ? 'md:bg-card border-navy-lighter'
-          : 'md:bg-white border-navy/15',
-      ]}
-    >
+    <div class:list={classMediaContainer}>
       <div
         class="ui-before-after__media ui-before-after__media--before h-full [&>img]:size-full [&>img]:object-cover"
       >
@@ -88,14 +80,7 @@ const { theme = 'dark' } = Astro.props as Props;
       </div>
     </div>
 
-    <div
-      class:list={[
-        'md:col-span-1 rounded-30 md:rounded-40 overflow-hidden border aspect-[2/3] mdMax:absolute mdMax:inset-0',
-        theme === 'dark'
-          ? 'border-navy-lighter md:bg-navy'
-          : 'border-navy/15 md:bg-white',
-      ]}
-    >
+    <div class:list={classMediaContainer}>
       <div
         class="ui-before-after__media ui-before-after__media--after h-full [&>img]:size-full [&>img]:object-cover"
       >
@@ -141,7 +126,7 @@ const { theme = 'dark' } = Astro.props as Props;
       opacity: 0;
 
       @media screen(md) {
-        opacity: 0.2;
+        opacity: 1;
       }
     }
 
@@ -150,7 +135,7 @@ const { theme = 'dark' } = Astro.props as Props;
       opacity: 0;
 
       @media screen(md) {
-        opacity: 0.2;
+        opacity: 1;
       }
     }
   }
