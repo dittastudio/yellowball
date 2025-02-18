@@ -3,27 +3,32 @@ interface Props {
   class?: string;
   spacingClasses?: string;
   speed?: number;
+  disableInteraction?: boolean;
 }
 
 const {
   class: className,
   spacingClasses = '',
   speed = 20,
+  disableInteraction = false,
 } = Astro.props as Props;
 ---
 
 <div
-  data-js="ticker"
-  class:list={['contain-layout', className]}
+  data-js={!disableInteraction ? 'ticker' : null}
+  class:list={['ui-ticker contain-layout', className]}
   style={`--ticker-speed: ${speed}s`}
 >
   <div data-js-container class="flex justify-center transform-gpu">
     {
       [...Array(4)].map(() => (
-        <div data-js-wrapper class="min-w-full shrink-0 transform-gpu">
+        <div
+          data-js-wrapper
+          class="ui-ticker__wrapper min-w-full shrink-0 transform-gpu"
+        >
           <div
             data-js-list
-            class="select-none flex justify-center shrink-0 min-w-full transform-gpu"
+            class="ui-ticker__list select-none flex justify-center shrink-0 min-w-full transform-gpu"
           >
             <div
               class:list={[
@@ -41,7 +46,7 @@ const {
 </div>
 
 <style is:global>
-  [data-js='ticker'] {
+  .ui-ticker {
     @keyframes tickerLeft {
       0% {
         translate: 0 0 0;
@@ -59,13 +64,13 @@ const {
         translate: 100% 0 0;
       }
     }
+  }
 
-    [data-js-wrapper] {
-      animation: tickerRight var(--ticker-speed) linear infinite paused;
-    }
+  .ui-ticker__wrapper {
+    animation: tickerRight var(--ticker-speed) linear infinite paused;
+  }
 
-    [data-js-list] {
-      animation: tickerLeft var(--ticker-speed) linear infinite;
-    }
+  .ui-ticker__list {
+    animation: tickerLeft var(--ticker-speed) linear infinite;
   }
 </style>

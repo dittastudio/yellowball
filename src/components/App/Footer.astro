@@ -1,6 +1,7 @@
 ---
 import Icon from '@/components/Elements/Icon.astro';
 import ShapeRow from '@/components/Elements/ShapeRow.astro';
+import TickerSEO from '@/components/UI/TickerSEO.astro';
 
 const serviceLinks = [
   'WordPress',
@@ -108,9 +109,18 @@ const linkLists = [
     >
       &copy;Yellowball <time data-js-year></time>
     </p>
+
+    <div class="pt-90 md:pt-100">
+      <TickerSEO
+        text={[
+          'Web Design: Lorem ipsum dolor sit amet consectetur. Laoreet morbi diam pellentesque massa in. Fames sed volutpat mattis ipsum faucibus sodales etiam. Velit nullam turpis justo augue mauris consectetur augue.',
+          'SEO: bristique maecenas vitae ut etiam risus turpis scelerisque magna.',
+        ]}
+      />
+    </div>
   </div>
 
-  <div data-js-footer-logo class="wrapper mt-40">
+  <div data-js-footer-logo class="wrapper mt-30 md:mt-5">
     <Icon
       name="yellowball"
       width={117}
