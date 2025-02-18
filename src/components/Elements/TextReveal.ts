@@ -7,14 +7,6 @@ function FnTextReveal() {
     "[data-js='text-reveal']",
   ) as NodeListOf<HTMLElement>;
 
-  const from = { yPercent: 100 };
-  const to = {
-    duration: 1.5,
-    yPercent: 0,
-    ease: 'power4.out',
-    stagger: 0.1,
-  };
-
   textReveal.forEach(reveal => {
     let masks: SplitType;
     let lines: SplitType;
@@ -44,17 +36,25 @@ function FnTextReveal() {
 
       reveal.classList.remove('opacity-0');
 
+      const from = { yPercent: 100 };
+      const to = {
+        duration: 1.5,
+        yPercent: 0,
+        ease: 'power4.out',
+        stagger: 0.1,
+      };
+
       const toExtra = hasOnEnter
         ? {}
         : {
-            scrollTrigger: {
-              markers: false,
-              scrub: 1.5,
-              trigger: reveal,
-              start: '20% 80%',
-              end: 'bottom center',
-            },
-          };
+          scrollTrigger: {
+            markers: false,
+            scrub: 1.5,
+            trigger: reveal,
+            start: '20% 80%',
+            end: 'bottom center',
+          },
+        };
 
       tween = gsap.fromTo(
         lines.lines,

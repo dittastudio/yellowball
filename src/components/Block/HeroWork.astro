@@ -2,6 +2,7 @@
 import { colourText } from '@/utils/maps';
 import { hasSlot } from '@/utils/helpers';
 import TagCategory from '@/components/Elements/TagCategory.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 
 interface Props {
   theme?: ThemeTypes;
@@ -42,11 +43,13 @@ const hasSlotCta = await hasSlot(Astro.slots, 'cta');
   </p>
 
   <div class="flex flex-col gap-30">
-    <h1
-      class="font-heading text-fluid-h2 text-balance font-semibold max-w-[18ch]"
+    <TextReveal
+      onEnter
+      tag="h1"
+      class="font-heading text-fluid-h2 font-semibold max-w-[18ch]"
     >
       {heading}
-    </h1>
+    </TextReveal>
 
     <div class="flex flex-wrap justify-between items-center gap-30 md:gap-20">
       <ul class="flex flex-wrap gap-12">

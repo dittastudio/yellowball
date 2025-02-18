@@ -43,7 +43,6 @@ function FnTextScrub() {
       },
     });
 
-
     tl.from(charsArray, {
       opacity: 0,
       y: '-5%',
