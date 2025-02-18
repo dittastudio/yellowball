@@ -51,7 +51,7 @@ const hasSlotButton = await hasSlot(Astro.slots, 'button');
       'group relative w-full h-full grid grid-cols-1 overflow-hidden',
       mini
         ? 'rounded-30 p-40'
-        : `rounded-40 lg:rounded-80 p-30 lg:p-80 lgMax:grid-rows-[100px_1fr] lgMax:before:content-['']`,
+        : `rounded-40 lg:rounded-80 p-30 lg:p-80 lgMax:grid-rows-[140px_1fr] lgMax:before:content-['']`,
     ]}
   >
     <div
@@ -73,7 +73,7 @@ const hasSlotButton = await hasSlot(Astro.slots, 'button');
           class:list={[
             colorShape,
             mini ? 'size-180' : 'size-280 lg:size-400',
-            'absolute bottom-0 right-0 z-0 translate-x-1/3 translate-y-1/2 pointer-events-none',
+            'pointer-events-none absolute top-0 right-0 z-0 translate-x-1/3 -translate-y-1/2 sm:translate-y-1/2 sm:top-auto sm:bottom-0',
           ]}
         />
       )
@@ -87,7 +87,7 @@ const hasSlotButton = await hasSlot(Astro.slots, 'button');
           {color}
           class:list={[
             mini ? 'size-180' : 'size-280 lg:size-400',
-            'absolute bottom-0 right-0 z-0 translate-x-1/3 translate-y-1/2 pointer-events-none',
+            'pointer-events-none absolute top-0 right-0 z-0 translate-x-1/3 -translate-y-1/2 sm:translate-y-1/2 sm:top-auto sm:bottom-0',
           ]}
         />
       )
