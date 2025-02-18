@@ -24,7 +24,7 @@ const { items, color = 'current', class: className } = Astro.props as Props;
 >
   {
     items.map(item => (
-      <li class="flex items-center gap-30">
+      <li class="flex items-start gap-30">
         <Icon
           name={item.icon}
           class:list={[

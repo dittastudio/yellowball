@@ -1,0 +1,31 @@
+---
+import Ticker from '@/components/Elements/Ticker.astro';
+
+interface Props {
+  text: string[];
+  speed?: number;
+}
+
+const { text, speed = 30 } = Astro.props as Props;
+const items: string[] = [...text, ...text].filter(Boolean);
+---
+
+<div
+  class="ticker-seo isolate relative overflow-hidden opacity-50 text-15 md:text-18"
+>
+  <Ticker {speed} disableInteraction spacingClasses="gap-[1em] px-[0.5em]">
+    {items.map(item => <p>{item}</p>)}
+  </Ticker>
+</div>
+
+<style is:global>
+  .ticker-seo {
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      white 20%,
+      white 80%,
+      transparent 100%
+    );
+  }
+</style>

@@ -4,8 +4,6 @@ import Layout from '@/layouts/Layout.astro';
 import Button from '@/components/Elements/Button.astro';
 import ButtonScrollToTop from '@/components/UI/ButtonScrollToTop.astro';
 import CardPrompt from '@/components/Card/Prompt.astro';
-import Cursor from '@/components/Elements/Cursor.astro';
-import Cursors from '@/components/Elements/Cursors.astro';
 import TextGradient from '@/components/Elements/TextGradient.astro';
 import TextReveal from '@/components/Elements/TextReveal.astro';
 
@@ -23,7 +21,7 @@ const classSectionThick = 'py-100 md:py-[150px]';
 
 <Layout title="Our Work">
   <main>
-    <section class={classSection}>
+    <section class="pt-10 md:pt-40">
       <BlockHero color="green">
         <Fragment slot="headline">
           <TextReveal
@@ -39,30 +37,6 @@ const classSectionThick = 'py-100 md:py-[150px]';
           <p class="text-17 md:text-21 text-grey text-balance max-w-[56ch]">
             Explore our award-winning web design portfolio below.
           </p>
-        </Fragment>
-
-        <Fragment slot="extra">
-          <Cursors
-            hasExit
-            class="relative w-full h-80 md:h-auto md:absolute md:inset-0 md:z-10"
-          >
-            <Cursor
-              title="PPC Team"
-              class="bg-blue absolute bottom-0 right-0 md:bottom-auto md:right-auto md:top-[10%] md:left-[20%]"
-            />
-            <Cursor
-              title="Design Team"
-              class="bg-yellow absolute top-0 right-[35%] md:top-[5%] md:right-[20%]"
-            />
-            <Cursor
-              title="SEO Team"
-              class="bg-green absolute bottom-[50%] left-0 md:bottom-[2%] md:left-[5%]"
-            />
-            <Cursor
-              title="Developers"
-              class="mdMax:hidden bg-grey absolute bottom-[5%] right-[5%]"
-            />
-          </Cursors>
         </Fragment>
       </BlockHero>
     </section>
