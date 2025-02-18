@@ -1,34 +1,3 @@
-<span data-css="text-gradient">
+<span class="text-gradient">
   <slot />
 </span>
-
-<style is:global>
-  @keyframes moveX {
-    0% {
-      background-position-x: 0%;
-    }
-    50% {
-      background-position-x: 100%;
-    }
-    100% {
-      background-position-x: 0%;
-    }
-  }
-
-  [data-css='text-gradient'] {
-    animation: moveX 10s linear infinite;
-    background-size: 200% 100%;
-    background-repeat: no-repeat;
-    background-position-x: 0%;
-    background-image: linear-gradient(
-      to right,
-      theme('colors.yellow'),
-      theme('colors.green'),
-      theme('colors.blue'),
-      theme('colors.purple')
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline !important;
-  }
-</style>
