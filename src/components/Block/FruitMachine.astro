@@ -36,30 +36,35 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
           <img
             src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-1 block w-full h-auto"
+            style="--fruit-strip-depth: -4.45;"
           />
         </li>
         <li>
           <img
             src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-2 block w-full h-auto"
+            style="--fruit-strip-depth: -0.45;"
           />
         </li>
         <li>
           <img
             src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-3 block w-full h-auto"
+            style="--fruit-strip-depth: -6.45;"
           />
         </li>
         <li>
           <img
             src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-4 block w-full h-auto"
+            style="--fruit-strip-depth: -2.45;"
           />
         </li>
         <li>
           <img
             src="/images/fruit-strip.png"
             class="fruit-machine__strip fruit-machine__strip-5 block w-full h-auto"
+            style="--fruit-strip-depth: -3.45;"
           />
         </li>
       </ul>
@@ -138,26 +143,6 @@ import TextReveal from '@/components/Elements/TextReveal.astro';
       --fruit-strip-depth: -1.45;
 
       translate: 0 calc(var(--fruit-strip-height) * var(--fruit-strip-depth)) 0;
-    }
-
-    &__strip-1 {
-      --fruit-strip-depth: -4.45;
-    }
-
-    &__strip-2 {
-      --fruit-strip-depth: -0.45;
-    }
-
-    &__strip-3 {
-      --fruit-strip-depth: -6.45;
-    }
-
-    &__strip-4 {
-      --fruit-strip-depth: -2.45;
-    }
-
-    &__strip-5 {
-      --fruit-strip-depth: -3.45;
     }
   }
 </style>

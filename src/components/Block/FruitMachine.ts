@@ -84,14 +84,21 @@ function FnFruitMachine() {
         });
       }
 
+      const stripItems = machine.querySelectorAll('li');
+      const stripImages = machine.querySelectorAll('li img');
+      const startDepths = Array.from(stripImages).map(img => Number(getComputedStyle(img).getPropertyValue('--fruit-strip-depth')));
+      const endDepth = -31.45;
+
+      let isSpinning = false;
+      let isSpinningDown = true;
+
       const doSpin = async () => {
-        const stripItems = machine.querySelectorAll('li');
-        const stripImages = machine.querySelectorAll('li img');
+        isSpinning = true;
         const tl = gsap.timeline()
 
         tl
           .to(stripImages, {
-            '--fruit-strip-depth': -31.45,
+            '--fruit-strip-depth': (index: number) => isSpinningDown ? endDepth : startDepths[index],
             duration: 2.5,
             ease: "power2.in",
             stagger: 0.2,
@@ -112,22 +119,35 @@ function FnFruitMachine() {
           }, '-=0.25');
 
         await sleep(tl.duration() * 1000 + 500);
-        machine.classList.add('spin-complete');
 
-        await sleep(5000);
-        confetti.reset();
+        isSpinning = false;
+        isSpinningDown = !isSpinningDown;
       }
+
+      machine.addEventListener('click', () => {
+        if (isSpinning) return;
+
+        doSpin();
+      });
 
       ScrollTrigger.create({
         markers: false,
         trigger: machine,
-        start: `top center`,
-        once: true,
+        start: `top top`,
         onEnter: async () => {
+          if (isSpinning) return;
+
           await sleep(500);
 
           doSpin();
         },
+        onEnterBack: async () => {
+          if (isSpinning) return;
+
+          await sleep(500);
+
+          doSpin();
+        }
       });
     }
   });
