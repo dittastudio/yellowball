@@ -28,7 +28,6 @@ function FnServiceList() {
               start: 'top 90%',
               end: 'center 80%',
               scrub: 1.5,
-              markers: true,
             },
           },
         );

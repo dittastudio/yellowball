@@ -3,10 +3,10 @@ import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  type?: 'logo' | 'outline' | undefined;
-  name?: string | undefined;
-  hover?: string;
-  color?: ColorTypes;
+  type: 'logo' | 'outline';
+  name: string;
+  hover?: string | undefined;
+  color?: ColorTypes | undefined;
 }
 
 const { type, name, hover, color = 'white' } = Astro.props as Props;
@@ -23,7 +23,7 @@ const hoverClasses =
         purple: '[a:hover_&]:text-navy [a:hover_&]:bg-purple',
       }
     : {
-        white: '[a:hover_&]:bg-white [a:hover_&]:text-navy',
+        white: '[a:hover_&]:bg-white',
         green: '[a:hover_&]:bg-white',
         blue: '[a:hover_&]:bg-white',
         yellow: '[a:hover_&]:bg-white',
@@ -33,32 +33,58 @@ const hoverClasses =
 
 <span
   class:list={[
-    'relative shrink-0 flex justify-center items-center size-40 md:size-50',
-    'after:absolute after:inset-0',
-    'after:border after:border-solid after:border-navy-lighter after:rounded-12',
-    'bg-navy-light rounded-12',
-    'transition-colors duration-250 ease-smooth',
-    colorClasses,
-    hoverClasses[color as keyof typeof hoverClasses],
+    'relative block shrink-0 size-40 md:size-50',
+    'border border-solid border-navy-lighter bg-navy-light rounded-12 overflow-hidden',
   ]}
 >
-  {
-    type === 'outline' ? (
-      <span class="size-22 [&_svg]:size-full">
-        <Icon name={name} width={28} height={28} class="size-full" />
-      </span>
-    ) : (
-      <span class="relative size-22 md:size-28 [&_svg]:size-full">
-        <span class="block size-full transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-0">
+  <span
+    class:list={[
+      'flex justify-center items-center size-full',
+      'transition-[color,background-color] duration-250 ease-smooth',
+      colorClasses,
+      hoverClasses[color as keyof typeof hoverClasses],
+    ]}
+  >
+    {
+      type === 'outline' ? (
+        <span class="size-22 [&_svg]:size-full">
           <Icon name={name} width={28} height={28} class="size-full" />
         </span>
-
-        {hover && (
-          <span class="absolute inset-0 size-inherit opacity-0 transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-100">
-            <Icon name={hover} width={28} height={28} class="size-full" />
+      ) : (
+        <span class="relative size-22 md:size-28 [&_svg]:size-full">
+          <span class="cube-icon__under block size-full">
+            <Icon name={name} width={28} height={28} class="size-inherit" />
           </span>
-        )}
-      </span>
-    )
-  }
+
+          {hover && (
+            <span class="cube-icon__hover absolute inset-0 size-inherit">
+              <Icon name={hover} width={28} height={28} class="size-inherit" />
+            </span>
+          )}
+        </span>
+      )
+    }
+  </span>
 </span>
+
+<style is:global>
+  .cube-icon__under {
+    opacity: 1;
+    transition: opacity 0.25s theme('transitionTimingFunction.smooth');
+
+    a:hover & {
+      opacity: 0;
+      transition: opacity 0.25s theme('transitionTimingFunction.smooth');
+    }
+  }
+
+  .cube-icon__hover {
+    opacity: 0;
+    transition: opacity 0.25s theme('transitionTimingFunction.smooth');
+
+    a:hover & {
+      opacity: 1;
+      transition: opacity 0.25s theme('transitionTimingFunction.smooth');
+    }
+  }
+</style>

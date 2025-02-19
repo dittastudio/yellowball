@@ -6,12 +6,7 @@ import ServiceItem from '@/components/Elements/ServiceItem.astro';
 interface ServiceListItem {
   headline: string;
   description: string;
-  icon: {
-    type: 'logo' | 'outline';
-    name: string;
-    hover: string;
-    color?: ColorTypes;
-  };
+  icon: CubeIconObject;
 }
 
 interface Props {
