@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Base {
+  label: string;
+}
+
+type Props = HTMLAttributes<'input'> & Base;
+
+const { label, ...rest } = Astro.props as Props;
+---
+
+<div class="relative w-full flex flex-col">
+  <!-- prettier-ignore -->
+  <textarea
+    data-lenis-prevent
+    class="peer text-14 lg:text-17 border border-offblack text-white bg-transparent focus:border-white focus:outline-none p-24 lg:p-30 transition-colors placeholder:text-grey rounded-20 lg:rounded-24 min-h-[220px] lg:min-h-[245px]"
+    {...rest}></textarea>
+</div>

@@ -4,6 +4,7 @@ import FormCheckbox from '@/components/Fields/Checkbox.astro';
 import FormControl from '@/components/Fields/Control.astro';
 import FormGroup from '@/components/Fields/Group.astro';
 import FormInput from '@/components/Fields/Input.astro';
+import FormTextarea from '@/components/Fields/Textarea.astro';
 import FormFile from '@/components/Fields/File.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 ---
@@ -269,21 +270,23 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
     </Fragment>
   </FormGroup>
 
-  <div data-js-service="any" class="w-full hidden">
-    <FormInput
-      label="Tell us about your project"
-      type="text"
+  <FormGroup
+    data-js-service="any"
+    headline="Tell us about your project"
+    class="hidden w-full"
+  >
+    <FormTextarea
+      label="Your message"
       id="about"
       name="about"
-      value=""
-      placeholder="placeholder"
+      placeholder="Your message..."
     />
-  </div>
+  </FormGroup>
 
   <FormGroup
     data-js-service="any"
-    class="hidden"
     headline="Anything to share? Brief, technical scope or supporting documents?"
+    class="hidden"
   >
     <FormFile label="Add attachment" name="file" id="file" />
   </FormGroup>
