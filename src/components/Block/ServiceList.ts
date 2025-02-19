@@ -25,8 +25,8 @@ function FnServiceList() {
             skewX: 0,
             scrollTrigger: {
               trigger: item,
-              start: 'top 80%',
-              end: 'center center',
+              start: 'top 90%',
+              end: 'center 80%',
               scrub: 1.5,
             },
           },

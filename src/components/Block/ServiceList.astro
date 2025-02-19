@@ -1,17 +1,12 @@
 ---
 import { hasSlot } from '@/utils/helpers';
 import Button from '@/components/Elements/Button.astro';
-import CubeIcon from '@/components/Elements/CubeIcon.astro';
 import ServiceItem from '@/components/Elements/ServiceItem.astro';
 
 interface ServiceListItem {
   headline: string;
   description: string;
-  icon: {
-    type: 'logo' | 'outline';
-    name: string;
-    hover: string;
-  };
+  icon: CubeIconObject;
 }
 
 interface Props {
@@ -57,12 +52,11 @@ const hasSlotHeadline = await hasSlot(Astro.slots, 'headline');
         items?.map(item => (
           <li data-js-item>
             <ServiceItem
+              icon={item.icon}
               color={color}
               headline={item.headline}
               description={item.description}
-            >
-              <CubeIcon slot="icon" icon={item.icon} color={color} />
-            </ServiceItem>
+            />
           </li>
         ))
       }

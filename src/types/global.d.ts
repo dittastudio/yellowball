@@ -10,10 +10,10 @@ type ThemeTypes = 'light' | 'dark'
 type ColorMainTypes = 'yellow' | 'green' | 'blue' | 'purple'
 
 interface ImageObject {
-  src: string
-  alt?: string
-  width: number
-  height: number
+  src: string;
+  alt?: string;
+  width: number;
+  height: number;
 }
 
 interface TagObject {
@@ -51,4 +51,11 @@ type NavigationStore = {
   toggleMenu: () => void;
   closeMenu: () => void;
   toggleSubMenu: () => void;
-};
+}
+
+interface CubeIconObject {
+  type: 'logo' | 'outline';
+  name: string;
+  hover?: string | undefined;
+  color?: ColorTypes | undefined;
+}
