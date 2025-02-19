@@ -62,6 +62,7 @@ function FnContact() {
     }
 
     const validateField = (field: Fields, value: string) => {
+      // @ts-ignore
       const fieldSchema = formSchema.pick({ [field]: true });
       const result = fieldSchema.safeParse({ [field]: value });
       const errorField = form.querySelector(`[data-error="${field}"]`);
