@@ -97,13 +97,13 @@ function FnFruitMachine() {
             stagger: 0.2,
           })
           .to(stripItems, {
-            y: '20%',
+            y: '2%',
             duration: 0,
           }, '<75%')
           .to(stripItems, {
             y: 0,
-            duration: 1,
-            ease: "elastic.out(1.2,0.5)",
+            duration: 0.5,
+            ease: "elastic.out(1, 0.4)",
             stagger: 0.2,
           }, '<')
           .add(() => {

@@ -10,26 +10,24 @@ interface Props {
 const { color = 'yellow', headline, description } = Astro.props as Props;
 ---
 
-<div>
-  <a href="/" class="flex flex-col gap-15 md:gap-30">
-    <div class="flex flex-col gap-15 md:flex-row md:items-center md:gap-20">
-      <slot name="icon" />
+<a href="/" class="flex flex-col gap-15 md:gap-30">
+  <div class="flex flex-col gap-15 md:flex-row md:items-center md:gap-20">
+    <slot name="icon" />
 
-      <h4
-        class="font-heading font-semibold text-20 md:text-24 text-white text-balance"
-      >
-        <LinkArrow {color}>
-          {headline}
-        </LinkArrow>
-      </h4>
-    </div>
+    <h4
+      class="w-full font-heading font-semibold text-20 md:text-24 text-white text-balance"
+    >
+      <LinkArrow class="w-full" {color}>
+        {headline}
+      </LinkArrow>
+    </h4>
+  </div>
 
-    {
-      description && (
-        <div>
-          <p class="text-15 md:text-18 text-grey text-balance">{description}</p>
-        </div>
-      )
-    }
-  </a>
-</div>
+  {
+    description && (
+      <div>
+        <p class="text-15 md:text-18 text-grey text-balance">{description}</p>
+      </div>
+    )
+  }
+</a>
