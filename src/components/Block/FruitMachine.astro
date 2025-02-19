@@ -1,5 +1,7 @@
 ---
 import Icon from '@/components/Elements/Icon.astro';
+import TextGradient from '@/components/Elements/TextGradient.astro';
+import TextReveal from '@/components/Elements/TextReveal.astro';
 ---
 
 <!-- Begin Block: FruitMachine -->
@@ -9,15 +11,21 @@ import Icon from '@/components/Elements/Icon.astro';
   >
   </canvas>
 
-  <div class="wrapper">
-    <p class="text-18 sm:text-24 font-heading font-bold">
-      Welcome to
-      <Icon
-        name="yellowball"
-        width={117}
-        height={22}
-        class="inline-block w-[82px] sm:w-[116px] h-auto"
-      />
+  <div
+    class="wrapper flex flex-col items-center justify-start gap-40 md:gap-50"
+  >
+    <TextReveal
+      onEnter
+      tag="h1"
+      class="font-heading text-fluid-h1 font-semibold"
+    >
+      <TextGradient>Why gamble</TextGradient> with your
+      <br class="smMax:hidden" /> next web agency?
+    </TextReveal>
+
+    <p class="flex gap-10 items-center text-grey text-17 sm:text-21">
+      Scroll to spin
+      <Icon name="arrow-s" width={17} height={17} />
     </p>
 
     <div
@@ -57,25 +65,36 @@ import Icon from '@/components/Elements/Icon.astro';
       </ul>
     </div>
 
-    <h1 class="text-fluid-h3 font-heading">
-      Why gamble with your next agency?
-      <span
-        class="fruit-machine__statement block opacity-0 transition-opacity duration-1000 ease-smooth"
-      >
-        Win every time with Yellowball.
+    <TextReveal
+      onEnter
+      tag="h2"
+      class="font-heading text-fluid-h1 font-semibold"
+    >
+      Win every
+      <br class="md:hidden" />
+      time with
+      <span class="block">
+        <Icon
+          name="yellowball"
+          width={520}
+          height={100}
+          class="w-auto h-[1em]"
+        />
       </span>
-    </h1>
+    </TextReveal>
   </div>
 </div>
 <!-- End Block: FruitMachine -->
 
 <style is:global>
   .fruit-machine {
-    &__statement {
-      .fruit-machine.spin-complete & {
-        opacity: 1;
-      }
-    }
+    background-image: linear-gradient(
+      to bottom,
+      theme('colors.transparent') 0%,
+      theme('colors.navy') 10%,
+      theme('colors.navy') 90%,
+      theme('colors.transparent') 100%
+    );
 
     &__container {
       &::before,
@@ -123,27 +142,22 @@ import Icon from '@/components/Elements/Icon.astro';
 
     &__strip-1 {
       --fruit-strip-depth: -4.45;
-      /* --fruit-strip-depth: -5; */
     }
 
     &__strip-2 {
       --fruit-strip-depth: -0.45;
-      /* --fruit-strip-depth: -1; */
     }
 
     &__strip-3 {
       --fruit-strip-depth: -6.45;
-      /* --fruit-strip-depth: -7; */
     }
 
     &__strip-4 {
       --fruit-strip-depth: -2.45;
-      /* --fruit-strip-depth: -3; */
     }
 
     &__strip-5 {
       --fruit-strip-depth: -3.45;
-      /* --fruit-strip-depth: -4; */
     }
   }
 </style>
