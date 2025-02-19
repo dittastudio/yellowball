@@ -42,6 +42,7 @@ function FnTextReveal() {
         yPercent: 0,
         ease: 'power4.out',
         stagger: 0.1,
+        delay: hasOnEnter ? 0.25 : 0,
       };
 
       const toExtra = hasOnEnter
