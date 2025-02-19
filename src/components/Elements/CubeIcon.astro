@@ -3,21 +3,18 @@ import { colourText } from '@/utils/maps';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Props {
-  icon: {
-    type: 'logo' | 'outline';
-    name: string;
-    hover?: string;
-  } | null;
+  type?: 'logo' | 'outline' | undefined;
+  name?: string | undefined;
+  hover?: string;
   color?: ColorTypes;
 }
 
-const { icon, color = 'white' } = Astro.props as Props;
+const { type, name, hover, color = 'white' } = Astro.props as Props;
 
-const colorClasses =
-  icon?.type === 'outline' ? colourText[color] : 'text-white';
+const colorClasses = type === 'outline' ? colourText[color] : 'text-white';
 
 const hoverClasses =
-  icon?.type === 'outline'
+  type === 'outline'
     ? {
         white: '[a:hover_&]:text-navy [a:hover_&]:bg-white',
         green: '[a:hover_&]:text-navy [a:hover_&]:bg-green',
@@ -26,7 +23,7 @@ const hoverClasses =
         purple: '[a:hover_&]:text-navy [a:hover_&]:bg-purple',
       }
     : {
-        white: '[a:hover_&]:bg-white',
+        white: '[a:hover_&]:bg-white [a:hover_&]:text-navy',
         green: '[a:hover_&]:bg-white',
         blue: '[a:hover_&]:bg-white',
         yellow: '[a:hover_&]:bg-white',
@@ -36,7 +33,7 @@ const hoverClasses =
 
 <span
   class:list={[
-    'relative flex justify-center items-center size-40 md:size-50',
+    'relative shrink-0 flex justify-center items-center size-40 md:size-50',
     'after:absolute after:inset-0',
     'after:border after:border-solid after:border-navy-lighter after:rounded-12',
     'bg-navy-light rounded-12',
@@ -46,31 +43,22 @@ const hoverClasses =
   ]}
 >
   {
-    icon && (
-      <>
-        {icon.type === 'outline' ? (
-          <span class="size-22 [&_svg]:size-full">
-            <Icon name={icon.name} width={28} height={28} class="size-full" />
-          </span>
-        ) : (
-          <span class="relative size-22 md:size-28 [&_svg]:size-full">
-            <span class="block size-full transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-0">
-              <Icon name={icon.name} width={28} height={28} class="size-full" />
-            </span>
+    type === 'outline' ? (
+      <span class="size-22 [&_svg]:size-full">
+        <Icon name={name} width={28} height={28} class="size-full" />
+      </span>
+    ) : (
+      <span class="relative size-22 md:size-28 [&_svg]:size-full">
+        <span class="block size-full transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-0">
+          <Icon name={name} width={28} height={28} class="size-full" />
+        </span>
 
-            {icon.hover && (
-              <span class="absolute inset-0 size-inherit opacity-0 transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-100">
-                <Icon
-                  name={icon.hover}
-                  width={28}
-                  height={28}
-                  class="size-full"
-                />
-              </span>
-            )}
+        {hover && (
+          <span class="absolute inset-0 size-inherit opacity-0 transition-opacity duration-250 ease-smooth [a:hover_&]:opacity-100">
+            <Icon name={hover} width={28} height={28} class="size-full" />
           </span>
         )}
-      </>
+      </span>
     )
   }
 </span>
