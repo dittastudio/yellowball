@@ -52,12 +52,22 @@ const hoverClasses =
         </span>
       ) : (
         <span class="relative size-22 md:size-28 [&_svg]:size-full">
-          <span class="cube-icon__under block size-full">
+          <span
+            class:list={[
+              'block size-full',
+              'opacity-100 transition-[opacity] duration-250 ease-smooth [a:hover_&]:opacity-0',
+            ]}
+          >
             <Icon name={name} width={28} height={28} class="size-inherit" />
           </span>
 
           {hover && (
-            <span class="cube-icon__hover absolute inset-0 size-inherit">
+            <span
+              class:list={[
+                'absolute inset-0 size-inherit',
+                ' opacity-0 transition-[opacity] duration-250 ease-smooth [a:hover_&]:opacity-100',
+              ]}
+            >
               <Icon name={hover} width={28} height={28} class="size-inherit" />
             </span>
           )}
@@ -66,25 +76,3 @@ const hoverClasses =
     }
   </span>
 </span>
-
-<style is:global>
-  .cube-icon__under {
-    opacity: 1;
-    transition: opacity 0.25s theme('transitionTimingFunction.smooth');
-
-    a:hover & {
-      opacity: 0;
-      transition: opacity 0.25s theme('transitionTimingFunction.smooth');
-    }
-  }
-
-  .cube-icon__hover {
-    opacity: 0;
-    transition: opacity 0.25s theme('transitionTimingFunction.smooth');
-
-    a:hover & {
-      opacity: 1;
-      transition: opacity 0.25s theme('transitionTimingFunction.smooth');
-    }
-  }
-</style>
