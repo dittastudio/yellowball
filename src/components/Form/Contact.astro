@@ -6,82 +6,104 @@ import FormGroup from '@/components/Fields/Group.astro';
 import FormInput from '@/components/Fields/Input.astro';
 import FormTextarea from '@/components/Fields/Textarea.astro';
 import FormFile from '@/components/Fields/File.astro';
+import FormError from '@/components/Fields/Error.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 ---
 
-<form data-js="form-contact" class="flex flex-col items-start gap-60 lg:gap-80">
-  <FormInput
-    label="Please tell us your name *"
-    type="text"
-    id="name"
-    name="name"
-    value=""
-    placeholder="placeholder"
-    required
-  />
+<form
+  data-js="form-contact"
+  class="flex flex-col items-start gap-60 lg:gap-80"
+  autocomplete="off"
+  novalidate
+>
+  <div class="w-full flex flex-col gap-15 items-start justify-start">
+    <FormInput
+      label="Please tell us your name *"
+      type="text"
+      id="name"
+      name="name"
+      value=""
+      placeholder="placeholder"
+      required
+    />
 
-  <FormInput
-    label="Email address we can reach you on? *"
-    type="email"
-    id="email"
-    name="email"
-    value=""
-    placeholder="placeholder"
-    required
-  />
+    <FormError name="name" />
+  </div>
 
-  <FormInput
-    label="Best number for a quick call? *"
-    type="tel"
-    id="telephone"
-    name="telephone"
-    value=""
-    placeholder="placeholder"
-    required
-  />
+  <div class="w-full flex flex-col gap-15 items-start justify-start">
+    <FormInput
+      label="Email address we can reach you on? *"
+      type="email"
+      id="email"
+      name="email"
+      value=""
+      placeholder="placeholder"
+      required
+    />
 
-  <FormGroup
-    data-js-services
-    headline="Which services are you interested in exploring with us? *"
-  >
-    <div class="flex gap-15 flex-wrap">
-      <FormControl
-        type="checkbox"
-        color="yellow"
-        label="Web Design"
-        name="web-design"
-        id="web-design"
-        value="web-design"
-      />
+    <FormError name="email" />
+  </div>
 
-      <FormControl
-        type="checkbox"
-        color="green"
-        label="SEO"
-        name="seo"
-        id="seo"
-        value="seo"
-      />
+  <div class="w-full flex flex-col gap-15 items-start justify-start">
+    <FormInput
+      label="Best number for a quick call? *"
+      type="tel"
+      id="telephone"
+      name="telephone"
+      value=""
+      placeholder="placeholder"
+      required
+    />
 
-      <FormControl
-        type="checkbox"
-        color="blue"
-        label="PPC"
-        name="ppc"
-        id="ppc"
-        value="ppc"
-      />
+    <FormError name="telephone" />
+  </div>
 
-      <FormControl
-        type="checkbox"
-        color="white"
-        label="Other"
-        name="other"
-        id="other"
-        value="other"
-      />
-    </div>
-  </FormGroup>
+  <div class="w-full flex flex-col gap-15 items-start justify-start">
+    <FormGroup
+      data-js-services
+      headline="Which services are you interested in exploring with us? *"
+    >
+      <div class="flex gap-15 flex-wrap">
+        <FormControl
+          type="checkbox"
+          color="yellow"
+          label="Web Design"
+          name="web-design"
+          id="web-design"
+          value="web-design"
+        />
+
+        <FormControl
+          type="checkbox"
+          color="green"
+          label="SEO"
+          name="seo"
+          id="seo"
+          value="seo"
+        />
+
+        <FormControl
+          type="checkbox"
+          color="blue"
+          label="PPC"
+          name="ppc"
+          id="ppc"
+          value="ppc"
+        />
+
+        <FormControl
+          type="checkbox"
+          color="white"
+          label="Other"
+          name="other"
+          id="other"
+          value="other"
+        />
+      </div>
+    </FormGroup>
+
+    <FormError name="telephone" />
+  </div>
 
   <FormGroup
     data-js-service="web-design"
@@ -270,18 +292,22 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
     </Fragment>
   </FormGroup>
 
-  <FormGroup
-    data-js-service="any"
-    headline="Tell us about your project"
-    class="hidden w-full"
-  >
-    <FormTextarea
-      label="Your message"
-      id="about"
-      name="about"
-      placeholder="Your message..."
-    />
-  </FormGroup>
+  <div class="w-full flex flex-col gap-15 items-start justify-start">
+    <FormGroup
+      data-js-service="any"
+      headline="Tell us about your project"
+      class="hidden w-full"
+    >
+      <FormTextarea
+        label="Your message"
+        id="about"
+        name="about"
+        placeholder="Your message..."
+      />
+    </FormGroup>
+
+    <FormError name="about" />
+  </div>
 
   <FormGroup
     data-js-service="any"
@@ -292,10 +318,14 @@ import LinkArrow from '@/components/Elements/LinkArrow.astro';
   </FormGroup>
 
   <div class="w-full flex flex-col gap-30 items-start justify-start">
-    <FormCheckbox color="white" name="agree" id="agree" value="agree">
-      I agree to the Yellowball
-      <a href="/" class="underline">Privacy Policy</a>
-    </FormCheckbox>
+    <div class="w-full flex flex-col gap-15 items-start justify-start">
+      <FormCheckbox color="white" name="agree" id="agree" value="agree">
+        I agree to the Yellowball
+        <a href="/" class="underline">Privacy Policy</a>
+      </FormCheckbox>
+
+      <FormError name="agree" />
+    </div>
 
     <button type="submit">
       <Button text="Submit" hasArrow />

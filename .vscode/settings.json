@@ -4,7 +4,8 @@
   "typescript.suggest.autoImports": false,
   "javascript.suggest.autoImports": false,
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
+    "*.svg": "plaintext"
   },
   "eslint.validate": [
     "javascript",

@@ -1,0 +1,20 @@
+---
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Base {
+  name: string;
+}
+
+type Props = Base;
+
+const { name, ...rest } = Astro.props as Props;
+---
+
+<div data-error={name} class="hidden w-full">
+  <div class="w-full flex items-center gap-10">
+    <Icon name="error" class="size-16 text-red" />
+    <p class="font-heading text-14 text-red" {...rest}>
+      Please enter your name
+    </p>
+  </div>
+</div>

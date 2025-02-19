@@ -71,6 +71,7 @@ export default {
       whiteRgba: 'rgb(255 255 255 / <alpha-value>)',
       yellow: "#EAFF01",
       green: "#ADF454",
+      red: '#FF262A',
       blue: "#51DBEA",
       'blue-google': "#1a0dab",
       purple: "#A58EF7",
