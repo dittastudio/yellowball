@@ -24,13 +24,6 @@ const { classes, attributes } = componentProperties(
     )
   }
 
-  {
-    hasSlotDefault && (
-      <div class="w-full">
-        <slot />
-      </div>
-    )
-  }
-
+  {hasSlotDefault && <slot />}
   {hasSlotBottom && <slot name="bottom" />}
 </div>
