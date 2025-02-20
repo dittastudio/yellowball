@@ -148,18 +148,14 @@ function FnFruitMachine() {
       ScrollTrigger.create({
         markers: false,
         trigger: machine,
-        start: `top top`,
+        start: `-10% top`,
         onEnter: async () => {
           if (isSpinning) return;
-
-          await sleep(500);
 
           doSpin();
         },
         onEnterBack: async () => {
           if (isSpinning) return;
-
-          await sleep(500);
 
           doSpin();
         }
