@@ -36,21 +36,6 @@ function FnFruitMachine() {
 
   machines.forEach(machine => {
     const canvas = machine.querySelector('canvas') as HTMLCanvasElement;
-    const container = machine.querySelector('[data-js-fruit-machine-container]') as HTMLElement;
-    const scrollButton = machine.querySelector('[data-js-fruit-machine-scroll]') as HTMLButtonElement;
-
-    if (scrollButton) {
-      scrollButton.addEventListener('click', () => {
-        gsap.to(window, {
-          duration: 1,
-          scrollTo: {
-            y: container.offsetTop + container.offsetHeight,
-            offsetY: window?.innerHeight / 2
-          },
-          ease: 'power3.inOut',
-        });
-      });
-    }
 
     if (canvas) {
       setCanvasDimensions(machine, canvas);
