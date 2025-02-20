@@ -12,7 +12,7 @@ const { headline = '', ...rest } = Astro.props as Props;
 const hasSlotDefault = await hasSlot(Astro.slots, 'default');
 const hasSlotBottom = await hasSlot(Astro.slots, 'bottom');
 const { classes, attributes } = componentProperties(
-  ['flex flex-col justify-start gap-20'],
+  ['w-full flex flex-col items-start justify-start gap-20'],
   rest,
 );
 ---
@@ -26,17 +26,11 @@ const { classes, attributes } = componentProperties(
 
   {
     hasSlotDefault && (
-      <div>
+      <div class="w-full">
         <slot />
       </div>
     )
   }
 
-  {
-    hasSlotBottom && (
-      <div>
-        <slot name="bottom" />
-      </div>
-    )
-  }
+  {hasSlotBottom && <slot name="bottom" />}
 </div>
