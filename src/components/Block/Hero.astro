@@ -25,9 +25,8 @@ const hasSlotExtra = await hasSlot(Astro.slots, 'extra');
 <!-- Begin Block: Hero -->
 <div
   data-js="hero"
-  class:list={[
-    'wrapper pt-50 pb-20 relative flex flex-col items-center justify-center gap-40 md:gap-50 text-center',
-  ]}
+  data-js-hero-animation={hasLogoAnimation ? 'true' : null}
+  class="'wrapper pt-50 pb-20 relative flex flex-col items-center justify-center gap-40 md:gap-50 text-center"
 >
   {
     shape && (
@@ -93,7 +92,7 @@ const hasSlotExtra = await hasSlot(Astro.slots, 'extra');
 <!-- End Block: Hero -->
 
 <style is:global>
-  html:not(.has-no-hero-animation) {
+  html:has([data-js-hero-animation='true']):not(.has-no-hero-animation) {
     [data-js='header'] {
       translate: 0 -100% 0;
     }
