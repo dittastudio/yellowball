@@ -1,20 +1,30 @@
 ---
+import { componentProperties } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Base {
   name: string;
+  message?: string;
+  class?: string;
 }
 
 type Props = Base;
 
-const { name, ...rest } = Astro.props as Props;
+const {
+  name,
+  message = 'Please check the field',
+  ...rest
+} = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  ['w-full flex items-center gap-10'],
+  rest,
+);
 ---
 
-<div data-error={name} class="hidden w-full">
-  <div class="w-full flex items-center gap-10">
-    <Icon name="error" class="size-16 text-red" />
-    <p class="font-heading text-14 text-red" {...rest}>
-      Please check the field
-    </p>
-  </div>
+<div data-error={name} class:list={classes} {...attributes}>
+  <Icon name="error" class="size-16 text-red" />
+  <p class="font-heading text-14 text-red">
+    {message}
+  </p>
 </div>

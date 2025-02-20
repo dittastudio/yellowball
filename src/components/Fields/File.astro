@@ -1,29 +1,52 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import { componentProperties } from '@/utils/helpers';
 import Icon from '@/components/Elements/Icon.astro';
 
 interface Base {
-  label: string;
+  name: string;
+  filename?: string;
+  state?: 'ready' | 'uploading' | 'error';
+  class?: string;
 }
 
-type Props = HTMLAttributes<'input'> & Base;
+type Props = Base;
 
-const { label, ...rest } = Astro.props as Props;
+const {
+  name,
+  filename = 'file_upload.pdf',
+  state = 'ready',
+  ...rest
+} = Astro.props as Props;
+
+const { classes, attributes } = componentProperties(
+  [
+    'w-full flex items-center justify-between gap-10 p-22 font-heading text-12 lg:text-18 text-white bg-card rounded-16 lg:rounded-24 border',
+  ],
+  rest,
+);
 ---
 
-<div data-js="file">
-  <input type="file" class="sr-only" {...rest} />
+<div
+  data-file={name}
+  class:list={[classes, state === 'error' ? 'border-red' : 'border-white/10']}
+  {...attributes}
+>
+  <span data-filename>{filename}</span>
 
-  <label
-    for={rest.id}
-    class="flex items-start justify-start gap-10 font-heading text-18 lg:text-24 text-grey hover:text-yellow transition-colors duration-300 cursor-pointer"
-  >
-    <Icon name="paperclip" class="size-24 mt-1 lg:mt-5" />
-
-    <span class="flex flex-col items-start justify-start gap-5">
-      <span class="underline">Add attachment</span>
-      <span data-js-file-info class="text-12 lg:text-14 text-white w-full">
-      </span>
-    </span>
-  </label>
+  <div class="flex gap-10 items-center">
+    {
+      state === 'uploading' && (
+        <Icon name="spinner" class="size-20 text-yellow animate-spin" />
+      )
+    }
+    {state === 'error' && <Icon name="error" class="size-20 text-red" />}
+    {
+      state !== 'uploading' && (
+        <button data-file-remove type="button">
+          <span class="sr-only">Remove</span>
+          <Icon name="cross" class="size-16" />
+        </button>
+      )
+    }
+  </div>
 </div>

@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from '@/components/Elements/Icon.astro';
+
+interface Base {
+  name: string;
+  label: string;
+}
+
+type Props = HTMLAttributes<'input'> & Base;
+
+const { name, label, ...rest } = Astro.props as Props;
+---
+
+<div data-upload={name}>
+  <input type="file" name={name} class="sr-only" {...rest} />
+
+  <label
+    for={rest.id}
+    class="flex items-start justify-start gap-10 font-heading text-18 lg:text-24 text-grey hover:text-yellow transition-colors duration-300 cursor-pointer"
+  >
+    <Icon name="paperclip" class="size-24 mt-1 lg:mt-5" />
+    <span class="underline">Add attachment</span>
+  </label>
+</div>

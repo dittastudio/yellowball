@@ -77,10 +77,12 @@ function FnContact() {
 
         if (errorMessage && errorText) {
           errorField.classList.remove("hidden");
+          errorField.classList.add("flex");
           errorText.textContent = errorMessage;
         }
       } else if (result.success && errorField) {
         errorField.classList.add("hidden");
+        errorField.classList.remove("flex");
       }
     };
 

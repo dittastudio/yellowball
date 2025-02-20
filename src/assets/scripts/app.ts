@@ -13,7 +13,6 @@ import FnCursors from '@/components/Elements/Cursors.ts'
 import FnFAQs from '@/components/Block/FAQs.ts'
 import FnFauxGraph from '@/components/UI/FauxGraph';
 import FnFigure from '@/components/Card/Figure.ts'
-import FnFile from '@/components/Fields/File.ts'
 import FnFooter from '@/components/App/Footer.ts'
 import FnFruitMachine from '@/components/Block/FruitMachine';
 import FnGoogle from '@/components/Block/Google.ts'
@@ -42,6 +41,7 @@ import FnTextScrub from '@/components/UI/TextScrub.ts'
 import FnTicker from '@/components/Elements/Ticker.ts'
 import FnTypingText from '@/components/UI/TypingText.ts'
 import FnUILogo from '@/components/UI/Logo.ts'
+import FnUpload from '@/components/Fields/Upload.ts'
 import FnValues from '@/components/Block/Values.ts'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -60,7 +60,6 @@ FnCursors()
 FnFAQs()
 FnFauxGraph()
 FnFigure()
-FnFile()
 FnFooter()
 FnFruitMachine()
 FnGoogle()
@@ -89,4 +88,5 @@ FnTextScrub()
 FnTicker()
 FnTypingText()
 FnUILogo()
+FnUpload()
 FnValues()

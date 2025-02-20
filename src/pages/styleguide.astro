@@ -25,9 +25,12 @@ import CubeIcon from '@/components/Elements/CubeIcon.astro';
 import Cursor from '@/components/Elements/Cursor.astro';
 import FormCheckbox from '@/components/Fields/Checkbox.astro';
 import FormControl from '@/components/Fields/Control.astro';
+import FormError from '@/components/Fields/Error.astro';
+import FormFile from '@/components/Fields/File.astro';
 import FormGroup from '@/components/Fields/Group.astro';
 import FormInput from '@/components/Fields/Input.astro';
-import FormFile from '@/components/Fields/File.astro';
+import FormTextarea from '@/components/Fields/Textarea.astro';
+import FormUpload from '@/components/Fields/Upload.astro';
 import Icon from '@/components/Elements/Icon.astro';
 import LinkArrow from '@/components/Elements/LinkArrow.astro';
 import Modal from '@/components/UI/Modal.astro';
@@ -996,7 +999,9 @@ const classCardCSSCols =
       </div>
     </StyleguideSection>
 
-    <StyleguideSection title="Fields (Input, Group, Control, Checkbox, File)">
+    <StyleguideSection
+      title="Fields (Input, Group, Control, Checkbox, Upload, File)"
+    >
       <div class="grid gap-60">
         <FormInput
           label="I am a basic input field"
@@ -1007,6 +1012,15 @@ const classCardCSSCols =
           placeholder="placeholder"
           required
         />
+
+        <FormGroup headline="Textarea field example">
+          <FormTextarea
+            label="Your message"
+            id="about"
+            name="about"
+            placeholder="Your message..."
+          />
+        </FormGroup>
 
         <FormGroup
           headline="I'm the label for control checkboxes (multiple choice)"
@@ -1113,13 +1127,24 @@ const classCardCSSCols =
           </Fragment>
         </FormGroup>
 
-        <FormCheckbox color="white" name="agree" id="agree" value="agree">
+        <FormCheckbox color="yellow" name="agree" id="agree" value="agree">
           I am a simple checkbox with label
           <a href="/" class="underline">Privacy Policy</a>
         </FormCheckbox>
 
-        <FormGroup headline="I'm a file input field">
-          <FormFile label="Add attachment" name="file" id="file" />
+        <FormGroup>
+          <FormUpload label="Add attachment" name="file" id="file" />
+
+          <Fragment slot="bottom">
+            <FormFile class="hidden" name="file" />
+            <FormFile name="file" />
+            <FormFile name="file" state="uploading" />
+            <FormFile name="file" state="error" />
+          </Fragment>
+        </FormGroup>
+
+        <FormGroup>
+          <FormError name="field" />
         </FormGroup>
       </div>
     </StyleguideSection>
