@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-type Fields = "name" | "email" | "telephone" | "about";
+type Fields = "name" | "email" | "telephone" | "about" | "agree";
 
 function FnContact() {
   const forms = document.querySelectorAll('[data-js="form-contact"]') as NodeListOf<HTMLFormElement>;
@@ -50,18 +50,22 @@ function FnContact() {
       email: z.string().nonempty("Please enter your email").email("Please enter a valid email address"),
       telephone: z.string().nonempty("Please enter your telephone number"),
       about: z.string().nonempty("Please tell us about your project"),
+      agree: z.boolean().refine(val => val === true, {
+        message: "Please agree to our privacy policy",
+      })
     });
 
     const nameInput = form.querySelector("#name") as HTMLInputElement;
     const emailInput = form.querySelector("#email") as HTMLInputElement;
     const telephoneInput = form.querySelector("#telephone") as HTMLInputElement;
     const aboutInput = form.querySelector("#about") as HTMLTextAreaElement;
+    const agreeInput = form.querySelector("#agree") as HTMLInputElement;
 
-    if (!nameInput || !emailInput || !telephoneInput || !aboutInput) {
+    if (!nameInput || !emailInput || !telephoneInput || !aboutInput || !agreeInput) {
       return;
     }
 
-    const validateField = (field: Fields, value: string) => {
+    const validateField = (field: Fields, value: string | boolean) => {
       // @ts-ignore
       const fieldSchema = formSchema.pick({ [field]: true });
       const result = fieldSchema.safeParse({ [field]: value });
@@ -85,12 +89,14 @@ function FnContact() {
       validateField("email", emailInput.value.trim());
       validateField("telephone", telephoneInput.value.trim());
       validateField("about", aboutInput.value.trim());
+      validateField("agree", agreeInput.checked);
     };
 
     nameInput.addEventListener("input", () => validateField("name", nameInput.value.trim()));
     emailInput.addEventListener("input", () => validateField("email", emailInput.value.trim()));
     telephoneInput.addEventListener("input", () => validateField("telephone", telephoneInput.value.trim()));
     aboutInput.addEventListener("input", () => validateField("about", aboutInput.value.trim()));
+    agreeInput.addEventListener("change", () => validateField("agree", agreeInput.checked));
 
     form.addEventListener("submit", (event) => {
       validateAllFields();
