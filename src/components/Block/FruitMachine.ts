@@ -94,6 +94,7 @@ function FnFruitMachine() {
 
       const doSpin = async () => {
         isSpinning = true;
+
         const tl = gsap.timeline()
 
         tl
@@ -113,10 +114,13 @@ function FnFruitMachine() {
             ease: "elastic.out(1, 0.4)",
             stagger: 0.2,
           }, '<')
-          .add(() => {
+
+        if (isSpinningDown) {
+          tl.add(() => {
             burst('left')
             burst('right')
           }, '-=0.25');
+        }
 
         await sleep(tl.duration() * 1000 + 500);
 
