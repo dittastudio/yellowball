@@ -114,10 +114,14 @@ function FnHero() {
           duration,
           ease,
         }, '<')
-        .to(heroIconContainer, {
-          opacity: 1,
-          duration,
-          ease,
+        .add(() => {
+          if (heroIconContainer) {
+            tl.to(heroIconContainer, {
+              opacity: 1,
+              duration,
+              ease,
+            }, '<')
+          }
         }, '<')
         .to(layoutLines, {
           opacity: 1,
