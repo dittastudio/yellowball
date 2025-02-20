@@ -14,7 +14,7 @@ type Props = HTMLAttributes<'div'> & Base;
 const { shape = 'triangle', color = 'yellow', ...rest } = Astro.props as Props;
 const { classes, attributes } = componentProperties(
   [
-    'shape-gradient z-0 isolate pointer-events-none overflow-hidden',
+    'shape-gradient z-0 isolate pointer-events-none overflow-hidden backface-hidden',
     colourText[color],
   ],
   rest,

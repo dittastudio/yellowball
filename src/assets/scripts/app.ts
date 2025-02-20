@@ -1,5 +1,6 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollTrigger, } from 'gsap/dist/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import Lenis from 'lenis';
 
 import FnAvatars from '@/components/Card/Avatars.ts'
@@ -43,7 +44,7 @@ import FnTypingText from '@/components/UI/TypingText.ts'
 import FnUILogo from '@/components/UI/Logo.ts'
 import FnValues from '@/components/Block/Values.ts'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 window.lenis = new Lenis({
   autoRaf: true,

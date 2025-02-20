@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro';
 
 import UITickerCTA from '@/components/UI/TickerCTA.astro';
 
-import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardCaseStudyHero from '@/components/Card/CaseStudyHero.astro';
 import CardClientOverview from '@/components/Card/ClientOverview.astro';
@@ -99,14 +98,7 @@ const exampleServiceListItems: any = [
 <Layout title="SEO">
   <main>
     <section>
-      <BlockHero color="green" shape="square">
-        <Fragment slot="top">
-          <Breadcrumb
-            shape="square"
-            items={[{ color: 'green', title: 'SEO', href: '/' }]}
-          />
-        </Fragment>
-
+      <BlockHero hasLogoAnimation color="green" shape="square">
         <Fragment slot="headline">
           <TextReveal
             onEnter

@@ -54,6 +54,7 @@ function FnHero() {
       const layoutLines = document.querySelector('[data-js-layout-lines-shape]') as HTMLElement;
       const heroContent = hero.querySelector('[data-js-hero-content]') as HTMLElement;
       const cursors = hero.querySelector('[data-js="cursors"]') as HTMLElement;
+      const heroIconContainer = hero.querySelector('[data-js-hero-icon-container]') as HTMLElement;
 
       document.documentElement.classList.remove('has-no-hero-animation');
 
@@ -109,6 +110,11 @@ function FnHero() {
           ease,
         }, '<')
         .to(heroContent, {
+          opacity: 1,
+          duration,
+          ease,
+        }, '<')
+        .to(heroIconContainer, {
           opacity: 1,
           duration,
           ease,

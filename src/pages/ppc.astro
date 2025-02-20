@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
-import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardCaseStudyHero from '@/components/Card/CaseStudyHero.astro';
 import CardPrompt from '@/components/Card/Prompt.astro';
@@ -92,14 +91,7 @@ const exampleServiceListItems: any = [
 <Layout title="PPC">
   <main>
     <section>
-      <BlockHero color="blue" shape="circle">
-        <Fragment slot="top">
-          <Breadcrumb
-            shape="circle"
-            items={[{ color: 'blue', title: 'PPC', href: '/' }]}
-          />
-        </Fragment>
-
+      <BlockHero hasLogoAnimation color="blue" shape="circle">
         <Fragment slot="headline">
           <TextReveal
             onEnter

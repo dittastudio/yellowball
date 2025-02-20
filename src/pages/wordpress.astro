@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
-import Breadcrumb from '@/components/Elements/Breadcrumb.astro';
 import Button from '@/components/Elements/Button.astro';
 import CardProjectHero from '@/components/Card/ProjectHero.astro';
 import CardPrompt from '@/components/Card/Prompt.astro';
@@ -70,17 +69,7 @@ const exampleServiceListItems: any = [
 <Layout title="WordPress">
   <main>
     <section>
-      <BlockHero color="yellow" shape="triangle">
-        <Fragment slot="top">
-          <Breadcrumb
-            shape="triangle"
-            items={[
-              { color: 'yellow', title: 'Web Design', href: '/' },
-              { color: 'yellow', title: 'WordPress Development', href: '/' },
-            ]}
-          />
-        </Fragment>
-
+      <BlockHero hasLogoAnimation color="yellow" shape="triangle">
         <Fragment slot="headline">
           <TextReveal
             onEnter

@@ -1,7 +1,4 @@
 import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
-
-gsap.registerPlugin(ScrollToPlugin);
 
 function FnButtonScrollToTop() {
   const buttons = document.querySelectorAll(

@@ -32,17 +32,22 @@ const hasSlotExtra = await hasSlot(Astro.slots, 'extra');
   {
     shape && (
       <span
-        class="absolute top-50 md:top-70 left-1/2 -translate-x-1/2 opacity-0 translate-y-[10%] scale-[1.1] -z-2"
-        data-js-hero-icon
+        data-js-hero-icon-container
+        class="absolute top-50 md:top-70 left-1/2 -translate-x-1/2"
       >
-        <ShapeGradient
-          data-js-hero-icon-inner
-          {shape}
-          {color}
-          class:list={[
-            'block size-[65vw] md:size-[56vw] max-w-[800px] max-h-[800px]',
-          ]}
-        />
+        <span
+          data-js-hero-icon
+          class="block size-full opacity-0 translate-y-[10%] scale-[1.1] -z-2"
+        >
+          <ShapeGradient
+            data-js-hero-icon-inner
+            {shape}
+            {color}
+            class:list={[
+              'block size-[65vw] md:size-[56vw] max-w-[800px] max-h-[800px]',
+            ]}
+          />
+        </span>
       </span>
     )
   }
@@ -97,6 +102,7 @@ const hasSlotExtra = await hasSlot(Astro.slots, 'extra');
       height: calc(100vh - var(--header-height));
     }
 
+    [data-js-hero-icon-container],
     [data-js-layout-lines-shape],
     [data-js-hero-logo-animated-svg],
     [data-js-hero-content] {
