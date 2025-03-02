@@ -51,8 +51,8 @@ function FnCursors() {
       const mouseY = e.clientY;
 
       const percentages = {
-        x: mouseX / window.innerWidth,
-        y: mouseY / window.innerHeight,
+        x: mouseX / (window.innerWidth * 2),
+        y: mouseY / (window.innerHeight * 2),
       };
 
       const rangeX = gsap.utils.mapRange(0, 1, -100, 100, percentages.x);
