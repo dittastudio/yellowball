@@ -137,7 +137,7 @@ function FnFruitMachine() {
 
           doSpin();
         },
-        onEnterBack: async () => {
+        onLeave: async () => {
           if (isSpinning) return;
 
           doSpin();
