@@ -128,12 +128,6 @@ function FnFruitMachine() {
         isSpinningDown = !isSpinningDown;
       }
 
-      machine.addEventListener('click', () => {
-        if (isSpinning) return;
-
-        doSpin();
-      });
-
       ScrollTrigger.create({
         markers: false,
         trigger: machine,
