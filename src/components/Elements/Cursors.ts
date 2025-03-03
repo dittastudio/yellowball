@@ -51,8 +51,8 @@ function FnCursors() {
       const mouseY = e.clientY;
 
       const percentages = {
-        x: mouseX / (window.innerWidth * 2),
-        y: mouseY / (window.innerHeight * 2),
+        x: mouseX / window.innerWidth,
+        y: mouseY / window.innerHeight,
       };
 
       const rangeX = gsap.utils.mapRange(0, 1, -100, 100, percentages.x);
@@ -80,7 +80,7 @@ function FnCursors() {
         gsap
           .timeline({
             scrollTrigger: {
-              markers: false,
+              markers: true,
               trigger: section,
               start: '-10% top',
               end: 'bottom top',
