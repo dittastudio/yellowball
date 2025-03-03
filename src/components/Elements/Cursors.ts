@@ -80,7 +80,7 @@ function FnCursors() {
         gsap
           .timeline({
             scrollTrigger: {
-              markers: true,
+              markers: false,
               trigger: section,
               start: '-10% top',
               end: 'bottom top',
