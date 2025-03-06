@@ -11,9 +11,10 @@ function FnCursors() {
       ':scope > *',
     ) as NodeListOf<HTMLElement>;
 
-    const timelines: gsap.core.Timeline[] = [];
     const getRandomDuration = () => gsap.utils.random(1, 3);
+    const timelines: gsap.core.Timeline[] = [];
 
+    let mouseTween: gsap.core.Tween | null = null;
     let canMoveX = true;
     let isPlaying = true;
 
@@ -31,11 +32,6 @@ function FnCursors() {
             y: direction ? 25 : -25,
             ease: 'sine.inOut',
             onComplete: () => animate(direction ? 0 : 1),
-          })
-          .to(cursor, {
-            duration,
-            y: 0,
-            ease: 'sine.inOut',
           });
       };
 
@@ -47,26 +43,97 @@ function FnCursors() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!canMoveX || !isPlaying) return;
 
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
+      const x = e.clientX / window.innerWidth;
+      const rangeX = gsap.utils.mapRange(0, 1, -100, 100, x);
 
-      const percentages = {
-        x: mouseX / window.innerWidth,
-        y: mouseY / window.innerHeight,
-      };
+      if (mouseTween) {
+        mouseTween.kill();
+      }
 
-      const rangeX = gsap.utils.mapRange(0, 1, -100, 100, percentages.x);
-
-      cursors.forEach(cursor => {
-        gsap.to(cursor, {
-          x: `${rangeX}px`,
-          duration: 1,
-          ease: 'sine.out',
-        });
+      mouseTween = gsap.to(cursors, {
+        x: rangeX,
+        duration: 1,
+        ease: 'sine.out',
       });
     };
 
     document.addEventListener('mousemove', handleMouseMove);
+
+    const runTrigger = () => {
+      ScrollTrigger.refresh();
+
+      const triggerAttr = section?.dataset.jsTriggerClosest;
+      const triggerEl = triggerAttr ? section.closest(triggerAttr) : section;
+      const triggerPoint = triggerEl ? triggerEl : section;
+
+      let delayedCall: gsap.core.Tween | null = null;
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            markers: false,
+            trigger: triggerPoint,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+            invalidateOnRefresh: true,
+            onEnter: () => {
+              mouseTween?.kill();
+              mouseTween = null;
+              canMoveX = false;
+
+              timelines.forEach(timeline => timeline.pause());
+
+              isPlaying = false;
+            },
+            onLeaveBack: () => {
+              delayedCall?.kill();
+              delayedCall = null;
+              isPlaying = false;
+              canMoveX = false;
+
+              delayedCall = gsap.delayedCall(2.5, () => {
+                ScrollTrigger.refresh();
+                timelines.forEach(timeline => timeline.play());
+
+                isPlaying = true;
+                canMoveX = true;
+              });
+            },
+            onLeave: () => {
+              canMoveX = false;
+
+              timelines.forEach(timeline => timeline.pause());
+
+              isPlaying = false;
+            },
+          },
+        })
+        .to(cursors, {
+          rotate: index => (index % 2 ? 30 : -30),
+          x: (_index, target) => {
+            const targetRect = target.getBoundingClientRect();
+            const centerX = window.innerWidth / 2;
+            const newX = centerX - (targetRect.x + targetRect.width / 2);
+
+            return newX;
+          },
+          y: (_index, target) => {
+            const targetRect = target.getBoundingClientRect();
+            const sectionRect = section.getBoundingClientRect();
+            const offset = sectionRect.y - (targetRect.y - sectionRect.y);
+
+            return sectionRect.bottom - (targetRect.height - offset);
+          },
+        })
+        .to(
+          cursors,
+          {
+            opacity: 0,
+          },
+          '<50%',
+        );
+    }
 
     const run = () => {
       cursors.forEach(cursor => {
@@ -75,84 +142,26 @@ function FnCursors() {
       });
 
       if (section.hasAttribute('data-js-exit')) {
-        let delayedCall: gsap.core.Tween | null = null;
+        const mm = gsap.matchMedia()
 
-        gsap
-          .timeline({
-            scrollTrigger: {
-              markers: false,
-              trigger: section,
-              start: '-10% top',
-              end: 'bottom top',
-              scrub: 1.5,
-              invalidateOnRefresh: true,
-              onEnter: () => {
-                canMoveX = false;
+        mm.add({
+          isMd: "screen and (min-width: 768px)"
+        }, (context) => {
+          const { conditions } = context;
 
-                if (isPlaying) {
-                  timelines.forEach(timeline => timeline.pause());
-                  isPlaying = false;
-                }
-              },
-              onLeaveBack: () => {
-                delayedCall?.kill();
-                delayedCall = null;
+          if (!conditions?.isMd) {
+            timelines.forEach(timeline => timeline.play());
 
-                if (!isPlaying) {
-                  delayedCall = gsap.delayedCall(3, () => {
-                    ScrollTrigger.refresh();
-                    timelines.forEach(timeline => timeline.play());
-                    isPlaying = true;
-                    canMoveX = true;
-                  });
-                }
-              },
-              onLeave: () => {
-                canMoveX = false;
+            isPlaying = true;
+            canMoveX = true;
 
-                if (isPlaying) {
-                  timelines.forEach(timeline => timeline.pause());
-                  isPlaying = false;
-                }
-              },
-            },
-          })
-          .to(cursors, {
-            x: (_index, target) => {
-              const targetRect = target.getBoundingClientRect();
-              // TODO: Check old code vs new code
-              // const sectionRect = section.getBoundingClientRect();
-              // const offset = sectionRect.x - (targetRect.x - sectionRect.x);
-              // return sectionRect.width / 2 - (targetRect.width - offset);
+            return
+          }
 
-              const centerX = window.innerWidth / 2;
-              const newX = centerX - (targetRect.x + targetRect.width / 2);
-              return newX;
-            },
-            y: (_index, target) => {
-              const targetRect = target.getBoundingClientRect();
-              const sectionRect = section.getBoundingClientRect();
-              const offset = sectionRect.y - (targetRect.y - sectionRect.y);
-
-              return (
-                sectionRect.top +
-                // TODO: Check old code vs new code
-                // (sectionRect.height + sectionRect.height / 4) -
-                (sectionRect.height + sectionRect.height / 2) -
-                (targetRect.height - offset)
-              );
-            },
-          })
-          .to(
-            cursors,
-            {
-              rotate: index => (index % 2 ? 30 : -30),
-              opacity: 0,
-            },
-            '<15%',
-          );
-      }
-    };
+          runTrigger();
+        });
+      };
+    }
 
     if (section && cursors.length) {
       run();
